@@ -21,7 +21,16 @@ from .pb.rpcpb.services_pb2_grpc import SliverRPCServicer, SliverRPCStub
 from .config import SliverClientConfig
 
 
+KB = 1024
+MB = 1024 * KB
+GB = 1024 * MB
+
+
 class BaseClient(SliverRPCServicer):
+
+    # 2GB triggers an overflow error in the gRPC library so we do 2GB -1
+    MAX_MESSAGE_LENGTH = (2 * GB) - 1
+    KEEP_ALIVE_TIMEOUT = 10000
 
     def __init__(self, config: SliverClientConfig):
         self.config = config
@@ -49,8 +58,22 @@ class SliverAsyncClient(BaseClient):
     ''' Asyncio client implementation '''
 
     async def connect(self) -> None:
-        self._channel = await grpc.aio.secure_channel(self.target, self.credentials)
+        self._channel = grpc.aio.secure_channel(
+            target=self.target,
+            credentials=self.credentials,
+            options=[
+                ('grpc.keepalive_timeout_ms', self.KEEP_ALIVE_TIMEOUT),
+                ('grpc.ssl_target_name_override', 'multiplayer'),
+                ('grpc.max_send_message_length', self.MAX_MESSAGE_LENGTH),
+                ('grpc.max_receive_message_length', self.MAX_MESSAGE_LENGTH),
+            ],
+        )
         self._stub = SliverRPCStub(self._channel)
+
+    async def sessions(self) -> list[client_pb2.Session]:
+        sessions: client_pb2.Sessions = await self._stub.GetSessions(common_pb2.Empty())
+        return list(sessions.Sessions)
+
 
 
 class SliverClient(BaseClient):
@@ -62,13 +85,15 @@ class SliverClient(BaseClient):
             target=self.target,
             credentials=self.credentials,
             options=[
-                ('grpc.keepalive_timeout_ms', 10000),
-                ('grpc.ssl_target_name_override', 'multiplayer')
+                ('grpc.keepalive_timeout_ms', self.KEEP_ALIVE_TIMEOUT),
+                ('grpc.ssl_target_name_override', 'multiplayer'),
+                ('grpc.max_send_message_length', self.MAX_MESSAGE_LENGTH),
+                ('grpc.max_receive_message_length', self.MAX_MESSAGE_LENGTH),
             ],
         )
         self._stub = SliverRPCStub(self._channel)
 
-    def sessions(self) -> client_pb2.Session:
+    def sessions(self) -> list[client_pb2.Session]:
         sessions: client_pb2.Sessions = self._stub.GetSessions(common_pb2.Empty())
-        return sessions
+        return list(sessions.Sessions)
 
