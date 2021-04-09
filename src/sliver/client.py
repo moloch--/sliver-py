@@ -30,13 +30,13 @@ class BaseClient(SliverRPCServicer):
 
     @property
     def target(self) -> str:
-        return "%s:%d" % (self.lhost, self.lport,)
+        return "%s:%d" % (self.config.lhost, self.config.lport,)
 
     @property
     def credentials(self) -> grpc.ChannelCredentials:
         return grpc.ssl_channel_credentials(
-            root_certificate=self.config.ca_certificate.encode(),
-            private_key=self.config.private_key,
+            root_certificates=self.config.ca_certificate.encode(),
+            private_key=self.config.private_key.encode(),
             certificate_chain=self.config.certificate.encode(),
         )
 
@@ -61,6 +61,7 @@ class SliverClient(BaseClient):
         self._channel = grpc.secure_channel(self.target, self.credentials)
         self._stub = SliverRPCStub(self._channel)
 
-    def sessions(self):
-        session = self._stub.GetSessions()
+    def sessions(self) -> client_pb2.Session:
+        sessions: client_pb2.Sessions = self._stub.GetSessions()
+        return sessions
 

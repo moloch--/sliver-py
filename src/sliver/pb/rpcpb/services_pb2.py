@@ -11,9 +11,9 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
-from commonpb import common_pb2 as commonpb_dot_common__pb2
-from sliverpb import sliver_pb2 as sliverpb_dot_sliver__pb2
-from clientpb import client_pb2 as clientpb_dot_client__pb2
+from ..commonpb import common_pb2 as commonpb_dot_common__pb2
+from ..sliverpb import sliver_pb2 as sliverpb_dot_sliver__pb2
+from ..clientpb import client_pb2 as clientpb_dot_client__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
