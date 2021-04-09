@@ -161,6 +161,25 @@ class SliverAsyncClient(BaseClient):
         http.Persistent = persistent
         return (await self._stub.StartHTTPListener(http, timeout=timeout))
 
+    async def start_tcp_stager_listener(self, protocol: client_pb2.StageProtocol, host: str, port: int, data: bytes, timeout=TIMEOUT) -> client_pb2.StagerListener:
+        stage = client_pb2.StagerListenerReq()
+        stage.Protocol = protocol
+        stage.Host = host
+        stage.Port = port
+        stage.Data = data
+        return (await self._stub.StartTCPStagerListener(stage, timeout=timeout))
+
+    async def start_http_stager_listener(self, protocol: client_pb2.StageProtocol, host: str, port: int, data: bytes, cert: bytes, key: bytes, acme: bool, timeout=TIMEOUT) -> client_pb2.StagerListener:
+        stage = client_pb2.StagerListenerReq()
+        stage.Protocol = protocol
+        stage.Host = host
+        stage.Port = port
+        stage.Data = data
+        stage.Cert = cert
+        stage.Key = key
+        stage.ACME = acme
+        return (await self._stub.StartHTTPStagerListener(stage, timeout=timeout))
+
     async def generate(self, config: client_pb2.ImplantConfig, timeout=360) -> client_pb2.Generate:
         req = client_pb2.GenerateReq()
         req.ImplantConfig = config
@@ -311,7 +330,24 @@ class SliverClient(BaseClient):
         http.Persistent = persistent
         return self._stub.StartHTTPListener(http, timeout=timeout)
 
-    # TODO: Implement stage listeners
+    def start_tcp_stager_listener(self, protocol: client_pb2.StageProtocol, host: str, port: int, data: bytes, timeout=TIMEOUT) -> client_pb2.StagerListener:
+        stage = client_pb2.StagerListenerReq()
+        stage.Protocol = protocol
+        stage.Host = host
+        stage.Port = port
+        stage.Data = data
+        return self._stub.StartTCPStagerListener(stage, timeout=timeout)
+
+    def start_http_stager_listener(self, protocol: client_pb2.StageProtocol, host: str, port: int, data: bytes, cert: bytes, key: bytes, acme: bool, timeout=TIMEOUT) -> client_pb2.StagerListener:
+        stage = client_pb2.StagerListenerReq()
+        stage.Protocol = protocol
+        stage.Host = host
+        stage.Port = port
+        stage.Data = data
+        stage.Cert = cert
+        stage.Key = key
+        stage.ACME = acme
+        return self._stub.StartHTTPStagerListener(stage, timeout=timeout)
 
     def generate(self, config: client_pb2.ImplantConfig, timeout=360) -> client_pb2.Generate:
         req = client_pb2.GenerateReq()
