@@ -33,6 +33,10 @@ setuptools.setup(
     classifiers=[
         "Programming Language :: Python :: 3",
     ],
+    install_requires=[
+        'grpc',
+        'grpcio-tools',
+    ],
     package_dir={"": "src"},
     packages=setuptools.find_packages(where="src"),
     python_requires=">=3.6",

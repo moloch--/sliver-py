@@ -18,7 +18,7 @@ import grpc
 from .pb.commonpb import common_pb2
 from .pb.clientpb import client_pb2
 from .pb.sliverpb import sliver_pb2
-from .pb.rpcpb.services_pb2_grpc import SliverRPCServicer, SliverRPCStub
+from .pb.rpcpb.services_pb2_grpc import SliverRPCStub
 from .config import SliverClientConfig
 
 
