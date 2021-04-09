@@ -30,6 +30,14 @@ class SliverClientConfig(object):
         self.certificate = certificate
         self.private_key = private_key
 
+    def __str__(self):
+        return "%s@%s%d" % (self.operator, self.lhost, self.lport,)
+    
+    def __repr__(self):
+        return "<Operator: %s, Lhost: %s, Lport: %d, CA: %s, Cert: %s>" % (
+            self.operator, self.lhost, self.lport, self.ca_certificate, self.certificate
+        )
+
     @classmethod
     def parse_config(cls: Type[T], data: Union[str, bytes]) -> T:
         return cls(**json.loads(data))

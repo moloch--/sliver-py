@@ -15,7 +15,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
 import grpc
-
+from .pb.commonpb import common_pb2
 from .pb.clientpb import client_pb2
 from .pb.rpcpb.services_pb2_grpc import SliverRPCServicer, SliverRPCStub
 from .config import SliverClientConfig
@@ -58,10 +58,17 @@ class SliverClient(BaseClient):
     ''' Client implementation '''
 
     def connect(self) -> None:
-        self._channel = grpc.secure_channel(self.target, self.credentials)
+        self._channel = grpc.secure_channel(
+            target=self.target,
+            credentials=self.credentials,
+            options=[
+                ('grpc.keepalive_timeout_ms', 10000),
+                ('grpc.ssl_target_name_override', 'multiplayer')
+            ],
+        )
         self._stub = SliverRPCStub(self._channel)
 
     def sessions(self) -> client_pb2.Session:
-        sessions: client_pb2.Sessions = self._stub.GetSessions()
+        sessions: client_pb2.Sessions = self._stub.GetSessions(common_pb2.Empty())
         return sessions
 
