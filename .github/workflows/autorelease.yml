@@ -20,7 +20,7 @@ jobs:
         architecture: 'x64'
 
     - name: Python Setup
-      run: python3 -m pip install --upgrade build
+      run: python3 -m pip install --upgrade build twine
 
     - name: Check Out Code
       uses: actions/checkout@v2
@@ -35,3 +35,10 @@ jobs:
         prerelease: false
         files: |
           ./dist/*
+
+    - name: PyPI Upload
+      env:
+        TWINE_NON_INTERACTIVE: 1
+        TWINE_USERNAME: __token__
+        TWINE_PASSWORD: "${{ secrets.TWINE_PASSWORD }}"
+      run: python3 -m twine upload -r pypi dist/*
