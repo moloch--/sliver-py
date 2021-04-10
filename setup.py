@@ -20,7 +20,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="sliver-py",
-    version="0.0.2",
+    version="0.0.3",
     author="moloch",
     author_email="875022+moloch--@users.noreply.github.com",
     description="Sliver gRPC client library.",
