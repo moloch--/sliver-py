@@ -74,8 +74,6 @@ async def run():
         ls = await interact.ls()
         print('[async] ls: %r' % ls)
 
-
-
 if __name__ == '__main__':
     main()
     asyncio.run(run())
