@@ -14,6 +14,12 @@ jobs:
 
     steps:
 
+    - id: install-secret-key
+      name: GPG Secret Key(s)
+      run: |
+        cat <(echo -e "${{ secrets.SLIVERPY_GPG }}") | gpg --batch --import
+        gpg --list-secret-keys --keyid-format LONG
+
     - uses: actions/setup-python@v2
       with:
         python-version: '3.x'
@@ -41,4 +47,4 @@ jobs:
         TWINE_NON_INTERACTIVE: 1
         TWINE_USERNAME: __token__
         TWINE_PASSWORD: "${{ secrets.TWINE_PASSWORD }}"
-      run: python3 -m twine upload -r pypi dist/*
+      run: python3 -m twine upload --sign --identity 9F68D30C -r pypi dist/*
