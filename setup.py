@@ -38,7 +38,13 @@ setuptools.setup(
         'grpcio-tools',
     ],
     package_dir={"": "src"},
-    packages=setuptools.find_packages(where="src"),
+    packages=[
+        'sliver.pb',
+        'sliver.pb.commonpb',
+        'sliver.pb.sliverpb',
+        'sliver.pb.clientpb',
+        'sliver.pb.rpcpb',
+    ],
     python_requires=">=3.6",
     include_package_data=True
 )
