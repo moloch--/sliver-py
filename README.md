@@ -1,10 +1,7 @@
-Sliver Py
+SliverPy
 ==========
 
-Sliver Py (pronounced "sliver pie") is a Python gRPC client library for Sliver.
-
-
-__NOTE:__ This is not a full featured client library (yet)
+SliverPy is a Python gRPC client library for [Sliver](https://github.com/BishopFox/sliver).
 
 
 ## Examples
@@ -62,9 +59,24 @@ def main():
     sessions = client.sessions()
     if len(sessions):
         interact = client.interact(sessions[0].ID)
-        print('Interacting with session %d', interact.session_id)
+        print('Interacting with session %d' % interact.session_id)
         print('ls: %r', interact.ls())
+
+async def run():
+    ''' Async client example '''
+    config = SliverClientConfig.parse_config_file(DEFAULT_CONFIG)
+    client = SliverAsyncClient(config)
+    await client.connect()
+    sessions = await client.sessions()
+    if len(sessions):
+        interact = await client.interact(sessions[0].ID)
+        print('[async] Interacting with session %d' % interact.session_id)
+        ls = await interact.ls()
+        print('[async] ls: %r', ls)
+
+
 
 if __name__ == '__main__':
     main()
+    asyncio.run(run())
 ```
