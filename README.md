@@ -6,13 +6,11 @@ SliverPy is a Python gRPC client library for [Sliver](https://github.com/BishopF
 [![SliverPy](https://github.com/moloch--/sliver-py/actions/workflows/autorelease.yml/badge.svg)](https://github.com/moloch--/sliver-py/actions/workflows/autorelease.yml)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-## Install
+### Install
 
-Install the package using pip:
+Install the package using pip, for best compatibility use Sliver Server v1.4.11 or later:
 
-```
-pip3 install sliver-py
-```
+`pip3 install sliver-py`
 
 ## Examples
 
