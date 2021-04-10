@@ -4,6 +4,14 @@ SliverPy
 SliverPy is a Python gRPC client library for [Sliver](https://github.com/BishopFox/sliver).
 
 
+## Install
+
+Install the package using pip:
+
+```
+pip3 install sliver-py
+```
+
 ## Examples
 
 #### List Sessions / Async List Sessions
