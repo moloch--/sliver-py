@@ -60,7 +60,7 @@ def main():
     if len(sessions):
         interact = client.interact(sessions[0].ID)
         print('Interacting with session %d' % interact.session_id)
-        print('ls: %r', interact.ls())
+        print('ls: %r' % interact.ls())
 
 async def run():
     ''' Async client example '''
@@ -72,7 +72,7 @@ async def run():
         interact = await client.interact(sessions[0].ID)
         print('[async] Interacting with session %d' % interact.session_id)
         ls = await interact.ls()
-        print('[async] ls: %r', ls)
+        print('[async] ls: %r' % ls)
 
 
 
