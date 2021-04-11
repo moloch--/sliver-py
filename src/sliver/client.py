@@ -20,7 +20,7 @@ from .pb.clientpb import client_pb2
 from .pb.sliverpb import sliver_pb2
 from .pb.rpcpb.services_pb2_grpc import SliverRPCStub
 from .config import SliverClientConfig
-from typing import Union
+from typing import Union, List
 
 
 KB = 1024
@@ -189,7 +189,7 @@ class AsyncInteractiveSession(BaseSession):
     async def ifconfig(self) -> sliver_pb2.Ifconfig:
         return (await self._stub.Ifconfig(self._request(sliver_pb2.IfconfigReq(), timeout=self.timeout)))
     
-    async def netstat(self, tcp: bool, udp: bool, ipv4: bool, ipv6: bool, listening=True) -> list[sliver_pb2.SockTabEntry]:
+    async def netstat(self, tcp: bool, udp: bool, ipv4: bool, ipv6: bool, listening=True) -> List[sliver_pb2.SockTabEntry]:
         net = sliver_pb2.NetstatReq()
         net.TCP = tcp
         net.UDP = udp
@@ -355,7 +355,7 @@ class AsyncInteractiveSession(BaseSession):
         pivot.Address = address
         return (await self._stub.TCPListener(self._request(pivot), timeout=self.timeout))
     
-    async def pivots(self) -> list[sliver_pb2.PivotEntry]:
+    async def pivots(self) -> List[sliver_pb2.PivotEntry]:
         pivots = await self._stub.ListPivots(self._request(sliver_pb2.PivotListReq()), timeout=self.timeout)
         return list(pivots.Entries)
 
@@ -462,11 +462,11 @@ class AsyncSliverClient(BaseClient):
     async def version(self, timeout=TIMEOUT) -> client_pb2.Version:
         return (await self._stub.GetVersion(common_pb2.Empty(), timeout=timeout))
 
-    async def operators(self, timeout=TIMEOUT) -> list[client_pb2.Operator]:
+    async def operators(self, timeout=TIMEOUT) -> List[client_pb2.Operator]:
         operators = await self._stub.GetOperators(common_pb2.Empty(), timeout=timeout)
         return list(operators.Operators)
 
-    async def sessions(self, timeout=TIMEOUT) -> list[client_pb2.Session]:
+    async def sessions(self, timeout=TIMEOUT) -> List[client_pb2.Session]:
         sessions: client_pb2.Sessions = await self._stub.GetSessions(common_pb2.Empty(), timeout=timeout)
         return list(sessions.Sessions)
 
@@ -483,7 +483,7 @@ class AsyncSliverClient(BaseClient):
         update.Name = name
         return (await self._stub.UpdateSession(update, timeout=timeout))
 
-    async def jobs(self, timeout=TIMEOUT) -> list[client_pb2.Job]:
+    async def jobs(self, timeout=TIMEOUT) -> List[client_pb2.Job]:
         jobs: client_pb2.Jobs = await self._stub.GetJobs(common_pb2.Empty(), timeout=timeout)
         return list(jobs.Jobs)
 
@@ -575,7 +575,7 @@ class AsyncSliverClient(BaseClient):
         delete.Name = implant_name
         await self._stub.DeleteImplantBuild(delete, timeout=timeout)
     
-    async def canaries(self, timeout=TIMEOUT) -> list[client_pb2.DNSCanary]:
+    async def canaries(self, timeout=TIMEOUT) -> List[client_pb2.DNSCanary]:
         canaries = await self._stub.Canaries(common_pb2.Empty(), timeout=timeout)
         return list(canaries.Canaries)
     
@@ -585,7 +585,7 @@ class AsyncSliverClient(BaseClient):
     async def generate_unique_ip(self, timeout=TIMEOUT) -> client_pb2.UniqueWGIP:
         return (await self._stub.GenerateUniqueIP(common_pb2.Empty(), timeout=timeout))
     
-    async def implant_profiles(self, timeout=TIMEOUT) -> list[client_pb2.ImplantProfile]:
+    async def implant_profiles(self, timeout=TIMEOUT) -> List[client_pb2.ImplantProfile]:
         profiles = await self._stub.ImplantProfiles(common_pb2.Empty(), timeout=timeout)
         return list(profiles.Profiles)
     
@@ -636,7 +636,7 @@ class InteractiveSession(BaseSession):
     def ifconfig(self) -> sliver_pb2.Ifconfig:
         return self._stub.Ifconfig(self._request(sliver_pb2.IfconfigReq(), timeout=self.timeout))
     
-    def netstat(self, tcp: bool, udp: bool, ipv4: bool, ipv6: bool, listening=True) -> list[sliver_pb2.SockTabEntry]:
+    def netstat(self, tcp: bool, udp: bool, ipv4: bool, ipv6: bool, listening=True) -> List[sliver_pb2.SockTabEntry]:
         net = sliver_pb2.NetstatReq()
         net.TCP = tcp
         net.UDP = udp
@@ -802,7 +802,7 @@ class InteractiveSession(BaseSession):
         pivot.Address = address
         return self._stub.TCPListener(self._request(pivot), timeout=self.timeout)
     
-    def pivots(self) -> list[sliver_pb2.PivotEntry]:
+    def pivots(self) -> List[sliver_pb2.PivotEntry]:
         pivots = self._stub.ListPivots(self._request(sliver_pb2.PivotListReq()), timeout=self.timeout)
         return list(pivots.Entries)
 
@@ -911,11 +911,11 @@ class SliverClient(BaseClient):
     def version(self, timeout=TIMEOUT) -> client_pb2.Version:
         return self._stub.GetVersion(common_pb2.Empty(), timeout=timeout)
 
-    def operators(self, timeout=TIMEOUT) -> list[client_pb2.Operator]:
+    def operators(self, timeout=TIMEOUT) -> List[client_pb2.Operator]:
         operators = self._stub.GetOperators(common_pb2.Empty(), timeout=timeout)
         return list(operators.Operators)
 
-    def sessions(self, timeout=TIMEOUT) -> list[client_pb2.Session]:
+    def sessions(self, timeout=TIMEOUT) -> List[client_pb2.Session]:
         sessions: client_pb2.Sessions = self._stub.GetSessions(common_pb2.Empty(), timeout=timeout)
         return list(sessions.Sessions)
 
@@ -932,7 +932,7 @@ class SliverClient(BaseClient):
         kill.Force = force
         self._stub.KillSession(kill, timeout=timeout)
 
-    def jobs(self, timeout=TIMEOUT) -> list[client_pb2.Job]:
+    def jobs(self, timeout=TIMEOUT) -> List[client_pb2.Job]:
         jobs: client_pb2.Jobs = self._stub.GetJobs(common_pb2.Empty(), timeout=timeout)
         return list(jobs.Jobs)
 
@@ -1024,7 +1024,7 @@ class SliverClient(BaseClient):
         delete.Name = implant_name
         self._stub.DeleteImplantBuild(delete, timeout=timeout)
     
-    def canaries(self, timeout=TIMEOUT) -> list[client_pb2.DNSCanary]:
+    def canaries(self, timeout=TIMEOUT) -> List[client_pb2.DNSCanary]:
         canaries = self._stub.Canaries(common_pb2.Empty(), timeout=timeout)
         return list(canaries.Canaries)
     
@@ -1034,7 +1034,7 @@ class SliverClient(BaseClient):
     def generate_unique_ip(self, timeout=TIMEOUT) -> client_pb2.UniqueWGIP:
         return self._stub.GenerateUniqueIP(common_pb2.Empty(), timeout=timeout)
     
-    def implant_profiles(self, timeout=TIMEOUT) -> list[client_pb2.ImplantProfile]:
+    def implant_profiles(self, timeout=TIMEOUT) -> List[client_pb2.ImplantProfile]:
         profiles = self._stub.ImplantProfiles(common_pb2.Empty(), timeout=timeout)
         return list(profiles.Profiles)
     
