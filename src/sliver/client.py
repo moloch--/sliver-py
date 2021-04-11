@@ -1,4 +1,4 @@
-"""
+'''
 Sliver Implant Framework
 Copyright (C) 2021  Bishop Fox
 This program is free software: you can redistribute it and/or modify
@@ -11,7 +11,7 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
-"""
+'''
 
 
 import grpc
@@ -42,6 +42,9 @@ class BaseClient(object):
         self._channel: grpc.Channel = None
         self._stub: SliverRPCStub = None
 
+    def is_connected(self) -> bool:
+        return self._channel is not None
+
     @property
     def target(self) -> str:
         return "%s:%d" % (self.config.lhost, self.config.lport,)
@@ -62,9 +65,6 @@ class BaseClient(object):
             ('grpc.max_send_message_length', self.MAX_MESSAGE_LENGTH),
             ('grpc.max_receive_message_length', self.MAX_MESSAGE_LENGTH),
         ]
-
-    def is_connected(self) -> bool:
-        return self._channel is not None
 
 
 class BaseSession(object):
@@ -436,13 +436,14 @@ class SliverAsyncClient(BaseClient):
 
     ''' Asyncio client implementation '''
 
-    async def connect(self) -> None:
+    async def connect(self) -> client_pb2.Version:
         self._channel = grpc.aio.secure_channel(
             target=self.target,
             credentials=self.credentials,
             options=self.options,
         )
         self._stub = SliverRPCStub(self._channel)
+        return (await self.version())
 
     async def interact(self, session_id: int, timeout=TIMEOUT) -> Union[AsyncInteractiveSession, None]:
         session = await self.session_by_id(session_id, timeout)
@@ -880,15 +881,18 @@ class InteractiveSession(BaseSession):
 
 class SliverClient(BaseClient):
 
-    ''' Client implementation '''
+    '''
+    Client implementation
+    '''
 
-    def connect(self) -> None:
+    def connect(self) -> client_pb2.Version:
         self._channel = grpc.secure_channel(
             target=self.target,
             credentials=self.credentials,
             options=self.options,
         )
         self._stub = SliverRPCStub(self._channel)
+        return self.version()
 
     def interact(self, session_id: int, timeout=TIMEOUT) -> Union[InteractiveSession, None]:
         session = self.session_by_id(session_id, timeout)

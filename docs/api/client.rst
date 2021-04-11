@@ -4,20 +4,33 @@ Clients
 SliverClient
 ^^^^^^^^^^^^
 
-.. autofunction:: sliver.client.SliverClient
+.. autoclass:: sliver.client.SliverClient
+    :members:
+    :undoc-members:
+    :special-members: __init__,
 
 InteractiveSession
 ^^^^^^^^^^^^^^^^^^
 
-.. autofunction:: sliver.client.InteractiveSession
+.. autoclass:: sliver.client.InteractiveSession
+    :members:
+    :undoc-members:
+    :special-members: __init__,
 
 
 SliverAsyncClient
 ^^^^^^^^^^^^^^^^^
 
-.. autofunction:: sliver.client.SliverAsyncClient
+.. autoclass:: sliver.client.SliverAsyncClient
+    :members:
+    :undoc-members:
+    :special-members: __init__,
+
 
 AsyncInteractiveSession
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-.. autofunction:: sliver.client.AsyncInteractiveSession
+.. autoclass:: sliver.client.AsyncInteractiveSession
+    :members:
+    :undoc-members:
+    :special-members: __init__,
