@@ -16,7 +16,7 @@ sys.path.insert(0, os.path.abspath('../src'))
 
 
 # -- Project information -----------------------------------------------------
-VERSION = '0.0.4'
+VERSION = '0.0.5'
 AUTHOR = 'moloch'
 
 project = 'SliverPy'
@@ -35,6 +35,11 @@ extensions = [
     'sphinx.ext.mathjax',
     'sphinx.ext.viewcode',
 ]
+autodoc_default_flags = [
+    'members',
+    'undoc-members',
+    'inherited-members'
+]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -43,7 +48,6 @@ templates_path = ['_templates']
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
-
 
 # -- Options for HTML output -------------------------------------------------
 

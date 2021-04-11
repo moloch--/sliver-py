@@ -75,12 +75,14 @@ class BaseSession(object):
         self._stub = SliverRPCStub(channel)
         self.timeout = timeout
 
-    def request(self, pb):
+    def _request(self, pb):
         '''
         Set request attributes based on current session, I'd prefer to return a generic Request
         object, but protobuf for whatever reason doesn't let you assign this type of field directly.
 
         `pb` in this case is any protobuf message with a .Request field.
+
+        :param pb: A protobuf request object.
         '''
         pb.Request.SessionID = self._session.ID
         pb.Request.Timeout = self.timeout-1
@@ -171,21 +173,21 @@ class AsyncInteractiveSession(BaseSession):
 
     async def ping(self) -> sliver_pb2.Ping:
         ping = sliver_pb2.Ping()
-        ping.Request = self.request()
+        ping.Request = self._request()
         return (await self._stub.Ping(ping, timeout=self.timeout))
 
     async def ps(self) -> sliver_pb2.Ps:
         ps = sliver_pb2.PsReq()
-        return (await self._stub.Ps(self.request(ps), timeout=self.timeout))
+        return (await self._stub.Ps(self._request(ps), timeout=self.timeout))
     
     async def terminate(self, pid: int, force=False) -> sliver_pb2.Terminate:
         terminator = sliver_pb2.TerminateReq()
         terminator.Pid = pid
         terminator.Force = force
-        return (await self._stub.Terminate(self.request(terminator), timeout=self.timeout))
+        return (await self._stub.Terminate(self._request(terminator), timeout=self.timeout))
 
     async def ifconfig(self) -> sliver_pb2.Ifconfig:
-        return (await self._stub.Ifconfig(self.request(sliver_pb2.IfconfigReq(), timeout=self.timeout)))
+        return (await self._stub.Ifconfig(self._request(sliver_pb2.IfconfigReq(), timeout=self.timeout)))
     
     async def netstat(self, tcp: bool, udp: bool, ipv4: bool, ipv6: bool, listening=True) -> list[sliver_pb2.SockTabEntry]:
         net = sliver_pb2.NetstatReq()
@@ -194,72 +196,72 @@ class AsyncInteractiveSession(BaseSession):
         net.IP4 = ipv4
         net.IP6 = ipv6
         net.Listening = listening
-        stat = await self._stub.Netstat(self.request(net), timeout=self.timeout)
+        stat = await self._stub.Netstat(self._request(net), timeout=self.timeout)
         return list(stat.Entries)
     
     async def ls(self, remote_path: str) -> sliver_pb2.Ls:
         ls = sliver_pb2.LsReq()
         ls.Path = remote_path
-        return (await self._stub.Ls(self.request(ls), timeout=self.timeout))
+        return (await self._stub.Ls(self._request(ls), timeout=self.timeout))
 
     async def cd(self, remote_path: str) -> sliver_pb2.Pwd:
         cd = sliver_pb2.CdReq()
         cd.Path = remote_path
-        return (await self._stub.Cd(self.request(cd), timeout=self.timeout))
+        return (await self._stub.Cd(self._request(cd), timeout=self.timeout))
 
     async def pwd(self) -> sliver_pb2.Pwd:
         pwd = sliver_pb2.PwdReq()
-        return (await self._stub.Pwd(self.request(pwd), timeout=self.timeout))
+        return (await self._stub.Pwd(self._request(pwd), timeout=self.timeout))
 
     async def rm(self, remote_path: str, recursive=False, force=False) -> sliver_pb2.Rm:
         rm = sliver_pb2.RmReq()
         rm.Path = remote_path
         rm.Recursive = recursive
         rm.Force = force
-        return (await self._stub.Rm(self.request(rm), timeout=self.timeout))
+        return (await self._stub.Rm(self._request(rm), timeout=self.timeout))
 
     async def mkdir(self, remote_path: str) -> sliver_pb2.Mkdir:
         make = sliver_pb2.MkdirReq()
         make.Path = remote_path
-        return (await self._stub.Mkdir(self.request(make), timeout=self.timeout))
+        return (await self._stub.Mkdir(self._request(make), timeout=self.timeout))
 
     async def download(self, remote_path: str) -> sliver_pb2.Download:
         download = sliver_pb2.DownloadReq()
         download.Path = remote_path
-        return (await self._stub.Download(self.request(download), timeout=self.timeout))
+        return (await self._stub.Download(self._request(download), timeout=self.timeout))
 
     async def upload(self, remote_path: str, data: bytes, encoder='') -> sliver_pb2.Upload:
         upload = sliver_pb2.UploadReq()
         upload.Path = remote_path
         upload.Data = data
         upload.Encoder = encoder
-        return (await self._stub.Upload(self.request(upload), timeout=self.timeout))
+        return (await self._stub.Upload(self._request(upload), timeout=self.timeout))
 
     async def process_dump(self, pid: int) -> sliver_pb2.ProcessDump:
         procdump = sliver_pb2.ProcessDumpReq()
         procdump.Pid = pid
-        return (await self._stub.ProcessDump(self.request(procdump), timeout=self.timeout))
+        return (await self._stub.ProcessDump(self._request(procdump), timeout=self.timeout))
 
     async def run_as(self, username: str, process_name: str, args: str) -> sliver_pb2.RunAs:
         run_as = sliver_pb2.RunAsReq()
         run_as.Username = username
         run_as.ProcessName = process_name
         run_as.Args = args
-        return (await self._stub.RunAs(self.request(run_as), timeout=self.timeout))
+        return (await self._stub.RunAs(self._request(run_as), timeout=self.timeout))
 
     async def impersonate(self, username: str) -> sliver_pb2.Impersonate:
         impersonate = sliver_pb2.ImpersonateReq()
         impersonate.Username = username
-        return (await self._stub.Impersonate(self.request(impersonate), timeout=self.timeout))
+        return (await self._stub.Impersonate(self._request(impersonate), timeout=self.timeout))
     
     async def revert_to_self(self) -> sliver_pb2.RevToSelf:
-        return (await self._stub.RevToSelf(self.request(sliver_pb2.RevToSelfReq()), timeout=self.timeout))
+        return (await self._stub.RevToSelf(self._request(sliver_pb2.RevToSelfReq()), timeout=self.timeout))
     
     async def get_system(self, hosting_process: str, config: client_pb2.ImplantConfig) -> sliver_pb2.GetSystem:
         system = client_pb2.GetSystemReq()
         system.HostingProcess = hosting_process
         system.Config = config
-        return (await self._stub.GetSystem(self.request(system), timeout=self.timeout))
+        return (await self._stub.GetSystem(self._request(system), timeout=self.timeout))
     
     async def execute_shellcode(self, data: bytes, rwx: bool, pid: int, encoder='') -> sliver_pb2.Task:
         return (await self.task(data, rwx, pid, encoder))
@@ -270,7 +272,7 @@ class AsyncInteractiveSession(BaseSession):
         task.RWXPages = rwx
         task.Pid = pid
         task.Data = data
-        return (await self._stub.Task(self.request(task), timeout=self.timeout))
+        return (await self._stub.Task(self._request(task), timeout=self.timeout))
     
     async def msf(self, payload: str, lhost: str, lport: int, encoder: str, iterations: int) -> None:
         msf = client_pb2.MSFReq()
@@ -279,7 +281,7 @@ class AsyncInteractiveSession(BaseSession):
         msf.LPort = lport
         msf.Encoder = encoder
         msf.Iterations = iterations
-        return (await self._stub.Msf(self.request(msf), timeout=self.timeout))
+        return (await self._stub.Msf(self._request(msf), timeout=self.timeout))
 
     async def msf_remote(self, payload: str, lhost: str, lport: int, encoder: str, iterations: int, pid: int) -> None:
         msf = client_pb2.MSFRemoteReq()
@@ -289,7 +291,7 @@ class AsyncInteractiveSession(BaseSession):
         msf.Encoder = encoder
         msf.Iterations = iterations
         msf.PID = pid
-        return (await self._stub.Msf(self.request(msf), timeout=self.timeout))
+        return (await self._stub.Msf(self._request(msf), timeout=self.timeout))
     
     async def execute_assembly(self, assembly: bytes, arguments: str, process: str, is_dll: bool, arch: str, class_name: str, method: str, app_domain: str) -> sliver_pb2.ExecuteAssembly:
         asm = sliver_pb2.ExecuteAssemblyReq()
@@ -300,27 +302,27 @@ class AsyncInteractiveSession(BaseSession):
         asm.Arch = arch
         asm.ClassName = class_name
         asm.AppDomain = app_domain
-        return (await self._stub.ExecuteAssembly(self.request(asm), timeout=self.timeout))
+        return (await self._stub.ExecuteAssembly(self._request(asm), timeout=self.timeout))
     
     async def migrate(self, pid: int, config: client_pb2.ImplantConfig) -> sliver_pb2.Migrate:
         migrate = client_pb2.MigrateReq()
         migrate.Pid = pid
         migrate.Config = config
-        return (await self._stub.Migrate(self.request(migrate), timeout=self.timeout))
+        return (await self._stub.Migrate(self._request(migrate), timeout=self.timeout))
 
     async def execute(self, exe: str, args: list[str], output: bool) -> sliver_pb2.Execute:
         exec = sliver_pb2.ExecuteReq()
         exec.Path = exe
         exec.Args = args
         exec.Output = output
-        return (await self._stub.Execute(self.request(exec), timeout=self.timeout))
+        return (await self._stub.Execute(self._request(exec), timeout=self.timeout))
     
     async def execute_token(self, exe: str, args: list[str], output: bool) -> sliver_pb2.Execute:
         execToken = sliver_pb2.ExecuteTokenReq()
         execToken.Path = exe
         execToken.Args = args
         execToken.Output = output
-        return (await self._stub.ExecuteToken(self.request(execToken), timeout=self.timeout))
+        return (await self._stub.ExecuteToken(self._request(execToken), timeout=self.timeout))
     
     async def sideload(self, data: bytes, process_name: str, arguments: str, entry_point: str, kill: bool) -> sliver_pb2.Sideload:
         side = sliver_pb2.SideloadReq()
@@ -329,7 +331,7 @@ class AsyncInteractiveSession(BaseSession):
         side.Args = arguments
         side.EntryPoint = entry_point
         side.Kill = kill
-        return (await self._stub.Sideload(self.request(side), timeout=self.timeout))
+        return (await self._stub.Sideload(self._request(side), timeout=self.timeout))
     
     async def spawn_dll(self, data: bytes, process_name: str, arguments: str, entry_point: str, kill: bool) -> sliver_pb2.SpawnDll:
         spawn = sliver_pb2.InvokeSpawnDllReq()
@@ -338,23 +340,23 @@ class AsyncInteractiveSession(BaseSession):
         spawn.Args = arguments
         spawn.EntryPoint = entry_point
         spawn.Kill = kill
-        return (await self._stub.SpawnDll(self.request(spawn), timeout=self.timeout))
+        return (await self._stub.SpawnDll(self._request(spawn), timeout=self.timeout))
     
     async def screenshot(self) -> sliver_pb2.Screenshot:
-        return (await self._stub.Screenshot(self.request(sliver_pb2.ScreenshotReq()), timeout=self.timeout))
+        return (await self._stub.Screenshot(self._request(sliver_pb2.ScreenshotReq()), timeout=self.timeout))
     
     async def named_pipes(self, pipe_name: str) -> sliver_pb2.NamedPipes:
         pipe = sliver_pb2.NamedPipesReq()
         pipe.PipeName = pipe_name
-        return (await self._stub.NamedPipes(self.request(pipe), timeout=self.timeout))
+        return (await self._stub.NamedPipes(self._request(pipe), timeout=self.timeout))
 
     async def tcp_pivot_listener(self, address: str) -> sliver_pb2.TCPPivot:
         pivot = sliver_pb2.TCPPivotReq()
         pivot.Address = address
-        return (await self._stub.TCPListener(self.request(pivot), timeout=self.timeout))
+        return (await self._stub.TCPListener(self._request(pivot), timeout=self.timeout))
     
     async def pivots(self) -> list[sliver_pb2.PivotEntry]:
-        pivots = await self._stub.ListPivots(self.request(sliver_pb2.PivotListReq()), timeout=self.timeout)
+        pivots = await self._stub.ListPivots(self._request(sliver_pb2.PivotListReq()), timeout=self.timeout)
         return list(pivots.Entries)
 
     async def start_service(self, name: str, description: str, exe: str, hostname: str, arguments: str) -> sliver_pb2.ServiceInfo:
@@ -364,43 +366,43 @@ class AsyncInteractiveSession(BaseSession):
         svc.BinPath = exe
         svc.Hostname = hostname
         svc.Arguments = arguments
-        return (await self._stub.StartService(self.request(svc), timeout=self.timeout))
+        return (await self._stub.StartService(self._request(svc), timeout=self.timeout))
     
     async def stop_service(self, name: str, hostname: str) -> sliver_pb2.ServiceInfo:
         svc = sliver_pb2.StopServiceReq()
         svc.ServiceInfo.ServiceName = name
         svc.ServiceInfo.Hostname = hostname
-        return (await self._stub.StopService(self.request(svc), timeout=self.timeout))
+        return (await self._stub.StopService(self._request(svc), timeout=self.timeout))
 
     async def remove_service(self, name: str, hostname: str) -> sliver_pb2.ServiceInfo:
         svc = sliver_pb2.StopServiceReq()
         svc.ServiceInfo.ServiceName = name
         svc.ServiceInfo.Hostname = hostname
-        return (await self._stub.RemoveService(self.request(svc), timeout=self.timeout))
+        return (await self._stub.RemoveService(self._request(svc), timeout=self.timeout))
 
     async def make_token(self, username: str, password: str, domain: str) -> sliver_pb2.MakeToken:
         make = sliver_pb2.MakeTokenReq()
         make.Username = username
         make.Password = password
         make.Domain = domain
-        return (await self._stub.MakeToken(self.request(make), timeout=self.timeout))
+        return (await self._stub.MakeToken(self._request(make), timeout=self.timeout))
 
     async def get_env(self, name: str) -> sliver_pb2.EnvInfo:
         env = sliver_pb2.EnvReq()
         env.Name = name
-        return (await self._stub.GetEnv(self.request(env), timeout=self.timeout))
+        return (await self._stub.GetEnv(self._request(env), timeout=self.timeout))
     
     async def set_env(self, name: str, value: str) -> sliver_pb2.SetEnv:
         env = sliver_pb2.SetEnvReq()
         env.EnvVar.Key = name
         env.EnvVar.Value = value
-        return (await self._stub.SetEnv(self.request(env), timeout=self.timeout))
+        return (await self._stub.SetEnv(self._request(env), timeout=self.timeout))
     
     async def backdoor(self, remote_path: str, profile_name: str) -> sliver_pb2.Backdoor:
         backdoor = sliver_pb2.BackdoorReq()
         backdoor.FilePath = remote_path
         backdoor.ProfileName = profile_name
-        return (await self._stub.Backdoor(self.request(backdoor), timeout=self.timeout))
+        return (await self._stub.Backdoor(self._request(backdoor), timeout=self.timeout))
     
     async def registry_read(self, hive: str, reg_path: str, key: str, hostname: str) -> sliver_pb2.RegistryRead:
         reg = sliver_pb2.RegistryReadReq()
@@ -408,7 +410,7 @@ class AsyncInteractiveSession(BaseSession):
         reg.Path = reg_path
         reg.Key = key
         reg.Hostname = hostname
-        return (await self._stub.RegistryRead(self.request(reg), timeout=self.timeout))
+        return (await self._stub.RegistryRead(self._request(reg), timeout=self.timeout))
 
     async def registry_write(self, hive: str, reg_path: str, key: str, hostname: str, string_value: str, byte_value: bytes, dword_value: int, qword_value: int, reg_type: sliver_pb2.RegistryType) -> sliver_pb2.RegistryWrite:
         reg = sliver_pb2.RegistryWriteReq()
@@ -421,7 +423,7 @@ class AsyncInteractiveSession(BaseSession):
         reg.DWordValue = dword_value
         reg.QWordValue = qword_value
         reg.Type = reg_type
-        return (await self._stub.RegistryWrite(self.request(reg), timeout=self.timeout))
+        return (await self._stub.RegistryWrite(self._request(reg), timeout=self.timeout))
     
     async def registry_create_key(self, hive: str, reg_path: str, key: str, hostname: str) -> sliver_pb2.RegistryCreateKey:
         reg = sliver_pb2.RegistryCreateKey()
@@ -429,7 +431,7 @@ class AsyncInteractiveSession(BaseSession):
         reg.Path = reg_path
         reg.Key = key
         reg.Hostname = hostname
-        return (await self._stub.RegistryWrite(self.request(reg), timeout=self.timeout))
+        return (await self._stub.RegistryWrite(self._request(reg), timeout=self.timeout))
 
 
 class AsyncSliverClient(BaseClient):
@@ -618,21 +620,21 @@ class InteractiveSession(BaseSession):
 
     def ping(self) -> sliver_pb2.Ping:
         ping = sliver_pb2.Ping()
-        ping.Request = self.request()
+        ping.Request = self._request()
         return self._stub.Ping(ping, timeout=self.timeout)
 
     def ps(self) -> sliver_pb2.Ps:
         ps = sliver_pb2.PsReq()
-        return self._stub.Ps(self.request(ps), timeout=self.timeout)
+        return self._stub.Ps(self._request(ps), timeout=self.timeout)
     
     def terminate(self, pid: int, force=False) -> sliver_pb2.Terminate:
         terminator = sliver_pb2.TerminateReq()
         terminator.Pid = pid
         terminator.Force = force
-        return self._stub.Terminate(self.request(terminator), timeout=self.timeout)
+        return self._stub.Terminate(self._request(terminator), timeout=self.timeout)
 
     def ifconfig(self) -> sliver_pb2.Ifconfig:
-        return self._stub.Ifconfig(self.request(sliver_pb2.IfconfigReq(), timeout=self.timeout))
+        return self._stub.Ifconfig(self._request(sliver_pb2.IfconfigReq(), timeout=self.timeout))
     
     def netstat(self, tcp: bool, udp: bool, ipv4: bool, ipv6: bool, listening=True) -> list[sliver_pb2.SockTabEntry]:
         net = sliver_pb2.NetstatReq()
@@ -641,72 +643,72 @@ class InteractiveSession(BaseSession):
         net.IP4 = ipv4
         net.IP6 = ipv6
         net.Listening = listening
-        stat = self._stub.Netstat(self.request(net), timeout=self.timeout)
+        stat = self._stub.Netstat(self._request(net), timeout=self.timeout)
         return list(stat.Entries)
     
     def ls(self, remote_path: str) -> sliver_pb2.Ls:
         ls = sliver_pb2.LsReq()
         ls.Path = remote_path
-        return self._stub.Ls(self.request(ls), timeout=self.timeout)
+        return self._stub.Ls(self._request(ls), timeout=self.timeout)
 
     def cd(self, remote_path: str) -> sliver_pb2.Pwd:
         cd = sliver_pb2.CdReq()
         cd.Path = remote_path
-        return self._stub.Cd(self.request(cd), timeout=self.timeout)
+        return self._stub.Cd(self._request(cd), timeout=self.timeout)
 
     def pwd(self) -> sliver_pb2.Pwd:
         pwd = sliver_pb2.PwdReq()
-        return self._stub.Pwd(self.request(pwd), timeout=self.timeout)
+        return self._stub.Pwd(self._request(pwd), timeout=self.timeout)
 
     def rm(self, remote_path: str, recursive=False, force=False) -> sliver_pb2.Rm:
         rm = sliver_pb2.RmReq()
         rm.Path = remote_path
         rm.Recursive = recursive
         rm.Force = force
-        return self._stub.Rm(self.request(rm), timeout=self.timeout)
+        return self._stub.Rm(self._request(rm), timeout=self.timeout)
 
     def mkdir(self, remote_path: str) -> sliver_pb2.Mkdir:
         make = sliver_pb2.MkdirReq()
         make.Path = remote_path
-        return self._stub.Mkdir(self.request(make), timeout=self.timeout)
+        return self._stub.Mkdir(self._request(make), timeout=self.timeout)
 
     def download(self, remote_path: str) -> sliver_pb2.Download:
         download = sliver_pb2.DownloadReq()
         download.Path = remote_path
-        return self._stub.Download(self.request(download), timeout=self.timeout)
+        return self._stub.Download(self._request(download), timeout=self.timeout)
 
     def upload(self, remote_path: str, data: bytes, encoder='') -> sliver_pb2.Upload:
         upload = sliver_pb2.UploadReq()
         upload.Path = remote_path
         upload.Data = data
         upload.Encoder = encoder
-        return self._stub.Upload(self.request(upload), timeout=self.timeout)
+        return self._stub.Upload(self._request(upload), timeout=self.timeout)
 
     def process_dump(self, pid: int) -> sliver_pb2.ProcessDump:
         procdump = sliver_pb2.ProcessDumpReq()
         procdump.Pid = pid
-        return self._stub.ProcessDump(self.request(procdump), timeout=self.timeout)
+        return self._stub.ProcessDump(self._request(procdump), timeout=self.timeout)
 
     def run_as(self, username: str, process_name: str, args: str) -> sliver_pb2.RunAs:
         run_as = sliver_pb2.RunAsReq()
         run_as.Username = username
         run_as.ProcessName = process_name
         run_as.Args = args
-        return self._stub.RunAs(self.request(run_as), timeout=self.timeout)
+        return self._stub.RunAs(self._request(run_as), timeout=self.timeout)
 
     def impersonate(self, username: str) -> sliver_pb2.Impersonate:
         impersonate = sliver_pb2.ImpersonateReq()
         impersonate.Username = username
-        return self._stub.Impersonate(self.request(impersonate), timeout=self.timeout)
+        return self._stub.Impersonate(self._request(impersonate), timeout=self.timeout)
     
     def revert_to_self(self) -> sliver_pb2.RevToSelf:
-        return self._stub.RevToSelf(self.request(sliver_pb2.RevToSelfReq()), timeout=self.timeout)
+        return self._stub.RevToSelf(self._request(sliver_pb2.RevToSelfReq()), timeout=self.timeout)
     
     def get_system(self, hosting_process: str, config: client_pb2.ImplantConfig) -> sliver_pb2.GetSystem:
         system = client_pb2.GetSystemReq()
         system.HostingProcess = hosting_process
         system.Config = config
-        return self._stub.GetSystem(self.request(system), timeout=self.timeout)
+        return self._stub.GetSystem(self._request(system), timeout=self.timeout)
     
     def execute_shellcode(self, data: bytes, rwx: bool, pid: int, encoder='') -> sliver_pb2.Task:
         return self.task(data, rwx, pid, encoder)
@@ -717,7 +719,7 @@ class InteractiveSession(BaseSession):
         task.RWXPages = rwx
         task.Pid = pid
         task.Data = data
-        return self._stub.Task(self.request(task), timeout=self.timeout)
+        return self._stub.Task(self._request(task), timeout=self.timeout)
     
     def msf(self, payload: str, lhost: str, lport: int, encoder: str, iterations: int) -> None:
         msf = client_pb2.MSFReq()
@@ -726,7 +728,7 @@ class InteractiveSession(BaseSession):
         msf.LPort = lport
         msf.Encoder = encoder
         msf.Iterations = iterations
-        return self._stub.Msf(self.request(msf), timeout=self.timeout)
+        return self._stub.Msf(self._request(msf), timeout=self.timeout)
 
     def msf_remote(self, payload: str, lhost: str, lport: int, encoder: str, iterations: int, pid: int) -> None:
         msf = client_pb2.MSFRemoteReq()
@@ -736,7 +738,7 @@ class InteractiveSession(BaseSession):
         msf.Encoder = encoder
         msf.Iterations = iterations
         msf.PID = pid
-        return self._stub.Msf(self.request(msf), timeout=self.timeout)
+        return self._stub.Msf(self._request(msf), timeout=self.timeout)
     
     def execute_assembly(self, assembly: bytes, arguments: str, process: str, is_dll: bool, arch: str, class_name: str, method: str, app_domain: str) -> sliver_pb2.ExecuteAssembly:
         asm = sliver_pb2.ExecuteAssemblyReq()
@@ -747,27 +749,27 @@ class InteractiveSession(BaseSession):
         asm.Arch = arch
         asm.ClassName = class_name
         asm.AppDomain = app_domain
-        return self._stub.ExecuteAssembly(self.request(asm), timeout=self.timeout)
+        return self._stub.ExecuteAssembly(self._request(asm), timeout=self.timeout)
     
     def migrate(self, pid: int, config: client_pb2.ImplantConfig) -> sliver_pb2.Migrate:
         migrate = client_pb2.MigrateReq()
         migrate.Pid = pid
         migrate.Config = config
-        return self._stub.Migrate(self.request(migrate), timeout=self.timeout)
+        return self._stub.Migrate(self._request(migrate), timeout=self.timeout)
 
     def execute(self, exe: str, args: list[str], output: bool) -> sliver_pb2.Execute:
         exec = sliver_pb2.ExecuteReq()
         exec.Path = exe
         exec.Args = args
         exec.Output = output
-        return self._stub.Execute(self.request(exec), timeout=self.timeout)
+        return self._stub.Execute(self._request(exec), timeout=self.timeout)
     
     def execute_token(self, exe: str, args: list[str], output: bool) -> sliver_pb2.Execute:
         execToken = sliver_pb2.ExecuteTokenReq()
         execToken.Path = exe
         execToken.Args = args
         execToken.Output = output
-        return self._stub.ExecuteToken(self.request(execToken), timeout=self.timeout)
+        return self._stub.ExecuteToken(self._request(execToken), timeout=self.timeout)
     
     def sideload(self, data: bytes, process_name: str, arguments: str, entry_point: str, kill: bool) -> sliver_pb2.Sideload:
         side = sliver_pb2.SideloadReq()
@@ -776,7 +778,7 @@ class InteractiveSession(BaseSession):
         side.Args = arguments
         side.EntryPoint = entry_point
         side.Kill = kill
-        return self._stub.Sideload(self.request(side), timeout=self.timeout)
+        return self._stub.Sideload(self._request(side), timeout=self.timeout)
     
     def spawn_dll(self, data: bytes, process_name: str, arguments: str, entry_point: str, kill: bool) -> sliver_pb2.SpawnDll:
         spawn = sliver_pb2.InvokeSpawnDllReq()
@@ -785,23 +787,23 @@ class InteractiveSession(BaseSession):
         spawn.Args = arguments
         spawn.EntryPoint = entry_point
         spawn.Kill = kill
-        return self._stub.SpawnDll(self.request(spawn), timeout=self.timeout)
+        return self._stub.SpawnDll(self._request(spawn), timeout=self.timeout)
     
     def screenshot(self) -> sliver_pb2.Screenshot:
-        return self._stub.Screenshot(self.request(sliver_pb2.ScreenshotReq()), timeout=self.timeout)
+        return self._stub.Screenshot(self._request(sliver_pb2.ScreenshotReq()), timeout=self.timeout)
     
     def named_pipes(self, pipe_name: str) -> sliver_pb2.NamedPipes:
         pipe = sliver_pb2.NamedPipesReq()
         pipe.PipeName = pipe_name
-        return self._stub.NamedPipes(self.request(pipe), timeout=self.timeout)
+        return self._stub.NamedPipes(self._request(pipe), timeout=self.timeout)
 
     def tcp_pivot_listener(self, address: str) -> sliver_pb2.TCPPivot:
         pivot = sliver_pb2.TCPPivotReq()
         pivot.Address = address
-        return self._stub.TCPListener(self.request(pivot), timeout=self.timeout)
+        return self._stub.TCPListener(self._request(pivot), timeout=self.timeout)
     
     def pivots(self) -> list[sliver_pb2.PivotEntry]:
-        pivots = self._stub.ListPivots(self.request(sliver_pb2.PivotListReq()), timeout=self.timeout)
+        pivots = self._stub.ListPivots(self._request(sliver_pb2.PivotListReq()), timeout=self.timeout)
         return list(pivots.Entries)
 
     def start_service(self, name: str, description: str, exe: str, hostname: str, arguments: str) -> sliver_pb2.ServiceInfo:
@@ -811,43 +813,43 @@ class InteractiveSession(BaseSession):
         svc.BinPath = exe
         svc.Hostname = hostname
         svc.Arguments = arguments
-        return self._stub.StartService(self.request(svc), timeout=self.timeout)
+        return self._stub.StartService(self._request(svc), timeout=self.timeout)
     
     def stop_service(self, name: str, hostname: str) -> sliver_pb2.ServiceInfo:
         svc = sliver_pb2.StopServiceReq()
         svc.ServiceInfo.ServiceName = name
         svc.ServiceInfo.Hostname = hostname
-        return self._stub.StopService(self.request(svc), timeout=self.timeout)
+        return self._stub.StopService(self._request(svc), timeout=self.timeout)
 
     def remove_service(self, name: str, hostname: str) -> sliver_pb2.ServiceInfo:
         svc = sliver_pb2.StopServiceReq()
         svc.ServiceInfo.ServiceName = name
         svc.ServiceInfo.Hostname = hostname
-        return self._stub.RemoveService(self.request(svc), timeout=self.timeout)
+        return self._stub.RemoveService(self._request(svc), timeout=self.timeout)
 
     def make_token(self, username: str, password: str, domain: str) -> sliver_pb2.MakeToken:
         make = sliver_pb2.MakeTokenReq()
         make.Username = username
         make.Password = password
         make.Domain = domain
-        return self._stub.MakeToken(self.request(make), timeout=self.timeout)
+        return self._stub.MakeToken(self._request(make), timeout=self.timeout)
 
     def get_env(self, name: str) -> sliver_pb2.EnvInfo:
         env = sliver_pb2.EnvReq()
         env.Name = name
-        return self._stub.GetEnv(self.request(env), timeout=self.timeout)
+        return self._stub.GetEnv(self._request(env), timeout=self.timeout)
     
     def set_env(self, name: str, value: str) -> sliver_pb2.SetEnv:
         env = sliver_pb2.SetEnvReq()
         env.EnvVar.Key = name
         env.EnvVar.Value = value
-        return self._stub.SetEnv(self.request(env), timeout=self.timeout)
+        return self._stub.SetEnv(self._request(env), timeout=self.timeout)
     
     def backdoor(self, remote_path: str, profile_name: str) -> sliver_pb2.Backdoor:
         backdoor = sliver_pb2.BackdoorReq()
         backdoor.FilePath = remote_path
         backdoor.ProfileName = profile_name
-        return self._stub.Backdoor(self.request(backdoor), timeout=self.timeout)
+        return self._stub.Backdoor(self._request(backdoor), timeout=self.timeout)
     
     def registry_read(self, hive: str, reg_path: str, key: str, hostname: str) -> sliver_pb2.RegistryRead:
         reg = sliver_pb2.RegistryReadReq()
@@ -855,7 +857,7 @@ class InteractiveSession(BaseSession):
         reg.Path = reg_path
         reg.Key = key
         reg.Hostname = hostname
-        return self._stub.RegistryRead(self.request(reg), timeout=self.timeout)
+        return self._stub.RegistryRead(self._request(reg), timeout=self.timeout)
 
     def registry_write(self, hive: str, reg_path: str, key: str, hostname: str, string_value: str, byte_value: bytes, dword_value: int, qword_value: int, reg_type: sliver_pb2.RegistryType) -> sliver_pb2.RegistryWrite:
         reg = sliver_pb2.RegistryWriteReq()
@@ -868,7 +870,7 @@ class InteractiveSession(BaseSession):
         reg.DWordValue = dword_value
         reg.QWordValue = qword_value
         reg.Type = reg_type
-        return self._stub.RegistryWrite(self.request(reg), timeout=self.timeout)
+        return self._stub.RegistryWrite(self._request(reg), timeout=self.timeout)
     
     def registry_create_key(self, hive: str, reg_path: str, key: str, hostname: str) -> sliver_pb2.RegistryCreateKey:
         reg = sliver_pb2.RegistryCreateKey()
@@ -876,7 +878,7 @@ class InteractiveSession(BaseSession):
         reg.Path = reg_path
         reg.Key = key
         reg.Hostname = hostname
-        return self._stub.RegistryWrite(self.request(reg), timeout=self.timeout)
+        return self._stub.RegistryWrite(self._request(reg), timeout=self.timeout)
 
 
 class SliverClient(BaseClient):

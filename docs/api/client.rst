@@ -9,34 +9,41 @@ SliverClient
 ^^^^^^^^^^^^
 
 .. autoclass:: sliver.client.SliverClient
+    :special-members: __init__,
     :members:
     :undoc-members:
-    :special-members: __init__,
+    :show-inheritance:
+    :inherited-members:
 
 
 InteractiveSession
 ^^^^^^^^^^^^^^^^^^
 
 .. autoclass:: sliver.client.InteractiveSession
+    :special-members: __init__,
     :members:
     :undoc-members:
-    :special-members: __init__,
+    :show-inheritance:
+    :inherited-members:
 
 
 AsyncSliverClient
 ^^^^^^^^^^^^^^^^^
 
 .. autoclass:: sliver.client.AsyncSliverClient
+    :special-members: __init__,
     :members:
     :undoc-members:
-    :special-members: __init__,
+    :show-inheritance:
+    :inherited-members:
 
 
 AsyncInteractiveSession
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 .. autoclass:: sliver.client.AsyncInteractiveSession
+    :special-members: __init__,
     :members:
     :undoc-members:
-    :special-members: __init__,
-
+    :show-inheritance:
+    :inherited-members:
