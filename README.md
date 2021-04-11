@@ -1,7 +1,7 @@
 SliverPy
 ==========
 
-SliverPy is a Python gRPC client library for [Sliver](https://github.com/BishopFox/sliver). SliverPy can be used to automate any operator interaction with Sliver and connects to servers using gRPC over Mutual TLS (i.e., multiplayer) using Sliver client configuration files. [For more deails, please see the project documentation](http://sliverpy.rtfd.io/).
+SliverPy is a Python gRPC client library for [Sliver](https://github.com/BishopFox/sliver). SliverPy can be used to automate any operator interaction with Sliver and connects to servers using gRPC over Mutual TLS (i.e., multiplayer) using Sliver client configuration files. [For more details, please see the project documentation](http://sliverpy.rtfd.io/).
 
 Not yet implemented:
  * `website` APIs

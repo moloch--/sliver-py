@@ -23,7 +23,7 @@ InteractiveSession
     :special-members: __init__,
 
 
-SliverAsyncClient
+AsyncSliverClient
 ^^^^^^^^^^^^^^^^^
 
 .. autoclass:: sliver.client.AsyncSliverClient
