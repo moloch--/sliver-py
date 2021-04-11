@@ -59,7 +59,7 @@ if __name__ == '__main__':
 #!/usr/bin/env python3
 
 import os
-from sliver import SliverClientConfig, SliverClient, SliverAsyncClient
+from sliver import SliverClientConfig, SliverClient, AsyncSliverClient
 
 CONFIG_DIR = os.path.join(os.path.expanduser("~"), ".sliver-client", "configs")
 DEFAULT_CONFIG = os.path.join(CONFIG_DIR, "default.cfg")
@@ -79,7 +79,7 @@ def main():
 async def run():
     ''' Async client example '''
     config = SliverClientConfig.parse_config_file(DEFAULT_CONFIG)
-    client = SliverAsyncClient(config)
+    client = AsyncSliverClient(config)
     await client.connect()
     sessions = await client.sessions()
     if len(sessions):
