@@ -310,14 +310,14 @@ class AsyncInteractiveSession(BaseSession):
         migrate.Config = config
         return (await self._stub.Migrate(self._request(migrate), timeout=self.timeout))
 
-    async def execute(self, exe: str, args: list[str], output: bool) -> sliver_pb2.Execute:
+    async def execute(self, exe: str, args: List[str], output: bool) -> sliver_pb2.Execute:
         exec = sliver_pb2.ExecuteReq()
         exec.Path = exe
         exec.Args = args
         exec.Output = output
         return (await self._stub.Execute(self._request(exec), timeout=self.timeout))
     
-    async def execute_token(self, exe: str, args: list[str], output: bool) -> sliver_pb2.Execute:
+    async def execute_token(self, exe: str, args: List[str], output: bool) -> sliver_pb2.Execute:
         execToken = sliver_pb2.ExecuteTokenReq()
         execToken.Path = exe
         execToken.Args = args
@@ -508,7 +508,7 @@ class AsyncSliverClient(BaseClient):
         wg.Persistent = persistent
         return (await self._stub.StartWGListener(wg, timeout=timeout))
 
-    async def start_dns_listener(self, domains: list[str], canaries: bool, host: str, port: int, persistent=False, timeout=TIMEOUT) -> client_pb2.DNSListener:
+    async def start_dns_listener(self, domains: List[str], canaries: bool, host: str, port: int, persistent=False, timeout=TIMEOUT) -> client_pb2.DNSListener:
         dns = client_pb2.DNSListenerReq()
         dns.Domains = domains
         dns.Canaries = canaries
@@ -757,14 +757,14 @@ class InteractiveSession(BaseSession):
         migrate.Config = config
         return self._stub.Migrate(self._request(migrate), timeout=self.timeout)
 
-    def execute(self, exe: str, args: list[str], output: bool) -> sliver_pb2.Execute:
+    def execute(self, exe: str, args: List[str], output: bool) -> sliver_pb2.Execute:
         exec = sliver_pb2.ExecuteReq()
         exec.Path = exe
         exec.Args = args
         exec.Output = output
         return self._stub.Execute(self._request(exec), timeout=self.timeout)
     
-    def execute_token(self, exe: str, args: list[str], output: bool) -> sliver_pb2.Execute:
+    def execute_token(self, exe: str, args: List[str], output: bool) -> sliver_pb2.Execute:
         execToken = sliver_pb2.ExecuteTokenReq()
         execToken.Path = exe
         execToken.Args = args
@@ -957,7 +957,7 @@ class SliverClient(BaseClient):
         wg.Persistent = persistent
         return self._stub.StartWGListener(wg, timeout=timeout)
 
-    def start_dns_listener(self, domains: list[str], canaries: bool, host: str, port: int, persistent=False, timeout=TIMEOUT) -> client_pb2.DNSListener:
+    def start_dns_listener(self, domains: List[str], canaries: bool, host: str, port: int, persistent=False, timeout=TIMEOUT) -> client_pb2.DNSListener:
         dns = client_pb2.DNSListenerReq()
         dns.Domains = domains
         dns.Canaries = canaries
