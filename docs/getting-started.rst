@@ -31,3 +31,28 @@ Client Connect
 
 
 Foobar
+
+.. code-block:: python
+
+    #!/usr/bin/env python3
+
+    import os
+    from sliver import SliverClientConfig, AsyncSliverClient
+
+    # Construct path to operator config file
+    CONFIG_DIR = os.path.join(os.path.expanduser("~"), ".sliver-client", "configs")
+    DEFAULT_CONFIG = os.path.join(CONFIG_DIR, "default.cfg")
+
+    async def main():
+        ''' Client connect example '''
+        config = SliverClientConfig.parse_config_file(DEFAULT_CONFIG)
+        client = AsyncSliverClient(config)
+        await client.connect()
+        sessions = await client.sessions()
+        print('Sessions: %r' % sessions)
+
+    if __name__ == '__main__':
+        asyncio.run(main())
+
+
+More about something.

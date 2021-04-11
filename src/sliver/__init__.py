@@ -1,2 +1,2 @@
-from .client import SliverClient, SliverAsyncClient, AsyncInteractiveSession, InteractiveSession
+from .client import SliverClient, AsyncSliverClient, InteractiveSession, AsyncInteractiveSession
 from .config import SliverClientConfig
