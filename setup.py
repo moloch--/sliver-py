@@ -14,14 +14,16 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 
 import setuptools
+from docs.conf import AUTHOR, VERSION
+
 
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
     name="sliver-py",
-    version="0.0.4",
-    author="moloch",
+    version=VERSION,
+    author=AUTHOR,
     author_email="875022+moloch--@users.noreply.github.com",
     description="Sliver gRPC client library.",
     long_description=long_description,
