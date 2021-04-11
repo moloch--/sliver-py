@@ -432,7 +432,7 @@ class AsyncInteractiveSession(BaseSession):
         return (await self._stub.RegistryWrite(self.request(reg), timeout=self.timeout))
 
 
-class SliverAsyncClient(BaseClient):
+class AsyncSliverClient(BaseClient):
 
     ''' Asyncio client implementation '''
 

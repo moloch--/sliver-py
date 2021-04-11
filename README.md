@@ -26,7 +26,7 @@ Install the package using pip, for best compatibility use Sliver Server v1.4.11 
 
 import os
 import asyncio
-from sliver import SliverClientConfig, SliverClient, SliverAsyncClient
+from sliver import SliverClientConfig, SliverClient, AsyncSliverClient
 
 CONFIG_DIR = os.path.join(os.path.expanduser("~"), ".sliver-client", "configs")
 DEFAULT_CONFIG = os.path.join(CONFIG_DIR, "default.cfg")
@@ -43,7 +43,7 @@ def main():
 async def run():
     ''' Async client example '''
     config = SliverClientConfig.parse_config_file(DEFAULT_CONFIG)
-    client = SliverAsyncClient(config)
+    client = AsyncSliverClient(config)
     await client.connect()
     sessions = await client.sessions()
     print('[async] Sessions: %r' % sessions)
