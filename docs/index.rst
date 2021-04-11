@@ -1,15 +1,16 @@
-.. SliverPy documentation master file, created by
-   sphinx-quickstart on Sun Apr 11 12:24:34 2021.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 Welcome to SliverPy's documentation!
 ====================================
 
+SliverPy is a Python gRPC client library for Sliver. SliverPy can be used to automate any operator interaction with Sliver and 
+connects to servers using gRPC over Mutual TLS (i.e., multiplayer) using Sliver client configuration files.
+
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Table of Contents
 
+   getting-started
+
+   api/index
 
 
 Indices and tables
@@ -18,3 +19,4 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+

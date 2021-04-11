@@ -1,3 +1,4 @@
 grpcio
 grpcio-tools
 sphinx
+sphinx_rtd_theme
