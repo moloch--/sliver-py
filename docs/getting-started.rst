@@ -35,8 +35,8 @@ Now leave the server running and you can connect to Sliver remotely (or locally)
 Client Connect
 ^^^^^^^^^^^^^^
 
-You'll need to parse the ``.cfg`` using the ``SliverClientConfig`` the easiest way to do this is using the ``parse_config_file`` 
-class method or you can pass the file content as a ``bytes`` to the ``parse_config``. Here is a basic example:
+You'll need to parse the ``.cfg`` using the ``SliverClientConfig`` the easiest way to do this is using the ``parse_config_file()`` 
+class method or you can pass the file content as a ``bytes`` to the ``parse_config()``. Here is a basic example:
 
 .. code-block:: python
 

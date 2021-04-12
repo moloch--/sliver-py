@@ -172,24 +172,63 @@ class BaseSession(object):
 class AsyncInteractiveSession(BaseSession):
 
     async def ping(self) -> sliver_pb2.Ping:
+        '''Send a round trip message to the implant (does NOT use ICMP)
+
+        :return: Protobuf ping object
+        :rtype: sliver_pb2.Ping
+        '''        
         ping = sliver_pb2.Ping()
         ping.Request = self._request()
         return (await self._stub.Ping(ping, timeout=self.timeout))
 
     async def ps(self) -> sliver_pb2.Ps:
+        '''List the processes of the remote system
+
+        :return: Ps protobuf object
+        :rtype: sliver_pb2.Ps
+        '''        
         ps = sliver_pb2.PsReq()
         return (await self._stub.Ps(self._request(ps), timeout=self.timeout))
     
     async def terminate(self, pid: int, force=False) -> sliver_pb2.Terminate:
+        '''Terminate a remote process.
+
+        :param pid: The process ID to terminate.
+        :type pid: int
+        :param force: Force termination of the process, defaults to False
+        :type force: bool, optional
+        :return: Protobuf terminate object
+        :rtype: sliver_pb2.Terminate
+        '''
         terminator = sliver_pb2.TerminateReq()
         terminator.Pid = pid
         terminator.Force = force
         return (await self._stub.Terminate(self._request(terminator), timeout=self.timeout))
 
     async def ifconfig(self) -> sliver_pb2.Ifconfig:
+        '''Get network interface configuration information about the remote system
+
+        :return: Protobuf ifconfig object
+        :rtype: sliver_pb2.Ifconfig
+        '''
         return (await self._stub.Ifconfig(self._request(sliver_pb2.IfconfigReq(), timeout=self.timeout)))
     
     async def netstat(self, tcp: bool, udp: bool, ipv4: bool, ipv6: bool, listening=True) -> List[sliver_pb2.SockTabEntry]:
+        '''Get information about network connections on the remote system.
+
+        :param tcp: Get TCP information
+        :type tcp: bool
+        :param udp: Get UDP information
+        :type udp: bool
+        :param ipv4: Get IPv4 connection information
+        :type ipv4: bool
+        :param ipv6: Get IPv6 connection information
+        :type ipv6: bool
+        :param listening: Get listening connection information, defaults to True
+        :type listening: bool, optional
+        :return: Protobuf netstat object
+        :rtype: List[sliver_pb2.SockTabEntry]
+        '''
         net = sliver_pb2.NetstatReq()
         net.TCP = tcp
         net.UDP = udp
@@ -199,21 +238,51 @@ class AsyncInteractiveSession(BaseSession):
         stat = await self._stub.Netstat(self._request(net), timeout=self.timeout)
         return list(stat.Entries)
     
-    async def ls(self, remote_path: str) -> sliver_pb2.Ls:
+    async def ls(self, remote_path: str = '.') -> sliver_pb2.Ls:
+        '''Get a directory listing from the remote system
+
+        :param remote_path: Remote path
+        :type remote_path: str
+        :return: Protobuf ls object
+        :rtype: sliver_pb2.Ls
+        '''        
         ls = sliver_pb2.LsReq()
         ls.Path = remote_path
         return (await self._stub.Ls(self._request(ls), timeout=self.timeout))
 
     async def cd(self, remote_path: str) -> sliver_pb2.Pwd:
+        '''Change the current working directory of the implant
+
+        :param remote_path: Remote path
+        :type remote_path: str
+        :return: Protobuf pwd object
+        :rtype: sliver_pb2.Pwd
+        '''
         cd = sliver_pb2.CdReq()
         cd.Path = remote_path
         return (await self._stub.Cd(self._request(cd), timeout=self.timeout))
 
     async def pwd(self) -> sliver_pb2.Pwd:
+        '''Get the implant's current working directory
+
+        :return: Protobuf pwd object
+        :rtype: sliver_pb2.Pwd
+        '''
         pwd = sliver_pb2.PwdReq()
         return (await self._stub.Pwd(self._request(pwd), timeout=self.timeout))
 
     async def rm(self, remote_path: str, recursive=False, force=False) -> sliver_pb2.Rm:
+        '''Remove a directory or file(s)
+
+        :param remote_path: Remote path
+        :type remote_path: str
+        :param recursive: Recursively remove file(s), defaults to False
+        :type recursive: bool, optional
+        :param force: Forcefully remove the file(s), defaults to False
+        :type force: bool, optional
+        :return: Protobuf rm object
+        :rtype: sliver_pb2.Rm
+        '''
         rm = sliver_pb2.RmReq()
         rm.Path = remote_path
         rm.Recursive = recursive
@@ -439,6 +508,11 @@ class AsyncSliverClient(BaseClient):
     ''' Asyncio client implementation '''
 
     async def connect(self) -> client_pb2.Version:
+        '''Establish a connection to the Sliver server.
+
+        :return: The server's version information
+        :rtype: client_pb2.Version
+        '''        
         self._channel = grpc.aio.secure_channel(
             target=self.target,
             credentials=self.credentials,
@@ -448,11 +522,27 @@ class AsyncSliverClient(BaseClient):
         return (await self.version())
 
     async def interact(self, session_id: int, timeout=TIMEOUT) -> Union[AsyncInteractiveSession, None]:
+        '''Interact with a session, returns an :class:`AsyncInteractiveSession`
+
+        :param session_id: Numeric session ID
+        :type session_id: int
+        :param timeout: gRPC timeout, defaults to 60 seconds
+        :return: An interactive session
+        :rtype: Union[AsyncInteractiveSession, None]
+        '''        
         session = await self.session_by_id(session_id, timeout)
         if session is not None:
             return AsyncInteractiveSession(session, self._channel, timeout)
 
     async def session_by_id(self, session_id: int, timeout=TIMEOUT) -> Union[client_pb2.Session, None]:
+        '''Get the session information from an numeric session ID.
+
+        :param session_id: Numeric session ID
+        :type session_id: int
+        :param timeout: gRPC timeout, defaults to 60 seconds
+        :return: Protobuf session object
+        :rtype: Union[client_pb2.Session, None]
+        '''
         sessions = await self.sessions(timeout)
         for session in sessions:
             if session.ID == session_id:
