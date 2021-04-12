@@ -5,10 +5,14 @@ To get started first download the `latest Sliver server release <https://github.
 you'll need v1.4.11 or later to use SliverPy.
 
 SliverPy connects to the Sliver server using "multiplayer mode" which can be enabled in the server console or using
-the command line interface. In order to connect to the server you'll need an operator configuration file.
+the Sliver server's command line interface. In order to connect to the server you'll need to first generate an operator 
+configuration file. Clients connect to the Sliver server using mutual TLS (mTLS) and these operator configuration files 
+contain the per-user TLS certificates (and other metadata) need to make the connection to the server. These configuration
+files contain the user's private key and should be treated as if they were a credential.
 
-Using the interactive console use the ``new-player`` command to generate an operator configuration file and then enable
-multiplayer mode using the ``multiplayer`` command:
+In the interactive console, the ``new-player`` command is used to generate an operator configuration file. You'll need to 
+subsequently enable multiplayer mode using the ``multiplayer`` command to start the multiplayer server listener. See the 
+``--help`` for each of these commands for more details:
 
 .. code-block:: console
 
@@ -22,7 +26,8 @@ multiplayer mode using the ``multiplayer`` command:
     [*] Multiplayer mode enabled!
 
 
-Alternatively, using the command line interface:
+Alternatively, the command line interface can be used to generate operator configuration files and start the multiplayer listener
+without entering into the interactive console. See each subcommand's ``--help`` for more details:
 
 .. code-block:: console
 
@@ -30,13 +35,14 @@ Alternatively, using the command line interface:
     $ ./sliver-server daemon
 
 
-Now leave the server running and you can connect to Sliver remotely (or locally) using the ``.cfg`` with SliverPy!
+Now with the server running in the background you can connect to Sliver remotely (or locally) using the ``.cfg`` with SliverPy!
 
-Client Connect
-^^^^^^^^^^^^^^
+Connect Example
+^^^^^^^^^^^^^^^
 
-You'll need to parse the ``.cfg`` using the ``SliverClientConfig`` the easiest way to do this is using the ``parse_config_file()`` 
-class method or you can pass the file content as a ``bytes`` to the ``parse_config()``. Here is a basic example:
+First you'll need to load the ``.cfg`` using the ``SliverClientConfig`` class. The easiest way to do this is using the ``.parse_config_file()`` 
+class method, or you can pass the file content as ``bytes`` to the ``.parse_config()`` class method if you don't want to specify the file path. 
+Here is a basic example, just modify the ``CONFIG`` path to point to the ``operator.cfg`` we generated using the server:
 
 .. code-block:: python
 
@@ -50,7 +56,7 @@ class method or you can pass the file content as a ``bytes`` to the ``parse_conf
 
     def main():
         ''' Client connect example '''
-        config = SliverClientConfig.parse_config_file(CONFIG)
+        config = SliverClientConfig.parse_config_file(CONFIG) # <-- Class method
         client = SliverClient(config)
         client.connect()
         print('Sessions: %r' % client.sessions())
@@ -59,8 +65,13 @@ class method or you can pass the file content as a ``bytes`` to the ``parse_conf
         main()
 
 
-Async Client Connect
-^^^^^^^^^^^^^^^^^^^^
+**NOTE:** We're creating an instance of the ``SliverClientConfig`` using a Python class method (i.e., we do not need to instantiate the object to call
+the method). If you want to directly create an instance if ``SliverClientConfig()`` you'll need to pass in the various configuration values yourself.
+The ``SliverClientConfig.parse_config_file()`` class method essentially parses the configuration file and instantiates the class for us.
+
+
+Async Connect Example
+^^^^^^^^^^^^^^^^^^^^^
 
 SliverPy also supports ``asyncio`` using the ``AsyncSliverClient`` class:
 
@@ -85,4 +96,23 @@ SliverPy also supports ``asyncio`` using the ``AsyncSliverClient`` class:
         asyncio.run(main())
 
 
-More about something.
+**NOTE:** The ``SliverClient`` and ``AsyncSliverClient`` classes both use the same ``SliverClientConfig`` for configuration.
+
+
+Protobuf / gRPC
+^^^^^^^^^^^^^^^
+
+Under the hood SliverPy is communicating with the Sliver server using `Protobuf <https://developers.google.com/protocol-buffers/docs/pythontutorial>`_ and 
+`gRPC <https://grpc.io/docs/languages/python/basics/>`_. While most of the details of these libraries are abstracted for you, it may be useful to familiarize 
+yourself with the library conventions as SliverPy operates largely on Protobuf objects which do not follow Python language conventions. The source Protobuf
+definitions are in the `Sliver server repository <https://github.com/BishopFox/sliver/tree/master/protobuf>`_ to find the exact definitions that SliverPy
+is using see the `git submodule <https://github.com/moloch--/sliver-py>`_ in the SliverPy repository.
+
+There are three modules of Protobuf objects:
+
+- ``sliver.pb.commonpb_pb2`` Contains common Protobuf objects that represent things like files and processes.
+- ``sliver.pb.client_pb2``  Contains objects that are specifically passed between the client and server, but *not* to the implant.
+- ``sliver.pb.sliver_pb2`` Contains objects that are passed to the client, server, and implant.
+
+**NOTE:** Protobuf objects use ``CapitolCase`` whereas the SliverPy classes/etc. use ``snake_case``
+

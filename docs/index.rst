@@ -7,7 +7,7 @@ connects to servers using gRPC over Mutual TLS (i.e., multiplayer) using Sliver 
 .. _Sliver: https://github.com/BishopFox/sliver
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Table of Contents
 
    install
