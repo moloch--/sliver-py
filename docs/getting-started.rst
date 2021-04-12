@@ -7,7 +7,7 @@ you'll need v1.4.11 or later to use SliverPy.
 SliverPy connects to the Sliver server using "multiplayer mode" which can be enabled in the server console or using
 the Sliver server's command line interface. In order to connect to the server you'll need to first generate an operator 
 configuration file. Clients connect to the Sliver server using mutual TLS (mTLS) and these operator configuration files 
-contain the per-user TLS certificates (and other metadata) need to make the connection to the server. These configuration
+contain the per-user TLS certificates (and other metadata) needed to make the connection to the server. These configuration
 files contain the user's private key and should be treated as if they were a credential.
 
 In the interactive console, the ``new-player`` command is used to generate an operator configuration file. You'll need to 
@@ -114,5 +114,41 @@ There are three modules of Protobuf objects:
 - ``sliver.pb.client_pb2``  Contains objects that are specifically passed between the client and server, but *not* to the implant.
 - ``sliver.pb.sliver_pb2`` Contains objects that are passed to the client, server, and implant.
 
-**NOTE:** Protobuf objects use ``CapitolCase`` whereas the SliverPy classes/etc. use ``snake_case``
+**NOTE:** Protobuf objects use ``CapitolCase`` whereas the SliverPy classes/etc. use ``snake_case``.
+
+Interactive Sessions
+^^^^^^^^^^^^^^^^^^^^
+
+To interact with a Sliver session we need to create an ``InteractiveSession`` object, the easiest way to do this is using the ``SliverClient``'s 
+``.interact()`` method, which takes a numeric session ID and returns an ``InteractiveSession`` for that ID:
+
+.. code-block:: python
+
+    #!/usr/bin/env python3
+
+    import os
+    from sliver import SliverClientConfig, SliverClient
+
+    # Construct path to operator config file
+    CONFIG = os.path.join('path', 'to', 'operator.cfg')
+
+    def main():
+        ''' Client connect example '''
+        config = SliverClientConfig.parse_config_file(CONFIG)
+        client = SliverClient(config)
+        client.connect()
+        sessions = client.sessions()  # <-- List Protobuf Session objects
+        if not len(sessions):
+            print('No sessions!')
+            return
+
+        interact = client.interact(sessions[0].ID)  # <-- Create InteractiveSession object
+        ls = interact.ls()                          # <-- Returns an Ls Protobuf object
+
+        print('Listing directory contents of: %s' % ls.Path)
+        for fi in ls.Files:
+            print('FileName: %s (dir: %s, size: %d)' % (fi.Name, fi.IsDir, fi.Size))
+
+    if __name__ == '__main__':
+        main()
 

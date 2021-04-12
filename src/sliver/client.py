@@ -736,7 +736,7 @@ class InteractiveSession(BaseSession):
         stat = self._stub.Netstat(self._request(net), timeout=self.timeout)
         return list(stat.Entries)
     
-    def ls(self, remote_path: str) -> sliver_pb2.Ls:
+    def ls(self, remote_path: str = '.') -> sliver_pb2.Ls:
         ls = sliver_pb2.LsReq()
         ls.Path = remote_path
         return self._stub.Ls(self._request(ls), timeout=self.timeout)
