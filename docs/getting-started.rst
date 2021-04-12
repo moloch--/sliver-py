@@ -104,9 +104,7 @@ Protobuf / gRPC
 
 Under the hood SliverPy is communicating with the Sliver server using `Protobuf <https://developers.google.com/protocol-buffers/docs/pythontutorial>`_ and 
 `gRPC <https://grpc.io/docs/languages/python/basics/>`_. While most of the details of these libraries are abstracted for you, it may be useful to familiarize 
-yourself with the library conventions as SliverPy operates largely on Protobuf objects which do not follow Python language conventions. The source Protobuf
-definitions are in the `Sliver server repository <https://github.com/BishopFox/sliver/tree/master/protobuf>`_ to find the exact definitions that SliverPy
-is using see the `git submodule <https://github.com/moloch--/sliver-py>`_ in the SliverPy repository.
+yourself with the library conventions as SliverPy operates largely on Protobuf objects which do not follow Python language conventions.
 
 There are three modules of Protobuf objects:
 
@@ -115,6 +113,10 @@ There are three modules of Protobuf objects:
 - ``sliver.pb.sliver_pb2`` Contains objects that are passed to the client, server, and implant.
 
 **NOTE:** Protobuf objects use ``CapitolCase`` whereas the SliverPy classes/etc. use ``snake_case``.
+
+These modules contain generated code and are not easy to read. However, the source Protobuf definitions are in the `Sliver server repository <https://github.com/BishopFox/sliver/tree/master/protobuf>`_ 
+to find the exact definitions that SliverPy is using see the `git submodule <https://github.com/moloch--/sliver-py>`_ in the SliverPy repository.
+
 
 Interactive Sessions
 ^^^^^^^^^^^^^^^^^^^^
@@ -151,4 +153,7 @@ To interact with a Sliver session we need to create an ``InteractiveSession`` ob
 
     if __name__ == '__main__':
         main()
+
+**NOTE:** There are two "session" related objects the Protobuf ``client_pb2.Session`` object, which contains metadata about the sessions such as
+the session ID, the active C2 protocol, etc. and the ``InteractiveSession`` class, which is used to interact with the session (i.e., execute commands, etc).
 
