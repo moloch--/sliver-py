@@ -15,9 +15,9 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
 import grpc
-from .pb.commonpb import common_pb2
-from .pb.clientpb import client_pb2
-from .pb.sliverpb import sliver_pb2
+from .protobuf import common_pb2
+from .protobuf import client_pb2
+from .protobuf import sliver_pb2
 from .pb.rpcpb.services_pb2_grpc import SliverRPCStub
 from .config import SliverClientConfig
 from typing import Union, List
@@ -797,8 +797,30 @@ class AsyncSliverClient(BaseClient):
         return (await self._stub.StartTCPStagerListener(stage, timeout=timeout))
 
     async def start_http_stager_listener(self, host: str, port: int, data: bytes, cert: bytes, key: bytes, acme: bool, timeout=TIMEOUT) -> client_pb2.StagerListener:
+        '''Start an HTTP(S) stager listener
+
+        :param host: Host interface to bind the listener to, an empty string will bind to all interfaces
+        :type host: str
+        :param port: TCP port number to start listener on
+        :type port: int
+        :param data: Binary data of stage to host on listener
+        :type data: bytes
+        :param cert: TLS certificate, leave blank to start listener as HTTP
+        :type cert: bytes
+        :param key: TLS key, leave blank to start listener as HTTP
+        :type key: bytes
+        :param acme: Automatically provision TLS certificate using ACME (i.e., Let's Encrypt)
+        :type acme: bool
+        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :type timeout: int, optional
+        :return: Protobuf StagerListener object
+        :rtype: client_pb2.StagerListener
+        '''        
         stage = client_pb2.StagerListenerReq()
-        stage.Protocol = client_pb2.HTTP
+        if key or acme:
+            stage.Protocol = client_pb2.HTTPS
+        else:
+            stage.Protocol = client_pb2.HTTP
         stage.Host = host
         stage.Port = port
         stage.Data = data
@@ -807,7 +829,16 @@ class AsyncSliverClient(BaseClient):
         stage.ACME = acme
         return (await self._stub.StartHTTPStagerListener(stage, timeout=timeout))
 
-    async def generate(self, config: client_pb2.ImplantConfig, timeout=360) -> client_pb2.Generate:
+    async def generate(self, config: client_pb2.ImplantConfig, timeout: int = 360) -> client_pb2.Generate:
+        '''Generate a new implant using a given configuration
+
+        :param config: Protobuf ImplantConfig object
+        :type config: client_pb2.ImplantConfig
+        :param timeout: gRPC timeout, defaults to 360
+        :type timeout: int, optional
+        :return: Protobuf Generate object containing the generated implant
+        :rtype: client_pb2.Generate
+        '''        
         req = client_pb2.GenerateReq()
         req.ImplantConfig = config
         return (await self._stub.Generate(req, timeout=timeout))

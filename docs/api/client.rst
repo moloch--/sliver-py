@@ -8,7 +8,7 @@ classes a Client and an InteractiveSession (there is a synchronous and asynchron
 SliverClient
 ^^^^^^^^^^^^
 
-.. autoclass:: sliver.client.SliverClient
+.. autoclass:: sliver.SliverClient
     :special-members: __init__,
     :members:
     :undoc-members:
@@ -19,7 +19,7 @@ SliverClient
 InteractiveSession
 ^^^^^^^^^^^^^^^^^^
 
-.. autoclass:: sliver.client.InteractiveSession
+.. autoclass:: sliver.InteractiveSession
     :special-members: __init__,
     :members:
     :undoc-members:
@@ -30,7 +30,7 @@ InteractiveSession
 AsyncSliverClient
 ^^^^^^^^^^^^^^^^^
 
-.. autoclass:: sliver.client.AsyncSliverClient
+.. autoclass:: sliver.AsyncSliverClient
     :special-members: __init__,
     :members:
     :undoc-members:
@@ -41,7 +41,7 @@ AsyncSliverClient
 AsyncInteractiveSession
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-.. autoclass:: sliver.client.AsyncInteractiveSession
+.. autoclass:: sliver.AsyncInteractiveSession
     :special-members: __init__,
     :members:
     :undoc-members:

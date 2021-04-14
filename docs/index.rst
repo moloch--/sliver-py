@@ -15,6 +15,8 @@ connects to servers using gRPC over Mutual TLS (i.e., multiplayer) using Sliver 
 
    api/index
 
+   protobuf/index
+
 
 Indices and tables
 ==================
