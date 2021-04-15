@@ -191,7 +191,7 @@ class AsyncInteractiveSession(BaseSession):
         return (await self._stub.Ps(self._request(ps), timeout=self.timeout))
     
     async def terminate(self, pid: int, force=False) -> sliver_pb2.Terminate:
-        '''Terminate a remote process.
+        '''Terminate a remote process
 
         :param pid: The process ID to terminate.
         :type pid: int
@@ -734,7 +734,7 @@ class AsyncSliverClient(BaseClient):
     async def operators(self, timeout=TIMEOUT) -> List[client_pb2.Operator]:
         '''Get a list of operators and their online status
 
-        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         :return: List of protobuf Operator objects
         :rtype: List[client_pb2.Operator]
@@ -745,7 +745,7 @@ class AsyncSliverClient(BaseClient):
     async def sessions(self, timeout=TIMEOUT) -> List[client_pb2.Session]:
         '''Get a list of active sessions
 
-        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         :return: List of protobuf Session objects
         :rtype: List[client_pb2.Session]
@@ -760,7 +760,7 @@ class AsyncSliverClient(BaseClient):
         :type session_id: int
         :param force: Force kill the session, defaults to False
         :type force: bool, optional
-        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         '''
         kill = sliver_pb2.KillSessionReq()
@@ -776,7 +776,7 @@ class AsyncSliverClient(BaseClient):
         :type session_id: int
         :param name: Rename session to this value
         :type name: str
-        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         :return: Updated protobuf session object
         :rtype: client_pb2.Session
@@ -789,7 +789,7 @@ class AsyncSliverClient(BaseClient):
     async def jobs(self, timeout=TIMEOUT) -> List[client_pb2.Job]:
         '''Get a list of active jobs
 
-        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         :return: List of protobuf Job objects
         :rtype: List[client_pb2.Job]
@@ -802,7 +802,7 @@ class AsyncSliverClient(BaseClient):
 
         :param job_id: Numeric job ID to kill
         :type job_id: int
-        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         :return: Protobuf KillJob object
         :rtype: client_pb2.KillJob
@@ -820,7 +820,7 @@ class AsyncSliverClient(BaseClient):
         :type port: int
         :param persistent: Register the listener as a persistent job (automatically start with server), defaults to False
         :type persistent: bool, optional
-        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         :return: Protobuf MTLSListener object
         :rtype: client_pb2.MTLSListener
@@ -844,7 +844,7 @@ class AsyncSliverClient(BaseClient):
         :type key_port: int
         :param persistent: Register the listener as a persistent job (automatically start with server), defaults to False
         :type persistent: bool, optional
-        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         :return: Protobuf WGListener object
         :rtype: client_pb2.WGListener
@@ -870,7 +870,7 @@ class AsyncSliverClient(BaseClient):
         :type port: int
         :param persistent: Register the listener as a persistent job (automatically start with server), defaults to False
         :type persistent: bool, optional
-        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         :return: Protobuf DNSListener object
         :rtype: client_pb2.DNSListener
@@ -902,7 +902,7 @@ class AsyncSliverClient(BaseClient):
         :type acme: bool
         :param persistent: Register the listener as a persistent job (automatically start with server), defaults to False
         :type persistent: bool, optional
-        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         :return: Protobuf HTTPListener object (NOTE: HTTP/HTTPS both return HTTPListener objects)
         :rtype: client_pb2.HTTPListener
@@ -932,7 +932,7 @@ class AsyncSliverClient(BaseClient):
         :type website: str
         :param persistent: Register the listener as a persistent job (automatically start with server), defaults to False
         :type persistent: bool, optional
-        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         :return: Protobuf HTTPListener object (NOTE: HTTP/HTTPS both return HTTPListener objects)
         :rtype: client_pb2.HTTPListener
@@ -956,7 +956,7 @@ class AsyncSliverClient(BaseClient):
         :type port: int
         :param data: Binary data of stage to host on listener
         :type data: bytes
-        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         :return: Protobuf StagerListener object
         :rtype: client_pb2.StagerListener
@@ -983,7 +983,7 @@ class AsyncSliverClient(BaseClient):
         :type key: bytes
         :param acme: Automatically provision TLS certificate using ACME (i.e., Let's Encrypt)
         :type acme: bool
-        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         :return: Protobuf StagerListener object
         :rtype: client_pb2.StagerListener
@@ -1069,24 +1069,63 @@ class AsyncSliverClient(BaseClient):
 class InteractiveSession(BaseSession):
 
     def ping(self) -> sliver_pb2.Ping:
+        '''Send a round trip message to the implant (does NOT use ICMP)
+
+        :return: Protobuf ping object
+        :rtype: sliver_pb2.Ping
+        '''    
         ping = sliver_pb2.Ping()
         ping.Request = self._request()
         return self._stub.Ping(ping, timeout=self.timeout)
 
     def ps(self) -> sliver_pb2.Ps:
+        '''List the processes of the remote system
+
+        :return: Ps protobuf object
+        :rtype: sliver_pb2.Ps
+        '''   
         ps = sliver_pb2.PsReq()
         return self._stub.Ps(self._request(ps), timeout=self.timeout)
     
     def terminate(self, pid: int, force=False) -> sliver_pb2.Terminate:
+        '''Terminate a remote process
+
+        :param pid: The process ID to terminate.
+        :type pid: int
+        :param force: Force termination of the process, defaults to False
+        :type force: bool, optional
+        :return: Protobuf terminate object
+        :rtype: sliver_pb2.Terminate
+        '''
         terminator = sliver_pb2.TerminateReq()
         terminator.Pid = pid
         terminator.Force = force
         return self._stub.Terminate(self._request(terminator), timeout=self.timeout)
 
     def ifconfig(self) -> sliver_pb2.Ifconfig:
+        '''Get network interface configuration information about the remote system
+
+        :return: Protobuf ifconfig object
+        :rtype: sliver_pb2.Ifconfig
+        '''
         return self._stub.Ifconfig(self._request(sliver_pb2.IfconfigReq(), timeout=self.timeout))
     
     def netstat(self, tcp: bool, udp: bool, ipv4: bool, ipv6: bool, listening=True) -> List[sliver_pb2.SockTabEntry]:
+        '''Get information about network connections on the remote system.
+
+        :param tcp: Get TCP information
+        :type tcp: bool
+        :param udp: Get UDP information
+        :type udp: bool
+        :param ipv4: Get IPv4 connection information
+        :type ipv4: bool
+        :param ipv6: Get IPv6 connection information
+        :type ipv6: bool
+        :param listening: Get listening connection information, defaults to True
+        :type listening: bool, optional
+        :return: Protobuf netstat object
+        :rtype: List[sliver_pb2.SockTabEntry]
+        '''
         net = sliver_pb2.NetstatReq()
         net.TCP = tcp
         net.UDP = udp
@@ -1097,20 +1136,50 @@ class InteractiveSession(BaseSession):
         return list(stat.Entries)
     
     def ls(self, remote_path: str = '.') -> sliver_pb2.Ls:
+        '''Get a directory listing from the remote system
+
+        :param remote_path: Remote path
+        :type remote_path: str
+        :return: Protobuf ls object
+        :rtype: sliver_pb2.Ls
+        ''' 
         ls = sliver_pb2.LsReq()
         ls.Path = remote_path
         return self._stub.Ls(self._request(ls), timeout=self.timeout)
 
     def cd(self, remote_path: str) -> sliver_pb2.Pwd:
+        '''Change the current working directory of the implant
+
+        :param remote_path: Remote path
+        :type remote_path: str
+        :return: Protobuf pwd object
+        :rtype: sliver_pb2.Pwd
+        '''
         cd = sliver_pb2.CdReq()
         cd.Path = remote_path
         return self._stub.Cd(self._request(cd), timeout=self.timeout)
 
     def pwd(self) -> sliver_pb2.Pwd:
+        '''Get the implant's current working directory
+
+        :return: Protobuf pwd object
+        :rtype: sliver_pb2.Pwd
+        '''
         pwd = sliver_pb2.PwdReq()
         return self._stub.Pwd(self._request(pwd), timeout=self.timeout)
 
     def rm(self, remote_path: str, recursive=False, force=False) -> sliver_pb2.Rm:
+        '''Remove a directory or file(s)
+
+        :param remote_path: Remote path
+        :type remote_path: str
+        :param recursive: Recursively remove file(s), defaults to False
+        :type recursive: bool, optional
+        :param force: Forcefully remove the file(s), defaults to False
+        :type force: bool, optional
+        :return: Protobuf rm object
+        :rtype: sliver_pb2.Rm
+        '''
         rm = sliver_pb2.RmReq()
         rm.Path = remote_path
         rm.Recursive = recursive
@@ -1118,16 +1187,41 @@ class InteractiveSession(BaseSession):
         return self._stub.Rm(self._request(rm), timeout=self.timeout)
 
     def mkdir(self, remote_path: str) -> sliver_pb2.Mkdir:
+        '''Make a directory on the remote file system
+
+        :param remote_path: Directory to create
+        :type remote_path: str
+        :return: Protobuf Mkdir object
+        :rtype: sliver_pb2.Mkdir
+        '''  
         make = sliver_pb2.MkdirReq()
         make.Path = remote_path
         return self._stub.Mkdir(self._request(make), timeout=self.timeout)
 
     def download(self, remote_path: str) -> sliver_pb2.Download:
+        '''Download a file from the remote file system
+
+        :param remote_path: File to download
+        :type remote_path: str
+        :return: Protobuf Download object
+        :rtype: sliver_pb2.Download
+        '''  
         download = sliver_pb2.DownloadReq()
         download.Path = remote_path
         return self._stub.Download(self._request(download), timeout=self.timeout)
 
     def upload(self, remote_path: str, data: bytes, encoder='') -> sliver_pb2.Upload:
+        '''Write data to specified path on remote file system 
+
+        :param remote_path: Remote path
+        :type remote_path: str
+        :param data: Data to write
+        :type data: bytes
+        :param encoder: Data encoder ('', 'gzip'), defaults to ''
+        :type encoder: str, optional
+        :return: Protobuf Upload object
+        :rtype: sliver_pb2.Upload
+        ''' 
         upload = sliver_pb2.UploadReq()
         upload.Path = remote_path
         upload.Data = data
@@ -1135,11 +1229,29 @@ class InteractiveSession(BaseSession):
         return self._stub.Upload(self._request(upload), timeout=self.timeout)
 
     def process_dump(self, pid: int) -> sliver_pb2.ProcessDump:
+        '''Dump a remote process' memory
+
+        :param pid: PID of the process to dump
+        :type pid: int
+        :return: Protobuf ProcessDump object
+        :rtype: sliver_pb2.ProcessDump
+        ''' 
         procdump = sliver_pb2.ProcessDumpReq()
         procdump.Pid = pid
         return self._stub.ProcessDump(self._request(procdump), timeout=self.timeout)
 
     def run_as(self, username: str, process_name: str, args: str) -> sliver_pb2.RunAs:
+        '''Run a command as another user on the remote system
+
+        :param username: User to run process as
+        :type username: str
+        :param process_name: Process to execute
+        :type process_name: str
+        :param args: Arguments to process
+        :type args: str
+        :return: Protobuf RunAs object
+        :rtype: sliver_pb2.RunAs
+        '''  
         run_as = sliver_pb2.RunAsReq()
         run_as.Username = username
         run_as.ProcessName = process_name
@@ -1147,23 +1259,70 @@ class InteractiveSession(BaseSession):
         return self._stub.RunAs(self._request(run_as), timeout=self.timeout)
 
     def impersonate(self, username: str) -> sliver_pb2.Impersonate:
+        '''Impersonate a user using tokens (Windows only)
+
+        :param username: User to impersonate
+        :type username: str
+        :return: Protobuf Impersonate object
+        :rtype: sliver_pb2.Impersonate
+        '''    
         impersonate = sliver_pb2.ImpersonateReq()
         impersonate.Username = username
         return self._stub.Impersonate(self._request(impersonate), timeout=self.timeout)
     
     def revert_to_self(self) -> sliver_pb2.RevToSelf:
+        '''Revert to self from impersonation context
+
+        :return: Protobuf RevToSelf object
+        :rtype: sliver_pb2.RevToSelf
+        ''' 
         return self._stub.RevToSelf(self._request(sliver_pb2.RevToSelfReq()), timeout=self.timeout)
     
     def get_system(self, hosting_process: str, config: client_pb2.ImplantConfig) -> sliver_pb2.GetSystem:
+        '''Attempt to get SYSTEM (Windows only)
+
+        :param hosting_process: Hosting process to attempt gaining privileges
+        :type hosting_process: str
+        :param config: Implant configuration to be injected into the hosting process
+        :type config: client_pb2.ImplantConfig
+        :return: Protobuf GetSystem object
+        :rtype: sliver_pb2.GetSystem
+        ''' 
         system = client_pb2.GetSystemReq()
         system.HostingProcess = hosting_process
         system.Config = config
         return self._stub.GetSystem(self._request(system), timeout=self.timeout)
     
     def execute_shellcode(self, data: bytes, rwx: bool, pid: int, encoder='') -> sliver_pb2.Task:
+        '''Execute shellcode in-memory
+
+        :param data: Shellcode buffer
+        :type data: bytes
+        :param rwx: Enable/disable RWX pages
+        :type rwx: bool
+        :param pid: Process ID to inject shellcode into
+        :type pid: int
+        :param encoder: Encoder ('', 'gzip'), defaults to ''
+        :type encoder: str, optional
+        :return: Protobuf Task object
+        :rtype: sliver_pb2.Task
+        ''' 
         return self.task(data, rwx, pid, encoder)
 
     def task(self, data: bytes, rwx: bool, pid: int, encoder='') -> sliver_pb2.Task:
+        '''Execute shellcode in-memory ("Task" is a synonym for shellcode)
+
+        :param data: Shellcode buffer
+        :type data: bytes
+        :param rwx: Enable/disable RWX pages
+        :type rwx: bool
+        :param pid: Process ID to inject shellcode into
+        :type pid: int
+        :param encoder: Encoder ('', 'gzip'), defaults to ''
+        :type encoder: str, optional
+        :return: Protobuf Task object
+        :rtype: sliver_pb2.Task
+        '''     
         task = sliver_pb2.TaskReq()
         task.Encoder = encoder
         task.RWXPages = rwx
@@ -1172,6 +1331,20 @@ class InteractiveSession(BaseSession):
         return self._stub.Task(self._request(task), timeout=self.timeout)
     
     def msf(self, payload: str, lhost: str, lport: int, encoder: str, iterations: int) -> None:
+        '''Execute Metasploit payload on remote system, the payload will be generated by the server
+        based on the parameters to this function. The server must be configured with Metasploit.
+
+        :param payload: Payload to generate
+        :type payload: str
+        :param lhost: Metasploit LHOST parameter
+        :type lhost: str
+        :param lport: Metasploit LPORT parameter
+        :type lport: int
+        :param encoder: Metasploit encoder
+        :type encoder: str
+        :param iterations: Iterations for Metasploit encoder
+        :type iterations: int
+        '''
         msf = client_pb2.MSFReq()
         msf.Payload = payload
         msf.LHost = lhost
@@ -1181,6 +1354,22 @@ class InteractiveSession(BaseSession):
         return self._stub.Msf(self._request(msf), timeout=self.timeout)
 
     def msf_remote(self, payload: str, lhost: str, lport: int, encoder: str, iterations: int, pid: int) -> None:
+        '''Execute Metasploit payload in a remote process, the payload will be generated by the server
+        based on the parameters to this function. The server must be configured with Metasploit.
+
+        :param payload: Payload to generate
+        :type payload: str
+        :param lhost: Metasploit LHOST parameter
+        :type lhost: str
+        :param lport: Metasploit LPORT parameter
+        :type lport: int
+        :param encoder: Metasploit encoder
+        :type encoder: str
+        :param iterations: Iterations for Metasploit encoder
+        :type iterations: int
+        :param pid: Process ID to inject the payload into
+        :type pid: int
+        ''' 
         msf = client_pb2.MSFRemoteReq()
         msf.Payload = payload
         msf.LHost = lhost
@@ -1191,6 +1380,27 @@ class InteractiveSession(BaseSession):
         return self._stub.Msf(self._request(msf), timeout=self.timeout)
     
     def execute_assembly(self, assembly: bytes, arguments: str, process: str, is_dll: bool, arch: str, class_name: str, method: str, app_domain: str) -> sliver_pb2.ExecuteAssembly:
+        '''Execute a .NET assembly in-memory on the remote system
+
+        :param assembly: A buffer of the .NET assembly to execute
+        :type assembly: bytes
+        :param arguments: Arguments to the .NET assembly
+        :type arguments: str
+        :param process: Process to execute assembly
+        :type process: str
+        :param is_dll: Is assembly a DLL
+        :type is_dll: bool
+        :param arch: Assembly architecture
+        :type arch: str
+        :param class_name: Class name of the assembly
+        :type class_name: str
+        :param method: Method to execute
+        :type method: str
+        :param app_domain: AppDomain
+        :type app_domain: str
+        :return: Protobuf ExecuteAssembly object
+        :rtype: sliver_pb2.ExecuteAssembly
+        '''
         asm = sliver_pb2.ExecuteAssemblyReq()
         asm.Assembly = assembly
         asm.Arguments = arguments
@@ -1202,12 +1412,32 @@ class InteractiveSession(BaseSession):
         return self._stub.ExecuteAssembly(self._request(asm), timeout=self.timeout)
     
     def migrate(self, pid: int, config: client_pb2.ImplantConfig) -> sliver_pb2.Migrate:
+        '''Migrate implant to another process
+
+        :param pid: Proccess ID to inject implant into
+        :type pid: int
+        :param config: Implant configuration to inject into the remote process
+        :type config: client_pb2.ImplantConfig
+        :return: Protobuf Migrate object
+        :rtype: sliver_pb2.Migrate
+        '''   
         migrate = client_pb2.MigrateReq()
         migrate.Pid = pid
         migrate.Config = config
         return self._stub.Migrate(self._request(migrate), timeout=self.timeout)
 
     def execute(self, exe: str, args: List[str], output: bool) -> sliver_pb2.Execute:
+        '''Execute a command/subprocess on the remote system
+
+        :param exe: Command/subprocess to execute
+        :type exe: str
+        :param args: Arguments to the command/subprocess
+        :type args: List[str]
+        :param output: Enable capturing command/subprocess stdout
+        :type output: bool
+        :return: Protobuf Execute object
+        :rtype: sliver_pb2.Execute
+        '''
         exec = sliver_pb2.ExecuteReq()
         exec.Path = exe
         exec.Args = args
@@ -1215,6 +1445,17 @@ class InteractiveSession(BaseSession):
         return self._stub.Execute(self._request(exec), timeout=self.timeout)
     
     def execute_token(self, exe: str, args: List[str], output: bool) -> sliver_pb2.Execute:
+        '''Execute a comman/subprocess on the remote system in the context of the current user token
+
+        :param exe: Command/subprocess to execute
+        :type exe: str
+        :param args: Arguments to the command/subprocess
+        :type args: List[str]
+        :param output: Enable capturing command/subprocess stdout
+        :type output: bool
+        :return: Protobuf Execute object
+        :rtype: sliver_pb2.Execute
+        ''' 
         execToken = sliver_pb2.ExecuteTokenReq()
         execToken.Path = exe
         execToken.Args = args
