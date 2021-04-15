@@ -1,5 +1,8 @@
 Client Protobuf
-================
+===============
+
+This module contains the client Protobuf definitions, client Protobuf messages are only
+passed between the client and server (and not to the implant).
 
 
 .. autoclass:: sliver.client_pb2.Version
@@ -131,16 +134,39 @@ Client Protobuf
 .. autoclass:: sliver.client_pb2.CreateTunnelReq
     :members:
 
+.. autoclass:: sliver.client_pb2.CreateTunnel
+    :members:
 
+.. autoclass:: sliver.client_pb2.CloseTunnelReq
+    :members:
 
+.. autoclass:: sliver.client_pb2.Client
+    :members:
 
+.. autoclass:: sliver.client_pb2.Event
+    :members:
 
+.. autoclass:: sliver.client_pb2.Operators
+    :members:
 
+.. autoclass:: sliver.client_pb2.Operator
+    :members:
 
+.. autoclass:: sliver.client_pb2.WebContent
+    :members:
 
+.. autoclass:: sliver.client_pb2.WebsiteAddContent
+    :members:
 
+.. autoclass:: sliver.client_pb2.WebsiteRemoveContent
+    :members:
 
+.. autoclass:: sliver.client_pb2.Website
+    :members:
 
+.. autoclass:: sliver.client_pb2.Websites
+    :members:
 
-
+.. autoclass:: sliver.client_pb2.WGClientConfig
+    :members:
 
