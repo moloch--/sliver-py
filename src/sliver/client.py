@@ -290,16 +290,41 @@ class AsyncInteractiveSession(BaseSession):
         return (await self._stub.Rm(self._request(rm), timeout=self.timeout))
 
     async def mkdir(self, remote_path: str) -> sliver_pb2.Mkdir:
+        '''Make a directory on the remote file system
+
+        :param remote_path: Directory to create
+        :type remote_path: str
+        :return: Protobuf Mkdir object
+        :rtype: sliver_pb2.Mkdir
+        '''        
         make = sliver_pb2.MkdirReq()
         make.Path = remote_path
         return (await self._stub.Mkdir(self._request(make), timeout=self.timeout))
 
     async def download(self, remote_path: str) -> sliver_pb2.Download:
+        '''Download a file from the remote file system
+
+        :param remote_path: File to download
+        :type remote_path: str
+        :return: Protobuf Download object
+        :rtype: sliver_pb2.Download
+        '''        
         download = sliver_pb2.DownloadReq()
         download.Path = remote_path
         return (await self._stub.Download(self._request(download), timeout=self.timeout))
 
     async def upload(self, remote_path: str, data: bytes, encoder='') -> sliver_pb2.Upload:
+        '''Write data to specified path on remote file system 
+
+        :param remote_path: Remote path
+        :type remote_path: str
+        :param data: Data to write
+        :type data: bytes
+        :param encoder: Data encoder ('', 'gzip'), defaults to ''
+        :type encoder: str, optional
+        :return: Protobuf Upload object
+        :rtype: sliver_pb2.Upload
+        '''        
         upload = sliver_pb2.UploadReq()
         upload.Path = remote_path
         upload.Data = data
@@ -307,11 +332,29 @@ class AsyncInteractiveSession(BaseSession):
         return (await self._stub.Upload(self._request(upload), timeout=self.timeout))
 
     async def process_dump(self, pid: int) -> sliver_pb2.ProcessDump:
+        '''Dump a remote process' memory
+
+        :param pid: PID of the process to dump
+        :type pid: int
+        :return: Protobuf ProcessDump object
+        :rtype: sliver_pb2.ProcessDump
+        '''        
         procdump = sliver_pb2.ProcessDumpReq()
         procdump.Pid = pid
         return (await self._stub.ProcessDump(self._request(procdump), timeout=self.timeout))
 
     async def run_as(self, username: str, process_name: str, args: str) -> sliver_pb2.RunAs:
+        '''Run a command as another user on the remote system
+
+        :param username: User to run process as
+        :type username: str
+        :param process_name: Process to execute
+        :type process_name: str
+        :param args: Arguments to process
+        :type args: str
+        :return: Protobuf RunAs object
+        :rtype: sliver_pb2.RunAs
+        '''        
         run_as = sliver_pb2.RunAsReq()
         run_as.Username = username
         run_as.ProcessName = process_name
@@ -319,23 +362,70 @@ class AsyncInteractiveSession(BaseSession):
         return (await self._stub.RunAs(self._request(run_as), timeout=self.timeout))
 
     async def impersonate(self, username: str) -> sliver_pb2.Impersonate:
+        '''Impersonate a user using tokens (Windows only)
+
+        :param username: User to impersonate
+        :type username: str
+        :return: Protobuf Impersonate object
+        :rtype: sliver_pb2.Impersonate
+        '''        
         impersonate = sliver_pb2.ImpersonateReq()
         impersonate.Username = username
         return (await self._stub.Impersonate(self._request(impersonate), timeout=self.timeout))
     
     async def revert_to_self(self) -> sliver_pb2.RevToSelf:
+        '''Revert to self from impersonation context
+
+        :return: Protobuf RevToSelf object
+        :rtype: sliver_pb2.RevToSelf
+        '''        
         return (await self._stub.RevToSelf(self._request(sliver_pb2.RevToSelfReq()), timeout=self.timeout))
     
     async def get_system(self, hosting_process: str, config: client_pb2.ImplantConfig) -> sliver_pb2.GetSystem:
+        '''Attempt to get SYSTEM (Windows only)
+
+        :param hosting_process: Hosting process to attempt gaining privileges
+        :type hosting_process: str
+        :param config: Implant configuration to be injected into the hosting process
+        :type config: client_pb2.ImplantConfig
+        :return: Protobuf GetSystem object
+        :rtype: sliver_pb2.GetSystem
+        '''        
         system = client_pb2.GetSystemReq()
         system.HostingProcess = hosting_process
         system.Config = config
         return (await self._stub.GetSystem(self._request(system), timeout=self.timeout))
     
     async def execute_shellcode(self, data: bytes, rwx: bool, pid: int, encoder='') -> sliver_pb2.Task:
+        '''Execute shellcode in-memory
+
+        :param data: Shellcode buffer
+        :type data: bytes
+        :param rwx: Enable/disable RWX pages
+        :type rwx: bool
+        :param pid: Process ID to inject shellcode into
+        :type pid: int
+        :param encoder: Encoder ('', 'gzip'), defaults to ''
+        :type encoder: str, optional
+        :return: Protobuf Task object
+        :rtype: sliver_pb2.Task
+        '''        
         return (await self.task(data, rwx, pid, encoder))
 
     async def task(self, data: bytes, rwx: bool, pid: int, encoder='') -> sliver_pb2.Task:
+        '''Execute shellcode in-memory ("Task" is a synonym for shellcode)
+
+        :param data: Shellcode buffer
+        :type data: bytes
+        :param rwx: Enable/disable RWX pages
+        :type rwx: bool
+        :param pid: Process ID to inject shellcode into
+        :type pid: int
+        :param encoder: Encoder ('', 'gzip'), defaults to ''
+        :type encoder: str, optional
+        :return: Protobuf Task object
+        :rtype: sliver_pb2.Task
+        '''         
         task = sliver_pb2.TaskReq()
         task.Encoder = encoder
         task.RWXPages = rwx
@@ -344,6 +434,20 @@ class AsyncInteractiveSession(BaseSession):
         return (await self._stub.Task(self._request(task), timeout=self.timeout))
     
     async def msf(self, payload: str, lhost: str, lport: int, encoder: str, iterations: int) -> None:
+        '''Execute Metasploit payload on remote system, the payload will be generated by the server
+        based on the parameters to this function. The server must be configured with Metasploit.
+
+        :param payload: Payload to generate
+        :type payload: str
+        :param lhost: Metasploit LHOST parameter
+        :type lhost: str
+        :param lport: Metasploit LPORT parameter
+        :type lport: int
+        :param encoder: Metasploit encoder
+        :type encoder: str
+        :param iterations: Iterations for Metasploit encoder
+        :type iterations: int
+        '''        
         msf = client_pb2.MSFReq()
         msf.Payload = payload
         msf.LHost = lhost
@@ -353,6 +457,22 @@ class AsyncInteractiveSession(BaseSession):
         return (await self._stub.Msf(self._request(msf), timeout=self.timeout))
 
     async def msf_remote(self, payload: str, lhost: str, lport: int, encoder: str, iterations: int, pid: int) -> None:
+        '''Execute Metasploit payload in a remote process, the payload will be generated by the server
+        based on the parameters to this function. The server must be configured with Metasploit.
+
+        :param payload: Payload to generate
+        :type payload: str
+        :param lhost: Metasploit LHOST parameter
+        :type lhost: str
+        :param lport: Metasploit LPORT parameter
+        :type lport: int
+        :param encoder: Metasploit encoder
+        :type encoder: str
+        :param iterations: Iterations for Metasploit encoder
+        :type iterations: int
+        :param pid: Process ID to inject the payload into
+        :type pid: int
+        ''' 
         msf = client_pb2.MSFRemoteReq()
         msf.Payload = payload
         msf.LHost = lhost
@@ -363,6 +483,27 @@ class AsyncInteractiveSession(BaseSession):
         return (await self._stub.Msf(self._request(msf), timeout=self.timeout))
     
     async def execute_assembly(self, assembly: bytes, arguments: str, process: str, is_dll: bool, arch: str, class_name: str, method: str, app_domain: str) -> sliver_pb2.ExecuteAssembly:
+        '''Execute a .NET assembly in-memory on the remote system
+
+        :param assembly: A buffer of the .NET assembly to execute
+        :type assembly: bytes
+        :param arguments: Arguments to the .NET assembly
+        :type arguments: str
+        :param process: Process to execute assembly
+        :type process: str
+        :param is_dll: Is assembly a DLL
+        :type is_dll: bool
+        :param arch: Assembly architecture
+        :type arch: str
+        :param class_name: Class name of the assembly
+        :type class_name: str
+        :param method: Method to execute
+        :type method: str
+        :param app_domain: AppDomain
+        :type app_domain: str
+        :return: Protobuf ExecuteAssembly object
+        :rtype: sliver_pb2.ExecuteAssembly
+        '''        
         asm = sliver_pb2.ExecuteAssemblyReq()
         asm.Assembly = assembly
         asm.Arguments = arguments
@@ -374,12 +515,32 @@ class AsyncInteractiveSession(BaseSession):
         return (await self._stub.ExecuteAssembly(self._request(asm), timeout=self.timeout))
     
     async def migrate(self, pid: int, config: client_pb2.ImplantConfig) -> sliver_pb2.Migrate:
+        '''Migrate implant to another process
+
+        :param pid: Proccess ID to inject implant into
+        :type pid: int
+        :param config: Implant configuration to inject into the remote process
+        :type config: client_pb2.ImplantConfig
+        :return: Protobuf Migrate object
+        :rtype: sliver_pb2.Migrate
+        '''        
         migrate = client_pb2.MigrateReq()
         migrate.Pid = pid
         migrate.Config = config
         return (await self._stub.Migrate(self._request(migrate), timeout=self.timeout))
 
     async def execute(self, exe: str, args: List[str], output: bool) -> sliver_pb2.Execute:
+        '''Execute a command/subprocess on the remote system
+
+        :param exe: Command/subprocess to execute
+        :type exe: str
+        :param args: Arguments to the command/subprocess
+        :type args: List[str]
+        :param output: Enable capturing command/subprocess stdout
+        :type output: bool
+        :return: Protobuf Execute object
+        :rtype: sliver_pb2.Execute
+        '''        
         exec = sliver_pb2.ExecuteReq()
         exec.Path = exe
         exec.Args = args
@@ -387,6 +548,17 @@ class AsyncInteractiveSession(BaseSession):
         return (await self._stub.Execute(self._request(exec), timeout=self.timeout))
     
     async def execute_token(self, exe: str, args: List[str], output: bool) -> sliver_pb2.Execute:
+        '''Execute a comman/subprocess on the remote system in the context of the current user token
+
+        :param exe: Command/subprocess to execute
+        :type exe: str
+        :param args: Arguments to the command/subprocess
+        :type args: List[str]
+        :param output: Enable capturing command/subprocess stdout
+        :type output: bool
+        :return: Protobuf Execute object
+        :rtype: sliver_pb2.Execute
+        '''        
         execToken = sliver_pb2.ExecuteTokenReq()
         execToken.Path = exe
         execToken.Args = args
