@@ -108,9 +108,9 @@ yourself with the library conventions as SliverPy operates largely on Protobuf o
 
 There are three modules of Protobuf objects:
 
-- ``sliver.pb.commonpb_pb2`` Contains common Protobuf objects that represent things like files and processes.
-- ``sliver.pb.client_pb2``  Contains objects that are specifically passed between the client and server, but *not* to the implant.
-- ``sliver.pb.sliver_pb2`` Contains objects that are passed to the client, server, and implant.
+- ``sliver.commonpb_pb2`` Contains common Protobuf objects that represent things like files and processes.
+- ``sliver.client_pb2``  Contains objects that are specifically passed between the client and server, but *not* to the implant.
+- ``sliver.sliver_pb2`` Contains objects that are passed to the client, server, and implant.
 
 **NOTE:** Protobuf objects use ``CapitolCase`` whereas the SliverPy classes/etc. use ``snake_case``.
 
