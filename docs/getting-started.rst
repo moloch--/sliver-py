@@ -158,12 +158,22 @@ To interact with a Sliver session we need to create an ``InteractiveSession`` ob
 the session ID, the active C2 protocol, etc. and the ``InteractiveSession`` class, which is used to interact with the session (i.e., execute commands, etc).
 
 
+Realtime Events Threads vs. Async
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+SliverPy also supports realtime events, which are pushed from the server to the client whenever an event occurs. For example, some of the more common events you'll likely
+be interested in are when a new session is created or when a job starts/stops. 
+
+The :class:`SliverClient` and :class:`AsyncSliverClient` implement these real time events using threads and `asyncio` respectfully. When to use each is beyond the scope
+of this document but I recommend `this presentation <https://www.youtube.com/watch?v=9zinZmE3Ogk>`_ by Raymond Hettinger if you're not familiar with strengths/weaknesses
+of each approach.
+
+
 Basic Event Example (Threads)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-SliverPy also supports realtime events, which are pushed from the server to the client whenever an event occurs. Some of the more common events you'll likely
-be interested in are when a new session is created, or when a job starts/stops. The :class:`SliverClient` provides several helpful abstractions to cut down
-on event noise, by default you can register a callback to fire on every event or events specifically related to sessions, jobs, or canaries.
+The :class:`SliverClient` provides several helpful abstractions to cut down on event noise, by default you can register a callback to fire on every event or events 
+specifically related to sessions, jobs, or canaries.
 
 First, let's start with a basic callback that will be fired whenever any event occurs:
 
@@ -204,11 +214,11 @@ First, let's start with a basic callback that will be fired whenever any event o
 However, it's *generally* safe to call :class:`SliverClient` methods in parallel since the client does not maintain much state.
 
 
-Automatically Interact With New Sessions
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Automatically Interact With New Sessions (Threads)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A more practical example is to have our SliverPy program execute some logic/commands automatically whenever a new session is created on the server.
-To do this we can register a callback function with `.on()` for the specific `session-connected` event:
+To do this we can register a callback function with ``.on()`` for the specific ``session-connected`` event:
 
 .. code-block:: python
 
