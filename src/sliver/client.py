@@ -15,18 +15,27 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
 import grpc
+import threading
+import logging
+import functools
+from uuid import uuid4
+from collections import defaultdict
+from concurrent.futures import ThreadPoolExecutor
+from typing import Union, List, Dict, Callable, Iterator
+
 from .protobuf import common_pb2
 from .protobuf import client_pb2
 from .protobuf import sliver_pb2
 from .pb.rpcpb.services_pb2_grpc import SliverRPCStub
 from .config import SliverClientConfig
-from typing import Union, List
+
 
 
 KB = 1024
 MB = 1024 * KB
 GB = 1024 * MB
 TIMEOUT = 60
+
 
 
 class BaseClient(object):
@@ -41,6 +50,7 @@ class BaseClient(object):
         self.config = config
         self._channel: grpc.Channel = None
         self._stub: SliverRPCStub = None
+        self._log = logging.getLogger(self.__class__.__name__)
 
     def is_connected(self) -> bool:
         return self._channel is not None
@@ -69,7 +79,7 @@ class BaseClient(object):
 
 class BaseSession(object):
 
-    def __init__(self, session: client_pb2.Session, channel: grpc.Channel, timeout=TIMEOUT):
+    def __init__(self, session: client_pb2.Session, channel: grpc.Channel, timeout: int = TIMEOUT, logger: Union[logging.Handler, None] = None):
         self._channel = channel
         self._session = session
         self._stub = SliverRPCStub(channel)
@@ -1020,7 +1030,7 @@ class AsyncSliverClient(BaseClient):
         regenerate.ImpantName = implant_name
         return (await self._stub.Regenerate(regenerate, timeout=timeout))
 
-    async def implant_builds(self, implant_name: str, timeout=TIMEOUT) -> None:
+    async def delete_implant_build(self, implant_name: str, timeout=TIMEOUT) -> None:
         delete = client_pb2.DeleteReq()
         delete.Name = implant_name
         await self._stub.DeleteImplantBuild(delete, timeout=timeout)
@@ -1575,15 +1585,34 @@ class InteractiveSession(BaseSession):
 class SliverClient(BaseClient):
 
     '''
-    A Sliver Client (synchronous)
+    Sliver Client implementation (synchronous/threading)
     '''
 
+    # One lock for all of the callbacks, because I'm lazy, and it shouldn't matter
+    _on_callback_lock = threading.Lock()
+    _on_event: Dict[str, Callable] = {}
+
+    session_event_types = ["session-connected", "session-disconnected"]
+    _on_session: Dict[str, Callable] = {}
+
+    job_event_types = ["job-started", "job-stopped"]
+    _on_job: Dict[str, Callable] = {}
+
+    canary_event_types = ["canary"]
+    _on_canary: Dict[str, Callable] = {}
+
+    #
+    # > Helper Functions
+    #
     def connect(self) -> client_pb2.Version:
         '''Establish a connection to the Sliver server
 
         :return: Protobuf Version object, containing the server's version information
         :rtype: client_pb2.Version
-        '''     
+        '''
+        self._executor = ThreadPoolExecutor()
+        self._events_future = None
+        self._event_iterator = None
         self._channel = grpc.secure_channel(
             target=self.target,
             credentials=self.credentials,
@@ -1619,7 +1648,171 @@ class SliverClient(BaseClient):
             if session.ID == session_id:
                 return session
         return None
+
+    def _fire_on_event(self, event):
+        ''' Call "on_event" callbacks '''
+        for _, callback in self._on_event.items():
+            self._executor.submit(callback, event)
     
+    def _fire_on_session(self, event):
+        ''' Call "on_session" callbacks '''
+        for _, callback in self._on_session.items():
+            self._executor.submit(callback, event)
+    
+    def _fire_on_job(self, event):
+        ''' Call "on_job" callbacks '''
+        for _, callback in self._on_job.items():
+            self._executor.submit(callback, event)
+    
+    def _fire_on_canary(self, event):
+        ''' Call "on_canary" callbacks '''
+        for _, callback in self._on_canary.items():
+            self._executor.submit(callback, event)
+
+    def _event_watcher(self, event_iterator: Iterator[client_pb2.Event]) -> None:
+        ''' Iterates over streamed events until canceled, triggering registered callbacks '''
+        try:
+            for event in event_iterator:
+                if hasattr(event, 'EventType'):
+                    self._fire_on_event(event)
+                    if event.EventType in self.session_event_types:
+                        self._fire_on_session(event)
+                    if event.EventType in self.job_event_types:
+                        self._fire_on_job(event)
+                    if event.EventType in self.canary_event_types:
+                        self._fire_on_canary(event)
+                else:
+                    raise RuntimeError("Received Event without EventType")
+        except grpc.RpcError as err:
+            if err.code() == grpc.StatusCode.CANCELLED:
+                return
+            raise err
+        except Exception as err:
+            self._log.exception('Exception in thread pool (%s): %s', type(err), err)
+
+    def _init_events(self) -> None:
+        ''' Initializes the connection for streaming events using a thread pool '''
+        empty = common_pb2.Empty()
+        self._event_iterator = self._stub.Events(empty)
+        self._events_future = self._executor.submit(self._event_watcher, self._event_iterator)
+
+    def wait_for_events(self, timeout: Union[float, None] = None):
+        ''' Wait for thread pool future '''
+        self._events_future.result(timeout=timeout)
+    
+    def stop_events(self):
+        ''' Stop the event iterator (should clean up all threads) '''
+        if self._event_iterator is not None:
+            self._event_iterator.cancel()
+            self._event_iterator = None
+
+    def on_event(self, callback: Callable) -> str:
+        '''Register an on Event callback, the callback should accept one argument (the event object).
+        This callback will be triggered for any type of event.
+
+        :param callback: The callback function, which should accept one argument
+        :type callback: Callable
+        :return: The callback ID, which can be used to unregister the callback
+        :rtype: str
+        '''        
+        if self._events_future is None:
+            self._init_events()
+        callback_id = str(uuid4())
+        self._on_event[callback_id] = callback
+        return callback_id
+
+    def remove_on_event(self, callback_id: str) -> None:
+        '''Remove an on event callback function using it's callback ID
+
+        :param callback_id: The callback ID of the callback function to unregister
+        :type callback_id: str
+        '''        
+        if callback_id in self._on_event:
+            self._on_callback_lock.acquire(blocking=True)
+            del self._on_event[callback_id]
+            self._on_callback_lock.release()
+
+    def on_session(self, callback: Callable) -> str:
+        '''Register an on Session callback, the callback should accept one argument (the event object).
+        This callback will be triggered for any Session related type of event (e.g. when sessions connect/disconnect).
+
+        :param callback: The callback function, which should accept one argument
+        :type callback: Callable
+        :return: The callback ID, which can be used to unregister the callback
+        :rtype: str
+        '''
+        if self._events_future is None:
+            self._init_events()
+        callback_id = str(uuid4())
+        self._on_session[callback_id] = callback
+        return callback_id
+
+    def remove_on_session(self, callback_id: str) -> None:
+        '''Remove an on Session callback function using it's callback ID
+
+        :param callback_id: The callback ID of the callback function to unregister
+        :type callback_id: str
+        '''   
+        if callback_id in self._on_session:
+            self._on_callback_lock.acquire(blocking=True)
+            del self._on_session[callback_id]
+            self._on_callback_lock.release()
+
+    def on_job(self, callback: Callable) -> str:
+        '''Register an on Job callback, the callback should accept one argument (the event object).
+        This callback will be triggered for any Job related type of event (e.g. when jobs start/stop).
+
+        :param callback: The callback function, which should accept one argument
+        :type callback: Callable
+        :return: The callback ID, which can be used to unregister the callback
+        :rtype: str
+        '''
+        if self._events_future is None:
+            self._init_events()
+        callback_id = str(uuid4())
+        self._on_job[callback_id] = callback
+        return callback_id
+
+    def remove_on_job(self, callback_id: str) -> None:
+        '''Remove an on Job callback function using it's callback ID
+
+        :param callback_id: The callback ID of the callback function to unregister
+        :type callback_id: str
+        '''   
+        if callback_id in self._on_job:
+            self._on_callback_lock.acquire(blocking=True)
+            del self._on_job[callback_id]
+            self._on_callback_lock.release()
+
+    def on_canary(self, callback: Callable) -> str:
+        '''Register an on Canary callback, the callback should accept one argument (the event object).
+        This callback will be triggered for any Canary related type of event (e.g. when a DNS canary is burned).
+
+        :param callback: The callback function, which should accept one argument
+        :type callback: Callable
+        :return: The callback ID, which can be used to unregister the callback
+        :rtype: str
+        '''
+        if self._events_future is None:
+            self._init_events()
+        callback_id = str(uuid4())
+        self._on_canary[callback_id] = callback
+        return callback_id
+
+    def remove_on_canary(self, callback_id: str) -> None:
+        '''Remove an on Canary callback function using it's callback ID
+
+        :param callback_id: The callback ID of the callback function to unregister
+        :type callback_id: str
+        '''   
+        if callback_id in self._on_canary:
+            self._on_callback_lock.acquire(blocking=True)
+            del self._on_canary[callback_id]
+            self._on_callback_lock.release()
+
+    #
+    # > gRPC Methods
+    #
     def version(self, timeout=TIMEOUT) -> client_pb2.Version:
         '''Get server version information
 
@@ -1886,7 +2079,7 @@ class SliverClient(BaseClient):
         :type timeout: int, optional
         :return: Protobuf StagerListener object
         :rtype: client_pb2.StagerListener
-        '''  
+        '''
         stage = client_pb2.StagerListenerReq()
         stage.Protocol = protocol
         stage.Host = host
@@ -1906,44 +2099,136 @@ class SliverClient(BaseClient):
         :type timeout: int, optional
         :return: Protobuf Generate object containing the generated implant
         :rtype: client_pb2.Generate
-        '''  
+        '''
         req = client_pb2.GenerateReq()
         req.ImplantConfig = config
         return self._stub.Generate(req, timeout=timeout)
 
     def regenerate(self, implant_name: str, timeout=TIMEOUT) -> client_pb2.Generate:
+        '''Regenerate an implant binary given the implants "name"
+
+        :param implant_name: The name of the implant to regenerate
+        :type implant_name: str
+        :param timeout: gRPC timeout, defaults to 60 seconds
+        :type timeout: int, optional
+        :return: Protobuf Generate object
+        :rtype: client_pb2.Generate
+        '''
         regenerate = client_pb2.RegenerateReq()
         regenerate.ImpantName = implant_name
         return self._stub.Regenerate(regenerate, timeout=timeout)
 
-    def implant_builds(self, implant_name: str, timeout=TIMEOUT) -> None:
+    def implant_builds(self, timeout=TIMEOUT) -> Dict[str, client_pb2.ImplantConfig]:
+        '''Get information about historical implant builds
+
+        :return: Protobuf Map object, the keys are implant names the values are implant configs
+        :rtype: Dict[str, client_pb2.ImplantConfig]
+        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :type timeout: int, optional
+        '''
+        builds: client_pb2.ImplantBuilds = self._stub.ImplantBuilds(common_pb2.Empty(), timeout=timeout)
+        return builds.Configs
+
+    def delete_implant_build(self, implant_name: str, timeout=TIMEOUT) -> None:
+        '''Delete a historical implant build from the server by name
+
+        :param implant_name: The name of the implant build to delete
+        :type implant_name: str
+        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :type timeout: int, optional
+        '''        
         delete = client_pb2.DeleteReq()
         delete.Name = implant_name
         self._stub.DeleteImplantBuild(delete, timeout=timeout)
     
     def canaries(self, timeout=TIMEOUT) -> List[client_pb2.DNSCanary]:
+        '''Get a list of canaries that have been generated during implant builds, includes metadata about those canaries
+
+        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :type timeout: int, optional
+        :return: List of Protobuf DNSCanary objects
+        :rtype: List[client_pb2.DNSCanary]
+        '''        
         canaries = self._stub.Canaries(common_pb2.Empty(), timeout=timeout)
         return list(canaries.Canaries)
     
     def generate_wg_client_config(self, timeout=TIMEOUT) -> client_pb2.WGClientConfig:
+        '''Generate a new WireGuard client configuration files
+
+        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :type timeout: int, optional
+        :return: Protobuf WGClientConfig object
+        :rtype: client_pb2.WGClientConfig
+        '''        
         return self._stub.GenerateWGClientConfig(common_pb2.Empty(), timeout=timeout)
 
     def generate_unique_ip(self, timeout=TIMEOUT) -> client_pb2.UniqueWGIP:
+        '''Generate a unique IP address for use with WireGuard
+
+        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :type timeout: int, optional
+        :return: Protobuf UniqueWGIP object
+        :rtype: client_pb2.UniqueWGIP
+        '''        
         return self._stub.GenerateUniqueIP(common_pb2.Empty(), timeout=timeout)
     
     def implant_profiles(self, timeout=TIMEOUT) -> List[client_pb2.ImplantProfile]:
+        '''Get a list of all implant configuration profiles on the server
+
+        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :type timeout: int, optional
+        :return: List of Protobuf ImplantProfile objects
+        :rtype: List[client_pb2.ImplantProfile]
+        '''        
         profiles = self._stub.ImplantProfiles(common_pb2.Empty(), timeout=timeout)
         return list(profiles.Profiles)
     
-    def delete_implant_profile(self, profile_name, timeout=TIMEOUT) -> None:
+    def delete_implant_profile(self, profile_name: str, timeout=TIMEOUT) -> None:
+        '''Delete an implant configuration profile by name
+
+        :param profile_name: Name of the profile to delete
+        :type profile_name: str
+        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :type timeout: int, optional
+        '''        
         delete = client_pb2.DeleteReq()
         delete.Name = profile_name
         self._stub.DeleteImplantProfile(delete, timeout=timeout)
     
     def save_implant_profile(self, profile: client_pb2.ImplantProfile, timeout=TIMEOUT) -> client_pb2.ImplantProfile:
+        '''Save an implant configuration profile to the server
+
+        :param profile: An implant configuration profile (a Protobuf ImplantProfile object)
+        :type profile: client_pb2.ImplantProfile
+        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :type timeout: int, optional
+        :return: Protobuf ImplantProfile object
+        :rtype: client_pb2.ImplantProfile
+        '''        
         return self._stub.SaveImplantProfile(profile, timeout=timeout)
     
     def msf_stage(self, arch: str, format: str, host: str, port: int, os: str, protocol: client_pb2.StageProtocol, badchars=[], timeout=TIMEOUT) -> client_pb2.MsfStager:
+        '''Create a Metasploit (if available on the server) stager
+
+        :param arch: CPU architecture
+        :type arch: str
+        :param format: Binary format (MSF)
+        :type format: str
+        :param host: LHOST (MSF)
+        :type host: str
+        :param port: LPORT (MSF)
+        :type port: int
+        :param os: Operating System (MSF)
+        :type os: str
+        :param protocol: Starger protocol (Protobuf StageProtocol object)
+        :type protocol: client_pb2.StageProtocol
+        :param badchars: Bad characters, defaults to []
+        :type badchars: list, optional
+        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :type timeout: int, optional
+        :return: Protobuf MsfStager object
+        :rtype: client_pb2.MsfStager
+        '''        
         stagerReq = client_pb2.MsfStagerReq()
         stagerReq.Arch = arch
         stagerReq.Format = format
@@ -1955,6 +2240,19 @@ class SliverClient(BaseClient):
         return self._stub.MsfStage(stagerReq, timeout=timeout)
 
     def shellcode_rdi(self, data: bytes, function_name: str, arguments: str, timeout=TIMEOUT) -> client_pb2.ShellcodeRDI:
+        '''Generate sRDI shellcode
+
+        :param data: The DLL file to wrap in an sRDI shellcode loader
+        :type data: bytes
+        :param function_name: Function to call on the DLL
+        :type function_name: str
+        :param arguments: Arguments to the function called
+        :type arguments: str
+        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :type timeout: int, optional
+        :return: Protobuf ShellcodeRDI object
+        :rtype: client_pb2.ShellcodeRDI
+        '''        
         shellReq = client_pb2.ShellcodeRDIReq()
         shellReq.Data = data
         shellReq.FunctionName = function_name
