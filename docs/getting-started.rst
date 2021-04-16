@@ -157,3 +157,90 @@ To interact with a Sliver session we need to create an ``InteractiveSession`` ob
 **NOTE:** There are two "session" related objects the Protobuf ``client_pb2.Session`` object, which contains metadata about the sessions such as
 the session ID, the active C2 protocol, etc. and the ``InteractiveSession`` class, which is used to interact with the session (i.e., execute commands, etc).
 
+
+Basic Event Example
+^^^^^^^^^^^^^^^^^^^
+
+Foobar
+
+.. code-block:: python
+
+    #!/usr/bin/env python3
+
+    import os
+    from sliver import SliverClientConfig, SliverClient, client_pb2
+
+    CONFIG_DIR = os.path.join(os.path.expanduser("~"), ".sliver-client", "configs")
+    DEFAULT_CONFIG = os.path.join(CONFIG_DIR, "default.cfg")
+
+
+    def event_callback(event: client_pb2.Event):
+        ''' This callback function is executed whenever an event occurs '''
+        print('Event fired: %r' % event)
+
+    def main():
+        config = SliverClientConfig.parse_config_file(DEFAULT_CONFIG)
+        client = SliverClient(config)
+        client.connect()
+
+        client.on_event(event_callback)  # <-- Register callback function
+
+        try:
+            print('Ctrl+c to Exit\n\n')
+            client.wait_for_events()   # <-- Blocks main thread
+        except KeyboardInterrupt:
+            print('Attempting to cleanup thread pool ...')
+            client.stop_events()       # <-- Attempt to clean threads before exit
+
+    if __name__ == '__main__':
+        main()
+
+
+
+
+Automatically Interact With New Sessions Example
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Foobar
+
+.. code-block:: python
+
+    #!/usr/bin/env python3
+
+    import os
+    from sliver import SliverClientConfig, SliverClient, client_pb2
+
+    CONFIG_DIR = os.path.join(os.path.expanduser("~"), ".sliver-client", "configs")
+    DEFAULT_CONFIG = os.path.join(CONFIG_DIR, "default.cfg")
+
+
+    def auto_interact(client: SliverClient, session: client_pb2.Session):
+        ''' Interact with newly created session and perform some action '''
+        print('Automatically interacting with session #%d' % session.ID)
+        interact = client.interact(session.ID)
+        exec = interact.execute('whoami', [], True)
+        print('Exec %r' % exec)
+
+    def main():
+        ''' Client connect example '''
+        config = SliverClientConfig.parse_config_file(DEFAULT_CONFIG)
+        client = SliverClient(config)
+        client.connect()
+
+        def session_callback(event: client_pb2.Event):
+            ''' Callback is executed whenever a session connects/disconnects '''
+            if event.EventType != "session-connected":
+                return
+            auto_interact(client, event.Session)  # <-- Call auto_interact() only on 'session-connected'
+
+        client.on_session(session_callback)       # <-- Register callback function
+
+        try:
+            print('Waiting for sessions, Ctrl+c to Exit\n\n')
+            client.wait_for_events()
+        except KeyboardInterrupt:
+            print('\rAttempting to cleanup thread pool ...')
+            client.stop_events()
+
+    if __name__ == '__main__':
+        main()

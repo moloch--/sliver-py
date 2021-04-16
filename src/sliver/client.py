@@ -17,9 +17,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import grpc
 import threading
 import logging
-import functools
 from uuid import uuid4
-from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor
 from typing import Union, List, Dict, Callable, Iterator
 
@@ -368,7 +366,7 @@ class AsyncInteractiveSession(BaseSession):
         run_as = sliver_pb2.RunAsReq()
         run_as.Username = username
         run_as.ProcessName = process_name
-        run_as.Args = args
+        run_as.Args.extend(args)
         return (await self._stub.RunAs(self._request(run_as), timeout=self.timeout))
 
     async def impersonate(self, username: str) -> sliver_pb2.Impersonate:
@@ -553,7 +551,7 @@ class AsyncInteractiveSession(BaseSession):
         '''        
         exec = sliver_pb2.ExecuteReq()
         exec.Path = exe
-        exec.Args = args
+        exec.Args.extend(args)
         exec.Output = output
         return (await self._stub.Execute(self._request(exec), timeout=self.timeout))
     
@@ -571,7 +569,7 @@ class AsyncInteractiveSession(BaseSession):
         '''        
         execToken = sliver_pb2.ExecuteTokenReq()
         execToken.Path = exe
-        execToken.Args = args
+        execToken.Args.extend(args)
         execToken.Output = output
         return (await self._stub.ExecuteToken(self._request(execToken), timeout=self.timeout))
     
@@ -886,7 +884,7 @@ class AsyncSliverClient(BaseClient):
         :rtype: client_pb2.DNSListener
         '''
         dns = client_pb2.DNSListenerReq()
-        dns.Domains = domains
+        dns.Domains.extend(domains)
         dns.Canaries = canaries
         dns.Host = host
         dns.Port = port
@@ -1370,7 +1368,7 @@ class InteractiveSession(BaseSession):
         run_as = sliver_pb2.RunAsReq()
         run_as.Username = username
         run_as.ProcessName = process_name
-        run_as.Args = args
+        run_as.Args.extend(args)
         return self._stub.RunAs(self._request(run_as), timeout=self.timeout)
 
     def impersonate(self, username: str) -> sliver_pb2.Impersonate:
@@ -1555,7 +1553,7 @@ class InteractiveSession(BaseSession):
         '''
         exec = sliver_pb2.ExecuteReq()
         exec.Path = exe
-        exec.Args = args
+        exec.Args.extend(args)
         exec.Output = output
         return self._stub.Execute(self._request(exec), timeout=self.timeout)
     
@@ -1573,7 +1571,7 @@ class InteractiveSession(BaseSession):
         ''' 
         execToken = sliver_pb2.ExecuteTokenReq()
         execToken.Path = exe
-        execToken.Args = args
+        execToken.Args.extend(args)
         execToken.Output = output
         return self._stub.ExecuteToken(self._request(execToken), timeout=self.timeout)
     
@@ -2073,7 +2071,7 @@ class SliverClient(BaseClient):
         :rtype: client_pb2.DNSListener
         '''
         dns = client_pb2.DNSListenerReq()
-        dns.Domains = domains
+        dns.Domains.extend(domains)
         dns.Canaries = canaries
         dns.Host = host
         dns.Port = port
