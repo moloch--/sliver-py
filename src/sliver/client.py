@@ -1809,6 +1809,27 @@ class SliverClient(BaseClient):
             self._event_iterator.cancel()
             self._event_iterator = None
 
+    def on(self, event_type: str, callback: Callable) -> str:
+        '''Register a callback for a specific event, the callback should accept one argument (the event object).
+
+        :param event_type: The event type to trigger the callback
+        :type event_type: str
+        :param callback: The callback function, which should accept one argument
+        :type callback: Callable
+        :return: The callback ID, which can be used to unregister the callback
+        :rtype: str
+        '''        
+        if self._events_future is None:
+            self._init_events()
+        callback_id = str(uuid4())
+
+        def filtered_events(event: client_pb2.Event):
+            if event.EventType == event_type:
+                callback(event)
+
+        self._on_event[callback_id] = filtered_events
+        return callback_id
+
     def on_event(self, callback: Callable) -> str:
         '''Register an on Event callback, the callback should accept one argument (the event object).
         This callback will be triggered for any type of event.

@@ -158,10 +158,14 @@ To interact with a Sliver session we need to create an ``InteractiveSession`` ob
 the session ID, the active C2 protocol, etc. and the ``InteractiveSession`` class, which is used to interact with the session (i.e., execute commands, etc).
 
 
-Basic Event Example
-^^^^^^^^^^^^^^^^^^^
+Basic Event Example (Threads)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Foobar
+SliverPy also supports realtime events, which are pushed from the server to the client whenever an event occurs. Some of the more common events you'll likely
+be interested in are when a new session is created, or when a job starts/stops. The :class:`SliverClient` provides several helpful abstractions to cut down
+on event noise, by default you can register a callback to fire on every event or events specifically related to sessions, jobs, or canaries.
+
+First, let's start with a basic callback that will be fired whenever any event occurs:
 
 .. code-block:: python
 
@@ -196,12 +200,15 @@ Foobar
         main()
 
 
+**IMPORTANT:** Callback functions are executed in a thread pool and SliverPy provides NO THREAD SAFETY. You must implement any needed locks yourself.
+However, it's *generally* safe to call :class:`SliverClient` methods in parallel since the client does not maintain much state.
 
 
-Automatically Interact With New Sessions Example
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Automatically Interact With New Sessions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Foobar
+A more practical example is to have our SliverPy program execute some logic/commands automatically whenever a new session is created on the server.
+To do this we can register a callback function with `.on()` for the specific `session-connected` event:
 
 .. code-block:: python
 
@@ -228,19 +235,25 @@ Foobar
         client.connect()
 
         def session_callback(event: client_pb2.Event):
-            ''' Callback is executed whenever a session connects/disconnects '''
-            if event.EventType != "session-connected":
-                return
-            auto_interact(client, event.Session)  # <-- Call auto_interact() only on 'session-connected'
+            ''' Pass client amd event.Session to auto_interact() '''
+            auto_interact(client, event.Session)
 
-        client.on_session(session_callback)       # <-- Register callback function
+        # Register callback function
+        client.on("session-connected", session_callback)
 
         try:
             print('Waiting for sessions, Ctrl+c to Exit\n\n')
-            client.wait_for_events()
+            client.wait_for_events()  # <-- Block main thread
         except KeyboardInterrupt:
             print('\rAttempting to cleanup thread pool ...')
             client.stop_events()
 
     if __name__ == '__main__':
         main()
+
+
+
+Basic Event Example (Async)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+TODO
