@@ -1026,38 +1026,130 @@ class AsyncSliverClient(BaseClient):
         return (await self._stub.Generate(req, timeout=timeout))
 
     async def regenerate(self, implant_name: str, timeout=TIMEOUT) -> client_pb2.Generate:
+        '''Regenerate an implant binary given the implants "name"
+
+        :param implant_name: The name of the implant to regenerate
+        :type implant_name: str
+        :param timeout: gRPC timeout, defaults to 60 seconds
+        :type timeout: int, optional
+        :return: Protobuf Generate object
+        :rtype: client_pb2.Generate
+        '''
         regenerate = client_pb2.RegenerateReq()
         regenerate.ImpantName = implant_name
         return (await self._stub.Regenerate(regenerate, timeout=timeout))
 
+    async def implant_builds(self, timeout=TIMEOUT) -> Dict[str, client_pb2.ImplantConfig]:
+        '''Get information about historical implant builds
+
+        :return: Protobuf Map object, the keys are implant names the values are implant configs
+        :rtype: Dict[str, client_pb2.ImplantConfig]
+        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :type timeout: int, optional
+        '''
+        builds: client_pb2.ImplantBuilds = await self._stub.ImplantBuilds(common_pb2.Empty(), timeout=timeout)
+        return builds.Configs
+
     async def delete_implant_build(self, implant_name: str, timeout=TIMEOUT) -> None:
+        '''Delete a historical implant build from the server by name
+
+        :param implant_name: The name of the implant build to delete
+        :type implant_name: str
+        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :type timeout: int, optional
+        '''  
         delete = client_pb2.DeleteReq()
         delete.Name = implant_name
         await self._stub.DeleteImplantBuild(delete, timeout=timeout)
     
     async def canaries(self, timeout=TIMEOUT) -> List[client_pb2.DNSCanary]:
+        '''Get a list of canaries that have been generated during implant builds, includes metadata about those canaries
+
+        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :type timeout: int, optional
+        :return: List of Protobuf DNSCanary objects
+        :rtype: List[client_pb2.DNSCanary]
+        '''  
         canaries = await self._stub.Canaries(common_pb2.Empty(), timeout=timeout)
         return list(canaries.Canaries)
     
     async def generate_wg_client_config(self, timeout=TIMEOUT) -> client_pb2.WGClientConfig:
+        '''Generate a new WireGuard client configuration files
+
+        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :type timeout: int, optional
+        :return: Protobuf WGClientConfig object
+        :rtype: client_pb2.WGClientConfig
+        '''
         return (await self._stub.GenerateWGClientConfig(common_pb2.Empty(), timeout=timeout))
 
     async def generate_unique_ip(self, timeout=TIMEOUT) -> client_pb2.UniqueWGIP:
+        '''Generate a unique IP address for use with WireGuard
+
+        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :type timeout: int, optional
+        :return: Protobuf UniqueWGIP object
+        :rtype: client_pb2.UniqueWGIP
+        ''' 
         return (await self._stub.GenerateUniqueIP(common_pb2.Empty(), timeout=timeout))
     
     async def implant_profiles(self, timeout=TIMEOUT) -> List[client_pb2.ImplantProfile]:
+        '''Get a list of all implant configuration profiles on the server
+
+        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :type timeout: int, optional
+        :return: List of Protobuf ImplantProfile objects
+        :rtype: List[client_pb2.ImplantProfile]
+        '''
         profiles = await self._stub.ImplantProfiles(common_pb2.Empty(), timeout=timeout)
         return list(profiles.Profiles)
     
     async def delete_implant_profile(self, profile_name, timeout=TIMEOUT) -> None:
+        '''Delete an implant configuration profile by name
+
+        :param profile_name: Name of the profile to delete
+        :type profile_name: str
+        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :type timeout: int, optional
+        ''' 
         delete = client_pb2.DeleteReq()
         delete.Name = profile_name
         await self._stub.DeleteImplantProfile(delete, timeout=timeout)
     
     async def save_implant_profile(self, profile: client_pb2.ImplantProfile, timeout=TIMEOUT) -> client_pb2.ImplantProfile:
+        '''Save an implant configuration profile to the server
+
+        :param profile: An implant configuration profile (a Protobuf ImplantProfile object)
+        :type profile: client_pb2.ImplantProfile
+        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :type timeout: int, optional
+        :return: Protobuf ImplantProfile object
+        :rtype: client_pb2.ImplantProfile
+        ''' 
         return (await self._stub.SaveImplantProfile(profile, timeout=timeout))
     
     async def msf_stage(self, arch: str, format: str, host: str, port: int, os: str, protocol: client_pb2.StageProtocol, badchars=[], timeout=TIMEOUT) -> client_pb2.MsfStager:
+        '''Create a Metasploit (if available on the server) stager
+
+        :param arch: CPU architecture
+        :type arch: str
+        :param format: Binary format (MSF)
+        :type format: str
+        :param host: LHOST (MSF)
+        :type host: str
+        :param port: LPORT (MSF)
+        :type port: int
+        :param os: Operating System (MSF)
+        :type os: str
+        :param protocol: Starger protocol (Protobuf StageProtocol object)
+        :type protocol: client_pb2.StageProtocol
+        :param badchars: Bad characters, defaults to []
+        :type badchars: list, optional
+        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :type timeout: int, optional
+        :return: Protobuf MsfStager object
+        :rtype: client_pb2.MsfStager
+        '''
         stagerReq = client_pb2.MsfStagerReq()
         stagerReq.Arch = arch
         stagerReq.Format = format
@@ -1069,6 +1161,19 @@ class AsyncSliverClient(BaseClient):
         return (await self._stub.MsfStage(stagerReq, timeout=timeout))
 
     async def shellcode_rdi(self, data: bytes, function_name: str, arguments: str, timeout=TIMEOUT) -> client_pb2.ShellcodeRDI:
+        '''Generate sRDI shellcode
+
+        :param data: The DLL file to wrap in an sRDI shellcode loader
+        :type data: bytes
+        :param function_name: Function to call on the DLL
+        :type function_name: str
+        :param arguments: Arguments to the function called
+        :type arguments: str
+        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :type timeout: int, optional
+        :return: Protobuf ShellcodeRDI object
+        :rtype: client_pb2.ShellcodeRDI
+        '''
         shellReq = client_pb2.ShellcodeRDIReq()
         shellReq.Data = data
         shellReq.FunctionName = function_name
