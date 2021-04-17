@@ -16,11 +16,10 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import grpc
 import logging
-import asyncio
 import threading
 from uuid import uuid4
 from concurrent.futures import ThreadPoolExecutor
-from typing import Coroutine, Union, List, Dict, Callable, Iterator
+from typing import Generator, Union, List, Dict, Callable, Iterator
 
 from .protobuf import common_pb2
 from .protobuf import client_pb2
@@ -720,7 +719,7 @@ class AsyncSliverClient(BaseClient):
             return AsyncInteractiveSession(session, self._channel, timeout)
 
     async def session_by_id(self, session_id: int, timeout=TIMEOUT) -> Union[client_pb2.Session, None]:
-        '''Get the session information from an numeric session ID.
+        '''Get the session information from an numeric session ID
 
         :param session_id: Numeric session ID
         :type session_id: int
@@ -734,11 +733,23 @@ class AsyncSliverClient(BaseClient):
                 return session
         return None
 
-    async def events(self):
+    async def events(self) -> Generator[client_pb2.Event]:
+        '''All events
+
+        :yield: A stream of events
+        :rtype: client_pb2.Event
+        '''
         async for event in self._stub.Events(common_pb2.Empty()):
             yield event
 
-    async def on(self, event_types: Union[str, List[str]]):
+    async def on(self, event_types: Union[str, List[str]]) -> Generator[client_pb2.Event]:
+        '''Iterate on a specific event or list of events
+
+        :param event_types: An event type or list of event types
+        :type event_types: Union[str, List[str]]
+        :yield: A stream of events of the given type(s)
+        :rtype: client_pb2.Event
+        '''        
         if isinstance(event_types, str):
             event_types = [event_types]
         async for event in self.events():

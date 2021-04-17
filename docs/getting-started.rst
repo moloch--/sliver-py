@@ -166,11 +166,11 @@ be interested in are when a new session is created or when a job starts/stops.
 
 The :class:`SliverClient` and :class:`AsyncSliverClient` implement these real time events using threads and ``asyncio`` respectfully. When to use each is beyond the scope
 of this document but I recommend `this presentation <https://www.youtube.com/watch?v=9zinZmE3Ogk>`_ by Raymond Hettinger if you're not familiar with strengths/weaknesses
-of each approach.
+of each approach. Realtime events are also one of the only features that work differently in :class:`SliverClient` vs :class:`AsyncSliverClient`.
 
 
-Basic Event Example (Threads)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Event Example (Threads)
+^^^^^^^^^^^^^^^^^^^^^^^
 
 The :class:`SliverClient` provides several helpful abstractions to cut down on event noise, by default you can register a callback to fire on every event or events 
 specifically related to sessions, jobs, or canaries.
@@ -263,10 +263,16 @@ To do this we can register a callback function with ``.on()`` for the specific `
 
 
 
-Basic Event Example (Async)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Automatically Interact With New Sessions (Async)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Realtime events in :class:`AsyncSliverClient` work differently than in :class:`SliverClient`.
 
+Instead of callbacks, ``.on()`` returns an async generator, which can be iterated over. The async version of
+``.on()`` accepts a string or a list of strings to filter events. Additionally, ``.events()`` can be used to
+obtain a generator that will yield all events.
+
+Here is an example of using ``.on()`` to automatically interact with new sessions when they connect:
 
 .. code-block:: python
 
