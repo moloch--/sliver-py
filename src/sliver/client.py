@@ -1241,7 +1241,7 @@ class AsyncSliverClient(BaseClient):
 
         :return: Protobuf Map object, the keys are implant names the values are implant configs
         :rtype: Dict[str, client_pb2.ImplantConfig]
-        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         '''
         builds: client_pb2.ImplantBuilds = await self._stub.ImplantBuilds(common_pb2.Empty(), timeout=timeout)
@@ -1252,7 +1252,7 @@ class AsyncSliverClient(BaseClient):
 
         :param implant_name: The name of the implant build to delete
         :type implant_name: str
-        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         '''  
         delete = client_pb2.DeleteReq()
@@ -1262,7 +1262,7 @@ class AsyncSliverClient(BaseClient):
     async def canaries(self, timeout=TIMEOUT) -> List[client_pb2.DNSCanary]:
         '''Get a list of canaries that have been generated during implant builds, includes metadata about those canaries
 
-        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         :return: List of Protobuf DNSCanary objects
         :rtype: List[client_pb2.DNSCanary]
@@ -1273,7 +1273,7 @@ class AsyncSliverClient(BaseClient):
     async def generate_wg_client_config(self, timeout=TIMEOUT) -> client_pb2.WGClientConfig:
         '''Generate a new WireGuard client configuration files
 
-        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         :return: Protobuf WGClientConfig object
         :rtype: client_pb2.WGClientConfig
@@ -1283,7 +1283,7 @@ class AsyncSliverClient(BaseClient):
     async def generate_unique_ip(self, timeout=TIMEOUT) -> client_pb2.UniqueWGIP:
         '''Generate a unique IP address for use with WireGuard
 
-        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         :return: Protobuf UniqueWGIP object
         :rtype: client_pb2.UniqueWGIP
@@ -1293,7 +1293,7 @@ class AsyncSliverClient(BaseClient):
     async def implant_profiles(self, timeout=TIMEOUT) -> List[client_pb2.ImplantProfile]:
         '''Get a list of all implant configuration profiles on the server
 
-        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         :return: List of Protobuf ImplantProfile objects
         :rtype: List[client_pb2.ImplantProfile]
@@ -1306,7 +1306,7 @@ class AsyncSliverClient(BaseClient):
 
         :param profile_name: Name of the profile to delete
         :type profile_name: str
-        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         ''' 
         delete = client_pb2.DeleteReq()
@@ -1318,7 +1318,7 @@ class AsyncSliverClient(BaseClient):
 
         :param profile: An implant configuration profile (a Protobuf ImplantProfile object)
         :type profile: client_pb2.ImplantProfile
-        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         :return: Protobuf ImplantProfile object
         :rtype: client_pb2.ImplantProfile
@@ -1342,7 +1342,7 @@ class AsyncSliverClient(BaseClient):
         :type protocol: client_pb2.StageProtocol
         :param badchars: Bad characters, defaults to []
         :type badchars: list, optional
-        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         :return: Protobuf MsfStager object
         :rtype: client_pb2.MsfStager
@@ -1366,7 +1366,7 @@ class AsyncSliverClient(BaseClient):
         :type function_name: str
         :param arguments: Arguments to the function called
         :type arguments: str
-        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         :return: Protobuf ShellcodeRDI object
         :rtype: client_pb2.ShellcodeRDI
@@ -1380,7 +1380,7 @@ class AsyncSliverClient(BaseClient):
     async def websites(self, timeout=TIMEOUT) -> List[client_pb2.Website]:
         '''Get a list of websites
 
-        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         :return: List of Protobuf Website objects
         :rtype: List[client_pb2.Website]
@@ -1393,7 +1393,7 @@ class AsyncSliverClient(BaseClient):
 
         :param website: The updated Protobuf Website object
         :type website: client_pb2.Website
-        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         :return: Protobuf Website object
         :rtype: client_pb2.Website
@@ -1405,7 +1405,7 @@ class AsyncSliverClient(BaseClient):
 
         :param name: The name of the website to remove
         :type name: str
-        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         '''
         website = client_pb2.Website()
@@ -1423,7 +1423,7 @@ class AsyncSliverClient(BaseClient):
         :type content_type: str
         :param content: The raw response content
         :type content: bytes
-        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         :return: Protobuf Website object
         :rtype: client_pb2.Website
@@ -1449,7 +1449,7 @@ class AsyncSliverClient(BaseClient):
         :type content_type: str
         :param content: The raw response content
         :type content: bytes
-        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         :return: Protobuf Website object
         :rtype: client_pb2.Website
@@ -1471,7 +1471,7 @@ class AsyncSliverClient(BaseClient):
         :type name: str
         :param paths: A list of paths to content that should be removed from the website
         :type paths: List[str]
-        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         :return: Protobuf Website object
         :rtype: client_pb2.Website
@@ -2722,7 +2722,7 @@ class SliverClient(BaseClient):
 
         :return: Protobuf Map object, the keys are implant names the values are implant configs
         :rtype: Dict[str, client_pb2.ImplantConfig]
-        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         '''
         builds: client_pb2.ImplantBuilds = self._stub.ImplantBuilds(common_pb2.Empty(), timeout=timeout)
@@ -2733,7 +2733,7 @@ class SliverClient(BaseClient):
 
         :param implant_name: The name of the implant build to delete
         :type implant_name: str
-        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         '''        
         delete = client_pb2.DeleteReq()
@@ -2743,7 +2743,7 @@ class SliverClient(BaseClient):
     def canaries(self, timeout=TIMEOUT) -> List[client_pb2.DNSCanary]:
         '''Get a list of canaries that have been generated during implant builds, includes metadata about those canaries
 
-        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         :return: List of Protobuf DNSCanary objects
         :rtype: List[client_pb2.DNSCanary]
@@ -2754,7 +2754,7 @@ class SliverClient(BaseClient):
     def generate_wg_client_config(self, timeout=TIMEOUT) -> client_pb2.WGClientConfig:
         '''Generate a new WireGuard client configuration files
 
-        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         :return: Protobuf WGClientConfig object
         :rtype: client_pb2.WGClientConfig
@@ -2764,7 +2764,7 @@ class SliverClient(BaseClient):
     def generate_unique_ip(self, timeout=TIMEOUT) -> client_pb2.UniqueWGIP:
         '''Generate a unique IP address for use with WireGuard
 
-        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         :return: Protobuf UniqueWGIP object
         :rtype: client_pb2.UniqueWGIP
@@ -2774,7 +2774,7 @@ class SliverClient(BaseClient):
     def implant_profiles(self, timeout=TIMEOUT) -> List[client_pb2.ImplantProfile]:
         '''Get a list of all implant configuration profiles on the server
 
-        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         :return: List of Protobuf ImplantProfile objects
         :rtype: List[client_pb2.ImplantProfile]
@@ -2787,7 +2787,7 @@ class SliverClient(BaseClient):
 
         :param profile_name: Name of the profile to delete
         :type profile_name: str
-        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         '''        
         delete = client_pb2.DeleteReq()
@@ -2799,7 +2799,7 @@ class SliverClient(BaseClient):
 
         :param profile: An implant configuration profile (a Protobuf ImplantProfile object)
         :type profile: client_pb2.ImplantProfile
-        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         :return: Protobuf ImplantProfile object
         :rtype: client_pb2.ImplantProfile
@@ -2823,7 +2823,7 @@ class SliverClient(BaseClient):
         :type protocol: client_pb2.StageProtocol
         :param badchars: Bad characters, defaults to []
         :type badchars: list, optional
-        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         :return: Protobuf MsfStager object
         :rtype: client_pb2.MsfStager
@@ -2847,7 +2847,7 @@ class SliverClient(BaseClient):
         :type function_name: str
         :param arguments: Arguments to the function called
         :type arguments: str
-        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         :return: Protobuf ShellcodeRDI object
         :rtype: client_pb2.ShellcodeRDI
@@ -2861,7 +2861,7 @@ class SliverClient(BaseClient):
     def websites(self, timeout=TIMEOUT) -> List[client_pb2.Website]:
         '''Get a list of websites
 
-        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         :return: List of Protobuf Website objects
         :rtype: List[client_pb2.Website]
@@ -2874,7 +2874,7 @@ class SliverClient(BaseClient):
 
         :param website: The updated Protobuf Website object
         :type website: client_pb2.Website
-        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         :return: Protobuf Website object
         :rtype: client_pb2.Website
@@ -2886,7 +2886,7 @@ class SliverClient(BaseClient):
 
         :param name: The name of the website to remove
         :type name: str
-        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         '''
         website = client_pb2.Website()
@@ -2904,7 +2904,7 @@ class SliverClient(BaseClient):
         :type content_type: str
         :param content: The raw response content
         :type content: bytes
-        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         :return: Protobuf Website object
         :rtype: client_pb2.Website
@@ -2930,7 +2930,7 @@ class SliverClient(BaseClient):
         :type content_type: str
         :param content: The raw response content
         :type content: bytes
-        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         :return: Protobuf Website object
         :rtype: client_pb2.Website
@@ -2952,7 +2952,7 @@ class SliverClient(BaseClient):
         :type name: str
         :param paths: A list of paths to content that should be removed from the website
         :type paths: List[str]
-        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         :return: Protobuf Website object
         :rtype: client_pb2.Website
