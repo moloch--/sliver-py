@@ -172,7 +172,7 @@ Events are identified by an "event type," which is just a string set by the prod
 allows events to be very dynamic, however this also means there is no central authority for every event type. I 
 recommend always filtering on expected event types. The data included in an event also depends on whatever produced
 the event, so you should always check that an attribute exists before accessing that attribute (with the exception of 
-``event.EventType`` which must exist.
+``event.EventType`` which must exist).
 
 Here is a non exhaustive list of event types:
 
@@ -298,6 +298,10 @@ To do this we can register a callback function with ``.on()`` for the specific `
         main()
 
 
+A cleaner approach would be to create a Python ``class`` to avoid needing the nested callback definition
+to pass the :class:`SliverClient` instance to ``auth_interact()`` but this is left as an exercise for the
+reader.
+
 
 Automatically Interact With New Sessions (Async)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -336,3 +340,7 @@ Here is an example of using ``.on()`` to automatically interact with new session
     if __name__ == '__main__':
         loop = asyncio.get_event_loop()
         loop.run_until_complete(main())
+
+
+SliverPy should integrate well with any framework that supports ``asyncio``, but doing so is left
+as an exercise for the reader.

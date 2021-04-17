@@ -1204,7 +1204,111 @@ class AsyncSliverClient(BaseClient):
         shellReq.FunctionName = function_name
         shellReq.Arguments = arguments
         return (await self._stub.ShellcodeRDI(shellReq, timeout=timeout))
+    
+    async def websites(self, timeout=TIMEOUT) -> List[client_pb2.Website]:
+        '''Get a list of websites
 
+        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :type timeout: int, optional
+        :return: List of Protobuf Website objects
+        :rtype: List[client_pb2.Website]
+        '''        
+        websites = await self._stub.Websites(common_pb2.Empty(), timeout=timeout)
+        return list(websites.Websites)
+    
+    async def website(self, website: client_pb2.Website, timeout=TIMEOUT) -> client_pb2.Website:
+        '''Update an entire website object on the server
+
+        :param website: The updated Protobuf Website object
+        :type website: client_pb2.Website
+        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :type timeout: int, optional
+        :return: Protobuf Website object
+        :rtype: client_pb2.Website
+        '''        
+        return (await self._stub.Websites(website, timeout=timeout))
+
+    async def website_remove(self, name: str, timeout=TIMEOUT) -> None:
+        '''Remove an entire website and its content
+
+        :param name: The name of the website to remove
+        :type name: str
+        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :type timeout: int, optional
+        '''
+        website = client_pb2.Website()
+        website.Name = name
+        await self._stub.Websites(website, timeout=timeout)
+
+    async def website_add_content(self, name: str, web_path: str, content_type: str, content: bytes, timeout=TIMEOUT) -> client_pb2.Website:
+        '''Add content to a specific website
+
+        :param name: Name of the website to add the content to
+        :type name: str
+        :param web_path: Bind content to web path
+        :type web_path: str
+        :param content_type: Specify the Content-type response HTTP header
+        :type content_type: str
+        :param content: The raw response content
+        :type content: bytes
+        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :type timeout: int, optional
+        :return: Protobuf Website object
+        :rtype: client_pb2.Website
+        '''        
+        web = client_pb2.WebContent()
+        web.Path = web_path
+        web.ContentType = content_type
+        web.Content = content
+        web.Size = len(content)
+        add = client_pb2.WebsiteAddContent()
+        add.Name = name
+        add.Content[web_path] = web
+        return (await self._stub.WebsiteAddContent(add, timeout=timeout))
+
+    async def website_update_content(self, name: str, web_path: str, content_type: str, content: bytes, timeout=TIMEOUT) -> client_pb2.Website:
+        '''Update content on a specific website / web path
+
+        :param name: Name of the website to add the content to
+        :type name: str
+        :param web_path: Bind content to web path
+        :type web_path: str
+        :param content_type: Specify the Content-type response HTTP header
+        :type content_type: str
+        :param content: The raw response content
+        :type content: bytes
+        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :type timeout: int, optional
+        :return: Protobuf Website object
+        :rtype: client_pb2.Website
+        '''        
+        web = client_pb2.WebContent()
+        web.Path = web_path
+        web.ContentType = content_type
+        web.Content = content
+        web.Size = len(content)
+        add = client_pb2.WebsiteAddContent()
+        add.Name = name
+        add.Content[web_path] = web
+        return (await self._stub.WebsiteUpdateContent(add, timeout=timeout))
+
+    async def website_rm_content(self, name: str, paths: List[str], timeout=TIMEOUT) -> client_pb2.Website:
+        '''Remove content from a specific website
+
+        :param name: The name of the website from which to remove the content
+        :type name: str
+        :param paths: A list of paths to content that should be removed from the website
+        :type paths: List[str]
+        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :type timeout: int, optional
+        :return: Protobuf Website object
+        :rtype: client_pb2.Website
+        '''        
+        web = client_pb2.WebsiteRemoveContent()
+        web.Name = name
+        web.Paths.extend(paths)
+        return (await self._stub.WebsiteRemoveContent(web, timeout=timeout))
+    
 
 class InteractiveSession(BaseSession):
 
@@ -2409,3 +2513,107 @@ class SliverClient(BaseClient):
         shellReq.FunctionName = function_name
         shellReq.Arguments = arguments
         return self._stub.ShellcodeRDI(shellReq, timeout=timeout)
+
+    def websites(self, timeout=TIMEOUT) -> List[client_pb2.Website]:
+        '''Get a list of websites
+
+        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :type timeout: int, optional
+        :return: List of Protobuf Website objects
+        :rtype: List[client_pb2.Website]
+        '''        
+        websites = self._stub.Websites(common_pb2.Empty(), timeout=timeout)
+        return list(websites.Websites)
+    
+    def website(self, website: client_pb2.Website, timeout=TIMEOUT) -> client_pb2.Website:
+        '''Update an entire website object on the server
+
+        :param website: The updated Protobuf Website object
+        :type website: client_pb2.Website
+        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :type timeout: int, optional
+        :return: Protobuf Website object
+        :rtype: client_pb2.Website
+        '''        
+        return self._stub.Websites(website, timeout=timeout)
+
+    def website_remove(self, name: str, timeout=TIMEOUT) -> None:
+        '''Remove an entire website and its content
+
+        :param name: The name of the website to remove
+        :type name: str
+        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :type timeout: int, optional
+        '''
+        website = client_pb2.Website()
+        website.Name = name
+        self._stub.Websites(website, timeout=timeout)
+
+    def website_add_content(self, name: str, web_path: str, content_type: str, content: bytes, timeout=TIMEOUT) -> client_pb2.Website:
+        '''Add content to a specific website
+
+        :param name: Name of the website to add the content to
+        :type name: str
+        :param web_path: Bind content to web path
+        :type web_path: str
+        :param content_type: Specify the Content-type response HTTP header
+        :type content_type: str
+        :param content: The raw response content
+        :type content: bytes
+        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :type timeout: int, optional
+        :return: Protobuf Website object
+        :rtype: client_pb2.Website
+        '''        
+        web = client_pb2.WebContent()
+        web.Path = web_path
+        web.ContentType = content_type
+        web.Content = content
+        web.Size = len(content)
+        add = client_pb2.WebsiteAddContent()
+        add.Name = name
+        add.Content[web_path] = web
+        return self._stub.WebsiteAddContent(add, timeout=timeout)
+
+    def website_update_content(self, name: str, web_path: str, content_type: str, content: bytes, timeout=TIMEOUT) -> client_pb2.Website:
+        '''Update content on a specific website / web path
+
+        :param name: Name of the website to add the content to
+        :type name: str
+        :param web_path: Bind content to web path
+        :type web_path: str
+        :param content_type: Specify the Content-type response HTTP header
+        :type content_type: str
+        :param content: The raw response content
+        :type content: bytes
+        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :type timeout: int, optional
+        :return: Protobuf Website object
+        :rtype: client_pb2.Website
+        '''        
+        web = client_pb2.WebContent()
+        web.Path = web_path
+        web.ContentType = content_type
+        web.Content = content
+        web.Size = len(content)
+        add = client_pb2.WebsiteAddContent()
+        add.Name = name
+        add.Content[web_path] = web
+        return self._stub.WebsiteUpdateContent(add, timeout=timeout)
+
+    def website_rm_content(self, name: str, paths: List[str], timeout=TIMEOUT) -> client_pb2.Website:
+        '''Remove content from a specific website
+
+        :param name: The name of the website from which to remove the content
+        :type name: str
+        :param paths: A list of paths to content that should be removed from the website
+        :type paths: List[str]
+        :param timeout: gRPC timeout, defaults to TIMEOUT
+        :type timeout: int, optional
+        :return: Protobuf Website object
+        :rtype: client_pb2.Website
+        '''        
+        web = client_pb2.WebsiteRemoveContent()
+        web.Name = name
+        web.Paths.extend(paths)
+        return self._stub.WebsiteRemoveContent(web, timeout=timeout)
