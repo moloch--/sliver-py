@@ -281,7 +281,7 @@ To do this we can register a callback function with ``.on()`` for the specific `
         client.connect()
 
         def session_callback(event: client_pb2.Event):
-            ''' Pass client amd event.Session to auto_interact() '''
+            ''' Pass client and event.Session to auto_interact() '''
             auto_interact(client, event.Session)
 
         # Register callback function

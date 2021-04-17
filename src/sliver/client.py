@@ -574,6 +574,21 @@ class AsyncInteractiveSession(BaseSession):
         return (await self._stub.ExecuteToken(self._request(execToken), timeout=self.timeout))
     
     async def sideload(self, data: bytes, process_name: str, arguments: str, entry_point: str, kill: bool) -> sliver_pb2.Sideload:
+        '''Sideload a shared library into a remote process using a platform specific in-memory loader (Windows, MacOS, Linux only)
+
+        :param data: Shared library raw bytes
+        :type data: bytes
+        :param process_name: Process name to sideload library into
+        :type process_name: str
+        :param arguments: Arguments to the shared library
+        :type arguments: str
+        :param entry_point: Entrypoint of the shared library
+        :type entry_point: str
+        :param kill: Kill normal execution of the process when side loading the shared library
+        :type kill: bool
+        :return: Protobuf Sideload object
+        :rtype: sliver_pb2.Sideload
+        '''        
         side = sliver_pb2.SideloadReq()
         side.Data = data
         side.ProcessName = process_name
@@ -583,6 +598,21 @@ class AsyncInteractiveSession(BaseSession):
         return (await self._stub.Sideload(self._request(side), timeout=self.timeout))
     
     async def spawn_dll(self, data: bytes, process_name: str, arguments: str, entry_point: str, kill: bool) -> sliver_pb2.SpawnDll:
+        '''Spawn a DLL on the remote system from memory (Windows only)
+
+        :param data: DLL raw bytes
+        :type data: bytes
+        :param process_name: Process name to spawn DLL into
+        :type process_name: str
+        :param arguments: Arguments to the DLL
+        :type arguments: str
+        :param entry_point: Entrypoint of the DLL
+        :type entry_point: str
+        :param kill: Kill normal execution of the remote process when spawing the DLL
+        :type kill: bool
+        :return: Protobuf SpawnDll object
+        :rtype: sliver_pb2.SpawnDll
+        '''        
         spawn = sliver_pb2.InvokeSpawnDllReq()
         spawn.Data = data
         spawn.ProcessName = process_name
@@ -592,23 +622,62 @@ class AsyncInteractiveSession(BaseSession):
         return (await self._stub.SpawnDll(self._request(spawn), timeout=self.timeout))
     
     async def screenshot(self) -> sliver_pb2.Screenshot:
+        '''Take a screenshot of the remote system, screenshot data is PNG formatted
+
+        :return: Protobuf Screenshot object
+        :rtype: sliver_pb2.Screenshot
+        '''        
         return (await self._stub.Screenshot(self._request(sliver_pb2.ScreenshotReq()), timeout=self.timeout))
     
     async def named_pipes(self, pipe_name: str) -> sliver_pb2.NamedPipes:
+        '''Create a named pipe C2 pivot on the remote system (Windows only)
+
+        :param pipe_name: Name of the named pipe pivot too create
+        :type pipe_name: str
+        :return: Protobuf NamesPipes object
+        :rtype: sliver_pb2.NamedPipes
+        '''        
         pipe = sliver_pb2.NamedPipesReq()
         pipe.PipeName = pipe_name
         return (await self._stub.NamedPipes(self._request(pipe), timeout=self.timeout))
 
     async def tcp_pivot_listener(self, address: str) -> sliver_pb2.TCPPivot:
+        '''Create a C2 TCP pivot listener on the remote system (used for pivoting C2 only)
+
+        :param address: Bind address
+        :type address: str
+        :return: Protobuf TCPPivot object
+        :rtype: sliver_pb2.TCPPivot
+        '''        
         pivot = sliver_pb2.TCPPivotReq()
         pivot.Address = address
         return (await self._stub.TCPListener(self._request(pivot), timeout=self.timeout))
     
     async def pivots(self) -> List[sliver_pb2.PivotEntry]:
+        '''List C2 pivots
+
+        :return: [description]
+        :rtype: List[sliver_pb2.PivotEntry]
+        '''        
         pivots = await self._stub.ListPivots(self._request(sliver_pb2.PivotListReq()), timeout=self.timeout)
         return list(pivots.Entries)
 
     async def start_service(self, name: str, description: str, exe: str, hostname: str, arguments: str) -> sliver_pb2.ServiceInfo:
+        '''Create and start a Windows service (Windows only)
+
+        :param name: Name of the service
+        :type name: str
+        :param description: Service description
+        :type description: str
+        :param exe: Path to the service .exe file
+        :type exe: str
+        :param hostname: Hostname
+        :type hostname: str
+        :param arguments: Arguments to start the service with
+        :type arguments: str
+        :return: Protobuf ServiceInfo object
+        :rtype: sliver_pb2.ServiceInfo
+        '''        
         svc = sliver_pb2.StartServiceReq()
         svc.ServiceName = name
         svc.ServiceDescription = description
@@ -618,18 +687,47 @@ class AsyncInteractiveSession(BaseSession):
         return (await self._stub.StartService(self._request(svc), timeout=self.timeout))
     
     async def stop_service(self, name: str, hostname: str) -> sliver_pb2.ServiceInfo:
+        '''Stop a Windows service (Windows only)
+
+        :param name: Name of the servie
+        :type name: str
+        :param hostname: Hostname
+        :type hostname: str
+        :return: Protobuf ServiceInfo object
+        :rtype: sliver_pb2.ServiceInfo
+        '''        
         svc = sliver_pb2.StopServiceReq()
         svc.ServiceInfo.ServiceName = name
         svc.ServiceInfo.Hostname = hostname
         return (await self._stub.StopService(self._request(svc), timeout=self.timeout))
 
     async def remove_service(self, name: str, hostname: str) -> sliver_pb2.ServiceInfo:
+        '''Remove a Windows service (Windows only)
+
+        :param name: Name of the service
+        :type name: str
+        :param hostname: Hostname
+        :type hostname: str
+        :return: Protobuf ServiceInfo object
+        :rtype: sliver_pb2.ServiceInfo
+        '''        
         svc = sliver_pb2.StopServiceReq()
         svc.ServiceInfo.ServiceName = name
         svc.ServiceInfo.Hostname = hostname
         return (await self._stub.RemoveService(self._request(svc), timeout=self.timeout))
 
     async def make_token(self, username: str, password: str, domain: str) -> sliver_pb2.MakeToken:
+        '''Make a Windows user token from a valid login (Windows only)
+
+        :param username: Username
+        :type username: str
+        :param password: Password
+        :type password: str
+        :param domain: Domain
+        :type domain: str
+        :return: Protobuf MakeToken object
+        :rtype: sliver_pb2.MakeToken
+        '''        
         make = sliver_pb2.MakeTokenReq()
         make.Username = username
         make.Password = password
@@ -637,23 +735,61 @@ class AsyncInteractiveSession(BaseSession):
         return (await self._stub.MakeToken(self._request(make), timeout=self.timeout))
 
     async def get_env(self, name: str) -> sliver_pb2.EnvInfo:
+        '''Get an environment variable
+
+        :param name: Name of the variable
+        :type name: str
+        :return: Protobuf EnvInfo object
+        :rtype: sliver_pb2.EnvInfo
+        '''        
         env = sliver_pb2.EnvReq()
         env.Name = name
         return (await self._stub.GetEnv(self._request(env), timeout=self.timeout))
     
     async def set_env(self, name: str, value: str) -> sliver_pb2.SetEnv:
+        '''Set an environment variable
+
+        :param name: Name of the environment variable
+        :type name: str
+        :param value: Value of the environment variable
+        :type value: str
+        :return: Protobuf SetEnv object
+        :rtype: sliver_pb2.SetEnv
+        '''        
         env = sliver_pb2.SetEnvReq()
         env.EnvVar.Key = name
         env.EnvVar.Value = value
         return (await self._stub.SetEnv(self._request(env), timeout=self.timeout))
     
     async def backdoor(self, remote_path: str, profile_name: str) -> sliver_pb2.Backdoor:
+        '''Backdoor a remote binary by injecting a Sliver payload into the executable using a code cave
+
+        :param remote_path: Remote path to an executable to backdoor
+        :type remote_path: str
+        :param profile_name: Implant profile name to inject into the binary
+        :type profile_name: str
+        :return: Protobuf Backdoor object
+        :rtype: sliver_pb2.Backdoor
+        '''        
         backdoor = sliver_pb2.BackdoorReq()
         backdoor.FilePath = remote_path
         backdoor.ProfileName = profile_name
         return (await self._stub.Backdoor(self._request(backdoor), timeout=self.timeout))
     
     async def registry_read(self, hive: str, reg_path: str, key: str, hostname: str) -> sliver_pb2.RegistryRead:
+        '''Read a value from the remote system's registry (Windows only)
+
+        :param hive: Registry hive to read value from
+        :type hive: str
+        :param reg_path: Path to registry key to read
+        :type reg_path: str
+        :param key: Key name to read
+        :type key: str
+        :param hostname: Hostname
+        :type hostname: str
+        :return: Protobuf RegistryRead object
+        :rtype: sliver_pb2.RegistryRead
+        '''        
         reg = sliver_pb2.RegistryReadReq()
         reg.Hive = hive
         reg.Path = reg_path
@@ -662,6 +798,29 @@ class AsyncInteractiveSession(BaseSession):
         return (await self._stub.RegistryRead(self._request(reg), timeout=self.timeout))
 
     async def registry_write(self, hive: str, reg_path: str, key: str, hostname: str, string_value: str, byte_value: bytes, dword_value: int, qword_value: int, reg_type: sliver_pb2.RegistryType) -> sliver_pb2.RegistryWrite:
+        '''Write a value to the remote system's registry (Windows only)
+
+        :param hive: Registry hive to write the key/value to
+        :type hive: str
+        :param reg_path: Registry path to write to
+        :type reg_path: str
+        :param key: Registry key to write to
+        :type key: str
+        :param hostname: Hostname
+        :type hostname: str
+        :param string_value: String value to write (ignored for non-string key)
+        :type string_value: str
+        :param byte_value: Byte value to write (ignored for non-byte key)
+        :type byte_value: bytes
+        :param dword_value: DWORD value to write (ignored for non-DWORD key)
+        :type dword_value: int
+        :param qword_value: QWORD value to write (ignored for non-QWORD key)
+        :type qword_value: int
+        :param reg_type: Type of registry key to write
+        :type reg_type: sliver_pb2.RegistryType
+        :return: Protobuf RegistryWrite object
+        :rtype: sliver_pb2.RegistryWrite
+        '''        
         reg = sliver_pb2.RegistryWriteReq()
         reg.Hive = hive
         reg.Path = reg_path
@@ -675,6 +834,19 @@ class AsyncInteractiveSession(BaseSession):
         return (await self._stub.RegistryWrite(self._request(reg), timeout=self.timeout))
     
     async def registry_create_key(self, hive: str, reg_path: str, key: str, hostname: str) -> sliver_pb2.RegistryCreateKey:
+        '''Create a registry key on the remote system (Windows only)
+
+        :param hive: Registry hive to create key in
+        :type hive: str
+        :param reg_path: Registry path to create key in
+        :type reg_path: str
+        :param key: Key name
+        :type key: str
+        :param hostname: Hostname
+        :type hostname: str
+        :return: Protobuf RegistryCreateKey object
+        :rtype: sliver_pb2.RegistryCreateKey
+        '''        
         reg = sliver_pb2.RegistryCreateKey()
         reg.Hive = hive
         reg.Path = reg_path
@@ -1707,6 +1879,21 @@ class InteractiveSession(BaseSession):
         return self._stub.ExecuteToken(self._request(execToken), timeout=self.timeout)
     
     def sideload(self, data: bytes, process_name: str, arguments: str, entry_point: str, kill: bool) -> sliver_pb2.Sideload:
+        '''Sideload a shared library into a remote process using a platform specific in-memory loader (Windows, MacOS, Linux only)
+
+        :param data: Shared library raw bytes
+        :type data: bytes
+        :param process_name: Process name to sideload library into
+        :type process_name: str
+        :param arguments: Arguments to the shared library
+        :type arguments: str
+        :param entry_point: Entrypoint of the shared library
+        :type entry_point: str
+        :param kill: Kill normal execution of the process when side loading the shared library
+        :type kill: bool
+        :return: Protobuf Sideload object
+        :rtype: sliver_pb2.Sideload
+        '''
         side = sliver_pb2.SideloadReq()
         side.Data = data
         side.ProcessName = process_name
@@ -1716,6 +1903,21 @@ class InteractiveSession(BaseSession):
         return self._stub.Sideload(self._request(side), timeout=self.timeout)
     
     def spawn_dll(self, data: bytes, process_name: str, arguments: str, entry_point: str, kill: bool) -> sliver_pb2.SpawnDll:
+        '''Spawn a DLL on the remote system from memory (Windows only)
+
+        :param data: DLL raw bytes
+        :type data: bytes
+        :param process_name: Process name to spawn DLL into
+        :type process_name: str
+        :param arguments: Arguments to the DLL
+        :type arguments: str
+        :param entry_point: Entrypoint of the DLL
+        :type entry_point: str
+        :param kill: Kill normal execution of the remote process when spawing the DLL
+        :type kill: bool
+        :return: Protobuf SpawnDll object
+        :rtype: sliver_pb2.SpawnDll
+        '''
         spawn = sliver_pb2.InvokeSpawnDllReq()
         spawn.Data = data
         spawn.ProcessName = process_name
@@ -1725,23 +1927,62 @@ class InteractiveSession(BaseSession):
         return self._stub.SpawnDll(self._request(spawn), timeout=self.timeout)
     
     def screenshot(self) -> sliver_pb2.Screenshot:
+        '''Take a screenshot of the remote system, screenshot data is PNG formatted
+
+        :return: Protobuf Screenshot object
+        :rtype: sliver_pb2.Screenshot
+        '''  
         return self._stub.Screenshot(self._request(sliver_pb2.ScreenshotReq()), timeout=self.timeout)
     
     def named_pipes(self, pipe_name: str) -> sliver_pb2.NamedPipes:
+        '''Create a named pipe C2 pivot on the remote system (Windows only)
+
+        :param pipe_name: Name of the named pipe pivot too create
+        :type pipe_name: str
+        :return: Protobuf NamesPipes object
+        :rtype: sliver_pb2.NamedPipes
+        ''' 
         pipe = sliver_pb2.NamedPipesReq()
         pipe.PipeName = pipe_name
         return self._stub.NamedPipes(self._request(pipe), timeout=self.timeout)
 
     def tcp_pivot_listener(self, address: str) -> sliver_pb2.TCPPivot:
+        '''Create a C2 TCP pivot listener on the remote system (used for pivoting C2 only)
+
+        :param address: Bind address
+        :type address: str
+        :return: Protobuf TCPPivot object
+        :rtype: sliver_pb2.TCPPivot
+        ''' 
         pivot = sliver_pb2.TCPPivotReq()
         pivot.Address = address
         return self._stub.TCPListener(self._request(pivot), timeout=self.timeout)
     
     def pivots(self) -> List[sliver_pb2.PivotEntry]:
+        '''List C2 pivots
+
+        :return: [description]
+        :rtype: List[sliver_pb2.PivotEntry]
+        '''  
         pivots = self._stub.ListPivots(self._request(sliver_pb2.PivotListReq()), timeout=self.timeout)
         return list(pivots.Entries)
 
     def start_service(self, name: str, description: str, exe: str, hostname: str, arguments: str) -> sliver_pb2.ServiceInfo:
+        '''Create and start a Windows service (Windows only)
+
+        :param name: Name of the service
+        :type name: str
+        :param description: Service description
+        :type description: str
+        :param exe: Path to the service .exe file
+        :type exe: str
+        :param hostname: Hostname
+        :type hostname: str
+        :param arguments: Arguments to start the service with
+        :type arguments: str
+        :return: Protobuf ServiceInfo object
+        :rtype: sliver_pb2.ServiceInfo
+        ''' 
         svc = sliver_pb2.StartServiceReq()
         svc.ServiceName = name
         svc.ServiceDescription = description
@@ -1751,18 +1992,47 @@ class InteractiveSession(BaseSession):
         return self._stub.StartService(self._request(svc), timeout=self.timeout)
     
     def stop_service(self, name: str, hostname: str) -> sliver_pb2.ServiceInfo:
+        '''Stop a Windows service (Windows only)
+
+        :param name: Name of the servie
+        :type name: str
+        :param hostname: Hostname
+        :type hostname: str
+        :return: Protobuf ServiceInfo object
+        :rtype: sliver_pb2.ServiceInfo
+        '''
         svc = sliver_pb2.StopServiceReq()
         svc.ServiceInfo.ServiceName = name
         svc.ServiceInfo.Hostname = hostname
         return self._stub.StopService(self._request(svc), timeout=self.timeout)
 
     def remove_service(self, name: str, hostname: str) -> sliver_pb2.ServiceInfo:
+        '''Remove a Windows service (Windows only)
+
+        :param name: Name of the service
+        :type name: str
+        :param hostname: Hostname
+        :type hostname: str
+        :return: Protobuf ServiceInfo object
+        :rtype: sliver_pb2.ServiceInfo
+        '''  
         svc = sliver_pb2.StopServiceReq()
         svc.ServiceInfo.ServiceName = name
         svc.ServiceInfo.Hostname = hostname
         return self._stub.RemoveService(self._request(svc), timeout=self.timeout)
 
     def make_token(self, username: str, password: str, domain: str) -> sliver_pb2.MakeToken:
+        '''Make a Windows user token from a valid login (Windows only)
+
+        :param username: Username
+        :type username: str
+        :param password: Password
+        :type password: str
+        :param domain: Domain
+        :type domain: str
+        :return: Protobuf MakeToken object
+        :rtype: sliver_pb2.MakeToken
+        ''' 
         make = sliver_pb2.MakeTokenReq()
         make.Username = username
         make.Password = password
@@ -1770,23 +2040,61 @@ class InteractiveSession(BaseSession):
         return self._stub.MakeToken(self._request(make), timeout=self.timeout)
 
     def get_env(self, name: str) -> sliver_pb2.EnvInfo:
+        '''Get an environment variable
+
+        :param name: Name of the variable
+        :type name: str
+        :return: Protobuf EnvInfo object
+        :rtype: sliver_pb2.EnvInfo
+        '''
         env = sliver_pb2.EnvReq()
         env.Name = name
         return self._stub.GetEnv(self._request(env), timeout=self.timeout)
     
     def set_env(self, name: str, value: str) -> sliver_pb2.SetEnv:
+        '''Set an environment variable
+
+        :param name: Name of the environment variable
+        :type name: str
+        :param value: Value of the environment variable
+        :type value: str
+        :return: Protobuf SetEnv object
+        :rtype: sliver_pb2.SetEnv
+        '''
         env = sliver_pb2.SetEnvReq()
         env.EnvVar.Key = name
         env.EnvVar.Value = value
         return self._stub.SetEnv(self._request(env), timeout=self.timeout)
     
     def backdoor(self, remote_path: str, profile_name: str) -> sliver_pb2.Backdoor:
+        '''Backdoor a remote binary by injecting a Sliver payload into the executable using a code cave
+
+        :param remote_path: Remote path to an executable to backdoor
+        :type remote_path: str
+        :param profile_name: Implant profile name to inject into the binary
+        :type profile_name: str
+        :return: Protobuf Backdoor object
+        :rtype: sliver_pb2.Backdoor
+        ''' 
         backdoor = sliver_pb2.BackdoorReq()
         backdoor.FilePath = remote_path
         backdoor.ProfileName = profile_name
         return self._stub.Backdoor(self._request(backdoor), timeout=self.timeout)
     
     def registry_read(self, hive: str, reg_path: str, key: str, hostname: str) -> sliver_pb2.RegistryRead:
+        '''Read a value from the remote system's registry (Windows only)
+
+        :param hive: Registry hive to read value from
+        :type hive: str
+        :param reg_path: Path to registry key to read
+        :type reg_path: str
+        :param key: Key name to read
+        :type key: str
+        :param hostname: Hostname
+        :type hostname: str
+        :return: Protobuf RegistryRead object
+        :rtype: sliver_pb2.RegistryRead
+        '''
         reg = sliver_pb2.RegistryReadReq()
         reg.Hive = hive
         reg.Path = reg_path
@@ -1795,6 +2103,29 @@ class InteractiveSession(BaseSession):
         return self._stub.RegistryRead(self._request(reg), timeout=self.timeout)
 
     def registry_write(self, hive: str, reg_path: str, key: str, hostname: str, string_value: str, byte_value: bytes, dword_value: int, qword_value: int, reg_type: sliver_pb2.RegistryType) -> sliver_pb2.RegistryWrite:
+        '''Write a value to the remote system's registry (Windows only)
+
+        :param hive: Registry hive to write the key/value to
+        :type hive: str
+        :param reg_path: Registry path to write to
+        :type reg_path: str
+        :param key: Registry key to write to
+        :type key: str
+        :param hostname: Hostname
+        :type hostname: str
+        :param string_value: String value to write (ignored for non-string key)
+        :type string_value: str
+        :param byte_value: Byte value to write (ignored for non-byte key)
+        :type byte_value: bytes
+        :param dword_value: DWORD value to write (ignored for non-DWORD key)
+        :type dword_value: int
+        :param qword_value: QWORD value to write (ignored for non-QWORD key)
+        :type qword_value: int
+        :param reg_type: Type of registry key to write
+        :type reg_type: sliver_pb2.RegistryType
+        :return: Protobuf RegistryWrite object
+        :rtype: sliver_pb2.RegistryWrite
+        ''' 
         reg = sliver_pb2.RegistryWriteReq()
         reg.Hive = hive
         reg.Path = reg_path
@@ -1808,6 +2139,19 @@ class InteractiveSession(BaseSession):
         return self._stub.RegistryWrite(self._request(reg), timeout=self.timeout)
     
     def registry_create_key(self, hive: str, reg_path: str, key: str, hostname: str) -> sliver_pb2.RegistryCreateKey:
+        '''Create a registry key on the remote system (Windows only)
+
+        :param hive: Registry hive to create key in
+        :type hive: str
+        :param reg_path: Registry path to create key in
+        :type reg_path: str
+        :param key: Key name
+        :type key: str
+        :param hostname: Hostname
+        :type hostname: str
+        :return: Protobuf RegistryCreateKey object
+        :rtype: sliver_pb2.RegistryCreateKey
+        ''' 
         reg = sliver_pb2.RegistryCreateKey()
         reg.Hive = hive
         reg.Path = reg_path
