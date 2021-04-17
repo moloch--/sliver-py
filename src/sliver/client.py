@@ -733,7 +733,7 @@ class AsyncSliverClient(BaseClient):
                 return session
         return None
 
-    async def events(self) -> Generator[client_pb2.Event]:
+    async def events(self) -> Generator[client_pb2.Event, None, None]:
         '''All events
 
         :yield: A stream of events
@@ -742,7 +742,7 @@ class AsyncSliverClient(BaseClient):
         async for event in self._stub.Events(common_pb2.Empty()):
             yield event
 
-    async def on(self, event_types: Union[str, List[str]]) -> Generator[client_pb2.Event]:
+    async def on(self, event_types: Union[str, List[str]]) -> Generator[client_pb2.Event, None, None]:
         '''Iterate on a specific event or list of events
 
         :param event_types: An event type or list of event types
