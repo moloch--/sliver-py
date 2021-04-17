@@ -158,8 +158,8 @@ To interact with a Sliver session we need to create an ``InteractiveSession`` ob
 the session ID, the active C2 protocol, etc. and the ``InteractiveSession`` class, which is used to interact with the session (i.e., execute commands, etc).
 
 
-Realtime Events Threads vs. Async
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Realtime Events (Threads vs. Async)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 SliverPy also supports realtime events, which are pushed from the server to the client whenever an event occurs. For example, some of the more common events you'll likely
 be interested in are when a new session is created or when a job starts/stops. 
@@ -167,6 +167,42 @@ be interested in are when a new session is created or when a job starts/stops.
 The :class:`SliverClient` and :class:`AsyncSliverClient` implement these real time events using threads and ``asyncio`` respectfully. When to use each is beyond the scope
 of this document but I recommend `this presentation <https://www.youtube.com/watch?v=9zinZmE3Ogk>`_ by Raymond Hettinger if you're not familiar with strengths/weaknesses
 of each approach. Realtime events are also one of the only features that work differently in :class:`SliverClient` vs :class:`AsyncSliverClient`.
+
+Events are identified by an "event type," which is just a string set by the producer of the event. This loose form
+allows events to be very dynamic, however this also means there is no central authority for every event type. I 
+recommend always filtering on expected event types. The data included in an event also depends on whatever produced
+the event, so you should always check that an attribute exists before accessing that attribute (with the exception of 
+``event.EventType`` which must exist.
+
+Here is a non exhaustive list of event types:
+
++---------------------------+------------------------------------------------------+
+| Event Type                |  Description                                         |
++===========================+======================================================+
+| ``session-connected``     | A new session was created                            |
++---------------------------+------------------------------------------------------+
+| ``session-disconnected``  | An existing session was lost                         |
++---------------------------+------------------------------------------------------+
+| ``session-updated``       | An existing session was renamed / updated            |                               
++---------------------------+------------------------------------------------------+
+| ``job-started``           | A job was started on the server                      |
++---------------------------+------------------------------------------------------+
+| ``job-stopped``           | A job stopped (due to error or user action)          |
++---------------------------+------------------------------------------------------+
+| ``client-joined``         | A new client connected to the server                 |                  
++---------------------------+------------------------------------------------------+
+| ``client-left``           | A client disconnected from the server                |              
++---------------------------+------------------------------------------------------+
+| ``canary``                | A canary was burned / triggered / etc.               |              
++---------------------------+------------------------------------------------------+
+| ``build``                 | A modification was made to implant builds            |                 
++---------------------------+------------------------------------------------------+
+| ``build-completed``       | An implant build completed (in success or failure)   |                          
++---------------------------+------------------------------------------------------+
+| ``profile``               | A modification was made to implant profiles          |                  
++---------------------------+------------------------------------------------------+
+| ``website``               | A modification was made to website(s)                |              
++---------------------------+------------------------------------------------------+
 
 
 Event Example (Threads)
