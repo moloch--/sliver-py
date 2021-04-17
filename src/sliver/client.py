@@ -15,11 +15,12 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
 import grpc
-import threading
 import logging
+import asyncio
+import threading
 from uuid import uuid4
 from concurrent.futures import ThreadPoolExecutor
-from typing import Union, List, Dict, Callable, Iterator
+from typing import Coroutine, Union, List, Dict, Callable, Iterator
 
 from .protobuf import common_pb2
 from .protobuf import client_pb2
@@ -687,6 +688,10 @@ class AsyncSliverClient(BaseClient):
 
     ''' Asyncio client implementation '''
 
+    session_event_types = ["session-connected", "session-disconnected"]
+    job_event_types = ["job-started", "job-stopped"]
+    canary_event_types = ["canary"]
+
     async def connect(self) -> client_pb2.Version:
         '''Establish a connection to the Sliver server
 
@@ -728,6 +733,17 @@ class AsyncSliverClient(BaseClient):
             if session.ID == session_id:
                 return session
         return None
+
+    async def events(self):
+        async for event in self._stub.Events(common_pb2.Empty()):
+            yield event
+
+    async def on(self, event_types: Union[str, List[str]]):
+        if isinstance(event_types, str):
+            event_types = [event_types]
+        async for event in self.events():
+            if event.EventType in event_types:
+                yield event
 
     async def version(self, timeout=TIMEOUT) -> client_pb2.Version:
         '''Get server version information

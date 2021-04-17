@@ -5,7 +5,6 @@ SliverPy is a Python gRPC client library for [Sliver](https://github.com/BishopF
 
 Not yet implemented:
  * `website` APIs
- * Realtime events / etc.
 
 
 [![SliverPy](https://github.com/moloch--/sliver-py/actions/workflows/autorelease.yml/badge.svg)](https://github.com/moloch--/sliver-py/actions/workflows/autorelease.yml)

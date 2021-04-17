@@ -164,7 +164,7 @@ Realtime Events Threads vs. Async
 SliverPy also supports realtime events, which are pushed from the server to the client whenever an event occurs. For example, some of the more common events you'll likely
 be interested in are when a new session is created or when a job starts/stops. 
 
-The :class:`SliverClient` and :class:`AsyncSliverClient` implement these real time events using threads and `asyncio` respectfully. When to use each is beyond the scope
+The :class:`SliverClient` and :class:`AsyncSliverClient` implement these real time events using threads and ``asyncio`` respectfully. When to use each is beyond the scope
 of this document but I recommend `this presentation <https://www.youtube.com/watch?v=9zinZmE3Ogk>`_ by Raymond Hettinger if you're not familiar with strengths/weaknesses
 of each approach.
 
@@ -264,6 +264,33 @@ To do this we can register a callback function with ``.on()`` for the specific `
 
 
 Basic Event Example (Async)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-TODO
+
+
+.. code-block:: python
+
+    #!/usr/bin/env python3
+
+    import os
+    import asyncio
+    from sliver import SliverClientConfig, AsyncSliverClient, client_pb2
+
+    CONFIG_DIR = os.path.join(os.path.expanduser("~"), ".sliver-client", "configs")
+    DEFAULT_CONFIG = os.path.join(CONFIG_DIR, "default.cfg")
+
+
+    async def main():
+        ''' Client connect example '''
+        config = SliverClientConfig.parse_config_file(DEFAULT_CONFIG)
+        client = AsyncSliverClient(config)
+        await client.connect()
+        async for event in client.on('session-connected'):
+            print('Automatically interacting with session #%d' % event.Session.ID)
+            interact = await client.interact(event.Session.ID)
+            exec = await interact.execute('whoami', [], True)
+            print('Exec %r' % exec)
+
+    if __name__ == '__main__':
+        loop = asyncio.get_event_loop()
+        loop.run_until_complete(main())
