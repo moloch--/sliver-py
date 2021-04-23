@@ -18,7 +18,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(DOCS, '..', 'src')))
 
 
 # -- Project information -----------------------------------------------------
-VERSION = '0.0.9'
+VERSION = '0.0.10'
 AUTHOR = 'moloch'
 
 project = 'SliverPy'
