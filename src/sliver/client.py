@@ -1524,7 +1524,7 @@ class InteractiveSession(BaseSession):
         :return: Protobuf ifconfig object
         :rtype: sliver_pb2.Ifconfig
         '''
-        return self._stub.Ifconfig(self._request(sliver_pb2.IfconfigReq(), timeout=self.timeout))
+        return self._stub.Ifconfig(self._request(sliver_pb2.IfconfigReq()), timeout=self.timeout)
     
     def netstat(self, tcp: bool, udp: bool, ipv4: bool, ipv6: bool, listening=True) -> List[sliver_pb2.SockTabEntry]:
         '''Get information about network connections on the remote system.
