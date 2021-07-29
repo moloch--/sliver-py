@@ -31,6 +31,9 @@ jobs:
     - name: Check Out Code
       uses: actions/checkout@v2
 
+    - name: Git Fetch Tags
+      run: git fetch --prune --unshallow --tags -f
+
     - name: Package
       run: python3 -m build
 
