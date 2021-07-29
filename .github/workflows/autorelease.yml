@@ -37,11 +37,6 @@ jobs:
     - name: Package
       run: python3 -m build
 
-    - name: Rename WHL because Python3 is stupid af
-      run: |
-        VERSION=$(git describe --abbrev=0)
-        mv ./dist/sliver_py-0.0.0-py3-none-any.whl ./dist/sliver_py-${VERSION}-py3-none-any.whl
-
     - name: Github Release
       uses: "marvinpinto/action-automatic-releases@latest"
       with:
