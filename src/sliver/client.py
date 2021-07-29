@@ -852,7 +852,7 @@ class AsyncInteractiveSession(BaseSession):
         reg.Path = reg_path
         reg.Key = key
         reg.Hostname = hostname
-        return (await self._stub.RegistryWrite(self._request(reg), timeout=self.timeout))
+        return (await self._stub.RegistryCreateKey(self._request(reg), timeout=self.timeout))
 
 
 class AsyncSliverClient(BaseClient):
@@ -2157,7 +2157,7 @@ class InteractiveSession(BaseSession):
         reg.Path = reg_path
         reg.Key = key
         reg.Hostname = hostname
-        return self._stub.RegistryWrite(self._request(reg), timeout=self.timeout)
+        return self._stub.RegistryCreateKey(self._request(reg), timeout=self.timeout)
 
 
 class SliverClient(BaseClient):
