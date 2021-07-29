@@ -847,7 +847,7 @@ class AsyncInteractiveSession(BaseSession):
         :return: Protobuf RegistryCreateKey object
         :rtype: sliver_pb2.RegistryCreateKey
         '''        
-        reg = sliver_pb2.RegistryCreateKey()
+        reg = sliver_pb2.RegistryCreateKeyReq()
         reg.Hive = hive
         reg.Path = reg_path
         reg.Key = key
@@ -2152,7 +2152,7 @@ class InteractiveSession(BaseSession):
         :return: Protobuf RegistryCreateKey object
         :rtype: sliver_pb2.RegistryCreateKey
         ''' 
-        reg = sliver_pb2.RegistryCreateKey()
+        reg = sliver_pb2.RegistryCreateKeyReq()
         reg.Hive = hive
         reg.Path = reg_path
         reg.Key = key
