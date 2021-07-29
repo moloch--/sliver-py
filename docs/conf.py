@@ -11,14 +11,13 @@
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 import os
 import sys
+from subprocess import Popen, PIPE
 
 DOCS = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.abspath(os.path.join(DOCS, '..', 'src')))
 
-
-
 # -- Project information -----------------------------------------------------
-VERSION = '0.0.11'
+VERSION = Popen(['git', 'describe', '--abbrev=0'], stdout=PIPE).communicate()[0].decode('utf-8').strip()
 AUTHOR = 'moloch'
 
 project = 'SliverPy'

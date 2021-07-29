@@ -14,7 +14,11 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 
 import setuptools
-from docs.conf import AUTHOR, VERSION
+from subprocess import Popen, PIPE
+
+# Since Python3 packaging is utter fucking trash we can't import the values from "docs"
+# so fuck it, we have to shell out. Fuck you Python3.
+VERSION = Popen(['git', 'describe', '--abbrev=0'], stdout=PIPE).communicate()[0].decode('utf-8').strip()
 
 
 with open("README.md", "r", encoding="utf-8") as fh:
@@ -23,7 +27,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 setuptools.setup(
     name="sliver-py",
     version=VERSION,
-    author=AUTHOR,
+    author='moloch',
     author_email="875022+moloch--@users.noreply.github.com",
     description="Sliver gRPC client library.",
     long_description=long_description,
