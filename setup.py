@@ -18,15 +18,15 @@ from subprocess import Popen, PIPE
 
 # Since Python3 packaging is utter fucking trash we can't import the values from "docs"
 # so fuck it, we have to shell out. Fuck you Python3.
-VERSION = Popen(['git', 'describe', '--abbrev=0'], stdout=PIPE).communicate()[0].decode('utf-8').strip()
-
+# VERSION = Popen(['git', 'describe', '--abbrev=0'], stdout=PIPE).communicate()[0].decode('utf-8').strip()
+# ^This doesn't work either, because Python3 is awful.
 
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
     name="sliver-py",
-    version=VERSION,
+    version='0.0.12',
     author='moloch',
     author_email="875022+moloch--@users.noreply.github.com",
     description="Sliver gRPC client library.",

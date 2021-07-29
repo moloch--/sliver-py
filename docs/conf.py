@@ -17,13 +17,13 @@ DOCS = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.abspath(os.path.join(DOCS, '..', 'src')))
 
 # -- Project information -----------------------------------------------------
-VERSION = Popen(['git', 'describe', '--abbrev=0'], stdout=PIPE).communicate()[0].decode('utf-8').strip()
-AUTHOR = 'moloch'
+# VERSION = Popen(['git', 'describe', '--abbrev=0'], stdout=PIPE).communicate()[0].decode('utf-8').strip()
+# AUTHOR = 'moloch'
 
 project = 'SliverPy'
 copyright = '2021, moloch'
-author = AUTHOR
-release = VERSION
+author = 'moloch'
+release = '0.0.12'
 
 # -- General configuration ---------------------------------------------------
 
