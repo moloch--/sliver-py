@@ -2195,6 +2195,8 @@ class SliverClient(BaseClient):
     _on_callback_lock = threading.Lock()
     _on_event: Dict[str, Callable] = {}
 
+    beacon_event_types = ["beacon-registered"]
+
     session_event_types = ["session-connected", "session-disconnected"]
     _on_session: Dict[str, Callable] = {}
 
@@ -2224,11 +2226,11 @@ class SliverClient(BaseClient):
         self._stub = SliverRPCStub(self._channel)
         return self.version()
 
-    def interact(self, session_id: int, timeout=TIMEOUT) -> Union[InteractiveSession, None]:
+    def interact_session(self, session_id: str, timeout=TIMEOUT) -> Union[InteractiveSession, None]:
         '''Interact with a session, returns an :class:`AsyncInteractiveSession`
 
-        :param session_id: Numeric session ID
-        :type session_id: int
+        :param session_id: Session ID
+        :type session_id: str
         :param timeout: gRPC timeout, defaults to 60 seconds
         :return: An interactive session
         :rtype: Union[AsyncInteractiveSession, None]
@@ -2237,11 +2239,11 @@ class SliverClient(BaseClient):
         if session is not None:
             return InteractiveSession(session, self._channel)
 
-    def session_by_id(self, session_id: int, timeout=TIMEOUT) -> Union[client_pb2.Session, None]:
+    def session_by_id(self, session_id: str, timeout=TIMEOUT) -> Union[client_pb2.Session, None]:
         '''Get the session information from an numeric session ID.
 
-        :param session_id: Numeric session ID
-        :type session_id: int
+        :param session_id: Session ID
+        :type session_id: str
         :param timeout: gRPC timeout, defaults to 60 seconds
         :return: Protobuf Session object
         :rtype: Union[client_pb2.Session, None]
@@ -2469,11 +2471,11 @@ class SliverClient(BaseClient):
         sessions: client_pb2.Sessions = self._stub.GetSessions(common_pb2.Empty(), timeout=timeout)
         return list(sessions.Sessions)
 
-    def update_session(self, session_id: int, name: str, timeout=TIMEOUT) -> client_pb2.Session:
+    def update_session(self, session_id: str, name: str, timeout=TIMEOUT) -> client_pb2.Session:
         '''Update a session attribute (such as name)
 
-        :param session_id: Numeric session ID to update
-        :type session_id: int
+        :param session_id: Session ID to update
+        :type session_id: str
         :param name: Rename session to this value
         :type name: str
         :param timeout: gRPC timeout, defaults to 60 seconds
@@ -2486,11 +2488,11 @@ class SliverClient(BaseClient):
         update.Name = name
         return self._stub.UpdateSession(update, timeout=timeout)
 
-    def kill_session(self, session_id: int, force=False, timeout=TIMEOUT) -> None:
+    def kill_session(self, session_id: str, force=False, timeout=TIMEOUT) -> None:
         '''Kill a session
 
         :param session_id: The numeric session ID to kill
-        :type session_id: int
+        :type session_id: str
         :param force: Force kill the session, defaults to False
         :type force: bool, optional
         :param timeout: gRPC timeout, defaults to 60 seconds
