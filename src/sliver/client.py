@@ -635,38 +635,14 @@ class AsyncInteractiveSession(BaseSession):
         '''        
         return (await self._stub.Screenshot(self._request(sliver_pb2.ScreenshotReq()), timeout=self.timeout))
     
-    # async def named_pipes(self, pipe_name: str) -> sliver_pb2.NamedPipes:
-    #     '''Create a named pipe C2 pivot on the remote system (Windows only)
+    async def pivot_listeners(self) -> List[sliver_pb2.PivotListener]:
+        '''List C2 pivots
 
-    #     :param pipe_name: Name of the named pipe pivot too create
-    #     :type pipe_name: str
-    #     :return: Protobuf NamesPipes object
-    #     :rtype: sliver_pb2.NamedPipes
-    #     '''        
-    #     pipe = sliver_pb2.NamedPipesReq()
-    #     pipe.PipeName = pipe_name
-    #     return (await self._stub.NamedPipes(self._request(pipe), timeout=self.timeout))
-
-    # async def tcp_pivot_listener(self, address: str) -> sliver_pb2.TCPPivot:
-    #     '''Create a C2 TCP pivot listener on the remote system (used for pivoting C2 only)
-
-    #     :param address: Bind address
-    #     :type address: str
-    #     :return: Protobuf TCPPivot object
-    #     :rtype: sliver_pb2.TCPPivot
-    #     '''        
-    #     pivot = sliver_pb2.TCPPivotReq()
-    #     pivot.Address = address
-    #     return (await self._stub.TCPListener(self._request(pivot), timeout=self.timeout))
-    
-    # async def pivots(self) -> List[sliver_pb2.PivotEntry]:
-    #     '''List C2 pivots
-
-    #     :return: [description]
-    #     :rtype: List[sliver_pb2.PivotEntry]
-    #     '''        
-    #     pivots = await self._stub.ListPivots(self._request(sliver_pb2.PivotListReq()), timeout=self.timeout)
-    #     return list(pivots.Entries)
+        :return: [description]
+        :rtype: List[sliver_pb2.PivotListener]
+        '''        
+        pivots = await self._stub.ListPivots(self._request(sliver_pb2.PivotListenersReq()), timeout=self.timeout)
+        return list(pivots.Listeners)
 
     async def start_service(self, name: str, description: str, exe: str, hostname: str, arguments: str) -> sliver_pb2.ServiceInfo:
         '''Create and start a Windows service (Windows only)
@@ -1940,38 +1916,14 @@ class InteractiveSession(BaseSession):
         '''  
         return self._stub.Screenshot(self._request(sliver_pb2.ScreenshotReq()), timeout=self.timeout)
     
-    # def named_pipes(self, pipe_name: str) -> sliver_pb2.NamedPipes:
-    #     '''Create a named pipe C2 pivot on the remote system (Windows only)
+    def pivot_listeners(self) -> List[sliver_pb2.PivotListener]:
+        '''List C2 pivots
 
-    #     :param pipe_name: Name of the named pipe pivot too create
-    #     :type pipe_name: str
-    #     :return: Protobuf NamesPipes object
-    #     :rtype: sliver_pb2.NamedPipes
-    #     ''' 
-    #     pipe = sliver_pb2.NamedPipesReq()
-    #     pipe.PipeName = pipe_name
-    #     return self._stub.NamedPipes(self._request(pipe), timeout=self.timeout)
-
-    # def tcp_pivot_listener(self, address: str) -> sliver_pb2.TCPPivot:
-    #     '''Create a C2 TCP pivot listener on the remote system (used for pivoting C2 only)
-
-    #     :param address: Bind address
-    #     :type address: str
-    #     :return: Protobuf TCPPivot object
-    #     :rtype: sliver_pb2.TCPPivot
-    #     ''' 
-    #     pivot = sliver_pb2.TCPPivotReq()
-    #     pivot.Address = address
-    #     return self._stub.TCPListener(self._request(pivot), timeout=self.timeout)
-    
-    # def pivots(self) -> List[sliver_pb2.PivotEntry]:
-    #     '''List C2 pivots
-
-    #     :return: [description]
-    #     :rtype: List[sliver_pb2.PivotEntry]
-    #     '''  
-    #     pivots = self._stub.ListPivots(self._request(sliver_pb2.PivotListReq()), timeout=self.timeout)
-    #     return list(pivots.Entries)
+        :return: [description]
+        :rtype: List[sliver_pb2.PivotListener]
+        '''        
+        pivots = self._stub.ListPivots(self._request(sliver_pb2.PivotListenersReq()), timeout=self.timeout)
+        return list(pivots.Listeners)
 
     def start_service(self, name: str, description: str, exe: str, hostname: str, arguments: str) -> sliver_pb2.ServiceInfo:
         '''Create and start a Windows service (Windows only)
