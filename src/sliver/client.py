@@ -1406,10 +1406,10 @@ class AsyncSliverClient(BaseClient):
         stagerReq.BadChars = badchars
         return (await self._stub.MsfStage(stagerReq, timeout=timeout))
 
-    async def shellcode_rdi(self, data: bytes, function_name: str, arguments: str, timeout=TIMEOUT) -> client_pb2.ShellcodeRDI:
-        '''Generate sRDI shellcode
+    async def shellcode(self, data: bytes, function_name: str, arguments: str, timeout=TIMEOUT) -> client_pb2.ShellcodeRDI:
+        '''Generate Donut shellcode
 
-        :param data: The DLL file to wrap in an sRDI shellcode loader
+        :param data: The DLL file to wrap in a shellcode loader
         :type data: bytes
         :param function_name: Function to call on the DLL
         :type function_name: str
