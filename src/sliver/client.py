@@ -841,6 +841,7 @@ class AsyncSliverClient(BaseClient):
 
     ''' Asyncio client implementation '''
 
+    beacon_event_types = ["beacon-registered"]
     session_event_types = ["session-connected", "session-disconnected"]
     job_event_types = ["job-started", "job-stopped"]
     canary_event_types = ["canary"]
@@ -859,11 +860,11 @@ class AsyncSliverClient(BaseClient):
         self._stub = SliverRPCStub(self._channel)
         return (await self.version())
 
-    async def interact(self, session_id: int, timeout=TIMEOUT) -> Union[AsyncInteractiveSession, None]:
+    async def interact_session(self, session_id: str, timeout=TIMEOUT) -> Union[AsyncInteractiveSession, None]:
         '''Interact with a session, returns an :class:`AsyncInteractiveSession`
 
-        :param session_id: Numeric session ID
-        :type session_id: int
+        :param session_id: Session ID
+        :type session_id: str
         :param timeout: gRPC timeout, defaults to 60 seconds
         :return: An interactive session
         :rtype: Union[AsyncInteractiveSession, None]
@@ -872,11 +873,11 @@ class AsyncSliverClient(BaseClient):
         if session is not None:
             return AsyncInteractiveSession(session, self._channel, timeout)
 
-    async def session_by_id(self, session_id: int, timeout=TIMEOUT) -> Union[client_pb2.Session, None]:
-        '''Get the session information from an numeric session ID
+    async def session_by_id(self, session_id: str, timeout=TIMEOUT) -> Union[client_pb2.Session, None]:
+        '''Get the session information from a session ID
 
-        :param session_id: Numeric session ID
-        :type session_id: int
+        :param session_id: Session ID
+        :type session_id: str
         :param timeout: gRPC timeout, defaults to 60 seconds
         :return: Protobuf Session object
         :rtype: Union[client_pb2.Session, None]
@@ -885,6 +886,21 @@ class AsyncSliverClient(BaseClient):
         for session in sessions:
             if session.ID == session_id:
                 return session
+        return None
+
+    async def beacon_by_id(self, beacon_id: str, timeout=TIMEOUT) -> Union[client_pb2.Beacon, None]:
+        '''Get the beacon information from a beacon ID
+
+        :param beacon_id: Beacon ID
+        :type beacon_id: str
+        :param timeout: gRPC timeout, defaults to 60 seconds
+        :return: Protobuf Beacon object
+        :rtype: Union[client_pb2.Beacon, None]
+        '''
+        beacons = await self.beacons(timeout)
+        for beacon in beacons:
+            if beacon.ID == beacon_id:
+                return beacon
         return None
 
     async def events(self) -> Generator[client_pb2.Event, None, None]:
@@ -942,11 +958,11 @@ class AsyncSliverClient(BaseClient):
         sessions: client_pb2.Sessions = await self._stub.GetSessions(common_pb2.Empty(), timeout=timeout)
         return list(sessions.Sessions)
 
-    async def update_session(self, session_id: int, name: str, timeout=TIMEOUT) -> client_pb2.Session:
+    async def update_session(self, session_id: str, name: str, timeout=TIMEOUT) -> client_pb2.Session:
         '''Update a session attribute (such as name)
 
-        :param session_id: Numeric session ID to update
-        :type session_id: int
+        :param session_id: Session ID to update
+        :type session_id: str
         :param name: Rename session to this value
         :type name: str
         :param timeout: gRPC timeout, defaults to 60 seconds
@@ -959,11 +975,11 @@ class AsyncSliverClient(BaseClient):
         update.Name = name
         return (await self._stub.UpdateSession(update, timeout=timeout))
 
-    async def kill_session(self, session_id: int, force=False, timeout=TIMEOUT) -> None:
+    async def kill_session(self, session_id: str, force=False, timeout=TIMEOUT) -> None:
         '''Kill a session
 
-        :param session_id: The numeric session ID to kill
-        :type session_id: int
+        :param session_id: Session ID to kill
+        :type session_id: str
         :param force: Force kill the session, defaults to False
         :type force: bool, optional
         :param timeout: gRPC timeout, defaults to 60 seconds
@@ -974,6 +990,57 @@ class AsyncSliverClient(BaseClient):
         kill.Request.Timeout = timeout-1
         kill.Force = force
         await self._stub.KillSession(kill, timeout=timeout)
+
+    async def beacons(self, timeout=TIMEOUT) -> List[client_pb2.Beacon]:
+        '''Get a list of active beacons
+
+        :param timeout: gRPC timeout, defaults to 60 seconds
+        :rtype: List[client_pb2.Beacon]
+        '''
+        beacons: client_pb2.Beacons = await self._stub.GetBeacons(common_pb2.Empty(), timeout=timeout)
+        return list(beacons.Beacons)
+
+    async def rm_beacon(self, beacon_id: int, timeout=TIMEOUT) -> None:
+        '''Remove a beacon
+
+        :param beacon_id: Numeric beacon ID to remove
+        :type beacon_id: str
+        :param timeout: gRPC timeout, defaults to 60 seconds
+        :type timeout: int, optional
+        '''
+        beacon_rm = sliver_pb2.Beacon()
+        beacon_rm.ID = beacon_id
+        await self._stub.RmBeacon(beacon_rm, timeout=timeout)
+
+    async def beacon_tasks(self, beacon_id: str, timeout=TIMEOUT) -> List[client_pb2.BeaconTask]:
+        '''Get a list of tasks for a beacon
+
+        :param beacon_id: Beacon ID to get tasks for
+        :type beacon_id: sts
+        :param timeout: gRPC timeout, defaults to 60 seconds
+        :type timeout: int, optional
+        :return: List of protobuf Task objects
+        :rtype: List[client_pb2.Task]
+        '''
+        beacon = sliver_pb2.Beacon()
+        beacon.ID = beacon_id
+        tasks = await self._stub.GetBeaconTasks(beacon, timeout=timeout)
+        return list(tasks.Tasks)
+
+    async def beacon_task_content(self, beacon_id: str, timeout=TIMEOUT) -> List[client_pb2.BeaconTask]:
+        '''Get a list of tasks for a beacon
+
+        :param beacon_id: Beacon ID to get tasks for
+        :type beacon_id: sts
+        :param timeout: gRPC timeout, defaults to 60 seconds
+        :type timeout: int, optional
+        :return: List of protobuf Task objects
+        :rtype: List[client_pb2.Task]
+        '''
+        beacon = sliver_pb2.Beacon()
+        beacon.ID = beacon_id
+        task = await self._stub.GetBeaconTaskContent(beacon, timeout=timeout)
+        return task
 
     async def jobs(self, timeout=TIMEOUT) -> List[client_pb2.Job]:
         '''Get a list of active jobs
