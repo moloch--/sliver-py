@@ -1,16 +1,17 @@
 '''
-Sliver Implant Framework
-Copyright (C) 2021  Bishop Fox
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <https://www.gnu.org/licenses/>.
+    Sliver Implant Framework
+    Copyright (C) 2021  Bishop Fox
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 '''
 
 
@@ -59,10 +60,15 @@ class BaseClient(object):
 
     @property
     def credentials(self) -> grpc.ChannelCredentials:
-        return grpc.ssl_channel_credentials(
-            root_certificates=self.config.ca_certificate.encode(),
-            private_key=self.config.private_key.encode(),
-            certificate_chain=self.config.certificate.encode(),
+        return grpc.composite_channel_credentials(
+            grpc.ssl_channel_credentials(
+                root_certificates=self.config.ca_certificate.encode(),
+                private_key=self.config.private_key.encode(),
+                certificate_chain=self.config.certificate.encode(),
+            ),
+            grpc.access_token_call_credentials(
+                access_token=self.config.token,
+            ),
         )
     
     @property
@@ -629,38 +635,38 @@ class AsyncInteractiveSession(BaseSession):
         '''        
         return (await self._stub.Screenshot(self._request(sliver_pb2.ScreenshotReq()), timeout=self.timeout))
     
-    async def named_pipes(self, pipe_name: str) -> sliver_pb2.NamedPipes:
-        '''Create a named pipe C2 pivot on the remote system (Windows only)
+    # async def named_pipes(self, pipe_name: str) -> sliver_pb2.NamedPipes:
+    #     '''Create a named pipe C2 pivot on the remote system (Windows only)
 
-        :param pipe_name: Name of the named pipe pivot too create
-        :type pipe_name: str
-        :return: Protobuf NamesPipes object
-        :rtype: sliver_pb2.NamedPipes
-        '''        
-        pipe = sliver_pb2.NamedPipesReq()
-        pipe.PipeName = pipe_name
-        return (await self._stub.NamedPipes(self._request(pipe), timeout=self.timeout))
+    #     :param pipe_name: Name of the named pipe pivot too create
+    #     :type pipe_name: str
+    #     :return: Protobuf NamesPipes object
+    #     :rtype: sliver_pb2.NamedPipes
+    #     '''        
+    #     pipe = sliver_pb2.NamedPipesReq()
+    #     pipe.PipeName = pipe_name
+    #     return (await self._stub.NamedPipes(self._request(pipe), timeout=self.timeout))
 
-    async def tcp_pivot_listener(self, address: str) -> sliver_pb2.TCPPivot:
-        '''Create a C2 TCP pivot listener on the remote system (used for pivoting C2 only)
+    # async def tcp_pivot_listener(self, address: str) -> sliver_pb2.TCPPivot:
+    #     '''Create a C2 TCP pivot listener on the remote system (used for pivoting C2 only)
 
-        :param address: Bind address
-        :type address: str
-        :return: Protobuf TCPPivot object
-        :rtype: sliver_pb2.TCPPivot
-        '''        
-        pivot = sliver_pb2.TCPPivotReq()
-        pivot.Address = address
-        return (await self._stub.TCPListener(self._request(pivot), timeout=self.timeout))
+    #     :param address: Bind address
+    #     :type address: str
+    #     :return: Protobuf TCPPivot object
+    #     :rtype: sliver_pb2.TCPPivot
+    #     '''        
+    #     pivot = sliver_pb2.TCPPivotReq()
+    #     pivot.Address = address
+    #     return (await self._stub.TCPListener(self._request(pivot), timeout=self.timeout))
     
-    async def pivots(self) -> List[sliver_pb2.PivotEntry]:
-        '''List C2 pivots
+    # async def pivots(self) -> List[sliver_pb2.PivotEntry]:
+    #     '''List C2 pivots
 
-        :return: [description]
-        :rtype: List[sliver_pb2.PivotEntry]
-        '''        
-        pivots = await self._stub.ListPivots(self._request(sliver_pb2.PivotListReq()), timeout=self.timeout)
-        return list(pivots.Entries)
+    #     :return: [description]
+    #     :rtype: List[sliver_pb2.PivotEntry]
+    #     '''        
+    #     pivots = await self._stub.ListPivots(self._request(sliver_pb2.PivotListReq()), timeout=self.timeout)
+    #     return list(pivots.Entries)
 
     async def start_service(self, name: str, description: str, exe: str, hostname: str, arguments: str) -> sliver_pb2.ServiceInfo:
         '''Create and start a Windows service (Windows only)
@@ -797,7 +803,7 @@ class AsyncInteractiveSession(BaseSession):
         reg.Hostname = hostname
         return (await self._stub.RegistryRead(self._request(reg), timeout=self.timeout))
 
-    async def registry_write(self, hive: str, reg_path: str, key: str, hostname: str, string_value: str, byte_value: bytes, dword_value: int, qword_value: int, reg_type: sliver_pb2.RegistryType) -> sliver_pb2.RegistryWrite:
+    async def registry_write(self, hive: str, reg_path: str, key: str, hostname: str, string_value: str, byte_value: bytes, dword_value: int, qword_value: int) -> sliver_pb2.RegistryWrite:
         '''Write a value to the remote system's registry (Windows only)
 
         :param hive: Registry hive to write the key/value to
@@ -830,7 +836,7 @@ class AsyncInteractiveSession(BaseSession):
         reg.ByteValue = byte_value
         reg.DWordValue = dword_value
         reg.QWordValue = qword_value
-        reg.Type = reg_type
+
         return (await self._stub.RegistryWrite(self._request(reg), timeout=self.timeout))
     
     async def registry_create_key(self, hive: str, reg_path: str, key: str, hostname: str) -> sliver_pb2.RegistryCreateKey:
@@ -1934,38 +1940,38 @@ class InteractiveSession(BaseSession):
         '''  
         return self._stub.Screenshot(self._request(sliver_pb2.ScreenshotReq()), timeout=self.timeout)
     
-    def named_pipes(self, pipe_name: str) -> sliver_pb2.NamedPipes:
-        '''Create a named pipe C2 pivot on the remote system (Windows only)
+    # def named_pipes(self, pipe_name: str) -> sliver_pb2.NamedPipes:
+    #     '''Create a named pipe C2 pivot on the remote system (Windows only)
 
-        :param pipe_name: Name of the named pipe pivot too create
-        :type pipe_name: str
-        :return: Protobuf NamesPipes object
-        :rtype: sliver_pb2.NamedPipes
-        ''' 
-        pipe = sliver_pb2.NamedPipesReq()
-        pipe.PipeName = pipe_name
-        return self._stub.NamedPipes(self._request(pipe), timeout=self.timeout)
+    #     :param pipe_name: Name of the named pipe pivot too create
+    #     :type pipe_name: str
+    #     :return: Protobuf NamesPipes object
+    #     :rtype: sliver_pb2.NamedPipes
+    #     ''' 
+    #     pipe = sliver_pb2.NamedPipesReq()
+    #     pipe.PipeName = pipe_name
+    #     return self._stub.NamedPipes(self._request(pipe), timeout=self.timeout)
 
-    def tcp_pivot_listener(self, address: str) -> sliver_pb2.TCPPivot:
-        '''Create a C2 TCP pivot listener on the remote system (used for pivoting C2 only)
+    # def tcp_pivot_listener(self, address: str) -> sliver_pb2.TCPPivot:
+    #     '''Create a C2 TCP pivot listener on the remote system (used for pivoting C2 only)
 
-        :param address: Bind address
-        :type address: str
-        :return: Protobuf TCPPivot object
-        :rtype: sliver_pb2.TCPPivot
-        ''' 
-        pivot = sliver_pb2.TCPPivotReq()
-        pivot.Address = address
-        return self._stub.TCPListener(self._request(pivot), timeout=self.timeout)
+    #     :param address: Bind address
+    #     :type address: str
+    #     :return: Protobuf TCPPivot object
+    #     :rtype: sliver_pb2.TCPPivot
+    #     ''' 
+    #     pivot = sliver_pb2.TCPPivotReq()
+    #     pivot.Address = address
+    #     return self._stub.TCPListener(self._request(pivot), timeout=self.timeout)
     
-    def pivots(self) -> List[sliver_pb2.PivotEntry]:
-        '''List C2 pivots
+    # def pivots(self) -> List[sliver_pb2.PivotEntry]:
+    #     '''List C2 pivots
 
-        :return: [description]
-        :rtype: List[sliver_pb2.PivotEntry]
-        '''  
-        pivots = self._stub.ListPivots(self._request(sliver_pb2.PivotListReq()), timeout=self.timeout)
-        return list(pivots.Entries)
+    #     :return: [description]
+    #     :rtype: List[sliver_pb2.PivotEntry]
+    #     '''  
+    #     pivots = self._stub.ListPivots(self._request(sliver_pb2.PivotListReq()), timeout=self.timeout)
+    #     return list(pivots.Entries)
 
     def start_service(self, name: str, description: str, exe: str, hostname: str, arguments: str) -> sliver_pb2.ServiceInfo:
         '''Create and start a Windows service (Windows only)
@@ -2102,7 +2108,7 @@ class InteractiveSession(BaseSession):
         reg.Hostname = hostname
         return self._stub.RegistryRead(self._request(reg), timeout=self.timeout)
 
-    def registry_write(self, hive: str, reg_path: str, key: str, hostname: str, string_value: str, byte_value: bytes, dword_value: int, qword_value: int, reg_type: sliver_pb2.RegistryType) -> sliver_pb2.RegistryWrite:
+    def registry_write(self, hive: str, reg_path: str, key: str, hostname: str, string_value: str, byte_value: bytes, dword_value: int, qword_value: int) -> sliver_pb2.RegistryWrite:
         '''Write a value to the remote system's registry (Windows only)
 
         :param hive: Registry hive to write the key/value to
@@ -2135,7 +2141,7 @@ class InteractiveSession(BaseSession):
         reg.ByteValue = byte_value
         reg.DWordValue = dword_value
         reg.QWordValue = qword_value
-        reg.Type = reg_type
+
         return self._stub.RegistryWrite(self._request(reg), timeout=self.timeout)
     
     def registry_create_key(self, hive: str, reg_path: str, key: str, hostname: str) -> sliver_pb2.RegistryCreateKey:

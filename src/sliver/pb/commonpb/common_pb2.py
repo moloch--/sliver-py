@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z-github.com/bishopfox/sliver/protobuf/commonpb',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x15\x63ommonpb/common.proto\x12\x08\x63ommonpb\"\x07\n\x05\x45mpty\"<\n\x07Request\x12\r\n\x05\x41sync\x18\x01 \x01(\x08\x12\x0f\n\x07Timeout\x18\x02 \x01(\x03\x12\x11\n\tSessionID\x18\t \x01(\r\"\x17\n\x08Response\x12\x0b\n\x03\x45rr\x18\x01 \x01(\t\"\"\n\x04\x46ile\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12\x0c\n\x04\x44\x61ta\x18\x02 \x01(\x0c\"Z\n\x07Process\x12\x0b\n\x03Pid\x18\x01 \x01(\x05\x12\x0c\n\x04Ppid\x18\x02 \x01(\x05\x12\x12\n\nExecutable\x18\x03 \x01(\t\x12\r\n\x05Owner\x18\x04 \x01(\t\x12\x11\n\tSessionID\x18\x05 \x01(\x05\"$\n\x06\x45nvVar\x12\x0b\n\x03Key\x18\x01 \x01(\t\x12\r\n\x05Value\x18\x02 \x01(\tB/Z-github.com/bishopfox/sliver/protobuf/commonpbb\x06proto3'
+  serialized_pb=b'\n\x15\x63ommonpb/common.proto\x12\x08\x63ommonpb\"\x07\n\x05\x45mpty\"N\n\x07Request\x12\r\n\x05\x41sync\x18\x01 \x01(\x08\x12\x0f\n\x07Timeout\x18\x02 \x01(\x03\x12\x10\n\x08\x42\x65\x61\x63onID\x18\x08 \x01(\t\x12\x11\n\tSessionID\x18\t \x01(\t\"H\n\x08Response\x12\x0b\n\x03\x45rr\x18\x01 \x01(\t\x12\r\n\x05\x41sync\x18\x02 \x01(\x08\x12\x10\n\x08\x42\x65\x61\x63onID\x18\x08 \x01(\t\x12\x0e\n\x06TaskID\x18\t \x01(\t\"\"\n\x04\x46ile\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12\x0c\n\x04\x44\x61ta\x18\x02 \x01(\x0c\"k\n\x07Process\x12\x0b\n\x03Pid\x18\x01 \x01(\x05\x12\x0c\n\x04Ppid\x18\x02 \x01(\x05\x12\x12\n\nExecutable\x18\x03 \x01(\t\x12\r\n\x05Owner\x18\x04 \x01(\t\x12\x11\n\tSessionID\x18\x05 \x01(\x05\x12\x0f\n\x07\x43mdLine\x18\x06 \x03(\t\"$\n\x06\x45nvVar\x12\x0b\n\x03Key\x18\x01 \x01(\t\x12\r\n\x05Value\x18\x02 \x01(\tB/Z-github.com/bishopfox/sliver/protobuf/commonpbb\x06proto3'
 )
 
 
@@ -73,9 +73,16 @@ _REQUEST = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='SessionID', full_name='commonpb.Request.SessionID', index=2,
-      number=9, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
+      name='BeaconID', full_name='commonpb.Request.BeaconID', index=2,
+      number=8, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='SessionID', full_name='commonpb.Request.SessionID', index=3,
+      number=9, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
@@ -92,7 +99,7 @@ _REQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=44,
-  serialized_end=104,
+  serialized_end=122,
 )
 
 
@@ -111,6 +118,27 @@ _RESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Async', full_name='commonpb.Response.Async', index=1,
+      number=2, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='BeaconID', full_name='commonpb.Response.BeaconID', index=2,
+      number=8, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='TaskID', full_name='commonpb.Response.TaskID', index=3,
+      number=9, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -123,8 +151,8 @@ _RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=106,
-  serialized_end=129,
+  serialized_start=124,
+  serialized_end=196,
 )
 
 
@@ -162,8 +190,8 @@ _FILE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=131,
-  serialized_end=165,
+  serialized_start=198,
+  serialized_end=232,
 )
 
 
@@ -210,6 +238,13 @@ _PROCESS = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='CmdLine', full_name='commonpb.Process.CmdLine', index=5,
+      number=6, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -222,8 +257,8 @@ _PROCESS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=167,
-  serialized_end=257,
+  serialized_start=234,
+  serialized_end=341,
 )
 
 
@@ -261,8 +296,8 @@ _ENVVAR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=259,
-  serialized_end=295,
+  serialized_start=343,
+  serialized_end=379,
 )
 
 DESCRIPTOR.message_types_by_name['Empty'] = _EMPTY

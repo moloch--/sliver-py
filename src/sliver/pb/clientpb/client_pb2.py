@@ -21,49 +21,13 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z-github.com/bishopfox/sliver/protobuf/clientpb',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x15\x63lientpb/client.proto\x12\x08\x63lientpb\x1a\x15\x63ommonpb/common.proto\"\x83\x01\n\x07Version\x12\r\n\x05Major\x18\x01 \x01(\x05\x12\r\n\x05Minor\x18\x02 \x01(\x05\x12\r\n\x05Patch\x18\x03 \x01(\x05\x12\x0e\n\x06\x43ommit\x18\x04 \x01(\t\x12\r\n\x05\x44irty\x18\x05 \x01(\x08\x12\x12\n\nCompiledAt\x18\x06 \x01(\x03\x12\n\n\x02OS\x18\x07 \x01(\t\x12\x0c\n\x04\x41rch\x18\x08 \x01(\t\"\xd8\x02\n\x07Session\x12\n\n\x02ID\x18\x01 \x01(\r\x12\x0c\n\x04Name\x18\x02 \x01(\t\x12\x10\n\x08Hostname\x18\x03 \x01(\t\x12\x0c\n\x04UUID\x18\x04 \x01(\t\x12\x10\n\x08Username\x18\x05 \x01(\t\x12\x0b\n\x03UID\x18\x06 \x01(\t\x12\x0b\n\x03GID\x18\x07 \x01(\t\x12\n\n\x02OS\x18\x08 \x01(\t\x12\x0c\n\x04\x41rch\x18\t \x01(\t\x12\x11\n\tTransport\x18\n \x01(\t\x12\x15\n\rRemoteAddress\x18\x0b \x01(\t\x12\x0b\n\x03PID\x18\x0c \x01(\x05\x12\x10\n\x08\x46ilename\x18\r \x01(\t\x12\x13\n\x0bLastCheckin\x18\x0e \x01(\t\x12\x10\n\x08\x41\x63tiveC2\x18\x0f \x01(\t\x12\x0f\n\x07Version\x18\x10 \x01(\t\x12\x0f\n\x07\x45vasion\x18\x11 \x01(\x08\x12\x0e\n\x06IsDead\x18\x12 \x01(\x08\x12\x19\n\x11ReconnectInterval\x18\x13 \x01(\r\x12\x10\n\x08ProxyURL\x18\x14 \x01(\t\";\n\tImplantC2\x12\x10\n\x08Priority\x18\x01 \x01(\r\x12\x0b\n\x03URL\x18\x02 \x01(\t\x12\x0f\n\x07Options\x18\x03 \x01(\t\"\xd4\x05\n\rImplantConfig\x12\x0c\n\x04GOOS\x18\x01 \x01(\t\x12\x0e\n\x06GOARCH\x18\x02 \x01(\t\x12\x0c\n\x04Name\x18\x03 \x01(\t\x12\x0e\n\x06\x43\x41\x43\x65rt\x18\x04 \x01(\t\x12\x0c\n\x04\x43\x65rt\x18\x05 \x01(\t\x12\x0b\n\x03Key\x18\x06 \x01(\t\x12\r\n\x05\x44\x65\x62ug\x18\x07 \x01(\x08\x12\x0f\n\x07\x45vasion\x18\x1f \x01(\x08\x12\x18\n\x10ObfuscateSymbols\x18\x1e \x01(\x08\x12\x18\n\x10WGImplantPrivKey\x18! \x01(\t\x12\x16\n\x0eWGServerPubKey\x18\" \x01(\t\x12\x13\n\x0bWGPeerTunIP\x18# \x01(\t\x12\x19\n\x11WGKeyExchangePort\x18$ \x01(\r\x12\x16\n\x0eWGTcpCommsPort\x18% \x01(\r\x12\x19\n\x11ReconnectInterval\x18\x08 \x01(\r\x12\x1b\n\x13MaxConnectionErrors\x18\t \x01(\r\x12\x1f\n\x02\x43\x32\x18\n \x03(\x0b\x32\x13.clientpb.ImplantC2\x12\x15\n\rCanaryDomains\x18\x0b \x03(\t\x12\x19\n\x11LimitDomainJoined\x18\x14 \x01(\x08\x12\x15\n\rLimitDatetime\x18\x15 \x01(\t\x12\x15\n\rLimitHostname\x18\x16 \x01(\t\x12\x15\n\rLimitUsername\x18\x17 \x01(\t\x12\x17\n\x0fLimitFileExists\x18  \x01(\t\x12\x34\n\x06\x46ormat\x18\x19 \x01(\x0e\x32$.clientpb.ImplantConfig.OutputFormat\x12\x13\n\x0bIsSharedLib\x18\x1a \x01(\x08\x12\x10\n\x08\x46ileName\x18\x1b \x01(\t\x12\x11\n\tIsService\x18\x1c \x01(\x08\x12\x13\n\x0bIsShellcode\x18\x1d \x01(\x08\"J\n\x0cOutputFormat\x12\x0e\n\nSHARED_LIB\x10\x00\x12\r\n\tSHELLCODE\x10\x01\x12\x0e\n\nEXECUTABLE\x10\x02\x12\x0b\n\x07SERVICE\x10\x03\"\x8f\x01\n\rImplantBuilds\x12\x35\n\x07\x43onfigs\x18\x01 \x03(\x0b\x32$.clientpb.ImplantBuilds.ConfigsEntry\x1aG\n\x0c\x43onfigsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12&\n\x05value\x18\x02 \x01(\x0b\x32\x17.clientpb.ImplantConfig:\x02\x38\x01\"\x19\n\tDeleteReq\x12\x0c\n\x04Name\x18\x01 \x01(\t\"\x81\x01\n\tDNSCanary\x12\x13\n\x0bImplantName\x18\x01 \x01(\t\x12\x0e\n\x06\x44omain\x18\x02 \x01(\t\x12\x11\n\tTriggered\x18\x03 \x01(\x08\x12\x16\n\x0e\x46irstTriggered\x18\x04 \x01(\t\x12\x15\n\rLatestTrigger\x18\x05 \x01(\t\x12\r\n\x05\x43ount\x18\x06 \x01(\r\"1\n\x08\x43\x61naries\x12%\n\x08\x43\x61naries\x18\x01 \x03(\x0b\x32\x13.clientpb.DNSCanary\"\x18\n\nUniqueWGIP\x12\n\n\x02IP\x18\x01 \x01(\t\"G\n\x0eImplantProfile\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12\'\n\x06\x43onfig\x18\x02 \x01(\x0b\x32\x17.clientpb.ImplantConfig\"=\n\x0fImplantProfiles\x12*\n\x08Profiles\x18\x01 \x03(\x0b\x32\x18.clientpb.ImplantProfile\"$\n\rRegenerateReq\x12\x13\n\x0bImplantName\x18\x01 \x01(\t\"e\n\x03Job\x12\n\n\x02ID\x18\x01 \x01(\r\x12\x0c\n\x04Name\x18\x02 \x01(\t\x12\x13\n\x0b\x44\x65scription\x18\x03 \x01(\t\x12\x10\n\x08Protocol\x18\x04 \x01(\t\x12\x0c\n\x04Port\x18\x05 \x01(\r\x12\x0f\n\x07\x44omains\x18\x06 \x03(\t\"%\n\x04Jobs\x12\x1d\n\x06\x41\x63tive\x18\x01 \x03(\x0b\x32\r.clientpb.Job\"\x18\n\nKillJobReq\x12\n\n\x02ID\x18\x01 \x01(\r\"&\n\x07KillJob\x12\n\n\x02ID\x18\x01 \x01(\r\x12\x0f\n\x07Success\x18\x02 \x01(\x08\"A\n\x0fMTLSListenerReq\x12\x0c\n\x04Host\x18\x01 \x01(\t\x12\x0c\n\x04Port\x18\x02 \x01(\r\x12\x12\n\nPersistent\x18\x03 \x01(\x08\"\x1d\n\x0cMTLSListener\x12\r\n\x05JobID\x18\x01 \x01(\r\"`\n\rWGListenerReq\x12\x0c\n\x04Port\x18\x01 \x01(\r\x12\r\n\x05TunIP\x18\x02 \x01(\t\x12\r\n\x05NPort\x18\x03 \x01(\r\x12\x0f\n\x07KeyPort\x18\x04 \x01(\r\x12\x12\n\nPersistent\x18\x05 \x01(\x08\"\x1b\n\nWGListener\x12\r\n\x05JobID\x18\x01 \x01(\r\"c\n\x0e\x44NSListenerReq\x12\x0f\n\x07\x44omains\x18\x01 \x03(\t\x12\x10\n\x08\x43\x61naries\x18\x02 \x01(\x08\x12\x0c\n\x04Host\x18\x03 \x01(\t\x12\x0c\n\x04Port\x18\x04 \x01(\r\x12\x12\n\nPersistent\x18\x05 \x01(\x08\"\x1c\n\x0b\x44NSListener\x12\r\n\x05JobID\x18\x01 \x01(\r\"\x9b\x01\n\x0fHTTPListenerReq\x12\x0e\n\x06\x44omain\x18\x01 \x01(\t\x12\x0c\n\x04Host\x18\x02 \x01(\t\x12\x0c\n\x04Port\x18\x03 \x01(\r\x12\x0e\n\x06Secure\x18\x04 \x01(\x08\x12\x0f\n\x07Website\x18\x05 \x01(\t\x12\x0c\n\x04\x43\x65rt\x18\x06 \x01(\x0c\x12\x0b\n\x03Key\x18\x07 \x01(\x0c\x12\x0c\n\x04\x41\x43ME\x18\x08 \x01(\x08\x12\x12\n\nPersistent\x18\t \x01(\x08\"E\n\rNamedPipesReq\x12\x10\n\x08PipeName\x18\x10 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"P\n\nNamedPipes\x12\x0f\n\x07Success\x18\x01 \x01(\x08\x12\x0b\n\x03\x45rr\x18\x02 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"B\n\x0bTCPPivotReq\x12\x0f\n\x07\x41\x64\x64ress\x18\x10 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"N\n\x08TCPPivot\x12\x0f\n\x07Success\x18\x01 \x01(\x08\x12\x0b\n\x03\x45rr\x18\x02 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"\x1d\n\x0cHTTPListener\x12\r\n\x05JobID\x18\x01 \x01(\r\"/\n\x08Sessions\x12#\n\x08Sessions\x18\x01 \x03(\x0b\x32\x11.clientpb.Session\"0\n\rUpdateSession\x12\x11\n\tSessionID\x18\x01 \x01(\r\x12\x0c\n\x04Name\x18\x02 \x01(\t\"6\n\x0bGenerateReq\x12\'\n\x06\x43onfig\x18\x01 \x01(\x0b\x32\x17.clientpb.ImplantConfig\"(\n\x08Generate\x12\x1c\n\x04\x46ile\x18\x01 \x01(\x0b\x32\x0e.commonpb.File\"\x80\x01\n\x06MSFReq\x12\x0f\n\x07Payload\x18\x01 \x01(\t\x12\r\n\x05LHost\x18\x02 \x01(\t\x12\r\n\x05LPort\x18\x03 \x01(\r\x12\x0f\n\x07\x45ncoder\x18\x04 \x01(\t\x12\x12\n\nIterations\x18\x05 \x01(\x05\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"\x93\x01\n\x0cMSFRemoteReq\x12\x0f\n\x07Payload\x18\x01 \x01(\t\x12\r\n\x05LHost\x18\x02 \x01(\t\x12\r\n\x05LPort\x18\x03 \x01(\r\x12\x0f\n\x07\x45ncoder\x18\x04 \x01(\t\x12\x12\n\nIterations\x18\x05 \x01(\x05\x12\x0b\n\x03PID\x18\x08 \x01(\r\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"\x91\x01\n\x11StagerListenerReq\x12)\n\x08Protocol\x18\x01 \x01(\x0e\x32\x17.clientpb.StageProtocol\x12\x0c\n\x04Host\x18\x02 \x01(\t\x12\x0c\n\x04Port\x18\x03 \x01(\r\x12\x0c\n\x04\x44\x61ta\x18\x04 \x01(\x0c\x12\x0c\n\x04\x43\x65rt\x18\x05 \x01(\x0c\x12\x0b\n\x03Key\x18\x06 \x01(\x0c\x12\x0c\n\x04\x41\x43ME\x18\x07 \x01(\x08\"\x1f\n\x0eStagerListener\x12\r\n\x05JobID\x18\x01 \x01(\r\"H\n\x0fShellcodeRDIReq\x12\x0c\n\x04\x44\x61ta\x18\x01 \x01(\x0c\x12\x14\n\x0c\x46unctionName\x18\x02 \x01(\t\x12\x11\n\tArguments\x18\x03 \x01(\t\"\x1c\n\x0cShellcodeRDI\x12\x0c\n\x04\x44\x61ta\x18\x01 \x01(\x0c\"\x91\x01\n\x0cMsfStagerReq\x12\x0c\n\x04\x41rch\x18\x01 \x01(\t\x12\x0e\n\x06\x46ormat\x18\x02 \x01(\t\x12\x0c\n\x04Port\x18\x03 \x01(\r\x12\x0c\n\x04Host\x18\x04 \x01(\t\x12\n\n\x02OS\x18\x05 \x01(\t\x12)\n\x08Protocol\x18\x06 \x01(\x0e\x32\x17.clientpb.StageProtocol\x12\x10\n\x08\x42\x61\x64\x43hars\x18\x07 \x03(\t\")\n\tMsfStager\x12\x1c\n\x04\x46ile\x18\x01 \x01(\x0b\x32\x0e.commonpb.File\"s\n\x0cGetSystemReq\x12\x16\n\x0eHostingProcess\x18\x01 \x01(\t\x12\'\n\x06\x43onfig\x18\x02 \x01(\x0b\x32\x17.clientpb.ImplantConfig\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"f\n\nMigrateReq\x12\x0b\n\x03Pid\x18\x01 \x01(\r\x12\'\n\x06\x43onfig\x18\x02 \x01(\x0b\x32\x17.clientpb.ImplantConfig\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"5\n\x0f\x43reateTunnelReq\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"7\n\x0c\x43reateTunnel\x12\x11\n\tSessionID\x18\x01 \x01(\r\x12\x14\n\x08TunnelID\x18\x08 \x01(\x04\x42\x02\x30\x01\"J\n\x0e\x43loseTunnelReq\x12\x14\n\x08TunnelID\x18\x08 \x01(\x04\x42\x02\x30\x01\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"H\n\x06\x43lient\x12\n\n\x02ID\x18\x01 \x01(\r\x12\x0c\n\x04Name\x18\x02 \x01(\t\x12$\n\x08Operator\x18\x03 \x01(\x0b\x32\x12.clientpb.Operator\"\x97\x01\n\x05\x45vent\x12\x11\n\tEventType\x18\x01 \x01(\t\x12\"\n\x07Session\x18\x02 \x01(\x0b\x32\x11.clientpb.Session\x12\x1a\n\x03Job\x18\x03 \x01(\x0b\x32\r.clientpb.Job\x12 \n\x06\x43lient\x18\x04 \x01(\x0b\x32\x10.clientpb.Client\x12\x0c\n\x04\x44\x61ta\x18\x05 \x01(\x0c\x12\x0b\n\x03\x45rr\x18\x06 \x01(\t\"2\n\tOperators\x12%\n\tOperators\x18\x01 \x03(\x0b\x32\x12.clientpb.Operator\"(\n\x08Operator\x12\x0e\n\x06Online\x18\x01 \x01(\x08\x12\x0c\n\x04Name\x18\x02 \x01(\t\"R\n\nWebContent\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\x13\n\x0b\x43ontentType\x18\x02 \x01(\t\x12\x10\n\x04Size\x18\x03 \x01(\x04\x42\x02\x30\x01\x12\x0f\n\x07\x43ontent\x18\t \x01(\x0c\"\xa5\x01\n\x11WebsiteAddContent\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12;\n\x08\x43ontents\x18\x02 \x03(\x0b\x32).clientpb.WebsiteAddContent.ContentsEntry\x1a\x45\n\rContentsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12#\n\x05value\x18\x02 \x01(\x0b\x32\x14.clientpb.WebContent:\x02\x38\x01\"3\n\x14WebsiteRemoveContent\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12\r\n\x05Paths\x18\x02 \x03(\t\"\x91\x01\n\x07Website\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12\x31\n\x08\x43ontents\x18\x02 \x03(\x0b\x32\x1f.clientpb.Website.ContentsEntry\x1a\x45\n\rContentsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12#\n\x05value\x18\x02 \x01(\x0b\x32\x14.clientpb.WebContent:\x02\x38\x01\"/\n\x08Websites\x12#\n\x08Websites\x18\x01 \x03(\x0b\x32\x11.clientpb.Website\"h\n\x0eWGClientConfig\x12\x14\n\x0cServerPubKey\x18\x01 \x01(\t\x12\x18\n\x10\x43lientPrivateKey\x18\x02 \x01(\t\x12\x14\n\x0c\x43lientPubKey\x18\x03 \x01(\t\x12\x10\n\x08\x43lientIP\x18\x04 \x01(\t*-\n\rStageProtocol\x12\x07\n\x03TCP\x10\x00\x12\x08\n\x04HTTP\x10\x01\x12\t\n\x05HTTPS\x10\x02\x42/Z-github.com/bishopfox/sliver/protobuf/clientpbb\x06proto3'
+  serialized_pb=b'\n\x15\x63lientpb/client.proto\x12\x08\x63lientpb\x1a\x15\x63ommonpb/common.proto\"\x83\x01\n\x07Version\x12\r\n\x05Major\x18\x01 \x01(\x05\x12\r\n\x05Minor\x18\x02 \x01(\x05\x12\r\n\x05Patch\x18\x03 \x01(\x05\x12\x0e\n\x06\x43ommit\x18\x04 \x01(\t\x12\r\n\x05\x44irty\x18\x05 \x01(\x08\x12\x12\n\nCompiledAt\x18\x06 \x01(\x03\x12\n\n\x02OS\x18\x07 \x01(\t\x12\x0c\n\x04\x41rch\x18\x08 \x01(\t\"\x8c\x03\n\x07Session\x12\n\n\x02ID\x18\x01 \x01(\t\x12\x0c\n\x04Name\x18\x02 \x01(\t\x12\x10\n\x08Hostname\x18\x03 \x01(\t\x12\x0c\n\x04UUID\x18\x04 \x01(\t\x12\x10\n\x08Username\x18\x05 \x01(\t\x12\x0b\n\x03UID\x18\x06 \x01(\t\x12\x0b\n\x03GID\x18\x07 \x01(\t\x12\n\n\x02OS\x18\x08 \x01(\t\x12\x0c\n\x04\x41rch\x18\t \x01(\t\x12\x11\n\tTransport\x18\n \x01(\t\x12\x15\n\rRemoteAddress\x18\x0b \x01(\t\x12\x0b\n\x03PID\x18\x0c \x01(\x05\x12\x10\n\x08\x46ilename\x18\r \x01(\t\x12\x13\n\x0bLastCheckin\x18\x0e \x01(\x03\x12\x10\n\x08\x41\x63tiveC2\x18\x0f \x01(\t\x12\x0f\n\x07Version\x18\x10 \x01(\t\x12\x0f\n\x07\x45vasion\x18\x11 \x01(\x08\x12\x0e\n\x06IsDead\x18\x12 \x01(\x08\x12\x19\n\x11ReconnectInterval\x18\x13 \x01(\x03\x12\x10\n\x08ProxyURL\x18\x14 \x01(\t\x12\x0e\n\x06\x42urned\x18\x16 \x01(\x08\x12\x12\n\nExtensions\x18\x17 \x03(\t\x12\x0e\n\x06PeerID\x18\x19 \x01(\x03\"\xcf\x03\n\x06\x42\x65\x61\x63on\x12\n\n\x02ID\x18\x01 \x01(\t\x12\x0c\n\x04Name\x18\x02 \x01(\t\x12\x10\n\x08Hostname\x18\x03 \x01(\t\x12\x0c\n\x04UUID\x18\x04 \x01(\t\x12\x10\n\x08Username\x18\x05 \x01(\t\x12\x0b\n\x03UID\x18\x06 \x01(\t\x12\x0b\n\x03GID\x18\x07 \x01(\t\x12\n\n\x02OS\x18\x08 \x01(\t\x12\x0c\n\x04\x41rch\x18\t \x01(\t\x12\x11\n\tTransport\x18\n \x01(\t\x12\x15\n\rRemoteAddress\x18\x0b \x01(\t\x12\x0b\n\x03PID\x18\x0c \x01(\x05\x12\x10\n\x08\x46ilename\x18\r \x01(\t\x12\x13\n\x0bLastCheckin\x18\x0e \x01(\x03\x12\x10\n\x08\x41\x63tiveC2\x18\x0f \x01(\t\x12\x0f\n\x07Version\x18\x10 \x01(\t\x12\x0f\n\x07\x45vasion\x18\x11 \x01(\x08\x12\x0e\n\x06IsDead\x18\x12 \x01(\x08\x12\x10\n\x08ProxyURL\x18\x14 \x01(\t\x12\x19\n\x11ReconnectInterval\x18\x15 \x01(\x03\x12\x10\n\x08Interval\x18\x16 \x01(\x03\x12\x0e\n\x06Jitter\x18\x17 \x01(\x03\x12\x0e\n\x06\x42urned\x18\x18 \x01(\x08\x12\x13\n\x0bNextCheckin\x18\x19 \x01(\x03\x12\x12\n\nTasksCount\x18\x1a \x01(\x03\x12\x1b\n\x13TasksCountCompleted\x18\x1b \x01(\x03\",\n\x07\x42\x65\x61\x63ons\x12!\n\x07\x42\x65\x61\x63ons\x18\x02 \x03(\x0b\x32\x10.clientpb.Beacon\"\xa9\x01\n\nBeaconTask\x12\n\n\x02ID\x18\x01 \x01(\t\x12\x10\n\x08\x42\x65\x61\x63onID\x18\x02 \x01(\t\x12\x11\n\tCreatedAt\x18\x03 \x01(\x03\x12\r\n\x05State\x18\x04 \x01(\t\x12\x0e\n\x06SentAt\x18\x05 \x01(\x03\x12\x13\n\x0b\x43ompletedAt\x18\x06 \x01(\x03\x12\x0f\n\x07Request\x18\x07 \x01(\x0c\x12\x10\n\x08Response\x18\x08 \x01(\x0c\x12\x13\n\x0b\x44\x65scription\x18\t \x01(\t\"D\n\x0b\x42\x65\x61\x63onTasks\x12\x10\n\x08\x42\x65\x61\x63onID\x18\x01 \x01(\t\x12#\n\x05Tasks\x18\x02 \x03(\x0b\x32\x14.clientpb.BeaconTask\";\n\tImplantC2\x12\x10\n\x08Priority\x18\x01 \x01(\r\x12\x0b\n\x03URL\x18\x02 \x01(\t\x12\x0f\n\x07Options\x18\x03 \x01(\t\"\xf0\x06\n\rImplantConfig\x12\n\n\x02ID\x18\x01 \x01(\t\x12\x10\n\x08IsBeacon\x18\x02 \x01(\x08\x12\x16\n\x0e\x42\x65\x61\x63onInterval\x18\x03 \x01(\x03\x12\x14\n\x0c\x42\x65\x61\x63onJitter\x18\x04 \x01(\x03\x12\x0c\n\x04GOOS\x18\x05 \x01(\t\x12\x0e\n\x06GOARCH\x18\x06 \x01(\t\x12\x0c\n\x04Name\x18\x07 \x01(\t\x12\r\n\x05\x44\x65\x62ug\x18\x08 \x01(\x08\x12\x0f\n\x07\x45vasion\x18\t \x01(\x08\x12\x18\n\x10ObfuscateSymbols\x18\n \x01(\x08\x12\x12\n\nMtlsCACert\x18\x14 \x01(\t\x12\x10\n\x08MtlsCert\x18\x15 \x01(\t\x12\x0f\n\x07MtlsKey\x18\x16 \x01(\t\x12\x14\n\x0c\x45\x43\x43PublicKey\x18\x17 \x01(\t\x12\x15\n\rECCPrivateKey\x18\x18 \x01(\t\x12\x1d\n\x15\x45\x43\x43PublicKeySignature\x18\x19 \x01(\t\x12\x1f\n\x17MinisignServerPublicKey\x18\x1a \x01(\t\x12\x18\n\x10WGImplantPrivKey\x18\x1e \x01(\t\x12\x16\n\x0eWGServerPubKey\x18\x1f \x01(\t\x12\x13\n\x0bWGPeerTunIP\x18  \x01(\t\x12\x19\n\x11WGKeyExchangePort\x18! \x01(\r\x12\x16\n\x0eWGTcpCommsPort\x18\" \x01(\r\x12\x19\n\x11ReconnectInterval\x18( \x01(\x03\x12\x1b\n\x13MaxConnectionErrors\x18) \x01(\r\x12\x13\n\x0bPollTimeout\x18* \x01(\x03\x12\x1f\n\x02\x43\x32\x18\x32 \x03(\x0b\x32\x13.clientpb.ImplantC2\x12\x15\n\rCanaryDomains\x18\x33 \x03(\t\x12\x1a\n\x12\x43onnectionStrategy\x18\x34 \x01(\t\x12\x19\n\x11LimitDomainJoined\x18< \x01(\x08\x12\x15\n\rLimitDatetime\x18= \x01(\t\x12\x15\n\rLimitHostname\x18> \x01(\t\x12\x15\n\rLimitUsername\x18? \x01(\t\x12\x17\n\x0fLimitFileExists\x18@ \x01(\t\x12&\n\x06\x46ormat\x18\x64 \x01(\x0e\x32\x16.clientpb.OutputFormat\x12\x13\n\x0bIsSharedLib\x18\x65 \x01(\x08\x12\x10\n\x08\x46ileName\x18\x66 \x01(\t\x12\x11\n\tIsService\x18g \x01(\x08\x12\x13\n\x0bIsShellcode\x18h \x01(\x08\"\x8f\x01\n\rImplantBuilds\x12\x35\n\x07\x43onfigs\x18\x01 \x03(\x0b\x32$.clientpb.ImplantBuilds.ConfigsEntry\x1aG\n\x0c\x43onfigsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12&\n\x05value\x18\x02 \x01(\x0b\x32\x17.clientpb.ImplantConfig:\x02\x38\x01\"V\n\x0e\x43ompilerTarget\x12\x0c\n\x04GOOS\x18\x01 \x01(\t\x12\x0e\n\x06GOARCH\x18\x02 \x01(\t\x12&\n\x06\x46ormat\x18\x03 \x01(\x0e\x32\x16.clientpb.OutputFormat\"Z\n\rCrossCompiler\x12\x12\n\nTargetGOOS\x18\x01 \x01(\t\x12\x14\n\x0cTargetGOARCH\x18\x02 \x01(\t\x12\x0e\n\x06\x43\x43Path\x18\x03 \x01(\t\x12\x0f\n\x07\x43XXPath\x18\x04 \x01(\t\"\xba\x01\n\x08\x43ompiler\x12\x0c\n\x04GOOS\x18\x01 \x01(\t\x12\x0e\n\x06GOARCH\x18\x02 \x01(\t\x12)\n\x07Targets\x18\x03 \x03(\x0b\x32\x18.clientpb.CompilerTarget\x12/\n\x0e\x43rossCompilers\x18\x04 \x03(\x0b\x32\x17.clientpb.CrossCompiler\x12\x34\n\x12UnsupportedTargets\x18\x05 \x03(\x0b\x32\x18.clientpb.CompilerTarget\"\x19\n\tDeleteReq\x12\x0c\n\x04Name\x18\x01 \x01(\t\"\x81\x01\n\tDNSCanary\x12\x13\n\x0bImplantName\x18\x01 \x01(\t\x12\x0e\n\x06\x44omain\x18\x02 \x01(\t\x12\x11\n\tTriggered\x18\x03 \x01(\x08\x12\x16\n\x0e\x46irstTriggered\x18\x04 \x01(\t\x12\x15\n\rLatestTrigger\x18\x05 \x01(\t\x12\r\n\x05\x43ount\x18\x06 \x01(\r\"1\n\x08\x43\x61naries\x12%\n\x08\x43\x61naries\x18\x01 \x03(\x0b\x32\x13.clientpb.DNSCanary\"\x18\n\nUniqueWGIP\x12\n\n\x02IP\x18\x01 \x01(\t\"G\n\x0eImplantProfile\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12\'\n\x06\x43onfig\x18\x02 \x01(\x0b\x32\x17.clientpb.ImplantConfig\"=\n\x0fImplantProfiles\x12*\n\x08Profiles\x18\x01 \x03(\x0b\x32\x18.clientpb.ImplantProfile\"$\n\rRegenerateReq\x12\x13\n\x0bImplantName\x18\x01 \x01(\t\"e\n\x03Job\x12\n\n\x02ID\x18\x01 \x01(\r\x12\x0c\n\x04Name\x18\x02 \x01(\t\x12\x13\n\x0b\x44\x65scription\x18\x03 \x01(\t\x12\x10\n\x08Protocol\x18\x04 \x01(\t\x12\x0c\n\x04Port\x18\x05 \x01(\r\x12\x0f\n\x07\x44omains\x18\x06 \x03(\t\"%\n\x04Jobs\x12\x1d\n\x06\x41\x63tive\x18\x01 \x03(\x0b\x32\r.clientpb.Job\"\x18\n\nKillJobReq\x12\n\n\x02ID\x18\x01 \x01(\r\"&\n\x07KillJob\x12\n\n\x02ID\x18\x01 \x01(\r\x12\x0f\n\x07Success\x18\x02 \x01(\x08\"A\n\x0fMTLSListenerReq\x12\x0c\n\x04Host\x18\x01 \x01(\t\x12\x0c\n\x04Port\x18\x02 \x01(\r\x12\x12\n\nPersistent\x18\x03 \x01(\x08\"\x1d\n\x0cMTLSListener\x12\r\n\x05JobID\x18\x01 \x01(\r\"n\n\rWGListenerReq\x12\x0c\n\x04Host\x18\x06 \x01(\t\x12\x0c\n\x04Port\x18\x01 \x01(\r\x12\r\n\x05TunIP\x18\x02 \x01(\t\x12\r\n\x05NPort\x18\x03 \x01(\r\x12\x0f\n\x07KeyPort\x18\x04 \x01(\r\x12\x12\n\nPersistent\x18\x05 \x01(\x08\"\x1b\n\nWGListener\x12\r\n\x05JobID\x18\x01 \x01(\r\"c\n\x0e\x44NSListenerReq\x12\x0f\n\x07\x44omains\x18\x01 \x03(\t\x12\x10\n\x08\x43\x61naries\x18\x02 \x01(\x08\x12\x0c\n\x04Host\x18\x03 \x01(\t\x12\x0c\n\x04Port\x18\x04 \x01(\r\x12\x12\n\nPersistent\x18\x05 \x01(\x08\"\x1c\n\x0b\x44NSListener\x12\r\n\x05JobID\x18\x01 \x01(\r\"\xe0\x01\n\x0fHTTPListenerReq\x12\x0e\n\x06\x44omain\x18\x01 \x01(\t\x12\x0c\n\x04Host\x18\x02 \x01(\t\x12\x0c\n\x04Port\x18\x03 \x01(\r\x12\x0e\n\x06Secure\x18\x04 \x01(\x08\x12\x0f\n\x07Website\x18\x05 \x01(\t\x12\x0c\n\x04\x43\x65rt\x18\x06 \x01(\x0c\x12\x0b\n\x03Key\x18\x07 \x01(\x0c\x12\x0c\n\x04\x41\x43ME\x18\x08 \x01(\x08\x12\x12\n\nPersistent\x18\t \x01(\x08\x12\x12\n\nEnforceOTP\x18\n \x01(\x08\x12\x17\n\x0fLongPollTimeout\x18\x0b \x01(\x03\x12\x16\n\x0eLongPollJitter\x18\x0c \x01(\x03\"E\n\rNamedPipesReq\x12\x10\n\x08PipeName\x18\x10 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"P\n\nNamedPipes\x12\x0f\n\x07Success\x18\x01 \x01(\x08\x12\x0b\n\x03\x45rr\x18\x02 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"B\n\x0bTCPPivotReq\x12\x0f\n\x07\x41\x64\x64ress\x18\x10 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"N\n\x08TCPPivot\x12\x0f\n\x07Success\x18\x01 \x01(\x08\x12\x0b\n\x03\x45rr\x18\x02 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"\x1d\n\x0cHTTPListener\x12\r\n\x05JobID\x18\x01 \x01(\r\"/\n\x08Sessions\x12#\n\x08Sessions\x18\x01 \x03(\x0b\x32\x11.clientpb.Session\"u\n\rUpdateSession\x12\x11\n\tSessionID\x18\x01 \x01(\t\x12\x0c\n\x04Name\x18\x02 \x01(\t\x12\x19\n\x11ReconnectInterval\x18\x03 \x01(\x03\x12\x14\n\x0cPollInterval\x18\x04 \x01(\x03\x12\x12\n\nExtensions\x18\x05 \x03(\t\"6\n\x0bGenerateReq\x12\'\n\x06\x43onfig\x18\x01 \x01(\x0b\x32\x17.clientpb.ImplantConfig\"(\n\x08Generate\x12\x1c\n\x04\x46ile\x18\x01 \x01(\x0b\x32\x0e.commonpb.File\"\x80\x01\n\x06MSFReq\x12\x0f\n\x07Payload\x18\x01 \x01(\t\x12\r\n\x05LHost\x18\x02 \x01(\t\x12\r\n\x05LPort\x18\x03 \x01(\r\x12\x0f\n\x07\x45ncoder\x18\x04 \x01(\t\x12\x12\n\nIterations\x18\x05 \x01(\x05\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"\x93\x01\n\x0cMSFRemoteReq\x12\x0f\n\x07Payload\x18\x01 \x01(\t\x12\r\n\x05LHost\x18\x02 \x01(\t\x12\r\n\x05LPort\x18\x03 \x01(\r\x12\x0f\n\x07\x45ncoder\x18\x04 \x01(\t\x12\x12\n\nIterations\x18\x05 \x01(\x05\x12\x0b\n\x03PID\x18\x08 \x01(\r\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"\x91\x01\n\x11StagerListenerReq\x12)\n\x08Protocol\x18\x01 \x01(\x0e\x32\x17.clientpb.StageProtocol\x12\x0c\n\x04Host\x18\x02 \x01(\t\x12\x0c\n\x04Port\x18\x03 \x01(\r\x12\x0c\n\x04\x44\x61ta\x18\x04 \x01(\x0c\x12\x0c\n\x04\x43\x65rt\x18\x05 \x01(\x0c\x12\x0b\n\x03Key\x18\x06 \x01(\x0c\x12\x0c\n\x04\x41\x43ME\x18\x07 \x01(\x08\"\x1f\n\x0eStagerListener\x12\r\n\x05JobID\x18\x01 \x01(\r\"H\n\x0fShellcodeRDIReq\x12\x0c\n\x04\x44\x61ta\x18\x01 \x01(\x0c\x12\x14\n\x0c\x46unctionName\x18\x02 \x01(\t\x12\x11\n\tArguments\x18\x03 \x01(\t\"\x1c\n\x0cShellcodeRDI\x12\x0c\n\x04\x44\x61ta\x18\x01 \x01(\x0c\"\x91\x01\n\x0cMsfStagerReq\x12\x0c\n\x04\x41rch\x18\x01 \x01(\t\x12\x0e\n\x06\x46ormat\x18\x02 \x01(\t\x12\x0c\n\x04Port\x18\x03 \x01(\r\x12\x0c\n\x04Host\x18\x04 \x01(\t\x12\n\n\x02OS\x18\x05 \x01(\t\x12)\n\x08Protocol\x18\x06 \x01(\x0e\x32\x17.clientpb.StageProtocol\x12\x10\n\x08\x42\x61\x64\x43hars\x18\x07 \x03(\t\")\n\tMsfStager\x12\x1c\n\x04\x46ile\x18\x01 \x01(\x0b\x32\x0e.commonpb.File\"s\n\x0cGetSystemReq\x12\x16\n\x0eHostingProcess\x18\x01 \x01(\t\x12\'\n\x06\x43onfig\x18\x02 \x01(\x0b\x32\x17.clientpb.ImplantConfig\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"f\n\nMigrateReq\x12\x0b\n\x03Pid\x18\x01 \x01(\r\x12\'\n\x06\x43onfig\x18\x02 \x01(\x0b\x32\x17.clientpb.ImplantConfig\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"5\n\x0f\x43reateTunnelReq\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"7\n\x0c\x43reateTunnel\x12\x11\n\tSessionID\x18\x01 \x01(\r\x12\x14\n\x08TunnelID\x18\x08 \x01(\x04\x42\x02\x30\x01\"J\n\x0e\x43loseTunnelReq\x12\x14\n\x08TunnelID\x18\x08 \x01(\x04\x42\x02\x30\x01\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"\x80\x01\n\x0fPivotGraphEntry\x12\x0e\n\x06PeerID\x18\x01 \x01(\x03\x12\"\n\x07Session\x18\x02 \x01(\x0b\x32\x11.clientpb.Session\x12\x0c\n\x04Name\x18\x03 \x01(\t\x12+\n\x08\x43hildren\x18\x04 \x03(\x0b\x32\x19.clientpb.PivotGraphEntry\"9\n\nPivotGraph\x12+\n\x08\x43hildren\x18\x01 \x03(\x0b\x32\x19.clientpb.PivotGraphEntry\"H\n\x06\x43lient\x12\n\n\x02ID\x18\x01 \x01(\r\x12\x0c\n\x04Name\x18\x02 \x01(\t\x12$\n\x08Operator\x18\x03 \x01(\x0b\x32\x12.clientpb.Operator\"\x97\x01\n\x05\x45vent\x12\x11\n\tEventType\x18\x01 \x01(\t\x12\"\n\x07Session\x18\x02 \x01(\x0b\x32\x11.clientpb.Session\x12\x1a\n\x03Job\x18\x03 \x01(\x0b\x32\r.clientpb.Job\x12 \n\x06\x43lient\x18\x04 \x01(\x0b\x32\x10.clientpb.Client\x12\x0c\n\x04\x44\x61ta\x18\x05 \x01(\x0c\x12\x0b\n\x03\x45rr\x18\x06 \x01(\t\"2\n\tOperators\x12%\n\tOperators\x18\x01 \x03(\x0b\x32\x12.clientpb.Operator\"(\n\x08Operator\x12\x0e\n\x06Online\x18\x01 \x01(\x08\x12\x0c\n\x04Name\x18\x02 \x01(\t\"R\n\nWebContent\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\x13\n\x0b\x43ontentType\x18\x02 \x01(\t\x12\x10\n\x04Size\x18\x03 \x01(\x04\x42\x02\x30\x01\x12\x0f\n\x07\x43ontent\x18\t \x01(\x0c\"\xa5\x01\n\x11WebsiteAddContent\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12;\n\x08\x43ontents\x18\x02 \x03(\x0b\x32).clientpb.WebsiteAddContent.ContentsEntry\x1a\x45\n\rContentsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12#\n\x05value\x18\x02 \x01(\x0b\x32\x14.clientpb.WebContent:\x02\x38\x01\"3\n\x14WebsiteRemoveContent\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12\r\n\x05Paths\x18\x02 \x03(\t\"\x91\x01\n\x07Website\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12\x31\n\x08\x43ontents\x18\x02 \x03(\x0b\x32\x1f.clientpb.Website.ContentsEntry\x1a\x45\n\rContentsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12#\n\x05value\x18\x02 \x01(\x0b\x32\x14.clientpb.WebContent:\x02\x38\x01\"/\n\x08Websites\x12#\n\x08Websites\x18\x01 \x03(\x0b\x32\x11.clientpb.Website\"h\n\x0eWGClientConfig\x12\x14\n\x0cServerPubKey\x18\x01 \x01(\t\x12\x18\n\x10\x43lientPrivateKey\x18\x02 \x01(\t\x12\x14\n\x0c\x43lientPubKey\x18\x03 \x01(\t\x12\x10\n\x08\x43lientIP\x18\x04 \x01(\t\"<\n\nCredential\x12\x0c\n\x04User\x18\x02 \x01(\t\x12\x10\n\x08Password\x18\x03 \x01(\t\x12\x0e\n\x06\x41PIKey\x18\x04 \x01(\t\"\xe6\x01\n\x04Loot\x12 \n\x04Type\x18\x01 \x01(\x0e\x32\x12.clientpb.LootType\x12\x0e\n\x06LootID\x18\x02 \x01(\t\x12\x0c\n\x04Name\x18\x03 \x01(\t\x12\x30\n\x0e\x43redentialType\x18\x04 \x01(\x0e\x32\x18.clientpb.CredentialType\x12(\n\nCredential\x18\x05 \x01(\x0b\x32\x14.clientpb.Credential\x12$\n\x08\x46ileType\x18\x06 \x01(\x0e\x32\x12.clientpb.FileType\x12\x1c\n\x04\x46ile\x18\t \x01(\x0b\x32\x0e.commonpb.File\"\'\n\x07\x41llLoot\x12\x1c\n\x04Loot\x18\x01 \x03(\x0b\x32\x0e.clientpb.Loot\"1\n\x03IOC\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\x10\n\x08\x46ileHash\x18\x02 \x01(\t\x12\n\n\x02ID\x18\x03 \x01(\t\"\x1f\n\rExtensionData\x12\x0e\n\x06Output\x18\x01 \x01(\t\"\xe3\x01\n\x04Host\x12\x10\n\x08Hostname\x18\x01 \x01(\t\x12\x10\n\x08HostUUID\x18\x02 \x01(\t\x12\x11\n\tOSVersion\x18\x03 \x01(\t\x12\x1b\n\x04IOCs\x18\x04 \x03(\x0b\x32\r.clientpb.IOC\x12\x38\n\rExtensionData\x18\x05 \x03(\x0b\x32!.clientpb.Host.ExtensionDataEntry\x1aM\n\x12\x45xtensionDataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12&\n\x05value\x18\x02 \x01(\x0b\x32\x17.clientpb.ExtensionData:\x02\x38\x01\")\n\x08\x41llHosts\x12\x1d\n\x05Hosts\x18\x01 \x03(\x0b\x32\x0e.clientpb.Host\"\xa2\x01\n\x0c\x44llHijackReq\x12\x18\n\x10ReferenceDLLPath\x18\x01 \x01(\t\x12\x16\n\x0eTargetLocation\x18\x02 \x01(\t\x12\x14\n\x0cReferenceDLL\x18\x03 \x01(\x0c\x12\x11\n\tTargetDLL\x18\x04 \x01(\x0c\x12\x13\n\x0bProfileName\x18\x05 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"1\n\tDllHijack\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response*J\n\x0cOutputFormat\x12\x0e\n\nSHARED_LIB\x10\x00\x12\r\n\tSHELLCODE\x10\x01\x12\x0e\n\nEXECUTABLE\x10\x02\x12\x0b\n\x07SERVICE\x10\x03*-\n\rStageProtocol\x12\x07\n\x03TCP\x10\x00\x12\x08\n\x04HTTP\x10\x01\x12\t\n\x05HTTPS\x10\x02*.\n\x08LootType\x12\r\n\tLOOT_FILE\x10\x00\x12\x13\n\x0fLOOT_CREDENTIAL\x10\x01*M\n\x0e\x43redentialType\x12\x11\n\rNO_CREDENTIAL\x10\x00\x12\x11\n\rUSER_PASSWORD\x10\x01\x12\x0b\n\x07\x41PI_KEY\x10\x02\x12\x08\n\x04\x46ILE\x10\x03*-\n\x08\x46ileType\x12\x0b\n\x07NO_FILE\x10\x00\x12\n\n\x06\x42INARY\x10\x01\x12\x08\n\x04TEXT\x10\x02\x42/Z-github.com/bishopfox/sliver/protobuf/clientpbb\x06proto3'
   ,
   dependencies=[commonpb_dot_common__pb2.DESCRIPTOR,])
 
-_STAGEPROTOCOL = _descriptor.EnumDescriptor(
-  name='StageProtocol',
-  full_name='clientpb.StageProtocol',
-  filename=None,
-  file=DESCRIPTOR,
-  create_key=_descriptor._internal_create_key,
-  values=[
-    _descriptor.EnumValueDescriptor(
-      name='TCP', index=0, number=0,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='HTTP', index=1, number=1,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='HTTPS', index=2, number=2,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-  ],
-  containing_type=None,
-  serialized_options=None,
-  serialized_start=5230,
-  serialized_end=5275,
-)
-_sym_db.RegisterEnumDescriptor(_STAGEPROTOCOL)
-
-StageProtocol = enum_type_wrapper.EnumTypeWrapper(_STAGEPROTOCOL)
-TCP = 0
-HTTP = 1
-HTTPS = 2
-
-
-_IMPLANTCONFIG_OUTPUTFORMAT = _descriptor.EnumDescriptor(
+_OUTPUTFORMAT = _descriptor.EnumDescriptor(
   name='OutputFormat',
-  full_name='clientpb.ImplantConfig.OutputFormat',
+  full_name='clientpb.OutputFormat',
   filename=None,
   file=DESCRIPTOR,
   create_key=_descriptor._internal_create_key,
@@ -91,10 +55,153 @@ _IMPLANTCONFIG_OUTPUTFORMAT = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1251,
-  serialized_end=1325,
+  serialized_start=7812,
+  serialized_end=7886,
 )
-_sym_db.RegisterEnumDescriptor(_IMPLANTCONFIG_OUTPUTFORMAT)
+_sym_db.RegisterEnumDescriptor(_OUTPUTFORMAT)
+
+OutputFormat = enum_type_wrapper.EnumTypeWrapper(_OUTPUTFORMAT)
+_STAGEPROTOCOL = _descriptor.EnumDescriptor(
+  name='StageProtocol',
+  full_name='clientpb.StageProtocol',
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='TCP', index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='HTTP', index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='HTTPS', index=2, number=2,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=7888,
+  serialized_end=7933,
+)
+_sym_db.RegisterEnumDescriptor(_STAGEPROTOCOL)
+
+StageProtocol = enum_type_wrapper.EnumTypeWrapper(_STAGEPROTOCOL)
+_LOOTTYPE = _descriptor.EnumDescriptor(
+  name='LootType',
+  full_name='clientpb.LootType',
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='LOOT_FILE', index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='LOOT_CREDENTIAL', index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=7935,
+  serialized_end=7981,
+)
+_sym_db.RegisterEnumDescriptor(_LOOTTYPE)
+
+LootType = enum_type_wrapper.EnumTypeWrapper(_LOOTTYPE)
+_CREDENTIALTYPE = _descriptor.EnumDescriptor(
+  name='CredentialType',
+  full_name='clientpb.CredentialType',
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='NO_CREDENTIAL', index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='USER_PASSWORD', index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='API_KEY', index=2, number=2,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='FILE', index=3, number=3,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=7983,
+  serialized_end=8060,
+)
+_sym_db.RegisterEnumDescriptor(_CREDENTIALTYPE)
+
+CredentialType = enum_type_wrapper.EnumTypeWrapper(_CREDENTIALTYPE)
+_FILETYPE = _descriptor.EnumDescriptor(
+  name='FileType',
+  full_name='clientpb.FileType',
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='NO_FILE', index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='BINARY', index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='TEXT', index=2, number=2,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=8062,
+  serialized_end=8107,
+)
+_sym_db.RegisterEnumDescriptor(_FILETYPE)
+
+FileType = enum_type_wrapper.EnumTypeWrapper(_FILETYPE)
+SHARED_LIB = 0
+SHELLCODE = 1
+EXECUTABLE = 2
+SERVICE = 3
+TCP = 0
+HTTP = 1
+HTTPS = 2
+LOOT_FILE = 0
+LOOT_CREDENTIAL = 1
+NO_CREDENTIAL = 0
+USER_PASSWORD = 1
+API_KEY = 2
+FILE = 3
+NO_FILE = 0
+BINARY = 1
+TEXT = 2
+
 
 
 _VERSION = _descriptor.Descriptor(
@@ -188,8 +295,8 @@ _SESSION = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='ID', full_name='clientpb.Session.ID', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
@@ -279,8 +386,8 @@ _SESSION = _descriptor.Descriptor(
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='LastCheckin', full_name='clientpb.Session.LastCheckin', index=13,
-      number=14, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
+      number=14, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
@@ -314,7 +421,7 @@ _SESSION = _descriptor.Descriptor(
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='ReconnectInterval', full_name='clientpb.Session.ReconnectInterval', index=18,
-      number=19, type=13, cpp_type=3, label=1,
+      number=19, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -323,6 +430,27 @@ _SESSION = _descriptor.Descriptor(
       name='ProxyURL', full_name='clientpb.Session.ProxyURL', index=19,
       number=20, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Burned', full_name='clientpb.Session.Burned', index=20,
+      number=22, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Extensions', full_name='clientpb.Session.Extensions', index=21,
+      number=23, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='PeerID', full_name='clientpb.Session.PeerID', index=22,
+      number=25, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
@@ -339,7 +467,373 @@ _SESSION = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=193,
-  serialized_end=537,
+  serialized_end=589,
+)
+
+
+_BEACON = _descriptor.Descriptor(
+  name='Beacon',
+  full_name='clientpb.Beacon',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='ID', full_name='clientpb.Beacon.ID', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Name', full_name='clientpb.Beacon.Name', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Hostname', full_name='clientpb.Beacon.Hostname', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='UUID', full_name='clientpb.Beacon.UUID', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Username', full_name='clientpb.Beacon.Username', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='UID', full_name='clientpb.Beacon.UID', index=5,
+      number=6, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='GID', full_name='clientpb.Beacon.GID', index=6,
+      number=7, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='OS', full_name='clientpb.Beacon.OS', index=7,
+      number=8, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Arch', full_name='clientpb.Beacon.Arch', index=8,
+      number=9, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Transport', full_name='clientpb.Beacon.Transport', index=9,
+      number=10, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='RemoteAddress', full_name='clientpb.Beacon.RemoteAddress', index=10,
+      number=11, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='PID', full_name='clientpb.Beacon.PID', index=11,
+      number=12, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Filename', full_name='clientpb.Beacon.Filename', index=12,
+      number=13, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='LastCheckin', full_name='clientpb.Beacon.LastCheckin', index=13,
+      number=14, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='ActiveC2', full_name='clientpb.Beacon.ActiveC2', index=14,
+      number=15, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Version', full_name='clientpb.Beacon.Version', index=15,
+      number=16, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Evasion', full_name='clientpb.Beacon.Evasion', index=16,
+      number=17, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='IsDead', full_name='clientpb.Beacon.IsDead', index=17,
+      number=18, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='ProxyURL', full_name='clientpb.Beacon.ProxyURL', index=18,
+      number=20, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='ReconnectInterval', full_name='clientpb.Beacon.ReconnectInterval', index=19,
+      number=21, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Interval', full_name='clientpb.Beacon.Interval', index=20,
+      number=22, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Jitter', full_name='clientpb.Beacon.Jitter', index=21,
+      number=23, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Burned', full_name='clientpb.Beacon.Burned', index=22,
+      number=24, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='NextCheckin', full_name='clientpb.Beacon.NextCheckin', index=23,
+      number=25, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='TasksCount', full_name='clientpb.Beacon.TasksCount', index=24,
+      number=26, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='TasksCountCompleted', full_name='clientpb.Beacon.TasksCountCompleted', index=25,
+      number=27, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=592,
+  serialized_end=1055,
+)
+
+
+_BEACONS = _descriptor.Descriptor(
+  name='Beacons',
+  full_name='clientpb.Beacons',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='Beacons', full_name='clientpb.Beacons.Beacons', index=0,
+      number=2, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1057,
+  serialized_end=1101,
+)
+
+
+_BEACONTASK = _descriptor.Descriptor(
+  name='BeaconTask',
+  full_name='clientpb.BeaconTask',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='ID', full_name='clientpb.BeaconTask.ID', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='BeaconID', full_name='clientpb.BeaconTask.BeaconID', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='CreatedAt', full_name='clientpb.BeaconTask.CreatedAt', index=2,
+      number=3, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='State', full_name='clientpb.BeaconTask.State', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='SentAt', full_name='clientpb.BeaconTask.SentAt', index=4,
+      number=5, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='CompletedAt', full_name='clientpb.BeaconTask.CompletedAt', index=5,
+      number=6, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Request', full_name='clientpb.BeaconTask.Request', index=6,
+      number=7, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"",
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Response', full_name='clientpb.BeaconTask.Response', index=7,
+      number=8, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"",
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Description', full_name='clientpb.BeaconTask.Description', index=8,
+      number=9, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1104,
+  serialized_end=1273,
+)
+
+
+_BEACONTASKS = _descriptor.Descriptor(
+  name='BeaconTasks',
+  full_name='clientpb.BeaconTasks',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='BeaconID', full_name='clientpb.BeaconTasks.BeaconID', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Tasks', full_name='clientpb.BeaconTasks.Tasks', index=1,
+      number=2, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1275,
+  serialized_end=1343,
 )
 
 
@@ -384,8 +878,8 @@ _IMPLANTC2 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=539,
-  serialized_end=598,
+  serialized_start=1345,
+  serialized_end=1404,
 )
 
 
@@ -398,197 +892,267 @@ _IMPLANTCONFIG = _descriptor.Descriptor(
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='GOOS', full_name='clientpb.ImplantConfig.GOOS', index=0,
+      name='ID', full_name='clientpb.ImplantConfig.ID', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='GOARCH', full_name='clientpb.ImplantConfig.GOARCH', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
+      name='IsBeacon', full_name='clientpb.ImplantConfig.IsBeacon', index=1,
+      number=2, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='Name', full_name='clientpb.ImplantConfig.Name', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
+      name='BeaconInterval', full_name='clientpb.ImplantConfig.BeaconInterval', index=2,
+      number=3, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='CACert', full_name='clientpb.ImplantConfig.CACert', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
+      name='BeaconJitter', full_name='clientpb.ImplantConfig.BeaconJitter', index=3,
+      number=4, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='Cert', full_name='clientpb.ImplantConfig.Cert', index=4,
+      name='GOOS', full_name='clientpb.ImplantConfig.GOOS', index=4,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='Key', full_name='clientpb.ImplantConfig.Key', index=5,
+      name='GOARCH', full_name='clientpb.ImplantConfig.GOARCH', index=5,
       number=6, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='Debug', full_name='clientpb.ImplantConfig.Debug', index=6,
-      number=7, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Evasion', full_name='clientpb.ImplantConfig.Evasion', index=7,
-      number=31, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='ObfuscateSymbols', full_name='clientpb.ImplantConfig.ObfuscateSymbols', index=8,
-      number=30, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='WGImplantPrivKey', full_name='clientpb.ImplantConfig.WGImplantPrivKey', index=9,
-      number=33, type=9, cpp_type=9, label=1,
+      name='Name', full_name='clientpb.ImplantConfig.Name', index=6,
+      number=7, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='WGServerPubKey', full_name='clientpb.ImplantConfig.WGServerPubKey', index=10,
-      number=34, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='WGPeerTunIP', full_name='clientpb.ImplantConfig.WGPeerTunIP', index=11,
-      number=35, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='WGKeyExchangePort', full_name='clientpb.ImplantConfig.WGKeyExchangePort', index=12,
-      number=36, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='WGTcpCommsPort', full_name='clientpb.ImplantConfig.WGTcpCommsPort', index=13,
-      number=37, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='ReconnectInterval', full_name='clientpb.ImplantConfig.ReconnectInterval', index=14,
-      number=8, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='MaxConnectionErrors', full_name='clientpb.ImplantConfig.MaxConnectionErrors', index=15,
-      number=9, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='C2', full_name='clientpb.ImplantConfig.C2', index=16,
-      number=10, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='CanaryDomains', full_name='clientpb.ImplantConfig.CanaryDomains', index=17,
-      number=11, type=9, cpp_type=9, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='LimitDomainJoined', full_name='clientpb.ImplantConfig.LimitDomainJoined', index=18,
-      number=20, type=8, cpp_type=7, label=1,
+      name='Debug', full_name='clientpb.ImplantConfig.Debug', index=7,
+      number=8, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='LimitDatetime', full_name='clientpb.ImplantConfig.LimitDatetime', index=19,
+      name='Evasion', full_name='clientpb.ImplantConfig.Evasion', index=8,
+      number=9, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='ObfuscateSymbols', full_name='clientpb.ImplantConfig.ObfuscateSymbols', index=9,
+      number=10, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='MtlsCACert', full_name='clientpb.ImplantConfig.MtlsCACert', index=10,
+      number=20, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='MtlsCert', full_name='clientpb.ImplantConfig.MtlsCert', index=11,
       number=21, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='LimitHostname', full_name='clientpb.ImplantConfig.LimitHostname', index=20,
+      name='MtlsKey', full_name='clientpb.ImplantConfig.MtlsKey', index=12,
       number=22, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='LimitUsername', full_name='clientpb.ImplantConfig.LimitUsername', index=21,
+      name='ECCPublicKey', full_name='clientpb.ImplantConfig.ECCPublicKey', index=13,
       number=23, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='LimitFileExists', full_name='clientpb.ImplantConfig.LimitFileExists', index=22,
+      name='ECCPrivateKey', full_name='clientpb.ImplantConfig.ECCPrivateKey', index=14,
+      number=24, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='ECCPublicKeySignature', full_name='clientpb.ImplantConfig.ECCPublicKeySignature', index=15,
+      number=25, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='MinisignServerPublicKey', full_name='clientpb.ImplantConfig.MinisignServerPublicKey', index=16,
+      number=26, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='WGImplantPrivKey', full_name='clientpb.ImplantConfig.WGImplantPrivKey', index=17,
+      number=30, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='WGServerPubKey', full_name='clientpb.ImplantConfig.WGServerPubKey', index=18,
+      number=31, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='WGPeerTunIP', full_name='clientpb.ImplantConfig.WGPeerTunIP', index=19,
       number=32, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='Format', full_name='clientpb.ImplantConfig.Format', index=23,
-      number=25, type=14, cpp_type=8, label=1,
+      name='WGKeyExchangePort', full_name='clientpb.ImplantConfig.WGKeyExchangePort', index=20,
+      number=33, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='IsSharedLib', full_name='clientpb.ImplantConfig.IsSharedLib', index=24,
-      number=26, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
+      name='WGTcpCommsPort', full_name='clientpb.ImplantConfig.WGTcpCommsPort', index=21,
+      number=34, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='FileName', full_name='clientpb.ImplantConfig.FileName', index=25,
-      number=27, type=9, cpp_type=9, label=1,
+      name='ReconnectInterval', full_name='clientpb.ImplantConfig.ReconnectInterval', index=22,
+      number=40, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='MaxConnectionErrors', full_name='clientpb.ImplantConfig.MaxConnectionErrors', index=23,
+      number=41, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='PollTimeout', full_name='clientpb.ImplantConfig.PollTimeout', index=24,
+      number=42, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='C2', full_name='clientpb.ImplantConfig.C2', index=25,
+      number=50, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='CanaryDomains', full_name='clientpb.ImplantConfig.CanaryDomains', index=26,
+      number=51, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='ConnectionStrategy', full_name='clientpb.ImplantConfig.ConnectionStrategy', index=27,
+      number=52, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='IsService', full_name='clientpb.ImplantConfig.IsService', index=26,
-      number=28, type=8, cpp_type=7, label=1,
+      name='LimitDomainJoined', full_name='clientpb.ImplantConfig.LimitDomainJoined', index=28,
+      number=60, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='IsShellcode', full_name='clientpb.ImplantConfig.IsShellcode', index=27,
-      number=29, type=8, cpp_type=7, label=1,
+      name='LimitDatetime', full_name='clientpb.ImplantConfig.LimitDatetime', index=29,
+      number=61, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='LimitHostname', full_name='clientpb.ImplantConfig.LimitHostname', index=30,
+      number=62, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='LimitUsername', full_name='clientpb.ImplantConfig.LimitUsername', index=31,
+      number=63, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='LimitFileExists', full_name='clientpb.ImplantConfig.LimitFileExists', index=32,
+      number=64, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Format', full_name='clientpb.ImplantConfig.Format', index=33,
+      number=100, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='IsSharedLib', full_name='clientpb.ImplantConfig.IsSharedLib', index=34,
+      number=101, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='FileName', full_name='clientpb.ImplantConfig.FileName', index=35,
+      number=102, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='IsService', full_name='clientpb.ImplantConfig.IsService', index=36,
+      number=103, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='IsShellcode', full_name='clientpb.ImplantConfig.IsShellcode', index=37,
+      number=104, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -598,7 +1162,6 @@ _IMPLANTCONFIG = _descriptor.Descriptor(
   ],
   nested_types=[],
   enum_types=[
-    _IMPLANTCONFIG_OUTPUTFORMAT,
   ],
   serialized_options=None,
   is_extendable=False,
@@ -606,8 +1169,8 @@ _IMPLANTCONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=601,
-  serialized_end=1325,
+  serialized_start=1407,
+  serialized_end=2287,
 )
 
 
@@ -645,8 +1208,8 @@ _IMPLANTBUILDS_CONFIGSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1400,
-  serialized_end=1471,
+  serialized_start=2362,
+  serialized_end=2433,
 )
 
 _IMPLANTBUILDS = _descriptor.Descriptor(
@@ -676,8 +1239,167 @@ _IMPLANTBUILDS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1328,
-  serialized_end=1471,
+  serialized_start=2290,
+  serialized_end=2433,
+)
+
+
+_COMPILERTARGET = _descriptor.Descriptor(
+  name='CompilerTarget',
+  full_name='clientpb.CompilerTarget',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='GOOS', full_name='clientpb.CompilerTarget.GOOS', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='GOARCH', full_name='clientpb.CompilerTarget.GOARCH', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Format', full_name='clientpb.CompilerTarget.Format', index=2,
+      number=3, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2435,
+  serialized_end=2521,
+)
+
+
+_CROSSCOMPILER = _descriptor.Descriptor(
+  name='CrossCompiler',
+  full_name='clientpb.CrossCompiler',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='TargetGOOS', full_name='clientpb.CrossCompiler.TargetGOOS', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='TargetGOARCH', full_name='clientpb.CrossCompiler.TargetGOARCH', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='CCPath', full_name='clientpb.CrossCompiler.CCPath', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='CXXPath', full_name='clientpb.CrossCompiler.CXXPath', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2523,
+  serialized_end=2613,
+)
+
+
+_COMPILER = _descriptor.Descriptor(
+  name='Compiler',
+  full_name='clientpb.Compiler',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='GOOS', full_name='clientpb.Compiler.GOOS', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='GOARCH', full_name='clientpb.Compiler.GOARCH', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Targets', full_name='clientpb.Compiler.Targets', index=2,
+      number=3, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='CrossCompilers', full_name='clientpb.Compiler.CrossCompilers', index=3,
+      number=4, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='UnsupportedTargets', full_name='clientpb.Compiler.UnsupportedTargets', index=4,
+      number=5, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2616,
+  serialized_end=2802,
 )
 
 
@@ -708,8 +1430,8 @@ _DELETEREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1473,
-  serialized_end=1498,
+  serialized_start=2804,
+  serialized_end=2829,
 )
 
 
@@ -775,8 +1497,8 @@ _DNSCANARY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1501,
-  serialized_end=1630,
+  serialized_start=2832,
+  serialized_end=2961,
 )
 
 
@@ -807,8 +1529,8 @@ _CANARIES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1632,
-  serialized_end=1681,
+  serialized_start=2963,
+  serialized_end=3012,
 )
 
 
@@ -839,8 +1561,8 @@ _UNIQUEWGIP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1683,
-  serialized_end=1707,
+  serialized_start=3014,
+  serialized_end=3038,
 )
 
 
@@ -878,8 +1600,8 @@ _IMPLANTPROFILE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1709,
-  serialized_end=1780,
+  serialized_start=3040,
+  serialized_end=3111,
 )
 
 
@@ -910,8 +1632,8 @@ _IMPLANTPROFILES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1782,
-  serialized_end=1843,
+  serialized_start=3113,
+  serialized_end=3174,
 )
 
 
@@ -942,8 +1664,8 @@ _REGENERATEREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1845,
-  serialized_end=1881,
+  serialized_start=3176,
+  serialized_end=3212,
 )
 
 
@@ -1009,8 +1731,8 @@ _JOB = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1883,
-  serialized_end=1984,
+  serialized_start=3214,
+  serialized_end=3315,
 )
 
 
@@ -1041,8 +1763,8 @@ _JOBS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1986,
-  serialized_end=2023,
+  serialized_start=3317,
+  serialized_end=3354,
 )
 
 
@@ -1073,8 +1795,8 @@ _KILLJOBREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2025,
-  serialized_end=2049,
+  serialized_start=3356,
+  serialized_end=3380,
 )
 
 
@@ -1112,8 +1834,8 @@ _KILLJOB = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2051,
-  serialized_end=2089,
+  serialized_start=3382,
+  serialized_end=3420,
 )
 
 
@@ -1158,8 +1880,8 @@ _MTLSLISTENERREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2091,
-  serialized_end=2156,
+  serialized_start=3422,
+  serialized_end=3487,
 )
 
 
@@ -1190,8 +1912,8 @@ _MTLSLISTENER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2158,
-  serialized_end=2187,
+  serialized_start=3489,
+  serialized_end=3518,
 )
 
 
@@ -1204,35 +1926,42 @@ _WGLISTENERREQ = _descriptor.Descriptor(
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='Port', full_name='clientpb.WGListenerReq.Port', index=0,
+      name='Host', full_name='clientpb.WGListenerReq.Host', index=0,
+      number=6, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Port', full_name='clientpb.WGListenerReq.Port', index=1,
       number=1, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='TunIP', full_name='clientpb.WGListenerReq.TunIP', index=1,
+      name='TunIP', full_name='clientpb.WGListenerReq.TunIP', index=2,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='NPort', full_name='clientpb.WGListenerReq.NPort', index=2,
+      name='NPort', full_name='clientpb.WGListenerReq.NPort', index=3,
       number=3, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='KeyPort', full_name='clientpb.WGListenerReq.KeyPort', index=3,
+      name='KeyPort', full_name='clientpb.WGListenerReq.KeyPort', index=4,
       number=4, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='Persistent', full_name='clientpb.WGListenerReq.Persistent', index=4,
+      name='Persistent', full_name='clientpb.WGListenerReq.Persistent', index=5,
       number=5, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
@@ -1250,8 +1979,8 @@ _WGLISTENERREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2189,
-  serialized_end=2285,
+  serialized_start=3520,
+  serialized_end=3630,
 )
 
 
@@ -1282,8 +2011,8 @@ _WGLISTENER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2287,
-  serialized_end=2314,
+  serialized_start=3632,
+  serialized_end=3659,
 )
 
 
@@ -1342,8 +2071,8 @@ _DNSLISTENERREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2316,
-  serialized_end=2415,
+  serialized_start=3661,
+  serialized_end=3760,
 )
 
 
@@ -1374,8 +2103,8 @@ _DNSLISTENER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2417,
-  serialized_end=2445,
+  serialized_start=3762,
+  serialized_end=3790,
 )
 
 
@@ -1450,6 +2179,27 @@ _HTTPLISTENERREQ = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='EnforceOTP', full_name='clientpb.HTTPListenerReq.EnforceOTP', index=9,
+      number=10, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='LongPollTimeout', full_name='clientpb.HTTPListenerReq.LongPollTimeout', index=10,
+      number=11, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='LongPollJitter', full_name='clientpb.HTTPListenerReq.LongPollJitter', index=11,
+      number=12, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -1462,8 +2212,8 @@ _HTTPLISTENERREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2448,
-  serialized_end=2603,
+  serialized_start=3793,
+  serialized_end=4017,
 )
 
 
@@ -1501,8 +2251,8 @@ _NAMEDPIPESREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2605,
-  serialized_end=2674,
+  serialized_start=4019,
+  serialized_end=4088,
 )
 
 
@@ -1547,8 +2297,8 @@ _NAMEDPIPES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2676,
-  serialized_end=2756,
+  serialized_start=4090,
+  serialized_end=4170,
 )
 
 
@@ -1586,8 +2336,8 @@ _TCPPIVOTREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2758,
-  serialized_end=2824,
+  serialized_start=4172,
+  serialized_end=4238,
 )
 
 
@@ -1632,8 +2382,8 @@ _TCPPIVOT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2826,
-  serialized_end=2904,
+  serialized_start=4240,
+  serialized_end=4318,
 )
 
 
@@ -1664,8 +2414,8 @@ _HTTPLISTENER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2906,
-  serialized_end=2935,
+  serialized_start=4320,
+  serialized_end=4349,
 )
 
 
@@ -1696,8 +2446,8 @@ _SESSIONS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2937,
-  serialized_end=2984,
+  serialized_start=4351,
+  serialized_end=4398,
 )
 
 
@@ -1711,8 +2461,8 @@ _UPDATESESSION = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='SessionID', full_name='clientpb.UpdateSession.SessionID', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
@@ -1720,6 +2470,27 @@ _UPDATESESSION = _descriptor.Descriptor(
       name='Name', full_name='clientpb.UpdateSession.Name', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='ReconnectInterval', full_name='clientpb.UpdateSession.ReconnectInterval', index=2,
+      number=3, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='PollInterval', full_name='clientpb.UpdateSession.PollInterval', index=3,
+      number=4, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Extensions', full_name='clientpb.UpdateSession.Extensions', index=4,
+      number=5, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
@@ -1735,8 +2506,8 @@ _UPDATESESSION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2986,
-  serialized_end=3034,
+  serialized_start=4400,
+  serialized_end=4517,
 )
 
 
@@ -1767,8 +2538,8 @@ _GENERATEREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3036,
-  serialized_end=3090,
+  serialized_start=4519,
+  serialized_end=4573,
 )
 
 
@@ -1799,8 +2570,8 @@ _GENERATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3092,
-  serialized_end=3132,
+  serialized_start=4575,
+  serialized_end=4615,
 )
 
 
@@ -1866,8 +2637,8 @@ _MSFREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3135,
-  serialized_end=3263,
+  serialized_start=4618,
+  serialized_end=4746,
 )
 
 
@@ -1940,8 +2711,8 @@ _MSFREMOTEREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3266,
-  serialized_end=3413,
+  serialized_start=4749,
+  serialized_end=4896,
 )
 
 
@@ -2014,8 +2785,8 @@ _STAGERLISTENERREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3416,
-  serialized_end=3561,
+  serialized_start=4899,
+  serialized_end=5044,
 )
 
 
@@ -2046,8 +2817,8 @@ _STAGERLISTENER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3563,
-  serialized_end=3594,
+  serialized_start=5046,
+  serialized_end=5077,
 )
 
 
@@ -2092,8 +2863,8 @@ _SHELLCODERDIREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3596,
-  serialized_end=3668,
+  serialized_start=5079,
+  serialized_end=5151,
 )
 
 
@@ -2124,8 +2895,8 @@ _SHELLCODERDI = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3670,
-  serialized_end=3698,
+  serialized_start=5153,
+  serialized_end=5181,
 )
 
 
@@ -2198,8 +2969,8 @@ _MSFSTAGERREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3701,
-  serialized_end=3846,
+  serialized_start=5184,
+  serialized_end=5329,
 )
 
 
@@ -2230,8 +3001,8 @@ _MSFSTAGER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3848,
-  serialized_end=3889,
+  serialized_start=5331,
+  serialized_end=5372,
 )
 
 
@@ -2276,8 +3047,8 @@ _GETSYSTEMREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3891,
-  serialized_end=4006,
+  serialized_start=5374,
+  serialized_end=5489,
 )
 
 
@@ -2322,8 +3093,8 @@ _MIGRATEREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4008,
-  serialized_end=4110,
+  serialized_start=5491,
+  serialized_end=5593,
 )
 
 
@@ -2354,8 +3125,8 @@ _CREATETUNNELREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4112,
-  serialized_end=4165,
+  serialized_start=5595,
+  serialized_end=5648,
 )
 
 
@@ -2393,8 +3164,8 @@ _CREATETUNNEL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4167,
-  serialized_end=4222,
+  serialized_start=5650,
+  serialized_end=5705,
 )
 
 
@@ -2432,8 +3203,93 @@ _CLOSETUNNELREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4224,
-  serialized_end=4298,
+  serialized_start=5707,
+  serialized_end=5781,
+)
+
+
+_PIVOTGRAPHENTRY = _descriptor.Descriptor(
+  name='PivotGraphEntry',
+  full_name='clientpb.PivotGraphEntry',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='PeerID', full_name='clientpb.PivotGraphEntry.PeerID', index=0,
+      number=1, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Session', full_name='clientpb.PivotGraphEntry.Session', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Name', full_name='clientpb.PivotGraphEntry.Name', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Children', full_name='clientpb.PivotGraphEntry.Children', index=3,
+      number=4, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=5784,
+  serialized_end=5912,
+)
+
+
+_PIVOTGRAPH = _descriptor.Descriptor(
+  name='PivotGraph',
+  full_name='clientpb.PivotGraph',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='Children', full_name='clientpb.PivotGraph.Children', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=5914,
+  serialized_end=5971,
 )
 
 
@@ -2478,8 +3334,8 @@ _CLIENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4300,
-  serialized_end=4372,
+  serialized_start=5973,
+  serialized_end=6045,
 )
 
 
@@ -2545,8 +3401,8 @@ _EVENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4375,
-  serialized_end=4526,
+  serialized_start=6048,
+  serialized_end=6199,
 )
 
 
@@ -2577,8 +3433,8 @@ _OPERATORS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4528,
-  serialized_end=4578,
+  serialized_start=6201,
+  serialized_end=6251,
 )
 
 
@@ -2616,8 +3472,8 @@ _OPERATOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4580,
-  serialized_end=4620,
+  serialized_start=6253,
+  serialized_end=6293,
 )
 
 
@@ -2669,8 +3525,8 @@ _WEBCONTENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4622,
-  serialized_end=4704,
+  serialized_start=6295,
+  serialized_end=6377,
 )
 
 
@@ -2708,8 +3564,8 @@ _WEBSITEADDCONTENT_CONTENTSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4803,
-  serialized_end=4872,
+  serialized_start=6476,
+  serialized_end=6545,
 )
 
 _WEBSITEADDCONTENT = _descriptor.Descriptor(
@@ -2746,8 +3602,8 @@ _WEBSITEADDCONTENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4707,
-  serialized_end=4872,
+  serialized_start=6380,
+  serialized_end=6545,
 )
 
 
@@ -2785,8 +3641,8 @@ _WEBSITEREMOVECONTENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4874,
-  serialized_end=4925,
+  serialized_start=6547,
+  serialized_end=6598,
 )
 
 
@@ -2824,8 +3680,8 @@ _WEBSITE_CONTENTSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4803,
-  serialized_end=4872,
+  serialized_start=6476,
+  serialized_end=6545,
 )
 
 _WEBSITE = _descriptor.Descriptor(
@@ -2862,8 +3718,8 @@ _WEBSITE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4928,
-  serialized_end=5073,
+  serialized_start=6601,
+  serialized_end=6746,
 )
 
 
@@ -2894,8 +3750,8 @@ _WEBSITES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5075,
-  serialized_end=5122,
+  serialized_start=6748,
+  serialized_end=6795,
 )
 
 
@@ -2947,16 +3803,480 @@ _WGCLIENTCONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5124,
-  serialized_end=5228,
+  serialized_start=6797,
+  serialized_end=6901,
 )
 
+
+_CREDENTIAL = _descriptor.Descriptor(
+  name='Credential',
+  full_name='clientpb.Credential',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='User', full_name='clientpb.Credential.User', index=0,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Password', full_name='clientpb.Credential.Password', index=1,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='APIKey', full_name='clientpb.Credential.APIKey', index=2,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=6903,
+  serialized_end=6963,
+)
+
+
+_LOOT = _descriptor.Descriptor(
+  name='Loot',
+  full_name='clientpb.Loot',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='Type', full_name='clientpb.Loot.Type', index=0,
+      number=1, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='LootID', full_name='clientpb.Loot.LootID', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Name', full_name='clientpb.Loot.Name', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='CredentialType', full_name='clientpb.Loot.CredentialType', index=3,
+      number=4, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Credential', full_name='clientpb.Loot.Credential', index=4,
+      number=5, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='FileType', full_name='clientpb.Loot.FileType', index=5,
+      number=6, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='File', full_name='clientpb.Loot.File', index=6,
+      number=9, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=6966,
+  serialized_end=7196,
+)
+
+
+_ALLLOOT = _descriptor.Descriptor(
+  name='AllLoot',
+  full_name='clientpb.AllLoot',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='Loot', full_name='clientpb.AllLoot.Loot', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=7198,
+  serialized_end=7237,
+)
+
+
+_IOC = _descriptor.Descriptor(
+  name='IOC',
+  full_name='clientpb.IOC',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='Path', full_name='clientpb.IOC.Path', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='FileHash', full_name='clientpb.IOC.FileHash', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='ID', full_name='clientpb.IOC.ID', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=7239,
+  serialized_end=7288,
+)
+
+
+_EXTENSIONDATA = _descriptor.Descriptor(
+  name='ExtensionData',
+  full_name='clientpb.ExtensionData',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='Output', full_name='clientpb.ExtensionData.Output', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=7290,
+  serialized_end=7321,
+)
+
+
+_HOST_EXTENSIONDATAENTRY = _descriptor.Descriptor(
+  name='ExtensionDataEntry',
+  full_name='clientpb.Host.ExtensionDataEntry',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='key', full_name='clientpb.Host.ExtensionDataEntry.key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='clientpb.Host.ExtensionDataEntry.value', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=b'8\001',
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=7474,
+  serialized_end=7551,
+)
+
+_HOST = _descriptor.Descriptor(
+  name='Host',
+  full_name='clientpb.Host',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='Hostname', full_name='clientpb.Host.Hostname', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='HostUUID', full_name='clientpb.Host.HostUUID', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='OSVersion', full_name='clientpb.Host.OSVersion', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='IOCs', full_name='clientpb.Host.IOCs', index=3,
+      number=4, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='ExtensionData', full_name='clientpb.Host.ExtensionData', index=4,
+      number=5, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[_HOST_EXTENSIONDATAENTRY, ],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=7324,
+  serialized_end=7551,
+)
+
+
+_ALLHOSTS = _descriptor.Descriptor(
+  name='AllHosts',
+  full_name='clientpb.AllHosts',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='Hosts', full_name='clientpb.AllHosts.Hosts', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=7553,
+  serialized_end=7594,
+)
+
+
+_DLLHIJACKREQ = _descriptor.Descriptor(
+  name='DllHijackReq',
+  full_name='clientpb.DllHijackReq',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='ReferenceDLLPath', full_name='clientpb.DllHijackReq.ReferenceDLLPath', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='TargetLocation', full_name='clientpb.DllHijackReq.TargetLocation', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='ReferenceDLL', full_name='clientpb.DllHijackReq.ReferenceDLL', index=2,
+      number=3, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"",
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='TargetDLL', full_name='clientpb.DllHijackReq.TargetDLL', index=3,
+      number=4, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"",
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='ProfileName', full_name='clientpb.DllHijackReq.ProfileName', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Request', full_name='clientpb.DllHijackReq.Request', index=5,
+      number=9, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=7597,
+  serialized_end=7759,
+)
+
+
+_DLLHIJACK = _descriptor.Descriptor(
+  name='DllHijack',
+  full_name='clientpb.DllHijack',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='Response', full_name='clientpb.DllHijack.Response', index=0,
+      number=9, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=7761,
+  serialized_end=7810,
+)
+
+_BEACONS.fields_by_name['Beacons'].message_type = _BEACON
+_BEACONTASKS.fields_by_name['Tasks'].message_type = _BEACONTASK
 _IMPLANTCONFIG.fields_by_name['C2'].message_type = _IMPLANTC2
-_IMPLANTCONFIG.fields_by_name['Format'].enum_type = _IMPLANTCONFIG_OUTPUTFORMAT
-_IMPLANTCONFIG_OUTPUTFORMAT.containing_type = _IMPLANTCONFIG
+_IMPLANTCONFIG.fields_by_name['Format'].enum_type = _OUTPUTFORMAT
 _IMPLANTBUILDS_CONFIGSENTRY.fields_by_name['value'].message_type = _IMPLANTCONFIG
 _IMPLANTBUILDS_CONFIGSENTRY.containing_type = _IMPLANTBUILDS
 _IMPLANTBUILDS.fields_by_name['Configs'].message_type = _IMPLANTBUILDS_CONFIGSENTRY
+_COMPILERTARGET.fields_by_name['Format'].enum_type = _OUTPUTFORMAT
+_COMPILER.fields_by_name['Targets'].message_type = _COMPILERTARGET
+_COMPILER.fields_by_name['CrossCompilers'].message_type = _CROSSCOMPILER
+_COMPILER.fields_by_name['UnsupportedTargets'].message_type = _COMPILERTARGET
 _CANARIES.fields_by_name['Canaries'].message_type = _DNSCANARY
 _IMPLANTPROFILE.fields_by_name['Config'].message_type = _IMPLANTCONFIG
 _IMPLANTPROFILES.fields_by_name['Profiles'].message_type = _IMPLANTPROFILE
@@ -2979,6 +4299,9 @@ _MIGRATEREQ.fields_by_name['Config'].message_type = _IMPLANTCONFIG
 _MIGRATEREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
 _CREATETUNNELREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
 _CLOSETUNNELREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
+_PIVOTGRAPHENTRY.fields_by_name['Session'].message_type = _SESSION
+_PIVOTGRAPHENTRY.fields_by_name['Children'].message_type = _PIVOTGRAPHENTRY
+_PIVOTGRAPH.fields_by_name['Children'].message_type = _PIVOTGRAPHENTRY
 _CLIENT.fields_by_name['Operator'].message_type = _OPERATOR
 _EVENT.fields_by_name['Session'].message_type = _SESSION
 _EVENT.fields_by_name['Job'].message_type = _JOB
@@ -2991,11 +4314,31 @@ _WEBSITE_CONTENTSENTRY.fields_by_name['value'].message_type = _WEBCONTENT
 _WEBSITE_CONTENTSENTRY.containing_type = _WEBSITE
 _WEBSITE.fields_by_name['Contents'].message_type = _WEBSITE_CONTENTSENTRY
 _WEBSITES.fields_by_name['Websites'].message_type = _WEBSITE
+_LOOT.fields_by_name['Type'].enum_type = _LOOTTYPE
+_LOOT.fields_by_name['CredentialType'].enum_type = _CREDENTIALTYPE
+_LOOT.fields_by_name['Credential'].message_type = _CREDENTIAL
+_LOOT.fields_by_name['FileType'].enum_type = _FILETYPE
+_LOOT.fields_by_name['File'].message_type = commonpb_dot_common__pb2._FILE
+_ALLLOOT.fields_by_name['Loot'].message_type = _LOOT
+_HOST_EXTENSIONDATAENTRY.fields_by_name['value'].message_type = _EXTENSIONDATA
+_HOST_EXTENSIONDATAENTRY.containing_type = _HOST
+_HOST.fields_by_name['IOCs'].message_type = _IOC
+_HOST.fields_by_name['ExtensionData'].message_type = _HOST_EXTENSIONDATAENTRY
+_ALLHOSTS.fields_by_name['Hosts'].message_type = _HOST
+_DLLHIJACKREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
+_DLLHIJACK.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
 DESCRIPTOR.message_types_by_name['Version'] = _VERSION
 DESCRIPTOR.message_types_by_name['Session'] = _SESSION
+DESCRIPTOR.message_types_by_name['Beacon'] = _BEACON
+DESCRIPTOR.message_types_by_name['Beacons'] = _BEACONS
+DESCRIPTOR.message_types_by_name['BeaconTask'] = _BEACONTASK
+DESCRIPTOR.message_types_by_name['BeaconTasks'] = _BEACONTASKS
 DESCRIPTOR.message_types_by_name['ImplantC2'] = _IMPLANTC2
 DESCRIPTOR.message_types_by_name['ImplantConfig'] = _IMPLANTCONFIG
 DESCRIPTOR.message_types_by_name['ImplantBuilds'] = _IMPLANTBUILDS
+DESCRIPTOR.message_types_by_name['CompilerTarget'] = _COMPILERTARGET
+DESCRIPTOR.message_types_by_name['CrossCompiler'] = _CROSSCOMPILER
+DESCRIPTOR.message_types_by_name['Compiler'] = _COMPILER
 DESCRIPTOR.message_types_by_name['DeleteReq'] = _DELETEREQ
 DESCRIPTOR.message_types_by_name['DNSCanary'] = _DNSCANARY
 DESCRIPTOR.message_types_by_name['Canaries'] = _CANARIES
@@ -3036,6 +4379,8 @@ DESCRIPTOR.message_types_by_name['MigrateReq'] = _MIGRATEREQ
 DESCRIPTOR.message_types_by_name['CreateTunnelReq'] = _CREATETUNNELREQ
 DESCRIPTOR.message_types_by_name['CreateTunnel'] = _CREATETUNNEL
 DESCRIPTOR.message_types_by_name['CloseTunnelReq'] = _CLOSETUNNELREQ
+DESCRIPTOR.message_types_by_name['PivotGraphEntry'] = _PIVOTGRAPHENTRY
+DESCRIPTOR.message_types_by_name['PivotGraph'] = _PIVOTGRAPH
 DESCRIPTOR.message_types_by_name['Client'] = _CLIENT
 DESCRIPTOR.message_types_by_name['Event'] = _EVENT
 DESCRIPTOR.message_types_by_name['Operators'] = _OPERATORS
@@ -3046,7 +4391,20 @@ DESCRIPTOR.message_types_by_name['WebsiteRemoveContent'] = _WEBSITEREMOVECONTENT
 DESCRIPTOR.message_types_by_name['Website'] = _WEBSITE
 DESCRIPTOR.message_types_by_name['Websites'] = _WEBSITES
 DESCRIPTOR.message_types_by_name['WGClientConfig'] = _WGCLIENTCONFIG
+DESCRIPTOR.message_types_by_name['Credential'] = _CREDENTIAL
+DESCRIPTOR.message_types_by_name['Loot'] = _LOOT
+DESCRIPTOR.message_types_by_name['AllLoot'] = _ALLLOOT
+DESCRIPTOR.message_types_by_name['IOC'] = _IOC
+DESCRIPTOR.message_types_by_name['ExtensionData'] = _EXTENSIONDATA
+DESCRIPTOR.message_types_by_name['Host'] = _HOST
+DESCRIPTOR.message_types_by_name['AllHosts'] = _ALLHOSTS
+DESCRIPTOR.message_types_by_name['DllHijackReq'] = _DLLHIJACKREQ
+DESCRIPTOR.message_types_by_name['DllHijack'] = _DLLHIJACK
+DESCRIPTOR.enum_types_by_name['OutputFormat'] = _OUTPUTFORMAT
 DESCRIPTOR.enum_types_by_name['StageProtocol'] = _STAGEPROTOCOL
+DESCRIPTOR.enum_types_by_name['LootType'] = _LOOTTYPE
+DESCRIPTOR.enum_types_by_name['CredentialType'] = _CREDENTIALTYPE
+DESCRIPTOR.enum_types_by_name['FileType'] = _FILETYPE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Version = _reflection.GeneratedProtocolMessageType('Version', (_message.Message,), {
@@ -3062,6 +4420,34 @@ Session = _reflection.GeneratedProtocolMessageType('Session', (_message.Message,
   # @@protoc_insertion_point(class_scope:clientpb.Session)
   })
 _sym_db.RegisterMessage(Session)
+
+Beacon = _reflection.GeneratedProtocolMessageType('Beacon', (_message.Message,), {
+  'DESCRIPTOR' : _BEACON,
+  '__module__' : 'clientpb.client_pb2'
+  # @@protoc_insertion_point(class_scope:clientpb.Beacon)
+  })
+_sym_db.RegisterMessage(Beacon)
+
+Beacons = _reflection.GeneratedProtocolMessageType('Beacons', (_message.Message,), {
+  'DESCRIPTOR' : _BEACONS,
+  '__module__' : 'clientpb.client_pb2'
+  # @@protoc_insertion_point(class_scope:clientpb.Beacons)
+  })
+_sym_db.RegisterMessage(Beacons)
+
+BeaconTask = _reflection.GeneratedProtocolMessageType('BeaconTask', (_message.Message,), {
+  'DESCRIPTOR' : _BEACONTASK,
+  '__module__' : 'clientpb.client_pb2'
+  # @@protoc_insertion_point(class_scope:clientpb.BeaconTask)
+  })
+_sym_db.RegisterMessage(BeaconTask)
+
+BeaconTasks = _reflection.GeneratedProtocolMessageType('BeaconTasks', (_message.Message,), {
+  'DESCRIPTOR' : _BEACONTASKS,
+  '__module__' : 'clientpb.client_pb2'
+  # @@protoc_insertion_point(class_scope:clientpb.BeaconTasks)
+  })
+_sym_db.RegisterMessage(BeaconTasks)
 
 ImplantC2 = _reflection.GeneratedProtocolMessageType('ImplantC2', (_message.Message,), {
   'DESCRIPTOR' : _IMPLANTC2,
@@ -3091,6 +4477,27 @@ ImplantBuilds = _reflection.GeneratedProtocolMessageType('ImplantBuilds', (_mess
   })
 _sym_db.RegisterMessage(ImplantBuilds)
 _sym_db.RegisterMessage(ImplantBuilds.ConfigsEntry)
+
+CompilerTarget = _reflection.GeneratedProtocolMessageType('CompilerTarget', (_message.Message,), {
+  'DESCRIPTOR' : _COMPILERTARGET,
+  '__module__' : 'clientpb.client_pb2'
+  # @@protoc_insertion_point(class_scope:clientpb.CompilerTarget)
+  })
+_sym_db.RegisterMessage(CompilerTarget)
+
+CrossCompiler = _reflection.GeneratedProtocolMessageType('CrossCompiler', (_message.Message,), {
+  'DESCRIPTOR' : _CROSSCOMPILER,
+  '__module__' : 'clientpb.client_pb2'
+  # @@protoc_insertion_point(class_scope:clientpb.CrossCompiler)
+  })
+_sym_db.RegisterMessage(CrossCompiler)
+
+Compiler = _reflection.GeneratedProtocolMessageType('Compiler', (_message.Message,), {
+  'DESCRIPTOR' : _COMPILER,
+  '__module__' : 'clientpb.client_pb2'
+  # @@protoc_insertion_point(class_scope:clientpb.Compiler)
+  })
+_sym_db.RegisterMessage(Compiler)
 
 DeleteReq = _reflection.GeneratedProtocolMessageType('DeleteReq', (_message.Message,), {
   'DESCRIPTOR' : _DELETEREQ,
@@ -3372,6 +4779,20 @@ CloseTunnelReq = _reflection.GeneratedProtocolMessageType('CloseTunnelReq', (_me
   })
 _sym_db.RegisterMessage(CloseTunnelReq)
 
+PivotGraphEntry = _reflection.GeneratedProtocolMessageType('PivotGraphEntry', (_message.Message,), {
+  'DESCRIPTOR' : _PIVOTGRAPHENTRY,
+  '__module__' : 'clientpb.client_pb2'
+  # @@protoc_insertion_point(class_scope:clientpb.PivotGraphEntry)
+  })
+_sym_db.RegisterMessage(PivotGraphEntry)
+
+PivotGraph = _reflection.GeneratedProtocolMessageType('PivotGraph', (_message.Message,), {
+  'DESCRIPTOR' : _PIVOTGRAPH,
+  '__module__' : 'clientpb.client_pb2'
+  # @@protoc_insertion_point(class_scope:clientpb.PivotGraph)
+  })
+_sym_db.RegisterMessage(PivotGraph)
+
 Client = _reflection.GeneratedProtocolMessageType('Client', (_message.Message,), {
   'DESCRIPTOR' : _CLIENT,
   '__module__' : 'clientpb.client_pb2'
@@ -3458,6 +4879,77 @@ WGClientConfig = _reflection.GeneratedProtocolMessageType('WGClientConfig', (_me
   })
 _sym_db.RegisterMessage(WGClientConfig)
 
+Credential = _reflection.GeneratedProtocolMessageType('Credential', (_message.Message,), {
+  'DESCRIPTOR' : _CREDENTIAL,
+  '__module__' : 'clientpb.client_pb2'
+  # @@protoc_insertion_point(class_scope:clientpb.Credential)
+  })
+_sym_db.RegisterMessage(Credential)
+
+Loot = _reflection.GeneratedProtocolMessageType('Loot', (_message.Message,), {
+  'DESCRIPTOR' : _LOOT,
+  '__module__' : 'clientpb.client_pb2'
+  # @@protoc_insertion_point(class_scope:clientpb.Loot)
+  })
+_sym_db.RegisterMessage(Loot)
+
+AllLoot = _reflection.GeneratedProtocolMessageType('AllLoot', (_message.Message,), {
+  'DESCRIPTOR' : _ALLLOOT,
+  '__module__' : 'clientpb.client_pb2'
+  # @@protoc_insertion_point(class_scope:clientpb.AllLoot)
+  })
+_sym_db.RegisterMessage(AllLoot)
+
+IOC = _reflection.GeneratedProtocolMessageType('IOC', (_message.Message,), {
+  'DESCRIPTOR' : _IOC,
+  '__module__' : 'clientpb.client_pb2'
+  # @@protoc_insertion_point(class_scope:clientpb.IOC)
+  })
+_sym_db.RegisterMessage(IOC)
+
+ExtensionData = _reflection.GeneratedProtocolMessageType('ExtensionData', (_message.Message,), {
+  'DESCRIPTOR' : _EXTENSIONDATA,
+  '__module__' : 'clientpb.client_pb2'
+  # @@protoc_insertion_point(class_scope:clientpb.ExtensionData)
+  })
+_sym_db.RegisterMessage(ExtensionData)
+
+Host = _reflection.GeneratedProtocolMessageType('Host', (_message.Message,), {
+
+  'ExtensionDataEntry' : _reflection.GeneratedProtocolMessageType('ExtensionDataEntry', (_message.Message,), {
+    'DESCRIPTOR' : _HOST_EXTENSIONDATAENTRY,
+    '__module__' : 'clientpb.client_pb2'
+    # @@protoc_insertion_point(class_scope:clientpb.Host.ExtensionDataEntry)
+    })
+  ,
+  'DESCRIPTOR' : _HOST,
+  '__module__' : 'clientpb.client_pb2'
+  # @@protoc_insertion_point(class_scope:clientpb.Host)
+  })
+_sym_db.RegisterMessage(Host)
+_sym_db.RegisterMessage(Host.ExtensionDataEntry)
+
+AllHosts = _reflection.GeneratedProtocolMessageType('AllHosts', (_message.Message,), {
+  'DESCRIPTOR' : _ALLHOSTS,
+  '__module__' : 'clientpb.client_pb2'
+  # @@protoc_insertion_point(class_scope:clientpb.AllHosts)
+  })
+_sym_db.RegisterMessage(AllHosts)
+
+DllHijackReq = _reflection.GeneratedProtocolMessageType('DllHijackReq', (_message.Message,), {
+  'DESCRIPTOR' : _DLLHIJACKREQ,
+  '__module__' : 'clientpb.client_pb2'
+  # @@protoc_insertion_point(class_scope:clientpb.DllHijackReq)
+  })
+_sym_db.RegisterMessage(DllHijackReq)
+
+DllHijack = _reflection.GeneratedProtocolMessageType('DllHijack', (_message.Message,), {
+  'DESCRIPTOR' : _DLLHIJACK,
+  '__module__' : 'clientpb.client_pb2'
+  # @@protoc_insertion_point(class_scope:clientpb.DllHijack)
+  })
+_sym_db.RegisterMessage(DllHijack)
+
 
 DESCRIPTOR._options = None
 _IMPLANTBUILDS_CONFIGSENTRY._options = None
@@ -3466,4 +4958,5 @@ _CLOSETUNNELREQ.fields_by_name['TunnelID']._options = None
 _WEBCONTENT.fields_by_name['Size']._options = None
 _WEBSITEADDCONTENT_CONTENTSENTRY._options = None
 _WEBSITE_CONTENTSENTRY._options = None
+_HOST_EXTENSIONDATAENTRY._options = None
 # @@protoc_insertion_point(module_scope)
