@@ -71,8 +71,11 @@ class BaseBeacon(object):
             task_content = await self._stub.GetBeaconTaskContent(client_pb2.BeaconTask(ID=beacon_task.ID))
             task_future, pb_object = self.beacon_tasks[beacon_task.ID]
             del self.beacon_tasks[beacon_task.ID]
-            result = pb_object()
-            result.ParseFromString(task_content.Response)
+            if pb_object is not None:
+                result = pb_object()
+                result.ParseFromString(task_content.Response)
+            else:
+                result = None
             task_future.set_result(result)
 
     @property
@@ -163,12 +166,110 @@ def beacon_taskresult(pb_object):
 
 class AsyncInteractiveBeacon(BaseBeacon, BaseAsyncInteractiveCommands):
 
+    @beacon_taskresult(sliver_pb2.Ping)
+    async def ping(self, *args, **kwargs) -> sliver_pb2.Ping:
+        return await super().ping(*args, **kwargs)
+
+    @beacon_taskresult(sliver_pb2.Ps)
+    async def ps(self, *args, **kwargs) -> sliver_pb2.Ps:
+        return await super().ps(*args, **kwargs)
+
+    @beacon_taskresult(sliver_pb2.Terminate)
+    async def terminate(self, *args, **kwargs) -> sliver_pb2.Terminate:
+        return await super().terminate(*args, **kwargs)
+
+    @beacon_taskresult(sliver_pb2.Ifconfig)
+    async def ifconfig(self, *args, **kwargs) -> sliver_pb2.Ifconfig:
+        return await super().ifconfig(*args, **kwargs)
+
+    @beacon_taskresult(sliver_pb2.Netstat)
+    async def netstat(self, *args, **kwargs) -> sliver_pb2.Netstat:
+        return await super().netstat(*args, **kwargs)
+
     @beacon_taskresult(sliver_pb2.Ls)
     async def ls(self, *args, **kwargs) -> sliver_pb2.Ls:
         return await super().ls(*args, **kwargs)
 
-    # async def ls(self, *args, **kwargs) -> sliver_pb2.Ls:
-    #     task_response = await super().ls(*args, **kwargs)
-    #     self.beacon_tasks[task_response.Response.TaskID] = asyncio.Future()
-    #     return self.beacon_tasks[task_response.Response.TaskID]
+    @beacon_taskresult(sliver_pb2.Pwd)
+    async def cd(self, *args, **kwargs) -> sliver_pb2.Pwd:
+        return await super().cd(*args, **kwargs)
 
+    @beacon_taskresult(sliver_pb2.Pwd)
+    async def pwd(self, *args, **kwargs) -> sliver_pb2.Pwd:
+        return await super().pwd(*args, **kwargs)
+
+    @beacon_taskresult(sliver_pb2.Rm)
+    async def rm(self, *args, **kwargs) -> sliver_pb2.Rm:
+        return await super().rm(*args, **kwargs)
+
+    @beacon_taskresult(sliver_pb2.Download)
+    async def download(self, *args, **kwargs) -> sliver_pb2.Download:
+        return await super().download(*args, **kwargs)
+
+    @beacon_taskresult(sliver_pb2.Upload)
+    async def upload(self, *args, **kwargs) -> sliver_pb2.Upload:
+        return await super().upload(*args, **kwargs)
+
+    @beacon_taskresult(sliver_pb2.ProcessDump)
+    async def process_dump(self, *args, **kwargs) -> sliver_pb2.ProcessDump:
+        return await super().process_dump(*args, **kwargs)
+
+    @beacon_taskresult(sliver_pb2.RunAs)
+    async def run_as(self, *args, **kwargs) -> sliver_pb2.RunAs:
+        return await super().run_as(*args, **kwargs)
+
+    @beacon_taskresult(sliver_pb2.RevToSelf)
+    async def revert_to_self(self, *args, **kwargs) -> sliver_pb2.RevToSelf:
+        return await super().revert_to_self(*args, **kwargs)
+
+    @beacon_taskresult(sliver_pb2.GetSystem)
+    async def get_system(self, *args, **kwargs) -> sliver_pb2.GetSystem:
+        return await super().get_system(*args, **kwargs)
+
+    @beacon_taskresult(sliver_pb2.Task)
+    async def execute_shellcode(self, *args, **kwargs) -> sliver_pb2.Task:
+        return await super().execute_shellcode(*args, **kwargs)
+
+    @beacon_taskresult(sliver_pb2.Task)
+    async def task(self, *args, **kwargs) -> sliver_pb2.Task:
+        return await super().task(*args, **kwargs)
+
+    @beacon_taskresult(None)
+    async def msf(self, *args, **kwargs) -> None:
+        return await super().msf(*args, **kwargs)
+
+    @beacon_taskresult(None)
+    async def msf_remote(self, *args, **kwargs) -> None:
+        return await super().msf_remote(*args, **kwargs)
+    
+    @beacon_taskresult(sliver_pb2.ExecuteAssembly)
+    async def execute_assembly(self, *args, **kwargs) -> sliver_pb2.ExecuteAssembly:
+        return await super().execute_assembly(*args, **kwargs)
+
+    @beacon_taskresult(sliver_pb2.Migrate)
+    async def migrate(self, *args, **kwargs) -> sliver_pb2.Migrate:
+        return await super().migrate(*args, **kwargs)
+
+    @beacon_taskresult(sliver_pb2.Execute)
+    async def execute(self, *args, **kwargs) -> sliver_pb2.Execute:
+        return await super().execute(*args, **kwargs)
+
+    @beacon_taskresult(sliver_pb2.Execute)
+    async def execute_token(self, *args, **kwargs) -> sliver_pb2.Execute:
+        return await super().execute_token(*args, **kwargs)
+
+    @beacon_taskresult(sliver_pb2.Sideload)
+    async def sideload(self, *args, **kwargs) -> sliver_pb2.Sideload:
+        return await super().sideload(*args, **kwargs)
+
+    @beacon_taskresult(sliver_pb2.SpawnDll)
+    async def spawn_dll(self, *args, **kwargs) -> sliver_pb2.SpawnDll:
+        return await super().spawn_dll(*args, **kwargs)
+
+    @beacon_taskresult(sliver_pb2.Screenshot)
+    async def screenshot(self, *args, **kwargs) -> sliver_pb2.Screenshot:
+        return await super().screenshot(*args, **kwargs)
+
+    @beacon_taskresult(sliver_pb2.PivotListeners)
+    async def pivot_listeners(self, *args, **kwargs) -> sliver_pb2.PivotListeners:
+        return await super().pivot_listeners(*args, **kwargs)

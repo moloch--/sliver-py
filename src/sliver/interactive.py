@@ -241,7 +241,7 @@ class BaseAsyncInteractiveCommands(object):
         :type config: client_pb2.ImplantConfig
         :return: Protobuf GetSystem object
         :rtype: sliver_pb2.GetSystem
-        '''        
+        '''
         system = client_pb2.GetSystemReq()
         system.HostingProcess = hosting_process
         system.Config = config
@@ -260,7 +260,7 @@ class BaseAsyncInteractiveCommands(object):
         :type encoder: str, optional
         :return: Protobuf Task object
         :rtype: sliver_pb2.Task
-        '''        
+        '''
         return (await self.task(data, rwx, pid, encoder))
 
     async def task(self, data: bytes, rwx: bool, pid: int, encoder='') -> sliver_pb2.Task:
@@ -276,7 +276,7 @@ class BaseAsyncInteractiveCommands(object):
         :type encoder: str, optional
         :return: Protobuf Task object
         :rtype: sliver_pb2.Task
-        '''         
+        '''
         task = sliver_pb2.TaskReq()
         task.Encoder = encoder
         task.RWXPages = rwx
@@ -472,14 +472,14 @@ class BaseAsyncInteractiveCommands(object):
         '''        
         return (await self._stub.Screenshot(self._request(sliver_pb2.ScreenshotReq()), timeout=self.timeout))
     
-    async def pivot_listeners(self) -> List[sliver_pb2.PivotListener]:
-        '''List C2 pivots
+    # async def pivot_listeners(self) -> List[sliver_pb2.PivotListener]:
+    #     '''List C2 pivots
 
-        :return: [description]
-        :rtype: List[sliver_pb2.PivotListener]
-        '''        
-        pivots = await self._stub.ListPivots(self._request(sliver_pb2.PivotListenersReq()), timeout=self.timeout)
-        return list(pivots.Listeners)
+    #     :return: [description]
+    #     :rtype: List[sliver_pb2.PivotListener]
+    #     '''        
+    #     pivots = await self._stub.ListPivots(self._request(sliver_pb2.PivotListenersReq()), timeout=self.timeout)
+    #     return list(pivots.Listeners)
 
     async def start_service(self, name: str, description: str, exe: str, hostname: str, arguments: str) -> sliver_pb2.ServiceInfo:
         '''Create and start a Windows service (Windows only)
