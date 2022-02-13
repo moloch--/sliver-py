@@ -33,6 +33,7 @@ DEFAULT_CONFIG = os.path.join(CONFIG_DIR, "default.cfg")
 async def main():
     config = SliverClientConfig.parse_config_file(DEFAULT_CONFIG)
     client = AsyncSliverClient(config)
+    print('[*] Connected to server ...')
     await client.connect()
     sessions = await client.sessions()
     print('[*] Sessions: %r' % sessions)
@@ -62,8 +63,8 @@ DEFAULT_CONFIG = os.path.join(CONFIG_DIR, "default.cfg")
 async def main():
     config = SliverClientConfig.parse_config_file(DEFAULT_CONFIG)
     client = SliverClient(config)
-    await client.connect()
     print('[*] Connected to server ...')
+    await client.connect()
     version = await client.version()
     print('[*] Server version: %s' % version)
 
