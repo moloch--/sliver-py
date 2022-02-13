@@ -19,8 +19,8 @@ import grpc
 import logging
 from typing import Generator, Union, List, Dict
 
-from .beacon import AsyncInteractiveBeacon
-from .session import AsyncInteractiveSession, InteractiveSession
+from .beacon import InteractiveBeacon
+from .session import InteractiveSession
 from .protobuf import common_pb2
 from .protobuf import client_pb2
 from .protobuf import sliver_pb2
@@ -78,7 +78,7 @@ class BaseClient(object):
         ]
 
 
-class AsyncSliverClient(BaseClient):
+class SliverClient(BaseClient):
 
     ''' Asyncio client implementation '''
 
@@ -101,7 +101,7 @@ class AsyncSliverClient(BaseClient):
         self._stub = SliverRPCStub(self._channel)
         return (await self.version())
 
-    async def interact_session(self, session_id: str, timeout=TIMEOUT) -> Union[AsyncInteractiveSession, None]:
+    async def interact_session(self, session_id: str, timeout=TIMEOUT) -> Union[InteractiveSession, None]:
         '''Interact with a session, returns an :class:`AsyncInteractiveSession`
 
         :param session_id: Session ID
@@ -112,9 +112,9 @@ class AsyncSliverClient(BaseClient):
         '''
         session = await self.session_by_id(session_id, timeout)
         if session is not None:
-            return AsyncInteractiveSession(session, self._channel, timeout)
+            return InteractiveSession(session, self._channel, timeout)
 
-    async def interact_beacon(self, beacon_id: str, timeout=TIMEOUT) -> Union[AsyncInteractiveBeacon, None]:
+    async def interact_beacon(self, beacon_id: str, timeout=TIMEOUT) -> Union[InteractiveBeacon, None]:
         '''Interact with a beacon, returns an :class:`AsyncInteractiveBeacon`
 
         :param beacon_id: Beacon ID
@@ -125,7 +125,7 @@ class AsyncSliverClient(BaseClient):
         '''
         beacon = await self.beacon_by_id(beacon_id, timeout)
         if beacon is not None:
-            return AsyncInteractiveBeacon(beacon, self._channel, timeout)
+            return InteractiveBeacon(beacon, self._channel, timeout)
 
     async def session_by_id(self, session_id: str, timeout=TIMEOUT) -> Union[client_pb2.Session, None]:
         '''Get the session information from a session ID

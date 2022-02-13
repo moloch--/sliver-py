@@ -2,7 +2,7 @@ Getting Started
 ===============
 
 To get started first download the `latest Sliver server release <https://github.com/BishopFox/sliver/releases/latest>`_ 
-you'll need v1.4.11 or later to use SliverPy.
+you'll need v1.5 or later to use SliverPy.
 
 SliverPy connects to the Sliver server using "multiplayer mode" which can be enabled in the server console or using
 the Sliver server's command line interface. In order to connect to the server you'll need to first generate an operator 
@@ -10,7 +10,7 @@ configuration file. Clients connect to the Sliver server using mutual TLS (mTLS)
 contain the per-user TLS certificates (and other metadata) needed to make the connection to the server. These configuration
 files contain the user's private key and should be treated as if they were a credential.
 
-In the interactive console, the ``new-player`` command is used to generate an operator configuration file. You'll need to 
+In the interactive console, the ``new-operator`` command is used to generate an operator configuration file. You'll need to 
 subsequently enable multiplayer mode using the ``multiplayer`` command to start the multiplayer server listener. See the 
 ``--help`` for each of these commands for more details:
 
@@ -18,9 +18,9 @@ subsequently enable multiplayer mode using the ``multiplayer`` command to start 
 
     $ ./sliver-server
 
-    sliver > new-player --operator zer0cool --lhost localhost --save ./operator.cfg
+    sliver > new-operator --name zer0cool --lhost localhost --save ./zer0cool.cfg
     [*] Generating new client certificate, please wait ...
-    [*] Saved new client config to: /Users/zer0cool/operator.cfg
+    [*] Saved new client config to: /Users/zer0cool/zer0cool.cfg
 
     sliver > multiplayer
     [*] Multiplayer mode enabled!
@@ -31,18 +31,19 @@ without entering into the interactive console. See each subcommand's ``--help`` 
 
 .. code-block:: console
 
-    $ ./sliver-server operator --name zer0cool --lhost localhost --save ./operator.cfg
+    $ ./sliver-server operator --name zer0cool --lhost localhost --save ./zer0cool.cfg
     $ ./sliver-server daemon
 
 
 Now with the server running in the background you can connect to Sliver remotely (or locally) using the ``.cfg`` with SliverPy!
 
 Connect Example
-^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^
 
-First you'll need to load the ``.cfg`` using the ``SliverClientConfig`` class. The easiest way to do this is using the ``.parse_config_file()`` 
-class method, or you can pass the file content as ``bytes`` to the ``.parse_config()`` class method if you don't want to specify the file path. 
-Here is a basic example, just modify the ``CONFIG`` path to point to the ``operator.cfg`` we generated using the server:
+SliverPy is implemented using ``asyncio``, if you're unfamiliar with Python's ``asyncio`` you may want to go read up on it before continuing. 
+I recommend starting with `this presentation <https://www.youtube.com/watch?v=9zinZmE3Ogk>`_ by Raymond Hettinger if you're completely unfamiliar with Python threads/asyncio.
+
+The main class is ``SliverClient``, which when paired with a configuration file, allows you to interact with the Sliver server, sessions, and beacons:
 
 .. code-block:: python
 
@@ -51,52 +52,18 @@ Here is a basic example, just modify the ``CONFIG`` path to point to the ``opera
     import os
     from sliver import SliverClientConfig, SliverClient
 
-    # Construct path to operator config file
-    CONFIG = os.path.join('path', 'to', 'operator.cfg')
-
-    def main():
-        ''' Client connect example '''
-        config = SliverClientConfig.parse_config_file(CONFIG) # <-- Class method
-        client = SliverClient(config)
-        client.connect()
-        print('Sessions: %r' % client.sessions())
-
-    if __name__ == '__main__':
-        main()
-
-
-**NOTE:** We're creating an instance of the ``SliverClientConfig`` using a Python class method (i.e., we do not need to instantiate the object to call
-the method). If you want to directly create an instance if ``SliverClientConfig()`` you'll need to pass in the various configuration values yourself.
-The ``SliverClientConfig.parse_config_file()`` class method essentially parses the configuration file and instantiates the class for us.
-
-
-Async Connect Example
-^^^^^^^^^^^^^^^^^^^^^
-
-SliverPy also supports ``asyncio`` using the ``AsyncSliverClient`` class:
-
-.. code-block:: python
-
-    #!/usr/bin/env python3
-
-    import os
-    from sliver import SliverClientConfig, AsyncSliverClient
-
-    CONFIG = os.path.join('path', 'to', 'default.cfg')
+    CONFIG_PATH = os.path.join('path', 'to', 'default.cfg')
 
     async def main():
         ''' Async client connect example '''
-        config = SliverClientConfig.parse_config_file(CONFIG)
-        client = AsyncSliverClient(config)
+        config = SliverClientConfig.parse_config_file(CONFIG_PATH)
+        client = SliverClient(config)
         await client.connect()
         sessions = await client.sessions()
         print('Sessions: %r' % sessions)
 
     if __name__ == '__main__':
         asyncio.run(main())
-
-
-**NOTE:** The ``SliverClient`` and ``AsyncSliverClient`` classes both use the same ``SliverClientConfig`` for configuration.
 
 
 Protobuf / gRPC
@@ -122,7 +89,7 @@ Interactive Sessions
 ^^^^^^^^^^^^^^^^^^^^
 
 To interact with a Sliver session we need to create an ``InteractiveSession`` object, the easiest way to do this is using the ``SliverClient``'s 
-``.interact()`` method, which takes a numeric session ID and returns an ``InteractiveSession`` for that ID:
+``.interact_session()`` method, which takes a session ID and returns an ``InteractiveSession`` for that ID:
 
 .. code-block:: python
 
@@ -134,19 +101,18 @@ To interact with a Sliver session we need to create an ``InteractiveSession`` ob
     # Construct path to operator config file
     CONFIG = os.path.join('path', 'to', 'operator.cfg')
 
-    def main():
-        ''' Client connect example '''
+    async def main():
+        ''' Session interact example '''
         config = SliverClientConfig.parse_config_file(CONFIG)
         client = SliverClient(config)
-        client.connect()
-        sessions = client.sessions()  # <-- List Protobuf Session objects
+        await client.connect()
+        sessions = await client.sessions()  # <-- List Protobuf Session objects
         if not len(sessions):
             print('No sessions!')
             return
 
-        interact = client.interact(sessions[0].ID)  # <-- Create InteractiveSession object
-        ls = interact.ls()                          # <-- Returns an Ls Protobuf object
-
+        session = await client.interact_session(sessions[0].ID)  # <-- Create InteractiveSession object
+        ls = await session.ls()                                  # <-- Returns an Ls Protobuf object
         print('Listing directory contents of: %s' % ls.Path)
         for fi in ls.Files:
             print('FileName: %s (dir: %s, size: %d)' % (fi.Name, fi.IsDir, fi.Size))
@@ -158,15 +124,57 @@ To interact with a Sliver session we need to create an ``InteractiveSession`` ob
 the session ID, the active C2 protocol, etc. and the ``InteractiveSession`` class, which is used to interact with the session (i.e., execute commands, etc).
 
 
-Realtime Events (Threads vs. Async)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Interactive Beacons
+^^^^^^^^^^^^^^^^^^^^
+
+To interact with a Sliver beacon we need to create an ``InteractiveBeacon`` object, the easiest way to do this is using the ``SliverClient``'s 
+``.interact_beacon()`` method, which takes a beacon ID and returns an ``InteractiveBeacon`` for that ID:
+
+.. code-block:: python
+
+    #!/usr/bin/env python3
+
+    import os
+    from sliver import SliverClientConfig, SliverClient
+
+    # Construct path to operator config file
+    CONFIG = os.path.join('path', 'to', 'operator.cfg')
+
+    async def main():
+        ''' Session interact example '''
+        config = SliverClientConfig.parse_config_file(CONFIG)
+        client = SliverClient(config)
+        await client.connect()
+        beacons = await client.beacons()  # <-- List Protobuf Session objects
+        if not len(beacons):
+            print('No beacons!')
+            return
+
+        beacon = await client.interact_beacon(beacons[0].ID)  # <-- Create InteractiveSession object
+        ls_task = await beacon.ls()                           # <-- Creates a beacon task Future
+        print('Created beacon task: %s' % ls_task)
+        print('Waiting for beacon task to complete ...')
+        ls = await ls_task
+
+        # Beacon Task has completed (Future was resolved)
+        print('Listing directory contents of: %s' % ls.Path)
+        for fi in ls.Files:
+            print('FileName: %s (dir: %s, size: %d)' % (fi.Name, fi.IsDir, fi.Size))
+
+
+    if __name__ == '__main__':
+        main()
+
+**NOTE:** The main difference between interacting with a session vs. a beacon, is that a beacon's command will return a ``Future`` object that eventually resolves to the task result.
+
+
+Realtime Events
+^^^^^^^^^^^^^^^^
 
 SliverPy also supports realtime events, which are pushed from the server to the client whenever an event occurs. For example, some of the more common events you'll likely
 be interested in are when a new session is created or when a job starts/stops. 
 
-The :class:`SliverClient` and :class:`AsyncSliverClient` implement these real time events using threads and ``asyncio`` respectfully. When to use each is beyond the scope
-of this document but I recommend `this presentation <https://www.youtube.com/watch?v=9zinZmE3Ogk>`_ by Raymond Hettinger if you're not familiar with strengths/weaknesses
-of each approach. Realtime events are also one of the only features that work differently in :class:`SliverClient` vs :class:`AsyncSliverClient`.
+The :class:`SliverClient` implements these real time events using ``asyncio``.  
 
 Events are identified by an "event type," which is just a string set by the producer of the event. This loose form
 allows events to be very dynamic, however this also means there is no central authority for every event type. I 
@@ -176,135 +184,39 @@ the event, so you should always check that an attribute exists before accessing 
 
 Here is a non exhaustive list of event types:
 
-+---------------------------+------------------------------------------------------+
-| Event Type                |  Description                                         |
-+===========================+======================================================+
-| ``session-connected``     | A new session was created                            |
-+---------------------------+------------------------------------------------------+
-| ``session-disconnected``  | An existing session was lost                         |
-+---------------------------+------------------------------------------------------+
-| ``session-updated``       | An existing session was renamed / updated            |                               
-+---------------------------+------------------------------------------------------+
-| ``job-started``           | A job was started on the server                      |
-+---------------------------+------------------------------------------------------+
-| ``job-stopped``           | A job stopped (due to error or user action)          |
-+---------------------------+------------------------------------------------------+
-| ``client-joined``         | A new client connected to the server                 |                  
-+---------------------------+------------------------------------------------------+
-| ``client-left``           | A client disconnected from the server                |              
-+---------------------------+------------------------------------------------------+
-| ``canary``                | A canary was burned / triggered / etc.               |              
-+---------------------------+------------------------------------------------------+
-| ``build``                 | A modification was made to implant builds            |                 
-+---------------------------+------------------------------------------------------+
-| ``build-completed``       | An implant build completed (in success or failure)   |                          
-+---------------------------+------------------------------------------------------+
-| ``profile``               | A modification was made to implant profiles          |                  
-+---------------------------+------------------------------------------------------+
-| ``website``               | A modification was made to website(s)                |              
-+---------------------------+------------------------------------------------------+
++--------------------------+-----+----------------------------------------------------+
+| Event Type               |     | Description                                        |
++--------------------------+-----+----------------------------------------------------+
+| ``session-disconnected`` |     | An existing session was lost                       |
++--------------------------+-----+----------------------------------------------------+
+| ``session-updated``      |     | An existing session was renamed / updated          |
++--------------------------+-----+----------------------------------------------------+
+| ``job-started``          |     | A job was started on the server                    |
++--------------------------+-----+----------------------------------------------------+
+| ``job-stopped``          |     | A job stopped (due to error or user action)        |
++--------------------------+-----+----------------------------------------------------+
+| ``client-joined``        |     | A new client connected to the server               |
++--------------------------+-----+----------------------------------------------------+
+| ``client-left``          |     | A client disconnected from the server              |
++--------------------------+-----+----------------------------------------------------+
+| ``canary``               |     | A canary was burned / triggered / etc.             |
++--------------------------+-----+----------------------------------------------------+
+| ``build``                |     | A modification was made to implant builds          |
++--------------------------+-----+----------------------------------------------------+
+| ``build-completed``      |     | An implant build completed (in success or failure) |
++--------------------------+-----+----------------------------------------------------+
+| ``profile``              |     | A modification was made to implant profiles        |
++--------------------------+-----+----------------------------------------------------+
+| ``website``              |     | A modification was made to website(s)              |
++--------------------------+-----+----------------------------------------------------+
+| ``beacon-registered``    |     | A new beacon connected to the server               |
++---------------------------+---------------------------------------------------------+
+| ``beacon-taskresult``    |     | A beacon task completed                            |
++---------------------------+---------------------------------------------------------+
 
 
-Event Example (Threads)
-^^^^^^^^^^^^^^^^^^^^^^^
-
-The :class:`SliverClient` provides several helpful abstractions to cut down on event noise, by default you can register a callback to fire on every event or events 
-specifically related to sessions, jobs, or canaries.
-
-First, let's start with a basic callback that will be fired whenever any event occurs:
-
-.. code-block:: python
-
-    #!/usr/bin/env python3
-
-    import os
-    from sliver import SliverClientConfig, SliverClient, client_pb2
-
-    CONFIG_DIR = os.path.join(os.path.expanduser("~"), ".sliver-client", "configs")
-    DEFAULT_CONFIG = os.path.join(CONFIG_DIR, "default.cfg")
-
-
-    def event_callback(event: client_pb2.Event):
-        ''' This callback function is executed whenever an event occurs '''
-        print('Event fired: %r' % event)
-
-    def main():
-        config = SliverClientConfig.parse_config_file(DEFAULT_CONFIG)
-        client = SliverClient(config)
-        client.connect()
-
-        client.on_event(event_callback)  # <-- Register callback function
-
-        try:
-            print('Ctrl+c to Exit\n\n')
-            client.wait_for_events()   # <-- Blocks main thread
-        except KeyboardInterrupt:
-            print('Attempting to cleanup thread pool ...')
-            client.stop_events()       # <-- Attempt to clean threads before exit
-
-    if __name__ == '__main__':
-        main()
-
-
-**IMPORTANT:** Callback functions are executed in a thread pool and SliverPy provides NO THREAD SAFETY. You must implement any needed locks yourself.
-However, it's *generally* safe to call :class:`SliverClient` methods in parallel since the client does not maintain much state.
-
-
-Automatically Interact With New Sessions (Threads)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-A more practical example is to have our SliverPy program execute some logic/commands automatically whenever a new session is created on the server.
-To do this we can register a callback function with ``.on()`` for the specific ``session-connected`` event:
-
-.. code-block:: python
-
-    #!/usr/bin/env python3
-
-    import os
-    from sliver import SliverClientConfig, SliverClient, client_pb2
-
-    CONFIG_DIR = os.path.join(os.path.expanduser("~"), ".sliver-client", "configs")
-    DEFAULT_CONFIG = os.path.join(CONFIG_DIR, "default.cfg")
-
-
-    def auto_interact(client: SliverClient, session: client_pb2.Session):
-        ''' Interact with newly created session and perform some action '''
-        print('Automatically interacting with session #%d' % session.ID)
-        interact = client.interact(session.ID)
-        exec = interact.execute('whoami', [], True)
-        print('Exec %r' % exec)
-
-    def main():
-        ''' Client connect example '''
-        config = SliverClientConfig.parse_config_file(DEFAULT_CONFIG)
-        client = SliverClient(config)
-        client.connect()
-
-        def session_callback(event: client_pb2.Event):
-            ''' Pass client and event.Session to auto_interact() '''
-            auto_interact(client, event.Session)
-
-        # Register callback function
-        client.on("session-connected", session_callback)
-
-        try:
-            print('Waiting for sessions, Ctrl+c to Exit\n\n')
-            client.wait_for_events()  # <-- Block main thread
-        except KeyboardInterrupt:
-            print('\rAttempting to cleanup thread pool ...')
-            client.stop_events()
-
-    if __name__ == '__main__':
-        main()
-
-
-A cleaner approach would be to create a Python ``class`` to avoid needing the nested callback definition
-to pass the :class:`SliverClient` instance to ``auth_interact()`` but this is left as an exercise for the
-reader.
-
-
-Automatically Interact With New Sessions (Async)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Automatically Interact With New Sessions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Realtime events in :class:`AsyncSliverClient` work differently than in :class:`SliverClient`.
 
@@ -332,10 +244,10 @@ Here is an example of using ``.on()`` to automatically interact with new session
         client = AsyncSliverClient(config)
         await client.connect()
         async for event in client.on('session-connected'):
-            print('Automatically interacting with session #%d' % event.Session.ID)
+            print('Automatically interacting with session %s' % event.Session.ID)
             interact = await client.interact(event.Session.ID)
-            exec = await interact.execute('whoami', [], True)
-            print('Exec %r' % exec)
+            exec_result = await interact.execute('whoami', [], True)
+            print('Exec %r' % exec_result)
 
     if __name__ == '__main__':
         loop = asyncio.get_event_loop()

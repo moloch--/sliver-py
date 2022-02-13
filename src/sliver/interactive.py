@@ -20,7 +20,7 @@ from .protobuf import client_pb2
 from .protobuf import sliver_pb2
 
 
-class BaseAsyncInteractiveCommands(object):
+class BaseInteractiveCommands(object):
 
     async def ping(self) -> sliver_pb2.Ping:
         '''Send a round trip message to the implant (does NOT use ICMP)

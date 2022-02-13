@@ -21,9 +21,9 @@ sys.path.insert(0, os.path.abspath(os.path.join(DOCS, '..', 'src')))
 # AUTHOR = 'moloch'
 
 project = 'SliverPy'
-copyright = '2021, moloch'
+copyright = '2022, moloch'
 author = 'moloch'
-release = '0.0.12'
+release = '0.0.15'
 
 # -- General configuration ---------------------------------------------------
 

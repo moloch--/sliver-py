@@ -21,7 +21,7 @@ import grpc
 import logging
 from typing import Union
 
-from .interactive import BaseAsyncInteractiveCommands
+from .interactive import BaseInteractiveCommands
 from .protobuf import common_pb2
 from .protobuf import client_pb2
 from .protobuf import sliver_pb2
@@ -169,7 +169,7 @@ def beacon_taskresult(pb_object):
     return func
 
 
-class AsyncInteractiveBeacon(BaseBeacon, BaseAsyncInteractiveCommands):
+class InteractiveBeacon(BaseBeacon, BaseInteractiveCommands):
 
     ''' Wrap all commands that can be executed against a beacon mode implant '''
 

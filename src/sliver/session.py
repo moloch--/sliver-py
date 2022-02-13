@@ -18,7 +18,7 @@ import grpc
 import logging
 from typing import Union, List
 
-from .interactive import BaseAsyncInteractiveCommands
+from .interactive import BaseInteractiveCommands
 from .protobuf import client_pb2
 from .protobuf import sliver_pb2
 from .pb.rpcpb.services_pb2_grpc import SliverRPCStub
@@ -125,7 +125,7 @@ class BaseSession(object):
         return self._session.ProxyURL
 
 
-class AsyncInteractiveSession(BaseSession, BaseAsyncInteractiveCommands):
+class InteractiveSession(BaseSession, BaseInteractiveCommands):
 
     '''
     Session-only commands, session/beacon commands are defined in the 
