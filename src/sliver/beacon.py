@@ -14,10 +14,13 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 '''
 
+import asyncio
 import grpc
 import logging
-from typing import Union, List
+from typing import Generator, Union, List, Dict, Callable, Iterator
 
+from .interactive import BaseAsyncInteractiveCommands
+from .protobuf import common_pb2
 from .protobuf import client_pb2
 from .protobuf import sliver_pb2
 from .pb.rpcpb.services_pb2_grpc import SliverRPCStub
@@ -29,12 +32,14 @@ TIMEOUT = 60
 class BaseBeacon(object):
 
     _beacon: client_pb2.Beacon
+    beacon_tasks = {}
 
     def __init__(self, beacon: client_pb2.Beacon, channel: grpc.Channel, timeout: int = TIMEOUT, logger: Union[logging.Handler, None] = None):
         self._channel = channel
         self._beacon = beacon
         self._stub = SliverRPCStub(channel)
         self.timeout = timeout
+        asyncio.get_event_loop().create_task(self.taskresult_events())
 
     def _request(self, pb):
         '''
@@ -49,6 +54,22 @@ class BaseBeacon(object):
         pb.Request.Timeout = self.timeout-1
         pb.Request.Async = True
         return pb
+
+    async def taskresult_events(self) -> Generator[client_pb2.Event, None, None]:
+        '''
+        Monitor task events for results, resolve futures for any results
+        we get back.
+        '''        
+        async for event in self._stub.Events(common_pb2.Empty()):
+            if event.EventType != "beacon-taskresult":
+                continue
+            beacon_task = client_pb2.BeaconTask()
+            beacon_task.ParseFromString(event.Data)
+            if beacon_task.ID not in self.beacon_tasks:
+                continue
+            task_content = await self._stub.GetBeaconTaskContent(client_pb2.BeaconTask(ID=beacon_task.ID))
+            self.beacon_tasks[beacon_task.ID].set_result(task_content)
+            del self.beacon_tasks[beacon_task.ID]
 
     @property
     def beacon_id(self) -> int:
@@ -119,16 +140,10 @@ class BaseBeacon(object):
         return self._beacon.ReconnectInterval
 
     
-class AsyncInteractiveBeacon(BaseBeacon):
+class AsyncInteractiveBeacon(BaseBeacon, BaseAsyncInteractiveCommands):
 
-    async def ls(self, remote_path: str = '.') -> sliver_pb2.Ls:
-        '''Get a directory listing from the remote system
+    async def ls(self, *args, **kwargs) -> sliver_pb2.Ls:
+        task_response = await super().ls(*args, **kwargs)
+        self.beacon_tasks[task_response.Response.TaskID] = asyncio.Future()
+        return self.beacon_tasks[task_response.Response.TaskID]
 
-        :param remote_path: Remote path
-        :type remote_path: str
-        :return: Protobuf ls object
-        :rtype: sliver_pb2.Ls
-        '''        
-        ls = sliver_pb2.LsReq()
-        ls.Path = remote_path
-        return (await self._stub.Ls(self._request(ls), timeout=self.timeout))
