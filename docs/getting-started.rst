@@ -217,12 +217,8 @@ Here is a non exhaustive list of event types:
 
 Automatically Interact With New Sessions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Realtime events in :class:`AsyncSliverClient` work differently than in :class:`SliverClient`.
-
-Instead of callbacks, ``.on()`` returns an async generator, which can be iterated over. The async version of
-``.on()`` accepts a string or a list of strings to filter events. Additionally, ``.events()`` can be used to
-obtain a generator that will yield all events.
+The ``SliverClient``'s ``.on()`` method returns an async generator, which can be iterated over. ``.on()`` accepts a string or a list of strings to filter events. 
+Additionally, ``.events()`` can be used to obtain a generator that will yield all events.
 
 Here is an example of using ``.on()`` to automatically interact with new sessions when they connect:
 
