@@ -15,9 +15,10 @@
 '''
 
 import asyncio
+import functools
 import grpc
 import logging
-from typing import Generator, Union, List, Dict, Callable, Iterator
+from typing import Generator, Union
 
 from .interactive import BaseAsyncInteractiveCommands
 from .protobuf import common_pb2
@@ -68,8 +69,11 @@ class BaseBeacon(object):
             if beacon_task.ID not in self.beacon_tasks:
                 continue
             task_content = await self._stub.GetBeaconTaskContent(client_pb2.BeaconTask(ID=beacon_task.ID))
-            self.beacon_tasks[beacon_task.ID].set_result(task_content)
+            task_future, pb_object = self.beacon_tasks[beacon_task.ID]
             del self.beacon_tasks[beacon_task.ID]
+            result = pb_object()
+            result.ParseFromString(task_content.Response)
+            task_future.set_result(result)
 
     @property
     def beacon_id(self) -> int:
@@ -139,11 +143,32 @@ class BaseBeacon(object):
     def reconnect_interval(self) -> int:
         return self._beacon.ReconnectInterval
 
-    
+
+
+def beacon_taskresult(pb_object):
+    '''
+    Wraps a class method to return a future that resolves when the
+    beacon task result is available.
+    '''
+
+    def func(method):
+        @functools.wraps(method)
+        async def wrapper(self, *args, **kwargs):
+            task_response = await method(self, *args, **kwargs)
+            self.beacon_tasks[task_response.Response.TaskID] = (asyncio.Future(), pb_object,)
+            return self.beacon_tasks[task_response.Response.TaskID][0]
+        return wrapper
+    return func
+
+
 class AsyncInteractiveBeacon(BaseBeacon, BaseAsyncInteractiveCommands):
 
+    @beacon_taskresult(sliver_pb2.Ls)
     async def ls(self, *args, **kwargs) -> sliver_pb2.Ls:
-        task_response = await super().ls(*args, **kwargs)
-        self.beacon_tasks[task_response.Response.TaskID] = asyncio.Future()
-        return self.beacon_tasks[task_response.Response.TaskID]
+        return await super().ls(*args, **kwargs)
+
+    # async def ls(self, *args, **kwargs) -> sliver_pb2.Ls:
+    #     task_response = await super().ls(*args, **kwargs)
+    #     self.beacon_tasks[task_response.Response.TaskID] = asyncio.Future()
+    #     return self.beacon_tasks[task_response.Response.TaskID]
 
