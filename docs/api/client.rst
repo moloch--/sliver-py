@@ -1,8 +1,8 @@
 Clients
 =======
 
-This module is used to connect to abstract various gRPC APIs, the Sliver APIs are separated into two
-classes a Client and an InteractiveSession (there is a synchronous and asynchronous version of each).
+This module is used to connect to abstract various gRPC APIs, the Sliver APIs are separated into a few
+classes a Client, an InteractiveSession, and an InteractiveBeacon.
 
 
 SliverClient
@@ -26,22 +26,10 @@ InteractiveSession
     :show-inheritance:
     :inherited-members:
 
+InteractiveBeacon
+^^^^^^^^^^^^^^^^^^
 
-AsyncSliverClient
-^^^^^^^^^^^^^^^^^
-
-.. autoclass:: sliver.AsyncSliverClient
-    :special-members: __init__,
-    :members:
-    :undoc-members:
-    :show-inheritance:
-    :inherited-members:
-
-
-AsyncInteractiveSession
-^^^^^^^^^^^^^^^^^^^^^^^
-
-.. autoclass:: sliver.AsyncInteractiveSession
+.. autoclass:: sliver.InteractiveBeacon
     :special-members: __init__,
     :members:
     :undoc-members:

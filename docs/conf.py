@@ -23,7 +23,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(DOCS, '..', 'src')))
 project = 'SliverPy'
 copyright = '2022, moloch'
 author = 'moloch'
-release = '0.0.15'
+release = '0.0.16'
 
 # -- General configuration ---------------------------------------------------
 
