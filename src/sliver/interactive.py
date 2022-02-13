@@ -471,69 +471,6 @@ class BaseAsyncInteractiveCommands(object):
         :rtype: sliver_pb2.Screenshot
         '''        
         return (await self._stub.Screenshot(self._request(sliver_pb2.ScreenshotReq()), timeout=self.timeout))
-    
-    # async def pivot_listeners(self) -> List[sliver_pb2.PivotListener]:
-    #     '''List C2 pivots
-
-    #     :return: [description]
-    #     :rtype: List[sliver_pb2.PivotListener]
-    #     '''        
-    #     pivots = await self._stub.ListPivots(self._request(sliver_pb2.PivotListenersReq()), timeout=self.timeout)
-    #     return list(pivots.Listeners)
-
-    async def start_service(self, name: str, description: str, exe: str, hostname: str, arguments: str) -> sliver_pb2.ServiceInfo:
-        '''Create and start a Windows service (Windows only)
-
-        :param name: Name of the service
-        :type name: str
-        :param description: Service description
-        :type description: str
-        :param exe: Path to the service .exe file
-        :type exe: str
-        :param hostname: Hostname
-        :type hostname: str
-        :param arguments: Arguments to start the service with
-        :type arguments: str
-        :return: Protobuf ServiceInfo object
-        :rtype: sliver_pb2.ServiceInfo
-        '''        
-        svc = sliver_pb2.StartServiceReq()
-        svc.ServiceName = name
-        svc.ServiceDescription = description
-        svc.BinPath = exe
-        svc.Hostname = hostname
-        svc.Arguments = arguments
-        return (await self._stub.StartService(self._request(svc), timeout=self.timeout))
-    
-    async def stop_service(self, name: str, hostname: str) -> sliver_pb2.ServiceInfo:
-        '''Stop a Windows service (Windows only)
-
-        :param name: Name of the servie
-        :type name: str
-        :param hostname: Hostname
-        :type hostname: str
-        :return: Protobuf ServiceInfo object
-        :rtype: sliver_pb2.ServiceInfo
-        '''        
-        svc = sliver_pb2.StopServiceReq()
-        svc.ServiceInfo.ServiceName = name
-        svc.ServiceInfo.Hostname = hostname
-        return (await self._stub.StopService(self._request(svc), timeout=self.timeout))
-
-    async def remove_service(self, name: str, hostname: str) -> sliver_pb2.ServiceInfo:
-        '''Remove a Windows service (Windows only)
-
-        :param name: Name of the service
-        :type name: str
-        :param hostname: Hostname
-        :type hostname: str
-        :return: Protobuf ServiceInfo object
-        :rtype: sliver_pb2.ServiceInfo
-        '''        
-        svc = sliver_pb2.StopServiceReq()
-        svc.ServiceInfo.ServiceName = name
-        svc.ServiceInfo.Hostname = hostname
-        return (await self._stub.RemoveService(self._request(svc), timeout=self.timeout))
 
     async def make_token(self, username: str, password: str, domain: str) -> sliver_pb2.MakeToken:
         '''Make a Windows user token from a valid login (Windows only)
@@ -579,21 +516,6 @@ class BaseAsyncInteractiveCommands(object):
         env.EnvVar.Key = name
         env.EnvVar.Value = value
         return (await self._stub.SetEnv(self._request(env), timeout=self.timeout))
-    
-    async def backdoor(self, remote_path: str, profile_name: str) -> sliver_pb2.Backdoor:
-        '''Backdoor a remote binary by injecting a Sliver payload into the executable using a code cave
-
-        :param remote_path: Remote path to an executable to backdoor
-        :type remote_path: str
-        :param profile_name: Implant profile name to inject into the binary
-        :type profile_name: str
-        :return: Protobuf Backdoor object
-        :rtype: sliver_pb2.Backdoor
-        '''        
-        backdoor = sliver_pb2.BackdoorReq()
-        backdoor.FilePath = remote_path
-        backdoor.ProfileName = profile_name
-        return (await self._stub.Backdoor(self._request(backdoor), timeout=self.timeout))
     
     async def registry_read(self, hive: str, reg_path: str, key: str, hostname: str) -> sliver_pb2.RegistryRead:
         '''Read a value from the remote system's registry (Windows only)

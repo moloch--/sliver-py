@@ -15,10 +15,11 @@
 '''
 
 import asyncio
+import logging
 import functools
 import grpc
 import logging
-from typing import Generator, Union
+from typing import Union
 
 from .interactive import BaseAsyncInteractiveCommands
 from .protobuf import common_pb2
@@ -36,6 +37,7 @@ class BaseBeacon(object):
     beacon_tasks = {}
 
     def __init__(self, beacon: client_pb2.Beacon, channel: grpc.Channel, timeout: int = TIMEOUT, logger: Union[logging.Handler, None] = None):
+        self._log = logging.getLogger(self.__class__.__name__)
         self._channel = channel
         self._beacon = beacon
         self._stub = SliverRPCStub(channel)
@@ -56,27 +58,30 @@ class BaseBeacon(object):
         pb.Request.Async = True
         return pb
 
-    async def taskresult_events(self) -> Generator[client_pb2.Event, None, None]:
+    async def taskresult_events(self):
         '''
         Monitor task events for results, resolve futures for any results
         we get back.
-        '''        
+        '''
         async for event in self._stub.Events(common_pb2.Empty()):
             if event.EventType != "beacon-taskresult":
                 continue
-            beacon_task = client_pb2.BeaconTask()
-            beacon_task.ParseFromString(event.Data)
-            if beacon_task.ID not in self.beacon_tasks:
-                continue
-            task_content = await self._stub.GetBeaconTaskContent(client_pb2.BeaconTask(ID=beacon_task.ID))
-            task_future, pb_object = self.beacon_tasks[beacon_task.ID]
-            del self.beacon_tasks[beacon_task.ID]
-            if pb_object is not None:
-                result = pb_object()
-                result.ParseFromString(task_content.Response)
-            else:
-                result = None
-            task_future.set_result(result)
+            try:
+                beacon_task = client_pb2.BeaconTask()
+                beacon_task.ParseFromString(event.Data)
+                if beacon_task.ID not in self.beacon_tasks:
+                    continue
+                task_content = await self._stub.GetBeaconTaskContent(client_pb2.BeaconTask(ID=beacon_task.ID))
+                task_future, pb_object = self.beacon_tasks[beacon_task.ID]
+                del self.beacon_tasks[beacon_task.ID]
+                if pb_object is not None:
+                    result = pb_object()
+                    result.ParseFromString(task_content.Response)
+                else:
+                    result = None
+                task_future.set_result(result)
+            except Exception as err:
+                self._log.exception(err)
 
     @property
     def beacon_id(self) -> int:
@@ -166,6 +171,13 @@ def beacon_taskresult(pb_object):
 
 class AsyncInteractiveBeacon(BaseBeacon, BaseAsyncInteractiveCommands):
 
+    ''' Wrap all commands that can be executed against a beacon mode implant '''
+
+    async def interactive_session(self):
+        pass
+
+    # ----------------  Wrapped super() commands ---------------- 
+
     @beacon_taskresult(sliver_pb2.Ping)
     async def ping(self, *args, **kwargs) -> sliver_pb2.Ping:
         return await super().ping(*args, **kwargs)
@@ -202,6 +214,10 @@ class AsyncInteractiveBeacon(BaseBeacon, BaseAsyncInteractiveCommands):
     async def rm(self, *args, **kwargs) -> sliver_pb2.Rm:
         return await super().rm(*args, **kwargs)
 
+    @beacon_taskresult(sliver_pb2.Mkdir)
+    async def mkdir(self, *args, **kwargs) -> sliver_pb2.Mkdir:
+        return await super().mkdir(*args, **kwargs)
+
     @beacon_taskresult(sliver_pb2.Download)
     async def download(self, *args, **kwargs) -> sliver_pb2.Download:
         return await super().download(*args, **kwargs)
@@ -217,6 +233,10 @@ class AsyncInteractiveBeacon(BaseBeacon, BaseAsyncInteractiveCommands):
     @beacon_taskresult(sliver_pb2.RunAs)
     async def run_as(self, *args, **kwargs) -> sliver_pb2.RunAs:
         return await super().run_as(*args, **kwargs)
+
+    @beacon_taskresult(sliver_pb2.Impersonate)
+    async def impersonate(self, *args, **kwargs) -> sliver_pb2.Impersonate:
+        return await super().impersonate(*args, **kwargs)
 
     @beacon_taskresult(sliver_pb2.RevToSelf)
     async def revert_to_self(self, *args, **kwargs) -> sliver_pb2.RevToSelf:
@@ -270,6 +290,26 @@ class AsyncInteractiveBeacon(BaseBeacon, BaseAsyncInteractiveCommands):
     async def screenshot(self, *args, **kwargs) -> sliver_pb2.Screenshot:
         return await super().screenshot(*args, **kwargs)
 
-    @beacon_taskresult(sliver_pb2.PivotListeners)
-    async def pivot_listeners(self, *args, **kwargs) -> sliver_pb2.PivotListeners:
-        return await super().pivot_listeners(*args, **kwargs)
+    @beacon_taskresult(sliver_pb2.MakeToken)
+    async def make_token(self, *args, **kwargs) -> sliver_pb2.MakeToken:
+        return await super().make_token(*args, **kwargs)
+
+    @beacon_taskresult(sliver_pb2.EnvInfo)
+    async def get_env(self, *args, **kwargs) -> sliver_pb2.EnvInfo:
+        return await super().get_env(*args, **kwargs)
+
+    @beacon_taskresult(sliver_pb2.SetEnv)
+    async def set_env(self, *args, **kwargs) -> sliver_pb2.SetEnv:
+        return await super().set_env(*args, **kwargs)
+
+    @beacon_taskresult(sliver_pb2.RegistryRead)
+    async def registry_read(self, *args, **kwargs) -> sliver_pb2.RegistryRead:
+        return await super().registry_read(*args, **kwargs)
+
+    @beacon_taskresult(sliver_pb2.RegistryWrite)
+    async def registry_write(self, *args, **kwargs) -> sliver_pb2.RegistryWrite:
+        return await super().registry_write(*args, **kwargs)
+
+    @beacon_taskresult(sliver_pb2.RegistryCreateKey)
+    async def registry_create_key(self, *args, **kwargs) -> sliver_pb2.RegistryCreateKey:
+        return await super().registry_create_key(*args, **kwargs)
