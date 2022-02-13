@@ -31,15 +31,20 @@ class SliverRPCStub(object):
                 request_serializer=sliverpb_dot_sliver__pb2.KillReq.SerializeToString,
                 response_deserializer=commonpb_dot_common__pb2.Empty.FromString,
                 )
+        self.Reconfigure = channel.unary_unary(
+                '/rpcpb.SliverRPC/Reconfigure',
+                request_serializer=sliverpb_dot_sliver__pb2.ReconfigureReq.SerializeToString,
+                response_deserializer=sliverpb_dot_sliver__pb2.Reconfigure.FromString,
+                )
+        self.Rename = channel.unary_unary(
+                '/rpcpb.SliverRPC/Rename',
+                request_serializer=clientpb_dot_client__pb2.RenameReq.SerializeToString,
+                response_deserializer=commonpb_dot_common__pb2.Empty.FromString,
+                )
         self.GetSessions = channel.unary_unary(
                 '/rpcpb.SliverRPC/GetSessions',
                 request_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
                 response_deserializer=clientpb_dot_client__pb2.Sessions.FromString,
-                )
-        self.UpdateSession = channel.unary_unary(
-                '/rpcpb.SliverRPC/UpdateSession',
-                request_serializer=clientpb_dot_client__pb2.UpdateSession.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.Session.FromString,
                 )
         self.GetBeacons = channel.unary_unary(
                 '/rpcpb.SliverRPC/GetBeacons',
@@ -632,15 +637,21 @@ class SliverRPCServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def GetSessions(self, request, context):
-        """*** Sessions ***
-        """
+    def Reconfigure(self, request, context):
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def UpdateSession(self, request, context):
+    def Rename(self, request, context):
         """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetSessions(self, request, context):
+        """*** Sessions ***
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -1359,15 +1370,20 @@ def add_SliverRPCServicer_to_server(servicer, server):
                     request_deserializer=sliverpb_dot_sliver__pb2.KillReq.FromString,
                     response_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
             ),
+            'Reconfigure': grpc.unary_unary_rpc_method_handler(
+                    servicer.Reconfigure,
+                    request_deserializer=sliverpb_dot_sliver__pb2.ReconfigureReq.FromString,
+                    response_serializer=sliverpb_dot_sliver__pb2.Reconfigure.SerializeToString,
+            ),
+            'Rename': grpc.unary_unary_rpc_method_handler(
+                    servicer.Rename,
+                    request_deserializer=clientpb_dot_client__pb2.RenameReq.FromString,
+                    response_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
+            ),
             'GetSessions': grpc.unary_unary_rpc_method_handler(
                     servicer.GetSessions,
                     request_deserializer=commonpb_dot_common__pb2.Empty.FromString,
                     response_serializer=clientpb_dot_client__pb2.Sessions.SerializeToString,
-            ),
-            'UpdateSession': grpc.unary_unary_rpc_method_handler(
-                    servicer.UpdateSession,
-                    request_deserializer=clientpb_dot_client__pb2.UpdateSession.FromString,
-                    response_serializer=clientpb_dot_client__pb2.Session.SerializeToString,
             ),
             'GetBeacons': grpc.unary_unary_rpc_method_handler(
                     servicer.GetBeacons,
@@ -1996,6 +2012,40 @@ class SliverRPC(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
+    def Reconfigure(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/Reconfigure',
+            sliverpb_dot_sliver__pb2.ReconfigureReq.SerializeToString,
+            sliverpb_dot_sliver__pb2.Reconfigure.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def Rename(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/Rename',
+            clientpb_dot_client__pb2.RenameReq.SerializeToString,
+            commonpb_dot_common__pb2.Empty.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
     def GetSessions(request,
             target,
             options=(),
@@ -2009,23 +2059,6 @@ class SliverRPC(object):
         return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/GetSessions',
             commonpb_dot_common__pb2.Empty.SerializeToString,
             clientpb_dot_client__pb2.Sessions.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def UpdateSession(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/UpdateSession',
-            clientpb_dot_client__pb2.UpdateSession.SerializeToString,
-            clientpb_dot_client__pb2.Session.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 

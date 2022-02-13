@@ -1,0 +1,6 @@
+
+
+
+class BaseInteractiveCommands(object):
+
+    pass
