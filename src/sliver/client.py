@@ -285,7 +285,7 @@ class SliverClient(BaseClient):
         '''Get a list of tasks for a beacon
 
         :param task_id: Task ID to get tasks for
-        :type beacon_id: sts
+        :type task_id: sts
         :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         :return: List of protobuf Task objects
