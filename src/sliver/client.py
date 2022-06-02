@@ -262,7 +262,7 @@ class SliverClient(BaseClient):
         :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         '''
-        beacon_rm = sliver_pb2.Beacon()
+        beacon_rm = client_pb2.Beacon()
         beacon_rm.ID = beacon_id
         await self._stub.RmBeacon(beacon_rm, timeout=timeout)
 
@@ -276,23 +276,23 @@ class SliverClient(BaseClient):
         :return: List of protobuf Task objects
         :rtype: List[client_pb2.Task]
         '''
-        beacon = sliver_pb2.Beacon()
+        beacon = client_pb2.Beacon()
         beacon.ID = beacon_id
         tasks = await self._stub.GetBeaconTasks(beacon, timeout=timeout)
         return list(tasks.Tasks)
 
-    async def beacon_task_content(self, beacon_id: str, timeout=TIMEOUT) -> List[client_pb2.BeaconTask]:
+    async def beacon_task_content(self, task_id: str, timeout=TIMEOUT) -> List[client_pb2.BeaconTask]:
         '''Get a list of tasks for a beacon
 
-        :param beacon_id: Beacon ID to get tasks for
-        :type beacon_id: sts
+        :param task_id: Task ID get contents for
+        :type task_id: sts
         :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         :return: List of protobuf Task objects
         :rtype: List[client_pb2.Task]
         '''
-        beacon = sliver_pb2.Beacon()
-        beacon.ID = beacon_id
+        beacon = client_pb2.Beacon()
+        beacon.ID = task_id
         task = await self._stub.GetBeaconTaskContent(beacon, timeout=timeout)
         return task
 
