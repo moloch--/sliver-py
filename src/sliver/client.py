@@ -284,7 +284,7 @@ class SliverClient(BaseClient):
     async def beacon_task_content(self, task_id: str, timeout=TIMEOUT) -> List[client_pb2.BeaconTask]:
         '''Get a list of tasks for a beacon
 
-        :param task_id: Task ID to get tasks for
+        :param task_id: Task ID get contents for
         :type task_id: sts
         :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
