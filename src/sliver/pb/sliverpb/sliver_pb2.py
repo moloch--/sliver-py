@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z-github.com/bishopfox/sliver/protobuf/sliverpb',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x15sliverpb/sliver.proto\x12\x08sliverpb\x1a\x15\x63ommonpb/common.proto\"N\n\x08\x45nvelope\x12\n\n\x02ID\x18\x01 \x01(\x03\x12\x0c\n\x04Type\x18\x02 \x01(\r\x12\x0c\n\x04\x44\x61ta\x18\x03 \x01(\x0c\x12\x1a\n\x12UnknownMessageType\x18\x04 \x01(\x08\"Q\n\x0b\x42\x65\x61\x63onTasks\x12\n\n\x02ID\x18\x01 \x01(\t\x12!\n\x05Tasks\x18\x02 \x03(\x0b\x32\x12.sliverpb.Envelope\x12\x13\n\x0bNextCheckin\x18\x03 \x01(\x03\"\x8f\x02\n\x08Register\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12\x10\n\x08Hostname\x18\x02 \x01(\t\x12\x0c\n\x04Uuid\x18\x03 \x01(\t\x12\x10\n\x08Username\x18\x04 \x01(\t\x12\x0b\n\x03Uid\x18\x05 \x01(\t\x12\x0b\n\x03Gid\x18\x06 \x01(\t\x12\n\n\x02Os\x18\x07 \x01(\t\x12\x0c\n\x04\x41rch\x18\x08 \x01(\t\x12\x0b\n\x03Pid\x18\t \x01(\x05\x12\x10\n\x08\x46ilename\x18\n \x01(\t\x12\x10\n\x08\x41\x63tiveC2\x18\x0b \x01(\t\x12\x0f\n\x07Version\x18\x0c \x01(\t\x12\x19\n\x11ReconnectInterval\x18\r \x01(\x03\x12\x10\n\x08ProxyURL\x18\x0e \x01(\t\x12\x10\n\x08\x43onfigID\x18\x10 \x01(\t\x12\x0e\n\x06PeerID\x18\x11 \x01(\x03\"y\n\x0e\x42\x65\x61\x63onRegister\x12\n\n\x02ID\x18\x01 \x01(\t\x12\x10\n\x08Interval\x18\x02 \x01(\x03\x12\x0e\n\x06Jitter\x18\x03 \x01(\x03\x12$\n\x08Register\x18\x04 \x01(\x0b\x32\x12.sliverpb.Register\x12\x13\n\x0bNextCheckin\x18\x05 \x01(\x03\"C\n\x0fSessionRegister\x12\n\n\x02ID\x18\x01 \x01(\t\x12$\n\x08Register\x18\x02 \x01(\x0b\x32\x12.sliverpb.Register\"s\n\x0bOpenSession\x12\x0b\n\x03\x43\x32s\x18\x01 \x03(\t\x12\r\n\x05\x44\x65lay\x18\x02 \x01(\x03\x12$\n\x08Response\x18\x08 \x01(\x0b\x32\x12.commonpb.Response\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"X\n\x0c\x43loseSession\x12$\n\x08Response\x18\x08 \x01(\x0b\x32\x12.commonpb.Response\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"_\n\x04Ping\x12\r\n\x05Nonce\x18\x01 \x01(\x05\x12$\n\x08Response\x18\x08 \x01(\x0b\x32\x12.commonpb.Response\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"<\n\x07KillReq\x12\r\n\x05\x46orce\x18\x01 \x01(\x08\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"+\n\x05PsReq\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"P\n\x02Ps\x12$\n\tProcesses\x18\x01 \x03(\x0b\x32\x11.commonpb.Process\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"N\n\x0cTerminateReq\x12\x0b\n\x03Pid\x18\x01 \x01(\x05\x12\r\n\x05\x46orce\x18\x02 \x01(\x08\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\">\n\tTerminate\x12\x0b\n\x03Pid\x18\x01 \x01(\x05\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"1\n\x0bIfconfigReq\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"_\n\x08Ifconfig\x12-\n\rNetInterfaces\x18\x01 \x03(\x0b\x32\x16.sliverpb.NetInterface\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"M\n\x0cNetInterface\x12\r\n\x05Index\x18\x01 \x01(\x05\x12\x0c\n\x04Name\x18\x02 \x01(\t\x12\x0b\n\x03MAC\x18\x03 \x01(\t\x12\x13\n\x0bIPAddresses\x18\x04 \x03(\t\"9\n\x05LsReq\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"\x95\x01\n\x02Ls\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\x0e\n\x06\x45xists\x18\x02 \x01(\x08\x12!\n\x05\x46iles\x18\x03 \x03(\x0b\x32\x12.sliverpb.FileInfo\x12\x10\n\x08timezone\x18\x04 \x01(\t\x12\x16\n\x0etimezoneOffset\x18\x05 \x01(\x05\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"T\n\x08\x46ileInfo\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12\r\n\x05IsDir\x18\x02 \x01(\x08\x12\x0c\n\x04Size\x18\x03 \x01(\x03\x12\x0f\n\x07ModTime\x18\x04 \x01(\x03\x12\x0c\n\x04Mode\x18\x05 \x01(\t\"9\n\x05\x43\x64Req\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\",\n\x06PwdReq\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"9\n\x03Pwd\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"[\n\x05RmReq\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\x11\n\tRecursive\x18\x02 \x01(\x08\x12\r\n\x05\x46orce\x18\x03 \x01(\x08\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"8\n\x02Rm\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"<\n\x08MkdirReq\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\";\n\x05Mkdir\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"\\\n\x0b\x44ownloadReq\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\r\n\x05Start\x18\x02 \x01(\x03\x12\x0c\n\x04Stop\x18\x03 \x01(\x03\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"\x8a\x01\n\x08\x44ownload\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\x0f\n\x07\x45ncoder\x18\x02 \x01(\t\x12\x0e\n\x06\x45xists\x18\x03 \x01(\x08\x12\r\n\x05Start\x18\x04 \x01(\x03\x12\x0c\n\x04Stop\x18\x05 \x01(\x03\x12\x0c\n\x04\x44\x61ta\x18\x06 \x01(\x0c\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"k\n\tUploadReq\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\x0f\n\x07\x45ncoder\x18\x02 \x01(\t\x12\x0c\n\x04\x44\x61ta\x18\x03 \x01(\x0c\x12\r\n\x05IsIOC\x18\x04 \x01(\x08\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"<\n\x06Upload\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"R\n\x0eProcessDumpReq\x12\x0b\n\x03Pid\x18\x01 \x01(\x05\x12\x0f\n\x07Timeout\x18\x02 \x01(\x05\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"A\n\x0bProcessDump\x12\x0c\n\x04\x44\x61ta\x18\x01 \x01(\x0c\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"c\n\x08RunAsReq\x12\x10\n\x08Username\x18\x01 \x01(\t\x12\x13\n\x0bProcessName\x18\x02 \x01(\t\x12\x0c\n\x04\x41rgs\x18\x03 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"=\n\x05RunAs\x12\x0e\n\x06Output\x18\x01 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"F\n\x0eImpersonateReq\x12\x10\n\x08Username\x18\x01 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"3\n\x0bImpersonate\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"2\n\x0cRevToSelfReq\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"1\n\tRevToSelf\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"^\n\x12InvokeGetSystemReq\x12\x0c\n\x04\x44\x61ta\x18\x01 \x01(\x0c\x12\x16\n\x0eHostingProcess\x18\x02 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"1\n\tGetSystem\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"f\n\x0cMakeTokenReq\x12\x10\n\x08Username\x18\x01 \x01(\t\x12\x10\n\x08Password\x18\x02 \x01(\t\x12\x0e\n\x06\x44omain\x18\x03 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"1\n\tMakeToken\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"k\n\x07TaskReq\x12\x0f\n\x07\x45ncoder\x18\x01 \x01(\t\x12\x10\n\x08RWXPages\x18\x02 \x01(\x08\x12\x0b\n\x03Pid\x18\x03 \x01(\r\x12\x0c\n\x04\x44\x61ta\x18\x04 \x01(\x0c\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\",\n\x04Task\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"\xc1\x01\n\x12\x45xecuteAssemblyReq\x12\x10\n\x08\x41ssembly\x18\x01 \x01(\x0c\x12\x11\n\tArguments\x18\x02 \x01(\t\x12\x0f\n\x07Process\x18\x03 \x01(\t\x12\r\n\x05IsDLL\x18\x04 \x01(\x08\x12\x0c\n\x04\x41rch\x18\x05 \x01(\t\x12\x11\n\tClassName\x18\x06 \x01(\t\x12\x0e\n\x06Method\x18\x07 \x01(\t\x12\x11\n\tAppDomain\x18\x08 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"]\n\x18InvokeExecuteAssemblyReq\x12\x0c\n\x04\x44\x61ta\x18\x01 \x01(\x0c\x12\x0f\n\x07process\x18\x02 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"G\n\x0f\x45xecuteAssembly\x12\x0e\n\x06Output\x18\x01 \x01(\x0c\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"Q\n\x10InvokeMigrateReq\x12\x0b\n\x03Pid\x18\x01 \x01(\r\x12\x0c\n\x04\x44\x61ta\x18\x02 \x01(\x0c\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"@\n\x07Migrate\x12\x0f\n\x07Success\x18\x01 \x01(\x08\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"|\n\nExecuteReq\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\x0c\n\x04\x41rgs\x18\x02 \x03(\t\x12\x0e\n\x06Output\x18\x03 \x01(\x08\x12\x0e\n\x06Stdout\x18\x04 \x01(\t\x12\x0e\n\x06Stderr\x18\x05 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"\x81\x01\n\x0f\x45xecuteTokenReq\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\x0c\n\x04\x41rgs\x18\x02 \x03(\t\x12\x0e\n\x06Output\x18\x03 \x01(\x08\x12\x0e\n\x06Stdout\x18\x04 \x01(\t\x12\x0e\n\x06Stderr\x18\x05 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"l\n\x07\x45xecute\x12\x0e\n\x06Status\x18\x01 \x01(\r\x12\x0e\n\x06Stdout\x18\x02 \x01(\x0c\x12\x0e\n\x06Stderr\x18\x03 \x01(\x0c\x12\x0b\n\x03Pid\x18\x04 \x01(\r\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"\x93\x01\n\x0bSideloadReq\x12\x0c\n\x04\x44\x61ta\x18\x01 \x01(\x0c\x12\x13\n\x0bProcessName\x18\x02 \x01(\t\x12\x0c\n\x04\x41rgs\x18\x03 \x01(\t\x12\x12\n\nEntryPoint\x18\x04 \x01(\t\x12\x0c\n\x04Kill\x18\x05 \x01(\x08\x12\r\n\x05isDLL\x18\x06 \x01(\x08\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"@\n\x08Sideload\x12\x0e\n\x06Result\x18\x01 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"\x8a\x01\n\x11InvokeSpawnDllReq\x12\x0c\n\x04\x44\x61ta\x18\x01 \x01(\x0c\x12\x13\n\x0bProcessName\x18\x02 \x01(\t\x12\x0c\n\x04\x41rgs\x18\x03 \x01(\t\x12\x12\n\nEntryPoint\x18\x04 \x01(\t\x12\x0c\n\x04Kill\x18\x05 \x01(\x08\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"\x80\x01\n\x0bSpawnDllReq\x12\x0c\n\x04\x44\x61ta\x18\x01 \x01(\x0c\x12\x13\n\x0bProcessName\x18\x02 \x01(\t\x12\x0e\n\x06Offset\x18\x03 \x01(\r\x12\x0c\n\x04\x41rgs\x18\x04 \x01(\t\x12\x0c\n\x04Kill\x18\x05 \x01(\x08\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"@\n\x08SpawnDll\x12\x0e\n\x06Result\x18\x01 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"w\n\nNetstatReq\x12\x0b\n\x03TCP\x18\x01 \x01(\x08\x12\x0b\n\x03UDP\x18\x02 \x01(\x08\x12\x0b\n\x03IP4\x18\x03 \x01(\x08\x12\x0b\n\x03IP6\x18\x05 \x01(\x08\x12\x11\n\tListening\x18\x06 \x01(\x08\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"\xf1\x01\n\x0cSockTabEntry\x12\x32\n\tLocalAddr\x18\x01 \x01(\x0b\x32\x1f.sliverpb.SockTabEntry.SockAddr\x12\x33\n\nRemoteAddr\x18\x02 \x01(\x0b\x32\x1f.sliverpb.SockTabEntry.SockAddr\x12\x0f\n\x07SkState\x18\x03 \x01(\t\x12\x0b\n\x03UID\x18\x04 \x01(\r\x12\"\n\x07Process\x18\x05 \x01(\x0b\x32\x11.commonpb.Process\x12\x10\n\x08Protocol\x18\x06 \x01(\t\x1a$\n\x08SockAddr\x12\n\n\x02Ip\x18\x01 \x01(\t\x12\x0c\n\x04Port\x18\x02 \x01(\r\"X\n\x07Netstat\x12\'\n\x07\x45ntries\x18\x01 \x03(\x0b\x32\x16.sliverpb.SockTabEntry\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\":\n\x06\x45nvReq\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"T\n\x07\x45nvInfo\x12#\n\tVariables\x18\x01 \x03(\x0b\x32\x10.commonpb.EnvVar\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"S\n\tSetEnvReq\x12\"\n\x08Variable\x18\x01 \x01(\x0b\x32\x10.commonpb.EnvVar\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\".\n\x06SetEnv\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"?\n\x0bUnsetEnvReq\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"0\n\x08UnsetEnv\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"\x1d\n\x0e\x44NSSessionInit\x12\x0b\n\x03Key\x18\x01 \x01(\x0c\"3\n\x07\x44NSPoll\x12(\n\x06\x62locks\x18\x01 \x03(\x0b\x32\x18.sliverpb.DNSBlockHeader\"*\n\x0e\x44NSBlockHeader\x12\n\n\x02ID\x18\x01 \x01(\t\x12\x0c\n\x04Size\x18\x02 \x01(\r\"\x1e\n\x0fHTTPSessionInit\x12\x0b\n\x03Key\x18\x01 \x01(\x0c\"3\n\rScreenshotReq\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"@\n\nScreenshot\x12\x0c\n\x04\x44\x61ta\x18\x01 \x01(\x0c\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"\x9c\x01\n\x0fStartServiceReq\x12\x13\n\x0bServiceName\x18\x01 \x01(\t\x12\x1a\n\x12ServiceDescription\x18\x02 \x01(\t\x12\x0f\n\x07\x42inPath\x18\x03 \x01(\t\x12\x10\n\x08Hostname\x18\x04 \x01(\t\x12\x11\n\tArguments\x18\x05 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"3\n\x0bServiceInfo\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"7\n\x0eServiceInfoReq\x12\x13\n\x0bServiceName\x18\x01 \x01(\t\x12\x10\n\x08Hostname\x18\x02 \x01(\t\"c\n\x0eStopServiceReq\x12-\n\x0bServiceInfo\x18\x01 \x01(\x0b\x32\x18.sliverpb.ServiceInfoReq\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"e\n\x10RemoveServiceReq\x12-\n\x0bServiceInfo\x18\x01 \x01(\x0b\x32\x18.sliverpb.ServiceInfoReq\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"X\n\x0b\x42\x61\x63kdoorReq\x12\x10\n\x08\x46ilePath\x18\x01 \x01(\t\x12\x13\n\x0bProfileName\x18\x02 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"0\n\x08\x42\x61\x63kdoor\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"p\n\x0fRegistryReadReq\x12\x0c\n\x04Hive\x18\x01 \x01(\t\x12\x0c\n\x04Path\x18\x02 \x01(\t\x12\x0b\n\x03Key\x18\x03 \x01(\t\x12\x10\n\x08Hostname\x18\x04 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"C\n\x0cRegistryRead\x12\r\n\x05Value\x18\x01 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"\xcf\x01\n\x10RegistryWriteReq\x12\x0c\n\x04Hive\x18\x01 \x01(\t\x12\x0c\n\x04Path\x18\x02 \x01(\t\x12\x0b\n\x03Key\x18\x03 \x01(\t\x12\x10\n\x08Hostname\x18\x04 \x01(\t\x12\x13\n\x0bStringValue\x18\x05 \x01(\t\x12\x11\n\tByteValue\x18\x06 \x01(\x0c\x12\x12\n\nDWordValue\x18\x07 \x01(\r\x12\x12\n\nQWordValue\x18\x08 \x01(\x04\x12\x0c\n\x04Type\x18\n \x01(\r\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"5\n\rRegistryWrite\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"u\n\x14RegistryCreateKeyReq\x12\x0c\n\x04Hive\x18\x01 \x01(\t\x12\x0c\n\x04Path\x18\x02 \x01(\t\x12\x0b\n\x03Key\x18\x03 \x01(\t\x12\x10\n\x08Hostname\x18\x04 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"9\n\x11RegistryCreateKey\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"u\n\x14RegistryDeleteKeyReq\x12\x0c\n\x04Hive\x18\x01 \x01(\t\x12\x0c\n\x04Path\x18\x02 \x01(\t\x12\x0b\n\x03Key\x18\x03 \x01(\t\x12\x10\n\x08Hostname\x18\x04 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"9\n\x11RegistryDeleteKey\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"i\n\x15RegistrySubKeyListReq\x12\x0c\n\x04Hive\x18\x01 \x01(\t\x12\x0c\n\x04Path\x18\x02 \x01(\t\x12\x10\n\x08Hostname\x18\x04 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"K\n\x12RegistrySubKeyList\x12\x0f\n\x07Subkeys\x18\x01 \x03(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"i\n\x15RegistryListValuesReq\x12\x0c\n\x04Hive\x18\x01 \x01(\t\x12\x0c\n\x04Path\x18\x02 \x01(\t\x12\x10\n\x08Hostname\x18\x04 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"N\n\x12RegistryValuesList\x12\x12\n\nValueNames\x18\x01 \x03(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"1\n\x06Tunnel\x12\x14\n\x08TunnelID\x18\x08 \x01(\x04\x42\x02\x30\x01\x12\x11\n\tSessionID\x18\t \x01(\t\"\x82\x01\n\nTunnelData\x12\x0c\n\x04\x44\x61ta\x18\x01 \x01(\x0c\x12\x0e\n\x06\x43losed\x18\x02 \x01(\x08\x12\x10\n\x08Sequence\x18\x03 \x01(\x04\x12\x0b\n\x03\x41\x63k\x18\x04 \x01(\x04\x12\x0e\n\x06Resend\x18\x05 \x01(\x08\x12\x14\n\x08TunnelID\x18\x08 \x01(\x04\x42\x02\x30\x01\x12\x11\n\tSessionID\x18\t \x01(\t\"r\n\x08ShellReq\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\x11\n\tEnablePTY\x18\x02 \x01(\x08\x12\x0b\n\x03Pid\x18\x03 \x01(\r\x12\x14\n\x08TunnelID\x18\x08 \x01(\x04\x42\x02\x30\x01\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"q\n\x05Shell\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\x11\n\tEnablePTY\x18\x02 \x01(\x08\x12\x0b\n\x03Pid\x18\x03 \x01(\r\x12\x14\n\x08TunnelID\x18\x08 \x01(\x04\x42\x02\x30\x01\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"t\n\nPortfwdReq\x12\x0c\n\x04Port\x18\x01 \x01(\r\x12\x10\n\x08Protocol\x18\x02 \x01(\x05\x12\x0c\n\x04Host\x18\x03 \x01(\t\x12\x14\n\x08TunnelID\x18\x08 \x01(\x04\x42\x02\x30\x01\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"s\n\x07Portfwd\x12\x0c\n\x04Port\x18\x01 \x01(\r\x12\x10\n\x08Protocol\x18\x02 \x01(\x05\x12\x0c\n\x04Host\x18\x03 \x01(\t\x12\x14\n\x08TunnelID\x18\x08 \x01(\x04\x42\x02\x30\x01\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"0\n\x05Socks\x12\x14\n\x08TunnelID\x18\x08 \x01(\x04\x42\x02\x30\x01\x12\x11\n\tSessionID\x18\t \x01(\t\"\x9c\x01\n\tSocksData\x12\x0c\n\x04\x44\x61ta\x18\x01 \x01(\x0c\x12\x11\n\tCloseConn\x18\x02 \x01(\x08\x12\x10\n\x08Username\x18\x03 \x01(\t\x12\x10\n\x08Password\x18\x04 \x01(\t\x12\x10\n\x08Sequence\x18\x05 \x01(\x04\x12\x14\n\x08TunnelID\x18\x08 \x01(\x04\x42\x02\x30\x01\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"s\n\x15PivotStartListenerReq\x12!\n\x04Type\x18\x01 \x01(\x0e\x32\x13.sliverpb.PivotType\x12\x13\n\x0b\x42indAddress\x18\x02 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"F\n\x14PivotStopListenerReq\x12\n\n\x02ID\x18\x01 \x01(\r\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"\xa1\x01\n\rPivotListener\x12\n\n\x02ID\x18\x01 \x01(\r\x12!\n\x04Type\x18\x02 \x01(\x0e\x32\x13.sliverpb.PivotType\x12\x13\n\x0b\x42indAddress\x18\x03 \x01(\t\x12&\n\x06Pivots\x18\x04 \x03(\x0b\x32\x16.sliverpb.NetConnPivot\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"_\n\nPivotHello\x12\x11\n\tPublicKey\x18\x01 \x01(\x0c\x12\x0e\n\x06PeerID\x18\x02 \x01(\x03\x12\x1a\n\x12PublicKeySignature\x18\x03 \x01(\t\x12\x12\n\nSessionKey\x18\x04 \x01(\x0c\">\n\x16PivotServerKeyExchange\x12\x10\n\x08OriginID\x18\x01 \x01(\x03\x12\x12\n\nSessionKey\x18\x02 \x01(\x0c\")\n\tPivotPeer\x12\x0e\n\x06PeerID\x18\x01 \x01(\x03\x12\x0c\n\x04Name\x18\x02 \x01(\t\"\x82\x01\n\x11PivotPeerEnvelope\x12\"\n\x05Peers\x18\x01 \x03(\x0b\x32\x13.sliverpb.PivotPeer\x12\x0c\n\x04Type\x18\x02 \x01(\r\x12\x16\n\x0ePivotSessionID\x18\x03 \x01(\x0c\x12\x0c\n\x04\x44\x61ta\x18\x04 \x01(\x0c\x12\x15\n\rPeerFailureAt\x18\x05 \x01(\x03\"\x1a\n\tPivotPing\x12\r\n\x05Nonce\x18\x01 \x01(\r\"5\n\x0cNetConnPivot\x12\x0e\n\x06PeerID\x18\x01 \x01(\x03\x12\x15\n\rRemoteAddress\x18\x02 \x01(\t\"X\n\x10PivotPeerFailure\x12\x0e\n\x06PeerID\x18\x01 \x01(\x03\x12\'\n\x04Type\x18\x02 \x01(\x0e\x32\x19.sliverpb.PeerFailureType\x12\x0b\n\x03\x45rr\x18\x03 \x01(\t\"7\n\x11PivotListenersReq\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"b\n\x0ePivotListeners\x12*\n\tListeners\x18\x01 \x03(\x0b\x32\x17.sliverpb.PivotListener\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"e\n\x15WGPortForwardStartReq\x12\x11\n\tLocalPort\x18\x01 \x01(\x05\x12\x15\n\rRemoteAddress\x18\x02 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"b\n\rWGPortForward\x12+\n\tForwarder\x18\x01 \x01(\x0b\x32\x18.sliverpb.WGTCPForwarder\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"F\n\x14WGPortForwardStopReq\x12\n\n\x02ID\x18\x01 \x01(\x05\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"C\n\x0fWGSocksStartReq\x12\x0c\n\x04Port\x18\x01 \x01(\x05\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"X\n\x07WGSocks\x12\'\n\x06Server\x18\x01 \x01(\x0b\x32\x17.sliverpb.WGSocksServer\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"@\n\x0eWGSocksStopReq\x12\n\n\x02ID\x18\x01 \x01(\x05\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"8\n\x12WGTCPForwardersReq\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"7\n\x11WGSocksServersReq\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"C\n\x0eWGTCPForwarder\x12\n\n\x02ID\x18\x01 \x01(\x05\x12\x11\n\tLocalAddr\x18\x02 \x01(\t\x12\x12\n\nRemoteAddr\x18\x03 \x01(\t\".\n\rWGSocksServer\x12\n\n\x02ID\x18\x01 \x01(\x05\x12\x11\n\tLocalAddr\x18\x02 \x01(\t\"`\n\x0eWGSocksServers\x12(\n\x07Servers\x18\x01 \x03(\x0b\x32\x17.sliverpb.WGSocksServer\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"e\n\x0fWGTCPForwarders\x12,\n\nForwarders\x18\x01 \x03(\x0b\x32\x18.sliverpb.WGTCPForwarder\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"}\n\x0eReconfigureReq\x12\x19\n\x11ReconnectInterval\x18\x01 \x01(\x03\x12\x16\n\x0e\x42\x65\x61\x63onInterval\x18\x02 \x01(\x03\x12\x14\n\x0c\x42\x65\x61\x63onJitter\x18\x03 \x01(\x03\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"3\n\x0bReconfigure\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"K\n\x0fPollIntervalReq\x12\x14\n\x0cPollInterval\x18\x01 \x01(\x03\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"4\n\x0cPollInterval\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"\x99\x01\n\rSSHCommandReq\x12\x10\n\x08Username\x18\x01 \x01(\t\x12\x10\n\x08Hostname\x18\x02 \x01(\t\x12\x0c\n\x04Port\x18\x03 \x01(\r\x12\x0f\n\x07\x43ommand\x18\x04 \x01(\t\x12\x10\n\x08Password\x18\x05 \x01(\t\x12\x0f\n\x07PrivKey\x18\x06 \x01(\x0c\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"R\n\nSSHCommand\x12\x0e\n\x06StdOut\x18\x01 \x01(\t\x12\x0e\n\x06StdErr\x18\x02 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"1\n\x0bGetPrivsReq\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"\x8d\x01\n\x15WindowsPrivilegeEntry\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12\x13\n\x0b\x44\x65scription\x18\x02 \x01(\t\x12\x0f\n\x07\x45nabled\x18\x03 \x01(\x08\x12\x18\n\x10\x45nabledByDefault\x18\x04 \x01(\x08\x12\x0f\n\x07Removed\x18\x05 \x01(\x08\x12\x15\n\rUsedForAccess\x18\x06 \x01(\x08\"\x92\x01\n\x08GetPrivs\x12\x31\n\x08PrivInfo\x18\x01 \x03(\x0b\x32\x1f.sliverpb.WindowsPrivilegeEntry\x12\x18\n\x10ProcessIntegrity\x18\x02 \x01(\t\x12\x13\n\x0bProcessName\x18\x03 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"p\n\x14RegisterExtensionReq\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12\x0c\n\x04\x44\x61ta\x18\x02 \x01(\x0c\x12\n\n\x02OS\x18\x03 \x01(\t\x12\x0c\n\x04Init\x18\x04 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"9\n\x11RegisterExtension\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"w\n\x10\x43\x61llExtensionReq\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12\x13\n\x0bServerStore\x18\x02 \x01(\x08\x12\x0c\n\x04\x41rgs\x18\x03 \x01(\x0c\x12\x0e\n\x06\x45xport\x18\x04 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"Z\n\rCallExtension\x12\x0e\n\x06Output\x18\x01 \x01(\x0c\x12\x13\n\x0bServerStore\x18\x02 \x01(\x08\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"7\n\x11ListExtensionsReq\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"E\n\x0eListExtensions\x12\r\n\x05Names\x18\x01 \x03(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response*,\n\tPivotType\x12\x07\n\x03TCP\x10\x00\x12\x07\n\x03UDP\x10\x01\x12\r\n\tNamedPipe\x10\x02*3\n\x0fPeerFailureType\x12\x10\n\x0cSEND_FAILURE\x10\x00\x12\x0e\n\nDISCONNECT\x10\x01\x42/Z-github.com/bishopfox/sliver/protobuf/sliverpbb\x06proto3'
+  serialized_pb=b'\n\x15sliverpb/sliver.proto\x12\x08sliverpb\x1a\x15\x63ommonpb/common.proto\"N\n\x08\x45nvelope\x12\n\n\x02ID\x18\x01 \x01(\x03\x12\x0c\n\x04Type\x18\x02 \x01(\r\x12\x0c\n\x04\x44\x61ta\x18\x03 \x01(\x0c\x12\x1a\n\x12UnknownMessageType\x18\x04 \x01(\x08\"Q\n\x0b\x42\x65\x61\x63onTasks\x12\n\n\x02ID\x18\x01 \x01(\t\x12!\n\x05Tasks\x18\x02 \x03(\x0b\x32\x12.sliverpb.Envelope\x12\x13\n\x0bNextCheckin\x18\x03 \x01(\x03\"\x8f\x02\n\x08Register\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12\x10\n\x08Hostname\x18\x02 \x01(\t\x12\x0c\n\x04Uuid\x18\x03 \x01(\t\x12\x10\n\x08Username\x18\x04 \x01(\t\x12\x0b\n\x03Uid\x18\x05 \x01(\t\x12\x0b\n\x03Gid\x18\x06 \x01(\t\x12\n\n\x02Os\x18\x07 \x01(\t\x12\x0c\n\x04\x41rch\x18\x08 \x01(\t\x12\x0b\n\x03Pid\x18\t \x01(\x05\x12\x10\n\x08\x46ilename\x18\n \x01(\t\x12\x10\n\x08\x41\x63tiveC2\x18\x0b \x01(\t\x12\x0f\n\x07Version\x18\x0c \x01(\t\x12\x19\n\x11ReconnectInterval\x18\r \x01(\x03\x12\x10\n\x08ProxyURL\x18\x0e \x01(\t\x12\x10\n\x08\x43onfigID\x18\x10 \x01(\t\x12\x0e\n\x06PeerID\x18\x11 \x01(\x03\"y\n\x0e\x42\x65\x61\x63onRegister\x12\n\n\x02ID\x18\x01 \x01(\t\x12\x10\n\x08Interval\x18\x02 \x01(\x03\x12\x0e\n\x06Jitter\x18\x03 \x01(\x03\x12$\n\x08Register\x18\x04 \x01(\x0b\x32\x12.sliverpb.Register\x12\x13\n\x0bNextCheckin\x18\x05 \x01(\x03\"C\n\x0fSessionRegister\x12\n\n\x02ID\x18\x01 \x01(\t\x12$\n\x08Register\x18\x02 \x01(\x0b\x32\x12.sliverpb.Register\"s\n\x0bOpenSession\x12\x0b\n\x03\x43\x32s\x18\x01 \x03(\t\x12\r\n\x05\x44\x65lay\x18\x02 \x01(\x03\x12$\n\x08Response\x18\x08 \x01(\x0b\x32\x12.commonpb.Response\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"X\n\x0c\x43loseSession\x12$\n\x08Response\x18\x08 \x01(\x0b\x32\x12.commonpb.Response\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"_\n\x04Ping\x12\r\n\x05Nonce\x18\x01 \x01(\x05\x12$\n\x08Response\x18\x08 \x01(\x0b\x32\x12.commonpb.Response\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"<\n\x07KillReq\x12\r\n\x05\x46orce\x18\x01 \x01(\x08\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"+\n\x05PsReq\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"P\n\x02Ps\x12$\n\tProcesses\x18\x01 \x03(\x0b\x32\x11.commonpb.Process\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"N\n\x0cTerminateReq\x12\x0b\n\x03Pid\x18\x01 \x01(\x05\x12\r\n\x05\x46orce\x18\x02 \x01(\x08\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\">\n\tTerminate\x12\x0b\n\x03Pid\x18\x01 \x01(\x05\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"1\n\x0bIfconfigReq\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"_\n\x08Ifconfig\x12-\n\rNetInterfaces\x18\x01 \x03(\x0b\x32\x16.sliverpb.NetInterface\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"M\n\x0cNetInterface\x12\r\n\x05Index\x18\x01 \x01(\x05\x12\x0c\n\x04Name\x18\x02 \x01(\t\x12\x0b\n\x03MAC\x18\x03 \x01(\t\x12\x13\n\x0bIPAddresses\x18\x04 \x03(\t\"9\n\x05LsReq\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"\x95\x01\n\x02Ls\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\x0e\n\x06\x45xists\x18\x02 \x01(\x08\x12!\n\x05\x46iles\x18\x03 \x03(\x0b\x32\x12.sliverpb.FileInfo\x12\x10\n\x08timezone\x18\x04 \x01(\t\x12\x16\n\x0etimezoneOffset\x18\x05 \x01(\x05\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"b\n\x08\x46ileInfo\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12\r\n\x05IsDir\x18\x02 \x01(\x08\x12\x0c\n\x04Size\x18\x03 \x01(\x03\x12\x0f\n\x07ModTime\x18\x04 \x01(\x03\x12\x0c\n\x04Mode\x18\x05 \x01(\t\x12\x0c\n\x04Link\x18\x06 \x01(\t\"9\n\x05\x43\x64Req\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\",\n\x06PwdReq\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"9\n\x03Pwd\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"[\n\x05RmReq\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\x11\n\tRecursive\x18\x02 \x01(\x08\x12\r\n\x05\x46orce\x18\x03 \x01(\x08\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"8\n\x02Rm\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"E\n\x05MvReq\x12\x0b\n\x03Src\x18\x01 \x01(\t\x12\x0b\n\x03\x44st\x18\x02 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"D\n\x02Mv\x12\x0b\n\x03Src\x18\x01 \x01(\t\x12\x0b\n\x03\x44st\x18\x02 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"<\n\x08MkdirReq\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\";\n\x05Mkdir\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"m\n\x0b\x44ownloadReq\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\r\n\x05Start\x18\x02 \x01(\x03\x12\x0c\n\x04Stop\x18\x03 \x01(\x03\x12\x0f\n\x07Recurse\x18\x04 \x01(\x08\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"\xc5\x01\n\x08\x44ownload\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\x0f\n\x07\x45ncoder\x18\x02 \x01(\t\x12\x0e\n\x06\x45xists\x18\x03 \x01(\x08\x12\r\n\x05Start\x18\x04 \x01(\x03\x12\x0c\n\x04Stop\x18\x05 \x01(\x03\x12\x0c\n\x04\x44\x61ta\x18\x06 \x01(\x0c\x12\r\n\x05IsDir\x18\x07 \x01(\x08\x12\x11\n\tReadFiles\x18\x08 \x01(\x05\x12\x17\n\x0fUnreadableFiles\x18\n \x01(\x05\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"k\n\tUploadReq\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\x0f\n\x07\x45ncoder\x18\x02 \x01(\t\x12\x0c\n\x04\x44\x61ta\x18\x03 \x01(\x0c\x12\r\n\x05IsIOC\x18\x04 \x01(\x08\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"<\n\x06Upload\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"R\n\x0eProcessDumpReq\x12\x0b\n\x03Pid\x18\x01 \x01(\x05\x12\x0f\n\x07Timeout\x18\x02 \x01(\x05\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"A\n\x0bProcessDump\x12\x0c\n\x04\x44\x61ta\x18\x01 \x01(\x0c\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"c\n\x08RunAsReq\x12\x10\n\x08Username\x18\x01 \x01(\t\x12\x13\n\x0bProcessName\x18\x02 \x01(\t\x12\x0c\n\x04\x41rgs\x18\x03 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"=\n\x05RunAs\x12\x0e\n\x06Output\x18\x01 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"F\n\x0eImpersonateReq\x12\x10\n\x08Username\x18\x01 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"3\n\x0bImpersonate\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"2\n\x0cRevToSelfReq\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"1\n\tRevToSelf\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\":\n\x14\x43urrentTokenOwnerReq\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"I\n\x11\x43urrentTokenOwner\x12\x0e\n\x06Output\x18\x01 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"^\n\x12InvokeGetSystemReq\x12\x0c\n\x04\x44\x61ta\x18\x01 \x01(\x0c\x12\x16\n\x0eHostingProcess\x18\x02 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"1\n\tGetSystem\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"f\n\x0cMakeTokenReq\x12\x10\n\x08Username\x18\x01 \x01(\t\x12\x10\n\x08Password\x18\x02 \x01(\t\x12\x0e\n\x06\x44omain\x18\x03 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"1\n\tMakeToken\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"k\n\x07TaskReq\x12\x0f\n\x07\x45ncoder\x18\x01 \x01(\t\x12\x10\n\x08RWXPages\x18\x02 \x01(\x08\x12\x0b\n\x03Pid\x18\x03 \x01(\r\x12\x0c\n\x04\x44\x61ta\x18\x04 \x01(\x0c\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\",\n\x04Task\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"\xc1\x01\n\x12\x45xecuteAssemblyReq\x12\x10\n\x08\x41ssembly\x18\x01 \x01(\x0c\x12\x11\n\tArguments\x18\x02 \x01(\t\x12\x0f\n\x07Process\x18\x03 \x01(\t\x12\r\n\x05IsDLL\x18\x04 \x01(\x08\x12\x0c\n\x04\x41rch\x18\x05 \x01(\t\x12\x11\n\tClassName\x18\x06 \x01(\t\x12\x0e\n\x06Method\x18\x07 \x01(\t\x12\x11\n\tAppDomain\x18\x08 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"]\n\x18InvokeExecuteAssemblyReq\x12\x0c\n\x04\x44\x61ta\x18\x01 \x01(\x0c\x12\x0f\n\x07process\x18\x02 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"G\n\x0f\x45xecuteAssembly\x12\x0e\n\x06Output\x18\x01 \x01(\x0c\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"Q\n\x10InvokeMigrateReq\x12\x0b\n\x03Pid\x18\x01 \x01(\r\x12\x0c\n\x04\x44\x61ta\x18\x02 \x01(\x0c\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"@\n\x07Migrate\x12\x0f\n\x07Success\x18\x01 \x01(\x08\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"|\n\nExecuteReq\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\x0c\n\x04\x41rgs\x18\x02 \x03(\t\x12\x0e\n\x06Output\x18\x03 \x01(\x08\x12\x0e\n\x06Stdout\x18\x04 \x01(\t\x12\x0e\n\x06Stderr\x18\x05 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"\x81\x01\n\x0f\x45xecuteTokenReq\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\x0c\n\x04\x41rgs\x18\x02 \x03(\t\x12\x0e\n\x06Output\x18\x03 \x01(\x08\x12\x0e\n\x06Stdout\x18\x04 \x01(\t\x12\x0e\n\x06Stderr\x18\x05 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"l\n\x07\x45xecute\x12\x0e\n\x06Status\x18\x01 \x01(\r\x12\x0e\n\x06Stdout\x18\x02 \x01(\x0c\x12\x0e\n\x06Stderr\x18\x03 \x01(\x0c\x12\x0b\n\x03Pid\x18\x04 \x01(\r\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"\x93\x01\n\x0bSideloadReq\x12\x0c\n\x04\x44\x61ta\x18\x01 \x01(\x0c\x12\x13\n\x0bProcessName\x18\x02 \x01(\t\x12\x0c\n\x04\x41rgs\x18\x03 \x01(\t\x12\x12\n\nEntryPoint\x18\x04 \x01(\t\x12\x0c\n\x04Kill\x18\x05 \x01(\x08\x12\r\n\x05isDLL\x18\x06 \x01(\x08\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"@\n\x08Sideload\x12\x0e\n\x06Result\x18\x01 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"\x8a\x01\n\x11InvokeSpawnDllReq\x12\x0c\n\x04\x44\x61ta\x18\x01 \x01(\x0c\x12\x13\n\x0bProcessName\x18\x02 \x01(\t\x12\x0c\n\x04\x41rgs\x18\x03 \x01(\t\x12\x12\n\nEntryPoint\x18\x04 \x01(\t\x12\x0c\n\x04Kill\x18\x05 \x01(\x08\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"\x80\x01\n\x0bSpawnDllReq\x12\x0c\n\x04\x44\x61ta\x18\x01 \x01(\x0c\x12\x13\n\x0bProcessName\x18\x02 \x01(\t\x12\x0e\n\x06Offset\x18\x03 \x01(\r\x12\x0c\n\x04\x41rgs\x18\x04 \x01(\t\x12\x0c\n\x04Kill\x18\x05 \x01(\x08\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"@\n\x08SpawnDll\x12\x0e\n\x06Result\x18\x01 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"w\n\nNetstatReq\x12\x0b\n\x03TCP\x18\x01 \x01(\x08\x12\x0b\n\x03UDP\x18\x02 \x01(\x08\x12\x0b\n\x03IP4\x18\x03 \x01(\x08\x12\x0b\n\x03IP6\x18\x05 \x01(\x08\x12\x11\n\tListening\x18\x06 \x01(\x08\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"\xf1\x01\n\x0cSockTabEntry\x12\x32\n\tLocalAddr\x18\x01 \x01(\x0b\x32\x1f.sliverpb.SockTabEntry.SockAddr\x12\x33\n\nRemoteAddr\x18\x02 \x01(\x0b\x32\x1f.sliverpb.SockTabEntry.SockAddr\x12\x0f\n\x07SkState\x18\x03 \x01(\t\x12\x0b\n\x03UID\x18\x04 \x01(\r\x12\"\n\x07Process\x18\x05 \x01(\x0b\x32\x11.commonpb.Process\x12\x10\n\x08Protocol\x18\x06 \x01(\t\x1a$\n\x08SockAddr\x12\n\n\x02Ip\x18\x01 \x01(\t\x12\x0c\n\x04Port\x18\x02 \x01(\r\"X\n\x07Netstat\x12\'\n\x07\x45ntries\x18\x01 \x03(\x0b\x32\x16.sliverpb.SockTabEntry\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\":\n\x06\x45nvReq\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"T\n\x07\x45nvInfo\x12#\n\tVariables\x18\x01 \x03(\x0b\x32\x10.commonpb.EnvVar\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"S\n\tSetEnvReq\x12\"\n\x08Variable\x18\x01 \x01(\x0b\x32\x10.commonpb.EnvVar\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\".\n\x06SetEnv\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"?\n\x0bUnsetEnvReq\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"0\n\x08UnsetEnv\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"\x1d\n\x0e\x44NSSessionInit\x12\x0b\n\x03Key\x18\x01 \x01(\x0c\"3\n\x07\x44NSPoll\x12(\n\x06\x62locks\x18\x01 \x03(\x0b\x32\x18.sliverpb.DNSBlockHeader\"*\n\x0e\x44NSBlockHeader\x12\n\n\x02ID\x18\x01 \x01(\t\x12\x0c\n\x04Size\x18\x02 \x01(\r\"\x1e\n\x0fHTTPSessionInit\x12\x0b\n\x03Key\x18\x01 \x01(\x0c\"3\n\rScreenshotReq\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"@\n\nScreenshot\x12\x0c\n\x04\x44\x61ta\x18\x01 \x01(\x0c\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"\x9c\x01\n\x0fStartServiceReq\x12\x13\n\x0bServiceName\x18\x01 \x01(\t\x12\x1a\n\x12ServiceDescription\x18\x02 \x01(\t\x12\x0f\n\x07\x42inPath\x18\x03 \x01(\t\x12\x10\n\x08Hostname\x18\x04 \x01(\t\x12\x11\n\tArguments\x18\x05 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"3\n\x0bServiceInfo\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"7\n\x0eServiceInfoReq\x12\x13\n\x0bServiceName\x18\x01 \x01(\t\x12\x10\n\x08Hostname\x18\x02 \x01(\t\"c\n\x0eStopServiceReq\x12-\n\x0bServiceInfo\x18\x01 \x01(\x0b\x32\x18.sliverpb.ServiceInfoReq\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"e\n\x10RemoveServiceReq\x12-\n\x0bServiceInfo\x18\x01 \x01(\x0b\x32\x18.sliverpb.ServiceInfoReq\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"X\n\x0b\x42\x61\x63kdoorReq\x12\x10\n\x08\x46ilePath\x18\x01 \x01(\t\x12\x13\n\x0bProfileName\x18\x02 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"0\n\x08\x42\x61\x63kdoor\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"p\n\x0fRegistryReadReq\x12\x0c\n\x04Hive\x18\x01 \x01(\t\x12\x0c\n\x04Path\x18\x02 \x01(\t\x12\x0b\n\x03Key\x18\x03 \x01(\t\x12\x10\n\x08Hostname\x18\x04 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"C\n\x0cRegistryRead\x12\r\n\x05Value\x18\x01 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"\xcf\x01\n\x10RegistryWriteReq\x12\x0c\n\x04Hive\x18\x01 \x01(\t\x12\x0c\n\x04Path\x18\x02 \x01(\t\x12\x0b\n\x03Key\x18\x03 \x01(\t\x12\x10\n\x08Hostname\x18\x04 \x01(\t\x12\x13\n\x0bStringValue\x18\x05 \x01(\t\x12\x11\n\tByteValue\x18\x06 \x01(\x0c\x12\x12\n\nDWordValue\x18\x07 \x01(\r\x12\x12\n\nQWordValue\x18\x08 \x01(\x04\x12\x0c\n\x04Type\x18\n \x01(\r\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"5\n\rRegistryWrite\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"u\n\x14RegistryCreateKeyReq\x12\x0c\n\x04Hive\x18\x01 \x01(\t\x12\x0c\n\x04Path\x18\x02 \x01(\t\x12\x0b\n\x03Key\x18\x03 \x01(\t\x12\x10\n\x08Hostname\x18\x04 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"9\n\x11RegistryCreateKey\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"u\n\x14RegistryDeleteKeyReq\x12\x0c\n\x04Hive\x18\x01 \x01(\t\x12\x0c\n\x04Path\x18\x02 \x01(\t\x12\x0b\n\x03Key\x18\x03 \x01(\t\x12\x10\n\x08Hostname\x18\x04 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"9\n\x11RegistryDeleteKey\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"i\n\x15RegistrySubKeyListReq\x12\x0c\n\x04Hive\x18\x01 \x01(\t\x12\x0c\n\x04Path\x18\x02 \x01(\t\x12\x10\n\x08Hostname\x18\x04 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"K\n\x12RegistrySubKeyList\x12\x0f\n\x07Subkeys\x18\x01 \x03(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"i\n\x15RegistryListValuesReq\x12\x0c\n\x04Hive\x18\x01 \x01(\t\x12\x0c\n\x04Path\x18\x02 \x01(\t\x12\x10\n\x08Hostname\x18\x04 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"N\n\x12RegistryValuesList\x12\x12\n\nValueNames\x18\x01 \x03(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"1\n\x06Tunnel\x12\x14\n\x08TunnelID\x18\x08 \x01(\x04\x42\x02\x30\x01\x12\x11\n\tSessionID\x18\t \x01(\t\"\x82\x01\n\nTunnelData\x12\x0c\n\x04\x44\x61ta\x18\x01 \x01(\x0c\x12\x0e\n\x06\x43losed\x18\x02 \x01(\x08\x12\x10\n\x08Sequence\x18\x03 \x01(\x04\x12\x0b\n\x03\x41\x63k\x18\x04 \x01(\x04\x12\x0e\n\x06Resend\x18\x05 \x01(\x08\x12\x14\n\x08TunnelID\x18\x08 \x01(\x04\x42\x02\x30\x01\x12\x11\n\tSessionID\x18\t \x01(\t\"r\n\x08ShellReq\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\x11\n\tEnablePTY\x18\x02 \x01(\x08\x12\x0b\n\x03Pid\x18\x03 \x01(\r\x12\x14\n\x08TunnelID\x18\x08 \x01(\x04\x42\x02\x30\x01\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"q\n\x05Shell\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\x11\n\tEnablePTY\x18\x02 \x01(\x08\x12\x0b\n\x03Pid\x18\x03 \x01(\r\x12\x14\n\x08TunnelID\x18\x08 \x01(\x04\x42\x02\x30\x01\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"t\n\nPortfwdReq\x12\x0c\n\x04Port\x18\x01 \x01(\r\x12\x10\n\x08Protocol\x18\x02 \x01(\x05\x12\x0c\n\x04Host\x18\x03 \x01(\t\x12\x14\n\x08TunnelID\x18\x08 \x01(\x04\x42\x02\x30\x01\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"s\n\x07Portfwd\x12\x0c\n\x04Port\x18\x01 \x01(\r\x12\x10\n\x08Protocol\x18\x02 \x01(\x05\x12\x0c\n\x04Host\x18\x03 \x01(\t\x12\x14\n\x08TunnelID\x18\x08 \x01(\x04\x42\x02\x30\x01\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"0\n\x05Socks\x12\x14\n\x08TunnelID\x18\x08 \x01(\x04\x42\x02\x30\x01\x12\x11\n\tSessionID\x18\t \x01(\t\"\x9c\x01\n\tSocksData\x12\x0c\n\x04\x44\x61ta\x18\x01 \x01(\x0c\x12\x11\n\tCloseConn\x18\x02 \x01(\x08\x12\x10\n\x08Username\x18\x03 \x01(\t\x12\x10\n\x08Password\x18\x04 \x01(\t\x12\x10\n\x08Sequence\x18\x05 \x01(\x04\x12\x14\n\x08TunnelID\x18\x08 \x01(\x04\x42\x02\x30\x01\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"\x84\x01\n\x15PivotStartListenerReq\x12!\n\x04Type\x18\x01 \x01(\x0e\x32\x13.sliverpb.PivotType\x12\x13\n\x0b\x42indAddress\x18\x02 \x01(\t\x12\x0f\n\x07Options\x18\x03 \x03(\x08\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"F\n\x14PivotStopListenerReq\x12\n\n\x02ID\x18\x01 \x01(\r\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"\xa1\x01\n\rPivotListener\x12\n\n\x02ID\x18\x01 \x01(\r\x12!\n\x04Type\x18\x02 \x01(\x0e\x32\x13.sliverpb.PivotType\x12\x13\n\x0b\x42indAddress\x18\x03 \x01(\t\x12&\n\x06Pivots\x18\x04 \x03(\x0b\x32\x16.sliverpb.NetConnPivot\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"c\n\nPivotHello\x12\x11\n\tPublicKey\x18\x01 \x01(\x0c\x12\x12\n\x06PeerID\x18\x02 \x01(\x03\x42\x02\x30\x01\x12\x1a\n\x12PublicKeySignature\x18\x03 \x01(\t\x12\x12\n\nSessionKey\x18\x04 \x01(\x0c\">\n\x16PivotServerKeyExchange\x12\x10\n\x08OriginID\x18\x01 \x01(\x03\x12\x12\n\nSessionKey\x18\x02 \x01(\x0c\"-\n\tPivotPeer\x12\x12\n\x06PeerID\x18\x01 \x01(\x03\x42\x02\x30\x01\x12\x0c\n\x04Name\x18\x02 \x01(\t\"\x82\x01\n\x11PivotPeerEnvelope\x12\"\n\x05Peers\x18\x01 \x03(\x0b\x32\x13.sliverpb.PivotPeer\x12\x0c\n\x04Type\x18\x02 \x01(\r\x12\x16\n\x0ePivotSessionID\x18\x03 \x01(\x0c\x12\x0c\n\x04\x44\x61ta\x18\x04 \x01(\x0c\x12\x15\n\rPeerFailureAt\x18\x05 \x01(\x03\"\x1a\n\tPivotPing\x12\r\n\x05Nonce\x18\x01 \x01(\r\"9\n\x0cNetConnPivot\x12\x12\n\x06PeerID\x18\x01 \x01(\x03\x42\x02\x30\x01\x12\x15\n\rRemoteAddress\x18\x02 \x01(\t\"\\\n\x10PivotPeerFailure\x12\x12\n\x06PeerID\x18\x01 \x01(\x03\x42\x02\x30\x01\x12\'\n\x04Type\x18\x02 \x01(\x0e\x32\x19.sliverpb.PeerFailureType\x12\x0b\n\x03\x45rr\x18\x03 \x01(\t\"7\n\x11PivotListenersReq\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"b\n\x0ePivotListeners\x12*\n\tListeners\x18\x01 \x03(\x0b\x32\x17.sliverpb.PivotListener\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"e\n\x15WGPortForwardStartReq\x12\x11\n\tLocalPort\x18\x01 \x01(\x05\x12\x15\n\rRemoteAddress\x18\x02 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"b\n\rWGPortForward\x12+\n\tForwarder\x18\x01 \x01(\x0b\x32\x18.sliverpb.WGTCPForwarder\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"F\n\x14WGPortForwardStopReq\x12\n\n\x02ID\x18\x01 \x01(\x05\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"C\n\x0fWGSocksStartReq\x12\x0c\n\x04Port\x18\x01 \x01(\x05\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"X\n\x07WGSocks\x12\'\n\x06Server\x18\x01 \x01(\x0b\x32\x17.sliverpb.WGSocksServer\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"@\n\x0eWGSocksStopReq\x12\n\n\x02ID\x18\x01 \x01(\x05\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"8\n\x12WGTCPForwardersReq\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"7\n\x11WGSocksServersReq\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"C\n\x0eWGTCPForwarder\x12\n\n\x02ID\x18\x01 \x01(\x05\x12\x11\n\tLocalAddr\x18\x02 \x01(\t\x12\x12\n\nRemoteAddr\x18\x03 \x01(\t\".\n\rWGSocksServer\x12\n\n\x02ID\x18\x01 \x01(\x05\x12\x11\n\tLocalAddr\x18\x02 \x01(\t\"`\n\x0eWGSocksServers\x12(\n\x07Servers\x18\x01 \x03(\x0b\x32\x17.sliverpb.WGSocksServer\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"e\n\x0fWGTCPForwarders\x12,\n\nForwarders\x18\x01 \x03(\x0b\x32\x18.sliverpb.WGTCPForwarder\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"}\n\x0eReconfigureReq\x12\x19\n\x11ReconnectInterval\x18\x01 \x01(\x03\x12\x16\n\x0e\x42\x65\x61\x63onInterval\x18\x02 \x01(\x03\x12\x14\n\x0c\x42\x65\x61\x63onJitter\x18\x03 \x01(\x03\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"3\n\x0bReconfigure\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"K\n\x0fPollIntervalReq\x12\x14\n\x0cPollInterval\x18\x01 \x01(\x03\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"4\n\x0cPollInterval\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"\x99\x01\n\rSSHCommandReq\x12\x10\n\x08Username\x18\x01 \x01(\t\x12\x10\n\x08Hostname\x18\x02 \x01(\t\x12\x0c\n\x04Port\x18\x03 \x01(\r\x12\x0f\n\x07\x43ommand\x18\x04 \x01(\t\x12\x10\n\x08Password\x18\x05 \x01(\t\x12\x0f\n\x07PrivKey\x18\x06 \x01(\x0c\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"R\n\nSSHCommand\x12\x0e\n\x06StdOut\x18\x01 \x01(\t\x12\x0e\n\x06StdErr\x18\x02 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"1\n\x0bGetPrivsReq\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"\x8d\x01\n\x15WindowsPrivilegeEntry\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12\x13\n\x0b\x44\x65scription\x18\x02 \x01(\t\x12\x0f\n\x07\x45nabled\x18\x03 \x01(\x08\x12\x18\n\x10\x45nabledByDefault\x18\x04 \x01(\x08\x12\x0f\n\x07Removed\x18\x05 \x01(\x08\x12\x15\n\rUsedForAccess\x18\x06 \x01(\x08\"\x92\x01\n\x08GetPrivs\x12\x31\n\x08PrivInfo\x18\x01 \x03(\x0b\x32\x1f.sliverpb.WindowsPrivilegeEntry\x12\x18\n\x10ProcessIntegrity\x18\x02 \x01(\t\x12\x13\n\x0bProcessName\x18\x03 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"p\n\x14RegisterExtensionReq\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12\x0c\n\x04\x44\x61ta\x18\x02 \x01(\x0c\x12\n\n\x02OS\x18\x03 \x01(\t\x12\x0c\n\x04Init\x18\x04 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"9\n\x11RegisterExtension\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"w\n\x10\x43\x61llExtensionReq\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12\x13\n\x0bServerStore\x18\x02 \x01(\x08\x12\x0c\n\x04\x41rgs\x18\x03 \x01(\x0c\x12\x0e\n\x06\x45xport\x18\x04 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"Z\n\rCallExtension\x12\x0e\n\x06Output\x18\x01 \x01(\x0c\x12\x13\n\x0bServerStore\x18\x02 \x01(\x08\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"7\n\x11ListExtensionsReq\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"E\n\x0eListExtensions\x12\r\n\x05Names\x18\x01 \x03(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response*,\n\tPivotType\x12\x07\n\x03TCP\x10\x00\x12\x07\n\x03UDP\x10\x01\x12\r\n\tNamedPipe\x10\x02*3\n\x0fPeerFailureType\x12\x10\n\x0cSEND_FAILURE\x10\x00\x12\x0e\n\nDISCONNECT\x10\x01\x42/Z-github.com/bishopfox/sliver/protobuf/sliverpbb\x06proto3'
   ,
   dependencies=[commonpb_dot_common__pb2.DESCRIPTOR,])
 
@@ -50,8 +50,8 @@ _PIVOTTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=12264,
-  serialized_end=12308,
+  serialized_start=12664,
+  serialized_end=12708,
 )
 _sym_db.RegisterEnumDescriptor(_PIVOTTYPE)
 
@@ -76,8 +76,8 @@ _PEERFAILURETYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=12310,
-  serialized_end=12361,
+  serialized_start=12710,
+  serialized_end=12761,
 )
 _sym_db.RegisterEnumDescriptor(_PEERFAILURETYPE)
 
@@ -1031,6 +1031,13 @@ _FILEINFO = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Link', full_name='sliverpb.FileInfo.Link', index=5,
+      number=6, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -1044,7 +1051,7 @@ _FILEINFO = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=1762,
-  serialized_end=1846,
+  serialized_end=1860,
 )
 
 
@@ -1082,8 +1089,8 @@ _CDREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1848,
-  serialized_end=1905,
+  serialized_start=1862,
+  serialized_end=1919,
 )
 
 
@@ -1114,8 +1121,8 @@ _PWDREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1907,
-  serialized_end=1951,
+  serialized_start=1921,
+  serialized_end=1965,
 )
 
 
@@ -1153,8 +1160,8 @@ _PWD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1953,
-  serialized_end=2010,
+  serialized_start=1967,
+  serialized_end=2024,
 )
 
 
@@ -1206,8 +1213,8 @@ _RMREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2012,
-  serialized_end=2103,
+  serialized_start=2026,
+  serialized_end=2117,
 )
 
 
@@ -1245,8 +1252,100 @@ _RM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2105,
-  serialized_end=2161,
+  serialized_start=2119,
+  serialized_end=2175,
+)
+
+
+_MVREQ = _descriptor.Descriptor(
+  name='MvReq',
+  full_name='sliverpb.MvReq',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='Src', full_name='sliverpb.MvReq.Src', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Dst', full_name='sliverpb.MvReq.Dst', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Request', full_name='sliverpb.MvReq.Request', index=2,
+      number=9, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2177,
+  serialized_end=2246,
+)
+
+
+_MV = _descriptor.Descriptor(
+  name='Mv',
+  full_name='sliverpb.Mv',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='Src', full_name='sliverpb.Mv.Src', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Dst', full_name='sliverpb.Mv.Dst', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Response', full_name='sliverpb.Mv.Response', index=2,
+      number=9, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2248,
+  serialized_end=2316,
 )
 
 
@@ -1284,8 +1383,8 @@ _MKDIRREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2163,
-  serialized_end=2223,
+  serialized_start=2318,
+  serialized_end=2378,
 )
 
 
@@ -1323,8 +1422,8 @@ _MKDIR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2225,
-  serialized_end=2284,
+  serialized_start=2380,
+  serialized_end=2439,
 )
 
 
@@ -1358,7 +1457,14 @@ _DOWNLOADREQ = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.DownloadReq.Request', index=3,
+      name='Recurse', full_name='sliverpb.DownloadReq.Recurse', index=3,
+      number=4, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Request', full_name='sliverpb.DownloadReq.Request', index=4,
       number=9, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -1376,8 +1482,8 @@ _DOWNLOADREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2286,
-  serialized_end=2378,
+  serialized_start=2441,
+  serialized_end=2550,
 )
 
 
@@ -1432,7 +1538,28 @@ _DOWNLOAD = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.Download.Response', index=6,
+      name='IsDir', full_name='sliverpb.Download.IsDir', index=6,
+      number=7, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='ReadFiles', full_name='sliverpb.Download.ReadFiles', index=7,
+      number=8, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='UnreadableFiles', full_name='sliverpb.Download.UnreadableFiles', index=8,
+      number=10, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Response', full_name='sliverpb.Download.Response', index=9,
       number=9, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -1450,8 +1577,8 @@ _DOWNLOAD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2381,
-  serialized_end=2519,
+  serialized_start=2553,
+  serialized_end=2750,
 )
 
 
@@ -1510,8 +1637,8 @@ _UPLOADREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2521,
-  serialized_end=2628,
+  serialized_start=2752,
+  serialized_end=2859,
 )
 
 
@@ -1549,8 +1676,8 @@ _UPLOAD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2630,
-  serialized_end=2690,
+  serialized_start=2861,
+  serialized_end=2921,
 )
 
 
@@ -1595,8 +1722,8 @@ _PROCESSDUMPREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2692,
-  serialized_end=2774,
+  serialized_start=2923,
+  serialized_end=3005,
 )
 
 
@@ -1634,8 +1761,8 @@ _PROCESSDUMP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2776,
-  serialized_end=2841,
+  serialized_start=3007,
+  serialized_end=3072,
 )
 
 
@@ -1687,8 +1814,8 @@ _RUNASREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2843,
-  serialized_end=2942,
+  serialized_start=3074,
+  serialized_end=3173,
 )
 
 
@@ -1726,8 +1853,8 @@ _RUNAS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2944,
-  serialized_end=3005,
+  serialized_start=3175,
+  serialized_end=3236,
 )
 
 
@@ -1765,8 +1892,8 @@ _IMPERSONATEREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3007,
-  serialized_end=3077,
+  serialized_start=3238,
+  serialized_end=3308,
 )
 
 
@@ -1797,8 +1924,8 @@ _IMPERSONATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3079,
-  serialized_end=3130,
+  serialized_start=3310,
+  serialized_end=3361,
 )
 
 
@@ -1829,8 +1956,8 @@ _REVTOSELFREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3132,
-  serialized_end=3182,
+  serialized_start=3363,
+  serialized_end=3413,
 )
 
 
@@ -1861,8 +1988,79 @@ _REVTOSELF = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3184,
-  serialized_end=3233,
+  serialized_start=3415,
+  serialized_end=3464,
+)
+
+
+_CURRENTTOKENOWNERREQ = _descriptor.Descriptor(
+  name='CurrentTokenOwnerReq',
+  full_name='sliverpb.CurrentTokenOwnerReq',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='Request', full_name='sliverpb.CurrentTokenOwnerReq.Request', index=0,
+      number=9, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=3466,
+  serialized_end=3524,
+)
+
+
+_CURRENTTOKENOWNER = _descriptor.Descriptor(
+  name='CurrentTokenOwner',
+  full_name='sliverpb.CurrentTokenOwner',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='Output', full_name='sliverpb.CurrentTokenOwner.Output', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Response', full_name='sliverpb.CurrentTokenOwner.Response', index=1,
+      number=9, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=3526,
+  serialized_end=3599,
 )
 
 
@@ -1907,8 +2105,8 @@ _INVOKEGETSYSTEMREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3235,
-  serialized_end=3329,
+  serialized_start=3601,
+  serialized_end=3695,
 )
 
 
@@ -1939,8 +2137,8 @@ _GETSYSTEM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3331,
-  serialized_end=3380,
+  serialized_start=3697,
+  serialized_end=3746,
 )
 
 
@@ -1992,8 +2190,8 @@ _MAKETOKENREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3382,
-  serialized_end=3484,
+  serialized_start=3748,
+  serialized_end=3850,
 )
 
 
@@ -2024,8 +2222,8 @@ _MAKETOKEN = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3486,
-  serialized_end=3535,
+  serialized_start=3852,
+  serialized_end=3901,
 )
 
 
@@ -2084,8 +2282,8 @@ _TASKREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3537,
-  serialized_end=3644,
+  serialized_start=3903,
+  serialized_end=4010,
 )
 
 
@@ -2116,8 +2314,8 @@ _TASK = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3646,
-  serialized_end=3690,
+  serialized_start=4012,
+  serialized_end=4056,
 )
 
 
@@ -2204,8 +2402,8 @@ _EXECUTEASSEMBLYREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3693,
-  serialized_end=3886,
+  serialized_start=4059,
+  serialized_end=4252,
 )
 
 
@@ -2250,8 +2448,8 @@ _INVOKEEXECUTEASSEMBLYREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3888,
-  serialized_end=3981,
+  serialized_start=4254,
+  serialized_end=4347,
 )
 
 
@@ -2289,8 +2487,8 @@ _EXECUTEASSEMBLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3983,
-  serialized_end=4054,
+  serialized_start=4349,
+  serialized_end=4420,
 )
 
 
@@ -2335,8 +2533,8 @@ _INVOKEMIGRATEREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4056,
-  serialized_end=4137,
+  serialized_start=4422,
+  serialized_end=4503,
 )
 
 
@@ -2374,8 +2572,8 @@ _MIGRATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4139,
-  serialized_end=4203,
+  serialized_start=4505,
+  serialized_end=4569,
 )
 
 
@@ -2441,8 +2639,8 @@ _EXECUTEREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4205,
-  serialized_end=4329,
+  serialized_start=4571,
+  serialized_end=4695,
 )
 
 
@@ -2508,8 +2706,8 @@ _EXECUTETOKENREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4332,
-  serialized_end=4461,
+  serialized_start=4698,
+  serialized_end=4827,
 )
 
 
@@ -2568,8 +2766,8 @@ _EXECUTE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4463,
-  serialized_end=4571,
+  serialized_start=4829,
+  serialized_end=4937,
 )
 
 
@@ -2642,8 +2840,8 @@ _SIDELOADREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4574,
-  serialized_end=4721,
+  serialized_start=4940,
+  serialized_end=5087,
 )
 
 
@@ -2681,8 +2879,8 @@ _SIDELOAD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4723,
-  serialized_end=4787,
+  serialized_start=5089,
+  serialized_end=5153,
 )
 
 
@@ -2748,8 +2946,8 @@ _INVOKESPAWNDLLREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4790,
-  serialized_end=4928,
+  serialized_start=5156,
+  serialized_end=5294,
 )
 
 
@@ -2815,8 +3013,8 @@ _SPAWNDLLREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4931,
-  serialized_end=5059,
+  serialized_start=5297,
+  serialized_end=5425,
 )
 
 
@@ -2854,8 +3052,8 @@ _SPAWNDLL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5061,
-  serialized_end=5125,
+  serialized_start=5427,
+  serialized_end=5491,
 )
 
 
@@ -2921,8 +3119,8 @@ _NETSTATREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5127,
-  serialized_end=5246,
+  serialized_start=5493,
+  serialized_end=5612,
 )
 
 
@@ -2960,8 +3158,8 @@ _SOCKTABENTRY_SOCKADDR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5454,
-  serialized_end=5490,
+  serialized_start=5820,
+  serialized_end=5856,
 )
 
 _SOCKTABENTRY = _descriptor.Descriptor(
@@ -3026,8 +3224,8 @@ _SOCKTABENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5249,
-  serialized_end=5490,
+  serialized_start=5615,
+  serialized_end=5856,
 )
 
 
@@ -3065,8 +3263,8 @@ _NETSTAT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5492,
-  serialized_end=5580,
+  serialized_start=5858,
+  serialized_end=5946,
 )
 
 
@@ -3104,8 +3302,8 @@ _ENVREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5582,
-  serialized_end=5640,
+  serialized_start=5948,
+  serialized_end=6006,
 )
 
 
@@ -3143,8 +3341,8 @@ _ENVINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5642,
-  serialized_end=5726,
+  serialized_start=6008,
+  serialized_end=6092,
 )
 
 
@@ -3182,8 +3380,8 @@ _SETENVREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5728,
-  serialized_end=5811,
+  serialized_start=6094,
+  serialized_end=6177,
 )
 
 
@@ -3214,8 +3412,8 @@ _SETENV = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5813,
-  serialized_end=5859,
+  serialized_start=6179,
+  serialized_end=6225,
 )
 
 
@@ -3253,8 +3451,8 @@ _UNSETENVREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5861,
-  serialized_end=5924,
+  serialized_start=6227,
+  serialized_end=6290,
 )
 
 
@@ -3285,8 +3483,8 @@ _UNSETENV = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5926,
-  serialized_end=5974,
+  serialized_start=6292,
+  serialized_end=6340,
 )
 
 
@@ -3317,8 +3515,8 @@ _DNSSESSIONINIT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5976,
-  serialized_end=6005,
+  serialized_start=6342,
+  serialized_end=6371,
 )
 
 
@@ -3349,8 +3547,8 @@ _DNSPOLL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6007,
-  serialized_end=6058,
+  serialized_start=6373,
+  serialized_end=6424,
 )
 
 
@@ -3388,8 +3586,8 @@ _DNSBLOCKHEADER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6060,
-  serialized_end=6102,
+  serialized_start=6426,
+  serialized_end=6468,
 )
 
 
@@ -3420,8 +3618,8 @@ _HTTPSESSIONINIT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6104,
-  serialized_end=6134,
+  serialized_start=6470,
+  serialized_end=6500,
 )
 
 
@@ -3452,8 +3650,8 @@ _SCREENSHOTREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6136,
-  serialized_end=6187,
+  serialized_start=6502,
+  serialized_end=6553,
 )
 
 
@@ -3491,8 +3689,8 @@ _SCREENSHOT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6189,
-  serialized_end=6253,
+  serialized_start=6555,
+  serialized_end=6619,
 )
 
 
@@ -3558,8 +3756,8 @@ _STARTSERVICEREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6256,
-  serialized_end=6412,
+  serialized_start=6622,
+  serialized_end=6778,
 )
 
 
@@ -3590,8 +3788,8 @@ _SERVICEINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6414,
-  serialized_end=6465,
+  serialized_start=6780,
+  serialized_end=6831,
 )
 
 
@@ -3629,8 +3827,8 @@ _SERVICEINFOREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6467,
-  serialized_end=6522,
+  serialized_start=6833,
+  serialized_end=6888,
 )
 
 
@@ -3668,8 +3866,8 @@ _STOPSERVICEREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6524,
-  serialized_end=6623,
+  serialized_start=6890,
+  serialized_end=6989,
 )
 
 
@@ -3707,8 +3905,8 @@ _REMOVESERVICEREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6625,
-  serialized_end=6726,
+  serialized_start=6991,
+  serialized_end=7092,
 )
 
 
@@ -3753,8 +3951,8 @@ _BACKDOORREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6728,
-  serialized_end=6816,
+  serialized_start=7094,
+  serialized_end=7182,
 )
 
 
@@ -3785,8 +3983,8 @@ _BACKDOOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6818,
-  serialized_end=6866,
+  serialized_start=7184,
+  serialized_end=7232,
 )
 
 
@@ -3845,8 +4043,8 @@ _REGISTRYREADREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6868,
-  serialized_end=6980,
+  serialized_start=7234,
+  serialized_end=7346,
 )
 
 
@@ -3884,8 +4082,8 @@ _REGISTRYREAD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6982,
-  serialized_end=7049,
+  serialized_start=7348,
+  serialized_end=7415,
 )
 
 
@@ -3979,8 +4177,8 @@ _REGISTRYWRITEREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7052,
-  serialized_end=7259,
+  serialized_start=7418,
+  serialized_end=7625,
 )
 
 
@@ -4011,8 +4209,8 @@ _REGISTRYWRITE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7261,
-  serialized_end=7314,
+  serialized_start=7627,
+  serialized_end=7680,
 )
 
 
@@ -4071,8 +4269,8 @@ _REGISTRYCREATEKEYREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7316,
-  serialized_end=7433,
+  serialized_start=7682,
+  serialized_end=7799,
 )
 
 
@@ -4103,8 +4301,8 @@ _REGISTRYCREATEKEY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7435,
-  serialized_end=7492,
+  serialized_start=7801,
+  serialized_end=7858,
 )
 
 
@@ -4163,8 +4361,8 @@ _REGISTRYDELETEKEYREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7494,
-  serialized_end=7611,
+  serialized_start=7860,
+  serialized_end=7977,
 )
 
 
@@ -4195,8 +4393,8 @@ _REGISTRYDELETEKEY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7613,
-  serialized_end=7670,
+  serialized_start=7979,
+  serialized_end=8036,
 )
 
 
@@ -4248,8 +4446,8 @@ _REGISTRYSUBKEYLISTREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7672,
-  serialized_end=7777,
+  serialized_start=8038,
+  serialized_end=8143,
 )
 
 
@@ -4287,8 +4485,8 @@ _REGISTRYSUBKEYLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7779,
-  serialized_end=7854,
+  serialized_start=8145,
+  serialized_end=8220,
 )
 
 
@@ -4340,8 +4538,8 @@ _REGISTRYLISTVALUESREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7856,
-  serialized_end=7961,
+  serialized_start=8222,
+  serialized_end=8327,
 )
 
 
@@ -4379,8 +4577,8 @@ _REGISTRYVALUESLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7963,
-  serialized_end=8041,
+  serialized_start=8329,
+  serialized_end=8407,
 )
 
 
@@ -4418,8 +4616,8 @@ _TUNNEL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8043,
-  serialized_end=8092,
+  serialized_start=8409,
+  serialized_end=8458,
 )
 
 
@@ -4492,8 +4690,8 @@ _TUNNELDATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8095,
-  serialized_end=8225,
+  serialized_start=8461,
+  serialized_end=8591,
 )
 
 
@@ -4552,8 +4750,8 @@ _SHELLREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8227,
-  serialized_end=8341,
+  serialized_start=8593,
+  serialized_end=8707,
 )
 
 
@@ -4612,8 +4810,8 @@ _SHELL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8343,
-  serialized_end=8456,
+  serialized_start=8709,
+  serialized_end=8822,
 )
 
 
@@ -4672,8 +4870,8 @@ _PORTFWDREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8458,
-  serialized_end=8574,
+  serialized_start=8824,
+  serialized_end=8940,
 )
 
 
@@ -4732,8 +4930,8 @@ _PORTFWD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8576,
-  serialized_end=8691,
+  serialized_start=8942,
+  serialized_end=9057,
 )
 
 
@@ -4771,8 +4969,8 @@ _SOCKS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8693,
-  serialized_end=8741,
+  serialized_start=9059,
+  serialized_end=9107,
 )
 
 
@@ -4845,8 +5043,8 @@ _SOCKSDATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8744,
-  serialized_end=8900,
+  serialized_start=9110,
+  serialized_end=9266,
 )
 
 
@@ -4873,7 +5071,14 @@ _PIVOTSTARTLISTENERREQ = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.PivotStartListenerReq.Request', index=2,
+      name='Options', full_name='sliverpb.PivotStartListenerReq.Options', index=2,
+      number=3, type=8, cpp_type=7, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Request', full_name='sliverpb.PivotStartListenerReq.Request', index=3,
       number=9, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -4891,8 +5096,8 @@ _PIVOTSTARTLISTENERREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8902,
-  serialized_end=9017,
+  serialized_start=9269,
+  serialized_end=9401,
 )
 
 
@@ -4930,8 +5135,8 @@ _PIVOTSTOPLISTENERREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9019,
-  serialized_end=9089,
+  serialized_start=9403,
+  serialized_end=9473,
 )
 
 
@@ -4990,8 +5195,8 @@ _PIVOTLISTENER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9092,
-  serialized_end=9253,
+  serialized_start=9476,
+  serialized_end=9637,
 )
 
 
@@ -5016,7 +5221,7 @@ _PIVOTHELLO = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+      serialized_options=b'0\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='PublicKeySignature', full_name='sliverpb.PivotHello.PublicKeySignature', index=2,
       number=3, type=9, cpp_type=9, label=1,
@@ -5043,8 +5248,8 @@ _PIVOTHELLO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9255,
-  serialized_end=9350,
+  serialized_start=9639,
+  serialized_end=9738,
 )
 
 
@@ -5082,8 +5287,8 @@ _PIVOTSERVERKEYEXCHANGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9352,
-  serialized_end=9414,
+  serialized_start=9740,
+  serialized_end=9802,
 )
 
 
@@ -5101,7 +5306,7 @@ _PIVOTPEER = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+      serialized_options=b'0\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='Name', full_name='sliverpb.PivotPeer.Name', index=1,
       number=2, type=9, cpp_type=9, label=1,
@@ -5121,8 +5326,8 @@ _PIVOTPEER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9416,
-  serialized_end=9457,
+  serialized_start=9804,
+  serialized_end=9849,
 )
 
 
@@ -5181,8 +5386,8 @@ _PIVOTPEERENVELOPE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9460,
-  serialized_end=9590,
+  serialized_start=9852,
+  serialized_end=9982,
 )
 
 
@@ -5213,8 +5418,8 @@ _PIVOTPING = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9592,
-  serialized_end=9618,
+  serialized_start=9984,
+  serialized_end=10010,
 )
 
 
@@ -5232,7 +5437,7 @@ _NETCONNPIVOT = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+      serialized_options=b'0\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='RemoteAddress', full_name='sliverpb.NetConnPivot.RemoteAddress', index=1,
       number=2, type=9, cpp_type=9, label=1,
@@ -5252,8 +5457,8 @@ _NETCONNPIVOT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9620,
-  serialized_end=9673,
+  serialized_start=10012,
+  serialized_end=10069,
 )
 
 
@@ -5271,7 +5476,7 @@ _PIVOTPEERFAILURE = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+      serialized_options=b'0\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='Type', full_name='sliverpb.PivotPeerFailure.Type', index=1,
       number=2, type=14, cpp_type=8, label=1,
@@ -5298,8 +5503,8 @@ _PIVOTPEERFAILURE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9675,
-  serialized_end=9763,
+  serialized_start=10071,
+  serialized_end=10163,
 )
 
 
@@ -5330,8 +5535,8 @@ _PIVOTLISTENERSREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9765,
-  serialized_end=9820,
+  serialized_start=10165,
+  serialized_end=10220,
 )
 
 
@@ -5369,8 +5574,8 @@ _PIVOTLISTENERS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9822,
-  serialized_end=9920,
+  serialized_start=10222,
+  serialized_end=10320,
 )
 
 
@@ -5415,8 +5620,8 @@ _WGPORTFORWARDSTARTREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9922,
-  serialized_end=10023,
+  serialized_start=10322,
+  serialized_end=10423,
 )
 
 
@@ -5454,8 +5659,8 @@ _WGPORTFORWARD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10025,
-  serialized_end=10123,
+  serialized_start=10425,
+  serialized_end=10523,
 )
 
 
@@ -5493,8 +5698,8 @@ _WGPORTFORWARDSTOPREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10125,
-  serialized_end=10195,
+  serialized_start=10525,
+  serialized_end=10595,
 )
 
 
@@ -5532,8 +5737,8 @@ _WGSOCKSSTARTREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10197,
-  serialized_end=10264,
+  serialized_start=10597,
+  serialized_end=10664,
 )
 
 
@@ -5571,8 +5776,8 @@ _WGSOCKS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10266,
-  serialized_end=10354,
+  serialized_start=10666,
+  serialized_end=10754,
 )
 
 
@@ -5610,8 +5815,8 @@ _WGSOCKSSTOPREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10356,
-  serialized_end=10420,
+  serialized_start=10756,
+  serialized_end=10820,
 )
 
 
@@ -5642,8 +5847,8 @@ _WGTCPFORWARDERSREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10422,
-  serialized_end=10478,
+  serialized_start=10822,
+  serialized_end=10878,
 )
 
 
@@ -5674,8 +5879,8 @@ _WGSOCKSSERVERSREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10480,
-  serialized_end=10535,
+  serialized_start=10880,
+  serialized_end=10935,
 )
 
 
@@ -5720,8 +5925,8 @@ _WGTCPFORWARDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10537,
-  serialized_end=10604,
+  serialized_start=10937,
+  serialized_end=11004,
 )
 
 
@@ -5759,8 +5964,8 @@ _WGSOCKSSERVER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10606,
-  serialized_end=10652,
+  serialized_start=11006,
+  serialized_end=11052,
 )
 
 
@@ -5798,8 +6003,8 @@ _WGSOCKSSERVERS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10654,
-  serialized_end=10750,
+  serialized_start=11054,
+  serialized_end=11150,
 )
 
 
@@ -5837,8 +6042,8 @@ _WGTCPFORWARDERS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10752,
-  serialized_end=10853,
+  serialized_start=11152,
+  serialized_end=11253,
 )
 
 
@@ -5890,8 +6095,8 @@ _RECONFIGUREREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10855,
-  serialized_end=10980,
+  serialized_start=11255,
+  serialized_end=11380,
 )
 
 
@@ -5922,8 +6127,8 @@ _RECONFIGURE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10982,
-  serialized_end=11033,
+  serialized_start=11382,
+  serialized_end=11433,
 )
 
 
@@ -5961,8 +6166,8 @@ _POLLINTERVALREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11035,
-  serialized_end=11110,
+  serialized_start=11435,
+  serialized_end=11510,
 )
 
 
@@ -5993,8 +6198,8 @@ _POLLINTERVAL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11112,
-  serialized_end=11164,
+  serialized_start=11512,
+  serialized_end=11564,
 )
 
 
@@ -6067,8 +6272,8 @@ _SSHCOMMANDREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11167,
-  serialized_end=11320,
+  serialized_start=11567,
+  serialized_end=11720,
 )
 
 
@@ -6113,8 +6318,8 @@ _SSHCOMMAND = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11322,
-  serialized_end=11404,
+  serialized_start=11722,
+  serialized_end=11804,
 )
 
 
@@ -6145,8 +6350,8 @@ _GETPRIVSREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11406,
-  serialized_end=11455,
+  serialized_start=11806,
+  serialized_end=11855,
 )
 
 
@@ -6212,8 +6417,8 @@ _WINDOWSPRIVILEGEENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11458,
-  serialized_end=11599,
+  serialized_start=11858,
+  serialized_end=11999,
 )
 
 
@@ -6265,8 +6470,8 @@ _GETPRIVS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11602,
-  serialized_end=11748,
+  serialized_start=12002,
+  serialized_end=12148,
 )
 
 
@@ -6325,8 +6530,8 @@ _REGISTEREXTENSIONREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11750,
-  serialized_end=11862,
+  serialized_start=12150,
+  serialized_end=12262,
 )
 
 
@@ -6357,8 +6562,8 @@ _REGISTEREXTENSION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11864,
-  serialized_end=11921,
+  serialized_start=12264,
+  serialized_end=12321,
 )
 
 
@@ -6417,8 +6622,8 @@ _CALLEXTENSIONREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11923,
-  serialized_end=12042,
+  serialized_start=12323,
+  serialized_end=12442,
 )
 
 
@@ -6463,8 +6668,8 @@ _CALLEXTENSION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12044,
-  serialized_end=12134,
+  serialized_start=12444,
+  serialized_end=12534,
 )
 
 
@@ -6495,8 +6700,8 @@ _LISTEXTENSIONSREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12136,
-  serialized_end=12191,
+  serialized_start=12536,
+  serialized_end=12591,
 )
 
 
@@ -6534,8 +6739,8 @@ _LISTEXTENSIONS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12193,
-  serialized_end=12262,
+  serialized_start=12593,
+  serialized_end=12662,
 )
 
 _BEACONTASKS.fields_by_name['Tasks'].message_type = _ENVELOPE
@@ -6564,6 +6769,8 @@ _PWDREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUE
 _PWD.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
 _RMREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
 _RM.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
+_MVREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
+_MV.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
 _MKDIRREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
 _MKDIR.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
 _DOWNLOADREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
@@ -6578,6 +6785,8 @@ _IMPERSONATEREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb
 _IMPERSONATE.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
 _REVTOSELFREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
 _REVTOSELF.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
+_CURRENTTOKENOWNERREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
+_CURRENTTOKENOWNER.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
 _INVOKEGETSYSTEMREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
 _GETSYSTEM.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
 _MAKETOKENREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
@@ -6704,6 +6913,8 @@ DESCRIPTOR.message_types_by_name['PwdReq'] = _PWDREQ
 DESCRIPTOR.message_types_by_name['Pwd'] = _PWD
 DESCRIPTOR.message_types_by_name['RmReq'] = _RMREQ
 DESCRIPTOR.message_types_by_name['Rm'] = _RM
+DESCRIPTOR.message_types_by_name['MvReq'] = _MVREQ
+DESCRIPTOR.message_types_by_name['Mv'] = _MV
 DESCRIPTOR.message_types_by_name['MkdirReq'] = _MKDIRREQ
 DESCRIPTOR.message_types_by_name['Mkdir'] = _MKDIR
 DESCRIPTOR.message_types_by_name['DownloadReq'] = _DOWNLOADREQ
@@ -6718,6 +6929,8 @@ DESCRIPTOR.message_types_by_name['ImpersonateReq'] = _IMPERSONATEREQ
 DESCRIPTOR.message_types_by_name['Impersonate'] = _IMPERSONATE
 DESCRIPTOR.message_types_by_name['RevToSelfReq'] = _REVTOSELFREQ
 DESCRIPTOR.message_types_by_name['RevToSelf'] = _REVTOSELF
+DESCRIPTOR.message_types_by_name['CurrentTokenOwnerReq'] = _CURRENTTOKENOWNERREQ
+DESCRIPTOR.message_types_by_name['CurrentTokenOwner'] = _CURRENTTOKENOWNER
 DESCRIPTOR.message_types_by_name['InvokeGetSystemReq'] = _INVOKEGETSYSTEMREQ
 DESCRIPTOR.message_types_by_name['GetSystem'] = _GETSYSTEM
 DESCRIPTOR.message_types_by_name['MakeTokenReq'] = _MAKETOKENREQ
@@ -6990,6 +7203,20 @@ Rm = _reflection.GeneratedProtocolMessageType('Rm', (_message.Message,), {
   })
 _sym_db.RegisterMessage(Rm)
 
+MvReq = _reflection.GeneratedProtocolMessageType('MvReq', (_message.Message,), {
+  'DESCRIPTOR' : _MVREQ,
+  '__module__' : 'sliverpb.sliver_pb2'
+  # @@protoc_insertion_point(class_scope:sliverpb.MvReq)
+  })
+_sym_db.RegisterMessage(MvReq)
+
+Mv = _reflection.GeneratedProtocolMessageType('Mv', (_message.Message,), {
+  'DESCRIPTOR' : _MV,
+  '__module__' : 'sliverpb.sliver_pb2'
+  # @@protoc_insertion_point(class_scope:sliverpb.Mv)
+  })
+_sym_db.RegisterMessage(Mv)
+
 MkdirReq = _reflection.GeneratedProtocolMessageType('MkdirReq', (_message.Message,), {
   'DESCRIPTOR' : _MKDIRREQ,
   '__module__' : 'sliverpb.sliver_pb2'
@@ -7087,6 +7314,20 @@ RevToSelf = _reflection.GeneratedProtocolMessageType('RevToSelf', (_message.Mess
   # @@protoc_insertion_point(class_scope:sliverpb.RevToSelf)
   })
 _sym_db.RegisterMessage(RevToSelf)
+
+CurrentTokenOwnerReq = _reflection.GeneratedProtocolMessageType('CurrentTokenOwnerReq', (_message.Message,), {
+  'DESCRIPTOR' : _CURRENTTOKENOWNERREQ,
+  '__module__' : 'sliverpb.sliver_pb2'
+  # @@protoc_insertion_point(class_scope:sliverpb.CurrentTokenOwnerReq)
+  })
+_sym_db.RegisterMessage(CurrentTokenOwnerReq)
+
+CurrentTokenOwner = _reflection.GeneratedProtocolMessageType('CurrentTokenOwner', (_message.Message,), {
+  'DESCRIPTOR' : _CURRENTTOKENOWNER,
+  '__module__' : 'sliverpb.sliver_pb2'
+  # @@protoc_insertion_point(class_scope:sliverpb.CurrentTokenOwner)
+  })
+_sym_db.RegisterMessage(CurrentTokenOwner)
 
 InvokeGetSystemReq = _reflection.GeneratedProtocolMessageType('InvokeGetSystemReq', (_message.Message,), {
   'DESCRIPTOR' : _INVOKEGETSYSTEMREQ,
@@ -7806,4 +8047,8 @@ _PORTFWDREQ.fields_by_name['TunnelID']._options = None
 _PORTFWD.fields_by_name['TunnelID']._options = None
 _SOCKS.fields_by_name['TunnelID']._options = None
 _SOCKSDATA.fields_by_name['TunnelID']._options = None
+_PIVOTHELLO.fields_by_name['PeerID']._options = None
+_PIVOTPEER.fields_by_name['PeerID']._options = None
+_NETCONNPIVOT.fields_by_name['PeerID']._options = None
+_PIVOTPEERFAILURE.fields_by_name['PeerID']._options = None
 # @@protoc_insertion_point(module_scope)

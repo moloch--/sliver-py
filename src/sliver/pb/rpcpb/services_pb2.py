@@ -22,7 +22,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z*github.com/bishopfox/sliver/protobuf/rpcpb',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x14rpcpb/services.proto\x12\x05rpcpb\x1a\x15\x63ommonpb/common.proto\x1a\x15sliverpb/sliver.proto\x1a\x15\x63lientpb/client.proto2\x97\x36\n\tSliverRPC\x12\x30\n\nGetVersion\x12\x0f.commonpb.Empty\x1a\x11.clientpb.Version\x12\x34\n\x0cGetOperators\x12\x0f.commonpb.Empty\x1a\x13.clientpb.Operators\x12*\n\x04Kill\x12\x11.sliverpb.KillReq\x1a\x0f.commonpb.Empty\x12>\n\x0bReconfigure\x12\x18.sliverpb.ReconfigureReq\x1a\x15.sliverpb.Reconfigure\x12.\n\x06Rename\x12\x13.clientpb.RenameReq\x1a\x0f.commonpb.Empty\x12\x32\n\x0bGetSessions\x12\x0f.commonpb.Empty\x1a\x12.clientpb.Sessions\x12\x30\n\nGetBeacons\x12\x0f.commonpb.Empty\x1a\x11.clientpb.Beacons\x12/\n\tGetBeacon\x12\x10.clientpb.Beacon\x1a\x10.clientpb.Beacon\x12-\n\x08RmBeacon\x12\x10.clientpb.Beacon\x1a\x0f.commonpb.Empty\x12\x39\n\x0eGetBeaconTasks\x12\x10.clientpb.Beacon\x1a\x15.clientpb.BeaconTasks\x12\x42\n\x14GetBeaconTaskContent\x12\x14.clientpb.BeaconTask\x1a\x14.clientpb.BeaconTask\x12\x33\n\x0cMonitorStart\x12\x0f.commonpb.Empty\x1a\x12.commonpb.Response\x12/\n\x0bMonitorStop\x12\x0f.commonpb.Empty\x1a\x0f.commonpb.Empty\x12*\n\x07GetJobs\x12\x0f.commonpb.Empty\x1a\x0e.clientpb.Jobs\x12\x32\n\x07KillJob\x12\x14.clientpb.KillJobReq\x1a\x11.clientpb.KillJob\x12\x46\n\x11StartMTLSListener\x12\x19.clientpb.MTLSListenerReq\x1a\x16.clientpb.MTLSListener\x12@\n\x0fStartWGListener\x12\x17.clientpb.WGListenerReq\x1a\x14.clientpb.WGListener\x12\x43\n\x10StartDNSListener\x12\x18.clientpb.DNSListenerReq\x1a\x15.clientpb.DNSListener\x12G\n\x12StartHTTPSListener\x12\x19.clientpb.HTTPListenerReq\x1a\x16.clientpb.HTTPListener\x12\x46\n\x11StartHTTPListener\x12\x19.clientpb.HTTPListenerReq\x1a\x16.clientpb.HTTPListener\x12O\n\x16StartTCPStagerListener\x12\x1b.clientpb.StagerListenerReq\x1a\x18.clientpb.StagerListener\x12P\n\x17StartHTTPStagerListener\x12\x1b.clientpb.StagerListenerReq\x1a\x18.clientpb.StagerListener\x12)\n\x07LootAdd\x12\x0e.clientpb.Loot\x1a\x0e.clientpb.Loot\x12)\n\x06LootRm\x12\x0e.clientpb.Loot\x1a\x0f.commonpb.Empty\x12,\n\nLootUpdate\x12\x0e.clientpb.Loot\x1a\x0e.clientpb.Loot\x12-\n\x0bLootContent\x12\x0e.clientpb.Loot\x1a\x0e.clientpb.Loot\x12-\n\x07LootAll\x12\x0f.commonpb.Empty\x1a\x11.clientpb.AllLoot\x12.\n\tLootAllOf\x12\x0e.clientpb.Loot\x1a\x11.clientpb.AllLoot\x12,\n\x05Hosts\x12\x0f.commonpb.Empty\x1a\x12.clientpb.AllHosts\x12&\n\x04Host\x12\x0e.clientpb.Host\x1a\x0e.clientpb.Host\x12)\n\x06HostRm\x12\x0e.clientpb.Host\x1a\x0f.commonpb.Empty\x12+\n\tHostIOCRm\x12\r.clientpb.IOC\x1a\x0f.commonpb.Empty\x12\x35\n\x08Generate\x12\x15.clientpb.GenerateReq\x1a\x12.clientpb.Generate\x12\x39\n\nRegenerate\x12\x17.clientpb.RegenerateReq\x1a\x12.clientpb.Generate\x12\x39\n\rImplantBuilds\x12\x0f.commonpb.Empty\x1a\x17.clientpb.ImplantBuilds\x12:\n\x12\x44\x65leteImplantBuild\x12\x13.clientpb.DeleteReq\x1a\x0f.commonpb.Empty\x12/\n\x08\x43\x61naries\x12\x0f.commonpb.Empty\x1a\x12.clientpb.Canaries\x12\x43\n\x16GenerateWGClientConfig\x12\x0f.commonpb.Empty\x1a\x18.clientpb.WGClientConfig\x12\x39\n\x10GenerateUniqueIP\x12\x0f.commonpb.Empty\x1a\x14.clientpb.UniqueWGIP\x12=\n\x0fImplantProfiles\x12\x0f.commonpb.Empty\x1a\x19.clientpb.ImplantProfiles\x12<\n\x14\x44\x65leteImplantProfile\x12\x13.clientpb.DeleteReq\x1a\x0f.commonpb.Empty\x12H\n\x12SaveImplantProfile\x12\x18.clientpb.ImplantProfile\x1a\x18.clientpb.ImplantProfile\x12\x37\n\x08MsfStage\x12\x16.clientpb.MsfStagerReq\x1a\x13.clientpb.MsfStager\x12\x41\n\x0cShellcodeRDI\x12\x19.clientpb.ShellcodeRDIReq\x1a\x16.clientpb.ShellcodeRDI\x12\x32\n\x0bGetCompiler\x12\x0f.commonpb.Empty\x1a\x12.clientpb.Compiler\x12/\n\x08Websites\x12\x0f.commonpb.Empty\x1a\x12.clientpb.Websites\x12/\n\x07Website\x12\x11.clientpb.Website\x1a\x11.clientpb.Website\x12\x33\n\rWebsiteRemove\x12\x11.clientpb.Website\x1a\x0f.commonpb.Empty\x12\x43\n\x11WebsiteAddContent\x12\x1b.clientpb.WebsiteAddContent\x1a\x11.clientpb.Website\x12\x46\n\x14WebsiteUpdateContent\x12\x1b.clientpb.WebsiteAddContent\x1a\x11.clientpb.Website\x12I\n\x14WebsiteRemoveContent\x12\x1e.clientpb.WebsiteRemoveContent\x1a\x11.clientpb.Website\x12&\n\x04Ping\x12\x0e.sliverpb.Ping\x1a\x0e.sliverpb.Ping\x12#\n\x02Ps\x12\x0f.sliverpb.PsReq\x1a\x0c.sliverpb.Ps\x12\x38\n\tTerminate\x12\x16.sliverpb.TerminateReq\x1a\x13.sliverpb.Terminate\x12\x35\n\x08Ifconfig\x12\x15.sliverpb.IfconfigReq\x1a\x12.sliverpb.Ifconfig\x12\x32\n\x07Netstat\x12\x14.sliverpb.NetstatReq\x1a\x11.sliverpb.Netstat\x12#\n\x02Ls\x12\x0f.sliverpb.LsReq\x1a\x0c.sliverpb.Ls\x12$\n\x02\x43\x64\x12\x0f.sliverpb.CdReq\x1a\r.sliverpb.Pwd\x12&\n\x03Pwd\x12\x10.sliverpb.PwdReq\x1a\r.sliverpb.Pwd\x12#\n\x02Rm\x12\x0f.sliverpb.RmReq\x1a\x0c.sliverpb.Rm\x12,\n\x05Mkdir\x12\x12.sliverpb.MkdirReq\x1a\x0f.sliverpb.Mkdir\x12\x35\n\x08\x44ownload\x12\x15.sliverpb.DownloadReq\x1a\x12.sliverpb.Download\x12/\n\x06Upload\x12\x13.sliverpb.UploadReq\x1a\x10.sliverpb.Upload\x12>\n\x0bProcessDump\x12\x18.sliverpb.ProcessDumpReq\x1a\x15.sliverpb.ProcessDump\x12,\n\x05RunAs\x12\x12.sliverpb.RunAsReq\x1a\x0f.sliverpb.RunAs\x12>\n\x0bImpersonate\x12\x18.sliverpb.ImpersonateReq\x1a\x15.sliverpb.Impersonate\x12\x38\n\tRevToSelf\x12\x16.sliverpb.RevToSelfReq\x1a\x13.sliverpb.RevToSelf\x12\x38\n\tGetSystem\x12\x16.clientpb.GetSystemReq\x1a\x13.sliverpb.GetSystem\x12)\n\x04Task\x12\x11.sliverpb.TaskReq\x1a\x0e.sliverpb.Task\x12\'\n\x03Msf\x12\x10.clientpb.MSFReq\x1a\x0e.sliverpb.Task\x12\x33\n\tMsfRemote\x12\x16.clientpb.MSFRemoteReq\x1a\x0e.sliverpb.Task\x12J\n\x0f\x45xecuteAssembly\x12\x1c.sliverpb.ExecuteAssemblyReq\x1a\x19.sliverpb.ExecuteAssembly\x12\x32\n\x07Migrate\x12\x14.clientpb.MigrateReq\x1a\x11.sliverpb.Migrate\x12\x32\n\x07\x45xecute\x12\x14.sliverpb.ExecuteReq\x1a\x11.sliverpb.Execute\x12<\n\x0c\x45xecuteToken\x12\x19.sliverpb.ExecuteTokenReq\x1a\x11.sliverpb.Execute\x12\x35\n\x08Sideload\x12\x15.sliverpb.SideloadReq\x1a\x12.sliverpb.Sideload\x12;\n\x08SpawnDll\x12\x1b.sliverpb.InvokeSpawnDllReq\x1a\x12.sliverpb.SpawnDll\x12;\n\nScreenshot\x12\x17.sliverpb.ScreenshotReq\x1a\x14.sliverpb.Screenshot\x12N\n\x12PivotStartListener\x12\x1f.sliverpb.PivotStartListenerReq\x1a\x17.sliverpb.PivotListener\x12\x44\n\x11PivotStopListener\x12\x1e.sliverpb.PivotStopListenerReq\x1a\x0f.commonpb.Empty\x12N\n\x15PivotSessionListeners\x12\x1b.sliverpb.PivotListenersReq\x1a\x18.sliverpb.PivotListeners\x12\x33\n\nPivotGraph\x12\x0f.commonpb.Empty\x1a\x14.clientpb.PivotGraph\x12@\n\x0cStartService\x12\x19.sliverpb.StartServiceReq\x1a\x15.sliverpb.ServiceInfo\x12>\n\x0bStopService\x12\x18.sliverpb.StopServiceReq\x1a\x15.sliverpb.ServiceInfo\x12\x42\n\rRemoveService\x12\x1a.sliverpb.RemoveServiceReq\x1a\x15.sliverpb.ServiceInfo\x12\x38\n\tMakeToken\x12\x16.sliverpb.MakeTokenReq\x1a\x13.sliverpb.MakeToken\x12-\n\x06GetEnv\x12\x10.sliverpb.EnvReq\x1a\x11.sliverpb.EnvInfo\x12/\n\x06SetEnv\x12\x13.sliverpb.SetEnvReq\x1a\x10.sliverpb.SetEnv\x12\x35\n\x08UnsetEnv\x12\x15.sliverpb.UnsetEnvReq\x1a\x12.sliverpb.UnsetEnv\x12\x35\n\x08\x42\x61\x63kdoor\x12\x15.sliverpb.BackdoorReq\x1a\x12.sliverpb.Backdoor\x12\x41\n\x0cRegistryRead\x12\x19.sliverpb.RegistryReadReq\x1a\x16.sliverpb.RegistryRead\x12\x44\n\rRegistryWrite\x12\x1a.sliverpb.RegistryWriteReq\x1a\x17.sliverpb.RegistryWrite\x12P\n\x11RegistryCreateKey\x12\x1e.sliverpb.RegistryCreateKeyReq\x1a\x1b.sliverpb.RegistryCreateKey\x12P\n\x11RegistryDeleteKey\x12\x1e.sliverpb.RegistryDeleteKeyReq\x1a\x1b.sliverpb.RegistryDeleteKey\x12T\n\x13RegistryListSubKeys\x12\x1f.sliverpb.RegistrySubKeyListReq\x1a\x1c.sliverpb.RegistrySubKeyList\x12S\n\x12RegistryListValues\x12\x1f.sliverpb.RegistryListValuesReq\x1a\x1c.sliverpb.RegistryValuesList\x12>\n\rRunSSHCommand\x12\x17.sliverpb.SSHCommandReq\x1a\x14.sliverpb.SSHCommand\x12\x38\n\tHijackDLL\x12\x16.clientpb.DllHijackReq\x1a\x13.clientpb.DllHijack\x12\x35\n\x08GetPrivs\x12\x15.sliverpb.GetPrivsReq\x1a\x12.sliverpb.GetPrivs\x12;\n\x0bOpenSession\x12\x15.sliverpb.OpenSession\x1a\x15.sliverpb.OpenSession\x12\x37\n\x0c\x43loseSession\x12\x16.sliverpb.CloseSession\x1a\x0f.commonpb.Empty\x12P\n\x11RegisterExtension\x12\x1e.sliverpb.RegisterExtensionReq\x1a\x1b.sliverpb.RegisterExtension\x12\x44\n\rCallExtension\x12\x1a.sliverpb.CallExtensionReq\x1a\x17.sliverpb.CallExtension\x12G\n\x0eListExtensions\x12\x1b.sliverpb.ListExtensionsReq\x1a\x18.sliverpb.ListExtensions\x12N\n\x12WGStartPortForward\x12\x1f.sliverpb.WGPortForwardStartReq\x1a\x17.sliverpb.WGPortForward\x12L\n\x11WGStopPortForward\x12\x1e.sliverpb.WGPortForwardStopReq\x1a\x17.sliverpb.WGPortForward\x12<\n\x0cWGStartSocks\x12\x19.sliverpb.WGSocksStartReq\x1a\x11.sliverpb.WGSocks\x12:\n\x0bWGStopSocks\x12\x18.sliverpb.WGSocksStopReq\x1a\x11.sliverpb.WGSocks\x12K\n\x10WGListForwarders\x12\x1c.sliverpb.WGTCPForwardersReq\x1a\x19.sliverpb.WGTCPForwarders\x12K\n\x12WGListSocksServers\x12\x1b.sliverpb.WGSocksServersReq\x1a\x18.sliverpb.WGSocksServers\x12,\n\x05Shell\x12\x12.sliverpb.ShellReq\x1a\x0f.sliverpb.Shell\x12\x32\n\x07Portfwd\x12\x14.sliverpb.PortfwdReq\x1a\x11.sliverpb.Portfwd\x12/\n\x0b\x43reateSocks\x12\x0f.sliverpb.Socks\x1a\x0f.sliverpb.Socks\x12.\n\nCloseSocks\x12\x0f.sliverpb.Socks\x1a\x0f.commonpb.Empty\x12:\n\nSocksProxy\x12\x13.sliverpb.SocksData\x1a\x13.sliverpb.SocksData(\x01\x30\x01\x12\x32\n\x0c\x43reateTunnel\x12\x10.sliverpb.Tunnel\x1a\x10.sliverpb.Tunnel\x12\x30\n\x0b\x43loseTunnel\x12\x10.sliverpb.Tunnel\x1a\x0f.commonpb.Empty\x12<\n\nTunnelData\x12\x14.sliverpb.TunnelData\x1a\x14.sliverpb.TunnelData(\x01\x30\x01\x12,\n\x06\x45vents\x12\x0f.commonpb.Empty\x1a\x0f.clientpb.Event0\x01\x42,Z*github.com/bishopfox/sliver/protobuf/rpcpbb\x06proto3'
+  serialized_pb=b'\n\x14rpcpb/services.proto\x12\x05rpcpb\x1a\x15\x63ommonpb/common.proto\x1a\x15sliverpb/sliver.proto\x1a\x15\x63lientpb/client.proto2\x8e\x37\n\tSliverRPC\x12\x30\n\nGetVersion\x12\x0f.commonpb.Empty\x1a\x11.clientpb.Version\x12\x34\n\x0cGetOperators\x12\x0f.commonpb.Empty\x1a\x13.clientpb.Operators\x12*\n\x04Kill\x12\x11.sliverpb.KillReq\x1a\x0f.commonpb.Empty\x12>\n\x0bReconfigure\x12\x18.sliverpb.ReconfigureReq\x1a\x15.sliverpb.Reconfigure\x12.\n\x06Rename\x12\x13.clientpb.RenameReq\x1a\x0f.commonpb.Empty\x12\x32\n\x0bGetSessions\x12\x0f.commonpb.Empty\x1a\x12.clientpb.Sessions\x12\x30\n\nGetBeacons\x12\x0f.commonpb.Empty\x1a\x11.clientpb.Beacons\x12/\n\tGetBeacon\x12\x10.clientpb.Beacon\x1a\x10.clientpb.Beacon\x12-\n\x08RmBeacon\x12\x10.clientpb.Beacon\x1a\x0f.commonpb.Empty\x12\x39\n\x0eGetBeaconTasks\x12\x10.clientpb.Beacon\x1a\x15.clientpb.BeaconTasks\x12\x42\n\x14GetBeaconTaskContent\x12\x14.clientpb.BeaconTask\x1a\x14.clientpb.BeaconTask\x12\x33\n\x0cMonitorStart\x12\x0f.commonpb.Empty\x1a\x12.commonpb.Response\x12/\n\x0bMonitorStop\x12\x0f.commonpb.Empty\x1a\x0f.commonpb.Empty\x12*\n\x07GetJobs\x12\x0f.commonpb.Empty\x1a\x0e.clientpb.Jobs\x12\x32\n\x07KillJob\x12\x14.clientpb.KillJobReq\x1a\x11.clientpb.KillJob\x12\x46\n\x11StartMTLSListener\x12\x19.clientpb.MTLSListenerReq\x1a\x16.clientpb.MTLSListener\x12@\n\x0fStartWGListener\x12\x17.clientpb.WGListenerReq\x1a\x14.clientpb.WGListener\x12\x43\n\x10StartDNSListener\x12\x18.clientpb.DNSListenerReq\x1a\x15.clientpb.DNSListener\x12G\n\x12StartHTTPSListener\x12\x19.clientpb.HTTPListenerReq\x1a\x16.clientpb.HTTPListener\x12\x46\n\x11StartHTTPListener\x12\x19.clientpb.HTTPListenerReq\x1a\x16.clientpb.HTTPListener\x12O\n\x16StartTCPStagerListener\x12\x1b.clientpb.StagerListenerReq\x1a\x18.clientpb.StagerListener\x12P\n\x17StartHTTPStagerListener\x12\x1b.clientpb.StagerListenerReq\x1a\x18.clientpb.StagerListener\x12)\n\x07LootAdd\x12\x0e.clientpb.Loot\x1a\x0e.clientpb.Loot\x12)\n\x06LootRm\x12\x0e.clientpb.Loot\x1a\x0f.commonpb.Empty\x12,\n\nLootUpdate\x12\x0e.clientpb.Loot\x1a\x0e.clientpb.Loot\x12-\n\x0bLootContent\x12\x0e.clientpb.Loot\x1a\x0e.clientpb.Loot\x12-\n\x07LootAll\x12\x0f.commonpb.Empty\x1a\x11.clientpb.AllLoot\x12.\n\tLootAllOf\x12\x0e.clientpb.Loot\x1a\x11.clientpb.AllLoot\x12,\n\x05Hosts\x12\x0f.commonpb.Empty\x1a\x12.clientpb.AllHosts\x12&\n\x04Host\x12\x0e.clientpb.Host\x1a\x0e.clientpb.Host\x12)\n\x06HostRm\x12\x0e.clientpb.Host\x1a\x0f.commonpb.Empty\x12+\n\tHostIOCRm\x12\r.clientpb.IOC\x1a\x0f.commonpb.Empty\x12\x35\n\x08Generate\x12\x15.clientpb.GenerateReq\x1a\x12.clientpb.Generate\x12\x39\n\nRegenerate\x12\x17.clientpb.RegenerateReq\x1a\x12.clientpb.Generate\x12\x39\n\rImplantBuilds\x12\x0f.commonpb.Empty\x1a\x17.clientpb.ImplantBuilds\x12:\n\x12\x44\x65leteImplantBuild\x12\x13.clientpb.DeleteReq\x1a\x0f.commonpb.Empty\x12/\n\x08\x43\x61naries\x12\x0f.commonpb.Empty\x1a\x12.clientpb.Canaries\x12\x43\n\x16GenerateWGClientConfig\x12\x0f.commonpb.Empty\x1a\x18.clientpb.WGClientConfig\x12\x39\n\x10GenerateUniqueIP\x12\x0f.commonpb.Empty\x1a\x14.clientpb.UniqueWGIP\x12=\n\x0fImplantProfiles\x12\x0f.commonpb.Empty\x1a\x19.clientpb.ImplantProfiles\x12<\n\x14\x44\x65leteImplantProfile\x12\x13.clientpb.DeleteReq\x1a\x0f.commonpb.Empty\x12H\n\x12SaveImplantProfile\x12\x18.clientpb.ImplantProfile\x1a\x18.clientpb.ImplantProfile\x12\x37\n\x08MsfStage\x12\x16.clientpb.MsfStagerReq\x1a\x13.clientpb.MsfStager\x12\x41\n\x0cShellcodeRDI\x12\x19.clientpb.ShellcodeRDIReq\x1a\x16.clientpb.ShellcodeRDI\x12\x32\n\x0bGetCompiler\x12\x0f.commonpb.Empty\x1a\x12.clientpb.Compiler\x12/\n\x08Websites\x12\x0f.commonpb.Empty\x1a\x12.clientpb.Websites\x12/\n\x07Website\x12\x11.clientpb.Website\x1a\x11.clientpb.Website\x12\x33\n\rWebsiteRemove\x12\x11.clientpb.Website\x1a\x0f.commonpb.Empty\x12\x43\n\x11WebsiteAddContent\x12\x1b.clientpb.WebsiteAddContent\x1a\x11.clientpb.Website\x12\x46\n\x14WebsiteUpdateContent\x12\x1b.clientpb.WebsiteAddContent\x1a\x11.clientpb.Website\x12I\n\x14WebsiteRemoveContent\x12\x1e.clientpb.WebsiteRemoveContent\x1a\x11.clientpb.Website\x12&\n\x04Ping\x12\x0e.sliverpb.Ping\x1a\x0e.sliverpb.Ping\x12#\n\x02Ps\x12\x0f.sliverpb.PsReq\x1a\x0c.sliverpb.Ps\x12\x38\n\tTerminate\x12\x16.sliverpb.TerminateReq\x1a\x13.sliverpb.Terminate\x12\x35\n\x08Ifconfig\x12\x15.sliverpb.IfconfigReq\x1a\x12.sliverpb.Ifconfig\x12\x32\n\x07Netstat\x12\x14.sliverpb.NetstatReq\x1a\x11.sliverpb.Netstat\x12#\n\x02Ls\x12\x0f.sliverpb.LsReq\x1a\x0c.sliverpb.Ls\x12$\n\x02\x43\x64\x12\x0f.sliverpb.CdReq\x1a\r.sliverpb.Pwd\x12&\n\x03Pwd\x12\x10.sliverpb.PwdReq\x1a\r.sliverpb.Pwd\x12#\n\x02Mv\x12\x0f.sliverpb.MvReq\x1a\x0c.sliverpb.Mv\x12#\n\x02Rm\x12\x0f.sliverpb.RmReq\x1a\x0c.sliverpb.Rm\x12,\n\x05Mkdir\x12\x12.sliverpb.MkdirReq\x1a\x0f.sliverpb.Mkdir\x12\x35\n\x08\x44ownload\x12\x15.sliverpb.DownloadReq\x1a\x12.sliverpb.Download\x12/\n\x06Upload\x12\x13.sliverpb.UploadReq\x1a\x10.sliverpb.Upload\x12>\n\x0bProcessDump\x12\x18.sliverpb.ProcessDumpReq\x1a\x15.sliverpb.ProcessDump\x12,\n\x05RunAs\x12\x12.sliverpb.RunAsReq\x1a\x0f.sliverpb.RunAs\x12>\n\x0bImpersonate\x12\x18.sliverpb.ImpersonateReq\x1a\x15.sliverpb.Impersonate\x12\x38\n\tRevToSelf\x12\x16.sliverpb.RevToSelfReq\x1a\x13.sliverpb.RevToSelf\x12\x38\n\tGetSystem\x12\x16.clientpb.GetSystemReq\x1a\x13.sliverpb.GetSystem\x12)\n\x04Task\x12\x11.sliverpb.TaskReq\x1a\x0e.sliverpb.Task\x12\'\n\x03Msf\x12\x10.clientpb.MSFReq\x1a\x0e.sliverpb.Task\x12\x33\n\tMsfRemote\x12\x16.clientpb.MSFRemoteReq\x1a\x0e.sliverpb.Task\x12J\n\x0f\x45xecuteAssembly\x12\x1c.sliverpb.ExecuteAssemblyReq\x1a\x19.sliverpb.ExecuteAssembly\x12\x32\n\x07Migrate\x12\x14.clientpb.MigrateReq\x1a\x11.sliverpb.Migrate\x12\x32\n\x07\x45xecute\x12\x14.sliverpb.ExecuteReq\x1a\x11.sliverpb.Execute\x12<\n\x0c\x45xecuteToken\x12\x19.sliverpb.ExecuteTokenReq\x1a\x11.sliverpb.Execute\x12\x35\n\x08Sideload\x12\x15.sliverpb.SideloadReq\x1a\x12.sliverpb.Sideload\x12;\n\x08SpawnDll\x12\x1b.sliverpb.InvokeSpawnDllReq\x1a\x12.sliverpb.SpawnDll\x12;\n\nScreenshot\x12\x17.sliverpb.ScreenshotReq\x1a\x14.sliverpb.Screenshot\x12P\n\x11\x43urrentTokenOwner\x12\x1e.sliverpb.CurrentTokenOwnerReq\x1a\x1b.sliverpb.CurrentTokenOwner\x12N\n\x12PivotStartListener\x12\x1f.sliverpb.PivotStartListenerReq\x1a\x17.sliverpb.PivotListener\x12\x44\n\x11PivotStopListener\x12\x1e.sliverpb.PivotStopListenerReq\x1a\x0f.commonpb.Empty\x12N\n\x15PivotSessionListeners\x12\x1b.sliverpb.PivotListenersReq\x1a\x18.sliverpb.PivotListeners\x12\x33\n\nPivotGraph\x12\x0f.commonpb.Empty\x1a\x14.clientpb.PivotGraph\x12@\n\x0cStartService\x12\x19.sliverpb.StartServiceReq\x1a\x15.sliverpb.ServiceInfo\x12>\n\x0bStopService\x12\x18.sliverpb.StopServiceReq\x1a\x15.sliverpb.ServiceInfo\x12\x42\n\rRemoveService\x12\x1a.sliverpb.RemoveServiceReq\x1a\x15.sliverpb.ServiceInfo\x12\x38\n\tMakeToken\x12\x16.sliverpb.MakeTokenReq\x1a\x13.sliverpb.MakeToken\x12-\n\x06GetEnv\x12\x10.sliverpb.EnvReq\x1a\x11.sliverpb.EnvInfo\x12/\n\x06SetEnv\x12\x13.sliverpb.SetEnvReq\x1a\x10.sliverpb.SetEnv\x12\x35\n\x08UnsetEnv\x12\x15.sliverpb.UnsetEnvReq\x1a\x12.sliverpb.UnsetEnv\x12\x35\n\x08\x42\x61\x63kdoor\x12\x15.sliverpb.BackdoorReq\x1a\x12.sliverpb.Backdoor\x12\x41\n\x0cRegistryRead\x12\x19.sliverpb.RegistryReadReq\x1a\x16.sliverpb.RegistryRead\x12\x44\n\rRegistryWrite\x12\x1a.sliverpb.RegistryWriteReq\x1a\x17.sliverpb.RegistryWrite\x12P\n\x11RegistryCreateKey\x12\x1e.sliverpb.RegistryCreateKeyReq\x1a\x1b.sliverpb.RegistryCreateKey\x12P\n\x11RegistryDeleteKey\x12\x1e.sliverpb.RegistryDeleteKeyReq\x1a\x1b.sliverpb.RegistryDeleteKey\x12T\n\x13RegistryListSubKeys\x12\x1f.sliverpb.RegistrySubKeyListReq\x1a\x1c.sliverpb.RegistrySubKeyList\x12S\n\x12RegistryListValues\x12\x1f.sliverpb.RegistryListValuesReq\x1a\x1c.sliverpb.RegistryValuesList\x12>\n\rRunSSHCommand\x12\x17.sliverpb.SSHCommandReq\x1a\x14.sliverpb.SSHCommand\x12\x38\n\tHijackDLL\x12\x16.clientpb.DllHijackReq\x1a\x13.clientpb.DllHijack\x12\x35\n\x08GetPrivs\x12\x15.sliverpb.GetPrivsReq\x1a\x12.sliverpb.GetPrivs\x12;\n\x0bOpenSession\x12\x15.sliverpb.OpenSession\x1a\x15.sliverpb.OpenSession\x12\x37\n\x0c\x43loseSession\x12\x16.sliverpb.CloseSession\x1a\x0f.commonpb.Empty\x12P\n\x11RegisterExtension\x12\x1e.sliverpb.RegisterExtensionReq\x1a\x1b.sliverpb.RegisterExtension\x12\x44\n\rCallExtension\x12\x1a.sliverpb.CallExtensionReq\x1a\x17.sliverpb.CallExtension\x12G\n\x0eListExtensions\x12\x1b.sliverpb.ListExtensionsReq\x1a\x18.sliverpb.ListExtensions\x12N\n\x12WGStartPortForward\x12\x1f.sliverpb.WGPortForwardStartReq\x1a\x17.sliverpb.WGPortForward\x12L\n\x11WGStopPortForward\x12\x1e.sliverpb.WGPortForwardStopReq\x1a\x17.sliverpb.WGPortForward\x12<\n\x0cWGStartSocks\x12\x19.sliverpb.WGSocksStartReq\x1a\x11.sliverpb.WGSocks\x12:\n\x0bWGStopSocks\x12\x18.sliverpb.WGSocksStopReq\x1a\x11.sliverpb.WGSocks\x12K\n\x10WGListForwarders\x12\x1c.sliverpb.WGTCPForwardersReq\x1a\x19.sliverpb.WGTCPForwarders\x12K\n\x12WGListSocksServers\x12\x1b.sliverpb.WGSocksServersReq\x1a\x18.sliverpb.WGSocksServers\x12,\n\x05Shell\x12\x12.sliverpb.ShellReq\x1a\x0f.sliverpb.Shell\x12\x32\n\x07Portfwd\x12\x14.sliverpb.PortfwdReq\x1a\x11.sliverpb.Portfwd\x12/\n\x0b\x43reateSocks\x12\x0f.sliverpb.Socks\x1a\x0f.sliverpb.Socks\x12.\n\nCloseSocks\x12\x0f.sliverpb.Socks\x1a\x0f.commonpb.Empty\x12:\n\nSocksProxy\x12\x13.sliverpb.SocksData\x1a\x13.sliverpb.SocksData(\x01\x30\x01\x12\x32\n\x0c\x43reateTunnel\x12\x10.sliverpb.Tunnel\x1a\x10.sliverpb.Tunnel\x12\x30\n\x0b\x43loseTunnel\x12\x10.sliverpb.Tunnel\x1a\x0f.commonpb.Empty\x12<\n\nTunnelData\x12\x14.sliverpb.TunnelData\x1a\x14.sliverpb.TunnelData(\x01\x30\x01\x12,\n\x06\x45vents\x12\x0f.commonpb.Empty\x1a\x0f.clientpb.Event0\x01\x42,Z*github.com/bishopfox/sliver/protobuf/rpcpbb\x06proto3'
   ,
   dependencies=[commonpb_dot_common__pb2.DESCRIPTOR,sliverpb_dot_sliver__pb2.DESCRIPTOR,clientpb_dot_client__pb2.DESCRIPTOR,])
 
@@ -41,7 +41,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
   serialized_start=101,
-  serialized_end=7036,
+  serialized_end=7155,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetVersion',
@@ -634,9 +634,19 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
+    name='Mv',
+    full_name='rpcpb.SliverRPC.Mv',
+    index=59,
+    containing_service=None,
+    input_type=sliverpb_dot_sliver__pb2._MVREQ,
+    output_type=sliverpb_dot_sliver__pb2._MV,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
     name='Rm',
     full_name='rpcpb.SliverRPC.Rm',
-    index=59,
+    index=60,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._RMREQ,
     output_type=sliverpb_dot_sliver__pb2._RM,
@@ -646,7 +656,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='Mkdir',
     full_name='rpcpb.SliverRPC.Mkdir',
-    index=60,
+    index=61,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._MKDIRREQ,
     output_type=sliverpb_dot_sliver__pb2._MKDIR,
@@ -656,7 +666,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='Download',
     full_name='rpcpb.SliverRPC.Download',
-    index=61,
+    index=62,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._DOWNLOADREQ,
     output_type=sliverpb_dot_sliver__pb2._DOWNLOAD,
@@ -666,7 +676,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='Upload',
     full_name='rpcpb.SliverRPC.Upload',
-    index=62,
+    index=63,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._UPLOADREQ,
     output_type=sliverpb_dot_sliver__pb2._UPLOAD,
@@ -676,7 +686,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='ProcessDump',
     full_name='rpcpb.SliverRPC.ProcessDump',
-    index=63,
+    index=64,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._PROCESSDUMPREQ,
     output_type=sliverpb_dot_sliver__pb2._PROCESSDUMP,
@@ -686,7 +696,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='RunAs',
     full_name='rpcpb.SliverRPC.RunAs',
-    index=64,
+    index=65,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._RUNASREQ,
     output_type=sliverpb_dot_sliver__pb2._RUNAS,
@@ -696,7 +706,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='Impersonate',
     full_name='rpcpb.SliverRPC.Impersonate',
-    index=65,
+    index=66,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._IMPERSONATEREQ,
     output_type=sliverpb_dot_sliver__pb2._IMPERSONATE,
@@ -706,7 +716,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='RevToSelf',
     full_name='rpcpb.SliverRPC.RevToSelf',
-    index=66,
+    index=67,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._REVTOSELFREQ,
     output_type=sliverpb_dot_sliver__pb2._REVTOSELF,
@@ -716,7 +726,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='GetSystem',
     full_name='rpcpb.SliverRPC.GetSystem',
-    index=67,
+    index=68,
     containing_service=None,
     input_type=clientpb_dot_client__pb2._GETSYSTEMREQ,
     output_type=sliverpb_dot_sliver__pb2._GETSYSTEM,
@@ -726,7 +736,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='Task',
     full_name='rpcpb.SliverRPC.Task',
-    index=68,
+    index=69,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._TASKREQ,
     output_type=sliverpb_dot_sliver__pb2._TASK,
@@ -736,7 +746,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='Msf',
     full_name='rpcpb.SliverRPC.Msf',
-    index=69,
+    index=70,
     containing_service=None,
     input_type=clientpb_dot_client__pb2._MSFREQ,
     output_type=sliverpb_dot_sliver__pb2._TASK,
@@ -746,7 +756,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='MsfRemote',
     full_name='rpcpb.SliverRPC.MsfRemote',
-    index=70,
+    index=71,
     containing_service=None,
     input_type=clientpb_dot_client__pb2._MSFREMOTEREQ,
     output_type=sliverpb_dot_sliver__pb2._TASK,
@@ -756,7 +766,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='ExecuteAssembly',
     full_name='rpcpb.SliverRPC.ExecuteAssembly',
-    index=71,
+    index=72,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._EXECUTEASSEMBLYREQ,
     output_type=sliverpb_dot_sliver__pb2._EXECUTEASSEMBLY,
@@ -766,7 +776,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='Migrate',
     full_name='rpcpb.SliverRPC.Migrate',
-    index=72,
+    index=73,
     containing_service=None,
     input_type=clientpb_dot_client__pb2._MIGRATEREQ,
     output_type=sliverpb_dot_sliver__pb2._MIGRATE,
@@ -776,7 +786,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='Execute',
     full_name='rpcpb.SliverRPC.Execute',
-    index=73,
+    index=74,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._EXECUTEREQ,
     output_type=sliverpb_dot_sliver__pb2._EXECUTE,
@@ -786,7 +796,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='ExecuteToken',
     full_name='rpcpb.SliverRPC.ExecuteToken',
-    index=74,
+    index=75,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._EXECUTETOKENREQ,
     output_type=sliverpb_dot_sliver__pb2._EXECUTE,
@@ -796,7 +806,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='Sideload',
     full_name='rpcpb.SliverRPC.Sideload',
-    index=75,
+    index=76,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._SIDELOADREQ,
     output_type=sliverpb_dot_sliver__pb2._SIDELOAD,
@@ -806,7 +816,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='SpawnDll',
     full_name='rpcpb.SliverRPC.SpawnDll',
-    index=76,
+    index=77,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._INVOKESPAWNDLLREQ,
     output_type=sliverpb_dot_sliver__pb2._SPAWNDLL,
@@ -816,7 +826,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='Screenshot',
     full_name='rpcpb.SliverRPC.Screenshot',
-    index=77,
+    index=78,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._SCREENSHOTREQ,
     output_type=sliverpb_dot_sliver__pb2._SCREENSHOT,
@@ -824,9 +834,19 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
+    name='CurrentTokenOwner',
+    full_name='rpcpb.SliverRPC.CurrentTokenOwner',
+    index=79,
+    containing_service=None,
+    input_type=sliverpb_dot_sliver__pb2._CURRENTTOKENOWNERREQ,
+    output_type=sliverpb_dot_sliver__pb2._CURRENTTOKENOWNER,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
     name='PivotStartListener',
     full_name='rpcpb.SliverRPC.PivotStartListener',
-    index=78,
+    index=80,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._PIVOTSTARTLISTENERREQ,
     output_type=sliverpb_dot_sliver__pb2._PIVOTLISTENER,
@@ -836,7 +856,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='PivotStopListener',
     full_name='rpcpb.SliverRPC.PivotStopListener',
-    index=79,
+    index=81,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._PIVOTSTOPLISTENERREQ,
     output_type=commonpb_dot_common__pb2._EMPTY,
@@ -846,7 +866,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='PivotSessionListeners',
     full_name='rpcpb.SliverRPC.PivotSessionListeners',
-    index=80,
+    index=82,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._PIVOTLISTENERSREQ,
     output_type=sliverpb_dot_sliver__pb2._PIVOTLISTENERS,
@@ -856,7 +876,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='PivotGraph',
     full_name='rpcpb.SliverRPC.PivotGraph',
-    index=81,
+    index=83,
     containing_service=None,
     input_type=commonpb_dot_common__pb2._EMPTY,
     output_type=clientpb_dot_client__pb2._PIVOTGRAPH,
@@ -866,7 +886,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='StartService',
     full_name='rpcpb.SliverRPC.StartService',
-    index=82,
+    index=84,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._STARTSERVICEREQ,
     output_type=sliverpb_dot_sliver__pb2._SERVICEINFO,
@@ -876,7 +896,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='StopService',
     full_name='rpcpb.SliverRPC.StopService',
-    index=83,
+    index=85,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._STOPSERVICEREQ,
     output_type=sliverpb_dot_sliver__pb2._SERVICEINFO,
@@ -886,7 +906,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='RemoveService',
     full_name='rpcpb.SliverRPC.RemoveService',
-    index=84,
+    index=86,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._REMOVESERVICEREQ,
     output_type=sliverpb_dot_sliver__pb2._SERVICEINFO,
@@ -896,7 +916,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='MakeToken',
     full_name='rpcpb.SliverRPC.MakeToken',
-    index=85,
+    index=87,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._MAKETOKENREQ,
     output_type=sliverpb_dot_sliver__pb2._MAKETOKEN,
@@ -906,7 +926,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='GetEnv',
     full_name='rpcpb.SliverRPC.GetEnv',
-    index=86,
+    index=88,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._ENVREQ,
     output_type=sliverpb_dot_sliver__pb2._ENVINFO,
@@ -916,7 +936,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='SetEnv',
     full_name='rpcpb.SliverRPC.SetEnv',
-    index=87,
+    index=89,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._SETENVREQ,
     output_type=sliverpb_dot_sliver__pb2._SETENV,
@@ -926,7 +946,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='UnsetEnv',
     full_name='rpcpb.SliverRPC.UnsetEnv',
-    index=88,
+    index=90,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._UNSETENVREQ,
     output_type=sliverpb_dot_sliver__pb2._UNSETENV,
@@ -936,7 +956,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='Backdoor',
     full_name='rpcpb.SliverRPC.Backdoor',
-    index=89,
+    index=91,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._BACKDOORREQ,
     output_type=sliverpb_dot_sliver__pb2._BACKDOOR,
@@ -946,7 +966,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='RegistryRead',
     full_name='rpcpb.SliverRPC.RegistryRead',
-    index=90,
+    index=92,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._REGISTRYREADREQ,
     output_type=sliverpb_dot_sliver__pb2._REGISTRYREAD,
@@ -956,7 +976,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='RegistryWrite',
     full_name='rpcpb.SliverRPC.RegistryWrite',
-    index=91,
+    index=93,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._REGISTRYWRITEREQ,
     output_type=sliverpb_dot_sliver__pb2._REGISTRYWRITE,
@@ -966,7 +986,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='RegistryCreateKey',
     full_name='rpcpb.SliverRPC.RegistryCreateKey',
-    index=92,
+    index=94,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._REGISTRYCREATEKEYREQ,
     output_type=sliverpb_dot_sliver__pb2._REGISTRYCREATEKEY,
@@ -976,7 +996,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='RegistryDeleteKey',
     full_name='rpcpb.SliverRPC.RegistryDeleteKey',
-    index=93,
+    index=95,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._REGISTRYDELETEKEYREQ,
     output_type=sliverpb_dot_sliver__pb2._REGISTRYDELETEKEY,
@@ -986,7 +1006,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='RegistryListSubKeys',
     full_name='rpcpb.SliverRPC.RegistryListSubKeys',
-    index=94,
+    index=96,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._REGISTRYSUBKEYLISTREQ,
     output_type=sliverpb_dot_sliver__pb2._REGISTRYSUBKEYLIST,
@@ -996,7 +1016,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='RegistryListValues',
     full_name='rpcpb.SliverRPC.RegistryListValues',
-    index=95,
+    index=97,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._REGISTRYLISTVALUESREQ,
     output_type=sliverpb_dot_sliver__pb2._REGISTRYVALUESLIST,
@@ -1006,7 +1026,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='RunSSHCommand',
     full_name='rpcpb.SliverRPC.RunSSHCommand',
-    index=96,
+    index=98,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._SSHCOMMANDREQ,
     output_type=sliverpb_dot_sliver__pb2._SSHCOMMAND,
@@ -1016,7 +1036,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='HijackDLL',
     full_name='rpcpb.SliverRPC.HijackDLL',
-    index=97,
+    index=99,
     containing_service=None,
     input_type=clientpb_dot_client__pb2._DLLHIJACKREQ,
     output_type=clientpb_dot_client__pb2._DLLHIJACK,
@@ -1026,7 +1046,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='GetPrivs',
     full_name='rpcpb.SliverRPC.GetPrivs',
-    index=98,
+    index=100,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._GETPRIVSREQ,
     output_type=sliverpb_dot_sliver__pb2._GETPRIVS,
@@ -1036,7 +1056,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='OpenSession',
     full_name='rpcpb.SliverRPC.OpenSession',
-    index=99,
+    index=101,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._OPENSESSION,
     output_type=sliverpb_dot_sliver__pb2._OPENSESSION,
@@ -1046,7 +1066,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='CloseSession',
     full_name='rpcpb.SliverRPC.CloseSession',
-    index=100,
+    index=102,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._CLOSESESSION,
     output_type=commonpb_dot_common__pb2._EMPTY,
@@ -1056,7 +1076,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='RegisterExtension',
     full_name='rpcpb.SliverRPC.RegisterExtension',
-    index=101,
+    index=103,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._REGISTEREXTENSIONREQ,
     output_type=sliverpb_dot_sliver__pb2._REGISTEREXTENSION,
@@ -1066,7 +1086,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='CallExtension',
     full_name='rpcpb.SliverRPC.CallExtension',
-    index=102,
+    index=104,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._CALLEXTENSIONREQ,
     output_type=sliverpb_dot_sliver__pb2._CALLEXTENSION,
@@ -1076,7 +1096,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='ListExtensions',
     full_name='rpcpb.SliverRPC.ListExtensions',
-    index=103,
+    index=105,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._LISTEXTENSIONSREQ,
     output_type=sliverpb_dot_sliver__pb2._LISTEXTENSIONS,
@@ -1086,7 +1106,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='WGStartPortForward',
     full_name='rpcpb.SliverRPC.WGStartPortForward',
-    index=104,
+    index=106,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._WGPORTFORWARDSTARTREQ,
     output_type=sliverpb_dot_sliver__pb2._WGPORTFORWARD,
@@ -1096,7 +1116,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='WGStopPortForward',
     full_name='rpcpb.SliverRPC.WGStopPortForward',
-    index=105,
+    index=107,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._WGPORTFORWARDSTOPREQ,
     output_type=sliverpb_dot_sliver__pb2._WGPORTFORWARD,
@@ -1106,7 +1126,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='WGStartSocks',
     full_name='rpcpb.SliverRPC.WGStartSocks',
-    index=106,
+    index=108,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._WGSOCKSSTARTREQ,
     output_type=sliverpb_dot_sliver__pb2._WGSOCKS,
@@ -1116,7 +1136,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='WGStopSocks',
     full_name='rpcpb.SliverRPC.WGStopSocks',
-    index=107,
+    index=109,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._WGSOCKSSTOPREQ,
     output_type=sliverpb_dot_sliver__pb2._WGSOCKS,
@@ -1126,7 +1146,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='WGListForwarders',
     full_name='rpcpb.SliverRPC.WGListForwarders',
-    index=108,
+    index=110,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._WGTCPFORWARDERSREQ,
     output_type=sliverpb_dot_sliver__pb2._WGTCPFORWARDERS,
@@ -1136,7 +1156,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='WGListSocksServers',
     full_name='rpcpb.SliverRPC.WGListSocksServers',
-    index=109,
+    index=111,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._WGSOCKSSERVERSREQ,
     output_type=sliverpb_dot_sliver__pb2._WGSOCKSSERVERS,
@@ -1146,7 +1166,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='Shell',
     full_name='rpcpb.SliverRPC.Shell',
-    index=110,
+    index=112,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._SHELLREQ,
     output_type=sliverpb_dot_sliver__pb2._SHELL,
@@ -1156,7 +1176,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='Portfwd',
     full_name='rpcpb.SliverRPC.Portfwd',
-    index=111,
+    index=113,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._PORTFWDREQ,
     output_type=sliverpb_dot_sliver__pb2._PORTFWD,
@@ -1166,7 +1186,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='CreateSocks',
     full_name='rpcpb.SliverRPC.CreateSocks',
-    index=112,
+    index=114,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._SOCKS,
     output_type=sliverpb_dot_sliver__pb2._SOCKS,
@@ -1176,7 +1196,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='CloseSocks',
     full_name='rpcpb.SliverRPC.CloseSocks',
-    index=113,
+    index=115,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._SOCKS,
     output_type=commonpb_dot_common__pb2._EMPTY,
@@ -1186,7 +1206,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='SocksProxy',
     full_name='rpcpb.SliverRPC.SocksProxy',
-    index=114,
+    index=116,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._SOCKSDATA,
     output_type=sliverpb_dot_sliver__pb2._SOCKSDATA,
@@ -1196,7 +1216,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='CreateTunnel',
     full_name='rpcpb.SliverRPC.CreateTunnel',
-    index=115,
+    index=117,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._TUNNEL,
     output_type=sliverpb_dot_sliver__pb2._TUNNEL,
@@ -1206,7 +1226,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='CloseTunnel',
     full_name='rpcpb.SliverRPC.CloseTunnel',
-    index=116,
+    index=118,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._TUNNEL,
     output_type=commonpb_dot_common__pb2._EMPTY,
@@ -1216,7 +1236,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='TunnelData',
     full_name='rpcpb.SliverRPC.TunnelData',
-    index=117,
+    index=119,
     containing_service=None,
     input_type=sliverpb_dot_sliver__pb2._TUNNELDATA,
     output_type=sliverpb_dot_sliver__pb2._TUNNELDATA,
@@ -1226,7 +1246,7 @@ _SLIVERRPC = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='Events',
     full_name='rpcpb.SliverRPC.Events',
-    index=118,
+    index=120,
     containing_service=None,
     input_type=commonpb_dot_common__pb2._EMPTY,
     output_type=clientpb_dot_client__pb2._EVENT,

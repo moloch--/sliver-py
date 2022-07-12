@@ -311,6 +311,11 @@ class SliverRPCStub(object):
                 request_serializer=sliverpb_dot_sliver__pb2.PwdReq.SerializeToString,
                 response_deserializer=sliverpb_dot_sliver__pb2.Pwd.FromString,
                 )
+        self.Mv = channel.unary_unary(
+                '/rpcpb.SliverRPC/Mv',
+                request_serializer=sliverpb_dot_sliver__pb2.MvReq.SerializeToString,
+                response_deserializer=sliverpb_dot_sliver__pb2.Mv.FromString,
+                )
         self.Rm = channel.unary_unary(
                 '/rpcpb.SliverRPC/Rm',
                 request_serializer=sliverpb_dot_sliver__pb2.RmReq.SerializeToString,
@@ -405,6 +410,11 @@ class SliverRPCStub(object):
                 '/rpcpb.SliverRPC/Screenshot',
                 request_serializer=sliverpb_dot_sliver__pb2.ScreenshotReq.SerializeToString,
                 response_deserializer=sliverpb_dot_sliver__pb2.Screenshot.FromString,
+                )
+        self.CurrentTokenOwner = channel.unary_unary(
+                '/rpcpb.SliverRPC/CurrentTokenOwner',
+                request_serializer=sliverpb_dot_sliver__pb2.CurrentTokenOwnerReq.SerializeToString,
+                response_deserializer=sliverpb_dot_sliver__pb2.CurrentTokenOwner.FromString,
                 )
         self.PivotStartListener = channel.unary_unary(
                 '/rpcpb.SliverRPC/PivotStartListener',
@@ -984,6 +994,12 @@ class SliverRPCServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def Mv(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def Rm(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -1093,6 +1109,12 @@ class SliverRPCServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def Screenshot(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def CurrentTokenOwner(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -1650,6 +1672,11 @@ def add_SliverRPCServicer_to_server(servicer, server):
                     request_deserializer=sliverpb_dot_sliver__pb2.PwdReq.FromString,
                     response_serializer=sliverpb_dot_sliver__pb2.Pwd.SerializeToString,
             ),
+            'Mv': grpc.unary_unary_rpc_method_handler(
+                    servicer.Mv,
+                    request_deserializer=sliverpb_dot_sliver__pb2.MvReq.FromString,
+                    response_serializer=sliverpb_dot_sliver__pb2.Mv.SerializeToString,
+            ),
             'Rm': grpc.unary_unary_rpc_method_handler(
                     servicer.Rm,
                     request_deserializer=sliverpb_dot_sliver__pb2.RmReq.FromString,
@@ -1744,6 +1771,11 @@ def add_SliverRPCServicer_to_server(servicer, server):
                     servicer.Screenshot,
                     request_deserializer=sliverpb_dot_sliver__pb2.ScreenshotReq.FromString,
                     response_serializer=sliverpb_dot_sliver__pb2.Screenshot.SerializeToString,
+            ),
+            'CurrentTokenOwner': grpc.unary_unary_rpc_method_handler(
+                    servicer.CurrentTokenOwner,
+                    request_deserializer=sliverpb_dot_sliver__pb2.CurrentTokenOwnerReq.FromString,
+                    response_serializer=sliverpb_dot_sliver__pb2.CurrentTokenOwner.SerializeToString,
             ),
             'PivotStartListener': grpc.unary_unary_rpc_method_handler(
                     servicer.PivotStartListener,
@@ -2964,6 +2996,23 @@ class SliverRPC(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
+    def Mv(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/Mv',
+            sliverpb_dot_sliver__pb2.MvReq.SerializeToString,
+            sliverpb_dot_sliver__pb2.Mv.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
     def Rm(request,
             target,
             options=(),
@@ -3283,6 +3332,23 @@ class SliverRPC(object):
         return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/Screenshot',
             sliverpb_dot_sliver__pb2.ScreenshotReq.SerializeToString,
             sliverpb_dot_sliver__pb2.Screenshot.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def CurrentTokenOwner(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/CurrentTokenOwner',
+            sliverpb_dot_sliver__pb2.CurrentTokenOwnerReq.SerializeToString,
+            sliverpb_dot_sliver__pb2.CurrentTokenOwner.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
