@@ -522,7 +522,7 @@ class SliverClient(BaseClient):
         :rtype: client_pb2.Generate
         '''        
         req = client_pb2.GenerateReq()
-        req.ImplantConfig = config
+        req.Config.CopyFrom(config)
         return (await self._stub.Generate(req, timeout=timeout))
 
     async def regenerate(self, implant_name: str, timeout=TIMEOUT) -> client_pb2.Generate:
