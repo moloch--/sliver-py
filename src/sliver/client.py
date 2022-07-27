@@ -536,7 +536,7 @@ class SliverClient(BaseClient):
         :rtype: client_pb2.Generate
         '''
         regenerate = client_pb2.RegenerateReq()
-        regenerate.ImpantName = implant_name
+        regenerate.ImplantName = implant_name
         return (await self._stub.Regenerate(regenerate, timeout=timeout))
 
     async def implant_builds(self, timeout=TIMEOUT) -> Dict[str, client_pb2.ImplantConfig]:
