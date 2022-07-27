@@ -50,6 +50,7 @@ The main class is ``SliverClient``, which when paired with a configuration file,
     #!/usr/bin/env python3
 
     import os
+    import asyncio
     from sliver import SliverClientConfig, SliverClient
 
     CONFIG_PATH = os.path.join('path', 'to', 'default.cfg')
@@ -96,14 +97,15 @@ To interact with a Sliver session we need to create an ``InteractiveSession`` ob
     #!/usr/bin/env python3
 
     import os
+    import asyncio
     from sliver import SliverClientConfig, SliverClient
 
     # Construct path to operator config file
-    CONFIG = os.path.join('path', 'to', 'operator.cfg')
+    CONFIG_PATH = os.path.join('path', 'to', 'operator.cfg')
 
     async def main():
         ''' Session interact example '''
-        config = SliverClientConfig.parse_config_file(CONFIG)
+        config = SliverClientConfig.parse_config_file(CONFIG_PATH)
         client = SliverClient(config)
         await client.connect()
         sessions = await client.sessions()  # <-- List Protobuf Session objects
@@ -118,7 +120,7 @@ To interact with a Sliver session we need to create an ``InteractiveSession`` ob
             print('FileName: %s (dir: %s, size: %d)' % (fi.Name, fi.IsDir, fi.Size))
 
     if __name__ == '__main__':
-        main()
+        asyncio.run(main())
 
 **NOTE:** There are two "session" related objects the Protobuf ``client_pb2.Session`` object, which contains metadata about the sessions such as
 the session ID, the active C2 protocol, etc. and the ``InteractiveSession`` class, which is used to interact with the session (i.e., execute commands, etc).
@@ -135,14 +137,15 @@ To interact with a Sliver beacon we need to create an ``InteractiveBeacon`` obje
     #!/usr/bin/env python3
 
     import os
+    import asyncio
     from sliver import SliverClientConfig, SliverClient
 
     # Construct path to operator config file
-    CONFIG = os.path.join('path', 'to', 'operator.cfg')
+    CONFIG_PATH = os.path.join('path', 'to', 'operator.cfg')
 
     async def main():
         ''' Session interact example '''
-        config = SliverClientConfig.parse_config_file(CONFIG)
+        config = SliverClientConfig.parse_config_file(CONFIG_PATH)
         client = SliverClient(config)
         await client.connect()
         beacons = await client.beacons()  # <-- List Protobuf Session objects
@@ -163,7 +166,7 @@ To interact with a Sliver beacon we need to create an ``InteractiveBeacon`` obje
 
 
     if __name__ == '__main__':
-        main()
+        asyncio.run(main())
 
 **NOTE:** The main difference between interacting with a session vs. a beacon, is that a beacon's command will return a ``Future`` object that eventually resolves to the task result.
 
@@ -231,12 +234,12 @@ Here is an example of using ``.on()`` to automatically interact with new session
     from sliver import SliverClientConfig, AsyncSliverClient, client_pb2
 
     CONFIG_DIR = os.path.join(os.path.expanduser("~"), ".sliver-client", "configs")
-    DEFAULT_CONFIG = os.path.join(CONFIG_DIR, "default.cfg")
+    CONFIG_PATH = os.path.join(CONFIG_DIR, "default.cfg")
 
 
     async def main():
         ''' Client connect example '''
-        config = SliverClientConfig.parse_config_file(DEFAULT_CONFIG)
+        config = SliverClientConfig.parse_config_file(CONFIG_PATH)
         client = AsyncSliverClient(config)
         await client.connect()
         async for event in client.on('session-connected'):
