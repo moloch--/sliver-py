@@ -26,8 +26,8 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="sliver-py",
-    version='0.0.16',
-    author='moloch',
+    version="0.0.17",
+    author="moloch",
     author_email="875022+moloch--@users.noreply.github.com",
     description="Sliver gRPC client library.",
     long_description=long_description,
@@ -40,18 +40,18 @@ setuptools.setup(
         "Programming Language :: Python :: 3",
     ],
     install_requires=[
-        'grpcio',
-        'grpcio-tools',
+        "grpcio",
+        "grpcio-tools",
     ],
     package_dir={"": "src"},
     packages=[
-        'sliver',
-        'sliver.pb',
-        'sliver.pb.commonpb',
-        'sliver.pb.sliverpb',
-        'sliver.pb.clientpb',
-        'sliver.pb.rpcpb',
+        "sliver",
+        "sliver.pb",
+        "sliver.pb.commonpb",
+        "sliver.pb.sliverpb",
+        "sliver.pb.clientpb",
+        "sliver.pb.rpcpb",
     ],
     python_requires=">=3.6",
-    include_package_data=True
+    include_package_data=True,
 )
