@@ -7,6 +7,7 @@ from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
+
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
@@ -16,68 +17,85 @@ from ..commonpb import common_pb2 as commonpb_dot_common__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
-  name='sliverpb/sliver.proto',
-  package='sliverpb',
-  syntax='proto3',
-  serialized_options=b'Z-github.com/bishopfox/sliver/protobuf/sliverpb',
-  create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x15sliverpb/sliver.proto\x12\x08sliverpb\x1a\x15\x63ommonpb/common.proto\"N\n\x08\x45nvelope\x12\n\n\x02ID\x18\x01 \x01(\x03\x12\x0c\n\x04Type\x18\x02 \x01(\r\x12\x0c\n\x04\x44\x61ta\x18\x03 \x01(\x0c\x12\x1a\n\x12UnknownMessageType\x18\x04 \x01(\x08\"Q\n\x0b\x42\x65\x61\x63onTasks\x12\n\n\x02ID\x18\x01 \x01(\t\x12!\n\x05Tasks\x18\x02 \x03(\x0b\x32\x12.sliverpb.Envelope\x12\x13\n\x0bNextCheckin\x18\x03 \x01(\x03\"\x8f\x02\n\x08Register\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12\x10\n\x08Hostname\x18\x02 \x01(\t\x12\x0c\n\x04Uuid\x18\x03 \x01(\t\x12\x10\n\x08Username\x18\x04 \x01(\t\x12\x0b\n\x03Uid\x18\x05 \x01(\t\x12\x0b\n\x03Gid\x18\x06 \x01(\t\x12\n\n\x02Os\x18\x07 \x01(\t\x12\x0c\n\x04\x41rch\x18\x08 \x01(\t\x12\x0b\n\x03Pid\x18\t \x01(\x05\x12\x10\n\x08\x46ilename\x18\n \x01(\t\x12\x10\n\x08\x41\x63tiveC2\x18\x0b \x01(\t\x12\x0f\n\x07Version\x18\x0c \x01(\t\x12\x19\n\x11ReconnectInterval\x18\r \x01(\x03\x12\x10\n\x08ProxyURL\x18\x0e \x01(\t\x12\x10\n\x08\x43onfigID\x18\x10 \x01(\t\x12\x0e\n\x06PeerID\x18\x11 \x01(\x03\"y\n\x0e\x42\x65\x61\x63onRegister\x12\n\n\x02ID\x18\x01 \x01(\t\x12\x10\n\x08Interval\x18\x02 \x01(\x03\x12\x0e\n\x06Jitter\x18\x03 \x01(\x03\x12$\n\x08Register\x18\x04 \x01(\x0b\x32\x12.sliverpb.Register\x12\x13\n\x0bNextCheckin\x18\x05 \x01(\x03\"C\n\x0fSessionRegister\x12\n\n\x02ID\x18\x01 \x01(\t\x12$\n\x08Register\x18\x02 \x01(\x0b\x32\x12.sliverpb.Register\"s\n\x0bOpenSession\x12\x0b\n\x03\x43\x32s\x18\x01 \x03(\t\x12\r\n\x05\x44\x65lay\x18\x02 \x01(\x03\x12$\n\x08Response\x18\x08 \x01(\x0b\x32\x12.commonpb.Response\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"X\n\x0c\x43loseSession\x12$\n\x08Response\x18\x08 \x01(\x0b\x32\x12.commonpb.Response\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"_\n\x04Ping\x12\r\n\x05Nonce\x18\x01 \x01(\x05\x12$\n\x08Response\x18\x08 \x01(\x0b\x32\x12.commonpb.Response\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"<\n\x07KillReq\x12\r\n\x05\x46orce\x18\x01 \x01(\x08\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"+\n\x05PsReq\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"P\n\x02Ps\x12$\n\tProcesses\x18\x01 \x03(\x0b\x32\x11.commonpb.Process\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"N\n\x0cTerminateReq\x12\x0b\n\x03Pid\x18\x01 \x01(\x05\x12\r\n\x05\x46orce\x18\x02 \x01(\x08\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\">\n\tTerminate\x12\x0b\n\x03Pid\x18\x01 \x01(\x05\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"1\n\x0bIfconfigReq\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"_\n\x08Ifconfig\x12-\n\rNetInterfaces\x18\x01 \x03(\x0b\x32\x16.sliverpb.NetInterface\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"M\n\x0cNetInterface\x12\r\n\x05Index\x18\x01 \x01(\x05\x12\x0c\n\x04Name\x18\x02 \x01(\t\x12\x0b\n\x03MAC\x18\x03 \x01(\t\x12\x13\n\x0bIPAddresses\x18\x04 \x03(\t\"9\n\x05LsReq\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"\x95\x01\n\x02Ls\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\x0e\n\x06\x45xists\x18\x02 \x01(\x08\x12!\n\x05\x46iles\x18\x03 \x03(\x0b\x32\x12.sliverpb.FileInfo\x12\x10\n\x08timezone\x18\x04 \x01(\t\x12\x16\n\x0etimezoneOffset\x18\x05 \x01(\x05\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"b\n\x08\x46ileInfo\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12\r\n\x05IsDir\x18\x02 \x01(\x08\x12\x0c\n\x04Size\x18\x03 \x01(\x03\x12\x0f\n\x07ModTime\x18\x04 \x01(\x03\x12\x0c\n\x04Mode\x18\x05 \x01(\t\x12\x0c\n\x04Link\x18\x06 \x01(\t\"9\n\x05\x43\x64Req\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\",\n\x06PwdReq\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"9\n\x03Pwd\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"[\n\x05RmReq\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\x11\n\tRecursive\x18\x02 \x01(\x08\x12\r\n\x05\x46orce\x18\x03 \x01(\x08\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"8\n\x02Rm\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"E\n\x05MvReq\x12\x0b\n\x03Src\x18\x01 \x01(\t\x12\x0b\n\x03\x44st\x18\x02 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"D\n\x02Mv\x12\x0b\n\x03Src\x18\x01 \x01(\t\x12\x0b\n\x03\x44st\x18\x02 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"<\n\x08MkdirReq\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\";\n\x05Mkdir\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"m\n\x0b\x44ownloadReq\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\r\n\x05Start\x18\x02 \x01(\x03\x12\x0c\n\x04Stop\x18\x03 \x01(\x03\x12\x0f\n\x07Recurse\x18\x04 \x01(\x08\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"\xc5\x01\n\x08\x44ownload\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\x0f\n\x07\x45ncoder\x18\x02 \x01(\t\x12\x0e\n\x06\x45xists\x18\x03 \x01(\x08\x12\r\n\x05Start\x18\x04 \x01(\x03\x12\x0c\n\x04Stop\x18\x05 \x01(\x03\x12\x0c\n\x04\x44\x61ta\x18\x06 \x01(\x0c\x12\r\n\x05IsDir\x18\x07 \x01(\x08\x12\x11\n\tReadFiles\x18\x08 \x01(\x05\x12\x17\n\x0fUnreadableFiles\x18\n \x01(\x05\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"k\n\tUploadReq\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\x0f\n\x07\x45ncoder\x18\x02 \x01(\t\x12\x0c\n\x04\x44\x61ta\x18\x03 \x01(\x0c\x12\r\n\x05IsIOC\x18\x04 \x01(\x08\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"<\n\x06Upload\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"R\n\x0eProcessDumpReq\x12\x0b\n\x03Pid\x18\x01 \x01(\x05\x12\x0f\n\x07Timeout\x18\x02 \x01(\x05\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"A\n\x0bProcessDump\x12\x0c\n\x04\x44\x61ta\x18\x01 \x01(\x0c\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"c\n\x08RunAsReq\x12\x10\n\x08Username\x18\x01 \x01(\t\x12\x13\n\x0bProcessName\x18\x02 \x01(\t\x12\x0c\n\x04\x41rgs\x18\x03 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"=\n\x05RunAs\x12\x0e\n\x06Output\x18\x01 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"F\n\x0eImpersonateReq\x12\x10\n\x08Username\x18\x01 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"3\n\x0bImpersonate\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"2\n\x0cRevToSelfReq\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"1\n\tRevToSelf\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\":\n\x14\x43urrentTokenOwnerReq\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"I\n\x11\x43urrentTokenOwner\x12\x0e\n\x06Output\x18\x01 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"^\n\x12InvokeGetSystemReq\x12\x0c\n\x04\x44\x61ta\x18\x01 \x01(\x0c\x12\x16\n\x0eHostingProcess\x18\x02 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"1\n\tGetSystem\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"f\n\x0cMakeTokenReq\x12\x10\n\x08Username\x18\x01 \x01(\t\x12\x10\n\x08Password\x18\x02 \x01(\t\x12\x0e\n\x06\x44omain\x18\x03 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"1\n\tMakeToken\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"k\n\x07TaskReq\x12\x0f\n\x07\x45ncoder\x18\x01 \x01(\t\x12\x10\n\x08RWXPages\x18\x02 \x01(\x08\x12\x0b\n\x03Pid\x18\x03 \x01(\r\x12\x0c\n\x04\x44\x61ta\x18\x04 \x01(\x0c\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\",\n\x04Task\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"\xc1\x01\n\x12\x45xecuteAssemblyReq\x12\x10\n\x08\x41ssembly\x18\x01 \x01(\x0c\x12\x11\n\tArguments\x18\x02 \x01(\t\x12\x0f\n\x07Process\x18\x03 \x01(\t\x12\r\n\x05IsDLL\x18\x04 \x01(\x08\x12\x0c\n\x04\x41rch\x18\x05 \x01(\t\x12\x11\n\tClassName\x18\x06 \x01(\t\x12\x0e\n\x06Method\x18\x07 \x01(\t\x12\x11\n\tAppDomain\x18\x08 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"]\n\x18InvokeExecuteAssemblyReq\x12\x0c\n\x04\x44\x61ta\x18\x01 \x01(\x0c\x12\x0f\n\x07process\x18\x02 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"G\n\x0f\x45xecuteAssembly\x12\x0e\n\x06Output\x18\x01 \x01(\x0c\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"Q\n\x10InvokeMigrateReq\x12\x0b\n\x03Pid\x18\x01 \x01(\r\x12\x0c\n\x04\x44\x61ta\x18\x02 \x01(\x0c\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"@\n\x07Migrate\x12\x0f\n\x07Success\x18\x01 \x01(\x08\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"|\n\nExecuteReq\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\x0c\n\x04\x41rgs\x18\x02 \x03(\t\x12\x0e\n\x06Output\x18\x03 \x01(\x08\x12\x0e\n\x06Stdout\x18\x04 \x01(\t\x12\x0e\n\x06Stderr\x18\x05 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"\x81\x01\n\x0f\x45xecuteTokenReq\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\x0c\n\x04\x41rgs\x18\x02 \x03(\t\x12\x0e\n\x06Output\x18\x03 \x01(\x08\x12\x0e\n\x06Stdout\x18\x04 \x01(\t\x12\x0e\n\x06Stderr\x18\x05 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"l\n\x07\x45xecute\x12\x0e\n\x06Status\x18\x01 \x01(\r\x12\x0e\n\x06Stdout\x18\x02 \x01(\x0c\x12\x0e\n\x06Stderr\x18\x03 \x01(\x0c\x12\x0b\n\x03Pid\x18\x04 \x01(\r\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"\x93\x01\n\x0bSideloadReq\x12\x0c\n\x04\x44\x61ta\x18\x01 \x01(\x0c\x12\x13\n\x0bProcessName\x18\x02 \x01(\t\x12\x0c\n\x04\x41rgs\x18\x03 \x01(\t\x12\x12\n\nEntryPoint\x18\x04 \x01(\t\x12\x0c\n\x04Kill\x18\x05 \x01(\x08\x12\r\n\x05isDLL\x18\x06 \x01(\x08\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"@\n\x08Sideload\x12\x0e\n\x06Result\x18\x01 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"\x8a\x01\n\x11InvokeSpawnDllReq\x12\x0c\n\x04\x44\x61ta\x18\x01 \x01(\x0c\x12\x13\n\x0bProcessName\x18\x02 \x01(\t\x12\x0c\n\x04\x41rgs\x18\x03 \x01(\t\x12\x12\n\nEntryPoint\x18\x04 \x01(\t\x12\x0c\n\x04Kill\x18\x05 \x01(\x08\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"\x80\x01\n\x0bSpawnDllReq\x12\x0c\n\x04\x44\x61ta\x18\x01 \x01(\x0c\x12\x13\n\x0bProcessName\x18\x02 \x01(\t\x12\x0e\n\x06Offset\x18\x03 \x01(\r\x12\x0c\n\x04\x41rgs\x18\x04 \x01(\t\x12\x0c\n\x04Kill\x18\x05 \x01(\x08\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"@\n\x08SpawnDll\x12\x0e\n\x06Result\x18\x01 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"w\n\nNetstatReq\x12\x0b\n\x03TCP\x18\x01 \x01(\x08\x12\x0b\n\x03UDP\x18\x02 \x01(\x08\x12\x0b\n\x03IP4\x18\x03 \x01(\x08\x12\x0b\n\x03IP6\x18\x05 \x01(\x08\x12\x11\n\tListening\x18\x06 \x01(\x08\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"\xf1\x01\n\x0cSockTabEntry\x12\x32\n\tLocalAddr\x18\x01 \x01(\x0b\x32\x1f.sliverpb.SockTabEntry.SockAddr\x12\x33\n\nRemoteAddr\x18\x02 \x01(\x0b\x32\x1f.sliverpb.SockTabEntry.SockAddr\x12\x0f\n\x07SkState\x18\x03 \x01(\t\x12\x0b\n\x03UID\x18\x04 \x01(\r\x12\"\n\x07Process\x18\x05 \x01(\x0b\x32\x11.commonpb.Process\x12\x10\n\x08Protocol\x18\x06 \x01(\t\x1a$\n\x08SockAddr\x12\n\n\x02Ip\x18\x01 \x01(\t\x12\x0c\n\x04Port\x18\x02 \x01(\r\"X\n\x07Netstat\x12\'\n\x07\x45ntries\x18\x01 \x03(\x0b\x32\x16.sliverpb.SockTabEntry\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\":\n\x06\x45nvReq\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"T\n\x07\x45nvInfo\x12#\n\tVariables\x18\x01 \x03(\x0b\x32\x10.commonpb.EnvVar\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"S\n\tSetEnvReq\x12\"\n\x08Variable\x18\x01 \x01(\x0b\x32\x10.commonpb.EnvVar\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\".\n\x06SetEnv\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"?\n\x0bUnsetEnvReq\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"0\n\x08UnsetEnv\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"\x1d\n\x0e\x44NSSessionInit\x12\x0b\n\x03Key\x18\x01 \x01(\x0c\"3\n\x07\x44NSPoll\x12(\n\x06\x62locks\x18\x01 \x03(\x0b\x32\x18.sliverpb.DNSBlockHeader\"*\n\x0e\x44NSBlockHeader\x12\n\n\x02ID\x18\x01 \x01(\t\x12\x0c\n\x04Size\x18\x02 \x01(\r\"\x1e\n\x0fHTTPSessionInit\x12\x0b\n\x03Key\x18\x01 \x01(\x0c\"3\n\rScreenshotReq\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"@\n\nScreenshot\x12\x0c\n\x04\x44\x61ta\x18\x01 \x01(\x0c\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"\x9c\x01\n\x0fStartServiceReq\x12\x13\n\x0bServiceName\x18\x01 \x01(\t\x12\x1a\n\x12ServiceDescription\x18\x02 \x01(\t\x12\x0f\n\x07\x42inPath\x18\x03 \x01(\t\x12\x10\n\x08Hostname\x18\x04 \x01(\t\x12\x11\n\tArguments\x18\x05 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"3\n\x0bServiceInfo\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"7\n\x0eServiceInfoReq\x12\x13\n\x0bServiceName\x18\x01 \x01(\t\x12\x10\n\x08Hostname\x18\x02 \x01(\t\"c\n\x0eStopServiceReq\x12-\n\x0bServiceInfo\x18\x01 \x01(\x0b\x32\x18.sliverpb.ServiceInfoReq\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"e\n\x10RemoveServiceReq\x12-\n\x0bServiceInfo\x18\x01 \x01(\x0b\x32\x18.sliverpb.ServiceInfoReq\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"X\n\x0b\x42\x61\x63kdoorReq\x12\x10\n\x08\x46ilePath\x18\x01 \x01(\t\x12\x13\n\x0bProfileName\x18\x02 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"0\n\x08\x42\x61\x63kdoor\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"p\n\x0fRegistryReadReq\x12\x0c\n\x04Hive\x18\x01 \x01(\t\x12\x0c\n\x04Path\x18\x02 \x01(\t\x12\x0b\n\x03Key\x18\x03 \x01(\t\x12\x10\n\x08Hostname\x18\x04 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"C\n\x0cRegistryRead\x12\r\n\x05Value\x18\x01 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"\xcf\x01\n\x10RegistryWriteReq\x12\x0c\n\x04Hive\x18\x01 \x01(\t\x12\x0c\n\x04Path\x18\x02 \x01(\t\x12\x0b\n\x03Key\x18\x03 \x01(\t\x12\x10\n\x08Hostname\x18\x04 \x01(\t\x12\x13\n\x0bStringValue\x18\x05 \x01(\t\x12\x11\n\tByteValue\x18\x06 \x01(\x0c\x12\x12\n\nDWordValue\x18\x07 \x01(\r\x12\x12\n\nQWordValue\x18\x08 \x01(\x04\x12\x0c\n\x04Type\x18\n \x01(\r\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"5\n\rRegistryWrite\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"u\n\x14RegistryCreateKeyReq\x12\x0c\n\x04Hive\x18\x01 \x01(\t\x12\x0c\n\x04Path\x18\x02 \x01(\t\x12\x0b\n\x03Key\x18\x03 \x01(\t\x12\x10\n\x08Hostname\x18\x04 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"9\n\x11RegistryCreateKey\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"u\n\x14RegistryDeleteKeyReq\x12\x0c\n\x04Hive\x18\x01 \x01(\t\x12\x0c\n\x04Path\x18\x02 \x01(\t\x12\x0b\n\x03Key\x18\x03 \x01(\t\x12\x10\n\x08Hostname\x18\x04 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"9\n\x11RegistryDeleteKey\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"i\n\x15RegistrySubKeyListReq\x12\x0c\n\x04Hive\x18\x01 \x01(\t\x12\x0c\n\x04Path\x18\x02 \x01(\t\x12\x10\n\x08Hostname\x18\x04 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"K\n\x12RegistrySubKeyList\x12\x0f\n\x07Subkeys\x18\x01 \x03(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"i\n\x15RegistryListValuesReq\x12\x0c\n\x04Hive\x18\x01 \x01(\t\x12\x0c\n\x04Path\x18\x02 \x01(\t\x12\x10\n\x08Hostname\x18\x04 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"N\n\x12RegistryValuesList\x12\x12\n\nValueNames\x18\x01 \x03(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"1\n\x06Tunnel\x12\x14\n\x08TunnelID\x18\x08 \x01(\x04\x42\x02\x30\x01\x12\x11\n\tSessionID\x18\t \x01(\t\"\x82\x01\n\nTunnelData\x12\x0c\n\x04\x44\x61ta\x18\x01 \x01(\x0c\x12\x0e\n\x06\x43losed\x18\x02 \x01(\x08\x12\x10\n\x08Sequence\x18\x03 \x01(\x04\x12\x0b\n\x03\x41\x63k\x18\x04 \x01(\x04\x12\x0e\n\x06Resend\x18\x05 \x01(\x08\x12\x14\n\x08TunnelID\x18\x08 \x01(\x04\x42\x02\x30\x01\x12\x11\n\tSessionID\x18\t \x01(\t\"r\n\x08ShellReq\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\x11\n\tEnablePTY\x18\x02 \x01(\x08\x12\x0b\n\x03Pid\x18\x03 \x01(\r\x12\x14\n\x08TunnelID\x18\x08 \x01(\x04\x42\x02\x30\x01\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"q\n\x05Shell\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\x11\n\tEnablePTY\x18\x02 \x01(\x08\x12\x0b\n\x03Pid\x18\x03 \x01(\r\x12\x14\n\x08TunnelID\x18\x08 \x01(\x04\x42\x02\x30\x01\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"t\n\nPortfwdReq\x12\x0c\n\x04Port\x18\x01 \x01(\r\x12\x10\n\x08Protocol\x18\x02 \x01(\x05\x12\x0c\n\x04Host\x18\x03 \x01(\t\x12\x14\n\x08TunnelID\x18\x08 \x01(\x04\x42\x02\x30\x01\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"s\n\x07Portfwd\x12\x0c\n\x04Port\x18\x01 \x01(\r\x12\x10\n\x08Protocol\x18\x02 \x01(\x05\x12\x0c\n\x04Host\x18\x03 \x01(\t\x12\x14\n\x08TunnelID\x18\x08 \x01(\x04\x42\x02\x30\x01\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"0\n\x05Socks\x12\x14\n\x08TunnelID\x18\x08 \x01(\x04\x42\x02\x30\x01\x12\x11\n\tSessionID\x18\t \x01(\t\"\x9c\x01\n\tSocksData\x12\x0c\n\x04\x44\x61ta\x18\x01 \x01(\x0c\x12\x11\n\tCloseConn\x18\x02 \x01(\x08\x12\x10\n\x08Username\x18\x03 \x01(\t\x12\x10\n\x08Password\x18\x04 \x01(\t\x12\x10\n\x08Sequence\x18\x05 \x01(\x04\x12\x14\n\x08TunnelID\x18\x08 \x01(\x04\x42\x02\x30\x01\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"\x84\x01\n\x15PivotStartListenerReq\x12!\n\x04Type\x18\x01 \x01(\x0e\x32\x13.sliverpb.PivotType\x12\x13\n\x0b\x42indAddress\x18\x02 \x01(\t\x12\x0f\n\x07Options\x18\x03 \x03(\x08\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"F\n\x14PivotStopListenerReq\x12\n\n\x02ID\x18\x01 \x01(\r\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"\xa1\x01\n\rPivotListener\x12\n\n\x02ID\x18\x01 \x01(\r\x12!\n\x04Type\x18\x02 \x01(\x0e\x32\x13.sliverpb.PivotType\x12\x13\n\x0b\x42indAddress\x18\x03 \x01(\t\x12&\n\x06Pivots\x18\x04 \x03(\x0b\x32\x16.sliverpb.NetConnPivot\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"c\n\nPivotHello\x12\x11\n\tPublicKey\x18\x01 \x01(\x0c\x12\x12\n\x06PeerID\x18\x02 \x01(\x03\x42\x02\x30\x01\x12\x1a\n\x12PublicKeySignature\x18\x03 \x01(\t\x12\x12\n\nSessionKey\x18\x04 \x01(\x0c\">\n\x16PivotServerKeyExchange\x12\x10\n\x08OriginID\x18\x01 \x01(\x03\x12\x12\n\nSessionKey\x18\x02 \x01(\x0c\"-\n\tPivotPeer\x12\x12\n\x06PeerID\x18\x01 \x01(\x03\x42\x02\x30\x01\x12\x0c\n\x04Name\x18\x02 \x01(\t\"\x82\x01\n\x11PivotPeerEnvelope\x12\"\n\x05Peers\x18\x01 \x03(\x0b\x32\x13.sliverpb.PivotPeer\x12\x0c\n\x04Type\x18\x02 \x01(\r\x12\x16\n\x0ePivotSessionID\x18\x03 \x01(\x0c\x12\x0c\n\x04\x44\x61ta\x18\x04 \x01(\x0c\x12\x15\n\rPeerFailureAt\x18\x05 \x01(\x03\"\x1a\n\tPivotPing\x12\r\n\x05Nonce\x18\x01 \x01(\r\"9\n\x0cNetConnPivot\x12\x12\n\x06PeerID\x18\x01 \x01(\x03\x42\x02\x30\x01\x12\x15\n\rRemoteAddress\x18\x02 \x01(\t\"\\\n\x10PivotPeerFailure\x12\x12\n\x06PeerID\x18\x01 \x01(\x03\x42\x02\x30\x01\x12\'\n\x04Type\x18\x02 \x01(\x0e\x32\x19.sliverpb.PeerFailureType\x12\x0b\n\x03\x45rr\x18\x03 \x01(\t\"7\n\x11PivotListenersReq\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"b\n\x0ePivotListeners\x12*\n\tListeners\x18\x01 \x03(\x0b\x32\x17.sliverpb.PivotListener\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"e\n\x15WGPortForwardStartReq\x12\x11\n\tLocalPort\x18\x01 \x01(\x05\x12\x15\n\rRemoteAddress\x18\x02 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"b\n\rWGPortForward\x12+\n\tForwarder\x18\x01 \x01(\x0b\x32\x18.sliverpb.WGTCPForwarder\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"F\n\x14WGPortForwardStopReq\x12\n\n\x02ID\x18\x01 \x01(\x05\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"C\n\x0fWGSocksStartReq\x12\x0c\n\x04Port\x18\x01 \x01(\x05\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"X\n\x07WGSocks\x12\'\n\x06Server\x18\x01 \x01(\x0b\x32\x17.sliverpb.WGSocksServer\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"@\n\x0eWGSocksStopReq\x12\n\n\x02ID\x18\x01 \x01(\x05\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"8\n\x12WGTCPForwardersReq\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"7\n\x11WGSocksServersReq\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"C\n\x0eWGTCPForwarder\x12\n\n\x02ID\x18\x01 \x01(\x05\x12\x11\n\tLocalAddr\x18\x02 \x01(\t\x12\x12\n\nRemoteAddr\x18\x03 \x01(\t\".\n\rWGSocksServer\x12\n\n\x02ID\x18\x01 \x01(\x05\x12\x11\n\tLocalAddr\x18\x02 \x01(\t\"`\n\x0eWGSocksServers\x12(\n\x07Servers\x18\x01 \x03(\x0b\x32\x17.sliverpb.WGSocksServer\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"e\n\x0fWGTCPForwarders\x12,\n\nForwarders\x18\x01 \x03(\x0b\x32\x18.sliverpb.WGTCPForwarder\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"}\n\x0eReconfigureReq\x12\x19\n\x11ReconnectInterval\x18\x01 \x01(\x03\x12\x16\n\x0e\x42\x65\x61\x63onInterval\x18\x02 \x01(\x03\x12\x14\n\x0c\x42\x65\x61\x63onJitter\x18\x03 \x01(\x03\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"3\n\x0bReconfigure\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"K\n\x0fPollIntervalReq\x12\x14\n\x0cPollInterval\x18\x01 \x01(\x03\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"4\n\x0cPollInterval\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"\x99\x01\n\rSSHCommandReq\x12\x10\n\x08Username\x18\x01 \x01(\t\x12\x10\n\x08Hostname\x18\x02 \x01(\t\x12\x0c\n\x04Port\x18\x03 \x01(\r\x12\x0f\n\x07\x43ommand\x18\x04 \x01(\t\x12\x10\n\x08Password\x18\x05 \x01(\t\x12\x0f\n\x07PrivKey\x18\x06 \x01(\x0c\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"R\n\nSSHCommand\x12\x0e\n\x06StdOut\x18\x01 \x01(\t\x12\x0e\n\x06StdErr\x18\x02 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"1\n\x0bGetPrivsReq\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"\x8d\x01\n\x15WindowsPrivilegeEntry\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12\x13\n\x0b\x44\x65scription\x18\x02 \x01(\t\x12\x0f\n\x07\x45nabled\x18\x03 \x01(\x08\x12\x18\n\x10\x45nabledByDefault\x18\x04 \x01(\x08\x12\x0f\n\x07Removed\x18\x05 \x01(\x08\x12\x15\n\rUsedForAccess\x18\x06 \x01(\x08\"\x92\x01\n\x08GetPrivs\x12\x31\n\x08PrivInfo\x18\x01 \x03(\x0b\x32\x1f.sliverpb.WindowsPrivilegeEntry\x12\x18\n\x10ProcessIntegrity\x18\x02 \x01(\t\x12\x13\n\x0bProcessName\x18\x03 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"p\n\x14RegisterExtensionReq\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12\x0c\n\x04\x44\x61ta\x18\x02 \x01(\x0c\x12\n\n\x02OS\x18\x03 \x01(\t\x12\x0c\n\x04Init\x18\x04 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"9\n\x11RegisterExtension\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"w\n\x10\x43\x61llExtensionReq\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12\x13\n\x0bServerStore\x18\x02 \x01(\x08\x12\x0c\n\x04\x41rgs\x18\x03 \x01(\x0c\x12\x0e\n\x06\x45xport\x18\x04 \x01(\t\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"Z\n\rCallExtension\x12\x0e\n\x06Output\x18\x01 \x01(\x0c\x12\x13\n\x0bServerStore\x18\x02 \x01(\x08\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response\"7\n\x11ListExtensionsReq\x12\"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request\"E\n\x0eListExtensions\x12\r\n\x05Names\x18\x01 \x03(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response*,\n\tPivotType\x12\x07\n\x03TCP\x10\x00\x12\x07\n\x03UDP\x10\x01\x12\r\n\tNamedPipe\x10\x02*3\n\x0fPeerFailureType\x12\x10\n\x0cSEND_FAILURE\x10\x00\x12\x0e\n\nDISCONNECT\x10\x01\x42/Z-github.com/bishopfox/sliver/protobuf/sliverpbb\x06proto3'
-  ,
-  dependencies=[commonpb_dot_common__pb2.DESCRIPTOR,])
+    name="sliverpb/sliver.proto",
+    package="sliverpb",
+    syntax="proto3",
+    serialized_options=b"Z-github.com/bishopfox/sliver/protobuf/sliverpb",
+    create_key=_descriptor._internal_create_key,
+    serialized_pb=b'\n\x15sliverpb/sliver.proto\x12\x08sliverpb\x1a\x15\x63ommonpb/common.proto"N\n\x08\x45nvelope\x12\n\n\x02ID\x18\x01 \x01(\x03\x12\x0c\n\x04Type\x18\x02 \x01(\r\x12\x0c\n\x04\x44\x61ta\x18\x03 \x01(\x0c\x12\x1a\n\x12UnknownMessageType\x18\x04 \x01(\x08"Q\n\x0b\x42\x65\x61\x63onTasks\x12\n\n\x02ID\x18\x01 \x01(\t\x12!\n\x05Tasks\x18\x02 \x03(\x0b\x32\x12.sliverpb.Envelope\x12\x13\n\x0bNextCheckin\x18\x03 \x01(\x03"\x8f\x02\n\x08Register\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12\x10\n\x08Hostname\x18\x02 \x01(\t\x12\x0c\n\x04Uuid\x18\x03 \x01(\t\x12\x10\n\x08Username\x18\x04 \x01(\t\x12\x0b\n\x03Uid\x18\x05 \x01(\t\x12\x0b\n\x03Gid\x18\x06 \x01(\t\x12\n\n\x02Os\x18\x07 \x01(\t\x12\x0c\n\x04\x41rch\x18\x08 \x01(\t\x12\x0b\n\x03Pid\x18\t \x01(\x05\x12\x10\n\x08\x46ilename\x18\n \x01(\t\x12\x10\n\x08\x41\x63tiveC2\x18\x0b \x01(\t\x12\x0f\n\x07Version\x18\x0c \x01(\t\x12\x19\n\x11ReconnectInterval\x18\r \x01(\x03\x12\x10\n\x08ProxyURL\x18\x0e \x01(\t\x12\x10\n\x08\x43onfigID\x18\x10 \x01(\t\x12\x0e\n\x06PeerID\x18\x11 \x01(\x03"y\n\x0e\x42\x65\x61\x63onRegister\x12\n\n\x02ID\x18\x01 \x01(\t\x12\x10\n\x08Interval\x18\x02 \x01(\x03\x12\x0e\n\x06Jitter\x18\x03 \x01(\x03\x12$\n\x08Register\x18\x04 \x01(\x0b\x32\x12.sliverpb.Register\x12\x13\n\x0bNextCheckin\x18\x05 \x01(\x03"C\n\x0fSessionRegister\x12\n\n\x02ID\x18\x01 \x01(\t\x12$\n\x08Register\x18\x02 \x01(\x0b\x32\x12.sliverpb.Register"s\n\x0bOpenSession\x12\x0b\n\x03\x43\x32s\x18\x01 \x03(\t\x12\r\n\x05\x44\x65lay\x18\x02 \x01(\x03\x12$\n\x08Response\x18\x08 \x01(\x0b\x32\x12.commonpb.Response\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"X\n\x0c\x43loseSession\x12$\n\x08Response\x18\x08 \x01(\x0b\x32\x12.commonpb.Response\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"_\n\x04Ping\x12\r\n\x05Nonce\x18\x01 \x01(\x05\x12$\n\x08Response\x18\x08 \x01(\x0b\x32\x12.commonpb.Response\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"<\n\x07KillReq\x12\r\n\x05\x46orce\x18\x01 \x01(\x08\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"+\n\x05PsReq\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"P\n\x02Ps\x12$\n\tProcesses\x18\x01 \x03(\x0b\x32\x11.commonpb.Process\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"N\n\x0cTerminateReq\x12\x0b\n\x03Pid\x18\x01 \x01(\x05\x12\r\n\x05\x46orce\x18\x02 \x01(\x08\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request">\n\tTerminate\x12\x0b\n\x03Pid\x18\x01 \x01(\x05\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"1\n\x0bIfconfigReq\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"_\n\x08Ifconfig\x12-\n\rNetInterfaces\x18\x01 \x03(\x0b\x32\x16.sliverpb.NetInterface\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"M\n\x0cNetInterface\x12\r\n\x05Index\x18\x01 \x01(\x05\x12\x0c\n\x04Name\x18\x02 \x01(\t\x12\x0b\n\x03MAC\x18\x03 \x01(\t\x12\x13\n\x0bIPAddresses\x18\x04 \x03(\t"9\n\x05LsReq\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"\x95\x01\n\x02Ls\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\x0e\n\x06\x45xists\x18\x02 \x01(\x08\x12!\n\x05\x46iles\x18\x03 \x03(\x0b\x32\x12.sliverpb.FileInfo\x12\x10\n\x08timezone\x18\x04 \x01(\t\x12\x16\n\x0etimezoneOffset\x18\x05 \x01(\x05\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"b\n\x08\x46ileInfo\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12\r\n\x05IsDir\x18\x02 \x01(\x08\x12\x0c\n\x04Size\x18\x03 \x01(\x03\x12\x0f\n\x07ModTime\x18\x04 \x01(\x03\x12\x0c\n\x04Mode\x18\x05 \x01(\t\x12\x0c\n\x04Link\x18\x06 \x01(\t"9\n\x05\x43\x64Req\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request",\n\x06PwdReq\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"9\n\x03Pwd\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"[\n\x05RmReq\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\x11\n\tRecursive\x18\x02 \x01(\x08\x12\r\n\x05\x46orce\x18\x03 \x01(\x08\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"8\n\x02Rm\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"E\n\x05MvReq\x12\x0b\n\x03Src\x18\x01 \x01(\t\x12\x0b\n\x03\x44st\x18\x02 \x01(\t\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"D\n\x02Mv\x12\x0b\n\x03Src\x18\x01 \x01(\t\x12\x0b\n\x03\x44st\x18\x02 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"<\n\x08MkdirReq\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request";\n\x05Mkdir\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"m\n\x0b\x44ownloadReq\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\r\n\x05Start\x18\x02 \x01(\x03\x12\x0c\n\x04Stop\x18\x03 \x01(\x03\x12\x0f\n\x07Recurse\x18\x04 \x01(\x08\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"\xc5\x01\n\x08\x44ownload\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\x0f\n\x07\x45ncoder\x18\x02 \x01(\t\x12\x0e\n\x06\x45xists\x18\x03 \x01(\x08\x12\r\n\x05Start\x18\x04 \x01(\x03\x12\x0c\n\x04Stop\x18\x05 \x01(\x03\x12\x0c\n\x04\x44\x61ta\x18\x06 \x01(\x0c\x12\r\n\x05IsDir\x18\x07 \x01(\x08\x12\x11\n\tReadFiles\x18\x08 \x01(\x05\x12\x17\n\x0fUnreadableFiles\x18\n \x01(\x05\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"k\n\tUploadReq\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\x0f\n\x07\x45ncoder\x18\x02 \x01(\t\x12\x0c\n\x04\x44\x61ta\x18\x03 \x01(\x0c\x12\r\n\x05IsIOC\x18\x04 \x01(\x08\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"<\n\x06Upload\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"R\n\x0eProcessDumpReq\x12\x0b\n\x03Pid\x18\x01 \x01(\x05\x12\x0f\n\x07Timeout\x18\x02 \x01(\x05\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"A\n\x0bProcessDump\x12\x0c\n\x04\x44\x61ta\x18\x01 \x01(\x0c\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"c\n\x08RunAsReq\x12\x10\n\x08Username\x18\x01 \x01(\t\x12\x13\n\x0bProcessName\x18\x02 \x01(\t\x12\x0c\n\x04\x41rgs\x18\x03 \x01(\t\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"=\n\x05RunAs\x12\x0e\n\x06Output\x18\x01 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"F\n\x0eImpersonateReq\x12\x10\n\x08Username\x18\x01 \x01(\t\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"3\n\x0bImpersonate\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"2\n\x0cRevToSelfReq\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"1\n\tRevToSelf\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response":\n\x14\x43urrentTokenOwnerReq\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"I\n\x11\x43urrentTokenOwner\x12\x0e\n\x06Output\x18\x01 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"^\n\x12InvokeGetSystemReq\x12\x0c\n\x04\x44\x61ta\x18\x01 \x01(\x0c\x12\x16\n\x0eHostingProcess\x18\x02 \x01(\t\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"1\n\tGetSystem\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"f\n\x0cMakeTokenReq\x12\x10\n\x08Username\x18\x01 \x01(\t\x12\x10\n\x08Password\x18\x02 \x01(\t\x12\x0e\n\x06\x44omain\x18\x03 \x01(\t\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"1\n\tMakeToken\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"k\n\x07TaskReq\x12\x0f\n\x07\x45ncoder\x18\x01 \x01(\t\x12\x10\n\x08RWXPages\x18\x02 \x01(\x08\x12\x0b\n\x03Pid\x18\x03 \x01(\r\x12\x0c\n\x04\x44\x61ta\x18\x04 \x01(\x0c\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request",\n\x04Task\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"\xc1\x01\n\x12\x45xecuteAssemblyReq\x12\x10\n\x08\x41ssembly\x18\x01 \x01(\x0c\x12\x11\n\tArguments\x18\x02 \x01(\t\x12\x0f\n\x07Process\x18\x03 \x01(\t\x12\r\n\x05IsDLL\x18\x04 \x01(\x08\x12\x0c\n\x04\x41rch\x18\x05 \x01(\t\x12\x11\n\tClassName\x18\x06 \x01(\t\x12\x0e\n\x06Method\x18\x07 \x01(\t\x12\x11\n\tAppDomain\x18\x08 \x01(\t\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"]\n\x18InvokeExecuteAssemblyReq\x12\x0c\n\x04\x44\x61ta\x18\x01 \x01(\x0c\x12\x0f\n\x07process\x18\x02 \x01(\t\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"G\n\x0f\x45xecuteAssembly\x12\x0e\n\x06Output\x18\x01 \x01(\x0c\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"Q\n\x10InvokeMigrateReq\x12\x0b\n\x03Pid\x18\x01 \x01(\r\x12\x0c\n\x04\x44\x61ta\x18\x02 \x01(\x0c\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"@\n\x07Migrate\x12\x0f\n\x07Success\x18\x01 \x01(\x08\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"|\n\nExecuteReq\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\x0c\n\x04\x41rgs\x18\x02 \x03(\t\x12\x0e\n\x06Output\x18\x03 \x01(\x08\x12\x0e\n\x06Stdout\x18\x04 \x01(\t\x12\x0e\n\x06Stderr\x18\x05 \x01(\t\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"\x81\x01\n\x0f\x45xecuteTokenReq\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\x0c\n\x04\x41rgs\x18\x02 \x03(\t\x12\x0e\n\x06Output\x18\x03 \x01(\x08\x12\x0e\n\x06Stdout\x18\x04 \x01(\t\x12\x0e\n\x06Stderr\x18\x05 \x01(\t\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"l\n\x07\x45xecute\x12\x0e\n\x06Status\x18\x01 \x01(\r\x12\x0e\n\x06Stdout\x18\x02 \x01(\x0c\x12\x0e\n\x06Stderr\x18\x03 \x01(\x0c\x12\x0b\n\x03Pid\x18\x04 \x01(\r\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"\x93\x01\n\x0bSideloadReq\x12\x0c\n\x04\x44\x61ta\x18\x01 \x01(\x0c\x12\x13\n\x0bProcessName\x18\x02 \x01(\t\x12\x0c\n\x04\x41rgs\x18\x03 \x01(\t\x12\x12\n\nEntryPoint\x18\x04 \x01(\t\x12\x0c\n\x04Kill\x18\x05 \x01(\x08\x12\r\n\x05isDLL\x18\x06 \x01(\x08\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"@\n\x08Sideload\x12\x0e\n\x06Result\x18\x01 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"\x8a\x01\n\x11InvokeSpawnDllReq\x12\x0c\n\x04\x44\x61ta\x18\x01 \x01(\x0c\x12\x13\n\x0bProcessName\x18\x02 \x01(\t\x12\x0c\n\x04\x41rgs\x18\x03 \x01(\t\x12\x12\n\nEntryPoint\x18\x04 \x01(\t\x12\x0c\n\x04Kill\x18\x05 \x01(\x08\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"\x80\x01\n\x0bSpawnDllReq\x12\x0c\n\x04\x44\x61ta\x18\x01 \x01(\x0c\x12\x13\n\x0bProcessName\x18\x02 \x01(\t\x12\x0e\n\x06Offset\x18\x03 \x01(\r\x12\x0c\n\x04\x41rgs\x18\x04 \x01(\t\x12\x0c\n\x04Kill\x18\x05 \x01(\x08\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"@\n\x08SpawnDll\x12\x0e\n\x06Result\x18\x01 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"w\n\nNetstatReq\x12\x0b\n\x03TCP\x18\x01 \x01(\x08\x12\x0b\n\x03UDP\x18\x02 \x01(\x08\x12\x0b\n\x03IP4\x18\x03 \x01(\x08\x12\x0b\n\x03IP6\x18\x05 \x01(\x08\x12\x11\n\tListening\x18\x06 \x01(\x08\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"\xf1\x01\n\x0cSockTabEntry\x12\x32\n\tLocalAddr\x18\x01 \x01(\x0b\x32\x1f.sliverpb.SockTabEntry.SockAddr\x12\x33\n\nRemoteAddr\x18\x02 \x01(\x0b\x32\x1f.sliverpb.SockTabEntry.SockAddr\x12\x0f\n\x07SkState\x18\x03 \x01(\t\x12\x0b\n\x03UID\x18\x04 \x01(\r\x12"\n\x07Process\x18\x05 \x01(\x0b\x32\x11.commonpb.Process\x12\x10\n\x08Protocol\x18\x06 \x01(\t\x1a$\n\x08SockAddr\x12\n\n\x02Ip\x18\x01 \x01(\t\x12\x0c\n\x04Port\x18\x02 \x01(\r"X\n\x07Netstat\x12\'\n\x07\x45ntries\x18\x01 \x03(\x0b\x32\x16.sliverpb.SockTabEntry\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response":\n\x06\x45nvReq\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"T\n\x07\x45nvInfo\x12#\n\tVariables\x18\x01 \x03(\x0b\x32\x10.commonpb.EnvVar\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"S\n\tSetEnvReq\x12"\n\x08Variable\x18\x01 \x01(\x0b\x32\x10.commonpb.EnvVar\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request".\n\x06SetEnv\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"?\n\x0bUnsetEnvReq\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"0\n\x08UnsetEnv\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"\x1d\n\x0e\x44NSSessionInit\x12\x0b\n\x03Key\x18\x01 \x01(\x0c"3\n\x07\x44NSPoll\x12(\n\x06\x62locks\x18\x01 \x03(\x0b\x32\x18.sliverpb.DNSBlockHeader"*\n\x0e\x44NSBlockHeader\x12\n\n\x02ID\x18\x01 \x01(\t\x12\x0c\n\x04Size\x18\x02 \x01(\r"\x1e\n\x0fHTTPSessionInit\x12\x0b\n\x03Key\x18\x01 \x01(\x0c"3\n\rScreenshotReq\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"@\n\nScreenshot\x12\x0c\n\x04\x44\x61ta\x18\x01 \x01(\x0c\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"\x9c\x01\n\x0fStartServiceReq\x12\x13\n\x0bServiceName\x18\x01 \x01(\t\x12\x1a\n\x12ServiceDescription\x18\x02 \x01(\t\x12\x0f\n\x07\x42inPath\x18\x03 \x01(\t\x12\x10\n\x08Hostname\x18\x04 \x01(\t\x12\x11\n\tArguments\x18\x05 \x01(\t\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"3\n\x0bServiceInfo\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"7\n\x0eServiceInfoReq\x12\x13\n\x0bServiceName\x18\x01 \x01(\t\x12\x10\n\x08Hostname\x18\x02 \x01(\t"c\n\x0eStopServiceReq\x12-\n\x0bServiceInfo\x18\x01 \x01(\x0b\x32\x18.sliverpb.ServiceInfoReq\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"e\n\x10RemoveServiceReq\x12-\n\x0bServiceInfo\x18\x01 \x01(\x0b\x32\x18.sliverpb.ServiceInfoReq\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"X\n\x0b\x42\x61\x63kdoorReq\x12\x10\n\x08\x46ilePath\x18\x01 \x01(\t\x12\x13\n\x0bProfileName\x18\x02 \x01(\t\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"0\n\x08\x42\x61\x63kdoor\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"p\n\x0fRegistryReadReq\x12\x0c\n\x04Hive\x18\x01 \x01(\t\x12\x0c\n\x04Path\x18\x02 \x01(\t\x12\x0b\n\x03Key\x18\x03 \x01(\t\x12\x10\n\x08Hostname\x18\x04 \x01(\t\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"C\n\x0cRegistryRead\x12\r\n\x05Value\x18\x01 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"\xcf\x01\n\x10RegistryWriteReq\x12\x0c\n\x04Hive\x18\x01 \x01(\t\x12\x0c\n\x04Path\x18\x02 \x01(\t\x12\x0b\n\x03Key\x18\x03 \x01(\t\x12\x10\n\x08Hostname\x18\x04 \x01(\t\x12\x13\n\x0bStringValue\x18\x05 \x01(\t\x12\x11\n\tByteValue\x18\x06 \x01(\x0c\x12\x12\n\nDWordValue\x18\x07 \x01(\r\x12\x12\n\nQWordValue\x18\x08 \x01(\x04\x12\x0c\n\x04Type\x18\n \x01(\r\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"5\n\rRegistryWrite\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"u\n\x14RegistryCreateKeyReq\x12\x0c\n\x04Hive\x18\x01 \x01(\t\x12\x0c\n\x04Path\x18\x02 \x01(\t\x12\x0b\n\x03Key\x18\x03 \x01(\t\x12\x10\n\x08Hostname\x18\x04 \x01(\t\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"9\n\x11RegistryCreateKey\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"u\n\x14RegistryDeleteKeyReq\x12\x0c\n\x04Hive\x18\x01 \x01(\t\x12\x0c\n\x04Path\x18\x02 \x01(\t\x12\x0b\n\x03Key\x18\x03 \x01(\t\x12\x10\n\x08Hostname\x18\x04 \x01(\t\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"9\n\x11RegistryDeleteKey\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"i\n\x15RegistrySubKeyListReq\x12\x0c\n\x04Hive\x18\x01 \x01(\t\x12\x0c\n\x04Path\x18\x02 \x01(\t\x12\x10\n\x08Hostname\x18\x04 \x01(\t\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"K\n\x12RegistrySubKeyList\x12\x0f\n\x07Subkeys\x18\x01 \x03(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"i\n\x15RegistryListValuesReq\x12\x0c\n\x04Hive\x18\x01 \x01(\t\x12\x0c\n\x04Path\x18\x02 \x01(\t\x12\x10\n\x08Hostname\x18\x04 \x01(\t\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"N\n\x12RegistryValuesList\x12\x12\n\nValueNames\x18\x01 \x03(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"1\n\x06Tunnel\x12\x14\n\x08TunnelID\x18\x08 \x01(\x04\x42\x02\x30\x01\x12\x11\n\tSessionID\x18\t \x01(\t"\x82\x01\n\nTunnelData\x12\x0c\n\x04\x44\x61ta\x18\x01 \x01(\x0c\x12\x0e\n\x06\x43losed\x18\x02 \x01(\x08\x12\x10\n\x08Sequence\x18\x03 \x01(\x04\x12\x0b\n\x03\x41\x63k\x18\x04 \x01(\x04\x12\x0e\n\x06Resend\x18\x05 \x01(\x08\x12\x14\n\x08TunnelID\x18\x08 \x01(\x04\x42\x02\x30\x01\x12\x11\n\tSessionID\x18\t \x01(\t"r\n\x08ShellReq\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\x11\n\tEnablePTY\x18\x02 \x01(\x08\x12\x0b\n\x03Pid\x18\x03 \x01(\r\x12\x14\n\x08TunnelID\x18\x08 \x01(\x04\x42\x02\x30\x01\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"q\n\x05Shell\x12\x0c\n\x04Path\x18\x01 \x01(\t\x12\x11\n\tEnablePTY\x18\x02 \x01(\x08\x12\x0b\n\x03Pid\x18\x03 \x01(\r\x12\x14\n\x08TunnelID\x18\x08 \x01(\x04\x42\x02\x30\x01\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"t\n\nPortfwdReq\x12\x0c\n\x04Port\x18\x01 \x01(\r\x12\x10\n\x08Protocol\x18\x02 \x01(\x05\x12\x0c\n\x04Host\x18\x03 \x01(\t\x12\x14\n\x08TunnelID\x18\x08 \x01(\x04\x42\x02\x30\x01\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"s\n\x07Portfwd\x12\x0c\n\x04Port\x18\x01 \x01(\r\x12\x10\n\x08Protocol\x18\x02 \x01(\x05\x12\x0c\n\x04Host\x18\x03 \x01(\t\x12\x14\n\x08TunnelID\x18\x08 \x01(\x04\x42\x02\x30\x01\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"0\n\x05Socks\x12\x14\n\x08TunnelID\x18\x08 \x01(\x04\x42\x02\x30\x01\x12\x11\n\tSessionID\x18\t \x01(\t"\x9c\x01\n\tSocksData\x12\x0c\n\x04\x44\x61ta\x18\x01 \x01(\x0c\x12\x11\n\tCloseConn\x18\x02 \x01(\x08\x12\x10\n\x08Username\x18\x03 \x01(\t\x12\x10\n\x08Password\x18\x04 \x01(\t\x12\x10\n\x08Sequence\x18\x05 \x01(\x04\x12\x14\n\x08TunnelID\x18\x08 \x01(\x04\x42\x02\x30\x01\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"\x84\x01\n\x15PivotStartListenerReq\x12!\n\x04Type\x18\x01 \x01(\x0e\x32\x13.sliverpb.PivotType\x12\x13\n\x0b\x42indAddress\x18\x02 \x01(\t\x12\x0f\n\x07Options\x18\x03 \x03(\x08\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"F\n\x14PivotStopListenerReq\x12\n\n\x02ID\x18\x01 \x01(\r\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"\xa1\x01\n\rPivotListener\x12\n\n\x02ID\x18\x01 \x01(\r\x12!\n\x04Type\x18\x02 \x01(\x0e\x32\x13.sliverpb.PivotType\x12\x13\n\x0b\x42indAddress\x18\x03 \x01(\t\x12&\n\x06Pivots\x18\x04 \x03(\x0b\x32\x16.sliverpb.NetConnPivot\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"c\n\nPivotHello\x12\x11\n\tPublicKey\x18\x01 \x01(\x0c\x12\x12\n\x06PeerID\x18\x02 \x01(\x03\x42\x02\x30\x01\x12\x1a\n\x12PublicKeySignature\x18\x03 \x01(\t\x12\x12\n\nSessionKey\x18\x04 \x01(\x0c">\n\x16PivotServerKeyExchange\x12\x10\n\x08OriginID\x18\x01 \x01(\x03\x12\x12\n\nSessionKey\x18\x02 \x01(\x0c"-\n\tPivotPeer\x12\x12\n\x06PeerID\x18\x01 \x01(\x03\x42\x02\x30\x01\x12\x0c\n\x04Name\x18\x02 \x01(\t"\x82\x01\n\x11PivotPeerEnvelope\x12"\n\x05Peers\x18\x01 \x03(\x0b\x32\x13.sliverpb.PivotPeer\x12\x0c\n\x04Type\x18\x02 \x01(\r\x12\x16\n\x0ePivotSessionID\x18\x03 \x01(\x0c\x12\x0c\n\x04\x44\x61ta\x18\x04 \x01(\x0c\x12\x15\n\rPeerFailureAt\x18\x05 \x01(\x03"\x1a\n\tPivotPing\x12\r\n\x05Nonce\x18\x01 \x01(\r"9\n\x0cNetConnPivot\x12\x12\n\x06PeerID\x18\x01 \x01(\x03\x42\x02\x30\x01\x12\x15\n\rRemoteAddress\x18\x02 \x01(\t"\\\n\x10PivotPeerFailure\x12\x12\n\x06PeerID\x18\x01 \x01(\x03\x42\x02\x30\x01\x12\'\n\x04Type\x18\x02 \x01(\x0e\x32\x19.sliverpb.PeerFailureType\x12\x0b\n\x03\x45rr\x18\x03 \x01(\t"7\n\x11PivotListenersReq\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"b\n\x0ePivotListeners\x12*\n\tListeners\x18\x01 \x03(\x0b\x32\x17.sliverpb.PivotListener\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"e\n\x15WGPortForwardStartReq\x12\x11\n\tLocalPort\x18\x01 \x01(\x05\x12\x15\n\rRemoteAddress\x18\x02 \x01(\t\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"b\n\rWGPortForward\x12+\n\tForwarder\x18\x01 \x01(\x0b\x32\x18.sliverpb.WGTCPForwarder\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"F\n\x14WGPortForwardStopReq\x12\n\n\x02ID\x18\x01 \x01(\x05\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"C\n\x0fWGSocksStartReq\x12\x0c\n\x04Port\x18\x01 \x01(\x05\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"X\n\x07WGSocks\x12\'\n\x06Server\x18\x01 \x01(\x0b\x32\x17.sliverpb.WGSocksServer\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"@\n\x0eWGSocksStopReq\x12\n\n\x02ID\x18\x01 \x01(\x05\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"8\n\x12WGTCPForwardersReq\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"7\n\x11WGSocksServersReq\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"C\n\x0eWGTCPForwarder\x12\n\n\x02ID\x18\x01 \x01(\x05\x12\x11\n\tLocalAddr\x18\x02 \x01(\t\x12\x12\n\nRemoteAddr\x18\x03 \x01(\t".\n\rWGSocksServer\x12\n\n\x02ID\x18\x01 \x01(\x05\x12\x11\n\tLocalAddr\x18\x02 \x01(\t"`\n\x0eWGSocksServers\x12(\n\x07Servers\x18\x01 \x03(\x0b\x32\x17.sliverpb.WGSocksServer\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"e\n\x0fWGTCPForwarders\x12,\n\nForwarders\x18\x01 \x03(\x0b\x32\x18.sliverpb.WGTCPForwarder\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"}\n\x0eReconfigureReq\x12\x19\n\x11ReconnectInterval\x18\x01 \x01(\x03\x12\x16\n\x0e\x42\x65\x61\x63onInterval\x18\x02 \x01(\x03\x12\x14\n\x0c\x42\x65\x61\x63onJitter\x18\x03 \x01(\x03\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"3\n\x0bReconfigure\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"K\n\x0fPollIntervalReq\x12\x14\n\x0cPollInterval\x18\x01 \x01(\x03\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"4\n\x0cPollInterval\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"\x99\x01\n\rSSHCommandReq\x12\x10\n\x08Username\x18\x01 \x01(\t\x12\x10\n\x08Hostname\x18\x02 \x01(\t\x12\x0c\n\x04Port\x18\x03 \x01(\r\x12\x0f\n\x07\x43ommand\x18\x04 \x01(\t\x12\x10\n\x08Password\x18\x05 \x01(\t\x12\x0f\n\x07PrivKey\x18\x06 \x01(\x0c\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"R\n\nSSHCommand\x12\x0e\n\x06StdOut\x18\x01 \x01(\t\x12\x0e\n\x06StdErr\x18\x02 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"1\n\x0bGetPrivsReq\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"\x8d\x01\n\x15WindowsPrivilegeEntry\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12\x13\n\x0b\x44\x65scription\x18\x02 \x01(\t\x12\x0f\n\x07\x45nabled\x18\x03 \x01(\x08\x12\x18\n\x10\x45nabledByDefault\x18\x04 \x01(\x08\x12\x0f\n\x07Removed\x18\x05 \x01(\x08\x12\x15\n\rUsedForAccess\x18\x06 \x01(\x08"\x92\x01\n\x08GetPrivs\x12\x31\n\x08PrivInfo\x18\x01 \x03(\x0b\x32\x1f.sliverpb.WindowsPrivilegeEntry\x12\x18\n\x10ProcessIntegrity\x18\x02 \x01(\t\x12\x13\n\x0bProcessName\x18\x03 \x01(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"p\n\x14RegisterExtensionReq\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12\x0c\n\x04\x44\x61ta\x18\x02 \x01(\x0c\x12\n\n\x02OS\x18\x03 \x01(\t\x12\x0c\n\x04Init\x18\x04 \x01(\t\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"9\n\x11RegisterExtension\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"w\n\x10\x43\x61llExtensionReq\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12\x13\n\x0bServerStore\x18\x02 \x01(\x08\x12\x0c\n\x04\x41rgs\x18\x03 \x01(\x0c\x12\x0e\n\x06\x45xport\x18\x04 \x01(\t\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"Z\n\rCallExtension\x12\x0e\n\x06Output\x18\x01 \x01(\x0c\x12\x13\n\x0bServerStore\x18\x02 \x01(\x08\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response"7\n\x11ListExtensionsReq\x12"\n\x07Request\x18\t \x01(\x0b\x32\x11.commonpb.Request"E\n\x0eListExtensions\x12\r\n\x05Names\x18\x01 \x03(\t\x12$\n\x08Response\x18\t \x01(\x0b\x32\x12.commonpb.Response*,\n\tPivotType\x12\x07\n\x03TCP\x10\x00\x12\x07\n\x03UDP\x10\x01\x12\r\n\tNamedPipe\x10\x02*3\n\x0fPeerFailureType\x12\x10\n\x0cSEND_FAILURE\x10\x00\x12\x0e\n\nDISCONNECT\x10\x01\x42/Z-github.com/bishopfox/sliver/protobuf/sliverpbb\x06proto3',
+    dependencies=[
+        commonpb_dot_common__pb2.DESCRIPTOR,
+    ],
+)
 
 _PIVOTTYPE = _descriptor.EnumDescriptor(
-  name='PivotType',
-  full_name='sliverpb.PivotType',
-  filename=None,
-  file=DESCRIPTOR,
-  create_key=_descriptor._internal_create_key,
-  values=[
-    _descriptor.EnumValueDescriptor(
-      name='TCP', index=0, number=0,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='UDP', index=1, number=1,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='NamedPipe', index=2, number=2,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-  ],
-  containing_type=None,
-  serialized_options=None,
-  serialized_start=12664,
-  serialized_end=12708,
+    name="PivotType",
+    full_name="sliverpb.PivotType",
+    filename=None,
+    file=DESCRIPTOR,
+    create_key=_descriptor._internal_create_key,
+    values=[
+        _descriptor.EnumValueDescriptor(
+            name="TCP",
+            index=0,
+            number=0,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.EnumValueDescriptor(
+            name="UDP",
+            index=1,
+            number=1,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.EnumValueDescriptor(
+            name="NamedPipe",
+            index=2,
+            number=2,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    containing_type=None,
+    serialized_options=None,
+    serialized_start=12664,
+    serialized_end=12708,
 )
 _sym_db.RegisterEnumDescriptor(_PIVOTTYPE)
 
 PivotType = enum_type_wrapper.EnumTypeWrapper(_PIVOTTYPE)
 _PEERFAILURETYPE = _descriptor.EnumDescriptor(
-  name='PeerFailureType',
-  full_name='sliverpb.PeerFailureType',
-  filename=None,
-  file=DESCRIPTOR,
-  create_key=_descriptor._internal_create_key,
-  values=[
-    _descriptor.EnumValueDescriptor(
-      name='SEND_FAILURE', index=0, number=0,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='DISCONNECT', index=1, number=1,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-  ],
-  containing_type=None,
-  serialized_options=None,
-  serialized_start=12710,
-  serialized_end=12761,
+    name="PeerFailureType",
+    full_name="sliverpb.PeerFailureType",
+    filename=None,
+    file=DESCRIPTOR,
+    create_key=_descriptor._internal_create_key,
+    values=[
+        _descriptor.EnumValueDescriptor(
+            name="SEND_FAILURE",
+            index=0,
+            number=0,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.EnumValueDescriptor(
+            name="DISCONNECT",
+            index=1,
+            number=1,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    containing_type=None,
+    serialized_options=None,
+    serialized_start=12710,
+    serialized_end=12761,
 )
 _sym_db.RegisterEnumDescriptor(_PEERFAILURETYPE)
 
@@ -89,7966 +107,13502 @@ SEND_FAILURE = 0
 DISCONNECT = 1
 
 
-
 _ENVELOPE = _descriptor.Descriptor(
-  name='Envelope',
-  full_name='sliverpb.Envelope',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='ID', full_name='sliverpb.Envelope.ID', index=0,
-      number=1, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Type', full_name='sliverpb.Envelope.Type', index=1,
-      number=2, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Data', full_name='sliverpb.Envelope.Data', index=2,
-      number=3, type=12, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"",
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='UnknownMessageType', full_name='sliverpb.Envelope.UnknownMessageType', index=3,
-      number=4, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=58,
-  serialized_end=136,
+    name="Envelope",
+    full_name="sliverpb.Envelope",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="ID",
+            full_name="sliverpb.Envelope.ID",
+            index=0,
+            number=1,
+            type=3,
+            cpp_type=2,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Type",
+            full_name="sliverpb.Envelope.Type",
+            index=1,
+            number=2,
+            type=13,
+            cpp_type=3,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Data",
+            full_name="sliverpb.Envelope.Data",
+            index=2,
+            number=3,
+            type=12,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"",
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="UnknownMessageType",
+            full_name="sliverpb.Envelope.UnknownMessageType",
+            index=3,
+            number=4,
+            type=8,
+            cpp_type=7,
+            label=1,
+            has_default_value=False,
+            default_value=False,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=58,
+    serialized_end=136,
 )
 
 
 _BEACONTASKS = _descriptor.Descriptor(
-  name='BeaconTasks',
-  full_name='sliverpb.BeaconTasks',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='ID', full_name='sliverpb.BeaconTasks.ID', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Tasks', full_name='sliverpb.BeaconTasks.Tasks', index=1,
-      number=2, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='NextCheckin', full_name='sliverpb.BeaconTasks.NextCheckin', index=2,
-      number=3, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=138,
-  serialized_end=219,
+    name="BeaconTasks",
+    full_name="sliverpb.BeaconTasks",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="ID",
+            full_name="sliverpb.BeaconTasks.ID",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Tasks",
+            full_name="sliverpb.BeaconTasks.Tasks",
+            index=1,
+            number=2,
+            type=11,
+            cpp_type=10,
+            label=3,
+            has_default_value=False,
+            default_value=[],
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="NextCheckin",
+            full_name="sliverpb.BeaconTasks.NextCheckin",
+            index=2,
+            number=3,
+            type=3,
+            cpp_type=2,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=138,
+    serialized_end=219,
 )
 
 
 _REGISTER = _descriptor.Descriptor(
-  name='Register',
-  full_name='sliverpb.Register',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Name', full_name='sliverpb.Register.Name', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Hostname', full_name='sliverpb.Register.Hostname', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Uuid', full_name='sliverpb.Register.Uuid', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Username', full_name='sliverpb.Register.Username', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Uid', full_name='sliverpb.Register.Uid', index=4,
-      number=5, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Gid', full_name='sliverpb.Register.Gid', index=5,
-      number=6, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Os', full_name='sliverpb.Register.Os', index=6,
-      number=7, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Arch', full_name='sliverpb.Register.Arch', index=7,
-      number=8, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Pid', full_name='sliverpb.Register.Pid', index=8,
-      number=9, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Filename', full_name='sliverpb.Register.Filename', index=9,
-      number=10, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='ActiveC2', full_name='sliverpb.Register.ActiveC2', index=10,
-      number=11, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Version', full_name='sliverpb.Register.Version', index=11,
-      number=12, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='ReconnectInterval', full_name='sliverpb.Register.ReconnectInterval', index=12,
-      number=13, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='ProxyURL', full_name='sliverpb.Register.ProxyURL', index=13,
-      number=14, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='ConfigID', full_name='sliverpb.Register.ConfigID', index=14,
-      number=16, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='PeerID', full_name='sliverpb.Register.PeerID', index=15,
-      number=17, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=222,
-  serialized_end=493,
+    name="Register",
+    full_name="sliverpb.Register",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Name",
+            full_name="sliverpb.Register.Name",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Hostname",
+            full_name="sliverpb.Register.Hostname",
+            index=1,
+            number=2,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Uuid",
+            full_name="sliverpb.Register.Uuid",
+            index=2,
+            number=3,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Username",
+            full_name="sliverpb.Register.Username",
+            index=3,
+            number=4,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Uid",
+            full_name="sliverpb.Register.Uid",
+            index=4,
+            number=5,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Gid",
+            full_name="sliverpb.Register.Gid",
+            index=5,
+            number=6,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Os",
+            full_name="sliverpb.Register.Os",
+            index=6,
+            number=7,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Arch",
+            full_name="sliverpb.Register.Arch",
+            index=7,
+            number=8,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Pid",
+            full_name="sliverpb.Register.Pid",
+            index=8,
+            number=9,
+            type=5,
+            cpp_type=1,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Filename",
+            full_name="sliverpb.Register.Filename",
+            index=9,
+            number=10,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="ActiveC2",
+            full_name="sliverpb.Register.ActiveC2",
+            index=10,
+            number=11,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Version",
+            full_name="sliverpb.Register.Version",
+            index=11,
+            number=12,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="ReconnectInterval",
+            full_name="sliverpb.Register.ReconnectInterval",
+            index=12,
+            number=13,
+            type=3,
+            cpp_type=2,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="ProxyURL",
+            full_name="sliverpb.Register.ProxyURL",
+            index=13,
+            number=14,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="ConfigID",
+            full_name="sliverpb.Register.ConfigID",
+            index=14,
+            number=16,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="PeerID",
+            full_name="sliverpb.Register.PeerID",
+            index=15,
+            number=17,
+            type=3,
+            cpp_type=2,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=222,
+    serialized_end=493,
 )
 
 
 _BEACONREGISTER = _descriptor.Descriptor(
-  name='BeaconRegister',
-  full_name='sliverpb.BeaconRegister',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='ID', full_name='sliverpb.BeaconRegister.ID', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Interval', full_name='sliverpb.BeaconRegister.Interval', index=1,
-      number=2, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Jitter', full_name='sliverpb.BeaconRegister.Jitter', index=2,
-      number=3, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Register', full_name='sliverpb.BeaconRegister.Register', index=3,
-      number=4, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='NextCheckin', full_name='sliverpb.BeaconRegister.NextCheckin', index=4,
-      number=5, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=495,
-  serialized_end=616,
+    name="BeaconRegister",
+    full_name="sliverpb.BeaconRegister",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="ID",
+            full_name="sliverpb.BeaconRegister.ID",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Interval",
+            full_name="sliverpb.BeaconRegister.Interval",
+            index=1,
+            number=2,
+            type=3,
+            cpp_type=2,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Jitter",
+            full_name="sliverpb.BeaconRegister.Jitter",
+            index=2,
+            number=3,
+            type=3,
+            cpp_type=2,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Register",
+            full_name="sliverpb.BeaconRegister.Register",
+            index=3,
+            number=4,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="NextCheckin",
+            full_name="sliverpb.BeaconRegister.NextCheckin",
+            index=4,
+            number=5,
+            type=3,
+            cpp_type=2,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=495,
+    serialized_end=616,
 )
 
 
 _SESSIONREGISTER = _descriptor.Descriptor(
-  name='SessionRegister',
-  full_name='sliverpb.SessionRegister',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='ID', full_name='sliverpb.SessionRegister.ID', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Register', full_name='sliverpb.SessionRegister.Register', index=1,
-      number=2, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=618,
-  serialized_end=685,
+    name="SessionRegister",
+    full_name="sliverpb.SessionRegister",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="ID",
+            full_name="sliverpb.SessionRegister.ID",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Register",
+            full_name="sliverpb.SessionRegister.Register",
+            index=1,
+            number=2,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=618,
+    serialized_end=685,
 )
 
 
 _OPENSESSION = _descriptor.Descriptor(
-  name='OpenSession',
-  full_name='sliverpb.OpenSession',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='C2s', full_name='sliverpb.OpenSession.C2s', index=0,
-      number=1, type=9, cpp_type=9, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Delay', full_name='sliverpb.OpenSession.Delay', index=1,
-      number=2, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.OpenSession.Response', index=2,
-      number=8, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.OpenSession.Request', index=3,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=687,
-  serialized_end=802,
+    name="OpenSession",
+    full_name="sliverpb.OpenSession",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="C2s",
+            full_name="sliverpb.OpenSession.C2s",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=3,
+            has_default_value=False,
+            default_value=[],
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Delay",
+            full_name="sliverpb.OpenSession.Delay",
+            index=1,
+            number=2,
+            type=3,
+            cpp_type=2,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.OpenSession.Response",
+            index=2,
+            number=8,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.OpenSession.Request",
+            index=3,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=687,
+    serialized_end=802,
 )
 
 
 _CLOSESESSION = _descriptor.Descriptor(
-  name='CloseSession',
-  full_name='sliverpb.CloseSession',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.CloseSession.Response', index=0,
-      number=8, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.CloseSession.Request', index=1,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=804,
-  serialized_end=892,
+    name="CloseSession",
+    full_name="sliverpb.CloseSession",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.CloseSession.Response",
+            index=0,
+            number=8,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.CloseSession.Request",
+            index=1,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=804,
+    serialized_end=892,
 )
 
 
 _PING = _descriptor.Descriptor(
-  name='Ping',
-  full_name='sliverpb.Ping',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Nonce', full_name='sliverpb.Ping.Nonce', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.Ping.Response', index=1,
-      number=8, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.Ping.Request', index=2,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=894,
-  serialized_end=989,
+    name="Ping",
+    full_name="sliverpb.Ping",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Nonce",
+            full_name="sliverpb.Ping.Nonce",
+            index=0,
+            number=1,
+            type=5,
+            cpp_type=1,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.Ping.Response",
+            index=1,
+            number=8,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.Ping.Request",
+            index=2,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=894,
+    serialized_end=989,
 )
 
 
 _KILLREQ = _descriptor.Descriptor(
-  name='KillReq',
-  full_name='sliverpb.KillReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Force', full_name='sliverpb.KillReq.Force', index=0,
-      number=1, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.KillReq.Request', index=1,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=991,
-  serialized_end=1051,
+    name="KillReq",
+    full_name="sliverpb.KillReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Force",
+            full_name="sliverpb.KillReq.Force",
+            index=0,
+            number=1,
+            type=8,
+            cpp_type=7,
+            label=1,
+            has_default_value=False,
+            default_value=False,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.KillReq.Request",
+            index=1,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=991,
+    serialized_end=1051,
 )
 
 
 _PSREQ = _descriptor.Descriptor(
-  name='PsReq',
-  full_name='sliverpb.PsReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.PsReq.Request', index=0,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1053,
-  serialized_end=1096,
+    name="PsReq",
+    full_name="sliverpb.PsReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.PsReq.Request",
+            index=0,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=1053,
+    serialized_end=1096,
 )
 
 
 _PS = _descriptor.Descriptor(
-  name='Ps',
-  full_name='sliverpb.Ps',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Processes', full_name='sliverpb.Ps.Processes', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.Ps.Response', index=1,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1098,
-  serialized_end=1178,
+    name="Ps",
+    full_name="sliverpb.Ps",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Processes",
+            full_name="sliverpb.Ps.Processes",
+            index=0,
+            number=1,
+            type=11,
+            cpp_type=10,
+            label=3,
+            has_default_value=False,
+            default_value=[],
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.Ps.Response",
+            index=1,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=1098,
+    serialized_end=1178,
 )
 
 
 _TERMINATEREQ = _descriptor.Descriptor(
-  name='TerminateReq',
-  full_name='sliverpb.TerminateReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Pid', full_name='sliverpb.TerminateReq.Pid', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Force', full_name='sliverpb.TerminateReq.Force', index=1,
-      number=2, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.TerminateReq.Request', index=2,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1180,
-  serialized_end=1258,
+    name="TerminateReq",
+    full_name="sliverpb.TerminateReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Pid",
+            full_name="sliverpb.TerminateReq.Pid",
+            index=0,
+            number=1,
+            type=5,
+            cpp_type=1,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Force",
+            full_name="sliverpb.TerminateReq.Force",
+            index=1,
+            number=2,
+            type=8,
+            cpp_type=7,
+            label=1,
+            has_default_value=False,
+            default_value=False,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.TerminateReq.Request",
+            index=2,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=1180,
+    serialized_end=1258,
 )
 
 
 _TERMINATE = _descriptor.Descriptor(
-  name='Terminate',
-  full_name='sliverpb.Terminate',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Pid', full_name='sliverpb.Terminate.Pid', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.Terminate.Response', index=1,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1260,
-  serialized_end=1322,
+    name="Terminate",
+    full_name="sliverpb.Terminate",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Pid",
+            full_name="sliverpb.Terminate.Pid",
+            index=0,
+            number=1,
+            type=5,
+            cpp_type=1,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.Terminate.Response",
+            index=1,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=1260,
+    serialized_end=1322,
 )
 
 
 _IFCONFIGREQ = _descriptor.Descriptor(
-  name='IfconfigReq',
-  full_name='sliverpb.IfconfigReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.IfconfigReq.Request', index=0,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1324,
-  serialized_end=1373,
+    name="IfconfigReq",
+    full_name="sliverpb.IfconfigReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.IfconfigReq.Request",
+            index=0,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=1324,
+    serialized_end=1373,
 )
 
 
 _IFCONFIG = _descriptor.Descriptor(
-  name='Ifconfig',
-  full_name='sliverpb.Ifconfig',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='NetInterfaces', full_name='sliverpb.Ifconfig.NetInterfaces', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.Ifconfig.Response', index=1,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1375,
-  serialized_end=1470,
+    name="Ifconfig",
+    full_name="sliverpb.Ifconfig",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="NetInterfaces",
+            full_name="sliverpb.Ifconfig.NetInterfaces",
+            index=0,
+            number=1,
+            type=11,
+            cpp_type=10,
+            label=3,
+            has_default_value=False,
+            default_value=[],
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.Ifconfig.Response",
+            index=1,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=1375,
+    serialized_end=1470,
 )
 
 
 _NETINTERFACE = _descriptor.Descriptor(
-  name='NetInterface',
-  full_name='sliverpb.NetInterface',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Index', full_name='sliverpb.NetInterface.Index', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Name', full_name='sliverpb.NetInterface.Name', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='MAC', full_name='sliverpb.NetInterface.MAC', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='IPAddresses', full_name='sliverpb.NetInterface.IPAddresses', index=3,
-      number=4, type=9, cpp_type=9, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1472,
-  serialized_end=1549,
+    name="NetInterface",
+    full_name="sliverpb.NetInterface",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Index",
+            full_name="sliverpb.NetInterface.Index",
+            index=0,
+            number=1,
+            type=5,
+            cpp_type=1,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Name",
+            full_name="sliverpb.NetInterface.Name",
+            index=1,
+            number=2,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="MAC",
+            full_name="sliverpb.NetInterface.MAC",
+            index=2,
+            number=3,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="IPAddresses",
+            full_name="sliverpb.NetInterface.IPAddresses",
+            index=3,
+            number=4,
+            type=9,
+            cpp_type=9,
+            label=3,
+            has_default_value=False,
+            default_value=[],
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=1472,
+    serialized_end=1549,
 )
 
 
 _LSREQ = _descriptor.Descriptor(
-  name='LsReq',
-  full_name='sliverpb.LsReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Path', full_name='sliverpb.LsReq.Path', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.LsReq.Request', index=1,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1551,
-  serialized_end=1608,
+    name="LsReq",
+    full_name="sliverpb.LsReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Path",
+            full_name="sliverpb.LsReq.Path",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.LsReq.Request",
+            index=1,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=1551,
+    serialized_end=1608,
 )
 
 
 _LS = _descriptor.Descriptor(
-  name='Ls',
-  full_name='sliverpb.Ls',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Path', full_name='sliverpb.Ls.Path', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Exists', full_name='sliverpb.Ls.Exists', index=1,
-      number=2, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Files', full_name='sliverpb.Ls.Files', index=2,
-      number=3, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='timezone', full_name='sliverpb.Ls.timezone', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='timezoneOffset', full_name='sliverpb.Ls.timezoneOffset', index=4,
-      number=5, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.Ls.Response', index=5,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1611,
-  serialized_end=1760,
+    name="Ls",
+    full_name="sliverpb.Ls",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Path",
+            full_name="sliverpb.Ls.Path",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Exists",
+            full_name="sliverpb.Ls.Exists",
+            index=1,
+            number=2,
+            type=8,
+            cpp_type=7,
+            label=1,
+            has_default_value=False,
+            default_value=False,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Files",
+            full_name="sliverpb.Ls.Files",
+            index=2,
+            number=3,
+            type=11,
+            cpp_type=10,
+            label=3,
+            has_default_value=False,
+            default_value=[],
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="timezone",
+            full_name="sliverpb.Ls.timezone",
+            index=3,
+            number=4,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="timezoneOffset",
+            full_name="sliverpb.Ls.timezoneOffset",
+            index=4,
+            number=5,
+            type=5,
+            cpp_type=1,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.Ls.Response",
+            index=5,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=1611,
+    serialized_end=1760,
 )
 
 
 _FILEINFO = _descriptor.Descriptor(
-  name='FileInfo',
-  full_name='sliverpb.FileInfo',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Name', full_name='sliverpb.FileInfo.Name', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='IsDir', full_name='sliverpb.FileInfo.IsDir', index=1,
-      number=2, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Size', full_name='sliverpb.FileInfo.Size', index=2,
-      number=3, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='ModTime', full_name='sliverpb.FileInfo.ModTime', index=3,
-      number=4, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Mode', full_name='sliverpb.FileInfo.Mode', index=4,
-      number=5, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Link', full_name='sliverpb.FileInfo.Link', index=5,
-      number=6, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1762,
-  serialized_end=1860,
+    name="FileInfo",
+    full_name="sliverpb.FileInfo",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Name",
+            full_name="sliverpb.FileInfo.Name",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="IsDir",
+            full_name="sliverpb.FileInfo.IsDir",
+            index=1,
+            number=2,
+            type=8,
+            cpp_type=7,
+            label=1,
+            has_default_value=False,
+            default_value=False,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Size",
+            full_name="sliverpb.FileInfo.Size",
+            index=2,
+            number=3,
+            type=3,
+            cpp_type=2,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="ModTime",
+            full_name="sliverpb.FileInfo.ModTime",
+            index=3,
+            number=4,
+            type=3,
+            cpp_type=2,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Mode",
+            full_name="sliverpb.FileInfo.Mode",
+            index=4,
+            number=5,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Link",
+            full_name="sliverpb.FileInfo.Link",
+            index=5,
+            number=6,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=1762,
+    serialized_end=1860,
 )
 
 
 _CDREQ = _descriptor.Descriptor(
-  name='CdReq',
-  full_name='sliverpb.CdReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Path', full_name='sliverpb.CdReq.Path', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.CdReq.Request', index=1,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1862,
-  serialized_end=1919,
+    name="CdReq",
+    full_name="sliverpb.CdReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Path",
+            full_name="sliverpb.CdReq.Path",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.CdReq.Request",
+            index=1,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=1862,
+    serialized_end=1919,
 )
 
 
 _PWDREQ = _descriptor.Descriptor(
-  name='PwdReq',
-  full_name='sliverpb.PwdReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.PwdReq.Request', index=0,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1921,
-  serialized_end=1965,
+    name="PwdReq",
+    full_name="sliverpb.PwdReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.PwdReq.Request",
+            index=0,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=1921,
+    serialized_end=1965,
 )
 
 
 _PWD = _descriptor.Descriptor(
-  name='Pwd',
-  full_name='sliverpb.Pwd',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Path', full_name='sliverpb.Pwd.Path', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.Pwd.Response', index=1,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1967,
-  serialized_end=2024,
+    name="Pwd",
+    full_name="sliverpb.Pwd",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Path",
+            full_name="sliverpb.Pwd.Path",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.Pwd.Response",
+            index=1,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=1967,
+    serialized_end=2024,
 )
 
 
 _RMREQ = _descriptor.Descriptor(
-  name='RmReq',
-  full_name='sliverpb.RmReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Path', full_name='sliverpb.RmReq.Path', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Recursive', full_name='sliverpb.RmReq.Recursive', index=1,
-      number=2, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Force', full_name='sliverpb.RmReq.Force', index=2,
-      number=3, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.RmReq.Request', index=3,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=2026,
-  serialized_end=2117,
+    name="RmReq",
+    full_name="sliverpb.RmReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Path",
+            full_name="sliverpb.RmReq.Path",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Recursive",
+            full_name="sliverpb.RmReq.Recursive",
+            index=1,
+            number=2,
+            type=8,
+            cpp_type=7,
+            label=1,
+            has_default_value=False,
+            default_value=False,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Force",
+            full_name="sliverpb.RmReq.Force",
+            index=2,
+            number=3,
+            type=8,
+            cpp_type=7,
+            label=1,
+            has_default_value=False,
+            default_value=False,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.RmReq.Request",
+            index=3,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=2026,
+    serialized_end=2117,
 )
 
 
 _RM = _descriptor.Descriptor(
-  name='Rm',
-  full_name='sliverpb.Rm',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Path', full_name='sliverpb.Rm.Path', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.Rm.Response', index=1,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=2119,
-  serialized_end=2175,
+    name="Rm",
+    full_name="sliverpb.Rm",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Path",
+            full_name="sliverpb.Rm.Path",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.Rm.Response",
+            index=1,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=2119,
+    serialized_end=2175,
 )
 
 
 _MVREQ = _descriptor.Descriptor(
-  name='MvReq',
-  full_name='sliverpb.MvReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Src', full_name='sliverpb.MvReq.Src', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Dst', full_name='sliverpb.MvReq.Dst', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.MvReq.Request', index=2,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=2177,
-  serialized_end=2246,
+    name="MvReq",
+    full_name="sliverpb.MvReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Src",
+            full_name="sliverpb.MvReq.Src",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Dst",
+            full_name="sliverpb.MvReq.Dst",
+            index=1,
+            number=2,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.MvReq.Request",
+            index=2,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=2177,
+    serialized_end=2246,
 )
 
 
 _MV = _descriptor.Descriptor(
-  name='Mv',
-  full_name='sliverpb.Mv',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Src', full_name='sliverpb.Mv.Src', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Dst', full_name='sliverpb.Mv.Dst', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.Mv.Response', index=2,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=2248,
-  serialized_end=2316,
+    name="Mv",
+    full_name="sliverpb.Mv",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Src",
+            full_name="sliverpb.Mv.Src",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Dst",
+            full_name="sliverpb.Mv.Dst",
+            index=1,
+            number=2,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.Mv.Response",
+            index=2,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=2248,
+    serialized_end=2316,
 )
 
 
 _MKDIRREQ = _descriptor.Descriptor(
-  name='MkdirReq',
-  full_name='sliverpb.MkdirReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Path', full_name='sliverpb.MkdirReq.Path', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.MkdirReq.Request', index=1,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=2318,
-  serialized_end=2378,
+    name="MkdirReq",
+    full_name="sliverpb.MkdirReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Path",
+            full_name="sliverpb.MkdirReq.Path",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.MkdirReq.Request",
+            index=1,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=2318,
+    serialized_end=2378,
 )
 
 
 _MKDIR = _descriptor.Descriptor(
-  name='Mkdir',
-  full_name='sliverpb.Mkdir',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Path', full_name='sliverpb.Mkdir.Path', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.Mkdir.Response', index=1,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=2380,
-  serialized_end=2439,
+    name="Mkdir",
+    full_name="sliverpb.Mkdir",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Path",
+            full_name="sliverpb.Mkdir.Path",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.Mkdir.Response",
+            index=1,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=2380,
+    serialized_end=2439,
 )
 
 
 _DOWNLOADREQ = _descriptor.Descriptor(
-  name='DownloadReq',
-  full_name='sliverpb.DownloadReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Path', full_name='sliverpb.DownloadReq.Path', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Start', full_name='sliverpb.DownloadReq.Start', index=1,
-      number=2, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Stop', full_name='sliverpb.DownloadReq.Stop', index=2,
-      number=3, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Recurse', full_name='sliverpb.DownloadReq.Recurse', index=3,
-      number=4, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.DownloadReq.Request', index=4,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=2441,
-  serialized_end=2550,
+    name="DownloadReq",
+    full_name="sliverpb.DownloadReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Path",
+            full_name="sliverpb.DownloadReq.Path",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Start",
+            full_name="sliverpb.DownloadReq.Start",
+            index=1,
+            number=2,
+            type=3,
+            cpp_type=2,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Stop",
+            full_name="sliverpb.DownloadReq.Stop",
+            index=2,
+            number=3,
+            type=3,
+            cpp_type=2,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Recurse",
+            full_name="sliverpb.DownloadReq.Recurse",
+            index=3,
+            number=4,
+            type=8,
+            cpp_type=7,
+            label=1,
+            has_default_value=False,
+            default_value=False,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.DownloadReq.Request",
+            index=4,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=2441,
+    serialized_end=2550,
 )
 
 
 _DOWNLOAD = _descriptor.Descriptor(
-  name='Download',
-  full_name='sliverpb.Download',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Path', full_name='sliverpb.Download.Path', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Encoder', full_name='sliverpb.Download.Encoder', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Exists', full_name='sliverpb.Download.Exists', index=2,
-      number=3, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Start', full_name='sliverpb.Download.Start', index=3,
-      number=4, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Stop', full_name='sliverpb.Download.Stop', index=4,
-      number=5, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Data', full_name='sliverpb.Download.Data', index=5,
-      number=6, type=12, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"",
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='IsDir', full_name='sliverpb.Download.IsDir', index=6,
-      number=7, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='ReadFiles', full_name='sliverpb.Download.ReadFiles', index=7,
-      number=8, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='UnreadableFiles', full_name='sliverpb.Download.UnreadableFiles', index=8,
-      number=10, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.Download.Response', index=9,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=2553,
-  serialized_end=2750,
+    name="Download",
+    full_name="sliverpb.Download",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Path",
+            full_name="sliverpb.Download.Path",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Encoder",
+            full_name="sliverpb.Download.Encoder",
+            index=1,
+            number=2,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Exists",
+            full_name="sliverpb.Download.Exists",
+            index=2,
+            number=3,
+            type=8,
+            cpp_type=7,
+            label=1,
+            has_default_value=False,
+            default_value=False,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Start",
+            full_name="sliverpb.Download.Start",
+            index=3,
+            number=4,
+            type=3,
+            cpp_type=2,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Stop",
+            full_name="sliverpb.Download.Stop",
+            index=4,
+            number=5,
+            type=3,
+            cpp_type=2,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Data",
+            full_name="sliverpb.Download.Data",
+            index=5,
+            number=6,
+            type=12,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"",
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="IsDir",
+            full_name="sliverpb.Download.IsDir",
+            index=6,
+            number=7,
+            type=8,
+            cpp_type=7,
+            label=1,
+            has_default_value=False,
+            default_value=False,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="ReadFiles",
+            full_name="sliverpb.Download.ReadFiles",
+            index=7,
+            number=8,
+            type=5,
+            cpp_type=1,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="UnreadableFiles",
+            full_name="sliverpb.Download.UnreadableFiles",
+            index=8,
+            number=10,
+            type=5,
+            cpp_type=1,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.Download.Response",
+            index=9,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=2553,
+    serialized_end=2750,
 )
 
 
 _UPLOADREQ = _descriptor.Descriptor(
-  name='UploadReq',
-  full_name='sliverpb.UploadReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Path', full_name='sliverpb.UploadReq.Path', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Encoder', full_name='sliverpb.UploadReq.Encoder', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Data', full_name='sliverpb.UploadReq.Data', index=2,
-      number=3, type=12, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"",
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='IsIOC', full_name='sliverpb.UploadReq.IsIOC', index=3,
-      number=4, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.UploadReq.Request', index=4,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=2752,
-  serialized_end=2859,
+    name="UploadReq",
+    full_name="sliverpb.UploadReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Path",
+            full_name="sliverpb.UploadReq.Path",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Encoder",
+            full_name="sliverpb.UploadReq.Encoder",
+            index=1,
+            number=2,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Data",
+            full_name="sliverpb.UploadReq.Data",
+            index=2,
+            number=3,
+            type=12,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"",
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="IsIOC",
+            full_name="sliverpb.UploadReq.IsIOC",
+            index=3,
+            number=4,
+            type=8,
+            cpp_type=7,
+            label=1,
+            has_default_value=False,
+            default_value=False,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.UploadReq.Request",
+            index=4,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=2752,
+    serialized_end=2859,
 )
 
 
 _UPLOAD = _descriptor.Descriptor(
-  name='Upload',
-  full_name='sliverpb.Upload',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Path', full_name='sliverpb.Upload.Path', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.Upload.Response', index=1,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=2861,
-  serialized_end=2921,
+    name="Upload",
+    full_name="sliverpb.Upload",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Path",
+            full_name="sliverpb.Upload.Path",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.Upload.Response",
+            index=1,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=2861,
+    serialized_end=2921,
 )
 
 
 _PROCESSDUMPREQ = _descriptor.Descriptor(
-  name='ProcessDumpReq',
-  full_name='sliverpb.ProcessDumpReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Pid', full_name='sliverpb.ProcessDumpReq.Pid', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Timeout', full_name='sliverpb.ProcessDumpReq.Timeout', index=1,
-      number=2, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.ProcessDumpReq.Request', index=2,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=2923,
-  serialized_end=3005,
+    name="ProcessDumpReq",
+    full_name="sliverpb.ProcessDumpReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Pid",
+            full_name="sliverpb.ProcessDumpReq.Pid",
+            index=0,
+            number=1,
+            type=5,
+            cpp_type=1,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Timeout",
+            full_name="sliverpb.ProcessDumpReq.Timeout",
+            index=1,
+            number=2,
+            type=5,
+            cpp_type=1,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.ProcessDumpReq.Request",
+            index=2,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=2923,
+    serialized_end=3005,
 )
 
 
 _PROCESSDUMP = _descriptor.Descriptor(
-  name='ProcessDump',
-  full_name='sliverpb.ProcessDump',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Data', full_name='sliverpb.ProcessDump.Data', index=0,
-      number=1, type=12, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"",
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.ProcessDump.Response', index=1,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=3007,
-  serialized_end=3072,
+    name="ProcessDump",
+    full_name="sliverpb.ProcessDump",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Data",
+            full_name="sliverpb.ProcessDump.Data",
+            index=0,
+            number=1,
+            type=12,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"",
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.ProcessDump.Response",
+            index=1,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=3007,
+    serialized_end=3072,
 )
 
 
 _RUNASREQ = _descriptor.Descriptor(
-  name='RunAsReq',
-  full_name='sliverpb.RunAsReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Username', full_name='sliverpb.RunAsReq.Username', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='ProcessName', full_name='sliverpb.RunAsReq.ProcessName', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Args', full_name='sliverpb.RunAsReq.Args', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.RunAsReq.Request', index=3,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=3074,
-  serialized_end=3173,
+    name="RunAsReq",
+    full_name="sliverpb.RunAsReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Username",
+            full_name="sliverpb.RunAsReq.Username",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="ProcessName",
+            full_name="sliverpb.RunAsReq.ProcessName",
+            index=1,
+            number=2,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Args",
+            full_name="sliverpb.RunAsReq.Args",
+            index=2,
+            number=3,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.RunAsReq.Request",
+            index=3,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=3074,
+    serialized_end=3173,
 )
 
 
 _RUNAS = _descriptor.Descriptor(
-  name='RunAs',
-  full_name='sliverpb.RunAs',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Output', full_name='sliverpb.RunAs.Output', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.RunAs.Response', index=1,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=3175,
-  serialized_end=3236,
+    name="RunAs",
+    full_name="sliverpb.RunAs",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Output",
+            full_name="sliverpb.RunAs.Output",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.RunAs.Response",
+            index=1,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=3175,
+    serialized_end=3236,
 )
 
 
 _IMPERSONATEREQ = _descriptor.Descriptor(
-  name='ImpersonateReq',
-  full_name='sliverpb.ImpersonateReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Username', full_name='sliverpb.ImpersonateReq.Username', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.ImpersonateReq.Request', index=1,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=3238,
-  serialized_end=3308,
+    name="ImpersonateReq",
+    full_name="sliverpb.ImpersonateReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Username",
+            full_name="sliverpb.ImpersonateReq.Username",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.ImpersonateReq.Request",
+            index=1,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=3238,
+    serialized_end=3308,
 )
 
 
 _IMPERSONATE = _descriptor.Descriptor(
-  name='Impersonate',
-  full_name='sliverpb.Impersonate',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.Impersonate.Response', index=0,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=3310,
-  serialized_end=3361,
+    name="Impersonate",
+    full_name="sliverpb.Impersonate",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.Impersonate.Response",
+            index=0,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=3310,
+    serialized_end=3361,
 )
 
 
 _REVTOSELFREQ = _descriptor.Descriptor(
-  name='RevToSelfReq',
-  full_name='sliverpb.RevToSelfReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.RevToSelfReq.Request', index=0,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=3363,
-  serialized_end=3413,
+    name="RevToSelfReq",
+    full_name="sliverpb.RevToSelfReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.RevToSelfReq.Request",
+            index=0,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=3363,
+    serialized_end=3413,
 )
 
 
 _REVTOSELF = _descriptor.Descriptor(
-  name='RevToSelf',
-  full_name='sliverpb.RevToSelf',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.RevToSelf.Response', index=0,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=3415,
-  serialized_end=3464,
+    name="RevToSelf",
+    full_name="sliverpb.RevToSelf",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.RevToSelf.Response",
+            index=0,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=3415,
+    serialized_end=3464,
 )
 
 
 _CURRENTTOKENOWNERREQ = _descriptor.Descriptor(
-  name='CurrentTokenOwnerReq',
-  full_name='sliverpb.CurrentTokenOwnerReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.CurrentTokenOwnerReq.Request', index=0,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=3466,
-  serialized_end=3524,
+    name="CurrentTokenOwnerReq",
+    full_name="sliverpb.CurrentTokenOwnerReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.CurrentTokenOwnerReq.Request",
+            index=0,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=3466,
+    serialized_end=3524,
 )
 
 
 _CURRENTTOKENOWNER = _descriptor.Descriptor(
-  name='CurrentTokenOwner',
-  full_name='sliverpb.CurrentTokenOwner',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Output', full_name='sliverpb.CurrentTokenOwner.Output', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.CurrentTokenOwner.Response', index=1,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=3526,
-  serialized_end=3599,
+    name="CurrentTokenOwner",
+    full_name="sliverpb.CurrentTokenOwner",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Output",
+            full_name="sliverpb.CurrentTokenOwner.Output",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.CurrentTokenOwner.Response",
+            index=1,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=3526,
+    serialized_end=3599,
 )
 
 
 _INVOKEGETSYSTEMREQ = _descriptor.Descriptor(
-  name='InvokeGetSystemReq',
-  full_name='sliverpb.InvokeGetSystemReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Data', full_name='sliverpb.InvokeGetSystemReq.Data', index=0,
-      number=1, type=12, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"",
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='HostingProcess', full_name='sliverpb.InvokeGetSystemReq.HostingProcess', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.InvokeGetSystemReq.Request', index=2,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=3601,
-  serialized_end=3695,
+    name="InvokeGetSystemReq",
+    full_name="sliverpb.InvokeGetSystemReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Data",
+            full_name="sliverpb.InvokeGetSystemReq.Data",
+            index=0,
+            number=1,
+            type=12,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"",
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="HostingProcess",
+            full_name="sliverpb.InvokeGetSystemReq.HostingProcess",
+            index=1,
+            number=2,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.InvokeGetSystemReq.Request",
+            index=2,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=3601,
+    serialized_end=3695,
 )
 
 
 _GETSYSTEM = _descriptor.Descriptor(
-  name='GetSystem',
-  full_name='sliverpb.GetSystem',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.GetSystem.Response', index=0,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=3697,
-  serialized_end=3746,
+    name="GetSystem",
+    full_name="sliverpb.GetSystem",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.GetSystem.Response",
+            index=0,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=3697,
+    serialized_end=3746,
 )
 
 
 _MAKETOKENREQ = _descriptor.Descriptor(
-  name='MakeTokenReq',
-  full_name='sliverpb.MakeTokenReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Username', full_name='sliverpb.MakeTokenReq.Username', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Password', full_name='sliverpb.MakeTokenReq.Password', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Domain', full_name='sliverpb.MakeTokenReq.Domain', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.MakeTokenReq.Request', index=3,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=3748,
-  serialized_end=3850,
+    name="MakeTokenReq",
+    full_name="sliverpb.MakeTokenReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Username",
+            full_name="sliverpb.MakeTokenReq.Username",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Password",
+            full_name="sliverpb.MakeTokenReq.Password",
+            index=1,
+            number=2,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Domain",
+            full_name="sliverpb.MakeTokenReq.Domain",
+            index=2,
+            number=3,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.MakeTokenReq.Request",
+            index=3,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=3748,
+    serialized_end=3850,
 )
 
 
 _MAKETOKEN = _descriptor.Descriptor(
-  name='MakeToken',
-  full_name='sliverpb.MakeToken',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.MakeToken.Response', index=0,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=3852,
-  serialized_end=3901,
+    name="MakeToken",
+    full_name="sliverpb.MakeToken",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.MakeToken.Response",
+            index=0,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=3852,
+    serialized_end=3901,
 )
 
 
 _TASKREQ = _descriptor.Descriptor(
-  name='TaskReq',
-  full_name='sliverpb.TaskReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Encoder', full_name='sliverpb.TaskReq.Encoder', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='RWXPages', full_name='sliverpb.TaskReq.RWXPages', index=1,
-      number=2, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Pid', full_name='sliverpb.TaskReq.Pid', index=2,
-      number=3, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Data', full_name='sliverpb.TaskReq.Data', index=3,
-      number=4, type=12, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"",
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.TaskReq.Request', index=4,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=3903,
-  serialized_end=4010,
+    name="TaskReq",
+    full_name="sliverpb.TaskReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Encoder",
+            full_name="sliverpb.TaskReq.Encoder",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="RWXPages",
+            full_name="sliverpb.TaskReq.RWXPages",
+            index=1,
+            number=2,
+            type=8,
+            cpp_type=7,
+            label=1,
+            has_default_value=False,
+            default_value=False,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Pid",
+            full_name="sliverpb.TaskReq.Pid",
+            index=2,
+            number=3,
+            type=13,
+            cpp_type=3,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Data",
+            full_name="sliverpb.TaskReq.Data",
+            index=3,
+            number=4,
+            type=12,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"",
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.TaskReq.Request",
+            index=4,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=3903,
+    serialized_end=4010,
 )
 
 
 _TASK = _descriptor.Descriptor(
-  name='Task',
-  full_name='sliverpb.Task',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.Task.Response', index=0,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=4012,
-  serialized_end=4056,
+    name="Task",
+    full_name="sliverpb.Task",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.Task.Response",
+            index=0,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=4012,
+    serialized_end=4056,
 )
 
 
 _EXECUTEASSEMBLYREQ = _descriptor.Descriptor(
-  name='ExecuteAssemblyReq',
-  full_name='sliverpb.ExecuteAssemblyReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Assembly', full_name='sliverpb.ExecuteAssemblyReq.Assembly', index=0,
-      number=1, type=12, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"",
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Arguments', full_name='sliverpb.ExecuteAssemblyReq.Arguments', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Process', full_name='sliverpb.ExecuteAssemblyReq.Process', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='IsDLL', full_name='sliverpb.ExecuteAssemblyReq.IsDLL', index=3,
-      number=4, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Arch', full_name='sliverpb.ExecuteAssemblyReq.Arch', index=4,
-      number=5, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='ClassName', full_name='sliverpb.ExecuteAssemblyReq.ClassName', index=5,
-      number=6, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Method', full_name='sliverpb.ExecuteAssemblyReq.Method', index=6,
-      number=7, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='AppDomain', full_name='sliverpb.ExecuteAssemblyReq.AppDomain', index=7,
-      number=8, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.ExecuteAssemblyReq.Request', index=8,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=4059,
-  serialized_end=4252,
+    name="ExecuteAssemblyReq",
+    full_name="sliverpb.ExecuteAssemblyReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Assembly",
+            full_name="sliverpb.ExecuteAssemblyReq.Assembly",
+            index=0,
+            number=1,
+            type=12,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"",
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Arguments",
+            full_name="sliverpb.ExecuteAssemblyReq.Arguments",
+            index=1,
+            number=2,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Process",
+            full_name="sliverpb.ExecuteAssemblyReq.Process",
+            index=2,
+            number=3,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="IsDLL",
+            full_name="sliverpb.ExecuteAssemblyReq.IsDLL",
+            index=3,
+            number=4,
+            type=8,
+            cpp_type=7,
+            label=1,
+            has_default_value=False,
+            default_value=False,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Arch",
+            full_name="sliverpb.ExecuteAssemblyReq.Arch",
+            index=4,
+            number=5,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="ClassName",
+            full_name="sliverpb.ExecuteAssemblyReq.ClassName",
+            index=5,
+            number=6,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Method",
+            full_name="sliverpb.ExecuteAssemblyReq.Method",
+            index=6,
+            number=7,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="AppDomain",
+            full_name="sliverpb.ExecuteAssemblyReq.AppDomain",
+            index=7,
+            number=8,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.ExecuteAssemblyReq.Request",
+            index=8,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=4059,
+    serialized_end=4252,
 )
 
 
 _INVOKEEXECUTEASSEMBLYREQ = _descriptor.Descriptor(
-  name='InvokeExecuteAssemblyReq',
-  full_name='sliverpb.InvokeExecuteAssemblyReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Data', full_name='sliverpb.InvokeExecuteAssemblyReq.Data', index=0,
-      number=1, type=12, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"",
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='process', full_name='sliverpb.InvokeExecuteAssemblyReq.process', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.InvokeExecuteAssemblyReq.Request', index=2,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=4254,
-  serialized_end=4347,
+    name="InvokeExecuteAssemblyReq",
+    full_name="sliverpb.InvokeExecuteAssemblyReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Data",
+            full_name="sliverpb.InvokeExecuteAssemblyReq.Data",
+            index=0,
+            number=1,
+            type=12,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"",
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="process",
+            full_name="sliverpb.InvokeExecuteAssemblyReq.process",
+            index=1,
+            number=2,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.InvokeExecuteAssemblyReq.Request",
+            index=2,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=4254,
+    serialized_end=4347,
 )
 
 
 _EXECUTEASSEMBLY = _descriptor.Descriptor(
-  name='ExecuteAssembly',
-  full_name='sliverpb.ExecuteAssembly',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Output', full_name='sliverpb.ExecuteAssembly.Output', index=0,
-      number=1, type=12, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"",
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.ExecuteAssembly.Response', index=1,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=4349,
-  serialized_end=4420,
+    name="ExecuteAssembly",
+    full_name="sliverpb.ExecuteAssembly",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Output",
+            full_name="sliverpb.ExecuteAssembly.Output",
+            index=0,
+            number=1,
+            type=12,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"",
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.ExecuteAssembly.Response",
+            index=1,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=4349,
+    serialized_end=4420,
 )
 
 
 _INVOKEMIGRATEREQ = _descriptor.Descriptor(
-  name='InvokeMigrateReq',
-  full_name='sliverpb.InvokeMigrateReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Pid', full_name='sliverpb.InvokeMigrateReq.Pid', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Data', full_name='sliverpb.InvokeMigrateReq.Data', index=1,
-      number=2, type=12, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"",
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.InvokeMigrateReq.Request', index=2,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=4422,
-  serialized_end=4503,
+    name="InvokeMigrateReq",
+    full_name="sliverpb.InvokeMigrateReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Pid",
+            full_name="sliverpb.InvokeMigrateReq.Pid",
+            index=0,
+            number=1,
+            type=13,
+            cpp_type=3,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Data",
+            full_name="sliverpb.InvokeMigrateReq.Data",
+            index=1,
+            number=2,
+            type=12,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"",
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.InvokeMigrateReq.Request",
+            index=2,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=4422,
+    serialized_end=4503,
 )
 
 
 _MIGRATE = _descriptor.Descriptor(
-  name='Migrate',
-  full_name='sliverpb.Migrate',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Success', full_name='sliverpb.Migrate.Success', index=0,
-      number=1, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.Migrate.Response', index=1,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=4505,
-  serialized_end=4569,
+    name="Migrate",
+    full_name="sliverpb.Migrate",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Success",
+            full_name="sliverpb.Migrate.Success",
+            index=0,
+            number=1,
+            type=8,
+            cpp_type=7,
+            label=1,
+            has_default_value=False,
+            default_value=False,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.Migrate.Response",
+            index=1,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=4505,
+    serialized_end=4569,
 )
 
 
 _EXECUTEREQ = _descriptor.Descriptor(
-  name='ExecuteReq',
-  full_name='sliverpb.ExecuteReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Path', full_name='sliverpb.ExecuteReq.Path', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Args', full_name='sliverpb.ExecuteReq.Args', index=1,
-      number=2, type=9, cpp_type=9, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Output', full_name='sliverpb.ExecuteReq.Output', index=2,
-      number=3, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Stdout', full_name='sliverpb.ExecuteReq.Stdout', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Stderr', full_name='sliverpb.ExecuteReq.Stderr', index=4,
-      number=5, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.ExecuteReq.Request', index=5,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=4571,
-  serialized_end=4695,
+    name="ExecuteReq",
+    full_name="sliverpb.ExecuteReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Path",
+            full_name="sliverpb.ExecuteReq.Path",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Args",
+            full_name="sliverpb.ExecuteReq.Args",
+            index=1,
+            number=2,
+            type=9,
+            cpp_type=9,
+            label=3,
+            has_default_value=False,
+            default_value=[],
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Output",
+            full_name="sliverpb.ExecuteReq.Output",
+            index=2,
+            number=3,
+            type=8,
+            cpp_type=7,
+            label=1,
+            has_default_value=False,
+            default_value=False,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Stdout",
+            full_name="sliverpb.ExecuteReq.Stdout",
+            index=3,
+            number=4,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Stderr",
+            full_name="sliverpb.ExecuteReq.Stderr",
+            index=4,
+            number=5,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.ExecuteReq.Request",
+            index=5,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=4571,
+    serialized_end=4695,
 )
 
 
 _EXECUTETOKENREQ = _descriptor.Descriptor(
-  name='ExecuteTokenReq',
-  full_name='sliverpb.ExecuteTokenReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Path', full_name='sliverpb.ExecuteTokenReq.Path', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Args', full_name='sliverpb.ExecuteTokenReq.Args', index=1,
-      number=2, type=9, cpp_type=9, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Output', full_name='sliverpb.ExecuteTokenReq.Output', index=2,
-      number=3, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Stdout', full_name='sliverpb.ExecuteTokenReq.Stdout', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Stderr', full_name='sliverpb.ExecuteTokenReq.Stderr', index=4,
-      number=5, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.ExecuteTokenReq.Request', index=5,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=4698,
-  serialized_end=4827,
+    name="ExecuteTokenReq",
+    full_name="sliverpb.ExecuteTokenReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Path",
+            full_name="sliverpb.ExecuteTokenReq.Path",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Args",
+            full_name="sliverpb.ExecuteTokenReq.Args",
+            index=1,
+            number=2,
+            type=9,
+            cpp_type=9,
+            label=3,
+            has_default_value=False,
+            default_value=[],
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Output",
+            full_name="sliverpb.ExecuteTokenReq.Output",
+            index=2,
+            number=3,
+            type=8,
+            cpp_type=7,
+            label=1,
+            has_default_value=False,
+            default_value=False,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Stdout",
+            full_name="sliverpb.ExecuteTokenReq.Stdout",
+            index=3,
+            number=4,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Stderr",
+            full_name="sliverpb.ExecuteTokenReq.Stderr",
+            index=4,
+            number=5,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.ExecuteTokenReq.Request",
+            index=5,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=4698,
+    serialized_end=4827,
 )
 
 
 _EXECUTE = _descriptor.Descriptor(
-  name='Execute',
-  full_name='sliverpb.Execute',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Status', full_name='sliverpb.Execute.Status', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Stdout', full_name='sliverpb.Execute.Stdout', index=1,
-      number=2, type=12, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"",
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Stderr', full_name='sliverpb.Execute.Stderr', index=2,
-      number=3, type=12, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"",
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Pid', full_name='sliverpb.Execute.Pid', index=3,
-      number=4, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.Execute.Response', index=4,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=4829,
-  serialized_end=4937,
+    name="Execute",
+    full_name="sliverpb.Execute",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Status",
+            full_name="sliverpb.Execute.Status",
+            index=0,
+            number=1,
+            type=13,
+            cpp_type=3,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Stdout",
+            full_name="sliverpb.Execute.Stdout",
+            index=1,
+            number=2,
+            type=12,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"",
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Stderr",
+            full_name="sliverpb.Execute.Stderr",
+            index=2,
+            number=3,
+            type=12,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"",
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Pid",
+            full_name="sliverpb.Execute.Pid",
+            index=3,
+            number=4,
+            type=13,
+            cpp_type=3,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.Execute.Response",
+            index=4,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=4829,
+    serialized_end=4937,
 )
 
 
 _SIDELOADREQ = _descriptor.Descriptor(
-  name='SideloadReq',
-  full_name='sliverpb.SideloadReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Data', full_name='sliverpb.SideloadReq.Data', index=0,
-      number=1, type=12, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"",
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='ProcessName', full_name='sliverpb.SideloadReq.ProcessName', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Args', full_name='sliverpb.SideloadReq.Args', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='EntryPoint', full_name='sliverpb.SideloadReq.EntryPoint', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Kill', full_name='sliverpb.SideloadReq.Kill', index=4,
-      number=5, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='isDLL', full_name='sliverpb.SideloadReq.isDLL', index=5,
-      number=6, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.SideloadReq.Request', index=6,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=4940,
-  serialized_end=5087,
+    name="SideloadReq",
+    full_name="sliverpb.SideloadReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Data",
+            full_name="sliverpb.SideloadReq.Data",
+            index=0,
+            number=1,
+            type=12,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"",
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="ProcessName",
+            full_name="sliverpb.SideloadReq.ProcessName",
+            index=1,
+            number=2,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Args",
+            full_name="sliverpb.SideloadReq.Args",
+            index=2,
+            number=3,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="EntryPoint",
+            full_name="sliverpb.SideloadReq.EntryPoint",
+            index=3,
+            number=4,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Kill",
+            full_name="sliverpb.SideloadReq.Kill",
+            index=4,
+            number=5,
+            type=8,
+            cpp_type=7,
+            label=1,
+            has_default_value=False,
+            default_value=False,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="isDLL",
+            full_name="sliverpb.SideloadReq.isDLL",
+            index=5,
+            number=6,
+            type=8,
+            cpp_type=7,
+            label=1,
+            has_default_value=False,
+            default_value=False,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.SideloadReq.Request",
+            index=6,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=4940,
+    serialized_end=5087,
 )
 
 
 _SIDELOAD = _descriptor.Descriptor(
-  name='Sideload',
-  full_name='sliverpb.Sideload',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Result', full_name='sliverpb.Sideload.Result', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.Sideload.Response', index=1,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=5089,
-  serialized_end=5153,
+    name="Sideload",
+    full_name="sliverpb.Sideload",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Result",
+            full_name="sliverpb.Sideload.Result",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.Sideload.Response",
+            index=1,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=5089,
+    serialized_end=5153,
 )
 
 
 _INVOKESPAWNDLLREQ = _descriptor.Descriptor(
-  name='InvokeSpawnDllReq',
-  full_name='sliverpb.InvokeSpawnDllReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Data', full_name='sliverpb.InvokeSpawnDllReq.Data', index=0,
-      number=1, type=12, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"",
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='ProcessName', full_name='sliverpb.InvokeSpawnDllReq.ProcessName', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Args', full_name='sliverpb.InvokeSpawnDllReq.Args', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='EntryPoint', full_name='sliverpb.InvokeSpawnDllReq.EntryPoint', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Kill', full_name='sliverpb.InvokeSpawnDllReq.Kill', index=4,
-      number=5, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.InvokeSpawnDllReq.Request', index=5,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=5156,
-  serialized_end=5294,
+    name="InvokeSpawnDllReq",
+    full_name="sliverpb.InvokeSpawnDllReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Data",
+            full_name="sliverpb.InvokeSpawnDllReq.Data",
+            index=0,
+            number=1,
+            type=12,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"",
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="ProcessName",
+            full_name="sliverpb.InvokeSpawnDllReq.ProcessName",
+            index=1,
+            number=2,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Args",
+            full_name="sliverpb.InvokeSpawnDllReq.Args",
+            index=2,
+            number=3,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="EntryPoint",
+            full_name="sliverpb.InvokeSpawnDllReq.EntryPoint",
+            index=3,
+            number=4,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Kill",
+            full_name="sliverpb.InvokeSpawnDllReq.Kill",
+            index=4,
+            number=5,
+            type=8,
+            cpp_type=7,
+            label=1,
+            has_default_value=False,
+            default_value=False,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.InvokeSpawnDllReq.Request",
+            index=5,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=5156,
+    serialized_end=5294,
 )
 
 
 _SPAWNDLLREQ = _descriptor.Descriptor(
-  name='SpawnDllReq',
-  full_name='sliverpb.SpawnDllReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Data', full_name='sliverpb.SpawnDllReq.Data', index=0,
-      number=1, type=12, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"",
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='ProcessName', full_name='sliverpb.SpawnDllReq.ProcessName', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Offset', full_name='sliverpb.SpawnDllReq.Offset', index=2,
-      number=3, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Args', full_name='sliverpb.SpawnDllReq.Args', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Kill', full_name='sliverpb.SpawnDllReq.Kill', index=4,
-      number=5, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.SpawnDllReq.Request', index=5,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=5297,
-  serialized_end=5425,
+    name="SpawnDllReq",
+    full_name="sliverpb.SpawnDllReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Data",
+            full_name="sliverpb.SpawnDllReq.Data",
+            index=0,
+            number=1,
+            type=12,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"",
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="ProcessName",
+            full_name="sliverpb.SpawnDllReq.ProcessName",
+            index=1,
+            number=2,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Offset",
+            full_name="sliverpb.SpawnDllReq.Offset",
+            index=2,
+            number=3,
+            type=13,
+            cpp_type=3,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Args",
+            full_name="sliverpb.SpawnDllReq.Args",
+            index=3,
+            number=4,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Kill",
+            full_name="sliverpb.SpawnDllReq.Kill",
+            index=4,
+            number=5,
+            type=8,
+            cpp_type=7,
+            label=1,
+            has_default_value=False,
+            default_value=False,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.SpawnDllReq.Request",
+            index=5,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=5297,
+    serialized_end=5425,
 )
 
 
 _SPAWNDLL = _descriptor.Descriptor(
-  name='SpawnDll',
-  full_name='sliverpb.SpawnDll',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Result', full_name='sliverpb.SpawnDll.Result', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.SpawnDll.Response', index=1,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=5427,
-  serialized_end=5491,
+    name="SpawnDll",
+    full_name="sliverpb.SpawnDll",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Result",
+            full_name="sliverpb.SpawnDll.Result",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.SpawnDll.Response",
+            index=1,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=5427,
+    serialized_end=5491,
 )
 
 
 _NETSTATREQ = _descriptor.Descriptor(
-  name='NetstatReq',
-  full_name='sliverpb.NetstatReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='TCP', full_name='sliverpb.NetstatReq.TCP', index=0,
-      number=1, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='UDP', full_name='sliverpb.NetstatReq.UDP', index=1,
-      number=2, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='IP4', full_name='sliverpb.NetstatReq.IP4', index=2,
-      number=3, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='IP6', full_name='sliverpb.NetstatReq.IP6', index=3,
-      number=5, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Listening', full_name='sliverpb.NetstatReq.Listening', index=4,
-      number=6, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.NetstatReq.Request', index=5,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=5493,
-  serialized_end=5612,
+    name="NetstatReq",
+    full_name="sliverpb.NetstatReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="TCP",
+            full_name="sliverpb.NetstatReq.TCP",
+            index=0,
+            number=1,
+            type=8,
+            cpp_type=7,
+            label=1,
+            has_default_value=False,
+            default_value=False,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="UDP",
+            full_name="sliverpb.NetstatReq.UDP",
+            index=1,
+            number=2,
+            type=8,
+            cpp_type=7,
+            label=1,
+            has_default_value=False,
+            default_value=False,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="IP4",
+            full_name="sliverpb.NetstatReq.IP4",
+            index=2,
+            number=3,
+            type=8,
+            cpp_type=7,
+            label=1,
+            has_default_value=False,
+            default_value=False,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="IP6",
+            full_name="sliverpb.NetstatReq.IP6",
+            index=3,
+            number=5,
+            type=8,
+            cpp_type=7,
+            label=1,
+            has_default_value=False,
+            default_value=False,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Listening",
+            full_name="sliverpb.NetstatReq.Listening",
+            index=4,
+            number=6,
+            type=8,
+            cpp_type=7,
+            label=1,
+            has_default_value=False,
+            default_value=False,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.NetstatReq.Request",
+            index=5,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=5493,
+    serialized_end=5612,
 )
 
 
 _SOCKTABENTRY_SOCKADDR = _descriptor.Descriptor(
-  name='SockAddr',
-  full_name='sliverpb.SockTabEntry.SockAddr',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Ip', full_name='sliverpb.SockTabEntry.SockAddr.Ip', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Port', full_name='sliverpb.SockTabEntry.SockAddr.Port', index=1,
-      number=2, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=5820,
-  serialized_end=5856,
+    name="SockAddr",
+    full_name="sliverpb.SockTabEntry.SockAddr",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Ip",
+            full_name="sliverpb.SockTabEntry.SockAddr.Ip",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Port",
+            full_name="sliverpb.SockTabEntry.SockAddr.Port",
+            index=1,
+            number=2,
+            type=13,
+            cpp_type=3,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=5820,
+    serialized_end=5856,
 )
 
 _SOCKTABENTRY = _descriptor.Descriptor(
-  name='SockTabEntry',
-  full_name='sliverpb.SockTabEntry',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='LocalAddr', full_name='sliverpb.SockTabEntry.LocalAddr', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='RemoteAddr', full_name='sliverpb.SockTabEntry.RemoteAddr', index=1,
-      number=2, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='SkState', full_name='sliverpb.SockTabEntry.SkState', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='UID', full_name='sliverpb.SockTabEntry.UID', index=3,
-      number=4, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Process', full_name='sliverpb.SockTabEntry.Process', index=4,
-      number=5, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Protocol', full_name='sliverpb.SockTabEntry.Protocol', index=5,
-      number=6, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[_SOCKTABENTRY_SOCKADDR, ],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=5615,
-  serialized_end=5856,
+    name="SockTabEntry",
+    full_name="sliverpb.SockTabEntry",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="LocalAddr",
+            full_name="sliverpb.SockTabEntry.LocalAddr",
+            index=0,
+            number=1,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="RemoteAddr",
+            full_name="sliverpb.SockTabEntry.RemoteAddr",
+            index=1,
+            number=2,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="SkState",
+            full_name="sliverpb.SockTabEntry.SkState",
+            index=2,
+            number=3,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="UID",
+            full_name="sliverpb.SockTabEntry.UID",
+            index=3,
+            number=4,
+            type=13,
+            cpp_type=3,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Process",
+            full_name="sliverpb.SockTabEntry.Process",
+            index=4,
+            number=5,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Protocol",
+            full_name="sliverpb.SockTabEntry.Protocol",
+            index=5,
+            number=6,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[
+        _SOCKTABENTRY_SOCKADDR,
+    ],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=5615,
+    serialized_end=5856,
 )
 
 
 _NETSTAT = _descriptor.Descriptor(
-  name='Netstat',
-  full_name='sliverpb.Netstat',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Entries', full_name='sliverpb.Netstat.Entries', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.Netstat.Response', index=1,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=5858,
-  serialized_end=5946,
+    name="Netstat",
+    full_name="sliverpb.Netstat",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Entries",
+            full_name="sliverpb.Netstat.Entries",
+            index=0,
+            number=1,
+            type=11,
+            cpp_type=10,
+            label=3,
+            has_default_value=False,
+            default_value=[],
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.Netstat.Response",
+            index=1,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=5858,
+    serialized_end=5946,
 )
 
 
 _ENVREQ = _descriptor.Descriptor(
-  name='EnvReq',
-  full_name='sliverpb.EnvReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Name', full_name='sliverpb.EnvReq.Name', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.EnvReq.Request', index=1,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=5948,
-  serialized_end=6006,
+    name="EnvReq",
+    full_name="sliverpb.EnvReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Name",
+            full_name="sliverpb.EnvReq.Name",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.EnvReq.Request",
+            index=1,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=5948,
+    serialized_end=6006,
 )
 
 
 _ENVINFO = _descriptor.Descriptor(
-  name='EnvInfo',
-  full_name='sliverpb.EnvInfo',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Variables', full_name='sliverpb.EnvInfo.Variables', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.EnvInfo.Response', index=1,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=6008,
-  serialized_end=6092,
+    name="EnvInfo",
+    full_name="sliverpb.EnvInfo",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Variables",
+            full_name="sliverpb.EnvInfo.Variables",
+            index=0,
+            number=1,
+            type=11,
+            cpp_type=10,
+            label=3,
+            has_default_value=False,
+            default_value=[],
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.EnvInfo.Response",
+            index=1,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=6008,
+    serialized_end=6092,
 )
 
 
 _SETENVREQ = _descriptor.Descriptor(
-  name='SetEnvReq',
-  full_name='sliverpb.SetEnvReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Variable', full_name='sliverpb.SetEnvReq.Variable', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.SetEnvReq.Request', index=1,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=6094,
-  serialized_end=6177,
+    name="SetEnvReq",
+    full_name="sliverpb.SetEnvReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Variable",
+            full_name="sliverpb.SetEnvReq.Variable",
+            index=0,
+            number=1,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.SetEnvReq.Request",
+            index=1,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=6094,
+    serialized_end=6177,
 )
 
 
 _SETENV = _descriptor.Descriptor(
-  name='SetEnv',
-  full_name='sliverpb.SetEnv',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.SetEnv.Response', index=0,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=6179,
-  serialized_end=6225,
+    name="SetEnv",
+    full_name="sliverpb.SetEnv",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.SetEnv.Response",
+            index=0,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=6179,
+    serialized_end=6225,
 )
 
 
 _UNSETENVREQ = _descriptor.Descriptor(
-  name='UnsetEnvReq',
-  full_name='sliverpb.UnsetEnvReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Name', full_name='sliverpb.UnsetEnvReq.Name', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.UnsetEnvReq.Request', index=1,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=6227,
-  serialized_end=6290,
+    name="UnsetEnvReq",
+    full_name="sliverpb.UnsetEnvReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Name",
+            full_name="sliverpb.UnsetEnvReq.Name",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.UnsetEnvReq.Request",
+            index=1,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=6227,
+    serialized_end=6290,
 )
 
 
 _UNSETENV = _descriptor.Descriptor(
-  name='UnsetEnv',
-  full_name='sliverpb.UnsetEnv',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.UnsetEnv.Response', index=0,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=6292,
-  serialized_end=6340,
+    name="UnsetEnv",
+    full_name="sliverpb.UnsetEnv",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.UnsetEnv.Response",
+            index=0,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=6292,
+    serialized_end=6340,
 )
 
 
 _DNSSESSIONINIT = _descriptor.Descriptor(
-  name='DNSSessionInit',
-  full_name='sliverpb.DNSSessionInit',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Key', full_name='sliverpb.DNSSessionInit.Key', index=0,
-      number=1, type=12, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"",
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=6342,
-  serialized_end=6371,
+    name="DNSSessionInit",
+    full_name="sliverpb.DNSSessionInit",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Key",
+            full_name="sliverpb.DNSSessionInit.Key",
+            index=0,
+            number=1,
+            type=12,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"",
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=6342,
+    serialized_end=6371,
 )
 
 
 _DNSPOLL = _descriptor.Descriptor(
-  name='DNSPoll',
-  full_name='sliverpb.DNSPoll',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='blocks', full_name='sliverpb.DNSPoll.blocks', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=6373,
-  serialized_end=6424,
+    name="DNSPoll",
+    full_name="sliverpb.DNSPoll",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="blocks",
+            full_name="sliverpb.DNSPoll.blocks",
+            index=0,
+            number=1,
+            type=11,
+            cpp_type=10,
+            label=3,
+            has_default_value=False,
+            default_value=[],
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=6373,
+    serialized_end=6424,
 )
 
 
 _DNSBLOCKHEADER = _descriptor.Descriptor(
-  name='DNSBlockHeader',
-  full_name='sliverpb.DNSBlockHeader',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='ID', full_name='sliverpb.DNSBlockHeader.ID', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Size', full_name='sliverpb.DNSBlockHeader.Size', index=1,
-      number=2, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=6426,
-  serialized_end=6468,
+    name="DNSBlockHeader",
+    full_name="sliverpb.DNSBlockHeader",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="ID",
+            full_name="sliverpb.DNSBlockHeader.ID",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Size",
+            full_name="sliverpb.DNSBlockHeader.Size",
+            index=1,
+            number=2,
+            type=13,
+            cpp_type=3,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=6426,
+    serialized_end=6468,
 )
 
 
 _HTTPSESSIONINIT = _descriptor.Descriptor(
-  name='HTTPSessionInit',
-  full_name='sliverpb.HTTPSessionInit',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Key', full_name='sliverpb.HTTPSessionInit.Key', index=0,
-      number=1, type=12, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"",
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=6470,
-  serialized_end=6500,
+    name="HTTPSessionInit",
+    full_name="sliverpb.HTTPSessionInit",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Key",
+            full_name="sliverpb.HTTPSessionInit.Key",
+            index=0,
+            number=1,
+            type=12,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"",
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=6470,
+    serialized_end=6500,
 )
 
 
 _SCREENSHOTREQ = _descriptor.Descriptor(
-  name='ScreenshotReq',
-  full_name='sliverpb.ScreenshotReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.ScreenshotReq.Request', index=0,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=6502,
-  serialized_end=6553,
+    name="ScreenshotReq",
+    full_name="sliverpb.ScreenshotReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.ScreenshotReq.Request",
+            index=0,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=6502,
+    serialized_end=6553,
 )
 
 
 _SCREENSHOT = _descriptor.Descriptor(
-  name='Screenshot',
-  full_name='sliverpb.Screenshot',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Data', full_name='sliverpb.Screenshot.Data', index=0,
-      number=1, type=12, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"",
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.Screenshot.Response', index=1,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=6555,
-  serialized_end=6619,
+    name="Screenshot",
+    full_name="sliverpb.Screenshot",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Data",
+            full_name="sliverpb.Screenshot.Data",
+            index=0,
+            number=1,
+            type=12,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"",
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.Screenshot.Response",
+            index=1,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=6555,
+    serialized_end=6619,
 )
 
 
 _STARTSERVICEREQ = _descriptor.Descriptor(
-  name='StartServiceReq',
-  full_name='sliverpb.StartServiceReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='ServiceName', full_name='sliverpb.StartServiceReq.ServiceName', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='ServiceDescription', full_name='sliverpb.StartServiceReq.ServiceDescription', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='BinPath', full_name='sliverpb.StartServiceReq.BinPath', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Hostname', full_name='sliverpb.StartServiceReq.Hostname', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Arguments', full_name='sliverpb.StartServiceReq.Arguments', index=4,
-      number=5, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.StartServiceReq.Request', index=5,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=6622,
-  serialized_end=6778,
+    name="StartServiceReq",
+    full_name="sliverpb.StartServiceReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="ServiceName",
+            full_name="sliverpb.StartServiceReq.ServiceName",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="ServiceDescription",
+            full_name="sliverpb.StartServiceReq.ServiceDescription",
+            index=1,
+            number=2,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="BinPath",
+            full_name="sliverpb.StartServiceReq.BinPath",
+            index=2,
+            number=3,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Hostname",
+            full_name="sliverpb.StartServiceReq.Hostname",
+            index=3,
+            number=4,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Arguments",
+            full_name="sliverpb.StartServiceReq.Arguments",
+            index=4,
+            number=5,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.StartServiceReq.Request",
+            index=5,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=6622,
+    serialized_end=6778,
 )
 
 
 _SERVICEINFO = _descriptor.Descriptor(
-  name='ServiceInfo',
-  full_name='sliverpb.ServiceInfo',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.ServiceInfo.Response', index=0,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=6780,
-  serialized_end=6831,
+    name="ServiceInfo",
+    full_name="sliverpb.ServiceInfo",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.ServiceInfo.Response",
+            index=0,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=6780,
+    serialized_end=6831,
 )
 
 
 _SERVICEINFOREQ = _descriptor.Descriptor(
-  name='ServiceInfoReq',
-  full_name='sliverpb.ServiceInfoReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='ServiceName', full_name='sliverpb.ServiceInfoReq.ServiceName', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Hostname', full_name='sliverpb.ServiceInfoReq.Hostname', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=6833,
-  serialized_end=6888,
+    name="ServiceInfoReq",
+    full_name="sliverpb.ServiceInfoReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="ServiceName",
+            full_name="sliverpb.ServiceInfoReq.ServiceName",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Hostname",
+            full_name="sliverpb.ServiceInfoReq.Hostname",
+            index=1,
+            number=2,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=6833,
+    serialized_end=6888,
 )
 
 
 _STOPSERVICEREQ = _descriptor.Descriptor(
-  name='StopServiceReq',
-  full_name='sliverpb.StopServiceReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='ServiceInfo', full_name='sliverpb.StopServiceReq.ServiceInfo', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.StopServiceReq.Request', index=1,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=6890,
-  serialized_end=6989,
+    name="StopServiceReq",
+    full_name="sliverpb.StopServiceReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="ServiceInfo",
+            full_name="sliverpb.StopServiceReq.ServiceInfo",
+            index=0,
+            number=1,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.StopServiceReq.Request",
+            index=1,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=6890,
+    serialized_end=6989,
 )
 
 
 _REMOVESERVICEREQ = _descriptor.Descriptor(
-  name='RemoveServiceReq',
-  full_name='sliverpb.RemoveServiceReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='ServiceInfo', full_name='sliverpb.RemoveServiceReq.ServiceInfo', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.RemoveServiceReq.Request', index=1,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=6991,
-  serialized_end=7092,
+    name="RemoveServiceReq",
+    full_name="sliverpb.RemoveServiceReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="ServiceInfo",
+            full_name="sliverpb.RemoveServiceReq.ServiceInfo",
+            index=0,
+            number=1,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.RemoveServiceReq.Request",
+            index=1,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=6991,
+    serialized_end=7092,
 )
 
 
 _BACKDOORREQ = _descriptor.Descriptor(
-  name='BackdoorReq',
-  full_name='sliverpb.BackdoorReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='FilePath', full_name='sliverpb.BackdoorReq.FilePath', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='ProfileName', full_name='sliverpb.BackdoorReq.ProfileName', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.BackdoorReq.Request', index=2,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=7094,
-  serialized_end=7182,
+    name="BackdoorReq",
+    full_name="sliverpb.BackdoorReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="FilePath",
+            full_name="sliverpb.BackdoorReq.FilePath",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="ProfileName",
+            full_name="sliverpb.BackdoorReq.ProfileName",
+            index=1,
+            number=2,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.BackdoorReq.Request",
+            index=2,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=7094,
+    serialized_end=7182,
 )
 
 
 _BACKDOOR = _descriptor.Descriptor(
-  name='Backdoor',
-  full_name='sliverpb.Backdoor',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.Backdoor.Response', index=0,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=7184,
-  serialized_end=7232,
+    name="Backdoor",
+    full_name="sliverpb.Backdoor",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.Backdoor.Response",
+            index=0,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=7184,
+    serialized_end=7232,
 )
 
 
 _REGISTRYREADREQ = _descriptor.Descriptor(
-  name='RegistryReadReq',
-  full_name='sliverpb.RegistryReadReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Hive', full_name='sliverpb.RegistryReadReq.Hive', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Path', full_name='sliverpb.RegistryReadReq.Path', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Key', full_name='sliverpb.RegistryReadReq.Key', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Hostname', full_name='sliverpb.RegistryReadReq.Hostname', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.RegistryReadReq.Request', index=4,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=7234,
-  serialized_end=7346,
+    name="RegistryReadReq",
+    full_name="sliverpb.RegistryReadReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Hive",
+            full_name="sliverpb.RegistryReadReq.Hive",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Path",
+            full_name="sliverpb.RegistryReadReq.Path",
+            index=1,
+            number=2,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Key",
+            full_name="sliverpb.RegistryReadReq.Key",
+            index=2,
+            number=3,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Hostname",
+            full_name="sliverpb.RegistryReadReq.Hostname",
+            index=3,
+            number=4,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.RegistryReadReq.Request",
+            index=4,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=7234,
+    serialized_end=7346,
 )
 
 
 _REGISTRYREAD = _descriptor.Descriptor(
-  name='RegistryRead',
-  full_name='sliverpb.RegistryRead',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Value', full_name='sliverpb.RegistryRead.Value', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.RegistryRead.Response', index=1,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=7348,
-  serialized_end=7415,
+    name="RegistryRead",
+    full_name="sliverpb.RegistryRead",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Value",
+            full_name="sliverpb.RegistryRead.Value",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.RegistryRead.Response",
+            index=1,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=7348,
+    serialized_end=7415,
 )
 
 
 _REGISTRYWRITEREQ = _descriptor.Descriptor(
-  name='RegistryWriteReq',
-  full_name='sliverpb.RegistryWriteReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Hive', full_name='sliverpb.RegistryWriteReq.Hive', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Path', full_name='sliverpb.RegistryWriteReq.Path', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Key', full_name='sliverpb.RegistryWriteReq.Key', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Hostname', full_name='sliverpb.RegistryWriteReq.Hostname', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='StringValue', full_name='sliverpb.RegistryWriteReq.StringValue', index=4,
-      number=5, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='ByteValue', full_name='sliverpb.RegistryWriteReq.ByteValue', index=5,
-      number=6, type=12, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"",
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='DWordValue', full_name='sliverpb.RegistryWriteReq.DWordValue', index=6,
-      number=7, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='QWordValue', full_name='sliverpb.RegistryWriteReq.QWordValue', index=7,
-      number=8, type=4, cpp_type=4, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Type', full_name='sliverpb.RegistryWriteReq.Type', index=8,
-      number=10, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.RegistryWriteReq.Request', index=9,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=7418,
-  serialized_end=7625,
+    name="RegistryWriteReq",
+    full_name="sliverpb.RegistryWriteReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Hive",
+            full_name="sliverpb.RegistryWriteReq.Hive",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Path",
+            full_name="sliverpb.RegistryWriteReq.Path",
+            index=1,
+            number=2,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Key",
+            full_name="sliverpb.RegistryWriteReq.Key",
+            index=2,
+            number=3,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Hostname",
+            full_name="sliverpb.RegistryWriteReq.Hostname",
+            index=3,
+            number=4,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="StringValue",
+            full_name="sliverpb.RegistryWriteReq.StringValue",
+            index=4,
+            number=5,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="ByteValue",
+            full_name="sliverpb.RegistryWriteReq.ByteValue",
+            index=5,
+            number=6,
+            type=12,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"",
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="DWordValue",
+            full_name="sliverpb.RegistryWriteReq.DWordValue",
+            index=6,
+            number=7,
+            type=13,
+            cpp_type=3,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="QWordValue",
+            full_name="sliverpb.RegistryWriteReq.QWordValue",
+            index=7,
+            number=8,
+            type=4,
+            cpp_type=4,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Type",
+            full_name="sliverpb.RegistryWriteReq.Type",
+            index=8,
+            number=10,
+            type=13,
+            cpp_type=3,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.RegistryWriteReq.Request",
+            index=9,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=7418,
+    serialized_end=7625,
 )
 
 
 _REGISTRYWRITE = _descriptor.Descriptor(
-  name='RegistryWrite',
-  full_name='sliverpb.RegistryWrite',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.RegistryWrite.Response', index=0,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=7627,
-  serialized_end=7680,
+    name="RegistryWrite",
+    full_name="sliverpb.RegistryWrite",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.RegistryWrite.Response",
+            index=0,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=7627,
+    serialized_end=7680,
 )
 
 
 _REGISTRYCREATEKEYREQ = _descriptor.Descriptor(
-  name='RegistryCreateKeyReq',
-  full_name='sliverpb.RegistryCreateKeyReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Hive', full_name='sliverpb.RegistryCreateKeyReq.Hive', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Path', full_name='sliverpb.RegistryCreateKeyReq.Path', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Key', full_name='sliverpb.RegistryCreateKeyReq.Key', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Hostname', full_name='sliverpb.RegistryCreateKeyReq.Hostname', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.RegistryCreateKeyReq.Request', index=4,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=7682,
-  serialized_end=7799,
+    name="RegistryCreateKeyReq",
+    full_name="sliverpb.RegistryCreateKeyReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Hive",
+            full_name="sliverpb.RegistryCreateKeyReq.Hive",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Path",
+            full_name="sliverpb.RegistryCreateKeyReq.Path",
+            index=1,
+            number=2,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Key",
+            full_name="sliverpb.RegistryCreateKeyReq.Key",
+            index=2,
+            number=3,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Hostname",
+            full_name="sliverpb.RegistryCreateKeyReq.Hostname",
+            index=3,
+            number=4,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.RegistryCreateKeyReq.Request",
+            index=4,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=7682,
+    serialized_end=7799,
 )
 
 
 _REGISTRYCREATEKEY = _descriptor.Descriptor(
-  name='RegistryCreateKey',
-  full_name='sliverpb.RegistryCreateKey',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.RegistryCreateKey.Response', index=0,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=7801,
-  serialized_end=7858,
+    name="RegistryCreateKey",
+    full_name="sliverpb.RegistryCreateKey",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.RegistryCreateKey.Response",
+            index=0,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=7801,
+    serialized_end=7858,
 )
 
 
 _REGISTRYDELETEKEYREQ = _descriptor.Descriptor(
-  name='RegistryDeleteKeyReq',
-  full_name='sliverpb.RegistryDeleteKeyReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Hive', full_name='sliverpb.RegistryDeleteKeyReq.Hive', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Path', full_name='sliverpb.RegistryDeleteKeyReq.Path', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Key', full_name='sliverpb.RegistryDeleteKeyReq.Key', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Hostname', full_name='sliverpb.RegistryDeleteKeyReq.Hostname', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.RegistryDeleteKeyReq.Request', index=4,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=7860,
-  serialized_end=7977,
+    name="RegistryDeleteKeyReq",
+    full_name="sliverpb.RegistryDeleteKeyReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Hive",
+            full_name="sliverpb.RegistryDeleteKeyReq.Hive",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Path",
+            full_name="sliverpb.RegistryDeleteKeyReq.Path",
+            index=1,
+            number=2,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Key",
+            full_name="sliverpb.RegistryDeleteKeyReq.Key",
+            index=2,
+            number=3,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Hostname",
+            full_name="sliverpb.RegistryDeleteKeyReq.Hostname",
+            index=3,
+            number=4,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.RegistryDeleteKeyReq.Request",
+            index=4,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=7860,
+    serialized_end=7977,
 )
 
 
 _REGISTRYDELETEKEY = _descriptor.Descriptor(
-  name='RegistryDeleteKey',
-  full_name='sliverpb.RegistryDeleteKey',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.RegistryDeleteKey.Response', index=0,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=7979,
-  serialized_end=8036,
+    name="RegistryDeleteKey",
+    full_name="sliverpb.RegistryDeleteKey",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.RegistryDeleteKey.Response",
+            index=0,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=7979,
+    serialized_end=8036,
 )
 
 
 _REGISTRYSUBKEYLISTREQ = _descriptor.Descriptor(
-  name='RegistrySubKeyListReq',
-  full_name='sliverpb.RegistrySubKeyListReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Hive', full_name='sliverpb.RegistrySubKeyListReq.Hive', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Path', full_name='sliverpb.RegistrySubKeyListReq.Path', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Hostname', full_name='sliverpb.RegistrySubKeyListReq.Hostname', index=2,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.RegistrySubKeyListReq.Request', index=3,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=8038,
-  serialized_end=8143,
+    name="RegistrySubKeyListReq",
+    full_name="sliverpb.RegistrySubKeyListReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Hive",
+            full_name="sliverpb.RegistrySubKeyListReq.Hive",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Path",
+            full_name="sliverpb.RegistrySubKeyListReq.Path",
+            index=1,
+            number=2,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Hostname",
+            full_name="sliverpb.RegistrySubKeyListReq.Hostname",
+            index=2,
+            number=4,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.RegistrySubKeyListReq.Request",
+            index=3,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=8038,
+    serialized_end=8143,
 )
 
 
 _REGISTRYSUBKEYLIST = _descriptor.Descriptor(
-  name='RegistrySubKeyList',
-  full_name='sliverpb.RegistrySubKeyList',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Subkeys', full_name='sliverpb.RegistrySubKeyList.Subkeys', index=0,
-      number=1, type=9, cpp_type=9, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.RegistrySubKeyList.Response', index=1,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=8145,
-  serialized_end=8220,
+    name="RegistrySubKeyList",
+    full_name="sliverpb.RegistrySubKeyList",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Subkeys",
+            full_name="sliverpb.RegistrySubKeyList.Subkeys",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=3,
+            has_default_value=False,
+            default_value=[],
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.RegistrySubKeyList.Response",
+            index=1,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=8145,
+    serialized_end=8220,
 )
 
 
 _REGISTRYLISTVALUESREQ = _descriptor.Descriptor(
-  name='RegistryListValuesReq',
-  full_name='sliverpb.RegistryListValuesReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Hive', full_name='sliverpb.RegistryListValuesReq.Hive', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Path', full_name='sliverpb.RegistryListValuesReq.Path', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Hostname', full_name='sliverpb.RegistryListValuesReq.Hostname', index=2,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.RegistryListValuesReq.Request', index=3,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=8222,
-  serialized_end=8327,
+    name="RegistryListValuesReq",
+    full_name="sliverpb.RegistryListValuesReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Hive",
+            full_name="sliverpb.RegistryListValuesReq.Hive",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Path",
+            full_name="sliverpb.RegistryListValuesReq.Path",
+            index=1,
+            number=2,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Hostname",
+            full_name="sliverpb.RegistryListValuesReq.Hostname",
+            index=2,
+            number=4,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.RegistryListValuesReq.Request",
+            index=3,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=8222,
+    serialized_end=8327,
 )
 
 
 _REGISTRYVALUESLIST = _descriptor.Descriptor(
-  name='RegistryValuesList',
-  full_name='sliverpb.RegistryValuesList',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='ValueNames', full_name='sliverpb.RegistryValuesList.ValueNames', index=0,
-      number=1, type=9, cpp_type=9, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.RegistryValuesList.Response', index=1,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=8329,
-  serialized_end=8407,
+    name="RegistryValuesList",
+    full_name="sliverpb.RegistryValuesList",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="ValueNames",
+            full_name="sliverpb.RegistryValuesList.ValueNames",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=3,
+            has_default_value=False,
+            default_value=[],
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.RegistryValuesList.Response",
+            index=1,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=8329,
+    serialized_end=8407,
 )
 
 
 _TUNNEL = _descriptor.Descriptor(
-  name='Tunnel',
-  full_name='sliverpb.Tunnel',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='TunnelID', full_name='sliverpb.Tunnel.TunnelID', index=0,
-      number=8, type=4, cpp_type=4, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'0\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='SessionID', full_name='sliverpb.Tunnel.SessionID', index=1,
-      number=9, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=8409,
-  serialized_end=8458,
+    name="Tunnel",
+    full_name="sliverpb.Tunnel",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="TunnelID",
+            full_name="sliverpb.Tunnel.TunnelID",
+            index=0,
+            number=8,
+            type=4,
+            cpp_type=4,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=b"0\001",
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="SessionID",
+            full_name="sliverpb.Tunnel.SessionID",
+            index=1,
+            number=9,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=8409,
+    serialized_end=8458,
 )
 
 
 _TUNNELDATA = _descriptor.Descriptor(
-  name='TunnelData',
-  full_name='sliverpb.TunnelData',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Data', full_name='sliverpb.TunnelData.Data', index=0,
-      number=1, type=12, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"",
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Closed', full_name='sliverpb.TunnelData.Closed', index=1,
-      number=2, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Sequence', full_name='sliverpb.TunnelData.Sequence', index=2,
-      number=3, type=4, cpp_type=4, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Ack', full_name='sliverpb.TunnelData.Ack', index=3,
-      number=4, type=4, cpp_type=4, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Resend', full_name='sliverpb.TunnelData.Resend', index=4,
-      number=5, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='TunnelID', full_name='sliverpb.TunnelData.TunnelID', index=5,
-      number=8, type=4, cpp_type=4, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'0\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='SessionID', full_name='sliverpb.TunnelData.SessionID', index=6,
-      number=9, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=8461,
-  serialized_end=8591,
+    name="TunnelData",
+    full_name="sliverpb.TunnelData",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Data",
+            full_name="sliverpb.TunnelData.Data",
+            index=0,
+            number=1,
+            type=12,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"",
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Closed",
+            full_name="sliverpb.TunnelData.Closed",
+            index=1,
+            number=2,
+            type=8,
+            cpp_type=7,
+            label=1,
+            has_default_value=False,
+            default_value=False,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Sequence",
+            full_name="sliverpb.TunnelData.Sequence",
+            index=2,
+            number=3,
+            type=4,
+            cpp_type=4,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Ack",
+            full_name="sliverpb.TunnelData.Ack",
+            index=3,
+            number=4,
+            type=4,
+            cpp_type=4,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Resend",
+            full_name="sliverpb.TunnelData.Resend",
+            index=4,
+            number=5,
+            type=8,
+            cpp_type=7,
+            label=1,
+            has_default_value=False,
+            default_value=False,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="TunnelID",
+            full_name="sliverpb.TunnelData.TunnelID",
+            index=5,
+            number=8,
+            type=4,
+            cpp_type=4,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=b"0\001",
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="SessionID",
+            full_name="sliverpb.TunnelData.SessionID",
+            index=6,
+            number=9,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=8461,
+    serialized_end=8591,
 )
 
 
 _SHELLREQ = _descriptor.Descriptor(
-  name='ShellReq',
-  full_name='sliverpb.ShellReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Path', full_name='sliverpb.ShellReq.Path', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='EnablePTY', full_name='sliverpb.ShellReq.EnablePTY', index=1,
-      number=2, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Pid', full_name='sliverpb.ShellReq.Pid', index=2,
-      number=3, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='TunnelID', full_name='sliverpb.ShellReq.TunnelID', index=3,
-      number=8, type=4, cpp_type=4, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'0\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.ShellReq.Request', index=4,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=8593,
-  serialized_end=8707,
+    name="ShellReq",
+    full_name="sliverpb.ShellReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Path",
+            full_name="sliverpb.ShellReq.Path",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="EnablePTY",
+            full_name="sliverpb.ShellReq.EnablePTY",
+            index=1,
+            number=2,
+            type=8,
+            cpp_type=7,
+            label=1,
+            has_default_value=False,
+            default_value=False,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Pid",
+            full_name="sliverpb.ShellReq.Pid",
+            index=2,
+            number=3,
+            type=13,
+            cpp_type=3,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="TunnelID",
+            full_name="sliverpb.ShellReq.TunnelID",
+            index=3,
+            number=8,
+            type=4,
+            cpp_type=4,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=b"0\001",
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.ShellReq.Request",
+            index=4,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=8593,
+    serialized_end=8707,
 )
 
 
 _SHELL = _descriptor.Descriptor(
-  name='Shell',
-  full_name='sliverpb.Shell',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Path', full_name='sliverpb.Shell.Path', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='EnablePTY', full_name='sliverpb.Shell.EnablePTY', index=1,
-      number=2, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Pid', full_name='sliverpb.Shell.Pid', index=2,
-      number=3, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='TunnelID', full_name='sliverpb.Shell.TunnelID', index=3,
-      number=8, type=4, cpp_type=4, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'0\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.Shell.Response', index=4,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=8709,
-  serialized_end=8822,
+    name="Shell",
+    full_name="sliverpb.Shell",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Path",
+            full_name="sliverpb.Shell.Path",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="EnablePTY",
+            full_name="sliverpb.Shell.EnablePTY",
+            index=1,
+            number=2,
+            type=8,
+            cpp_type=7,
+            label=1,
+            has_default_value=False,
+            default_value=False,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Pid",
+            full_name="sliverpb.Shell.Pid",
+            index=2,
+            number=3,
+            type=13,
+            cpp_type=3,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="TunnelID",
+            full_name="sliverpb.Shell.TunnelID",
+            index=3,
+            number=8,
+            type=4,
+            cpp_type=4,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=b"0\001",
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.Shell.Response",
+            index=4,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=8709,
+    serialized_end=8822,
 )
 
 
 _PORTFWDREQ = _descriptor.Descriptor(
-  name='PortfwdReq',
-  full_name='sliverpb.PortfwdReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Port', full_name='sliverpb.PortfwdReq.Port', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Protocol', full_name='sliverpb.PortfwdReq.Protocol', index=1,
-      number=2, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Host', full_name='sliverpb.PortfwdReq.Host', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='TunnelID', full_name='sliverpb.PortfwdReq.TunnelID', index=3,
-      number=8, type=4, cpp_type=4, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'0\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.PortfwdReq.Request', index=4,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=8824,
-  serialized_end=8940,
+    name="PortfwdReq",
+    full_name="sliverpb.PortfwdReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Port",
+            full_name="sliverpb.PortfwdReq.Port",
+            index=0,
+            number=1,
+            type=13,
+            cpp_type=3,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Protocol",
+            full_name="sliverpb.PortfwdReq.Protocol",
+            index=1,
+            number=2,
+            type=5,
+            cpp_type=1,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Host",
+            full_name="sliverpb.PortfwdReq.Host",
+            index=2,
+            number=3,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="TunnelID",
+            full_name="sliverpb.PortfwdReq.TunnelID",
+            index=3,
+            number=8,
+            type=4,
+            cpp_type=4,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=b"0\001",
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.PortfwdReq.Request",
+            index=4,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=8824,
+    serialized_end=8940,
 )
 
 
 _PORTFWD = _descriptor.Descriptor(
-  name='Portfwd',
-  full_name='sliverpb.Portfwd',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Port', full_name='sliverpb.Portfwd.Port', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Protocol', full_name='sliverpb.Portfwd.Protocol', index=1,
-      number=2, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Host', full_name='sliverpb.Portfwd.Host', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='TunnelID', full_name='sliverpb.Portfwd.TunnelID', index=3,
-      number=8, type=4, cpp_type=4, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'0\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.Portfwd.Response', index=4,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=8942,
-  serialized_end=9057,
+    name="Portfwd",
+    full_name="sliverpb.Portfwd",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Port",
+            full_name="sliverpb.Portfwd.Port",
+            index=0,
+            number=1,
+            type=13,
+            cpp_type=3,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Protocol",
+            full_name="sliverpb.Portfwd.Protocol",
+            index=1,
+            number=2,
+            type=5,
+            cpp_type=1,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Host",
+            full_name="sliverpb.Portfwd.Host",
+            index=2,
+            number=3,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="TunnelID",
+            full_name="sliverpb.Portfwd.TunnelID",
+            index=3,
+            number=8,
+            type=4,
+            cpp_type=4,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=b"0\001",
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.Portfwd.Response",
+            index=4,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=8942,
+    serialized_end=9057,
 )
 
 
 _SOCKS = _descriptor.Descriptor(
-  name='Socks',
-  full_name='sliverpb.Socks',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='TunnelID', full_name='sliverpb.Socks.TunnelID', index=0,
-      number=8, type=4, cpp_type=4, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'0\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='SessionID', full_name='sliverpb.Socks.SessionID', index=1,
-      number=9, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=9059,
-  serialized_end=9107,
+    name="Socks",
+    full_name="sliverpb.Socks",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="TunnelID",
+            full_name="sliverpb.Socks.TunnelID",
+            index=0,
+            number=8,
+            type=4,
+            cpp_type=4,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=b"0\001",
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="SessionID",
+            full_name="sliverpb.Socks.SessionID",
+            index=1,
+            number=9,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=9059,
+    serialized_end=9107,
 )
 
 
 _SOCKSDATA = _descriptor.Descriptor(
-  name='SocksData',
-  full_name='sliverpb.SocksData',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Data', full_name='sliverpb.SocksData.Data', index=0,
-      number=1, type=12, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"",
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='CloseConn', full_name='sliverpb.SocksData.CloseConn', index=1,
-      number=2, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Username', full_name='sliverpb.SocksData.Username', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Password', full_name='sliverpb.SocksData.Password', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Sequence', full_name='sliverpb.SocksData.Sequence', index=4,
-      number=5, type=4, cpp_type=4, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='TunnelID', full_name='sliverpb.SocksData.TunnelID', index=5,
-      number=8, type=4, cpp_type=4, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'0\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.SocksData.Request', index=6,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=9110,
-  serialized_end=9266,
+    name="SocksData",
+    full_name="sliverpb.SocksData",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Data",
+            full_name="sliverpb.SocksData.Data",
+            index=0,
+            number=1,
+            type=12,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"",
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="CloseConn",
+            full_name="sliverpb.SocksData.CloseConn",
+            index=1,
+            number=2,
+            type=8,
+            cpp_type=7,
+            label=1,
+            has_default_value=False,
+            default_value=False,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Username",
+            full_name="sliverpb.SocksData.Username",
+            index=2,
+            number=3,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Password",
+            full_name="sliverpb.SocksData.Password",
+            index=3,
+            number=4,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Sequence",
+            full_name="sliverpb.SocksData.Sequence",
+            index=4,
+            number=5,
+            type=4,
+            cpp_type=4,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="TunnelID",
+            full_name="sliverpb.SocksData.TunnelID",
+            index=5,
+            number=8,
+            type=4,
+            cpp_type=4,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=b"0\001",
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.SocksData.Request",
+            index=6,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=9110,
+    serialized_end=9266,
 )
 
 
 _PIVOTSTARTLISTENERREQ = _descriptor.Descriptor(
-  name='PivotStartListenerReq',
-  full_name='sliverpb.PivotStartListenerReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Type', full_name='sliverpb.PivotStartListenerReq.Type', index=0,
-      number=1, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='BindAddress', full_name='sliverpb.PivotStartListenerReq.BindAddress', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Options', full_name='sliverpb.PivotStartListenerReq.Options', index=2,
-      number=3, type=8, cpp_type=7, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.PivotStartListenerReq.Request', index=3,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=9269,
-  serialized_end=9401,
+    name="PivotStartListenerReq",
+    full_name="sliverpb.PivotStartListenerReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Type",
+            full_name="sliverpb.PivotStartListenerReq.Type",
+            index=0,
+            number=1,
+            type=14,
+            cpp_type=8,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="BindAddress",
+            full_name="sliverpb.PivotStartListenerReq.BindAddress",
+            index=1,
+            number=2,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Options",
+            full_name="sliverpb.PivotStartListenerReq.Options",
+            index=2,
+            number=3,
+            type=8,
+            cpp_type=7,
+            label=3,
+            has_default_value=False,
+            default_value=[],
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.PivotStartListenerReq.Request",
+            index=3,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=9269,
+    serialized_end=9401,
 )
 
 
 _PIVOTSTOPLISTENERREQ = _descriptor.Descriptor(
-  name='PivotStopListenerReq',
-  full_name='sliverpb.PivotStopListenerReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='ID', full_name='sliverpb.PivotStopListenerReq.ID', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.PivotStopListenerReq.Request', index=1,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=9403,
-  serialized_end=9473,
+    name="PivotStopListenerReq",
+    full_name="sliverpb.PivotStopListenerReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="ID",
+            full_name="sliverpb.PivotStopListenerReq.ID",
+            index=0,
+            number=1,
+            type=13,
+            cpp_type=3,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.PivotStopListenerReq.Request",
+            index=1,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=9403,
+    serialized_end=9473,
 )
 
 
 _PIVOTLISTENER = _descriptor.Descriptor(
-  name='PivotListener',
-  full_name='sliverpb.PivotListener',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='ID', full_name='sliverpb.PivotListener.ID', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Type', full_name='sliverpb.PivotListener.Type', index=1,
-      number=2, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='BindAddress', full_name='sliverpb.PivotListener.BindAddress', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Pivots', full_name='sliverpb.PivotListener.Pivots', index=3,
-      number=4, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.PivotListener.Response', index=4,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=9476,
-  serialized_end=9637,
+    name="PivotListener",
+    full_name="sliverpb.PivotListener",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="ID",
+            full_name="sliverpb.PivotListener.ID",
+            index=0,
+            number=1,
+            type=13,
+            cpp_type=3,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Type",
+            full_name="sliverpb.PivotListener.Type",
+            index=1,
+            number=2,
+            type=14,
+            cpp_type=8,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="BindAddress",
+            full_name="sliverpb.PivotListener.BindAddress",
+            index=2,
+            number=3,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Pivots",
+            full_name="sliverpb.PivotListener.Pivots",
+            index=3,
+            number=4,
+            type=11,
+            cpp_type=10,
+            label=3,
+            has_default_value=False,
+            default_value=[],
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.PivotListener.Response",
+            index=4,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=9476,
+    serialized_end=9637,
 )
 
 
 _PIVOTHELLO = _descriptor.Descriptor(
-  name='PivotHello',
-  full_name='sliverpb.PivotHello',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='PublicKey', full_name='sliverpb.PivotHello.PublicKey', index=0,
-      number=1, type=12, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"",
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='PeerID', full_name='sliverpb.PivotHello.PeerID', index=1,
-      number=2, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'0\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='PublicKeySignature', full_name='sliverpb.PivotHello.PublicKeySignature', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='SessionKey', full_name='sliverpb.PivotHello.SessionKey', index=3,
-      number=4, type=12, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"",
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=9639,
-  serialized_end=9738,
+    name="PivotHello",
+    full_name="sliverpb.PivotHello",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="PublicKey",
+            full_name="sliverpb.PivotHello.PublicKey",
+            index=0,
+            number=1,
+            type=12,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"",
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="PeerID",
+            full_name="sliverpb.PivotHello.PeerID",
+            index=1,
+            number=2,
+            type=3,
+            cpp_type=2,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=b"0\001",
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="PublicKeySignature",
+            full_name="sliverpb.PivotHello.PublicKeySignature",
+            index=2,
+            number=3,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="SessionKey",
+            full_name="sliverpb.PivotHello.SessionKey",
+            index=3,
+            number=4,
+            type=12,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"",
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=9639,
+    serialized_end=9738,
 )
 
 
 _PIVOTSERVERKEYEXCHANGE = _descriptor.Descriptor(
-  name='PivotServerKeyExchange',
-  full_name='sliverpb.PivotServerKeyExchange',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='OriginID', full_name='sliverpb.PivotServerKeyExchange.OriginID', index=0,
-      number=1, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='SessionKey', full_name='sliverpb.PivotServerKeyExchange.SessionKey', index=1,
-      number=2, type=12, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"",
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=9740,
-  serialized_end=9802,
+    name="PivotServerKeyExchange",
+    full_name="sliverpb.PivotServerKeyExchange",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="OriginID",
+            full_name="sliverpb.PivotServerKeyExchange.OriginID",
+            index=0,
+            number=1,
+            type=3,
+            cpp_type=2,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="SessionKey",
+            full_name="sliverpb.PivotServerKeyExchange.SessionKey",
+            index=1,
+            number=2,
+            type=12,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"",
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=9740,
+    serialized_end=9802,
 )
 
 
 _PIVOTPEER = _descriptor.Descriptor(
-  name='PivotPeer',
-  full_name='sliverpb.PivotPeer',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='PeerID', full_name='sliverpb.PivotPeer.PeerID', index=0,
-      number=1, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'0\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Name', full_name='sliverpb.PivotPeer.Name', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=9804,
-  serialized_end=9849,
+    name="PivotPeer",
+    full_name="sliverpb.PivotPeer",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="PeerID",
+            full_name="sliverpb.PivotPeer.PeerID",
+            index=0,
+            number=1,
+            type=3,
+            cpp_type=2,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=b"0\001",
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Name",
+            full_name="sliverpb.PivotPeer.Name",
+            index=1,
+            number=2,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=9804,
+    serialized_end=9849,
 )
 
 
 _PIVOTPEERENVELOPE = _descriptor.Descriptor(
-  name='PivotPeerEnvelope',
-  full_name='sliverpb.PivotPeerEnvelope',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Peers', full_name='sliverpb.PivotPeerEnvelope.Peers', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Type', full_name='sliverpb.PivotPeerEnvelope.Type', index=1,
-      number=2, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='PivotSessionID', full_name='sliverpb.PivotPeerEnvelope.PivotSessionID', index=2,
-      number=3, type=12, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"",
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Data', full_name='sliverpb.PivotPeerEnvelope.Data', index=3,
-      number=4, type=12, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"",
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='PeerFailureAt', full_name='sliverpb.PivotPeerEnvelope.PeerFailureAt', index=4,
-      number=5, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=9852,
-  serialized_end=9982,
+    name="PivotPeerEnvelope",
+    full_name="sliverpb.PivotPeerEnvelope",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Peers",
+            full_name="sliverpb.PivotPeerEnvelope.Peers",
+            index=0,
+            number=1,
+            type=11,
+            cpp_type=10,
+            label=3,
+            has_default_value=False,
+            default_value=[],
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Type",
+            full_name="sliverpb.PivotPeerEnvelope.Type",
+            index=1,
+            number=2,
+            type=13,
+            cpp_type=3,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="PivotSessionID",
+            full_name="sliverpb.PivotPeerEnvelope.PivotSessionID",
+            index=2,
+            number=3,
+            type=12,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"",
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Data",
+            full_name="sliverpb.PivotPeerEnvelope.Data",
+            index=3,
+            number=4,
+            type=12,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"",
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="PeerFailureAt",
+            full_name="sliverpb.PivotPeerEnvelope.PeerFailureAt",
+            index=4,
+            number=5,
+            type=3,
+            cpp_type=2,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=9852,
+    serialized_end=9982,
 )
 
 
 _PIVOTPING = _descriptor.Descriptor(
-  name='PivotPing',
-  full_name='sliverpb.PivotPing',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Nonce', full_name='sliverpb.PivotPing.Nonce', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=9984,
-  serialized_end=10010,
+    name="PivotPing",
+    full_name="sliverpb.PivotPing",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Nonce",
+            full_name="sliverpb.PivotPing.Nonce",
+            index=0,
+            number=1,
+            type=13,
+            cpp_type=3,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=9984,
+    serialized_end=10010,
 )
 
 
 _NETCONNPIVOT = _descriptor.Descriptor(
-  name='NetConnPivot',
-  full_name='sliverpb.NetConnPivot',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='PeerID', full_name='sliverpb.NetConnPivot.PeerID', index=0,
-      number=1, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'0\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='RemoteAddress', full_name='sliverpb.NetConnPivot.RemoteAddress', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=10012,
-  serialized_end=10069,
+    name="NetConnPivot",
+    full_name="sliverpb.NetConnPivot",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="PeerID",
+            full_name="sliverpb.NetConnPivot.PeerID",
+            index=0,
+            number=1,
+            type=3,
+            cpp_type=2,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=b"0\001",
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="RemoteAddress",
+            full_name="sliverpb.NetConnPivot.RemoteAddress",
+            index=1,
+            number=2,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=10012,
+    serialized_end=10069,
 )
 
 
 _PIVOTPEERFAILURE = _descriptor.Descriptor(
-  name='PivotPeerFailure',
-  full_name='sliverpb.PivotPeerFailure',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='PeerID', full_name='sliverpb.PivotPeerFailure.PeerID', index=0,
-      number=1, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'0\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Type', full_name='sliverpb.PivotPeerFailure.Type', index=1,
-      number=2, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Err', full_name='sliverpb.PivotPeerFailure.Err', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=10071,
-  serialized_end=10163,
+    name="PivotPeerFailure",
+    full_name="sliverpb.PivotPeerFailure",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="PeerID",
+            full_name="sliverpb.PivotPeerFailure.PeerID",
+            index=0,
+            number=1,
+            type=3,
+            cpp_type=2,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=b"0\001",
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Type",
+            full_name="sliverpb.PivotPeerFailure.Type",
+            index=1,
+            number=2,
+            type=14,
+            cpp_type=8,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Err",
+            full_name="sliverpb.PivotPeerFailure.Err",
+            index=2,
+            number=3,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=10071,
+    serialized_end=10163,
 )
 
 
 _PIVOTLISTENERSREQ = _descriptor.Descriptor(
-  name='PivotListenersReq',
-  full_name='sliverpb.PivotListenersReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.PivotListenersReq.Request', index=0,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=10165,
-  serialized_end=10220,
+    name="PivotListenersReq",
+    full_name="sliverpb.PivotListenersReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.PivotListenersReq.Request",
+            index=0,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=10165,
+    serialized_end=10220,
 )
 
 
 _PIVOTLISTENERS = _descriptor.Descriptor(
-  name='PivotListeners',
-  full_name='sliverpb.PivotListeners',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Listeners', full_name='sliverpb.PivotListeners.Listeners', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.PivotListeners.Response', index=1,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=10222,
-  serialized_end=10320,
+    name="PivotListeners",
+    full_name="sliverpb.PivotListeners",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Listeners",
+            full_name="sliverpb.PivotListeners.Listeners",
+            index=0,
+            number=1,
+            type=11,
+            cpp_type=10,
+            label=3,
+            has_default_value=False,
+            default_value=[],
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.PivotListeners.Response",
+            index=1,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=10222,
+    serialized_end=10320,
 )
 
 
 _WGPORTFORWARDSTARTREQ = _descriptor.Descriptor(
-  name='WGPortForwardStartReq',
-  full_name='sliverpb.WGPortForwardStartReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='LocalPort', full_name='sliverpb.WGPortForwardStartReq.LocalPort', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='RemoteAddress', full_name='sliverpb.WGPortForwardStartReq.RemoteAddress', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.WGPortForwardStartReq.Request', index=2,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=10322,
-  serialized_end=10423,
+    name="WGPortForwardStartReq",
+    full_name="sliverpb.WGPortForwardStartReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="LocalPort",
+            full_name="sliverpb.WGPortForwardStartReq.LocalPort",
+            index=0,
+            number=1,
+            type=5,
+            cpp_type=1,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="RemoteAddress",
+            full_name="sliverpb.WGPortForwardStartReq.RemoteAddress",
+            index=1,
+            number=2,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.WGPortForwardStartReq.Request",
+            index=2,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=10322,
+    serialized_end=10423,
 )
 
 
 _WGPORTFORWARD = _descriptor.Descriptor(
-  name='WGPortForward',
-  full_name='sliverpb.WGPortForward',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Forwarder', full_name='sliverpb.WGPortForward.Forwarder', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.WGPortForward.Response', index=1,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=10425,
-  serialized_end=10523,
+    name="WGPortForward",
+    full_name="sliverpb.WGPortForward",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Forwarder",
+            full_name="sliverpb.WGPortForward.Forwarder",
+            index=0,
+            number=1,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.WGPortForward.Response",
+            index=1,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=10425,
+    serialized_end=10523,
 )
 
 
 _WGPORTFORWARDSTOPREQ = _descriptor.Descriptor(
-  name='WGPortForwardStopReq',
-  full_name='sliverpb.WGPortForwardStopReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='ID', full_name='sliverpb.WGPortForwardStopReq.ID', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.WGPortForwardStopReq.Request', index=1,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=10525,
-  serialized_end=10595,
+    name="WGPortForwardStopReq",
+    full_name="sliverpb.WGPortForwardStopReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="ID",
+            full_name="sliverpb.WGPortForwardStopReq.ID",
+            index=0,
+            number=1,
+            type=5,
+            cpp_type=1,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.WGPortForwardStopReq.Request",
+            index=1,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=10525,
+    serialized_end=10595,
 )
 
 
 _WGSOCKSSTARTREQ = _descriptor.Descriptor(
-  name='WGSocksStartReq',
-  full_name='sliverpb.WGSocksStartReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Port', full_name='sliverpb.WGSocksStartReq.Port', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.WGSocksStartReq.Request', index=1,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=10597,
-  serialized_end=10664,
+    name="WGSocksStartReq",
+    full_name="sliverpb.WGSocksStartReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Port",
+            full_name="sliverpb.WGSocksStartReq.Port",
+            index=0,
+            number=1,
+            type=5,
+            cpp_type=1,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.WGSocksStartReq.Request",
+            index=1,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=10597,
+    serialized_end=10664,
 )
 
 
 _WGSOCKS = _descriptor.Descriptor(
-  name='WGSocks',
-  full_name='sliverpb.WGSocks',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Server', full_name='sliverpb.WGSocks.Server', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.WGSocks.Response', index=1,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=10666,
-  serialized_end=10754,
+    name="WGSocks",
+    full_name="sliverpb.WGSocks",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Server",
+            full_name="sliverpb.WGSocks.Server",
+            index=0,
+            number=1,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.WGSocks.Response",
+            index=1,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=10666,
+    serialized_end=10754,
 )
 
 
 _WGSOCKSSTOPREQ = _descriptor.Descriptor(
-  name='WGSocksStopReq',
-  full_name='sliverpb.WGSocksStopReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='ID', full_name='sliverpb.WGSocksStopReq.ID', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.WGSocksStopReq.Request', index=1,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=10756,
-  serialized_end=10820,
+    name="WGSocksStopReq",
+    full_name="sliverpb.WGSocksStopReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="ID",
+            full_name="sliverpb.WGSocksStopReq.ID",
+            index=0,
+            number=1,
+            type=5,
+            cpp_type=1,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.WGSocksStopReq.Request",
+            index=1,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=10756,
+    serialized_end=10820,
 )
 
 
 _WGTCPFORWARDERSREQ = _descriptor.Descriptor(
-  name='WGTCPForwardersReq',
-  full_name='sliverpb.WGTCPForwardersReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.WGTCPForwardersReq.Request', index=0,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=10822,
-  serialized_end=10878,
+    name="WGTCPForwardersReq",
+    full_name="sliverpb.WGTCPForwardersReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.WGTCPForwardersReq.Request",
+            index=0,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=10822,
+    serialized_end=10878,
 )
 
 
 _WGSOCKSSERVERSREQ = _descriptor.Descriptor(
-  name='WGSocksServersReq',
-  full_name='sliverpb.WGSocksServersReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.WGSocksServersReq.Request', index=0,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=10880,
-  serialized_end=10935,
+    name="WGSocksServersReq",
+    full_name="sliverpb.WGSocksServersReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.WGSocksServersReq.Request",
+            index=0,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=10880,
+    serialized_end=10935,
 )
 
 
 _WGTCPFORWARDER = _descriptor.Descriptor(
-  name='WGTCPForwarder',
-  full_name='sliverpb.WGTCPForwarder',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='ID', full_name='sliverpb.WGTCPForwarder.ID', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='LocalAddr', full_name='sliverpb.WGTCPForwarder.LocalAddr', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='RemoteAddr', full_name='sliverpb.WGTCPForwarder.RemoteAddr', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=10937,
-  serialized_end=11004,
+    name="WGTCPForwarder",
+    full_name="sliverpb.WGTCPForwarder",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="ID",
+            full_name="sliverpb.WGTCPForwarder.ID",
+            index=0,
+            number=1,
+            type=5,
+            cpp_type=1,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="LocalAddr",
+            full_name="sliverpb.WGTCPForwarder.LocalAddr",
+            index=1,
+            number=2,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="RemoteAddr",
+            full_name="sliverpb.WGTCPForwarder.RemoteAddr",
+            index=2,
+            number=3,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=10937,
+    serialized_end=11004,
 )
 
 
 _WGSOCKSSERVER = _descriptor.Descriptor(
-  name='WGSocksServer',
-  full_name='sliverpb.WGSocksServer',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='ID', full_name='sliverpb.WGSocksServer.ID', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='LocalAddr', full_name='sliverpb.WGSocksServer.LocalAddr', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=11006,
-  serialized_end=11052,
+    name="WGSocksServer",
+    full_name="sliverpb.WGSocksServer",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="ID",
+            full_name="sliverpb.WGSocksServer.ID",
+            index=0,
+            number=1,
+            type=5,
+            cpp_type=1,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="LocalAddr",
+            full_name="sliverpb.WGSocksServer.LocalAddr",
+            index=1,
+            number=2,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=11006,
+    serialized_end=11052,
 )
 
 
 _WGSOCKSSERVERS = _descriptor.Descriptor(
-  name='WGSocksServers',
-  full_name='sliverpb.WGSocksServers',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Servers', full_name='sliverpb.WGSocksServers.Servers', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.WGSocksServers.Response', index=1,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=11054,
-  serialized_end=11150,
+    name="WGSocksServers",
+    full_name="sliverpb.WGSocksServers",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Servers",
+            full_name="sliverpb.WGSocksServers.Servers",
+            index=0,
+            number=1,
+            type=11,
+            cpp_type=10,
+            label=3,
+            has_default_value=False,
+            default_value=[],
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.WGSocksServers.Response",
+            index=1,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=11054,
+    serialized_end=11150,
 )
 
 
 _WGTCPFORWARDERS = _descriptor.Descriptor(
-  name='WGTCPForwarders',
-  full_name='sliverpb.WGTCPForwarders',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Forwarders', full_name='sliverpb.WGTCPForwarders.Forwarders', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.WGTCPForwarders.Response', index=1,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=11152,
-  serialized_end=11253,
+    name="WGTCPForwarders",
+    full_name="sliverpb.WGTCPForwarders",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Forwarders",
+            full_name="sliverpb.WGTCPForwarders.Forwarders",
+            index=0,
+            number=1,
+            type=11,
+            cpp_type=10,
+            label=3,
+            has_default_value=False,
+            default_value=[],
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.WGTCPForwarders.Response",
+            index=1,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=11152,
+    serialized_end=11253,
 )
 
 
 _RECONFIGUREREQ = _descriptor.Descriptor(
-  name='ReconfigureReq',
-  full_name='sliverpb.ReconfigureReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='ReconnectInterval', full_name='sliverpb.ReconfigureReq.ReconnectInterval', index=0,
-      number=1, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='BeaconInterval', full_name='sliverpb.ReconfigureReq.BeaconInterval', index=1,
-      number=2, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='BeaconJitter', full_name='sliverpb.ReconfigureReq.BeaconJitter', index=2,
-      number=3, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.ReconfigureReq.Request', index=3,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=11255,
-  serialized_end=11380,
+    name="ReconfigureReq",
+    full_name="sliverpb.ReconfigureReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="ReconnectInterval",
+            full_name="sliverpb.ReconfigureReq.ReconnectInterval",
+            index=0,
+            number=1,
+            type=3,
+            cpp_type=2,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="BeaconInterval",
+            full_name="sliverpb.ReconfigureReq.BeaconInterval",
+            index=1,
+            number=2,
+            type=3,
+            cpp_type=2,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="BeaconJitter",
+            full_name="sliverpb.ReconfigureReq.BeaconJitter",
+            index=2,
+            number=3,
+            type=3,
+            cpp_type=2,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.ReconfigureReq.Request",
+            index=3,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=11255,
+    serialized_end=11380,
 )
 
 
 _RECONFIGURE = _descriptor.Descriptor(
-  name='Reconfigure',
-  full_name='sliverpb.Reconfigure',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.Reconfigure.Response', index=0,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=11382,
-  serialized_end=11433,
+    name="Reconfigure",
+    full_name="sliverpb.Reconfigure",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.Reconfigure.Response",
+            index=0,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=11382,
+    serialized_end=11433,
 )
 
 
 _POLLINTERVALREQ = _descriptor.Descriptor(
-  name='PollIntervalReq',
-  full_name='sliverpb.PollIntervalReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='PollInterval', full_name='sliverpb.PollIntervalReq.PollInterval', index=0,
-      number=1, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.PollIntervalReq.Request', index=1,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=11435,
-  serialized_end=11510,
+    name="PollIntervalReq",
+    full_name="sliverpb.PollIntervalReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="PollInterval",
+            full_name="sliverpb.PollIntervalReq.PollInterval",
+            index=0,
+            number=1,
+            type=3,
+            cpp_type=2,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.PollIntervalReq.Request",
+            index=1,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=11435,
+    serialized_end=11510,
 )
 
 
 _POLLINTERVAL = _descriptor.Descriptor(
-  name='PollInterval',
-  full_name='sliverpb.PollInterval',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.PollInterval.Response', index=0,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=11512,
-  serialized_end=11564,
+    name="PollInterval",
+    full_name="sliverpb.PollInterval",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.PollInterval.Response",
+            index=0,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=11512,
+    serialized_end=11564,
 )
 
 
 _SSHCOMMANDREQ = _descriptor.Descriptor(
-  name='SSHCommandReq',
-  full_name='sliverpb.SSHCommandReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Username', full_name='sliverpb.SSHCommandReq.Username', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Hostname', full_name='sliverpb.SSHCommandReq.Hostname', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Port', full_name='sliverpb.SSHCommandReq.Port', index=2,
-      number=3, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Command', full_name='sliverpb.SSHCommandReq.Command', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Password', full_name='sliverpb.SSHCommandReq.Password', index=4,
-      number=5, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='PrivKey', full_name='sliverpb.SSHCommandReq.PrivKey', index=5,
-      number=6, type=12, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"",
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.SSHCommandReq.Request', index=6,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=11567,
-  serialized_end=11720,
+    name="SSHCommandReq",
+    full_name="sliverpb.SSHCommandReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Username",
+            full_name="sliverpb.SSHCommandReq.Username",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Hostname",
+            full_name="sliverpb.SSHCommandReq.Hostname",
+            index=1,
+            number=2,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Port",
+            full_name="sliverpb.SSHCommandReq.Port",
+            index=2,
+            number=3,
+            type=13,
+            cpp_type=3,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Command",
+            full_name="sliverpb.SSHCommandReq.Command",
+            index=3,
+            number=4,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Password",
+            full_name="sliverpb.SSHCommandReq.Password",
+            index=4,
+            number=5,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="PrivKey",
+            full_name="sliverpb.SSHCommandReq.PrivKey",
+            index=5,
+            number=6,
+            type=12,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"",
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.SSHCommandReq.Request",
+            index=6,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=11567,
+    serialized_end=11720,
 )
 
 
 _SSHCOMMAND = _descriptor.Descriptor(
-  name='SSHCommand',
-  full_name='sliverpb.SSHCommand',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='StdOut', full_name='sliverpb.SSHCommand.StdOut', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='StdErr', full_name='sliverpb.SSHCommand.StdErr', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.SSHCommand.Response', index=2,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=11722,
-  serialized_end=11804,
+    name="SSHCommand",
+    full_name="sliverpb.SSHCommand",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="StdOut",
+            full_name="sliverpb.SSHCommand.StdOut",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="StdErr",
+            full_name="sliverpb.SSHCommand.StdErr",
+            index=1,
+            number=2,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.SSHCommand.Response",
+            index=2,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=11722,
+    serialized_end=11804,
 )
 
 
 _GETPRIVSREQ = _descriptor.Descriptor(
-  name='GetPrivsReq',
-  full_name='sliverpb.GetPrivsReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.GetPrivsReq.Request', index=0,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=11806,
-  serialized_end=11855,
+    name="GetPrivsReq",
+    full_name="sliverpb.GetPrivsReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.GetPrivsReq.Request",
+            index=0,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=11806,
+    serialized_end=11855,
 )
 
 
 _WINDOWSPRIVILEGEENTRY = _descriptor.Descriptor(
-  name='WindowsPrivilegeEntry',
-  full_name='sliverpb.WindowsPrivilegeEntry',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Name', full_name='sliverpb.WindowsPrivilegeEntry.Name', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Description', full_name='sliverpb.WindowsPrivilegeEntry.Description', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Enabled', full_name='sliverpb.WindowsPrivilegeEntry.Enabled', index=2,
-      number=3, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='EnabledByDefault', full_name='sliverpb.WindowsPrivilegeEntry.EnabledByDefault', index=3,
-      number=4, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Removed', full_name='sliverpb.WindowsPrivilegeEntry.Removed', index=4,
-      number=5, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='UsedForAccess', full_name='sliverpb.WindowsPrivilegeEntry.UsedForAccess', index=5,
-      number=6, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=11858,
-  serialized_end=11999,
+    name="WindowsPrivilegeEntry",
+    full_name="sliverpb.WindowsPrivilegeEntry",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Name",
+            full_name="sliverpb.WindowsPrivilegeEntry.Name",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Description",
+            full_name="sliverpb.WindowsPrivilegeEntry.Description",
+            index=1,
+            number=2,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Enabled",
+            full_name="sliverpb.WindowsPrivilegeEntry.Enabled",
+            index=2,
+            number=3,
+            type=8,
+            cpp_type=7,
+            label=1,
+            has_default_value=False,
+            default_value=False,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="EnabledByDefault",
+            full_name="sliverpb.WindowsPrivilegeEntry.EnabledByDefault",
+            index=3,
+            number=4,
+            type=8,
+            cpp_type=7,
+            label=1,
+            has_default_value=False,
+            default_value=False,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Removed",
+            full_name="sliverpb.WindowsPrivilegeEntry.Removed",
+            index=4,
+            number=5,
+            type=8,
+            cpp_type=7,
+            label=1,
+            has_default_value=False,
+            default_value=False,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="UsedForAccess",
+            full_name="sliverpb.WindowsPrivilegeEntry.UsedForAccess",
+            index=5,
+            number=6,
+            type=8,
+            cpp_type=7,
+            label=1,
+            has_default_value=False,
+            default_value=False,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=11858,
+    serialized_end=11999,
 )
 
 
 _GETPRIVS = _descriptor.Descriptor(
-  name='GetPrivs',
-  full_name='sliverpb.GetPrivs',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='PrivInfo', full_name='sliverpb.GetPrivs.PrivInfo', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='ProcessIntegrity', full_name='sliverpb.GetPrivs.ProcessIntegrity', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='ProcessName', full_name='sliverpb.GetPrivs.ProcessName', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.GetPrivs.Response', index=3,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=12002,
-  serialized_end=12148,
+    name="GetPrivs",
+    full_name="sliverpb.GetPrivs",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="PrivInfo",
+            full_name="sliverpb.GetPrivs.PrivInfo",
+            index=0,
+            number=1,
+            type=11,
+            cpp_type=10,
+            label=3,
+            has_default_value=False,
+            default_value=[],
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="ProcessIntegrity",
+            full_name="sliverpb.GetPrivs.ProcessIntegrity",
+            index=1,
+            number=2,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="ProcessName",
+            full_name="sliverpb.GetPrivs.ProcessName",
+            index=2,
+            number=3,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.GetPrivs.Response",
+            index=3,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=12002,
+    serialized_end=12148,
 )
 
 
 _REGISTEREXTENSIONREQ = _descriptor.Descriptor(
-  name='RegisterExtensionReq',
-  full_name='sliverpb.RegisterExtensionReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Name', full_name='sliverpb.RegisterExtensionReq.Name', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Data', full_name='sliverpb.RegisterExtensionReq.Data', index=1,
-      number=2, type=12, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"",
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='OS', full_name='sliverpb.RegisterExtensionReq.OS', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Init', full_name='sliverpb.RegisterExtensionReq.Init', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.RegisterExtensionReq.Request', index=4,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=12150,
-  serialized_end=12262,
+    name="RegisterExtensionReq",
+    full_name="sliverpb.RegisterExtensionReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Name",
+            full_name="sliverpb.RegisterExtensionReq.Name",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Data",
+            full_name="sliverpb.RegisterExtensionReq.Data",
+            index=1,
+            number=2,
+            type=12,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"",
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="OS",
+            full_name="sliverpb.RegisterExtensionReq.OS",
+            index=2,
+            number=3,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Init",
+            full_name="sliverpb.RegisterExtensionReq.Init",
+            index=3,
+            number=4,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.RegisterExtensionReq.Request",
+            index=4,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=12150,
+    serialized_end=12262,
 )
 
 
 _REGISTEREXTENSION = _descriptor.Descriptor(
-  name='RegisterExtension',
-  full_name='sliverpb.RegisterExtension',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.RegisterExtension.Response', index=0,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=12264,
-  serialized_end=12321,
+    name="RegisterExtension",
+    full_name="sliverpb.RegisterExtension",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.RegisterExtension.Response",
+            index=0,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=12264,
+    serialized_end=12321,
 )
 
 
 _CALLEXTENSIONREQ = _descriptor.Descriptor(
-  name='CallExtensionReq',
-  full_name='sliverpb.CallExtensionReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Name', full_name='sliverpb.CallExtensionReq.Name', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='ServerStore', full_name='sliverpb.CallExtensionReq.ServerStore', index=1,
-      number=2, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Args', full_name='sliverpb.CallExtensionReq.Args', index=2,
-      number=3, type=12, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"",
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Export', full_name='sliverpb.CallExtensionReq.Export', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.CallExtensionReq.Request', index=4,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=12323,
-  serialized_end=12442,
+    name="CallExtensionReq",
+    full_name="sliverpb.CallExtensionReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Name",
+            full_name="sliverpb.CallExtensionReq.Name",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="ServerStore",
+            full_name="sliverpb.CallExtensionReq.ServerStore",
+            index=1,
+            number=2,
+            type=8,
+            cpp_type=7,
+            label=1,
+            has_default_value=False,
+            default_value=False,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Args",
+            full_name="sliverpb.CallExtensionReq.Args",
+            index=2,
+            number=3,
+            type=12,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"",
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Export",
+            full_name="sliverpb.CallExtensionReq.Export",
+            index=3,
+            number=4,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.CallExtensionReq.Request",
+            index=4,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=12323,
+    serialized_end=12442,
 )
 
 
 _CALLEXTENSION = _descriptor.Descriptor(
-  name='CallExtension',
-  full_name='sliverpb.CallExtension',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Output', full_name='sliverpb.CallExtension.Output', index=0,
-      number=1, type=12, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"",
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='ServerStore', full_name='sliverpb.CallExtension.ServerStore', index=1,
-      number=2, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.CallExtension.Response', index=2,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=12444,
-  serialized_end=12534,
+    name="CallExtension",
+    full_name="sliverpb.CallExtension",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Output",
+            full_name="sliverpb.CallExtension.Output",
+            index=0,
+            number=1,
+            type=12,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"",
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="ServerStore",
+            full_name="sliverpb.CallExtension.ServerStore",
+            index=1,
+            number=2,
+            type=8,
+            cpp_type=7,
+            label=1,
+            has_default_value=False,
+            default_value=False,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.CallExtension.Response",
+            index=2,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=12444,
+    serialized_end=12534,
 )
 
 
 _LISTEXTENSIONSREQ = _descriptor.Descriptor(
-  name='ListExtensionsReq',
-  full_name='sliverpb.ListExtensionsReq',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Request', full_name='sliverpb.ListExtensionsReq.Request', index=0,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=12536,
-  serialized_end=12591,
+    name="ListExtensionsReq",
+    full_name="sliverpb.ListExtensionsReq",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Request",
+            full_name="sliverpb.ListExtensionsReq.Request",
+            index=0,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=12536,
+    serialized_end=12591,
 )
 
 
 _LISTEXTENSIONS = _descriptor.Descriptor(
-  name='ListExtensions',
-  full_name='sliverpb.ListExtensions',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Names', full_name='sliverpb.ListExtensions.Names', index=0,
-      number=1, type=9, cpp_type=9, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='Response', full_name='sliverpb.ListExtensions.Response', index=1,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=12593,
-  serialized_end=12662,
+    name="ListExtensions",
+    full_name="sliverpb.ListExtensions",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="Names",
+            full_name="sliverpb.ListExtensions.Names",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=3,
+            has_default_value=False,
+            default_value=[],
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="Response",
+            full_name="sliverpb.ListExtensions.Response",
+            index=1,
+            number=9,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=12593,
+    serialized_end=12662,
 )
 
-_BEACONTASKS.fields_by_name['Tasks'].message_type = _ENVELOPE
-_BEACONREGISTER.fields_by_name['Register'].message_type = _REGISTER
-_SESSIONREGISTER.fields_by_name['Register'].message_type = _REGISTER
-_OPENSESSION.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_OPENSESSION.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_CLOSESESSION.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_CLOSESESSION.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_PING.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_PING.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_KILLREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_PSREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_PS.fields_by_name['Processes'].message_type = commonpb_dot_common__pb2._PROCESS
-_PS.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_TERMINATEREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_TERMINATE.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_IFCONFIGREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_IFCONFIG.fields_by_name['NetInterfaces'].message_type = _NETINTERFACE
-_IFCONFIG.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_LSREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_LS.fields_by_name['Files'].message_type = _FILEINFO
-_LS.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_CDREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_PWDREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_PWD.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_RMREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_RM.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_MVREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_MV.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_MKDIRREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_MKDIR.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_DOWNLOADREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_DOWNLOAD.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_UPLOADREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_UPLOAD.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_PROCESSDUMPREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_PROCESSDUMP.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_RUNASREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_RUNAS.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_IMPERSONATEREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_IMPERSONATE.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_REVTOSELFREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_REVTOSELF.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_CURRENTTOKENOWNERREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_CURRENTTOKENOWNER.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_INVOKEGETSYSTEMREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_GETSYSTEM.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_MAKETOKENREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_MAKETOKEN.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_TASKREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_TASK.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_EXECUTEASSEMBLYREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_INVOKEEXECUTEASSEMBLYREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_EXECUTEASSEMBLY.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_INVOKEMIGRATEREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_MIGRATE.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_EXECUTEREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_EXECUTETOKENREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_EXECUTE.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_SIDELOADREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_SIDELOAD.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_INVOKESPAWNDLLREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_SPAWNDLLREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_SPAWNDLL.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_NETSTATREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
+_BEACONTASKS.fields_by_name["Tasks"].message_type = _ENVELOPE
+_BEACONREGISTER.fields_by_name["Register"].message_type = _REGISTER
+_SESSIONREGISTER.fields_by_name["Register"].message_type = _REGISTER
+_OPENSESSION.fields_by_name[
+    "Response"
+].message_type = commonpb_dot_common__pb2._RESPONSE
+_OPENSESSION.fields_by_name["Request"].message_type = commonpb_dot_common__pb2._REQUEST
+_CLOSESESSION.fields_by_name[
+    "Response"
+].message_type = commonpb_dot_common__pb2._RESPONSE
+_CLOSESESSION.fields_by_name["Request"].message_type = commonpb_dot_common__pb2._REQUEST
+_PING.fields_by_name["Response"].message_type = commonpb_dot_common__pb2._RESPONSE
+_PING.fields_by_name["Request"].message_type = commonpb_dot_common__pb2._REQUEST
+_KILLREQ.fields_by_name["Request"].message_type = commonpb_dot_common__pb2._REQUEST
+_PSREQ.fields_by_name["Request"].message_type = commonpb_dot_common__pb2._REQUEST
+_PS.fields_by_name["Processes"].message_type = commonpb_dot_common__pb2._PROCESS
+_PS.fields_by_name["Response"].message_type = commonpb_dot_common__pb2._RESPONSE
+_TERMINATEREQ.fields_by_name["Request"].message_type = commonpb_dot_common__pb2._REQUEST
+_TERMINATE.fields_by_name["Response"].message_type = commonpb_dot_common__pb2._RESPONSE
+_IFCONFIGREQ.fields_by_name["Request"].message_type = commonpb_dot_common__pb2._REQUEST
+_IFCONFIG.fields_by_name["NetInterfaces"].message_type = _NETINTERFACE
+_IFCONFIG.fields_by_name["Response"].message_type = commonpb_dot_common__pb2._RESPONSE
+_LSREQ.fields_by_name["Request"].message_type = commonpb_dot_common__pb2._REQUEST
+_LS.fields_by_name["Files"].message_type = _FILEINFO
+_LS.fields_by_name["Response"].message_type = commonpb_dot_common__pb2._RESPONSE
+_CDREQ.fields_by_name["Request"].message_type = commonpb_dot_common__pb2._REQUEST
+_PWDREQ.fields_by_name["Request"].message_type = commonpb_dot_common__pb2._REQUEST
+_PWD.fields_by_name["Response"].message_type = commonpb_dot_common__pb2._RESPONSE
+_RMREQ.fields_by_name["Request"].message_type = commonpb_dot_common__pb2._REQUEST
+_RM.fields_by_name["Response"].message_type = commonpb_dot_common__pb2._RESPONSE
+_MVREQ.fields_by_name["Request"].message_type = commonpb_dot_common__pb2._REQUEST
+_MV.fields_by_name["Response"].message_type = commonpb_dot_common__pb2._RESPONSE
+_MKDIRREQ.fields_by_name["Request"].message_type = commonpb_dot_common__pb2._REQUEST
+_MKDIR.fields_by_name["Response"].message_type = commonpb_dot_common__pb2._RESPONSE
+_DOWNLOADREQ.fields_by_name["Request"].message_type = commonpb_dot_common__pb2._REQUEST
+_DOWNLOAD.fields_by_name["Response"].message_type = commonpb_dot_common__pb2._RESPONSE
+_UPLOADREQ.fields_by_name["Request"].message_type = commonpb_dot_common__pb2._REQUEST
+_UPLOAD.fields_by_name["Response"].message_type = commonpb_dot_common__pb2._RESPONSE
+_PROCESSDUMPREQ.fields_by_name[
+    "Request"
+].message_type = commonpb_dot_common__pb2._REQUEST
+_PROCESSDUMP.fields_by_name[
+    "Response"
+].message_type = commonpb_dot_common__pb2._RESPONSE
+_RUNASREQ.fields_by_name["Request"].message_type = commonpb_dot_common__pb2._REQUEST
+_RUNAS.fields_by_name["Response"].message_type = commonpb_dot_common__pb2._RESPONSE
+_IMPERSONATEREQ.fields_by_name[
+    "Request"
+].message_type = commonpb_dot_common__pb2._REQUEST
+_IMPERSONATE.fields_by_name[
+    "Response"
+].message_type = commonpb_dot_common__pb2._RESPONSE
+_REVTOSELFREQ.fields_by_name["Request"].message_type = commonpb_dot_common__pb2._REQUEST
+_REVTOSELF.fields_by_name["Response"].message_type = commonpb_dot_common__pb2._RESPONSE
+_CURRENTTOKENOWNERREQ.fields_by_name[
+    "Request"
+].message_type = commonpb_dot_common__pb2._REQUEST
+_CURRENTTOKENOWNER.fields_by_name[
+    "Response"
+].message_type = commonpb_dot_common__pb2._RESPONSE
+_INVOKEGETSYSTEMREQ.fields_by_name[
+    "Request"
+].message_type = commonpb_dot_common__pb2._REQUEST
+_GETSYSTEM.fields_by_name["Response"].message_type = commonpb_dot_common__pb2._RESPONSE
+_MAKETOKENREQ.fields_by_name["Request"].message_type = commonpb_dot_common__pb2._REQUEST
+_MAKETOKEN.fields_by_name["Response"].message_type = commonpb_dot_common__pb2._RESPONSE
+_TASKREQ.fields_by_name["Request"].message_type = commonpb_dot_common__pb2._REQUEST
+_TASK.fields_by_name["Response"].message_type = commonpb_dot_common__pb2._RESPONSE
+_EXECUTEASSEMBLYREQ.fields_by_name[
+    "Request"
+].message_type = commonpb_dot_common__pb2._REQUEST
+_INVOKEEXECUTEASSEMBLYREQ.fields_by_name[
+    "Request"
+].message_type = commonpb_dot_common__pb2._REQUEST
+_EXECUTEASSEMBLY.fields_by_name[
+    "Response"
+].message_type = commonpb_dot_common__pb2._RESPONSE
+_INVOKEMIGRATEREQ.fields_by_name[
+    "Request"
+].message_type = commonpb_dot_common__pb2._REQUEST
+_MIGRATE.fields_by_name["Response"].message_type = commonpb_dot_common__pb2._RESPONSE
+_EXECUTEREQ.fields_by_name["Request"].message_type = commonpb_dot_common__pb2._REQUEST
+_EXECUTETOKENREQ.fields_by_name[
+    "Request"
+].message_type = commonpb_dot_common__pb2._REQUEST
+_EXECUTE.fields_by_name["Response"].message_type = commonpb_dot_common__pb2._RESPONSE
+_SIDELOADREQ.fields_by_name["Request"].message_type = commonpb_dot_common__pb2._REQUEST
+_SIDELOAD.fields_by_name["Response"].message_type = commonpb_dot_common__pb2._RESPONSE
+_INVOKESPAWNDLLREQ.fields_by_name[
+    "Request"
+].message_type = commonpb_dot_common__pb2._REQUEST
+_SPAWNDLLREQ.fields_by_name["Request"].message_type = commonpb_dot_common__pb2._REQUEST
+_SPAWNDLL.fields_by_name["Response"].message_type = commonpb_dot_common__pb2._RESPONSE
+_NETSTATREQ.fields_by_name["Request"].message_type = commonpb_dot_common__pb2._REQUEST
 _SOCKTABENTRY_SOCKADDR.containing_type = _SOCKTABENTRY
-_SOCKTABENTRY.fields_by_name['LocalAddr'].message_type = _SOCKTABENTRY_SOCKADDR
-_SOCKTABENTRY.fields_by_name['RemoteAddr'].message_type = _SOCKTABENTRY_SOCKADDR
-_SOCKTABENTRY.fields_by_name['Process'].message_type = commonpb_dot_common__pb2._PROCESS
-_NETSTAT.fields_by_name['Entries'].message_type = _SOCKTABENTRY
-_NETSTAT.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_ENVREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_ENVINFO.fields_by_name['Variables'].message_type = commonpb_dot_common__pb2._ENVVAR
-_ENVINFO.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_SETENVREQ.fields_by_name['Variable'].message_type = commonpb_dot_common__pb2._ENVVAR
-_SETENVREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_SETENV.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_UNSETENVREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_UNSETENV.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_DNSPOLL.fields_by_name['blocks'].message_type = _DNSBLOCKHEADER
-_SCREENSHOTREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_SCREENSHOT.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_STARTSERVICEREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_SERVICEINFO.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_STOPSERVICEREQ.fields_by_name['ServiceInfo'].message_type = _SERVICEINFOREQ
-_STOPSERVICEREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_REMOVESERVICEREQ.fields_by_name['ServiceInfo'].message_type = _SERVICEINFOREQ
-_REMOVESERVICEREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_BACKDOORREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_BACKDOOR.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_REGISTRYREADREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_REGISTRYREAD.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_REGISTRYWRITEREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_REGISTRYWRITE.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_REGISTRYCREATEKEYREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_REGISTRYCREATEKEY.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_REGISTRYDELETEKEYREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_REGISTRYDELETEKEY.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_REGISTRYSUBKEYLISTREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_REGISTRYSUBKEYLIST.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_REGISTRYLISTVALUESREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_REGISTRYVALUESLIST.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_SHELLREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_SHELL.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_PORTFWDREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_PORTFWD.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_SOCKSDATA.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_PIVOTSTARTLISTENERREQ.fields_by_name['Type'].enum_type = _PIVOTTYPE
-_PIVOTSTARTLISTENERREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_PIVOTSTOPLISTENERREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_PIVOTLISTENER.fields_by_name['Type'].enum_type = _PIVOTTYPE
-_PIVOTLISTENER.fields_by_name['Pivots'].message_type = _NETCONNPIVOT
-_PIVOTLISTENER.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_PIVOTPEERENVELOPE.fields_by_name['Peers'].message_type = _PIVOTPEER
-_PIVOTPEERFAILURE.fields_by_name['Type'].enum_type = _PEERFAILURETYPE
-_PIVOTLISTENERSREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_PIVOTLISTENERS.fields_by_name['Listeners'].message_type = _PIVOTLISTENER
-_PIVOTLISTENERS.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_WGPORTFORWARDSTARTREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_WGPORTFORWARD.fields_by_name['Forwarder'].message_type = _WGTCPFORWARDER
-_WGPORTFORWARD.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_WGPORTFORWARDSTOPREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_WGSOCKSSTARTREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_WGSOCKS.fields_by_name['Server'].message_type = _WGSOCKSSERVER
-_WGSOCKS.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_WGSOCKSSTOPREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_WGTCPFORWARDERSREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_WGSOCKSSERVERSREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_WGSOCKSSERVERS.fields_by_name['Servers'].message_type = _WGSOCKSSERVER
-_WGSOCKSSERVERS.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_WGTCPFORWARDERS.fields_by_name['Forwarders'].message_type = _WGTCPFORWARDER
-_WGTCPFORWARDERS.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_RECONFIGUREREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_RECONFIGURE.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_POLLINTERVALREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_POLLINTERVAL.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_SSHCOMMANDREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_SSHCOMMAND.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_GETPRIVSREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_GETPRIVS.fields_by_name['PrivInfo'].message_type = _WINDOWSPRIVILEGEENTRY
-_GETPRIVS.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_REGISTEREXTENSIONREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_REGISTEREXTENSION.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_CALLEXTENSIONREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_CALLEXTENSION.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-_LISTEXTENSIONSREQ.fields_by_name['Request'].message_type = commonpb_dot_common__pb2._REQUEST
-_LISTEXTENSIONS.fields_by_name['Response'].message_type = commonpb_dot_common__pb2._RESPONSE
-DESCRIPTOR.message_types_by_name['Envelope'] = _ENVELOPE
-DESCRIPTOR.message_types_by_name['BeaconTasks'] = _BEACONTASKS
-DESCRIPTOR.message_types_by_name['Register'] = _REGISTER
-DESCRIPTOR.message_types_by_name['BeaconRegister'] = _BEACONREGISTER
-DESCRIPTOR.message_types_by_name['SessionRegister'] = _SESSIONREGISTER
-DESCRIPTOR.message_types_by_name['OpenSession'] = _OPENSESSION
-DESCRIPTOR.message_types_by_name['CloseSession'] = _CLOSESESSION
-DESCRIPTOR.message_types_by_name['Ping'] = _PING
-DESCRIPTOR.message_types_by_name['KillReq'] = _KILLREQ
-DESCRIPTOR.message_types_by_name['PsReq'] = _PSREQ
-DESCRIPTOR.message_types_by_name['Ps'] = _PS
-DESCRIPTOR.message_types_by_name['TerminateReq'] = _TERMINATEREQ
-DESCRIPTOR.message_types_by_name['Terminate'] = _TERMINATE
-DESCRIPTOR.message_types_by_name['IfconfigReq'] = _IFCONFIGREQ
-DESCRIPTOR.message_types_by_name['Ifconfig'] = _IFCONFIG
-DESCRIPTOR.message_types_by_name['NetInterface'] = _NETINTERFACE
-DESCRIPTOR.message_types_by_name['LsReq'] = _LSREQ
-DESCRIPTOR.message_types_by_name['Ls'] = _LS
-DESCRIPTOR.message_types_by_name['FileInfo'] = _FILEINFO
-DESCRIPTOR.message_types_by_name['CdReq'] = _CDREQ
-DESCRIPTOR.message_types_by_name['PwdReq'] = _PWDREQ
-DESCRIPTOR.message_types_by_name['Pwd'] = _PWD
-DESCRIPTOR.message_types_by_name['RmReq'] = _RMREQ
-DESCRIPTOR.message_types_by_name['Rm'] = _RM
-DESCRIPTOR.message_types_by_name['MvReq'] = _MVREQ
-DESCRIPTOR.message_types_by_name['Mv'] = _MV
-DESCRIPTOR.message_types_by_name['MkdirReq'] = _MKDIRREQ
-DESCRIPTOR.message_types_by_name['Mkdir'] = _MKDIR
-DESCRIPTOR.message_types_by_name['DownloadReq'] = _DOWNLOADREQ
-DESCRIPTOR.message_types_by_name['Download'] = _DOWNLOAD
-DESCRIPTOR.message_types_by_name['UploadReq'] = _UPLOADREQ
-DESCRIPTOR.message_types_by_name['Upload'] = _UPLOAD
-DESCRIPTOR.message_types_by_name['ProcessDumpReq'] = _PROCESSDUMPREQ
-DESCRIPTOR.message_types_by_name['ProcessDump'] = _PROCESSDUMP
-DESCRIPTOR.message_types_by_name['RunAsReq'] = _RUNASREQ
-DESCRIPTOR.message_types_by_name['RunAs'] = _RUNAS
-DESCRIPTOR.message_types_by_name['ImpersonateReq'] = _IMPERSONATEREQ
-DESCRIPTOR.message_types_by_name['Impersonate'] = _IMPERSONATE
-DESCRIPTOR.message_types_by_name['RevToSelfReq'] = _REVTOSELFREQ
-DESCRIPTOR.message_types_by_name['RevToSelf'] = _REVTOSELF
-DESCRIPTOR.message_types_by_name['CurrentTokenOwnerReq'] = _CURRENTTOKENOWNERREQ
-DESCRIPTOR.message_types_by_name['CurrentTokenOwner'] = _CURRENTTOKENOWNER
-DESCRIPTOR.message_types_by_name['InvokeGetSystemReq'] = _INVOKEGETSYSTEMREQ
-DESCRIPTOR.message_types_by_name['GetSystem'] = _GETSYSTEM
-DESCRIPTOR.message_types_by_name['MakeTokenReq'] = _MAKETOKENREQ
-DESCRIPTOR.message_types_by_name['MakeToken'] = _MAKETOKEN
-DESCRIPTOR.message_types_by_name['TaskReq'] = _TASKREQ
-DESCRIPTOR.message_types_by_name['Task'] = _TASK
-DESCRIPTOR.message_types_by_name['ExecuteAssemblyReq'] = _EXECUTEASSEMBLYREQ
-DESCRIPTOR.message_types_by_name['InvokeExecuteAssemblyReq'] = _INVOKEEXECUTEASSEMBLYREQ
-DESCRIPTOR.message_types_by_name['ExecuteAssembly'] = _EXECUTEASSEMBLY
-DESCRIPTOR.message_types_by_name['InvokeMigrateReq'] = _INVOKEMIGRATEREQ
-DESCRIPTOR.message_types_by_name['Migrate'] = _MIGRATE
-DESCRIPTOR.message_types_by_name['ExecuteReq'] = _EXECUTEREQ
-DESCRIPTOR.message_types_by_name['ExecuteTokenReq'] = _EXECUTETOKENREQ
-DESCRIPTOR.message_types_by_name['Execute'] = _EXECUTE
-DESCRIPTOR.message_types_by_name['SideloadReq'] = _SIDELOADREQ
-DESCRIPTOR.message_types_by_name['Sideload'] = _SIDELOAD
-DESCRIPTOR.message_types_by_name['InvokeSpawnDllReq'] = _INVOKESPAWNDLLREQ
-DESCRIPTOR.message_types_by_name['SpawnDllReq'] = _SPAWNDLLREQ
-DESCRIPTOR.message_types_by_name['SpawnDll'] = _SPAWNDLL
-DESCRIPTOR.message_types_by_name['NetstatReq'] = _NETSTATREQ
-DESCRIPTOR.message_types_by_name['SockTabEntry'] = _SOCKTABENTRY
-DESCRIPTOR.message_types_by_name['Netstat'] = _NETSTAT
-DESCRIPTOR.message_types_by_name['EnvReq'] = _ENVREQ
-DESCRIPTOR.message_types_by_name['EnvInfo'] = _ENVINFO
-DESCRIPTOR.message_types_by_name['SetEnvReq'] = _SETENVREQ
-DESCRIPTOR.message_types_by_name['SetEnv'] = _SETENV
-DESCRIPTOR.message_types_by_name['UnsetEnvReq'] = _UNSETENVREQ
-DESCRIPTOR.message_types_by_name['UnsetEnv'] = _UNSETENV
-DESCRIPTOR.message_types_by_name['DNSSessionInit'] = _DNSSESSIONINIT
-DESCRIPTOR.message_types_by_name['DNSPoll'] = _DNSPOLL
-DESCRIPTOR.message_types_by_name['DNSBlockHeader'] = _DNSBLOCKHEADER
-DESCRIPTOR.message_types_by_name['HTTPSessionInit'] = _HTTPSESSIONINIT
-DESCRIPTOR.message_types_by_name['ScreenshotReq'] = _SCREENSHOTREQ
-DESCRIPTOR.message_types_by_name['Screenshot'] = _SCREENSHOT
-DESCRIPTOR.message_types_by_name['StartServiceReq'] = _STARTSERVICEREQ
-DESCRIPTOR.message_types_by_name['ServiceInfo'] = _SERVICEINFO
-DESCRIPTOR.message_types_by_name['ServiceInfoReq'] = _SERVICEINFOREQ
-DESCRIPTOR.message_types_by_name['StopServiceReq'] = _STOPSERVICEREQ
-DESCRIPTOR.message_types_by_name['RemoveServiceReq'] = _REMOVESERVICEREQ
-DESCRIPTOR.message_types_by_name['BackdoorReq'] = _BACKDOORREQ
-DESCRIPTOR.message_types_by_name['Backdoor'] = _BACKDOOR
-DESCRIPTOR.message_types_by_name['RegistryReadReq'] = _REGISTRYREADREQ
-DESCRIPTOR.message_types_by_name['RegistryRead'] = _REGISTRYREAD
-DESCRIPTOR.message_types_by_name['RegistryWriteReq'] = _REGISTRYWRITEREQ
-DESCRIPTOR.message_types_by_name['RegistryWrite'] = _REGISTRYWRITE
-DESCRIPTOR.message_types_by_name['RegistryCreateKeyReq'] = _REGISTRYCREATEKEYREQ
-DESCRIPTOR.message_types_by_name['RegistryCreateKey'] = _REGISTRYCREATEKEY
-DESCRIPTOR.message_types_by_name['RegistryDeleteKeyReq'] = _REGISTRYDELETEKEYREQ
-DESCRIPTOR.message_types_by_name['RegistryDeleteKey'] = _REGISTRYDELETEKEY
-DESCRIPTOR.message_types_by_name['RegistrySubKeyListReq'] = _REGISTRYSUBKEYLISTREQ
-DESCRIPTOR.message_types_by_name['RegistrySubKeyList'] = _REGISTRYSUBKEYLIST
-DESCRIPTOR.message_types_by_name['RegistryListValuesReq'] = _REGISTRYLISTVALUESREQ
-DESCRIPTOR.message_types_by_name['RegistryValuesList'] = _REGISTRYVALUESLIST
-DESCRIPTOR.message_types_by_name['Tunnel'] = _TUNNEL
-DESCRIPTOR.message_types_by_name['TunnelData'] = _TUNNELDATA
-DESCRIPTOR.message_types_by_name['ShellReq'] = _SHELLREQ
-DESCRIPTOR.message_types_by_name['Shell'] = _SHELL
-DESCRIPTOR.message_types_by_name['PortfwdReq'] = _PORTFWDREQ
-DESCRIPTOR.message_types_by_name['Portfwd'] = _PORTFWD
-DESCRIPTOR.message_types_by_name['Socks'] = _SOCKS
-DESCRIPTOR.message_types_by_name['SocksData'] = _SOCKSDATA
-DESCRIPTOR.message_types_by_name['PivotStartListenerReq'] = _PIVOTSTARTLISTENERREQ
-DESCRIPTOR.message_types_by_name['PivotStopListenerReq'] = _PIVOTSTOPLISTENERREQ
-DESCRIPTOR.message_types_by_name['PivotListener'] = _PIVOTLISTENER
-DESCRIPTOR.message_types_by_name['PivotHello'] = _PIVOTHELLO
-DESCRIPTOR.message_types_by_name['PivotServerKeyExchange'] = _PIVOTSERVERKEYEXCHANGE
-DESCRIPTOR.message_types_by_name['PivotPeer'] = _PIVOTPEER
-DESCRIPTOR.message_types_by_name['PivotPeerEnvelope'] = _PIVOTPEERENVELOPE
-DESCRIPTOR.message_types_by_name['PivotPing'] = _PIVOTPING
-DESCRIPTOR.message_types_by_name['NetConnPivot'] = _NETCONNPIVOT
-DESCRIPTOR.message_types_by_name['PivotPeerFailure'] = _PIVOTPEERFAILURE
-DESCRIPTOR.message_types_by_name['PivotListenersReq'] = _PIVOTLISTENERSREQ
-DESCRIPTOR.message_types_by_name['PivotListeners'] = _PIVOTLISTENERS
-DESCRIPTOR.message_types_by_name['WGPortForwardStartReq'] = _WGPORTFORWARDSTARTREQ
-DESCRIPTOR.message_types_by_name['WGPortForward'] = _WGPORTFORWARD
-DESCRIPTOR.message_types_by_name['WGPortForwardStopReq'] = _WGPORTFORWARDSTOPREQ
-DESCRIPTOR.message_types_by_name['WGSocksStartReq'] = _WGSOCKSSTARTREQ
-DESCRIPTOR.message_types_by_name['WGSocks'] = _WGSOCKS
-DESCRIPTOR.message_types_by_name['WGSocksStopReq'] = _WGSOCKSSTOPREQ
-DESCRIPTOR.message_types_by_name['WGTCPForwardersReq'] = _WGTCPFORWARDERSREQ
-DESCRIPTOR.message_types_by_name['WGSocksServersReq'] = _WGSOCKSSERVERSREQ
-DESCRIPTOR.message_types_by_name['WGTCPForwarder'] = _WGTCPFORWARDER
-DESCRIPTOR.message_types_by_name['WGSocksServer'] = _WGSOCKSSERVER
-DESCRIPTOR.message_types_by_name['WGSocksServers'] = _WGSOCKSSERVERS
-DESCRIPTOR.message_types_by_name['WGTCPForwarders'] = _WGTCPFORWARDERS
-DESCRIPTOR.message_types_by_name['ReconfigureReq'] = _RECONFIGUREREQ
-DESCRIPTOR.message_types_by_name['Reconfigure'] = _RECONFIGURE
-DESCRIPTOR.message_types_by_name['PollIntervalReq'] = _POLLINTERVALREQ
-DESCRIPTOR.message_types_by_name['PollInterval'] = _POLLINTERVAL
-DESCRIPTOR.message_types_by_name['SSHCommandReq'] = _SSHCOMMANDREQ
-DESCRIPTOR.message_types_by_name['SSHCommand'] = _SSHCOMMAND
-DESCRIPTOR.message_types_by_name['GetPrivsReq'] = _GETPRIVSREQ
-DESCRIPTOR.message_types_by_name['WindowsPrivilegeEntry'] = _WINDOWSPRIVILEGEENTRY
-DESCRIPTOR.message_types_by_name['GetPrivs'] = _GETPRIVS
-DESCRIPTOR.message_types_by_name['RegisterExtensionReq'] = _REGISTEREXTENSIONREQ
-DESCRIPTOR.message_types_by_name['RegisterExtension'] = _REGISTEREXTENSION
-DESCRIPTOR.message_types_by_name['CallExtensionReq'] = _CALLEXTENSIONREQ
-DESCRIPTOR.message_types_by_name['CallExtension'] = _CALLEXTENSION
-DESCRIPTOR.message_types_by_name['ListExtensionsReq'] = _LISTEXTENSIONSREQ
-DESCRIPTOR.message_types_by_name['ListExtensions'] = _LISTEXTENSIONS
-DESCRIPTOR.enum_types_by_name['PivotType'] = _PIVOTTYPE
-DESCRIPTOR.enum_types_by_name['PeerFailureType'] = _PEERFAILURETYPE
+_SOCKTABENTRY.fields_by_name["LocalAddr"].message_type = _SOCKTABENTRY_SOCKADDR
+_SOCKTABENTRY.fields_by_name["RemoteAddr"].message_type = _SOCKTABENTRY_SOCKADDR
+_SOCKTABENTRY.fields_by_name["Process"].message_type = commonpb_dot_common__pb2._PROCESS
+_NETSTAT.fields_by_name["Entries"].message_type = _SOCKTABENTRY
+_NETSTAT.fields_by_name["Response"].message_type = commonpb_dot_common__pb2._RESPONSE
+_ENVREQ.fields_by_name["Request"].message_type = commonpb_dot_common__pb2._REQUEST
+_ENVINFO.fields_by_name["Variables"].message_type = commonpb_dot_common__pb2._ENVVAR
+_ENVINFO.fields_by_name["Response"].message_type = commonpb_dot_common__pb2._RESPONSE
+_SETENVREQ.fields_by_name["Variable"].message_type = commonpb_dot_common__pb2._ENVVAR
+_SETENVREQ.fields_by_name["Request"].message_type = commonpb_dot_common__pb2._REQUEST
+_SETENV.fields_by_name["Response"].message_type = commonpb_dot_common__pb2._RESPONSE
+_UNSETENVREQ.fields_by_name["Request"].message_type = commonpb_dot_common__pb2._REQUEST
+_UNSETENV.fields_by_name["Response"].message_type = commonpb_dot_common__pb2._RESPONSE
+_DNSPOLL.fields_by_name["blocks"].message_type = _DNSBLOCKHEADER
+_SCREENSHOTREQ.fields_by_name[
+    "Request"
+].message_type = commonpb_dot_common__pb2._REQUEST
+_SCREENSHOT.fields_by_name["Response"].message_type = commonpb_dot_common__pb2._RESPONSE
+_STARTSERVICEREQ.fields_by_name[
+    "Request"
+].message_type = commonpb_dot_common__pb2._REQUEST
+_SERVICEINFO.fields_by_name[
+    "Response"
+].message_type = commonpb_dot_common__pb2._RESPONSE
+_STOPSERVICEREQ.fields_by_name["ServiceInfo"].message_type = _SERVICEINFOREQ
+_STOPSERVICEREQ.fields_by_name[
+    "Request"
+].message_type = commonpb_dot_common__pb2._REQUEST
+_REMOVESERVICEREQ.fields_by_name["ServiceInfo"].message_type = _SERVICEINFOREQ
+_REMOVESERVICEREQ.fields_by_name[
+    "Request"
+].message_type = commonpb_dot_common__pb2._REQUEST
+_BACKDOORREQ.fields_by_name["Request"].message_type = commonpb_dot_common__pb2._REQUEST
+_BACKDOOR.fields_by_name["Response"].message_type = commonpb_dot_common__pb2._RESPONSE
+_REGISTRYREADREQ.fields_by_name[
+    "Request"
+].message_type = commonpb_dot_common__pb2._REQUEST
+_REGISTRYREAD.fields_by_name[
+    "Response"
+].message_type = commonpb_dot_common__pb2._RESPONSE
+_REGISTRYWRITEREQ.fields_by_name[
+    "Request"
+].message_type = commonpb_dot_common__pb2._REQUEST
+_REGISTRYWRITE.fields_by_name[
+    "Response"
+].message_type = commonpb_dot_common__pb2._RESPONSE
+_REGISTRYCREATEKEYREQ.fields_by_name[
+    "Request"
+].message_type = commonpb_dot_common__pb2._REQUEST
+_REGISTRYCREATEKEY.fields_by_name[
+    "Response"
+].message_type = commonpb_dot_common__pb2._RESPONSE
+_REGISTRYDELETEKEYREQ.fields_by_name[
+    "Request"
+].message_type = commonpb_dot_common__pb2._REQUEST
+_REGISTRYDELETEKEY.fields_by_name[
+    "Response"
+].message_type = commonpb_dot_common__pb2._RESPONSE
+_REGISTRYSUBKEYLISTREQ.fields_by_name[
+    "Request"
+].message_type = commonpb_dot_common__pb2._REQUEST
+_REGISTRYSUBKEYLIST.fields_by_name[
+    "Response"
+].message_type = commonpb_dot_common__pb2._RESPONSE
+_REGISTRYLISTVALUESREQ.fields_by_name[
+    "Request"
+].message_type = commonpb_dot_common__pb2._REQUEST
+_REGISTRYVALUESLIST.fields_by_name[
+    "Response"
+].message_type = commonpb_dot_common__pb2._RESPONSE
+_SHELLREQ.fields_by_name["Request"].message_type = commonpb_dot_common__pb2._REQUEST
+_SHELL.fields_by_name["Response"].message_type = commonpb_dot_common__pb2._RESPONSE
+_PORTFWDREQ.fields_by_name["Request"].message_type = commonpb_dot_common__pb2._REQUEST
+_PORTFWD.fields_by_name["Response"].message_type = commonpb_dot_common__pb2._RESPONSE
+_SOCKSDATA.fields_by_name["Request"].message_type = commonpb_dot_common__pb2._REQUEST
+_PIVOTSTARTLISTENERREQ.fields_by_name["Type"].enum_type = _PIVOTTYPE
+_PIVOTSTARTLISTENERREQ.fields_by_name[
+    "Request"
+].message_type = commonpb_dot_common__pb2._REQUEST
+_PIVOTSTOPLISTENERREQ.fields_by_name[
+    "Request"
+].message_type = commonpb_dot_common__pb2._REQUEST
+_PIVOTLISTENER.fields_by_name["Type"].enum_type = _PIVOTTYPE
+_PIVOTLISTENER.fields_by_name["Pivots"].message_type = _NETCONNPIVOT
+_PIVOTLISTENER.fields_by_name[
+    "Response"
+].message_type = commonpb_dot_common__pb2._RESPONSE
+_PIVOTPEERENVELOPE.fields_by_name["Peers"].message_type = _PIVOTPEER
+_PIVOTPEERFAILURE.fields_by_name["Type"].enum_type = _PEERFAILURETYPE
+_PIVOTLISTENERSREQ.fields_by_name[
+    "Request"
+].message_type = commonpb_dot_common__pb2._REQUEST
+_PIVOTLISTENERS.fields_by_name["Listeners"].message_type = _PIVOTLISTENER
+_PIVOTLISTENERS.fields_by_name[
+    "Response"
+].message_type = commonpb_dot_common__pb2._RESPONSE
+_WGPORTFORWARDSTARTREQ.fields_by_name[
+    "Request"
+].message_type = commonpb_dot_common__pb2._REQUEST
+_WGPORTFORWARD.fields_by_name["Forwarder"].message_type = _WGTCPFORWARDER
+_WGPORTFORWARD.fields_by_name[
+    "Response"
+].message_type = commonpb_dot_common__pb2._RESPONSE
+_WGPORTFORWARDSTOPREQ.fields_by_name[
+    "Request"
+].message_type = commonpb_dot_common__pb2._REQUEST
+_WGSOCKSSTARTREQ.fields_by_name[
+    "Request"
+].message_type = commonpb_dot_common__pb2._REQUEST
+_WGSOCKS.fields_by_name["Server"].message_type = _WGSOCKSSERVER
+_WGSOCKS.fields_by_name["Response"].message_type = commonpb_dot_common__pb2._RESPONSE
+_WGSOCKSSTOPREQ.fields_by_name[
+    "Request"
+].message_type = commonpb_dot_common__pb2._REQUEST
+_WGTCPFORWARDERSREQ.fields_by_name[
+    "Request"
+].message_type = commonpb_dot_common__pb2._REQUEST
+_WGSOCKSSERVERSREQ.fields_by_name[
+    "Request"
+].message_type = commonpb_dot_common__pb2._REQUEST
+_WGSOCKSSERVERS.fields_by_name["Servers"].message_type = _WGSOCKSSERVER
+_WGSOCKSSERVERS.fields_by_name[
+    "Response"
+].message_type = commonpb_dot_common__pb2._RESPONSE
+_WGTCPFORWARDERS.fields_by_name["Forwarders"].message_type = _WGTCPFORWARDER
+_WGTCPFORWARDERS.fields_by_name[
+    "Response"
+].message_type = commonpb_dot_common__pb2._RESPONSE
+_RECONFIGUREREQ.fields_by_name[
+    "Request"
+].message_type = commonpb_dot_common__pb2._REQUEST
+_RECONFIGURE.fields_by_name[
+    "Response"
+].message_type = commonpb_dot_common__pb2._RESPONSE
+_POLLINTERVALREQ.fields_by_name[
+    "Request"
+].message_type = commonpb_dot_common__pb2._REQUEST
+_POLLINTERVAL.fields_by_name[
+    "Response"
+].message_type = commonpb_dot_common__pb2._RESPONSE
+_SSHCOMMANDREQ.fields_by_name[
+    "Request"
+].message_type = commonpb_dot_common__pb2._REQUEST
+_SSHCOMMAND.fields_by_name["Response"].message_type = commonpb_dot_common__pb2._RESPONSE
+_GETPRIVSREQ.fields_by_name["Request"].message_type = commonpb_dot_common__pb2._REQUEST
+_GETPRIVS.fields_by_name["PrivInfo"].message_type = _WINDOWSPRIVILEGEENTRY
+_GETPRIVS.fields_by_name["Response"].message_type = commonpb_dot_common__pb2._RESPONSE
+_REGISTEREXTENSIONREQ.fields_by_name[
+    "Request"
+].message_type = commonpb_dot_common__pb2._REQUEST
+_REGISTEREXTENSION.fields_by_name[
+    "Response"
+].message_type = commonpb_dot_common__pb2._RESPONSE
+_CALLEXTENSIONREQ.fields_by_name[
+    "Request"
+].message_type = commonpb_dot_common__pb2._REQUEST
+_CALLEXTENSION.fields_by_name[
+    "Response"
+].message_type = commonpb_dot_common__pb2._RESPONSE
+_LISTEXTENSIONSREQ.fields_by_name[
+    "Request"
+].message_type = commonpb_dot_common__pb2._REQUEST
+_LISTEXTENSIONS.fields_by_name[
+    "Response"
+].message_type = commonpb_dot_common__pb2._RESPONSE
+DESCRIPTOR.message_types_by_name["Envelope"] = _ENVELOPE
+DESCRIPTOR.message_types_by_name["BeaconTasks"] = _BEACONTASKS
+DESCRIPTOR.message_types_by_name["Register"] = _REGISTER
+DESCRIPTOR.message_types_by_name["BeaconRegister"] = _BEACONREGISTER
+DESCRIPTOR.message_types_by_name["SessionRegister"] = _SESSIONREGISTER
+DESCRIPTOR.message_types_by_name["OpenSession"] = _OPENSESSION
+DESCRIPTOR.message_types_by_name["CloseSession"] = _CLOSESESSION
+DESCRIPTOR.message_types_by_name["Ping"] = _PING
+DESCRIPTOR.message_types_by_name["KillReq"] = _KILLREQ
+DESCRIPTOR.message_types_by_name["PsReq"] = _PSREQ
+DESCRIPTOR.message_types_by_name["Ps"] = _PS
+DESCRIPTOR.message_types_by_name["TerminateReq"] = _TERMINATEREQ
+DESCRIPTOR.message_types_by_name["Terminate"] = _TERMINATE
+DESCRIPTOR.message_types_by_name["IfconfigReq"] = _IFCONFIGREQ
+DESCRIPTOR.message_types_by_name["Ifconfig"] = _IFCONFIG
+DESCRIPTOR.message_types_by_name["NetInterface"] = _NETINTERFACE
+DESCRIPTOR.message_types_by_name["LsReq"] = _LSREQ
+DESCRIPTOR.message_types_by_name["Ls"] = _LS
+DESCRIPTOR.message_types_by_name["FileInfo"] = _FILEINFO
+DESCRIPTOR.message_types_by_name["CdReq"] = _CDREQ
+DESCRIPTOR.message_types_by_name["PwdReq"] = _PWDREQ
+DESCRIPTOR.message_types_by_name["Pwd"] = _PWD
+DESCRIPTOR.message_types_by_name["RmReq"] = _RMREQ
+DESCRIPTOR.message_types_by_name["Rm"] = _RM
+DESCRIPTOR.message_types_by_name["MvReq"] = _MVREQ
+DESCRIPTOR.message_types_by_name["Mv"] = _MV
+DESCRIPTOR.message_types_by_name["MkdirReq"] = _MKDIRREQ
+DESCRIPTOR.message_types_by_name["Mkdir"] = _MKDIR
+DESCRIPTOR.message_types_by_name["DownloadReq"] = _DOWNLOADREQ
+DESCRIPTOR.message_types_by_name["Download"] = _DOWNLOAD
+DESCRIPTOR.message_types_by_name["UploadReq"] = _UPLOADREQ
+DESCRIPTOR.message_types_by_name["Upload"] = _UPLOAD
+DESCRIPTOR.message_types_by_name["ProcessDumpReq"] = _PROCESSDUMPREQ
+DESCRIPTOR.message_types_by_name["ProcessDump"] = _PROCESSDUMP
+DESCRIPTOR.message_types_by_name["RunAsReq"] = _RUNASREQ
+DESCRIPTOR.message_types_by_name["RunAs"] = _RUNAS
+DESCRIPTOR.message_types_by_name["ImpersonateReq"] = _IMPERSONATEREQ
+DESCRIPTOR.message_types_by_name["Impersonate"] = _IMPERSONATE
+DESCRIPTOR.message_types_by_name["RevToSelfReq"] = _REVTOSELFREQ
+DESCRIPTOR.message_types_by_name["RevToSelf"] = _REVTOSELF
+DESCRIPTOR.message_types_by_name["CurrentTokenOwnerReq"] = _CURRENTTOKENOWNERREQ
+DESCRIPTOR.message_types_by_name["CurrentTokenOwner"] = _CURRENTTOKENOWNER
+DESCRIPTOR.message_types_by_name["InvokeGetSystemReq"] = _INVOKEGETSYSTEMREQ
+DESCRIPTOR.message_types_by_name["GetSystem"] = _GETSYSTEM
+DESCRIPTOR.message_types_by_name["MakeTokenReq"] = _MAKETOKENREQ
+DESCRIPTOR.message_types_by_name["MakeToken"] = _MAKETOKEN
+DESCRIPTOR.message_types_by_name["TaskReq"] = _TASKREQ
+DESCRIPTOR.message_types_by_name["Task"] = _TASK
+DESCRIPTOR.message_types_by_name["ExecuteAssemblyReq"] = _EXECUTEASSEMBLYREQ
+DESCRIPTOR.message_types_by_name["InvokeExecuteAssemblyReq"] = _INVOKEEXECUTEASSEMBLYREQ
+DESCRIPTOR.message_types_by_name["ExecuteAssembly"] = _EXECUTEASSEMBLY
+DESCRIPTOR.message_types_by_name["InvokeMigrateReq"] = _INVOKEMIGRATEREQ
+DESCRIPTOR.message_types_by_name["Migrate"] = _MIGRATE
+DESCRIPTOR.message_types_by_name["ExecuteReq"] = _EXECUTEREQ
+DESCRIPTOR.message_types_by_name["ExecuteTokenReq"] = _EXECUTETOKENREQ
+DESCRIPTOR.message_types_by_name["Execute"] = _EXECUTE
+DESCRIPTOR.message_types_by_name["SideloadReq"] = _SIDELOADREQ
+DESCRIPTOR.message_types_by_name["Sideload"] = _SIDELOAD
+DESCRIPTOR.message_types_by_name["InvokeSpawnDllReq"] = _INVOKESPAWNDLLREQ
+DESCRIPTOR.message_types_by_name["SpawnDllReq"] = _SPAWNDLLREQ
+DESCRIPTOR.message_types_by_name["SpawnDll"] = _SPAWNDLL
+DESCRIPTOR.message_types_by_name["NetstatReq"] = _NETSTATREQ
+DESCRIPTOR.message_types_by_name["SockTabEntry"] = _SOCKTABENTRY
+DESCRIPTOR.message_types_by_name["Netstat"] = _NETSTAT
+DESCRIPTOR.message_types_by_name["EnvReq"] = _ENVREQ
+DESCRIPTOR.message_types_by_name["EnvInfo"] = _ENVINFO
+DESCRIPTOR.message_types_by_name["SetEnvReq"] = _SETENVREQ
+DESCRIPTOR.message_types_by_name["SetEnv"] = _SETENV
+DESCRIPTOR.message_types_by_name["UnsetEnvReq"] = _UNSETENVREQ
+DESCRIPTOR.message_types_by_name["UnsetEnv"] = _UNSETENV
+DESCRIPTOR.message_types_by_name["DNSSessionInit"] = _DNSSESSIONINIT
+DESCRIPTOR.message_types_by_name["DNSPoll"] = _DNSPOLL
+DESCRIPTOR.message_types_by_name["DNSBlockHeader"] = _DNSBLOCKHEADER
+DESCRIPTOR.message_types_by_name["HTTPSessionInit"] = _HTTPSESSIONINIT
+DESCRIPTOR.message_types_by_name["ScreenshotReq"] = _SCREENSHOTREQ
+DESCRIPTOR.message_types_by_name["Screenshot"] = _SCREENSHOT
+DESCRIPTOR.message_types_by_name["StartServiceReq"] = _STARTSERVICEREQ
+DESCRIPTOR.message_types_by_name["ServiceInfo"] = _SERVICEINFO
+DESCRIPTOR.message_types_by_name["ServiceInfoReq"] = _SERVICEINFOREQ
+DESCRIPTOR.message_types_by_name["StopServiceReq"] = _STOPSERVICEREQ
+DESCRIPTOR.message_types_by_name["RemoveServiceReq"] = _REMOVESERVICEREQ
+DESCRIPTOR.message_types_by_name["BackdoorReq"] = _BACKDOORREQ
+DESCRIPTOR.message_types_by_name["Backdoor"] = _BACKDOOR
+DESCRIPTOR.message_types_by_name["RegistryReadReq"] = _REGISTRYREADREQ
+DESCRIPTOR.message_types_by_name["RegistryRead"] = _REGISTRYREAD
+DESCRIPTOR.message_types_by_name["RegistryWriteReq"] = _REGISTRYWRITEREQ
+DESCRIPTOR.message_types_by_name["RegistryWrite"] = _REGISTRYWRITE
+DESCRIPTOR.message_types_by_name["RegistryCreateKeyReq"] = _REGISTRYCREATEKEYREQ
+DESCRIPTOR.message_types_by_name["RegistryCreateKey"] = _REGISTRYCREATEKEY
+DESCRIPTOR.message_types_by_name["RegistryDeleteKeyReq"] = _REGISTRYDELETEKEYREQ
+DESCRIPTOR.message_types_by_name["RegistryDeleteKey"] = _REGISTRYDELETEKEY
+DESCRIPTOR.message_types_by_name["RegistrySubKeyListReq"] = _REGISTRYSUBKEYLISTREQ
+DESCRIPTOR.message_types_by_name["RegistrySubKeyList"] = _REGISTRYSUBKEYLIST
+DESCRIPTOR.message_types_by_name["RegistryListValuesReq"] = _REGISTRYLISTVALUESREQ
+DESCRIPTOR.message_types_by_name["RegistryValuesList"] = _REGISTRYVALUESLIST
+DESCRIPTOR.message_types_by_name["Tunnel"] = _TUNNEL
+DESCRIPTOR.message_types_by_name["TunnelData"] = _TUNNELDATA
+DESCRIPTOR.message_types_by_name["ShellReq"] = _SHELLREQ
+DESCRIPTOR.message_types_by_name["Shell"] = _SHELL
+DESCRIPTOR.message_types_by_name["PortfwdReq"] = _PORTFWDREQ
+DESCRIPTOR.message_types_by_name["Portfwd"] = _PORTFWD
+DESCRIPTOR.message_types_by_name["Socks"] = _SOCKS
+DESCRIPTOR.message_types_by_name["SocksData"] = _SOCKSDATA
+DESCRIPTOR.message_types_by_name["PivotStartListenerReq"] = _PIVOTSTARTLISTENERREQ
+DESCRIPTOR.message_types_by_name["PivotStopListenerReq"] = _PIVOTSTOPLISTENERREQ
+DESCRIPTOR.message_types_by_name["PivotListener"] = _PIVOTLISTENER
+DESCRIPTOR.message_types_by_name["PivotHello"] = _PIVOTHELLO
+DESCRIPTOR.message_types_by_name["PivotServerKeyExchange"] = _PIVOTSERVERKEYEXCHANGE
+DESCRIPTOR.message_types_by_name["PivotPeer"] = _PIVOTPEER
+DESCRIPTOR.message_types_by_name["PivotPeerEnvelope"] = _PIVOTPEERENVELOPE
+DESCRIPTOR.message_types_by_name["PivotPing"] = _PIVOTPING
+DESCRIPTOR.message_types_by_name["NetConnPivot"] = _NETCONNPIVOT
+DESCRIPTOR.message_types_by_name["PivotPeerFailure"] = _PIVOTPEERFAILURE
+DESCRIPTOR.message_types_by_name["PivotListenersReq"] = _PIVOTLISTENERSREQ
+DESCRIPTOR.message_types_by_name["PivotListeners"] = _PIVOTLISTENERS
+DESCRIPTOR.message_types_by_name["WGPortForwardStartReq"] = _WGPORTFORWARDSTARTREQ
+DESCRIPTOR.message_types_by_name["WGPortForward"] = _WGPORTFORWARD
+DESCRIPTOR.message_types_by_name["WGPortForwardStopReq"] = _WGPORTFORWARDSTOPREQ
+DESCRIPTOR.message_types_by_name["WGSocksStartReq"] = _WGSOCKSSTARTREQ
+DESCRIPTOR.message_types_by_name["WGSocks"] = _WGSOCKS
+DESCRIPTOR.message_types_by_name["WGSocksStopReq"] = _WGSOCKSSTOPREQ
+DESCRIPTOR.message_types_by_name["WGTCPForwardersReq"] = _WGTCPFORWARDERSREQ
+DESCRIPTOR.message_types_by_name["WGSocksServersReq"] = _WGSOCKSSERVERSREQ
+DESCRIPTOR.message_types_by_name["WGTCPForwarder"] = _WGTCPFORWARDER
+DESCRIPTOR.message_types_by_name["WGSocksServer"] = _WGSOCKSSERVER
+DESCRIPTOR.message_types_by_name["WGSocksServers"] = _WGSOCKSSERVERS
+DESCRIPTOR.message_types_by_name["WGTCPForwarders"] = _WGTCPFORWARDERS
+DESCRIPTOR.message_types_by_name["ReconfigureReq"] = _RECONFIGUREREQ
+DESCRIPTOR.message_types_by_name["Reconfigure"] = _RECONFIGURE
+DESCRIPTOR.message_types_by_name["PollIntervalReq"] = _POLLINTERVALREQ
+DESCRIPTOR.message_types_by_name["PollInterval"] = _POLLINTERVAL
+DESCRIPTOR.message_types_by_name["SSHCommandReq"] = _SSHCOMMANDREQ
+DESCRIPTOR.message_types_by_name["SSHCommand"] = _SSHCOMMAND
+DESCRIPTOR.message_types_by_name["GetPrivsReq"] = _GETPRIVSREQ
+DESCRIPTOR.message_types_by_name["WindowsPrivilegeEntry"] = _WINDOWSPRIVILEGEENTRY
+DESCRIPTOR.message_types_by_name["GetPrivs"] = _GETPRIVS
+DESCRIPTOR.message_types_by_name["RegisterExtensionReq"] = _REGISTEREXTENSIONREQ
+DESCRIPTOR.message_types_by_name["RegisterExtension"] = _REGISTEREXTENSION
+DESCRIPTOR.message_types_by_name["CallExtensionReq"] = _CALLEXTENSIONREQ
+DESCRIPTOR.message_types_by_name["CallExtension"] = _CALLEXTENSION
+DESCRIPTOR.message_types_by_name["ListExtensionsReq"] = _LISTEXTENSIONSREQ
+DESCRIPTOR.message_types_by_name["ListExtensions"] = _LISTEXTENSIONS
+DESCRIPTOR.enum_types_by_name["PivotType"] = _PIVOTTYPE
+DESCRIPTOR.enum_types_by_name["PeerFailureType"] = _PEERFAILURETYPE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-Envelope = _reflection.GeneratedProtocolMessageType('Envelope', (_message.Message,), {
-  'DESCRIPTOR' : _ENVELOPE,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.Envelope)
-  })
+Envelope = _reflection.GeneratedProtocolMessageType(
+    "Envelope",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _ENVELOPE,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.Envelope)
+    },
+)
 _sym_db.RegisterMessage(Envelope)
 
-BeaconTasks = _reflection.GeneratedProtocolMessageType('BeaconTasks', (_message.Message,), {
-  'DESCRIPTOR' : _BEACONTASKS,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.BeaconTasks)
-  })
+BeaconTasks = _reflection.GeneratedProtocolMessageType(
+    "BeaconTasks",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _BEACONTASKS,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.BeaconTasks)
+    },
+)
 _sym_db.RegisterMessage(BeaconTasks)
 
-Register = _reflection.GeneratedProtocolMessageType('Register', (_message.Message,), {
-  'DESCRIPTOR' : _REGISTER,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.Register)
-  })
+Register = _reflection.GeneratedProtocolMessageType(
+    "Register",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _REGISTER,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.Register)
+    },
+)
 _sym_db.RegisterMessage(Register)
 
-BeaconRegister = _reflection.GeneratedProtocolMessageType('BeaconRegister', (_message.Message,), {
-  'DESCRIPTOR' : _BEACONREGISTER,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.BeaconRegister)
-  })
+BeaconRegister = _reflection.GeneratedProtocolMessageType(
+    "BeaconRegister",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _BEACONREGISTER,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.BeaconRegister)
+    },
+)
 _sym_db.RegisterMessage(BeaconRegister)
 
-SessionRegister = _reflection.GeneratedProtocolMessageType('SessionRegister', (_message.Message,), {
-  'DESCRIPTOR' : _SESSIONREGISTER,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.SessionRegister)
-  })
+SessionRegister = _reflection.GeneratedProtocolMessageType(
+    "SessionRegister",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _SESSIONREGISTER,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.SessionRegister)
+    },
+)
 _sym_db.RegisterMessage(SessionRegister)
 
-OpenSession = _reflection.GeneratedProtocolMessageType('OpenSession', (_message.Message,), {
-  'DESCRIPTOR' : _OPENSESSION,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.OpenSession)
-  })
+OpenSession = _reflection.GeneratedProtocolMessageType(
+    "OpenSession",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _OPENSESSION,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.OpenSession)
+    },
+)
 _sym_db.RegisterMessage(OpenSession)
 
-CloseSession = _reflection.GeneratedProtocolMessageType('CloseSession', (_message.Message,), {
-  'DESCRIPTOR' : _CLOSESESSION,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.CloseSession)
-  })
+CloseSession = _reflection.GeneratedProtocolMessageType(
+    "CloseSession",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _CLOSESESSION,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.CloseSession)
+    },
+)
 _sym_db.RegisterMessage(CloseSession)
 
-Ping = _reflection.GeneratedProtocolMessageType('Ping', (_message.Message,), {
-  'DESCRIPTOR' : _PING,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.Ping)
-  })
+Ping = _reflection.GeneratedProtocolMessageType(
+    "Ping",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _PING,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.Ping)
+    },
+)
 _sym_db.RegisterMessage(Ping)
 
-KillReq = _reflection.GeneratedProtocolMessageType('KillReq', (_message.Message,), {
-  'DESCRIPTOR' : _KILLREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.KillReq)
-  })
+KillReq = _reflection.GeneratedProtocolMessageType(
+    "KillReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _KILLREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.KillReq)
+    },
+)
 _sym_db.RegisterMessage(KillReq)
 
-PsReq = _reflection.GeneratedProtocolMessageType('PsReq', (_message.Message,), {
-  'DESCRIPTOR' : _PSREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.PsReq)
-  })
+PsReq = _reflection.GeneratedProtocolMessageType(
+    "PsReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _PSREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.PsReq)
+    },
+)
 _sym_db.RegisterMessage(PsReq)
 
-Ps = _reflection.GeneratedProtocolMessageType('Ps', (_message.Message,), {
-  'DESCRIPTOR' : _PS,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.Ps)
-  })
+Ps = _reflection.GeneratedProtocolMessageType(
+    "Ps",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _PS,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.Ps)
+    },
+)
 _sym_db.RegisterMessage(Ps)
 
-TerminateReq = _reflection.GeneratedProtocolMessageType('TerminateReq', (_message.Message,), {
-  'DESCRIPTOR' : _TERMINATEREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.TerminateReq)
-  })
+TerminateReq = _reflection.GeneratedProtocolMessageType(
+    "TerminateReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _TERMINATEREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.TerminateReq)
+    },
+)
 _sym_db.RegisterMessage(TerminateReq)
 
-Terminate = _reflection.GeneratedProtocolMessageType('Terminate', (_message.Message,), {
-  'DESCRIPTOR' : _TERMINATE,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.Terminate)
-  })
+Terminate = _reflection.GeneratedProtocolMessageType(
+    "Terminate",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _TERMINATE,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.Terminate)
+    },
+)
 _sym_db.RegisterMessage(Terminate)
 
-IfconfigReq = _reflection.GeneratedProtocolMessageType('IfconfigReq', (_message.Message,), {
-  'DESCRIPTOR' : _IFCONFIGREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.IfconfigReq)
-  })
+IfconfigReq = _reflection.GeneratedProtocolMessageType(
+    "IfconfigReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _IFCONFIGREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.IfconfigReq)
+    },
+)
 _sym_db.RegisterMessage(IfconfigReq)
 
-Ifconfig = _reflection.GeneratedProtocolMessageType('Ifconfig', (_message.Message,), {
-  'DESCRIPTOR' : _IFCONFIG,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.Ifconfig)
-  })
+Ifconfig = _reflection.GeneratedProtocolMessageType(
+    "Ifconfig",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _IFCONFIG,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.Ifconfig)
+    },
+)
 _sym_db.RegisterMessage(Ifconfig)
 
-NetInterface = _reflection.GeneratedProtocolMessageType('NetInterface', (_message.Message,), {
-  'DESCRIPTOR' : _NETINTERFACE,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.NetInterface)
-  })
+NetInterface = _reflection.GeneratedProtocolMessageType(
+    "NetInterface",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _NETINTERFACE,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.NetInterface)
+    },
+)
 _sym_db.RegisterMessage(NetInterface)
 
-LsReq = _reflection.GeneratedProtocolMessageType('LsReq', (_message.Message,), {
-  'DESCRIPTOR' : _LSREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.LsReq)
-  })
+LsReq = _reflection.GeneratedProtocolMessageType(
+    "LsReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _LSREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.LsReq)
+    },
+)
 _sym_db.RegisterMessage(LsReq)
 
-Ls = _reflection.GeneratedProtocolMessageType('Ls', (_message.Message,), {
-  'DESCRIPTOR' : _LS,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.Ls)
-  })
+Ls = _reflection.GeneratedProtocolMessageType(
+    "Ls",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _LS,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.Ls)
+    },
+)
 _sym_db.RegisterMessage(Ls)
 
-FileInfo = _reflection.GeneratedProtocolMessageType('FileInfo', (_message.Message,), {
-  'DESCRIPTOR' : _FILEINFO,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.FileInfo)
-  })
+FileInfo = _reflection.GeneratedProtocolMessageType(
+    "FileInfo",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _FILEINFO,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.FileInfo)
+    },
+)
 _sym_db.RegisterMessage(FileInfo)
 
-CdReq = _reflection.GeneratedProtocolMessageType('CdReq', (_message.Message,), {
-  'DESCRIPTOR' : _CDREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.CdReq)
-  })
+CdReq = _reflection.GeneratedProtocolMessageType(
+    "CdReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _CDREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.CdReq)
+    },
+)
 _sym_db.RegisterMessage(CdReq)
 
-PwdReq = _reflection.GeneratedProtocolMessageType('PwdReq', (_message.Message,), {
-  'DESCRIPTOR' : _PWDREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.PwdReq)
-  })
+PwdReq = _reflection.GeneratedProtocolMessageType(
+    "PwdReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _PWDREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.PwdReq)
+    },
+)
 _sym_db.RegisterMessage(PwdReq)
 
-Pwd = _reflection.GeneratedProtocolMessageType('Pwd', (_message.Message,), {
-  'DESCRIPTOR' : _PWD,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.Pwd)
-  })
+Pwd = _reflection.GeneratedProtocolMessageType(
+    "Pwd",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _PWD,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.Pwd)
+    },
+)
 _sym_db.RegisterMessage(Pwd)
 
-RmReq = _reflection.GeneratedProtocolMessageType('RmReq', (_message.Message,), {
-  'DESCRIPTOR' : _RMREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.RmReq)
-  })
+RmReq = _reflection.GeneratedProtocolMessageType(
+    "RmReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _RMREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.RmReq)
+    },
+)
 _sym_db.RegisterMessage(RmReq)
 
-Rm = _reflection.GeneratedProtocolMessageType('Rm', (_message.Message,), {
-  'DESCRIPTOR' : _RM,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.Rm)
-  })
+Rm = _reflection.GeneratedProtocolMessageType(
+    "Rm",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _RM,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.Rm)
+    },
+)
 _sym_db.RegisterMessage(Rm)
 
-MvReq = _reflection.GeneratedProtocolMessageType('MvReq', (_message.Message,), {
-  'DESCRIPTOR' : _MVREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.MvReq)
-  })
+MvReq = _reflection.GeneratedProtocolMessageType(
+    "MvReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _MVREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.MvReq)
+    },
+)
 _sym_db.RegisterMessage(MvReq)
 
-Mv = _reflection.GeneratedProtocolMessageType('Mv', (_message.Message,), {
-  'DESCRIPTOR' : _MV,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.Mv)
-  })
+Mv = _reflection.GeneratedProtocolMessageType(
+    "Mv",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _MV,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.Mv)
+    },
+)
 _sym_db.RegisterMessage(Mv)
 
-MkdirReq = _reflection.GeneratedProtocolMessageType('MkdirReq', (_message.Message,), {
-  'DESCRIPTOR' : _MKDIRREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.MkdirReq)
-  })
+MkdirReq = _reflection.GeneratedProtocolMessageType(
+    "MkdirReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _MKDIRREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.MkdirReq)
+    },
+)
 _sym_db.RegisterMessage(MkdirReq)
 
-Mkdir = _reflection.GeneratedProtocolMessageType('Mkdir', (_message.Message,), {
-  'DESCRIPTOR' : _MKDIR,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.Mkdir)
-  })
+Mkdir = _reflection.GeneratedProtocolMessageType(
+    "Mkdir",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _MKDIR,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.Mkdir)
+    },
+)
 _sym_db.RegisterMessage(Mkdir)
 
-DownloadReq = _reflection.GeneratedProtocolMessageType('DownloadReq', (_message.Message,), {
-  'DESCRIPTOR' : _DOWNLOADREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.DownloadReq)
-  })
+DownloadReq = _reflection.GeneratedProtocolMessageType(
+    "DownloadReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _DOWNLOADREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.DownloadReq)
+    },
+)
 _sym_db.RegisterMessage(DownloadReq)
 
-Download = _reflection.GeneratedProtocolMessageType('Download', (_message.Message,), {
-  'DESCRIPTOR' : _DOWNLOAD,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.Download)
-  })
+Download = _reflection.GeneratedProtocolMessageType(
+    "Download",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _DOWNLOAD,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.Download)
+    },
+)
 _sym_db.RegisterMessage(Download)
 
-UploadReq = _reflection.GeneratedProtocolMessageType('UploadReq', (_message.Message,), {
-  'DESCRIPTOR' : _UPLOADREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.UploadReq)
-  })
+UploadReq = _reflection.GeneratedProtocolMessageType(
+    "UploadReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _UPLOADREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.UploadReq)
+    },
+)
 _sym_db.RegisterMessage(UploadReq)
 
-Upload = _reflection.GeneratedProtocolMessageType('Upload', (_message.Message,), {
-  'DESCRIPTOR' : _UPLOAD,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.Upload)
-  })
+Upload = _reflection.GeneratedProtocolMessageType(
+    "Upload",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _UPLOAD,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.Upload)
+    },
+)
 _sym_db.RegisterMessage(Upload)
 
-ProcessDumpReq = _reflection.GeneratedProtocolMessageType('ProcessDumpReq', (_message.Message,), {
-  'DESCRIPTOR' : _PROCESSDUMPREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.ProcessDumpReq)
-  })
+ProcessDumpReq = _reflection.GeneratedProtocolMessageType(
+    "ProcessDumpReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _PROCESSDUMPREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.ProcessDumpReq)
+    },
+)
 _sym_db.RegisterMessage(ProcessDumpReq)
 
-ProcessDump = _reflection.GeneratedProtocolMessageType('ProcessDump', (_message.Message,), {
-  'DESCRIPTOR' : _PROCESSDUMP,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.ProcessDump)
-  })
+ProcessDump = _reflection.GeneratedProtocolMessageType(
+    "ProcessDump",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _PROCESSDUMP,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.ProcessDump)
+    },
+)
 _sym_db.RegisterMessage(ProcessDump)
 
-RunAsReq = _reflection.GeneratedProtocolMessageType('RunAsReq', (_message.Message,), {
-  'DESCRIPTOR' : _RUNASREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.RunAsReq)
-  })
+RunAsReq = _reflection.GeneratedProtocolMessageType(
+    "RunAsReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _RUNASREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.RunAsReq)
+    },
+)
 _sym_db.RegisterMessage(RunAsReq)
 
-RunAs = _reflection.GeneratedProtocolMessageType('RunAs', (_message.Message,), {
-  'DESCRIPTOR' : _RUNAS,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.RunAs)
-  })
+RunAs = _reflection.GeneratedProtocolMessageType(
+    "RunAs",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _RUNAS,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.RunAs)
+    },
+)
 _sym_db.RegisterMessage(RunAs)
 
-ImpersonateReq = _reflection.GeneratedProtocolMessageType('ImpersonateReq', (_message.Message,), {
-  'DESCRIPTOR' : _IMPERSONATEREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.ImpersonateReq)
-  })
+ImpersonateReq = _reflection.GeneratedProtocolMessageType(
+    "ImpersonateReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _IMPERSONATEREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.ImpersonateReq)
+    },
+)
 _sym_db.RegisterMessage(ImpersonateReq)
 
-Impersonate = _reflection.GeneratedProtocolMessageType('Impersonate', (_message.Message,), {
-  'DESCRIPTOR' : _IMPERSONATE,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.Impersonate)
-  })
+Impersonate = _reflection.GeneratedProtocolMessageType(
+    "Impersonate",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _IMPERSONATE,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.Impersonate)
+    },
+)
 _sym_db.RegisterMessage(Impersonate)
 
-RevToSelfReq = _reflection.GeneratedProtocolMessageType('RevToSelfReq', (_message.Message,), {
-  'DESCRIPTOR' : _REVTOSELFREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.RevToSelfReq)
-  })
+RevToSelfReq = _reflection.GeneratedProtocolMessageType(
+    "RevToSelfReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _REVTOSELFREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.RevToSelfReq)
+    },
+)
 _sym_db.RegisterMessage(RevToSelfReq)
 
-RevToSelf = _reflection.GeneratedProtocolMessageType('RevToSelf', (_message.Message,), {
-  'DESCRIPTOR' : _REVTOSELF,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.RevToSelf)
-  })
+RevToSelf = _reflection.GeneratedProtocolMessageType(
+    "RevToSelf",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _REVTOSELF,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.RevToSelf)
+    },
+)
 _sym_db.RegisterMessage(RevToSelf)
 
-CurrentTokenOwnerReq = _reflection.GeneratedProtocolMessageType('CurrentTokenOwnerReq', (_message.Message,), {
-  'DESCRIPTOR' : _CURRENTTOKENOWNERREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.CurrentTokenOwnerReq)
-  })
+CurrentTokenOwnerReq = _reflection.GeneratedProtocolMessageType(
+    "CurrentTokenOwnerReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _CURRENTTOKENOWNERREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.CurrentTokenOwnerReq)
+    },
+)
 _sym_db.RegisterMessage(CurrentTokenOwnerReq)
 
-CurrentTokenOwner = _reflection.GeneratedProtocolMessageType('CurrentTokenOwner', (_message.Message,), {
-  'DESCRIPTOR' : _CURRENTTOKENOWNER,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.CurrentTokenOwner)
-  })
+CurrentTokenOwner = _reflection.GeneratedProtocolMessageType(
+    "CurrentTokenOwner",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _CURRENTTOKENOWNER,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.CurrentTokenOwner)
+    },
+)
 _sym_db.RegisterMessage(CurrentTokenOwner)
 
-InvokeGetSystemReq = _reflection.GeneratedProtocolMessageType('InvokeGetSystemReq', (_message.Message,), {
-  'DESCRIPTOR' : _INVOKEGETSYSTEMREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.InvokeGetSystemReq)
-  })
+InvokeGetSystemReq = _reflection.GeneratedProtocolMessageType(
+    "InvokeGetSystemReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _INVOKEGETSYSTEMREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.InvokeGetSystemReq)
+    },
+)
 _sym_db.RegisterMessage(InvokeGetSystemReq)
 
-GetSystem = _reflection.GeneratedProtocolMessageType('GetSystem', (_message.Message,), {
-  'DESCRIPTOR' : _GETSYSTEM,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.GetSystem)
-  })
+GetSystem = _reflection.GeneratedProtocolMessageType(
+    "GetSystem",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _GETSYSTEM,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.GetSystem)
+    },
+)
 _sym_db.RegisterMessage(GetSystem)
 
-MakeTokenReq = _reflection.GeneratedProtocolMessageType('MakeTokenReq', (_message.Message,), {
-  'DESCRIPTOR' : _MAKETOKENREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.MakeTokenReq)
-  })
+MakeTokenReq = _reflection.GeneratedProtocolMessageType(
+    "MakeTokenReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _MAKETOKENREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.MakeTokenReq)
+    },
+)
 _sym_db.RegisterMessage(MakeTokenReq)
 
-MakeToken = _reflection.GeneratedProtocolMessageType('MakeToken', (_message.Message,), {
-  'DESCRIPTOR' : _MAKETOKEN,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.MakeToken)
-  })
+MakeToken = _reflection.GeneratedProtocolMessageType(
+    "MakeToken",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _MAKETOKEN,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.MakeToken)
+    },
+)
 _sym_db.RegisterMessage(MakeToken)
 
-TaskReq = _reflection.GeneratedProtocolMessageType('TaskReq', (_message.Message,), {
-  'DESCRIPTOR' : _TASKREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.TaskReq)
-  })
+TaskReq = _reflection.GeneratedProtocolMessageType(
+    "TaskReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _TASKREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.TaskReq)
+    },
+)
 _sym_db.RegisterMessage(TaskReq)
 
-Task = _reflection.GeneratedProtocolMessageType('Task', (_message.Message,), {
-  'DESCRIPTOR' : _TASK,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.Task)
-  })
+Task = _reflection.GeneratedProtocolMessageType(
+    "Task",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _TASK,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.Task)
+    },
+)
 _sym_db.RegisterMessage(Task)
 
-ExecuteAssemblyReq = _reflection.GeneratedProtocolMessageType('ExecuteAssemblyReq', (_message.Message,), {
-  'DESCRIPTOR' : _EXECUTEASSEMBLYREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.ExecuteAssemblyReq)
-  })
+ExecuteAssemblyReq = _reflection.GeneratedProtocolMessageType(
+    "ExecuteAssemblyReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _EXECUTEASSEMBLYREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.ExecuteAssemblyReq)
+    },
+)
 _sym_db.RegisterMessage(ExecuteAssemblyReq)
 
-InvokeExecuteAssemblyReq = _reflection.GeneratedProtocolMessageType('InvokeExecuteAssemblyReq', (_message.Message,), {
-  'DESCRIPTOR' : _INVOKEEXECUTEASSEMBLYREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.InvokeExecuteAssemblyReq)
-  })
+InvokeExecuteAssemblyReq = _reflection.GeneratedProtocolMessageType(
+    "InvokeExecuteAssemblyReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _INVOKEEXECUTEASSEMBLYREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.InvokeExecuteAssemblyReq)
+    },
+)
 _sym_db.RegisterMessage(InvokeExecuteAssemblyReq)
 
-ExecuteAssembly = _reflection.GeneratedProtocolMessageType('ExecuteAssembly', (_message.Message,), {
-  'DESCRIPTOR' : _EXECUTEASSEMBLY,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.ExecuteAssembly)
-  })
+ExecuteAssembly = _reflection.GeneratedProtocolMessageType(
+    "ExecuteAssembly",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _EXECUTEASSEMBLY,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.ExecuteAssembly)
+    },
+)
 _sym_db.RegisterMessage(ExecuteAssembly)
 
-InvokeMigrateReq = _reflection.GeneratedProtocolMessageType('InvokeMigrateReq', (_message.Message,), {
-  'DESCRIPTOR' : _INVOKEMIGRATEREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.InvokeMigrateReq)
-  })
+InvokeMigrateReq = _reflection.GeneratedProtocolMessageType(
+    "InvokeMigrateReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _INVOKEMIGRATEREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.InvokeMigrateReq)
+    },
+)
 _sym_db.RegisterMessage(InvokeMigrateReq)
 
-Migrate = _reflection.GeneratedProtocolMessageType('Migrate', (_message.Message,), {
-  'DESCRIPTOR' : _MIGRATE,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.Migrate)
-  })
+Migrate = _reflection.GeneratedProtocolMessageType(
+    "Migrate",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _MIGRATE,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.Migrate)
+    },
+)
 _sym_db.RegisterMessage(Migrate)
 
-ExecuteReq = _reflection.GeneratedProtocolMessageType('ExecuteReq', (_message.Message,), {
-  'DESCRIPTOR' : _EXECUTEREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.ExecuteReq)
-  })
+ExecuteReq = _reflection.GeneratedProtocolMessageType(
+    "ExecuteReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _EXECUTEREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.ExecuteReq)
+    },
+)
 _sym_db.RegisterMessage(ExecuteReq)
 
-ExecuteTokenReq = _reflection.GeneratedProtocolMessageType('ExecuteTokenReq', (_message.Message,), {
-  'DESCRIPTOR' : _EXECUTETOKENREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.ExecuteTokenReq)
-  })
+ExecuteTokenReq = _reflection.GeneratedProtocolMessageType(
+    "ExecuteTokenReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _EXECUTETOKENREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.ExecuteTokenReq)
+    },
+)
 _sym_db.RegisterMessage(ExecuteTokenReq)
 
-Execute = _reflection.GeneratedProtocolMessageType('Execute', (_message.Message,), {
-  'DESCRIPTOR' : _EXECUTE,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.Execute)
-  })
+Execute = _reflection.GeneratedProtocolMessageType(
+    "Execute",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _EXECUTE,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.Execute)
+    },
+)
 _sym_db.RegisterMessage(Execute)
 
-SideloadReq = _reflection.GeneratedProtocolMessageType('SideloadReq', (_message.Message,), {
-  'DESCRIPTOR' : _SIDELOADREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.SideloadReq)
-  })
+SideloadReq = _reflection.GeneratedProtocolMessageType(
+    "SideloadReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _SIDELOADREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.SideloadReq)
+    },
+)
 _sym_db.RegisterMessage(SideloadReq)
 
-Sideload = _reflection.GeneratedProtocolMessageType('Sideload', (_message.Message,), {
-  'DESCRIPTOR' : _SIDELOAD,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.Sideload)
-  })
+Sideload = _reflection.GeneratedProtocolMessageType(
+    "Sideload",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _SIDELOAD,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.Sideload)
+    },
+)
 _sym_db.RegisterMessage(Sideload)
 
-InvokeSpawnDllReq = _reflection.GeneratedProtocolMessageType('InvokeSpawnDllReq', (_message.Message,), {
-  'DESCRIPTOR' : _INVOKESPAWNDLLREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.InvokeSpawnDllReq)
-  })
+InvokeSpawnDllReq = _reflection.GeneratedProtocolMessageType(
+    "InvokeSpawnDllReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _INVOKESPAWNDLLREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.InvokeSpawnDllReq)
+    },
+)
 _sym_db.RegisterMessage(InvokeSpawnDllReq)
 
-SpawnDllReq = _reflection.GeneratedProtocolMessageType('SpawnDllReq', (_message.Message,), {
-  'DESCRIPTOR' : _SPAWNDLLREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.SpawnDllReq)
-  })
+SpawnDllReq = _reflection.GeneratedProtocolMessageType(
+    "SpawnDllReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _SPAWNDLLREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.SpawnDllReq)
+    },
+)
 _sym_db.RegisterMessage(SpawnDllReq)
 
-SpawnDll = _reflection.GeneratedProtocolMessageType('SpawnDll', (_message.Message,), {
-  'DESCRIPTOR' : _SPAWNDLL,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.SpawnDll)
-  })
+SpawnDll = _reflection.GeneratedProtocolMessageType(
+    "SpawnDll",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _SPAWNDLL,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.SpawnDll)
+    },
+)
 _sym_db.RegisterMessage(SpawnDll)
 
-NetstatReq = _reflection.GeneratedProtocolMessageType('NetstatReq', (_message.Message,), {
-  'DESCRIPTOR' : _NETSTATREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.NetstatReq)
-  })
+NetstatReq = _reflection.GeneratedProtocolMessageType(
+    "NetstatReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _NETSTATREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.NetstatReq)
+    },
+)
 _sym_db.RegisterMessage(NetstatReq)
 
-SockTabEntry = _reflection.GeneratedProtocolMessageType('SockTabEntry', (_message.Message,), {
-
-  'SockAddr' : _reflection.GeneratedProtocolMessageType('SockAddr', (_message.Message,), {
-    'DESCRIPTOR' : _SOCKTABENTRY_SOCKADDR,
-    '__module__' : 'sliverpb.sliver_pb2'
-    # @@protoc_insertion_point(class_scope:sliverpb.SockTabEntry.SockAddr)
-    })
-  ,
-  'DESCRIPTOR' : _SOCKTABENTRY,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.SockTabEntry)
-  })
+SockTabEntry = _reflection.GeneratedProtocolMessageType(
+    "SockTabEntry",
+    (_message.Message,),
+    {
+        "SockAddr": _reflection.GeneratedProtocolMessageType(
+            "SockAddr",
+            (_message.Message,),
+            {
+                "DESCRIPTOR": _SOCKTABENTRY_SOCKADDR,
+                "__module__": "sliverpb.sliver_pb2"
+                # @@protoc_insertion_point(class_scope:sliverpb.SockTabEntry.SockAddr)
+            },
+        ),
+        "DESCRIPTOR": _SOCKTABENTRY,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.SockTabEntry)
+    },
+)
 _sym_db.RegisterMessage(SockTabEntry)
 _sym_db.RegisterMessage(SockTabEntry.SockAddr)
 
-Netstat = _reflection.GeneratedProtocolMessageType('Netstat', (_message.Message,), {
-  'DESCRIPTOR' : _NETSTAT,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.Netstat)
-  })
+Netstat = _reflection.GeneratedProtocolMessageType(
+    "Netstat",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _NETSTAT,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.Netstat)
+    },
+)
 _sym_db.RegisterMessage(Netstat)
 
-EnvReq = _reflection.GeneratedProtocolMessageType('EnvReq', (_message.Message,), {
-  'DESCRIPTOR' : _ENVREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.EnvReq)
-  })
+EnvReq = _reflection.GeneratedProtocolMessageType(
+    "EnvReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _ENVREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.EnvReq)
+    },
+)
 _sym_db.RegisterMessage(EnvReq)
 
-EnvInfo = _reflection.GeneratedProtocolMessageType('EnvInfo', (_message.Message,), {
-  'DESCRIPTOR' : _ENVINFO,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.EnvInfo)
-  })
+EnvInfo = _reflection.GeneratedProtocolMessageType(
+    "EnvInfo",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _ENVINFO,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.EnvInfo)
+    },
+)
 _sym_db.RegisterMessage(EnvInfo)
 
-SetEnvReq = _reflection.GeneratedProtocolMessageType('SetEnvReq', (_message.Message,), {
-  'DESCRIPTOR' : _SETENVREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.SetEnvReq)
-  })
+SetEnvReq = _reflection.GeneratedProtocolMessageType(
+    "SetEnvReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _SETENVREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.SetEnvReq)
+    },
+)
 _sym_db.RegisterMessage(SetEnvReq)
 
-SetEnv = _reflection.GeneratedProtocolMessageType('SetEnv', (_message.Message,), {
-  'DESCRIPTOR' : _SETENV,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.SetEnv)
-  })
+SetEnv = _reflection.GeneratedProtocolMessageType(
+    "SetEnv",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _SETENV,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.SetEnv)
+    },
+)
 _sym_db.RegisterMessage(SetEnv)
 
-UnsetEnvReq = _reflection.GeneratedProtocolMessageType('UnsetEnvReq', (_message.Message,), {
-  'DESCRIPTOR' : _UNSETENVREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.UnsetEnvReq)
-  })
+UnsetEnvReq = _reflection.GeneratedProtocolMessageType(
+    "UnsetEnvReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _UNSETENVREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.UnsetEnvReq)
+    },
+)
 _sym_db.RegisterMessage(UnsetEnvReq)
 
-UnsetEnv = _reflection.GeneratedProtocolMessageType('UnsetEnv', (_message.Message,), {
-  'DESCRIPTOR' : _UNSETENV,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.UnsetEnv)
-  })
+UnsetEnv = _reflection.GeneratedProtocolMessageType(
+    "UnsetEnv",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _UNSETENV,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.UnsetEnv)
+    },
+)
 _sym_db.RegisterMessage(UnsetEnv)
 
-DNSSessionInit = _reflection.GeneratedProtocolMessageType('DNSSessionInit', (_message.Message,), {
-  'DESCRIPTOR' : _DNSSESSIONINIT,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.DNSSessionInit)
-  })
+DNSSessionInit = _reflection.GeneratedProtocolMessageType(
+    "DNSSessionInit",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _DNSSESSIONINIT,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.DNSSessionInit)
+    },
+)
 _sym_db.RegisterMessage(DNSSessionInit)
 
-DNSPoll = _reflection.GeneratedProtocolMessageType('DNSPoll', (_message.Message,), {
-  'DESCRIPTOR' : _DNSPOLL,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.DNSPoll)
-  })
+DNSPoll = _reflection.GeneratedProtocolMessageType(
+    "DNSPoll",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _DNSPOLL,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.DNSPoll)
+    },
+)
 _sym_db.RegisterMessage(DNSPoll)
 
-DNSBlockHeader = _reflection.GeneratedProtocolMessageType('DNSBlockHeader', (_message.Message,), {
-  'DESCRIPTOR' : _DNSBLOCKHEADER,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.DNSBlockHeader)
-  })
+DNSBlockHeader = _reflection.GeneratedProtocolMessageType(
+    "DNSBlockHeader",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _DNSBLOCKHEADER,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.DNSBlockHeader)
+    },
+)
 _sym_db.RegisterMessage(DNSBlockHeader)
 
-HTTPSessionInit = _reflection.GeneratedProtocolMessageType('HTTPSessionInit', (_message.Message,), {
-  'DESCRIPTOR' : _HTTPSESSIONINIT,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.HTTPSessionInit)
-  })
+HTTPSessionInit = _reflection.GeneratedProtocolMessageType(
+    "HTTPSessionInit",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _HTTPSESSIONINIT,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.HTTPSessionInit)
+    },
+)
 _sym_db.RegisterMessage(HTTPSessionInit)
 
-ScreenshotReq = _reflection.GeneratedProtocolMessageType('ScreenshotReq', (_message.Message,), {
-  'DESCRIPTOR' : _SCREENSHOTREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.ScreenshotReq)
-  })
+ScreenshotReq = _reflection.GeneratedProtocolMessageType(
+    "ScreenshotReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _SCREENSHOTREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.ScreenshotReq)
+    },
+)
 _sym_db.RegisterMessage(ScreenshotReq)
 
-Screenshot = _reflection.GeneratedProtocolMessageType('Screenshot', (_message.Message,), {
-  'DESCRIPTOR' : _SCREENSHOT,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.Screenshot)
-  })
+Screenshot = _reflection.GeneratedProtocolMessageType(
+    "Screenshot",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _SCREENSHOT,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.Screenshot)
+    },
+)
 _sym_db.RegisterMessage(Screenshot)
 
-StartServiceReq = _reflection.GeneratedProtocolMessageType('StartServiceReq', (_message.Message,), {
-  'DESCRIPTOR' : _STARTSERVICEREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.StartServiceReq)
-  })
+StartServiceReq = _reflection.GeneratedProtocolMessageType(
+    "StartServiceReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _STARTSERVICEREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.StartServiceReq)
+    },
+)
 _sym_db.RegisterMessage(StartServiceReq)
 
-ServiceInfo = _reflection.GeneratedProtocolMessageType('ServiceInfo', (_message.Message,), {
-  'DESCRIPTOR' : _SERVICEINFO,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.ServiceInfo)
-  })
+ServiceInfo = _reflection.GeneratedProtocolMessageType(
+    "ServiceInfo",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _SERVICEINFO,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.ServiceInfo)
+    },
+)
 _sym_db.RegisterMessage(ServiceInfo)
 
-ServiceInfoReq = _reflection.GeneratedProtocolMessageType('ServiceInfoReq', (_message.Message,), {
-  'DESCRIPTOR' : _SERVICEINFOREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.ServiceInfoReq)
-  })
+ServiceInfoReq = _reflection.GeneratedProtocolMessageType(
+    "ServiceInfoReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _SERVICEINFOREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.ServiceInfoReq)
+    },
+)
 _sym_db.RegisterMessage(ServiceInfoReq)
 
-StopServiceReq = _reflection.GeneratedProtocolMessageType('StopServiceReq', (_message.Message,), {
-  'DESCRIPTOR' : _STOPSERVICEREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.StopServiceReq)
-  })
+StopServiceReq = _reflection.GeneratedProtocolMessageType(
+    "StopServiceReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _STOPSERVICEREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.StopServiceReq)
+    },
+)
 _sym_db.RegisterMessage(StopServiceReq)
 
-RemoveServiceReq = _reflection.GeneratedProtocolMessageType('RemoveServiceReq', (_message.Message,), {
-  'DESCRIPTOR' : _REMOVESERVICEREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.RemoveServiceReq)
-  })
+RemoveServiceReq = _reflection.GeneratedProtocolMessageType(
+    "RemoveServiceReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _REMOVESERVICEREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.RemoveServiceReq)
+    },
+)
 _sym_db.RegisterMessage(RemoveServiceReq)
 
-BackdoorReq = _reflection.GeneratedProtocolMessageType('BackdoorReq', (_message.Message,), {
-  'DESCRIPTOR' : _BACKDOORREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.BackdoorReq)
-  })
+BackdoorReq = _reflection.GeneratedProtocolMessageType(
+    "BackdoorReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _BACKDOORREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.BackdoorReq)
+    },
+)
 _sym_db.RegisterMessage(BackdoorReq)
 
-Backdoor = _reflection.GeneratedProtocolMessageType('Backdoor', (_message.Message,), {
-  'DESCRIPTOR' : _BACKDOOR,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.Backdoor)
-  })
+Backdoor = _reflection.GeneratedProtocolMessageType(
+    "Backdoor",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _BACKDOOR,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.Backdoor)
+    },
+)
 _sym_db.RegisterMessage(Backdoor)
 
-RegistryReadReq = _reflection.GeneratedProtocolMessageType('RegistryReadReq', (_message.Message,), {
-  'DESCRIPTOR' : _REGISTRYREADREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.RegistryReadReq)
-  })
+RegistryReadReq = _reflection.GeneratedProtocolMessageType(
+    "RegistryReadReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _REGISTRYREADREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.RegistryReadReq)
+    },
+)
 _sym_db.RegisterMessage(RegistryReadReq)
 
-RegistryRead = _reflection.GeneratedProtocolMessageType('RegistryRead', (_message.Message,), {
-  'DESCRIPTOR' : _REGISTRYREAD,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.RegistryRead)
-  })
+RegistryRead = _reflection.GeneratedProtocolMessageType(
+    "RegistryRead",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _REGISTRYREAD,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.RegistryRead)
+    },
+)
 _sym_db.RegisterMessage(RegistryRead)
 
-RegistryWriteReq = _reflection.GeneratedProtocolMessageType('RegistryWriteReq', (_message.Message,), {
-  'DESCRIPTOR' : _REGISTRYWRITEREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.RegistryWriteReq)
-  })
+RegistryWriteReq = _reflection.GeneratedProtocolMessageType(
+    "RegistryWriteReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _REGISTRYWRITEREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.RegistryWriteReq)
+    },
+)
 _sym_db.RegisterMessage(RegistryWriteReq)
 
-RegistryWrite = _reflection.GeneratedProtocolMessageType('RegistryWrite', (_message.Message,), {
-  'DESCRIPTOR' : _REGISTRYWRITE,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.RegistryWrite)
-  })
+RegistryWrite = _reflection.GeneratedProtocolMessageType(
+    "RegistryWrite",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _REGISTRYWRITE,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.RegistryWrite)
+    },
+)
 _sym_db.RegisterMessage(RegistryWrite)
 
-RegistryCreateKeyReq = _reflection.GeneratedProtocolMessageType('RegistryCreateKeyReq', (_message.Message,), {
-  'DESCRIPTOR' : _REGISTRYCREATEKEYREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.RegistryCreateKeyReq)
-  })
+RegistryCreateKeyReq = _reflection.GeneratedProtocolMessageType(
+    "RegistryCreateKeyReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _REGISTRYCREATEKEYREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.RegistryCreateKeyReq)
+    },
+)
 _sym_db.RegisterMessage(RegistryCreateKeyReq)
 
-RegistryCreateKey = _reflection.GeneratedProtocolMessageType('RegistryCreateKey', (_message.Message,), {
-  'DESCRIPTOR' : _REGISTRYCREATEKEY,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.RegistryCreateKey)
-  })
+RegistryCreateKey = _reflection.GeneratedProtocolMessageType(
+    "RegistryCreateKey",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _REGISTRYCREATEKEY,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.RegistryCreateKey)
+    },
+)
 _sym_db.RegisterMessage(RegistryCreateKey)
 
-RegistryDeleteKeyReq = _reflection.GeneratedProtocolMessageType('RegistryDeleteKeyReq', (_message.Message,), {
-  'DESCRIPTOR' : _REGISTRYDELETEKEYREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.RegistryDeleteKeyReq)
-  })
+RegistryDeleteKeyReq = _reflection.GeneratedProtocolMessageType(
+    "RegistryDeleteKeyReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _REGISTRYDELETEKEYREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.RegistryDeleteKeyReq)
+    },
+)
 _sym_db.RegisterMessage(RegistryDeleteKeyReq)
 
-RegistryDeleteKey = _reflection.GeneratedProtocolMessageType('RegistryDeleteKey', (_message.Message,), {
-  'DESCRIPTOR' : _REGISTRYDELETEKEY,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.RegistryDeleteKey)
-  })
+RegistryDeleteKey = _reflection.GeneratedProtocolMessageType(
+    "RegistryDeleteKey",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _REGISTRYDELETEKEY,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.RegistryDeleteKey)
+    },
+)
 _sym_db.RegisterMessage(RegistryDeleteKey)
 
-RegistrySubKeyListReq = _reflection.GeneratedProtocolMessageType('RegistrySubKeyListReq', (_message.Message,), {
-  'DESCRIPTOR' : _REGISTRYSUBKEYLISTREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.RegistrySubKeyListReq)
-  })
+RegistrySubKeyListReq = _reflection.GeneratedProtocolMessageType(
+    "RegistrySubKeyListReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _REGISTRYSUBKEYLISTREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.RegistrySubKeyListReq)
+    },
+)
 _sym_db.RegisterMessage(RegistrySubKeyListReq)
 
-RegistrySubKeyList = _reflection.GeneratedProtocolMessageType('RegistrySubKeyList', (_message.Message,), {
-  'DESCRIPTOR' : _REGISTRYSUBKEYLIST,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.RegistrySubKeyList)
-  })
+RegistrySubKeyList = _reflection.GeneratedProtocolMessageType(
+    "RegistrySubKeyList",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _REGISTRYSUBKEYLIST,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.RegistrySubKeyList)
+    },
+)
 _sym_db.RegisterMessage(RegistrySubKeyList)
 
-RegistryListValuesReq = _reflection.GeneratedProtocolMessageType('RegistryListValuesReq', (_message.Message,), {
-  'DESCRIPTOR' : _REGISTRYLISTVALUESREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.RegistryListValuesReq)
-  })
+RegistryListValuesReq = _reflection.GeneratedProtocolMessageType(
+    "RegistryListValuesReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _REGISTRYLISTVALUESREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.RegistryListValuesReq)
+    },
+)
 _sym_db.RegisterMessage(RegistryListValuesReq)
 
-RegistryValuesList = _reflection.GeneratedProtocolMessageType('RegistryValuesList', (_message.Message,), {
-  'DESCRIPTOR' : _REGISTRYVALUESLIST,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.RegistryValuesList)
-  })
+RegistryValuesList = _reflection.GeneratedProtocolMessageType(
+    "RegistryValuesList",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _REGISTRYVALUESLIST,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.RegistryValuesList)
+    },
+)
 _sym_db.RegisterMessage(RegistryValuesList)
 
-Tunnel = _reflection.GeneratedProtocolMessageType('Tunnel', (_message.Message,), {
-  'DESCRIPTOR' : _TUNNEL,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.Tunnel)
-  })
+Tunnel = _reflection.GeneratedProtocolMessageType(
+    "Tunnel",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _TUNNEL,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.Tunnel)
+    },
+)
 _sym_db.RegisterMessage(Tunnel)
 
-TunnelData = _reflection.GeneratedProtocolMessageType('TunnelData', (_message.Message,), {
-  'DESCRIPTOR' : _TUNNELDATA,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.TunnelData)
-  })
+TunnelData = _reflection.GeneratedProtocolMessageType(
+    "TunnelData",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _TUNNELDATA,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.TunnelData)
+    },
+)
 _sym_db.RegisterMessage(TunnelData)
 
-ShellReq = _reflection.GeneratedProtocolMessageType('ShellReq', (_message.Message,), {
-  'DESCRIPTOR' : _SHELLREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.ShellReq)
-  })
+ShellReq = _reflection.GeneratedProtocolMessageType(
+    "ShellReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _SHELLREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.ShellReq)
+    },
+)
 _sym_db.RegisterMessage(ShellReq)
 
-Shell = _reflection.GeneratedProtocolMessageType('Shell', (_message.Message,), {
-  'DESCRIPTOR' : _SHELL,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.Shell)
-  })
+Shell = _reflection.GeneratedProtocolMessageType(
+    "Shell",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _SHELL,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.Shell)
+    },
+)
 _sym_db.RegisterMessage(Shell)
 
-PortfwdReq = _reflection.GeneratedProtocolMessageType('PortfwdReq', (_message.Message,), {
-  'DESCRIPTOR' : _PORTFWDREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.PortfwdReq)
-  })
+PortfwdReq = _reflection.GeneratedProtocolMessageType(
+    "PortfwdReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _PORTFWDREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.PortfwdReq)
+    },
+)
 _sym_db.RegisterMessage(PortfwdReq)
 
-Portfwd = _reflection.GeneratedProtocolMessageType('Portfwd', (_message.Message,), {
-  'DESCRIPTOR' : _PORTFWD,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.Portfwd)
-  })
+Portfwd = _reflection.GeneratedProtocolMessageType(
+    "Portfwd",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _PORTFWD,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.Portfwd)
+    },
+)
 _sym_db.RegisterMessage(Portfwd)
 
-Socks = _reflection.GeneratedProtocolMessageType('Socks', (_message.Message,), {
-  'DESCRIPTOR' : _SOCKS,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.Socks)
-  })
+Socks = _reflection.GeneratedProtocolMessageType(
+    "Socks",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _SOCKS,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.Socks)
+    },
+)
 _sym_db.RegisterMessage(Socks)
 
-SocksData = _reflection.GeneratedProtocolMessageType('SocksData', (_message.Message,), {
-  'DESCRIPTOR' : _SOCKSDATA,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.SocksData)
-  })
+SocksData = _reflection.GeneratedProtocolMessageType(
+    "SocksData",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _SOCKSDATA,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.SocksData)
+    },
+)
 _sym_db.RegisterMessage(SocksData)
 
-PivotStartListenerReq = _reflection.GeneratedProtocolMessageType('PivotStartListenerReq', (_message.Message,), {
-  'DESCRIPTOR' : _PIVOTSTARTLISTENERREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.PivotStartListenerReq)
-  })
+PivotStartListenerReq = _reflection.GeneratedProtocolMessageType(
+    "PivotStartListenerReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _PIVOTSTARTLISTENERREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.PivotStartListenerReq)
+    },
+)
 _sym_db.RegisterMessage(PivotStartListenerReq)
 
-PivotStopListenerReq = _reflection.GeneratedProtocolMessageType('PivotStopListenerReq', (_message.Message,), {
-  'DESCRIPTOR' : _PIVOTSTOPLISTENERREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.PivotStopListenerReq)
-  })
+PivotStopListenerReq = _reflection.GeneratedProtocolMessageType(
+    "PivotStopListenerReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _PIVOTSTOPLISTENERREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.PivotStopListenerReq)
+    },
+)
 _sym_db.RegisterMessage(PivotStopListenerReq)
 
-PivotListener = _reflection.GeneratedProtocolMessageType('PivotListener', (_message.Message,), {
-  'DESCRIPTOR' : _PIVOTLISTENER,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.PivotListener)
-  })
+PivotListener = _reflection.GeneratedProtocolMessageType(
+    "PivotListener",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _PIVOTLISTENER,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.PivotListener)
+    },
+)
 _sym_db.RegisterMessage(PivotListener)
 
-PivotHello = _reflection.GeneratedProtocolMessageType('PivotHello', (_message.Message,), {
-  'DESCRIPTOR' : _PIVOTHELLO,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.PivotHello)
-  })
+PivotHello = _reflection.GeneratedProtocolMessageType(
+    "PivotHello",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _PIVOTHELLO,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.PivotHello)
+    },
+)
 _sym_db.RegisterMessage(PivotHello)
 
-PivotServerKeyExchange = _reflection.GeneratedProtocolMessageType('PivotServerKeyExchange', (_message.Message,), {
-  'DESCRIPTOR' : _PIVOTSERVERKEYEXCHANGE,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.PivotServerKeyExchange)
-  })
+PivotServerKeyExchange = _reflection.GeneratedProtocolMessageType(
+    "PivotServerKeyExchange",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _PIVOTSERVERKEYEXCHANGE,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.PivotServerKeyExchange)
+    },
+)
 _sym_db.RegisterMessage(PivotServerKeyExchange)
 
-PivotPeer = _reflection.GeneratedProtocolMessageType('PivotPeer', (_message.Message,), {
-  'DESCRIPTOR' : _PIVOTPEER,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.PivotPeer)
-  })
+PivotPeer = _reflection.GeneratedProtocolMessageType(
+    "PivotPeer",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _PIVOTPEER,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.PivotPeer)
+    },
+)
 _sym_db.RegisterMessage(PivotPeer)
 
-PivotPeerEnvelope = _reflection.GeneratedProtocolMessageType('PivotPeerEnvelope', (_message.Message,), {
-  'DESCRIPTOR' : _PIVOTPEERENVELOPE,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.PivotPeerEnvelope)
-  })
+PivotPeerEnvelope = _reflection.GeneratedProtocolMessageType(
+    "PivotPeerEnvelope",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _PIVOTPEERENVELOPE,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.PivotPeerEnvelope)
+    },
+)
 _sym_db.RegisterMessage(PivotPeerEnvelope)
 
-PivotPing = _reflection.GeneratedProtocolMessageType('PivotPing', (_message.Message,), {
-  'DESCRIPTOR' : _PIVOTPING,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.PivotPing)
-  })
+PivotPing = _reflection.GeneratedProtocolMessageType(
+    "PivotPing",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _PIVOTPING,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.PivotPing)
+    },
+)
 _sym_db.RegisterMessage(PivotPing)
 
-NetConnPivot = _reflection.GeneratedProtocolMessageType('NetConnPivot', (_message.Message,), {
-  'DESCRIPTOR' : _NETCONNPIVOT,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.NetConnPivot)
-  })
+NetConnPivot = _reflection.GeneratedProtocolMessageType(
+    "NetConnPivot",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _NETCONNPIVOT,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.NetConnPivot)
+    },
+)
 _sym_db.RegisterMessage(NetConnPivot)
 
-PivotPeerFailure = _reflection.GeneratedProtocolMessageType('PivotPeerFailure', (_message.Message,), {
-  'DESCRIPTOR' : _PIVOTPEERFAILURE,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.PivotPeerFailure)
-  })
+PivotPeerFailure = _reflection.GeneratedProtocolMessageType(
+    "PivotPeerFailure",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _PIVOTPEERFAILURE,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.PivotPeerFailure)
+    },
+)
 _sym_db.RegisterMessage(PivotPeerFailure)
 
-PivotListenersReq = _reflection.GeneratedProtocolMessageType('PivotListenersReq', (_message.Message,), {
-  'DESCRIPTOR' : _PIVOTLISTENERSREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.PivotListenersReq)
-  })
+PivotListenersReq = _reflection.GeneratedProtocolMessageType(
+    "PivotListenersReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _PIVOTLISTENERSREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.PivotListenersReq)
+    },
+)
 _sym_db.RegisterMessage(PivotListenersReq)
 
-PivotListeners = _reflection.GeneratedProtocolMessageType('PivotListeners', (_message.Message,), {
-  'DESCRIPTOR' : _PIVOTLISTENERS,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.PivotListeners)
-  })
+PivotListeners = _reflection.GeneratedProtocolMessageType(
+    "PivotListeners",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _PIVOTLISTENERS,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.PivotListeners)
+    },
+)
 _sym_db.RegisterMessage(PivotListeners)
 
-WGPortForwardStartReq = _reflection.GeneratedProtocolMessageType('WGPortForwardStartReq', (_message.Message,), {
-  'DESCRIPTOR' : _WGPORTFORWARDSTARTREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.WGPortForwardStartReq)
-  })
+WGPortForwardStartReq = _reflection.GeneratedProtocolMessageType(
+    "WGPortForwardStartReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _WGPORTFORWARDSTARTREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.WGPortForwardStartReq)
+    },
+)
 _sym_db.RegisterMessage(WGPortForwardStartReq)
 
-WGPortForward = _reflection.GeneratedProtocolMessageType('WGPortForward', (_message.Message,), {
-  'DESCRIPTOR' : _WGPORTFORWARD,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.WGPortForward)
-  })
+WGPortForward = _reflection.GeneratedProtocolMessageType(
+    "WGPortForward",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _WGPORTFORWARD,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.WGPortForward)
+    },
+)
 _sym_db.RegisterMessage(WGPortForward)
 
-WGPortForwardStopReq = _reflection.GeneratedProtocolMessageType('WGPortForwardStopReq', (_message.Message,), {
-  'DESCRIPTOR' : _WGPORTFORWARDSTOPREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.WGPortForwardStopReq)
-  })
+WGPortForwardStopReq = _reflection.GeneratedProtocolMessageType(
+    "WGPortForwardStopReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _WGPORTFORWARDSTOPREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.WGPortForwardStopReq)
+    },
+)
 _sym_db.RegisterMessage(WGPortForwardStopReq)
 
-WGSocksStartReq = _reflection.GeneratedProtocolMessageType('WGSocksStartReq', (_message.Message,), {
-  'DESCRIPTOR' : _WGSOCKSSTARTREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.WGSocksStartReq)
-  })
+WGSocksStartReq = _reflection.GeneratedProtocolMessageType(
+    "WGSocksStartReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _WGSOCKSSTARTREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.WGSocksStartReq)
+    },
+)
 _sym_db.RegisterMessage(WGSocksStartReq)
 
-WGSocks = _reflection.GeneratedProtocolMessageType('WGSocks', (_message.Message,), {
-  'DESCRIPTOR' : _WGSOCKS,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.WGSocks)
-  })
+WGSocks = _reflection.GeneratedProtocolMessageType(
+    "WGSocks",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _WGSOCKS,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.WGSocks)
+    },
+)
 _sym_db.RegisterMessage(WGSocks)
 
-WGSocksStopReq = _reflection.GeneratedProtocolMessageType('WGSocksStopReq', (_message.Message,), {
-  'DESCRIPTOR' : _WGSOCKSSTOPREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.WGSocksStopReq)
-  })
+WGSocksStopReq = _reflection.GeneratedProtocolMessageType(
+    "WGSocksStopReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _WGSOCKSSTOPREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.WGSocksStopReq)
+    },
+)
 _sym_db.RegisterMessage(WGSocksStopReq)
 
-WGTCPForwardersReq = _reflection.GeneratedProtocolMessageType('WGTCPForwardersReq', (_message.Message,), {
-  'DESCRIPTOR' : _WGTCPFORWARDERSREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.WGTCPForwardersReq)
-  })
+WGTCPForwardersReq = _reflection.GeneratedProtocolMessageType(
+    "WGTCPForwardersReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _WGTCPFORWARDERSREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.WGTCPForwardersReq)
+    },
+)
 _sym_db.RegisterMessage(WGTCPForwardersReq)
 
-WGSocksServersReq = _reflection.GeneratedProtocolMessageType('WGSocksServersReq', (_message.Message,), {
-  'DESCRIPTOR' : _WGSOCKSSERVERSREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.WGSocksServersReq)
-  })
+WGSocksServersReq = _reflection.GeneratedProtocolMessageType(
+    "WGSocksServersReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _WGSOCKSSERVERSREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.WGSocksServersReq)
+    },
+)
 _sym_db.RegisterMessage(WGSocksServersReq)
 
-WGTCPForwarder = _reflection.GeneratedProtocolMessageType('WGTCPForwarder', (_message.Message,), {
-  'DESCRIPTOR' : _WGTCPFORWARDER,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.WGTCPForwarder)
-  })
+WGTCPForwarder = _reflection.GeneratedProtocolMessageType(
+    "WGTCPForwarder",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _WGTCPFORWARDER,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.WGTCPForwarder)
+    },
+)
 _sym_db.RegisterMessage(WGTCPForwarder)
 
-WGSocksServer = _reflection.GeneratedProtocolMessageType('WGSocksServer', (_message.Message,), {
-  'DESCRIPTOR' : _WGSOCKSSERVER,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.WGSocksServer)
-  })
+WGSocksServer = _reflection.GeneratedProtocolMessageType(
+    "WGSocksServer",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _WGSOCKSSERVER,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.WGSocksServer)
+    },
+)
 _sym_db.RegisterMessage(WGSocksServer)
 
-WGSocksServers = _reflection.GeneratedProtocolMessageType('WGSocksServers', (_message.Message,), {
-  'DESCRIPTOR' : _WGSOCKSSERVERS,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.WGSocksServers)
-  })
+WGSocksServers = _reflection.GeneratedProtocolMessageType(
+    "WGSocksServers",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _WGSOCKSSERVERS,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.WGSocksServers)
+    },
+)
 _sym_db.RegisterMessage(WGSocksServers)
 
-WGTCPForwarders = _reflection.GeneratedProtocolMessageType('WGTCPForwarders', (_message.Message,), {
-  'DESCRIPTOR' : _WGTCPFORWARDERS,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.WGTCPForwarders)
-  })
+WGTCPForwarders = _reflection.GeneratedProtocolMessageType(
+    "WGTCPForwarders",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _WGTCPFORWARDERS,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.WGTCPForwarders)
+    },
+)
 _sym_db.RegisterMessage(WGTCPForwarders)
 
-ReconfigureReq = _reflection.GeneratedProtocolMessageType('ReconfigureReq', (_message.Message,), {
-  'DESCRIPTOR' : _RECONFIGUREREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.ReconfigureReq)
-  })
+ReconfigureReq = _reflection.GeneratedProtocolMessageType(
+    "ReconfigureReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _RECONFIGUREREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.ReconfigureReq)
+    },
+)
 _sym_db.RegisterMessage(ReconfigureReq)
 
-Reconfigure = _reflection.GeneratedProtocolMessageType('Reconfigure', (_message.Message,), {
-  'DESCRIPTOR' : _RECONFIGURE,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.Reconfigure)
-  })
+Reconfigure = _reflection.GeneratedProtocolMessageType(
+    "Reconfigure",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _RECONFIGURE,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.Reconfigure)
+    },
+)
 _sym_db.RegisterMessage(Reconfigure)
 
-PollIntervalReq = _reflection.GeneratedProtocolMessageType('PollIntervalReq', (_message.Message,), {
-  'DESCRIPTOR' : _POLLINTERVALREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.PollIntervalReq)
-  })
+PollIntervalReq = _reflection.GeneratedProtocolMessageType(
+    "PollIntervalReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _POLLINTERVALREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.PollIntervalReq)
+    },
+)
 _sym_db.RegisterMessage(PollIntervalReq)
 
-PollInterval = _reflection.GeneratedProtocolMessageType('PollInterval', (_message.Message,), {
-  'DESCRIPTOR' : _POLLINTERVAL,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.PollInterval)
-  })
+PollInterval = _reflection.GeneratedProtocolMessageType(
+    "PollInterval",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _POLLINTERVAL,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.PollInterval)
+    },
+)
 _sym_db.RegisterMessage(PollInterval)
 
-SSHCommandReq = _reflection.GeneratedProtocolMessageType('SSHCommandReq', (_message.Message,), {
-  'DESCRIPTOR' : _SSHCOMMANDREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.SSHCommandReq)
-  })
+SSHCommandReq = _reflection.GeneratedProtocolMessageType(
+    "SSHCommandReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _SSHCOMMANDREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.SSHCommandReq)
+    },
+)
 _sym_db.RegisterMessage(SSHCommandReq)
 
-SSHCommand = _reflection.GeneratedProtocolMessageType('SSHCommand', (_message.Message,), {
-  'DESCRIPTOR' : _SSHCOMMAND,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.SSHCommand)
-  })
+SSHCommand = _reflection.GeneratedProtocolMessageType(
+    "SSHCommand",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _SSHCOMMAND,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.SSHCommand)
+    },
+)
 _sym_db.RegisterMessage(SSHCommand)
 
-GetPrivsReq = _reflection.GeneratedProtocolMessageType('GetPrivsReq', (_message.Message,), {
-  'DESCRIPTOR' : _GETPRIVSREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.GetPrivsReq)
-  })
+GetPrivsReq = _reflection.GeneratedProtocolMessageType(
+    "GetPrivsReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _GETPRIVSREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.GetPrivsReq)
+    },
+)
 _sym_db.RegisterMessage(GetPrivsReq)
 
-WindowsPrivilegeEntry = _reflection.GeneratedProtocolMessageType('WindowsPrivilegeEntry', (_message.Message,), {
-  'DESCRIPTOR' : _WINDOWSPRIVILEGEENTRY,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.WindowsPrivilegeEntry)
-  })
+WindowsPrivilegeEntry = _reflection.GeneratedProtocolMessageType(
+    "WindowsPrivilegeEntry",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _WINDOWSPRIVILEGEENTRY,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.WindowsPrivilegeEntry)
+    },
+)
 _sym_db.RegisterMessage(WindowsPrivilegeEntry)
 
-GetPrivs = _reflection.GeneratedProtocolMessageType('GetPrivs', (_message.Message,), {
-  'DESCRIPTOR' : _GETPRIVS,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.GetPrivs)
-  })
+GetPrivs = _reflection.GeneratedProtocolMessageType(
+    "GetPrivs",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _GETPRIVS,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.GetPrivs)
+    },
+)
 _sym_db.RegisterMessage(GetPrivs)
 
-RegisterExtensionReq = _reflection.GeneratedProtocolMessageType('RegisterExtensionReq', (_message.Message,), {
-  'DESCRIPTOR' : _REGISTEREXTENSIONREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.RegisterExtensionReq)
-  })
+RegisterExtensionReq = _reflection.GeneratedProtocolMessageType(
+    "RegisterExtensionReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _REGISTEREXTENSIONREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.RegisterExtensionReq)
+    },
+)
 _sym_db.RegisterMessage(RegisterExtensionReq)
 
-RegisterExtension = _reflection.GeneratedProtocolMessageType('RegisterExtension', (_message.Message,), {
-  'DESCRIPTOR' : _REGISTEREXTENSION,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.RegisterExtension)
-  })
+RegisterExtension = _reflection.GeneratedProtocolMessageType(
+    "RegisterExtension",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _REGISTEREXTENSION,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.RegisterExtension)
+    },
+)
 _sym_db.RegisterMessage(RegisterExtension)
 
-CallExtensionReq = _reflection.GeneratedProtocolMessageType('CallExtensionReq', (_message.Message,), {
-  'DESCRIPTOR' : _CALLEXTENSIONREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.CallExtensionReq)
-  })
+CallExtensionReq = _reflection.GeneratedProtocolMessageType(
+    "CallExtensionReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _CALLEXTENSIONREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.CallExtensionReq)
+    },
+)
 _sym_db.RegisterMessage(CallExtensionReq)
 
-CallExtension = _reflection.GeneratedProtocolMessageType('CallExtension', (_message.Message,), {
-  'DESCRIPTOR' : _CALLEXTENSION,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.CallExtension)
-  })
+CallExtension = _reflection.GeneratedProtocolMessageType(
+    "CallExtension",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _CALLEXTENSION,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.CallExtension)
+    },
+)
 _sym_db.RegisterMessage(CallExtension)
 
-ListExtensionsReq = _reflection.GeneratedProtocolMessageType('ListExtensionsReq', (_message.Message,), {
-  'DESCRIPTOR' : _LISTEXTENSIONSREQ,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.ListExtensionsReq)
-  })
+ListExtensionsReq = _reflection.GeneratedProtocolMessageType(
+    "ListExtensionsReq",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _LISTEXTENSIONSREQ,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.ListExtensionsReq)
+    },
+)
 _sym_db.RegisterMessage(ListExtensionsReq)
 
-ListExtensions = _reflection.GeneratedProtocolMessageType('ListExtensions', (_message.Message,), {
-  'DESCRIPTOR' : _LISTEXTENSIONS,
-  '__module__' : 'sliverpb.sliver_pb2'
-  # @@protoc_insertion_point(class_scope:sliverpb.ListExtensions)
-  })
+ListExtensions = _reflection.GeneratedProtocolMessageType(
+    "ListExtensions",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _LISTEXTENSIONS,
+        "__module__": "sliverpb.sliver_pb2"
+        # @@protoc_insertion_point(class_scope:sliverpb.ListExtensions)
+    },
+)
 _sym_db.RegisterMessage(ListExtensions)
 
 
 DESCRIPTOR._options = None
-_TUNNEL.fields_by_name['TunnelID']._options = None
-_TUNNELDATA.fields_by_name['TunnelID']._options = None
-_SHELLREQ.fields_by_name['TunnelID']._options = None
-_SHELL.fields_by_name['TunnelID']._options = None
-_PORTFWDREQ.fields_by_name['TunnelID']._options = None
-_PORTFWD.fields_by_name['TunnelID']._options = None
-_SOCKS.fields_by_name['TunnelID']._options = None
-_SOCKSDATA.fields_by_name['TunnelID']._options = None
-_PIVOTHELLO.fields_by_name['PeerID']._options = None
-_PIVOTPEER.fields_by_name['PeerID']._options = None
-_NETCONNPIVOT.fields_by_name['PeerID']._options = None
-_PIVOTPEERFAILURE.fields_by_name['PeerID']._options = None
+_TUNNEL.fields_by_name["TunnelID"]._options = None
+_TUNNELDATA.fields_by_name["TunnelID"]._options = None
+_SHELLREQ.fields_by_name["TunnelID"]._options = None
+_SHELL.fields_by_name["TunnelID"]._options = None
+_PORTFWDREQ.fields_by_name["TunnelID"]._options = None
+_PORTFWD.fields_by_name["TunnelID"]._options = None
+_SOCKS.fields_by_name["TunnelID"]._options = None
+_SOCKSDATA.fields_by_name["TunnelID"]._options = None
+_PIVOTHELLO.fields_by_name["PeerID"]._options = None
+_PIVOTPEER.fields_by_name["PeerID"]._options = None
+_NETCONNPIVOT.fields_by_name["PeerID"]._options = None
+_PIVOTPEERFAILURE.fields_by_name["PeerID"]._options = None
 # @@protoc_insertion_point(module_scope)

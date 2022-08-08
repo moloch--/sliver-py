@@ -1,4 +1,4 @@
-'''
+"""
     Sliver Implant Framework
     Copyright (C) 2022  Bishop Fox
 
@@ -12,7 +12,7 @@
     GNU General Public License for more details.
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
-'''
+"""
 
 import asyncio
 import logging
@@ -36,7 +36,13 @@ class BaseBeacon(object):
     _beacon: client_pb2.Beacon
     beacon_tasks = {}
 
-    def __init__(self, beacon: client_pb2.Beacon, channel: grpc.Channel, timeout: int = TIMEOUT, logger: Union[logging.Handler, None] = None):
+    def __init__(
+        self,
+        beacon: client_pb2.Beacon,
+        channel: grpc.Channel,
+        timeout: int = TIMEOUT,
+        logger: Union[logging.Handler, None] = None,
+    ):
         self._log = logging.getLogger(self.__class__.__name__)
         self._channel = channel
         self._beacon = beacon
@@ -45,24 +51,24 @@ class BaseBeacon(object):
         asyncio.get_event_loop().create_task(self.taskresult_events())
 
     def _request(self, pb):
-        '''
+        """
         Set request attributes based on current beacon, I'd prefer to return a generic Request
         object, but protobuf for whatever reason doesn't let you assign this type of field directly.
 
         `pb` in this case is any protobuf message with a .Request field.
 
         :param pb: A protobuf request object.
-        '''
+        """
         pb.Request.SessionID = self._beacon.ID
-        pb.Request.Timeout = self.timeout-1
+        pb.Request.Timeout = self.timeout - 1
         pb.Request.Async = True
         return pb
 
     async def taskresult_events(self):
-        '''
+        """
         Monitor task events for results, resolve futures for any results
         we get back.
-        '''
+        """
         async for event in self._stub.Events(common_pb2.Empty()):
             if event.EventType != "beacon-taskresult":
                 continue
@@ -71,7 +77,9 @@ class BaseBeacon(object):
                 beacon_task.ParseFromString(event.Data)
                 if beacon_task.ID not in self.beacon_tasks:
                     continue
-                task_content = await self._stub.GetBeaconTaskContent(client_pb2.BeaconTask(ID=beacon_task.ID))
+                task_content = await self._stub.GetBeaconTaskContent(
+                    client_pb2.BeaconTask(ID=beacon_task.ID)
+                )
                 task_future, pb_object = self.beacon_tasks[beacon_task.ID]
                 del self.beacon_tasks[beacon_task.ID]
                 if pb_object is not None:
@@ -86,23 +94,23 @@ class BaseBeacon(object):
     @property
     def beacon_id(self) -> int:
         return self._beacon.ID
-    
+
     @property
     def name(self) -> str:
         return self._beacon.Name
-    
+
     @property
     def hostname(self) -> int:
         return self._beacon.Hostname
-    
+
     @property
     def uuid(self) -> str:
         return self._beacon.UUID
-    
+
     @property
     def username(self) -> str:
         return self._beacon.Username
-    
+
     @property
     def uid(self) -> str:
         return self._beacon.UID
@@ -152,31 +160,35 @@ class BaseBeacon(object):
         return self._beacon.ReconnectInterval
 
 
-
 def beacon_taskresult(pb_object):
-    '''
+    """
     Wraps a class method to return a future that resolves when the
     beacon task result is available.
-    '''
+    """
 
     def func(method):
         @functools.wraps(method)
         async def wrapper(self, *args, **kwargs):
             task_response = await method(self, *args, **kwargs)
-            self.beacon_tasks[task_response.Response.TaskID] = (asyncio.Future(), pb_object,)
+            self.beacon_tasks[task_response.Response.TaskID] = (
+                asyncio.Future(),
+                pb_object,
+            )
             return self.beacon_tasks[task_response.Response.TaskID][0]
+
         return wrapper
+
     return func
 
 
 class InteractiveBeacon(BaseBeacon, BaseInteractiveCommands):
 
-    ''' Wrap all commands that can be executed against a beacon mode implant '''
+    """Wrap all commands that can be executed against a beacon mode implant"""
 
     async def interactive_session(self):
         pass
 
-    # ----------------  Wrapped super() commands ---------------- 
+    # ----------------  Wrapped super() commands ----------------
 
     @beacon_taskresult(sliver_pb2.Ping)
     async def ping(self, *args, **kwargs) -> sliver_pb2.Ping:
@@ -261,7 +273,7 @@ class InteractiveBeacon(BaseBeacon, BaseInteractiveCommands):
     @beacon_taskresult(None)
     async def msf_remote(self, *args, **kwargs) -> None:
         return await super().msf_remote(*args, **kwargs)
-    
+
     @beacon_taskresult(sliver_pb2.ExecuteAssembly)
     async def execute_assembly(self, *args, **kwargs) -> sliver_pb2.ExecuteAssembly:
         return await super().execute_assembly(*args, **kwargs)
@@ -311,5 +323,7 @@ class InteractiveBeacon(BaseBeacon, BaseInteractiveCommands):
         return await super().registry_write(*args, **kwargs)
 
     @beacon_taskresult(sliver_pb2.RegistryCreateKey)
-    async def registry_create_key(self, *args, **kwargs) -> sliver_pb2.RegistryCreateKey:
+    async def registry_create_key(
+        self, *args, **kwargs
+    ) -> sliver_pb2.RegistryCreateKey:
         return await super().registry_create_key(*args, **kwargs)

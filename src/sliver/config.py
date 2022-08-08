@@ -1,4 +1,4 @@
-'''
+"""
     Sliver Implant Framework
     Copyright (C) 2021  Bishop Fox
 
@@ -12,17 +12,27 @@
     GNU General Public License for more details.
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
-'''
+"""
 
 import json
 from typing import Type, TypeVar, Union
 
 
-T = TypeVar('T', bound='SliverClientConfig')
-class SliverClientConfig(object):
+T = TypeVar("T", bound="SliverClientConfig")
 
-    def __init__(self, operator: str, lhost: str, lport: int, ca_certificate: str, certificate: str, private_key: str, token: str):
-        '''
+
+class SliverClientConfig(object):
+    def __init__(
+        self,
+        operator: str,
+        lhost: str,
+        lport: int,
+        ca_certificate: str,
+        certificate: str,
+        private_key: str,
+        token: str,
+    ):
+        """
         This class parses and represents Sliver operator configuration files, typically this class is automatically
         instanciated using one of the class methods :class:`SliverClientConfig.parse_config()` or :class:`SliverClientConfig.parse_config_file()` but can be directly
         instanciated too.
@@ -32,15 +42,15 @@ class SliverClientConfig(object):
         :param lhost: The TCP port of the host listener (i.e., the TCP port of the Sliver "multiplayer" service).
         :param ca_certificate: The Sliver server certificate authority.
         :param certificate: The mTLS client certificate.
-        :param private_key: The mTLS private key. 
+        :param private_key: The mTLS private key.
         :param token: The user's authentication token.
 
         :raises ValueError: A parameter contained an invalid value.
-        '''
+        """
         self.operator = operator
         self.lhost = lhost
         if not 0 < lport < 65535:
-            raise ValueError('Invalid lport %d' % lport)
+            raise ValueError("Invalid lport %d" % lport)
         self.lport = lport
         self.ca_certificate = ca_certificate
         self.certificate = certificate
@@ -48,23 +58,31 @@ class SliverClientConfig(object):
         self.token = token
 
     def __str__(self):
-        return '%s@%s%d' % (self.operator, self.lhost, self.lport,)
-    
+        return "%s@%s%d" % (
+            self.operator,
+            self.lhost,
+            self.lport,
+        )
+
     def __repr__(self):
-        return '<Operator: %s, Lhost: %s, Lport: %d, CA: %s, Cert: %s>' % (
-            self.operator, self.lhost, self.lport, self.ca_certificate, self.certificate
+        return "<Operator: %s, Lhost: %s, Lport: %d, CA: %s, Cert: %s>" % (
+            self.operator,
+            self.lhost,
+            self.lport,
+            self.ca_certificate,
+            self.certificate,
         )
 
     @classmethod
     def parse_config(cls: Type[T], data: Union[str, bytes]) -> T:
-        '''Parses the content of a Sliver operator configuration file and
+        """Parses the content of a Sliver operator configuration file and
         returns the instanciated :class:`SliverClientConfig`
 
         :param data: The Sliver operator configuration file content.
         :type data: Union[str, bytes]
         :return: An instanciated :class:`SliverClientConfig` object.
         :rtype: T
-        '''        
+        """
         return cls(**json.loads(data))
 
     @classmethod
@@ -75,7 +93,7 @@ class SliverClientConfig(object):
         :type filepath: str
         :return: An instanciated :class:`SliverClientConfig` object.
         :rtype: T
-        """        
-        with open(filepath, 'r') as fp:
+        """
+        with open(filepath, "r") as fp:
             data = fp.read()
         return cls.parse_config(data)
