@@ -28,7 +28,7 @@ class BaseInteractiveCommands(object):
         :rtype: sliver_pb2.Ping
         """
         ping = sliver_pb2.Ping()
-        ping.Request = self._request()
+        ping.Request = self._request(ping)
         return await self._stub.Ping(ping, timeout=self.timeout)
 
     async def ps(self) -> sliver_pb2.Ps:
