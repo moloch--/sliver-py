@@ -261,7 +261,7 @@ class BaseInteractiveCommands(object):
         """
         system = client_pb2.GetSystemReq()
         system.HostingProcess = hosting_process
-        system.Config = config
+        system.Config.CopyFrom(config)
         return await self._stub.GetSystem(self._request(system), timeout=self.timeout)
 
     async def execute_shellcode(
@@ -422,7 +422,7 @@ class BaseInteractiveCommands(object):
         """
         migrate = client_pb2.MigrateReq()
         migrate.Pid = pid
-        migrate.Config = config
+        migrate.Config.CopyFrom(config)
         return await self._stub.Migrate(self._request(migrate), timeout=self.timeout)
 
     async def execute(
