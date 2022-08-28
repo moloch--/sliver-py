@@ -108,7 +108,7 @@ Once installed, run `hatch -e dev shell` to enter the development environment. H
 
 ### Docker/WSL2
 
-A Dockerfile is included if you wish to develop inside a container. This may be preferable for development on any operating system to keep the dev environment isolation. Windows developers may choose to develop inside WSL2.
+A Dockerfile is included if you wish to develop inside a container. This may be preferable for development on any operating system to keep the dev environment isolated. Windows developers may choose to develop inside WSL2.
 
 In either case, `scripts/sliver_install.sh` contains a modified version of the official Sliver installation script that does not create a `systemd` based service, as containers and WSL2 do not support systemd out of the box. After running this script, you may start a local Sliver server in your container or WSL2 instance by running:
 
