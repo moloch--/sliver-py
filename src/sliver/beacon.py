@@ -15,18 +15,15 @@
 """
 
 import asyncio
-import logging
 import functools
-import grpc
 import logging
 from typing import Union
 
-from .interactive import BaseInteractiveCommands
-from .protobuf import common_pb2
-from .protobuf import client_pb2
-from .protobuf import sliver_pb2
-from .pb.rpcpb.services_pb2_grpc import SliverRPCStub
+import grpc
 
+from .interactive import BaseInteractiveCommands
+from .pb.rpcpb.services_pb2_grpc import SliverRPCStub
+from .protobuf import client_pb2, common_pb2, sliver_pb2
 
 TIMEOUT = 60
 

@@ -1,0 +1,58 @@
+[build-system]
+requires = ["hatchling>=1.8.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "sliver-py"
+description = "Sliver gRPC client library."
+readme = "README.md"
+license-files = { paths = ["LICENSE"] }
+requires-python = ">=3.7"
+authors = [
+    { name = "moloch", email = "875022+moloch--@users.noreply.github.com" },
+    { name = "daddycocoaman", email = "daddycocoaman@gmail.com"}
+]
+classifiers = [
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+]
+dynamic = ["version"]
+
+[project.urls]
+"Bug Tracker" = "https://github.com/moloch--/sliver-py/issues"
+Homepage = "https://github.com/moloch--/sliver-py"
+
+[tool.hatch.envs.default]
+dependencies = [
+    "grpcio~=1.47",
+    "grpcio-tools~=1.47",
+]
+
+[tool.hatch.envs.dev]
+extra-dependencies = [
+    "rich~=12.5",
+    "black~=22.6", 
+    "isort~=5.10", 
+]
+
+[tool.hatch.envs.dev.scripts]
+fmt = [
+    "isort src", 
+    "black src",
+]
+genproto = ["./protobuf.sh"]
+
+[tool.hatch.version]
+path = "src/sliver/__init__.py"
+
+[tool.hatch.build]
+packages = ["src/sliver"]
+
+[tool.black]
+include = "^/src"
+extend-exclude = "^/src/silver/pb"
+
+[tool.isort]
+profile = "black"

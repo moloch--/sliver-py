@@ -14,15 +14,14 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 
-import grpc
 import logging
-from typing import Union, List
+from typing import List, Union
+
+import grpc
 
 from .interactive import BaseInteractiveCommands
-from .protobuf import client_pb2
-from .protobuf import sliver_pb2
 from .pb.rpcpb.services_pb2_grpc import SliverRPCStub
-
+from .protobuf import client_pb2, sliver_pb2
 
 TIMEOUT = 60
 
