@@ -115,11 +115,3 @@ In either case, `scripts/sliver_install.sh` contains a modified version of the o
 `sudo /root/sliver-server daemon &`
 
 Alternatively, you can still choose to set up an external Sliver instance to connect to via Sliver's [multi-player mode](https://github.com/BishopFox/sliver/wiki/Multiplayer-Mode). The `sliver_install` script is purely for local development convenience.
-
-### Signing commits
-
-All commits to this repository must be signed. SSH key signing is recommended.
-
-References:
-- https://docs.github.com/en/authentication/managing-commit-signature-verification/about-commit-signature-verification
-- https://github.blog/changelog/2022-08-23-ssh-commit-verification-now-supported/
