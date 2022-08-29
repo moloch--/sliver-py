@@ -3,571 +3,83 @@
 # source: commonpb/common.proto
 """Generated protocol buffer code."""
 from google.protobuf import descriptor as _descriptor
+from google.protobuf import descriptor_pool as _descriptor_pool
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
-
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
 
 
-DESCRIPTOR = _descriptor.FileDescriptor(
-    name="commonpb/common.proto",
-    package="commonpb",
-    syntax="proto3",
-    serialized_options=b"Z-github.com/bishopfox/sliver/protobuf/commonpb",
-    create_key=_descriptor._internal_create_key,
-    serialized_pb=b'\n\x15\x63ommonpb/common.proto\x12\x08\x63ommonpb"\x07\n\x05\x45mpty"N\n\x07Request\x12\r\n\x05\x41sync\x18\x01 \x01(\x08\x12\x0f\n\x07Timeout\x18\x02 \x01(\x03\x12\x10\n\x08\x42\x65\x61\x63onID\x18\x08 \x01(\t\x12\x11\n\tSessionID\x18\t \x01(\t"H\n\x08Response\x12\x0b\n\x03\x45rr\x18\x01 \x01(\t\x12\r\n\x05\x41sync\x18\x02 \x01(\x08\x12\x10\n\x08\x42\x65\x61\x63onID\x18\x08 \x01(\t\x12\x0e\n\x06TaskID\x18\t \x01(\t""\n\x04\x46ile\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12\x0c\n\x04\x44\x61ta\x18\x02 \x01(\x0c"k\n\x07Process\x12\x0b\n\x03Pid\x18\x01 \x01(\x05\x12\x0c\n\x04Ppid\x18\x02 \x01(\x05\x12\x12\n\nExecutable\x18\x03 \x01(\t\x12\r\n\x05Owner\x18\x04 \x01(\t\x12\x11\n\tSessionID\x18\x05 \x01(\x05\x12\x0f\n\x07\x43mdLine\x18\x06 \x03(\t"$\n\x06\x45nvVar\x12\x0b\n\x03Key\x18\x01 \x01(\t\x12\r\n\x05Value\x18\x02 \x01(\tB/Z-github.com/bishopfox/sliver/protobuf/commonpbb\x06proto3',
-)
 
 
-_EMPTY = _descriptor.Descriptor(
-    name="Empty",
-    full_name="commonpb.Empty",
-    filename=None,
-    file=DESCRIPTOR,
-    containing_type=None,
-    create_key=_descriptor._internal_create_key,
-    fields=[],
-    extensions=[],
-    nested_types=[],
-    enum_types=[],
-    serialized_options=None,
-    is_extendable=False,
-    syntax="proto3",
-    extension_ranges=[],
-    oneofs=[],
-    serialized_start=35,
-    serialized_end=42,
-)
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x15\x63ommonpb/common.proto\x12\x08\x63ommonpb\"\x07\n\x05\x45mpty\"N\n\x07Request\x12\r\n\x05\x41sync\x18\x01 \x01(\x08\x12\x0f\n\x07Timeout\x18\x02 \x01(\x03\x12\x10\n\x08\x42\x65\x61\x63onID\x18\x08 \x01(\t\x12\x11\n\tSessionID\x18\t \x01(\t\"H\n\x08Response\x12\x0b\n\x03\x45rr\x18\x01 \x01(\t\x12\r\n\x05\x41sync\x18\x02 \x01(\x08\x12\x10\n\x08\x42\x65\x61\x63onID\x18\x08 \x01(\t\x12\x0e\n\x06TaskID\x18\t \x01(\t\"\"\n\x04\x46ile\x12\x0c\n\x04Name\x18\x01 \x01(\t\x12\x0c\n\x04\x44\x61ta\x18\x02 \x01(\x0c\"\x81\x01\n\x07Process\x12\x0b\n\x03Pid\x18\x01 \x01(\x05\x12\x0c\n\x04Ppid\x18\x02 \x01(\x05\x12\x12\n\nExecutable\x18\x03 \x01(\t\x12\r\n\x05Owner\x18\x04 \x01(\t\x12\x14\n\x0c\x41rchitecture\x18\x07 \x01(\t\x12\x11\n\tSessionID\x18\x05 \x01(\x05\x12\x0f\n\x07\x43mdLine\x18\x06 \x03(\t\"$\n\x06\x45nvVar\x12\x0b\n\x03Key\x18\x01 \x01(\t\x12\r\n\x05Value\x18\x02 \x01(\tB/Z-github.com/bishopfox/sliver/protobuf/commonpbb\x06proto3')
 
 
-_REQUEST = _descriptor.Descriptor(
-    name="Request",
-    full_name="commonpb.Request",
-    filename=None,
-    file=DESCRIPTOR,
-    containing_type=None,
-    create_key=_descriptor._internal_create_key,
-    fields=[
-        _descriptor.FieldDescriptor(
-            name="Async",
-            full_name="commonpb.Request.Async",
-            index=0,
-            number=1,
-            type=8,
-            cpp_type=7,
-            label=1,
-            has_default_value=False,
-            default_value=False,
-            message_type=None,
-            enum_type=None,
-            containing_type=None,
-            is_extension=False,
-            extension_scope=None,
-            serialized_options=None,
-            file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key,
-        ),
-        _descriptor.FieldDescriptor(
-            name="Timeout",
-            full_name="commonpb.Request.Timeout",
-            index=1,
-            number=2,
-            type=3,
-            cpp_type=2,
-            label=1,
-            has_default_value=False,
-            default_value=0,
-            message_type=None,
-            enum_type=None,
-            containing_type=None,
-            is_extension=False,
-            extension_scope=None,
-            serialized_options=None,
-            file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key,
-        ),
-        _descriptor.FieldDescriptor(
-            name="BeaconID",
-            full_name="commonpb.Request.BeaconID",
-            index=2,
-            number=8,
-            type=9,
-            cpp_type=9,
-            label=1,
-            has_default_value=False,
-            default_value=b"".decode("utf-8"),
-            message_type=None,
-            enum_type=None,
-            containing_type=None,
-            is_extension=False,
-            extension_scope=None,
-            serialized_options=None,
-            file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key,
-        ),
-        _descriptor.FieldDescriptor(
-            name="SessionID",
-            full_name="commonpb.Request.SessionID",
-            index=3,
-            number=9,
-            type=9,
-            cpp_type=9,
-            label=1,
-            has_default_value=False,
-            default_value=b"".decode("utf-8"),
-            message_type=None,
-            enum_type=None,
-            containing_type=None,
-            is_extension=False,
-            extension_scope=None,
-            serialized_options=None,
-            file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key,
-        ),
-    ],
-    extensions=[],
-    nested_types=[],
-    enum_types=[],
-    serialized_options=None,
-    is_extendable=False,
-    syntax="proto3",
-    extension_ranges=[],
-    oneofs=[],
-    serialized_start=44,
-    serialized_end=122,
-)
 
-
-_RESPONSE = _descriptor.Descriptor(
-    name="Response",
-    full_name="commonpb.Response",
-    filename=None,
-    file=DESCRIPTOR,
-    containing_type=None,
-    create_key=_descriptor._internal_create_key,
-    fields=[
-        _descriptor.FieldDescriptor(
-            name="Err",
-            full_name="commonpb.Response.Err",
-            index=0,
-            number=1,
-            type=9,
-            cpp_type=9,
-            label=1,
-            has_default_value=False,
-            default_value=b"".decode("utf-8"),
-            message_type=None,
-            enum_type=None,
-            containing_type=None,
-            is_extension=False,
-            extension_scope=None,
-            serialized_options=None,
-            file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key,
-        ),
-        _descriptor.FieldDescriptor(
-            name="Async",
-            full_name="commonpb.Response.Async",
-            index=1,
-            number=2,
-            type=8,
-            cpp_type=7,
-            label=1,
-            has_default_value=False,
-            default_value=False,
-            message_type=None,
-            enum_type=None,
-            containing_type=None,
-            is_extension=False,
-            extension_scope=None,
-            serialized_options=None,
-            file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key,
-        ),
-        _descriptor.FieldDescriptor(
-            name="BeaconID",
-            full_name="commonpb.Response.BeaconID",
-            index=2,
-            number=8,
-            type=9,
-            cpp_type=9,
-            label=1,
-            has_default_value=False,
-            default_value=b"".decode("utf-8"),
-            message_type=None,
-            enum_type=None,
-            containing_type=None,
-            is_extension=False,
-            extension_scope=None,
-            serialized_options=None,
-            file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key,
-        ),
-        _descriptor.FieldDescriptor(
-            name="TaskID",
-            full_name="commonpb.Response.TaskID",
-            index=3,
-            number=9,
-            type=9,
-            cpp_type=9,
-            label=1,
-            has_default_value=False,
-            default_value=b"".decode("utf-8"),
-            message_type=None,
-            enum_type=None,
-            containing_type=None,
-            is_extension=False,
-            extension_scope=None,
-            serialized_options=None,
-            file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key,
-        ),
-    ],
-    extensions=[],
-    nested_types=[],
-    enum_types=[],
-    serialized_options=None,
-    is_extendable=False,
-    syntax="proto3",
-    extension_ranges=[],
-    oneofs=[],
-    serialized_start=124,
-    serialized_end=196,
-)
-
-
-_FILE = _descriptor.Descriptor(
-    name="File",
-    full_name="commonpb.File",
-    filename=None,
-    file=DESCRIPTOR,
-    containing_type=None,
-    create_key=_descriptor._internal_create_key,
-    fields=[
-        _descriptor.FieldDescriptor(
-            name="Name",
-            full_name="commonpb.File.Name",
-            index=0,
-            number=1,
-            type=9,
-            cpp_type=9,
-            label=1,
-            has_default_value=False,
-            default_value=b"".decode("utf-8"),
-            message_type=None,
-            enum_type=None,
-            containing_type=None,
-            is_extension=False,
-            extension_scope=None,
-            serialized_options=None,
-            file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key,
-        ),
-        _descriptor.FieldDescriptor(
-            name="Data",
-            full_name="commonpb.File.Data",
-            index=1,
-            number=2,
-            type=12,
-            cpp_type=9,
-            label=1,
-            has_default_value=False,
-            default_value=b"",
-            message_type=None,
-            enum_type=None,
-            containing_type=None,
-            is_extension=False,
-            extension_scope=None,
-            serialized_options=None,
-            file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key,
-        ),
-    ],
-    extensions=[],
-    nested_types=[],
-    enum_types=[],
-    serialized_options=None,
-    is_extendable=False,
-    syntax="proto3",
-    extension_ranges=[],
-    oneofs=[],
-    serialized_start=198,
-    serialized_end=232,
-)
-
-
-_PROCESS = _descriptor.Descriptor(
-    name="Process",
-    full_name="commonpb.Process",
-    filename=None,
-    file=DESCRIPTOR,
-    containing_type=None,
-    create_key=_descriptor._internal_create_key,
-    fields=[
-        _descriptor.FieldDescriptor(
-            name="Pid",
-            full_name="commonpb.Process.Pid",
-            index=0,
-            number=1,
-            type=5,
-            cpp_type=1,
-            label=1,
-            has_default_value=False,
-            default_value=0,
-            message_type=None,
-            enum_type=None,
-            containing_type=None,
-            is_extension=False,
-            extension_scope=None,
-            serialized_options=None,
-            file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key,
-        ),
-        _descriptor.FieldDescriptor(
-            name="Ppid",
-            full_name="commonpb.Process.Ppid",
-            index=1,
-            number=2,
-            type=5,
-            cpp_type=1,
-            label=1,
-            has_default_value=False,
-            default_value=0,
-            message_type=None,
-            enum_type=None,
-            containing_type=None,
-            is_extension=False,
-            extension_scope=None,
-            serialized_options=None,
-            file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key,
-        ),
-        _descriptor.FieldDescriptor(
-            name="Executable",
-            full_name="commonpb.Process.Executable",
-            index=2,
-            number=3,
-            type=9,
-            cpp_type=9,
-            label=1,
-            has_default_value=False,
-            default_value=b"".decode("utf-8"),
-            message_type=None,
-            enum_type=None,
-            containing_type=None,
-            is_extension=False,
-            extension_scope=None,
-            serialized_options=None,
-            file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key,
-        ),
-        _descriptor.FieldDescriptor(
-            name="Owner",
-            full_name="commonpb.Process.Owner",
-            index=3,
-            number=4,
-            type=9,
-            cpp_type=9,
-            label=1,
-            has_default_value=False,
-            default_value=b"".decode("utf-8"),
-            message_type=None,
-            enum_type=None,
-            containing_type=None,
-            is_extension=False,
-            extension_scope=None,
-            serialized_options=None,
-            file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key,
-        ),
-        _descriptor.FieldDescriptor(
-            name="SessionID",
-            full_name="commonpb.Process.SessionID",
-            index=4,
-            number=5,
-            type=5,
-            cpp_type=1,
-            label=1,
-            has_default_value=False,
-            default_value=0,
-            message_type=None,
-            enum_type=None,
-            containing_type=None,
-            is_extension=False,
-            extension_scope=None,
-            serialized_options=None,
-            file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key,
-        ),
-        _descriptor.FieldDescriptor(
-            name="CmdLine",
-            full_name="commonpb.Process.CmdLine",
-            index=5,
-            number=6,
-            type=9,
-            cpp_type=9,
-            label=3,
-            has_default_value=False,
-            default_value=[],
-            message_type=None,
-            enum_type=None,
-            containing_type=None,
-            is_extension=False,
-            extension_scope=None,
-            serialized_options=None,
-            file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key,
-        ),
-    ],
-    extensions=[],
-    nested_types=[],
-    enum_types=[],
-    serialized_options=None,
-    is_extendable=False,
-    syntax="proto3",
-    extension_ranges=[],
-    oneofs=[],
-    serialized_start=234,
-    serialized_end=341,
-)
-
-
-_ENVVAR = _descriptor.Descriptor(
-    name="EnvVar",
-    full_name="commonpb.EnvVar",
-    filename=None,
-    file=DESCRIPTOR,
-    containing_type=None,
-    create_key=_descriptor._internal_create_key,
-    fields=[
-        _descriptor.FieldDescriptor(
-            name="Key",
-            full_name="commonpb.EnvVar.Key",
-            index=0,
-            number=1,
-            type=9,
-            cpp_type=9,
-            label=1,
-            has_default_value=False,
-            default_value=b"".decode("utf-8"),
-            message_type=None,
-            enum_type=None,
-            containing_type=None,
-            is_extension=False,
-            extension_scope=None,
-            serialized_options=None,
-            file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key,
-        ),
-        _descriptor.FieldDescriptor(
-            name="Value",
-            full_name="commonpb.EnvVar.Value",
-            index=1,
-            number=2,
-            type=9,
-            cpp_type=9,
-            label=1,
-            has_default_value=False,
-            default_value=b"".decode("utf-8"),
-            message_type=None,
-            enum_type=None,
-            containing_type=None,
-            is_extension=False,
-            extension_scope=None,
-            serialized_options=None,
-            file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key,
-        ),
-    ],
-    extensions=[],
-    nested_types=[],
-    enum_types=[],
-    serialized_options=None,
-    is_extendable=False,
-    syntax="proto3",
-    extension_ranges=[],
-    oneofs=[],
-    serialized_start=343,
-    serialized_end=379,
-)
-
-DESCRIPTOR.message_types_by_name["Empty"] = _EMPTY
-DESCRIPTOR.message_types_by_name["Request"] = _REQUEST
-DESCRIPTOR.message_types_by_name["Response"] = _RESPONSE
-DESCRIPTOR.message_types_by_name["File"] = _FILE
-DESCRIPTOR.message_types_by_name["Process"] = _PROCESS
-DESCRIPTOR.message_types_by_name["EnvVar"] = _ENVVAR
-_sym_db.RegisterFileDescriptor(DESCRIPTOR)
-
-Empty = _reflection.GeneratedProtocolMessageType(
-    "Empty",
-    (_message.Message,),
-    {
-        "DESCRIPTOR": _EMPTY,
-        "__module__": "commonpb.common_pb2"
-        # @@protoc_insertion_point(class_scope:commonpb.Empty)
-    },
-)
+_EMPTY = DESCRIPTOR.message_types_by_name['Empty']
+_REQUEST = DESCRIPTOR.message_types_by_name['Request']
+_RESPONSE = DESCRIPTOR.message_types_by_name['Response']
+_FILE = DESCRIPTOR.message_types_by_name['File']
+_PROCESS = DESCRIPTOR.message_types_by_name['Process']
+_ENVVAR = DESCRIPTOR.message_types_by_name['EnvVar']
+Empty = _reflection.GeneratedProtocolMessageType('Empty', (_message.Message,), {
+  'DESCRIPTOR' : _EMPTY,
+  '__module__' : 'commonpb.common_pb2'
+  # @@protoc_insertion_point(class_scope:commonpb.Empty)
+  })
 _sym_db.RegisterMessage(Empty)
 
-Request = _reflection.GeneratedProtocolMessageType(
-    "Request",
-    (_message.Message,),
-    {
-        "DESCRIPTOR": _REQUEST,
-        "__module__": "commonpb.common_pb2"
-        # @@protoc_insertion_point(class_scope:commonpb.Request)
-    },
-)
+Request = _reflection.GeneratedProtocolMessageType('Request', (_message.Message,), {
+  'DESCRIPTOR' : _REQUEST,
+  '__module__' : 'commonpb.common_pb2'
+  # @@protoc_insertion_point(class_scope:commonpb.Request)
+  })
 _sym_db.RegisterMessage(Request)
 
-Response = _reflection.GeneratedProtocolMessageType(
-    "Response",
-    (_message.Message,),
-    {
-        "DESCRIPTOR": _RESPONSE,
-        "__module__": "commonpb.common_pb2"
-        # @@protoc_insertion_point(class_scope:commonpb.Response)
-    },
-)
+Response = _reflection.GeneratedProtocolMessageType('Response', (_message.Message,), {
+  'DESCRIPTOR' : _RESPONSE,
+  '__module__' : 'commonpb.common_pb2'
+  # @@protoc_insertion_point(class_scope:commonpb.Response)
+  })
 _sym_db.RegisterMessage(Response)
 
-File = _reflection.GeneratedProtocolMessageType(
-    "File",
-    (_message.Message,),
-    {
-        "DESCRIPTOR": _FILE,
-        "__module__": "commonpb.common_pb2"
-        # @@protoc_insertion_point(class_scope:commonpb.File)
-    },
-)
+File = _reflection.GeneratedProtocolMessageType('File', (_message.Message,), {
+  'DESCRIPTOR' : _FILE,
+  '__module__' : 'commonpb.common_pb2'
+  # @@protoc_insertion_point(class_scope:commonpb.File)
+  })
 _sym_db.RegisterMessage(File)
 
-Process = _reflection.GeneratedProtocolMessageType(
-    "Process",
-    (_message.Message,),
-    {
-        "DESCRIPTOR": _PROCESS,
-        "__module__": "commonpb.common_pb2"
-        # @@protoc_insertion_point(class_scope:commonpb.Process)
-    },
-)
+Process = _reflection.GeneratedProtocolMessageType('Process', (_message.Message,), {
+  'DESCRIPTOR' : _PROCESS,
+  '__module__' : 'commonpb.common_pb2'
+  # @@protoc_insertion_point(class_scope:commonpb.Process)
+  })
 _sym_db.RegisterMessage(Process)
 
-EnvVar = _reflection.GeneratedProtocolMessageType(
-    "EnvVar",
-    (_message.Message,),
-    {
-        "DESCRIPTOR": _ENVVAR,
-        "__module__": "commonpb.common_pb2"
-        # @@protoc_insertion_point(class_scope:commonpb.EnvVar)
-    },
-)
+EnvVar = _reflection.GeneratedProtocolMessageType('EnvVar', (_message.Message,), {
+  'DESCRIPTOR' : _ENVVAR,
+  '__module__' : 'commonpb.common_pb2'
+  # @@protoc_insertion_point(class_scope:commonpb.EnvVar)
+  })
 _sym_db.RegisterMessage(EnvVar)
 
+if _descriptor._USE_C_DESCRIPTORS == False:
 
-DESCRIPTOR._options = None
+  DESCRIPTOR._options = None
+  DESCRIPTOR._serialized_options = b'Z-github.com/bishopfox/sliver/protobuf/commonpb'
+  _EMPTY._serialized_start=35
+  _EMPTY._serialized_end=42
+  _REQUEST._serialized_start=44
+  _REQUEST._serialized_end=122
+  _RESPONSE._serialized_start=124
+  _RESPONSE._serialized_end=196
+  _FILE._serialized_start=198
+  _FILE._serialized_end=232
+  _PROCESS._serialized_start=235
+  _PROCESS._serialized_end=364
+  _ENVVAR._serialized_start=366
+  _ENVVAR._serialized_end=402
 # @@protoc_insertion_point(module_scope)
