@@ -15,18 +15,16 @@
 """
 
 
-import grpc
 import logging
-from typing import Generator, Union, List, Dict
+from typing import Dict, Generator, List, Union
+
+import grpc
 
 from .beacon import InteractiveBeacon
-from .session import InteractiveSession
-from .protobuf import common_pb2
-from .protobuf import client_pb2
-from .protobuf import sliver_pb2
-from .pb.rpcpb.services_pb2_grpc import SliverRPCStub
 from .config import SliverClientConfig
-
+from .pb.rpcpb.services_pb2_grpc import SliverRPCStub
+from .protobuf import client_pb2, common_pb2, sliver_pb2
+from .session import InteractiveSession
 
 KB = 1024
 MB = 1024 * KB

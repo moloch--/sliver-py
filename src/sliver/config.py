@@ -17,7 +17,6 @@
 import json
 from typing import Type, TypeVar, Union
 
-
 T = TypeVar("T", bound="SliverClientConfig")
 
 

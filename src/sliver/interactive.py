@@ -16,8 +16,7 @@
 
 from typing import List
 
-from .protobuf import client_pb2
-from .protobuf import sliver_pb2
+from .protobuf import client_pb2, sliver_pb2
 
 
 class BaseInteractiveCommands(object):
