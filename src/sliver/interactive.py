@@ -618,6 +618,7 @@ class BaseInteractiveCommands(object):
         byte_value: bytes,
         dword_value: int,
         qword_value: int,
+        reg_type: sliver_pb2.RegistryType,
     ) -> sliver_pb2.RegistryWrite:
         """Write a value to the remote system's registry (Windows only)
 
@@ -651,6 +652,7 @@ class BaseInteractiveCommands(object):
         reg.ByteValue = byte_value
         reg.DWordValue = dword_value
         reg.QWordValue = qword_value
+        reg.Type = reg_type
 
         return await self._stub.RegistryWrite(self._request(reg), timeout=self.timeout)
 
