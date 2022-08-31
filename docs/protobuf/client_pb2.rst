@@ -5,168 +5,168 @@ This module contains the client Protobuf definitions, client Protobuf messages a
 passed between the client and server (and not to the implant).
 
 
-.. autoclass:: sliver.client_pb2.Version
+.. autoclass:: sliver.pb.clientpb.client_pb2.Version
     :members:
 
-.. autoclass:: sliver.client_pb2.Session
+.. autoclass:: sliver.pb.clientpb.client_pb2.Session
     :members:
 
-.. autoclass:: sliver.client_pb2.ImplantC2
+.. autoclass:: sliver.pb.clientpb.client_pb2.ImplantC2
     :members:
 
-.. autoclass:: sliver.client_pb2.ImplantConfig
+.. autoclass:: sliver.pb.clientpb.client_pb2.ImplantConfig
     :members:
 
-.. autoclass:: sliver.client_pb2.ImplantBuilds
+.. autoclass:: sliver.pb.clientpb.client_pb2.ImplantBuilds
     :members:
 
-.. autoclass:: sliver.client_pb2.DeleteReq
+.. autoclass:: sliver.pb.clientpb.client_pb2.DeleteReq
     :members:
 
-.. autoclass:: sliver.client_pb2.DNSCanary
+.. autoclass:: sliver.pb.clientpb.client_pb2.DNSCanary
     :members:
 
-.. autoclass:: sliver.client_pb2.Canaries
+.. autoclass:: sliver.pb.clientpb.client_pb2.Canaries
     :members:
 
-.. autoclass:: sliver.client_pb2.UniqueWGIP
+.. autoclass:: sliver.pb.clientpb.client_pb2.UniqueWGIP
     :members:
 
-.. autoclass:: sliver.client_pb2.ImplantProfile 
+.. autoclass:: sliver.pb.clientpb.client_pb2.ImplantProfile 
     :members:
 
-.. autoclass:: sliver.client_pb2.ImplantProfiles
+.. autoclass:: sliver.pb.clientpb.client_pb2.ImplantProfiles
     :members:
 
-.. autoclass:: sliver.client_pb2.RegenerateReq 
+.. autoclass:: sliver.pb.clientpb.client_pb2.RegenerateReq 
     :members:
 
-.. autoclass:: sliver.client_pb2.Job 
+.. autoclass:: sliver.pb.clientpb.client_pb2.Job 
     :members:
 
-.. autoclass:: sliver.client_pb2.Jobs
+.. autoclass:: sliver.pb.clientpb.client_pb2.Jobs
     :members:
 
-.. autoclass:: sliver.client_pb2.KillJobReq 
+.. autoclass:: sliver.pb.clientpb.client_pb2.KillJobReq 
     :members:
 
-.. autoclass:: sliver.client_pb2.KillJob 
+.. autoclass:: sliver.pb.clientpb.client_pb2.KillJob 
     :members:
 
-.. autoclass:: sliver.client_pb2.MTLSListenerReq 
+.. autoclass:: sliver.pb.clientpb.client_pb2.MTLSListenerReq 
     :members:
 
-.. autoclass:: sliver.client_pb2.MTLSListener
+.. autoclass:: sliver.pb.clientpb.client_pb2.MTLSListener
     :members:
 
-.. autoclass:: sliver.client_pb2.WGListenerReq 
+.. autoclass:: sliver.pb.clientpb.client_pb2.WGListenerReq 
     :members:
 
-.. autoclass:: sliver.client_pb2.WGListener
+.. autoclass:: sliver.pb.clientpb.client_pb2.WGListener
     :members:
 
-.. autoclass:: sliver.client_pb2.DNSListenerReq
+.. autoclass:: sliver.pb.clientpb.client_pb2.DNSListenerReq
     :members:
 
-.. autoclass:: sliver.client_pb2.DNSListener
+.. autoclass:: sliver.pb.clientpb.client_pb2.DNSListener
     :members:
 
-.. autoclass:: sliver.client_pb2.HTTPListenerReq
+.. autoclass:: sliver.pb.clientpb.client_pb2.HTTPListenerReq
     :members:
 
-.. autoclass:: sliver.client_pb2.HTTPListener
+.. autoclass:: sliver.pb.clientpb.client_pb2.HTTPListener
     :members:
 
-.. autoclass:: sliver.client_pb2.NamedPipesReq
+.. autoclass:: sliver.pb.clientpb.client_pb2.NamedPipesReq
     :members:
 
-.. autoclass:: sliver.client_pb2.NamedPipes
+.. autoclass:: sliver.pb.clientpb.client_pb2.NamedPipes
     :members:
 
-.. autoclass:: sliver.client_pb2.TCPPivotReq
+.. autoclass:: sliver.pb.clientpb.client_pb2.TCPPivotReq
     :members:
     
-.. autoclass:: sliver.client_pb2.TCPPivot
+.. autoclass:: sliver.pb.clientpb.client_pb2.TCPPivot
     :members:
 
-.. autoclass:: sliver.client_pb2.Sessions
+.. autoclass:: sliver.pb.clientpb.client_pb2.Sessions
     :members:
 
-.. autoclass:: sliver.client_pb2.UpdateSession
+.. autoclass:: sliver.pb.clientpb.client_pb2.UpdateSession
     :members:
 
-.. autoclass:: sliver.client_pb2.GenerateReq
+.. autoclass:: sliver.pb.clientpb.client_pb2.GenerateReq
     :members:
 
-.. autoclass:: sliver.client_pb2.Generate
+.. autoclass:: sliver.pb.clientpb.client_pb2.Generate
     :members:
 
-.. autoclass:: sliver.client_pb2.MSFReq
+.. autoclass:: sliver.pb.clientpb.client_pb2.MSFReq
     :members:
 
-.. autoclass:: sliver.client_pb2.MSFRemoteReq
+.. autoclass:: sliver.pb.clientpb.client_pb2.MSFRemoteReq
     :members:
 
-.. autoclass:: sliver.client_pb2.StagerListenerReq
+.. autoclass:: sliver.pb.clientpb.client_pb2.StagerListenerReq
     :members:
 
-.. autoclass:: sliver.client_pb2.StagerListener
+.. autoclass:: sliver.pb.clientpb.client_pb2.StagerListener
     :members:
 
-.. autoclass:: sliver.client_pb2.ShellcodeRDIReq
+.. autoclass:: sliver.pb.clientpb.client_pb2.ShellcodeRDIReq
     :members:
 
-.. autoclass:: sliver.client_pb2.ShellcodeRDI
+.. autoclass:: sliver.pb.clientpb.client_pb2.ShellcodeRDI
     :members:
 
-.. autoclass:: sliver.client_pb2.MsfStagerReq
+.. autoclass:: sliver.pb.clientpb.client_pb2.MsfStagerReq
     :members:
     
-.. autoclass:: sliver.client_pb2.MsfStager
+.. autoclass:: sliver.pb.clientpb.client_pb2.MsfStager
     :members:
 
-.. autoclass:: sliver.client_pb2.GetSystemReq
+.. autoclass:: sliver.pb.clientpb.client_pb2.GetSystemReq
     :members:
 
-.. autoclass:: sliver.client_pb2.MigrateReq
+.. autoclass:: sliver.pb.clientpb.client_pb2.MigrateReq
     :members:
 
-.. autoclass:: sliver.client_pb2.CreateTunnelReq
+.. autoclass:: sliver.pb.clientpb.client_pb2.CreateTunnelReq
     :members:
 
-.. autoclass:: sliver.client_pb2.CreateTunnel
+.. autoclass:: sliver.pb.clientpb.client_pb2.CreateTunnel
     :members:
 
-.. autoclass:: sliver.client_pb2.CloseTunnelReq
+.. autoclass:: sliver.pb.clientpb.client_pb2.CloseTunnelReq
     :members:
 
-.. autoclass:: sliver.client_pb2.Client
+.. autoclass:: sliver.pb.clientpb.client_pb2.Client
     :members:
 
-.. autoclass:: sliver.client_pb2.Event
+.. autoclass:: sliver.pb.clientpb.client_pb2.Event
     :members:
 
-.. autoclass:: sliver.client_pb2.Operators
+.. autoclass:: sliver.pb.clientpb.client_pb2.Operators
     :members:
 
-.. autoclass:: sliver.client_pb2.Operator
+.. autoclass:: sliver.pb.clientpb.client_pb2.Operator
     :members:
 
-.. autoclass:: sliver.client_pb2.WebContent
+.. autoclass:: sliver.pb.clientpb.client_pb2.WebContent
     :members:
 
-.. autoclass:: sliver.client_pb2.WebsiteAddContent
+.. autoclass:: sliver.pb.clientpb.client_pb2.WebsiteAddContent
     :members:
 
-.. autoclass:: sliver.client_pb2.WebsiteRemoveContent
+.. autoclass:: sliver.pb.clientpb.client_pb2.WebsiteRemoveContent
     :members:
 
-.. autoclass:: sliver.client_pb2.Website
+.. autoclass:: sliver.pb.clientpb.client_pb2.Website
     :members:
 
-.. autoclass:: sliver.client_pb2.Websites
+.. autoclass:: sliver.pb.clientpb.client_pb2.Websites
     :members:
 
-.. autoclass:: sliver.client_pb2.WGClientConfig
+.. autoclass:: sliver.pb.clientpb.client_pb2.WGClientConfig
     :members:
 
