@@ -479,7 +479,7 @@ class SliverClient(BaseClient):
         http.Key = key
         http.ACME = acme
         http.Persistent = persistent
-        return await self._stub.StartHTTPListener(http, timeout=timeout)
+        return await self._stub.StartHTTPSListener(http, timeout=timeout)
 
     async def start_http_listener(
         self,
