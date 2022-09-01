@@ -44,6 +44,10 @@ fmt = [
 ]
 genproto = ["./protobuf.sh"]
 
+[tool.hatch.envs.docs]
+template = "dev"
+extra-dependencies = ["sphinx~=5.1", "sphinx-rtd-theme~=1.0.0"]
+
 [tool.hatch.version]
 path = "src/sliver/__init__.py"
 

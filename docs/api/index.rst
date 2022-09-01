@@ -2,7 +2,10 @@ API
 ===
 
 .. toctree::
-    :maxdepth: 2
-  
-    client
-    config
+    :maxdepth: 3
+    
+    beacons
+    clients
+    commands
+    configuration
+    sessions

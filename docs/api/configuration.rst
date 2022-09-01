@@ -3,8 +3,6 @@ Configuration
 
 
 .. autoclass:: sliver.config.SliverClientConfig
-    :special-members: __init__,
+    :no-special-members:
     :members:
     :undoc-members:
-    :show-inheritance:
-    :inherited-members:
