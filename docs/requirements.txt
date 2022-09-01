@@ -1,0 +1,4 @@
+grpcio-tools~=1.47
+grpcio~=1.47
+sphinx-rtd-theme~=1.0.0
+sphinx~=5.1
