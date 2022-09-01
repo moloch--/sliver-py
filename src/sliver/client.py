@@ -727,7 +727,7 @@ class SliverClient(BaseClient):
         badchars=[],
         timeout=TIMEOUT,
     ) -> client_pb2.MsfStager:
-        """Create a Metasploit (if available on the server) stager
+        """Create a Metasploit stager (if available on the server)
 
         :param arch: CPU architecture
         :type arch: str
@@ -739,7 +739,7 @@ class SliverClient(BaseClient):
         :type port: int
         :param os: Operating System (MSF)
         :type os: str
-        :param protocol: Starger protocol (Protobuf StageProtocol object)
+        :param protocol: Stager protocol (Protobuf StageProtocol object)
         :type protocol: client_pb2.StageProtocol
         :param badchars: Bad characters, defaults to []
         :type badchars: list, optional
