@@ -27,12 +27,21 @@ TIMEOUT = 60
 
 
 class BaseSession(object):
+    """Base class for Session objects.
+
+    :param session: Session protobuf.
+    :type session: client_pb2.Session
+    :param channel: A gRPC channel.
+    :type channel: grpc.Channel
+    :param timeout: Timeout in seconds
+    :type timeout: int, optional
+    """
+
     def __init__(
         self,
         session: client_pb2.Session,
         channel: grpc.Channel,
         timeout: int = TIMEOUT,
-        logger: Union[logging.Handler, None] = None,
     ):
         self._channel = channel
         self._session = session
@@ -54,92 +63,108 @@ class BaseSession(object):
 
     @property
     def session_id(self) -> int:
+        """Session ID"""
         return self._session.ID
 
     @property
     def name(self) -> str:
+        """Session name"""
         return self._session.Name
 
     @property
     def hostname(self) -> int:
+        """Hostname"""
         return self._session.Hostname
 
     @property
     def uuid(self) -> str:
+        """Session UUID"""
         return self._session.UUID
 
     @property
     def username(self) -> str:
+        """Username"""
         return self._session.Username
 
     @property
     def uid(self) -> str:
+        """User ID"""
         return self._session.UID
 
     @property
     def gid(self) -> str:
+        """Group ID"""
         return self._session.GID
 
     @property
     def os(self) -> str:
+        """Operating system"""
         return self._session.OS
 
     @property
     def arch(self) -> str:
+        """Architecture"""
         return self._session.Arch
 
     @property
     def transport(self) -> str:
+        """Transport Method"""
         return self._session.Transport
 
     @property
     def remote_address(self) -> str:
+        """Remote address"""
         return self._session.RemoteAddress
 
     @property
     def pid(self) -> int:
+        """Process ID"""
         return self._session.PID
 
     @property
     def filename(self) -> str:
+        """Implant filename"""
         return self._session.Filename
 
     @property
     def last_checkin(self) -> str:
+        """Last check in"""
         return self._session.LastCheckin
 
     @property
     def active_c2(self) -> str:
+        """Active C2"""
         return self._session.ActiveC2
 
     @property
     def version(self) -> str:
+        """Version"""
         return self._session.Version
 
     @property
     def is_dead(self) -> bool:
+        """Is dead"""
         return self._session.IsDead
 
     @property
     def reconnect_interval(self) -> int:
+        """Reconnect interval"""
         return self._session.ReconnectInterval
 
     @property
     def proxy_url(self) -> str:
+        """Proxy URL"""
+
         return self._session.ProxyURL
 
 
 class InteractiveSession(BaseSession, BaseInteractiveCommands):
-
-    """
-    Session-only commands, session/beacon commands are defined in the
-    BaseAsyncInteractiveCommands class.
-    """
+    """Session only commands"""
 
     async def pivot_listeners(self) -> List[sliver_pb2.PivotListener]:
         """List C2 pivots
 
-        :return: [description]
+        :return: Protobuf PivotListener list
         :rtype: List[sliver_pb2.PivotListener]
         """
         pivots = await self._stub.ListPivots(
