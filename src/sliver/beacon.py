@@ -17,7 +17,7 @@
 import asyncio
 import functools
 import logging
-from typing import Union
+from typing import Any, Dict, Tuple, Union
 
 import grpc
 
@@ -29,23 +29,113 @@ TIMEOUT = 60
 
 
 class BaseBeacon(object):
-
-    _beacon: client_pb2.Beacon
-    beacon_tasks = {}
-
     def __init__(
         self,
         beacon: client_pb2.Beacon,
         channel: grpc.Channel,
         timeout: int = TIMEOUT,
-        logger: Union[logging.Handler, None] = None,
     ):
+        """Base class for Beacon classes.
+
+        :param beacon: Beacon protobuf object.
+        :type beacon: client_pb2.Beacon
+        :param channel: A gRPC channel.
+        :type channel: grpc.Channel
+        :param timeout: Seconds to wait for timeout, defaults to TIMEOUT
+        :type timeout: int, optional
+        """
         self._log = logging.getLogger(self.__class__.__name__)
-        self._channel = channel
-        self._beacon = beacon
+        self._channel: grpc.Channel = channel
+        self._beacon: client_pb2.Beacon = beacon
         self._stub = SliverRPCStub(channel)
         self.timeout = timeout
+        self.beacon_tasks: Dict[str, Tuple[asyncio.Future, Any]] = {}
         asyncio.get_event_loop().create_task(self.taskresult_events())
+
+    @property
+    def beacon_id(self) -> int:
+        """Beacon ID"""
+        return self._beacon.ID
+
+    @property
+    def name(self) -> str:
+        """Beacon name"""
+        return self._beacon.Name
+
+    @property
+    def hostname(self) -> int:
+        """Beacon hostname"""
+        return self._beacon.Hostname
+
+    @property
+    def uuid(self) -> str:
+        """Beacon UUID"""
+        return self._beacon.UUID
+
+    @property
+    def username(self) -> str:
+        """Username"""
+        return self._beacon.Username
+
+    @property
+    def uid(self) -> str:
+        """User ID"""
+        return self._beacon.UID
+
+    @property
+    def gid(self) -> str:
+        """Group ID"""
+        return self._beacon.GID
+
+    @property
+    def os(self) -> str:
+        """Operating system"""
+        return self._beacon.OS
+
+    @property
+    def arch(self) -> str:
+        """Architecture"""
+        return self._beacon.Arch
+
+    @property
+    def transport(self) -> str:
+        """Transport Method"""
+        return self._beacon.Transport
+
+    @property
+    def remote_address(self) -> str:
+        """Remote address"""
+        return self._beacon.RemoteAddress
+
+    @property
+    def pid(self) -> int:
+        """Process ID"""
+        return self._beacon.PID
+
+    @property
+    def filename(self) -> str:
+        """Beacon filename"""
+        return self._beacon.Filename
+
+    @property
+    def last_checkin(self) -> str:
+        """Last check in time"""
+        return self._beacon.LastCheckin
+
+    @property
+    def active_c2(self) -> str:
+        """Active C2"""
+        return self._beacon.ActiveC2
+
+    @property
+    def version(self) -> str:
+        """Version"""
+        return self._beacon.Version
+
+    @property
+    def reconnect_interval(self) -> int:
+        """Reconnect interval"""
+        return self._beacon.ReconnectInterval
 
     def _request(self, pb):
         """
@@ -87,74 +177,6 @@ class BaseBeacon(object):
                 task_future.set_result(result)
             except Exception as err:
                 self._log.exception(err)
-
-    @property
-    def beacon_id(self) -> int:
-        return self._beacon.ID
-
-    @property
-    def name(self) -> str:
-        return self._beacon.Name
-
-    @property
-    def hostname(self) -> int:
-        return self._beacon.Hostname
-
-    @property
-    def uuid(self) -> str:
-        return self._beacon.UUID
-
-    @property
-    def username(self) -> str:
-        return self._beacon.Username
-
-    @property
-    def uid(self) -> str:
-        return self._beacon.UID
-
-    @property
-    def gid(self) -> str:
-        return self._beacon.GID
-
-    @property
-    def os(self) -> str:
-        return self._beacon.OS
-
-    @property
-    def arch(self) -> str:
-        return self._beacon.Arch
-
-    @property
-    def transport(self) -> str:
-        return self._beacon.Transport
-
-    @property
-    def remote_address(self) -> str:
-        return self._beacon.RemoteAddress
-
-    @property
-    def pid(self) -> int:
-        return self._beacon.PID
-
-    @property
-    def filename(self) -> str:
-        return self._beacon.Filename
-
-    @property
-    def last_checkin(self) -> str:
-        return self._beacon.LastCheckin
-
-    @property
-    def active_c2(self) -> str:
-        return self._beacon.ActiveC2
-
-    @property
-    def version(self) -> str:
-        return self._beacon.Version
-
-    @property
-    def reconnect_interval(self) -> int:
-        return self._beacon.ReconnectInterval
 
 
 def beacon_taskresult(pb_object):

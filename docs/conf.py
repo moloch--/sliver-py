@@ -39,7 +39,6 @@ extensions = [
 
 autodoc_default_options = {
     "members": True,
-    "member-order": "bysource",
     "special-members": False,
     "undoc-members": True,
     "exclude-members": "__weakref__, DESCRIPTOR",
