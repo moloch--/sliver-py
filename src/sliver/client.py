@@ -429,7 +429,7 @@ class SliverClient(BaseClient):
         dns = client_pb2.DNSListenerReq()
 
         # Ensure domains always have a trailing dot
-        domains = list(map(lambda d: d + "." if not d[-1] != "." else d, domains))
+        domains = list(map(lambda d: d + "." if d[-1] != "." else d, domains))
         dns.Domains.extend(domains)
         dns.Canaries = canaries
         dns.Host = host
