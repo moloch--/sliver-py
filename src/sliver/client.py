@@ -400,11 +400,6 @@ class SliverClient(BaseClient):
         wg.Persistent = persistent
         return await self._stub.StartWGListener(wg, timeout=timeout)
 
-    def always_dot_domains(self, domain: str):
-        if domain[-1] != '.':
-            domain = domain + '.'
-        return domain
-
     async def start_dns_listener(
         self,
         domains: List[str],
@@ -432,7 +427,9 @@ class SliverClient(BaseClient):
         :rtype: client_pb2.DNSListener
         """
         dns = client_pb2.DNSListenerReq()
-        domains = list(map(self.always_dot_domains, domains))
+
+        # Ensure domains always have a trailing dot
+        domains = list(map(lambda d: d + "." if not d[-1] != "." else d, domains))
         dns.Domains.extend(domains)
         dns.Canaries = canaries
         dns.Host = host
