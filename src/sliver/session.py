@@ -40,7 +40,7 @@ class BaseSession(object):
     def __init__(
         self,
         session: client_pb2.Session,
-        channel: grpc.Channel,
+        channel: grpc.aio.Channel,
         timeout: int = TIMEOUT,
     ):
         self._channel = channel
@@ -62,7 +62,7 @@ class BaseSession(object):
         return pb
 
     @property
-    def session_id(self) -> int:
+    def session_id(self) -> str:
         """Session ID"""
         return self._session.ID
 
@@ -72,7 +72,7 @@ class BaseSession(object):
         return self._session.Name
 
     @property
-    def hostname(self) -> int:
+    def hostname(self) -> str:
         """Hostname"""
         return self._session.Hostname
 
@@ -127,7 +127,7 @@ class BaseSession(object):
         return self._session.Filename
 
     @property
-    def last_checkin(self) -> str:
+    def last_checkin(self) -> int:
         """Last check in"""
         return self._session.LastCheckin
 

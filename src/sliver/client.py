@@ -16,9 +16,12 @@
 
 
 import logging
-from typing import Dict, Generator, List, Union
+from telnetlib import SE
+from typing import AsyncGenerator, Dict, Iterable, List, Optional, Union
 
 import grpc
+
+from sliver.pb.commonpb.common_pb2 import Request
 
 from .beacon import InteractiveBeacon
 from .config import SliverClientConfig
@@ -42,8 +45,8 @@ class BaseClient(object):
 
     def __init__(self, config: SliverClientConfig):
         self.config = config
-        self._channel: grpc.Channel = None
-        self._stub: SliverRPCStub = None
+        self._channel: grpc.aio.Channel
+        self._stub: SliverRPCStub
         self._log = logging.getLogger(self.__class__.__name__)
 
     def is_connected(self) -> bool:
@@ -104,54 +107,53 @@ class SliverClient(BaseClient):
 
     async def interact_session(
         self, session_id: str, timeout=TIMEOUT
-    ) -> Union[InteractiveSession, None]:
-        """Interact with a session, returns an :class:`AsyncInteractiveSession`
+    ) -> Optional[InteractiveSession]:
+        """Interact with a session, returns an :class:`InteractiveSession`
 
         :param session_id: Session ID
         :type session_id: str
         :param timeout: gRPC timeout, defaults to 60 seconds
         :return: An interactive session
-        :rtype: Union[AsyncInteractiveSession, None]
+        :rtype: Optional[InteractiveSession]
         """
         session = await self.session_by_id(session_id, timeout)
-        if session is not None:
+        if session:
             return InteractiveSession(session, self._channel, timeout)
 
     async def interact_beacon(
         self, beacon_id: str, timeout=TIMEOUT
-    ) -> Union[InteractiveBeacon, None]:
-        """Interact with a beacon, returns an :class:`AsyncInteractiveBeacon`
+    ) -> Optional[InteractiveBeacon]:
+        """Interact with a beacon, returns an :class:`InteractiveBeacon`
 
         :param beacon_id: Beacon ID
         :type beacon_id: str
         :param timeout: gRPC timeout, defaults to 60 seconds
         :return: An interactive beacon
-        :rtype: Union[AsyncInteractiveBeacon, None]
+        :rtype: Optional[AsyncInteractiveBeacon]
         """
         beacon = await self.beacon_by_id(beacon_id, timeout)
-        if beacon is not None:
+        if beacon:
             return InteractiveBeacon(beacon, self._channel, timeout)
 
     async def session_by_id(
         self, session_id: str, timeout=TIMEOUT
-    ) -> Union[client_pb2.Session, None]:
+    ) -> Optional[client_pb2.Session]:
         """Get the session information from a session ID
 
         :param session_id: Session ID
         :type session_id: str
         :param timeout: gRPC timeout, defaults to 60 seconds
         :return: Protobuf Session object
-        :rtype: Union[client_pb2.Session, None]
+        :rtype: Optional[client_pb2.Session]
         """
         sessions = await self.sessions(timeout)
         for session in sessions:
             if session.ID == session_id:
                 return session
-        return None
 
     async def beacon_by_id(
         self, beacon_id: str, timeout=TIMEOUT
-    ) -> Union[client_pb2.Beacon, None]:
+    ) -> Optional[client_pb2.Beacon]:
         """Get the beacon information from a beacon ID
 
         :param beacon_id: Beacon ID
@@ -164,9 +166,8 @@ class SliverClient(BaseClient):
         for beacon in beacons:
             if beacon.ID == beacon_id:
                 return beacon
-        return None
 
-    async def events(self) -> Generator[client_pb2.Event, None, None]:
+    async def events(self) -> AsyncGenerator[client_pb2.Event, None]:
         """All events
 
         :yield: A stream of events
@@ -177,7 +178,7 @@ class SliverClient(BaseClient):
 
     async def on(
         self, event_types: Union[str, List[str]]
-    ) -> Generator[client_pb2.Event, None, None]:
+    ) -> AsyncGenerator[client_pb2.Event, None]:
         """Iterate on a specific event or list of events
 
         :param event_types: An event type or list of event types
@@ -225,10 +226,8 @@ class SliverClient(BaseClient):
         )
         return list(sessions.Sessions)
 
-    async def update_session(
-        self, session_id: str, name: str, timeout=TIMEOUT
-    ) -> client_pb2.Session:
-        """Update a session attribute (such as name)
+    async def rename_session(self, session_id: str, name: str, timeout=TIMEOUT) -> None:
+        """Rename a session
 
         :param session_id: Session ID to update
         :type session_id: str
@@ -239,10 +238,8 @@ class SliverClient(BaseClient):
         :return: Updated protobuf session object
         :rtype: client_pb2.Session
         """
-        update = client_pb2.UpdateSession()
-        update.SessionID = session_id
-        update.Name = name
-        return await self._stub.UpdateSession(update, timeout=timeout)
+        rename_req = client_pb2.RenameReq(SessionID=session_id, Name=name)
+        await self._stub.Rename(rename_req, timeout=timeout)
 
     async def kill_session(self, session_id: str, force=False, timeout=TIMEOUT) -> None:
         """Kill a session
@@ -254,11 +251,9 @@ class SliverClient(BaseClient):
         :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         """
-        kill = sliver_pb2.KillSessionReq()
-        kill.Request.SessionID = session_id
-        kill.Request.Timeout = timeout - 1
-        kill.Force = force
-        await self._stub.KillSession(kill, timeout=timeout)
+        request = Request(SessionID=session_id, Timeout=timeout)
+        kill_req = sliver_pb2.KillReq(Force=force, Request=request)
+        await self._stub.Kill(kill_req, timeout=timeout)
 
     async def beacons(self, timeout=TIMEOUT) -> List[client_pb2.Beacon]:
         """Get a list of active beacons
@@ -271,7 +266,7 @@ class SliverClient(BaseClient):
         )
         return list(beacons.Beacons)
 
-    async def rm_beacon(self, beacon_id: int, timeout=TIMEOUT) -> None:
+    async def rm_beacon(self, beacon_id: str, timeout=TIMEOUT) -> None:
         """Remove a beacon
 
         :param beacon_id: Numeric beacon ID to remove
@@ -279,8 +274,7 @@ class SliverClient(BaseClient):
         :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         """
-        beacon_rm = client_pb2.Beacon()
-        beacon_rm.ID = beacon_id
+        beacon_rm = client_pb2.Beacon(ID=beacon_id)
         await self._stub.RmBeacon(beacon_rm, timeout=timeout)
 
     async def beacon_tasks(
@@ -295,8 +289,7 @@ class SliverClient(BaseClient):
         :return: List of protobuf Task objects
         :rtype: List[client_pb2.Task]
         """
-        beacon = client_pb2.Beacon()
-        beacon.ID = beacon_id
+        beacon = client_pb2.Beacon(ID=beacon_id)
         tasks = await self._stub.GetBeaconTasks(beacon, timeout=timeout)
         return list(tasks.Tasks)
 
@@ -312,8 +305,7 @@ class SliverClient(BaseClient):
         :return: List of protobuf Task objects
         :rtype: List[client_pb2.Task]
         """
-        beacon = client_pb2.Beacon()
-        beacon.ID = task_id
+        beacon = client_pb2.Beacon(ID=task_id)
         task = await self._stub.GetBeaconTaskContent(beacon, timeout=timeout)
         return task
 
@@ -328,7 +320,7 @@ class SliverClient(BaseClient):
         jobs: client_pb2.Jobs = await self._stub.GetJobs(
             common_pb2.Empty(), timeout=timeout
         )
-        return list(jobs.Jobs)
+        return list(jobs.Active)
 
     async def kill_job(self, job_id: int, timeout=TIMEOUT) -> client_pb2.KillJob:
         """Kill a job
@@ -340,12 +332,15 @@ class SliverClient(BaseClient):
         :return: Protobuf KillJob object
         :rtype: client_pb2.KillJob
         """
-        kill = client_pb2.KillJobReq()
-        kill.ID = job_id
-        return await self._stub.KillJob(kill, timeout=timeout)
+        kill_req = client_pb2.KillJobReq(ID=job_id)
+        return await self._stub.KillJob(kill_req, timeout=timeout)
 
     async def start_mtls_listener(
-        self, host: str, port: int, persistent=False, timeout=TIMEOUT
+        self,
+        host: str = "0.0.0.0",
+        port: int = 8888,
+        persistent: bool = False,
+        timeout=TIMEOUT,
     ) -> client_pb2.MTLSListener:
         """Start a mutual TLS (mTLS) C2 listener
 
@@ -360,27 +355,26 @@ class SliverClient(BaseClient):
         :return: Protobuf MTLSListener object
         :rtype: client_pb2.MTLSListener
         """
-        mtls = client_pb2.MTLSListenerReq()
-        mtls.Host = host
-        mtls.Port = port
-        mtls.Persistent = persistent
-        return await self._stub.StartMTLSListener(mtls, timeout=timeout)
+        mtls_req = client_pb2.MTLSListenerReq(
+            Host=host, Port=port, Persistent=persistent
+        )
+        return await self._stub.StartMTLSListener(mtls_req, timeout=timeout)
 
     async def start_wg_listener(
         self,
-        port: int,
         tun_ip: str,
+        port: int = 53,
         n_port: int = 8888,
         key_port: int = 1337,
-        persistent=False,
-        timeout=TIMEOUT,
+        persistent: bool = False,
+        timeout: int = TIMEOUT,
     ) -> client_pb2.WGListener:
         """Start a WireGuard (wg) C2 listener
 
-        :param port: UDP port to start listener on
-        :type port: int
         :param tun_ip: Virtual TUN IP listen address
         :type tun_ip: str
+        :param port: UDP port to start listener on
+        :type port: int
         :param n_port: Virtual TUN port number
         :type n_port: int
         :param key_port: Virtual TUN port number for key exchanges
@@ -392,22 +386,24 @@ class SliverClient(BaseClient):
         :return: Protobuf WGListener object
         :rtype: client_pb2.WGListener
         """
-        wg = client_pb2.WGListenerReq()
-        wg.Port = port
-        wg.TunIP = tun_ip
-        wg.NPort = n_port
-        wg.KeyPort = key_port
-        wg.Persistent = persistent
-        return await self._stub.StartWGListener(wg, timeout=timeout)
+        wg_req = client_pb2.WGListenerReq(
+            TunIP=tun_ip,
+            Port=port,
+            NPort=n_port,
+            KeyPort=key_port,
+            Persistent=persistent,
+        )
+        return await self._stub.StartWGListener(wg_req, timeout=timeout)
 
     async def start_dns_listener(
         self,
         domains: List[str],
-        canaries: bool,
-        host: str,
-        port: int,
-        persistent=False,
-        timeout=TIMEOUT,
+        host: str = "0.0.0.0",
+        port: int = 53,
+        canaries: bool = True,
+        persistent: bool = False,
+        enforce_otp=True,
+        timeout: int = TIMEOUT,
     ) -> client_pb2.DNSListener:
         """Start a DNS C2 listener
 
@@ -421,33 +417,78 @@ class SliverClient(BaseClient):
         :type port: int
         :param persistent: Register the listener as a persistent job (automatically start with server), defaults to False
         :type persistent: bool, optional
+        :param enforce_otp: Enforce OTP auth for DNS C2, defaults to True
+        :type enforce_otp: bool, optional
         :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         :return: Protobuf DNSListener object
         :rtype: client_pb2.DNSListener
         """
-        dns = client_pb2.DNSListenerReq()
-
         # Ensure domains always have a trailing dot
         domains = list(map(lambda d: d + "." if d[-1] != "." else d, domains))
-        dns.Domains.extend(domains)
-        dns.Canaries = canaries
-        dns.Host = host
-        dns.Port = port
-        dns.Persistent = persistent
-        return await self._stub.StartDNSListener(dns, timeout=timeout)
+
+        dns_req = client_pb2.DNSListenerReq(
+            Domains=domains,
+            Canaries=canaries,
+            Host=host,
+            Port=port,
+            Persistent=persistent,
+            EnforceOTP=enforce_otp,
+        )
+        return await self._stub.StartDNSListener(dns_req, timeout=timeout)
+
+    async def start_http_listener(
+        self,
+        host: str = "0.0.0.0",
+        port: int = 80,
+        website: str = "",
+        domain: str = "",
+        persistent: bool = False,
+        timeout: int = TIMEOUT,
+    ) -> client_pb2.HTTPListener:
+        """Start an HTTP C2 listener
+
+
+        :param host: Host interface to bind the listener to, an empty string will bind to all interfaces
+        :type host: str
+        :param port: TCP port number to start listener on
+        :type port: int
+        :param website: Name of the "website" to host on listener
+        :type website: str
+        :param domain: Domain name for HTTP server (one domain per listener)
+        :type domain: str
+        :param persistent: Register the listener as a persistent job (automatically start with server), defaults to False
+        :type persistent: bool, optional
+        :param timeout: gRPC timeout, defaults to 60 seconds
+        :type timeout: int, optional
+        :return: Protobuf HTTPListener object (NOTE: HTTP/HTTPS both return HTTPListener objects)
+        :rtype: client_pb2.HTTPListener
+        """
+        http_req = client_pb2.HTTPListenerReq(
+            Domain=domain,
+            Host=host,
+            Port=port,
+            Secure=False,
+            Website=website,
+            Persistent=persistent,
+        )
+        return await self._stub.StartHTTPListener(http_req, timeout=timeout)
 
     async def start_https_listener(
         self,
-        domain: str,
-        host: str,
-        port: int,
-        website: str,
-        cert: bytes,
-        key: bytes,
-        acme: bool,
-        persistent=False,
-        timeout=TIMEOUT,
+        host: str = "0.0.0.0",
+        port: int = 80,
+        website: str = "",
+        domain: str = "",
+        cert: bytes = b"",
+        key: bytes = b"",
+        acme: bool = False,
+        persistent: bool = False,
+        enforce_otp: bool = True,
+        randomize_jarm: bool = True,
+        long_poll_timeout: int = 1,
+        long_poll_jitter: int = 2,
+        timeout: int = TIMEOUT,
     ) -> client_pb2.HTTPListener:
         """Start an HTTPS C2 listener
 
@@ -467,59 +508,35 @@ class SliverClient(BaseClient):
         :type acme: bool
         :param persistent: Register the listener as a persistent job (automatically start with server), defaults to False
         :type persistent: bool, optional
+        :param enforce_otp: Enforce OTP auth for HTTPS C2, defaults to True
+        :type enforce_otp: bool, optional
+        :param randomize_jarm: Randomize JARM fingerprint for HTTPS C2, defaults to True
+        :type randomize_jarm: bool, optional
+        :param long_poll_timeout: Long poll timeout for HTTPS C2, defaults to 1
+        :type long_poll_timeout: int, optional
+        :param long_poll_jitter: Long poll jitter for HTTPS C2, defaults to 2
+        :type long_poll_jitter: int, optional
         :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         :return: Protobuf HTTPListener object (NOTE: HTTP/HTTPS both return HTTPListener objects)
         :rtype: client_pb2.HTTPListener
         """
-        http = client_pb2.HTTPListenerReq()
-        http.Domain = domain
-        http.Host = host
-        http.Port = port
-        http.Secure = True
-        http.Website = website
-        http.Cert = cert
-        http.Key = key
-        http.ACME = acme
-        http.Persistent = persistent
-        return await self._stub.StartHTTPSListener(http, timeout=timeout)
-
-    async def start_http_listener(
-        self,
-        domain: str,
-        host: str,
-        port: int,
-        secure: bool,
-        website: str,
-        persistent=False,
-        timeout=TIMEOUT,
-    ) -> client_pb2.HTTPListener:
-        """Start an HTTP C2 listener
-
-        :param domain: Domain name for HTTP server (one domain per listener)
-        :type domain: str
-        :param host: Host interface to bind the listener to, an empty string will bind to all interfaces
-        :type host: str
-        :param port: TCP port number to start listener on
-        :type port: int
-        :param website: Name of the "website" to host on listener
-        :type website: str
-        :param persistent: Register the listener as a persistent job (automatically start with server), defaults to False
-        :type persistent: bool, optional
-        :param timeout: gRPC timeout, defaults to 60 seconds
-        :type timeout: int, optional
-        :return: Protobuf HTTPListener object (NOTE: HTTP/HTTPS both return HTTPListener objects)
-        :rtype: client_pb2.HTTPListener
-        """
-        http = client_pb2.HTTPListenerReq()
-        http.Domain = domain
-        http.Host = host
-        http.Port = port
-        http.Secure = False
-        http.Website = website
-        http.ACME = False
-        http.Persistent = persistent
-        return await self._stub.StartHTTPListener(http, timeout=timeout)
+        https_req = client_pb2.HTTPListenerReq(
+            Domain=domain,
+            Host=host,
+            Port=port,
+            Secure=True,
+            Website=website,
+            Cert=cert,
+            Key=key,
+            ACME=acme,
+            Persistent=persistent,
+            EnforceOTP=enforce_otp,
+            LongPollTimeout=long_poll_timeout,
+            LongPollJitter=long_poll_jitter,
+            RandomizeJARM=randomize_jarm,
+        )
+        return await self._stub.StartHTTPSListener(https_req, timeout=timeout)
 
     async def start_tcp_stager_listener(
         self, host: str, port: int, data: bytes, timeout=TIMEOUT
@@ -537,14 +554,40 @@ class SliverClient(BaseClient):
         :return: Protobuf StagerListener object
         :rtype: client_pb2.StagerListener
         """
-        stage = client_pb2.StagerListenerReq()
-        stage.Protocol = client_pb2.TCP
-        stage.Host = host
-        stage.Port = port
-        stage.Data = data
-        return await self._stub.StartTCPStagerListener(stage, timeout=timeout)
+        stage_req = client_pb2.StagerListenerReq(
+            Protocol=client_pb2.TCP,
+            Host=host,
+            Port=port,
+            Data=data,
+        )
+        return await self._stub.StartTCPStagerListener(stage_req, timeout=timeout)
 
     async def start_http_stager_listener(
+        self,
+        host: str,
+        port: int,
+        data: bytes,
+        timeout: int = TIMEOUT,
+    ) -> client_pb2.StagerListener:
+        """Start an HTTP stager listener
+
+        :param host: Host interface to bind the listener to, an empty string will bind to all interfaces
+        :type host: str
+        :param port: TCP port number to start listener on
+        :type port: int
+        :param data: Binary data of stage to host on listener
+        :type data: bytes
+        :param timeout: gRPC timeout, defaults to 60 seconds
+        :type timeout: int, optional
+        :return: Protobuf StagerListener object
+        :rtype: client_pb2.StagerListener
+        """
+        stage_req = client_pb2.StagerListenerReq(
+            Protocol=client_pb2.HTTP, Host=host, Port=port, Data=data
+        )
+        return await self._stub.StartHTTPStagerListener(stage_req, timeout=timeout)
+
+    async def start_https_stager_listener(
         self,
         host: str,
         port: int,
@@ -552,9 +595,9 @@ class SliverClient(BaseClient):
         cert: bytes,
         key: bytes,
         acme: bool,
-        timeout=TIMEOUT,
+        timeout: int = TIMEOUT,
     ) -> client_pb2.StagerListener:
-        """Start an HTTP(S) stager listener
+        """Start an HTTPS stager listener
 
         :param host: Host interface to bind the listener to, an empty string will bind to all interfaces
         :type host: str
@@ -573,18 +616,16 @@ class SliverClient(BaseClient):
         :return: Protobuf StagerListener object
         :rtype: client_pb2.StagerListener
         """
-        stage = client_pb2.StagerListenerReq()
-        if key or acme:
-            stage.Protocol = client_pb2.HTTPS
-        else:
-            stage.Protocol = client_pb2.HTTP
-        stage.Host = host
-        stage.Port = port
-        stage.Data = data
-        stage.Cert = cert
-        stage.Key = key
-        stage.ACME = acme
-        return await self._stub.StartHTTPStagerListener(stage, timeout=timeout)
+        stage_req = client_pb2.StagerListenerReq(
+            Protocol=client_pb2.HTTPS,
+            Host=host,
+            Port=port,
+            Data=data,
+            Cert=cert,
+            Key=key,
+            ACME=acme,
+        )
+        return await self._stub.StartHTTPStagerListener(stage_req, timeout=timeout)
 
     async def generate(
         self, config: client_pb2.ImplantConfig, timeout: int = 360
@@ -598,8 +639,7 @@ class SliverClient(BaseClient):
         :return: Protobuf Generate object containing the generated implant
         :rtype: client_pb2.Generate
         """
-        req = client_pb2.GenerateReq()
-        req.Config.CopyFrom(config)
+        req = client_pb2.GenerateReq(Config=config)
         return await self._stub.Generate(req, timeout=timeout)
 
     async def regenerate(
@@ -614,8 +654,7 @@ class SliverClient(BaseClient):
         :return: Protobuf Generate object
         :rtype: client_pb2.Generate
         """
-        regenerate = client_pb2.RegenerateReq()
-        regenerate.ImplantName = implant_name
+        regenerate = client_pb2.RegenerateReq(ImplantName=implant_name)
         return await self._stub.Regenerate(regenerate, timeout=timeout)
 
     async def implant_builds(
@@ -631,7 +670,7 @@ class SliverClient(BaseClient):
         builds: client_pb2.ImplantBuilds = await self._stub.ImplantBuilds(
             common_pb2.Empty(), timeout=timeout
         )
-        return builds.Configs
+        return dict(builds.Configs)
 
     async def delete_implant_build(self, implant_name: str, timeout=TIMEOUT) -> None:
         """Delete a historical implant build from the server by name
@@ -641,8 +680,7 @@ class SliverClient(BaseClient):
         :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         """
-        delete = client_pb2.DeleteReq()
-        delete.Name = implant_name
+        delete = client_pb2.DeleteReq(Name=implant_name)
         await self._stub.DeleteImplantBuild(delete, timeout=timeout)
 
     async def canaries(self, timeout=TIMEOUT) -> List[client_pb2.DNSCanary]:
@@ -726,9 +764,9 @@ class SliverClient(BaseClient):
         host: str,
         port: int,
         os: str,
-        protocol: client_pb2.StageProtocol,
-        badchars=[],
-        timeout=TIMEOUT,
+        protocol: client_pb2.StageProtocol.ValueType,
+        badchars: Optional[Iterable[str]],
+        timeout: int = TIMEOUT,
     ) -> client_pb2.MsfStager:
         """Create a Metasploit stager (if available on the server)
 
@@ -751,14 +789,15 @@ class SliverClient(BaseClient):
         :return: Protobuf MsfStager object
         :rtype: client_pb2.MsfStager
         """
-        stagerReq = client_pb2.MsfStagerReq()
-        stagerReq.Arch = arch
-        stagerReq.Format = format
-        stagerReq.Port = port
-        stagerReq.Host = host
-        stagerReq.OS = os
-        stagerReq.Protocol = protocol
-        stagerReq.BadChars = badchars
+        stagerReq = client_pb2.MsfStagerReq(
+            Arch=arch,
+            Format=format,
+            Host=host,
+            Port=port,
+            OS=os,
+            Protocol=protocol,
+            BadChars=badchars if badchars else [],
+        )
         return await self._stub.MsfStage(stagerReq, timeout=timeout)
 
     async def shellcode(
@@ -777,10 +816,9 @@ class SliverClient(BaseClient):
         :return: Protobuf ShellcodeRDI object
         :rtype: client_pb2.ShellcodeRDI
         """
-        shellReq = client_pb2.ShellcodeRDIReq()
-        shellReq.Data = data
-        shellReq.FunctionName = function_name
-        shellReq.Arguments = arguments
+        shellReq = client_pb2.ShellcodeRDIReq(
+            Data=data, FunctionName=function_name, Arguments=arguments
+        )
         return await self._stub.ShellcodeRDI(shellReq, timeout=timeout)
 
     async def websites(self, timeout=TIMEOUT) -> List[client_pb2.Website]:
@@ -794,7 +832,7 @@ class SliverClient(BaseClient):
         websites = await self._stub.Websites(common_pb2.Empty(), timeout=timeout)
         return list(websites.Websites)
 
-    async def website(
+    async def update_website(
         self, website: client_pb2.Website, timeout=TIMEOUT
     ) -> client_pb2.Website:
         """Update an entire website object on the server
@@ -808,7 +846,7 @@ class SliverClient(BaseClient):
         """
         return await self._stub.Websites(website, timeout=timeout)
 
-    async def website_remove(self, name: str, timeout=TIMEOUT) -> None:
+    async def remove_website(self, name: str, timeout=TIMEOUT) -> None:
         """Remove an entire website and its content
 
         :param name: The name of the website to remove
@@ -816,17 +854,16 @@ class SliverClient(BaseClient):
         :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         """
-        website = client_pb2.Website()
-        website.Name = name
+        website = client_pb2.Website(Name=name)
         await self._stub.Websites(website, timeout=timeout)
 
-    async def website_add_content(
+    async def add_website_content(
         self,
         name: str,
         web_path: str,
         content_type: str,
         content: bytes,
-        timeout=TIMEOUT,
+        timeout: int = TIMEOUT,
     ) -> client_pb2.Website:
         """Add content to a specific website
 
@@ -843,23 +880,22 @@ class SliverClient(BaseClient):
         :return: Protobuf Website object
         :rtype: client_pb2.Website
         """
-        web = client_pb2.WebContent()
-        web.Path = web_path
-        web.ContentType = content_type
-        web.Content = content
+        web = client_pb2.WebContent(
+            Path=web_path, ContentType=content_type, Content=content
+        )
         web.Size = len(content)
-        add = client_pb2.WebsiteAddContent()
-        add.Name = name
-        add.Content[web_path] = web
-        return await self._stub.WebsiteAddContent(add, timeout=timeout)
 
-    async def website_update_content(
+        web_add = client_pb2.WebsiteAddContent(Name=name)
+        web_add.Contents[web_path] = web
+        return await self._stub.WebsiteAddContent(web_add, timeout=timeout)
+
+    async def update_website_content(
         self,
         name: str,
         web_path: str,
         content_type: str,
         content: bytes,
-        timeout=TIMEOUT,
+        timeout: int = TIMEOUT,
     ) -> client_pb2.Website:
         """Update content on a specific website / web path
 
@@ -876,17 +912,16 @@ class SliverClient(BaseClient):
         :return: Protobuf Website object
         :rtype: client_pb2.Website
         """
-        web = client_pb2.WebContent()
-        web.Path = web_path
-        web.ContentType = content_type
-        web.Content = content
+        web = client_pb2.WebContent(
+            Path=web_path, ContentType=content_type, Content=content
+        )
         web.Size = len(content)
-        add = client_pb2.WebsiteAddContent()
-        add.Name = name
-        add.Content[web_path] = web
-        return await self._stub.WebsiteUpdateContent(add, timeout=timeout)
 
-    async def website_rm_content(
+        web_update = client_pb2.WebsiteAddContent(Name=name)
+        web_update.Contents[web_path] = web
+        return await self._stub.WebsiteUpdateContent(web_update, timeout=timeout)
+
+    async def remove_website_content(
         self, name: str, paths: List[str], timeout=TIMEOUT
     ) -> client_pb2.Website:
         """Remove content from a specific website
@@ -900,7 +935,5 @@ class SliverClient(BaseClient):
         :return: Protobuf Website object
         :rtype: client_pb2.Website
         """
-        web = client_pb2.WebsiteRemoveContent()
-        web.Name = name
-        web.Paths.extend(paths)
+        web = client_pb2.WebsiteRemoveContent(Name=name, Paths=paths)
         return await self._stub.WebsiteRemoveContent(web, timeout=timeout)

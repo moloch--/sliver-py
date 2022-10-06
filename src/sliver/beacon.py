@@ -32,7 +32,7 @@ class BaseBeacon(object):
     def __init__(
         self,
         beacon: client_pb2.Beacon,
-        channel: grpc.Channel,
+        channel: grpc.aio.Channel,
         timeout: int = TIMEOUT,
     ):
         """Base class for Beacon classes.
@@ -40,20 +40,20 @@ class BaseBeacon(object):
         :param beacon: Beacon protobuf object.
         :type beacon: client_pb2.Beacon
         :param channel: A gRPC channel.
-        :type channel: grpc.Channel
+        :type channel: grpc.aio.Channel
         :param timeout: Seconds to wait for timeout, defaults to TIMEOUT
         :type timeout: int, optional
         """
         self._log = logging.getLogger(self.__class__.__name__)
-        self._channel: grpc.Channel = channel
-        self._beacon: client_pb2.Beacon = beacon
+        self._channel = channel
+        self._beacon = beacon
         self._stub = SliverRPCStub(channel)
         self.timeout = timeout
         self.beacon_tasks: Dict[str, Tuple[asyncio.Future, Any]] = {}
         asyncio.get_event_loop().create_task(self.taskresult_events())
 
     @property
-    def beacon_id(self) -> int:
+    def beacon_id(self) -> str:
         """Beacon ID"""
         return self._beacon.ID
 
@@ -63,7 +63,7 @@ class BaseBeacon(object):
         return self._beacon.Name
 
     @property
-    def hostname(self) -> int:
+    def hostname(self) -> str:
         """Beacon hostname"""
         return self._beacon.Hostname
 
@@ -118,7 +118,7 @@ class BaseBeacon(object):
         return self._beacon.Filename
 
     @property
-    def last_checkin(self) -> str:
+    def last_checkin(self) -> int:
         """Last check in time"""
         return self._beacon.LastCheckin
 

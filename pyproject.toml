@@ -28,6 +28,7 @@ Homepage = "https://github.com/moloch--/sliver-py"
 dependencies = [
     "grpcio~=1.47",
     "grpcio-tools~=1.47",
+    "mypy-protobuf~=3.3.0",
 ]
 
 [tool.hatch.envs.dev]
