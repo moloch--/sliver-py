@@ -118,6 +118,11 @@ try:
             if file.name == "services_pb2_grpc.pyi":
                 content = content.replace("grpc.Channel", "grpc.aio.Channel")
 
+            if file.name == "sliver_pb2.pyi":
+                content = content.replace(
+                    "from common_pb2 import", "from ..commonpb.common_pb2 import"
+                )
+
             file.write_text(content)
             console.log(f"Rewrote imports for {file}")
 except Exception as e:

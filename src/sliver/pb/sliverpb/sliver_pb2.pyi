@@ -18,7 +18,7 @@ from builtins import (
 from collections.abc import (
     Iterable,
 )
-from common_pb2 import (
+from ..commonpb.common_pb2 import (
     EnvVar,
     Process,
     Request,

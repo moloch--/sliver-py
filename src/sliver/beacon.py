@@ -24,16 +24,15 @@ import grpc
 from .interactive import BaseInteractiveCommands
 from .pb.rpcpb.services_pb2_grpc import SliverRPCStub
 from .protobuf import client_pb2, common_pb2, sliver_pb2
+from ._protocols import PbWithRequestProp
 
-TIMEOUT = 60
 
-
-class BaseBeacon(object):
+class BaseBeacon:
     def __init__(
         self,
         beacon: client_pb2.Beacon,
         channel: grpc.aio.Channel,
-        timeout: int = TIMEOUT,
+        timeout: int = 60,
     ):
         """Base class for Beacon classes.
 
@@ -137,7 +136,7 @@ class BaseBeacon(object):
         """Reconnect interval"""
         return self._beacon.ReconnectInterval
 
-    def _request(self, pb):
+    def _request(self, pb: PbWithRequestProp):
         """
         Set request attributes based on current beacon, I'd prefer to return a generic Request
         object, but protobuf for whatever reason doesn't let you assign this type of field directly.
@@ -146,7 +145,7 @@ class BaseBeacon(object):
 
         :param pb: A protobuf request object.
         """
-        pb.Request.SessionID = self._beacon.ID
+        pb.Request.BeaconID = self._beacon.ID
         pb.Request.Timeout = self.timeout - 1
         pb.Request.Async = True
         return pb
@@ -179,7 +178,7 @@ class BaseBeacon(object):
                 self._log.exception(err)
 
 
-def beacon_taskresult(pb_object):
+def beacon_taskresult(pb_object: Any):
     """
     Wraps a class method to return a future that resolves when the
     beacon task result is available.
@@ -281,10 +280,6 @@ class InteractiveBeacon(BaseBeacon, BaseInteractiveCommands):
     async def execute_shellcode(self, *args, **kwargs) -> sliver_pb2.Task:
         return await super().execute_shellcode(*args, **kwargs)
 
-    @beacon_taskresult(sliver_pb2.Task)
-    async def task(self, *args, **kwargs) -> sliver_pb2.Task:
-        return await super().task(*args, **kwargs)
-
     @beacon_taskresult(None)
     async def msf(self, *args, **kwargs) -> None:
         return await super().msf(*args, **kwargs)
@@ -304,10 +299,6 @@ class InteractiveBeacon(BaseBeacon, BaseInteractiveCommands):
     @beacon_taskresult(sliver_pb2.Execute)
     async def execute(self, *args, **kwargs) -> sliver_pb2.Execute:
         return await super().execute(*args, **kwargs)
-
-    @beacon_taskresult(sliver_pb2.Execute)
-    async def execute_token(self, *args, **kwargs) -> sliver_pb2.Execute:
-        return await super().execute_token(*args, **kwargs)
 
     @beacon_taskresult(sliver_pb2.Sideload)
     async def sideload(self, *args, **kwargs) -> sliver_pb2.Sideload:

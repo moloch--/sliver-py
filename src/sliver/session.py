@@ -23,10 +23,8 @@ from .interactive import BaseInteractiveCommands
 from .pb.rpcpb.services_pb2_grpc import SliverRPCStub
 from .protobuf import client_pb2, sliver_pb2
 
-TIMEOUT = 60
 
-
-class BaseSession(object):
+class BaseSession:
     """Base class for Session objects.
 
     :param session: Session protobuf.
@@ -41,7 +39,7 @@ class BaseSession(object):
         self,
         session: client_pb2.Session,
         channel: grpc.aio.Channel,
-        timeout: int = TIMEOUT,
+        timeout: int = 60,
     ):
         self._channel = channel
         self._session = session
@@ -167,7 +165,7 @@ class InteractiveSession(BaseSession, BaseInteractiveCommands):
         :return: Protobuf PivotListener list
         :rtype: List[sliver_pb2.PivotListener]
         """
-        pivots = await self._stub.ListPivots(
+        pivots = await self._stub.PivotSessionListeners(
             self._request(sliver_pb2.PivotListenersReq()), timeout=self.timeout
         )
         return list(pivots.Listeners)
