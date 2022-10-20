@@ -62,12 +62,24 @@ class Request(Message):
         BeaconID: str = ...,
         SessionID: str = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Async", b"Async", "BeaconID", b"BeaconID", "SessionID", b"SessionID", "Timeout", b"Timeout"]) -> None: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "Async",
+            b"Async",
+            "BeaconID",
+            b"BeaconID",
+            "SessionID",
+            b"SessionID",
+            "Timeout",
+            b"Timeout",
+        ],
+    ) -> None: ...
 
 class Response(Message):
     """Response - Common fields used in all gRPC responses. Note that the Err field
-               only used when the implant needs to return an error to the server.
-               Client<->Server comms should use normal gRPC error handling.
+    only used when the implant needs to return an error to the server.
+    Client<->Server comms should use normal gRPC error handling.
     """
 
     DESCRIPTOR: Descriptor
@@ -88,7 +100,19 @@ class Response(Message):
         BeaconID: str = ...,
         TaskID: str = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Async", b"Async", "BeaconID", b"BeaconID", "Err", b"Err", "TaskID", b"TaskID"]) -> None: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "Async",
+            b"Async",
+            "BeaconID",
+            b"BeaconID",
+            "Err",
+            b"Err",
+            "TaskID",
+            b"TaskID",
+        ],
+    ) -> None: ...
 
 class File(Message):
     """File - A basic file data type"""
@@ -105,7 +129,9 @@ class File(Message):
         Name: str = ...,
         Data: bytes = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Data", b"Data", "Name", b"Name"]) -> None: ...
+    def ClearField(
+        self, field_name: typing_extensions.Literal["Data", b"Data", "Name", b"Name"]
+    ) -> None: ...
 
 class Process(Message):
     """Process - A basic process data type"""
@@ -138,7 +164,25 @@ class Process(Message):
         SessionID: int = ...,
         CmdLine: Iterable[str] | None = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Architecture", b"Architecture", "CmdLine", b"CmdLine", "Executable", b"Executable", "Owner", b"Owner", "Pid", b"Pid", "Ppid", b"Ppid", "SessionID", b"SessionID"]) -> None: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "Architecture",
+            b"Architecture",
+            "CmdLine",
+            b"CmdLine",
+            "Executable",
+            b"Executable",
+            "Owner",
+            b"Owner",
+            "Pid",
+            b"Pid",
+            "Ppid",
+            b"Ppid",
+            "SessionID",
+            b"SessionID",
+        ],
+    ) -> None: ...
 
 class EnvVar(Message):
     """EnvVar - Environment variable K/V"""
@@ -155,4 +199,6 @@ class EnvVar(Message):
         Key: str = ...,
         Value: str = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Key", b"Key", "Value", b"Value"]) -> None: ...
+    def ClearField(
+        self, field_name: typing_extensions.Literal["Key", b"Key", "Value", b"Value"]
+    ) -> None: ...

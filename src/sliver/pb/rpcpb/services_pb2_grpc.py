@@ -18,4331 +18,5870 @@ class SliverRPCStub(object):
             channel: A grpc.aio.Channel.
         """
         self.GetVersion = channel.unary_unary(
-                '/rpcpb.SliverRPC/GetVersion',
-                request_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.Version.FromString,
-                )
+            "/rpcpb.SliverRPC/GetVersion",
+            request_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.Version.FromString,
+        )
         self.GetOperators = channel.unary_unary(
-                '/rpcpb.SliverRPC/GetOperators',
-                request_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.Operators.FromString,
-                )
+            "/rpcpb.SliverRPC/GetOperators",
+            request_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.Operators.FromString,
+        )
         self.Kill = channel.unary_unary(
-                '/rpcpb.SliverRPC/Kill',
-                request_serializer=sliverpb_dot_sliver__pb2.KillReq.SerializeToString,
-                response_deserializer=commonpb_dot_common__pb2.Empty.FromString,
-                )
+            "/rpcpb.SliverRPC/Kill",
+            request_serializer=sliverpb_dot_sliver__pb2.KillReq.SerializeToString,
+            response_deserializer=commonpb_dot_common__pb2.Empty.FromString,
+        )
         self.Reconfigure = channel.unary_unary(
-                '/rpcpb.SliverRPC/Reconfigure',
-                request_serializer=sliverpb_dot_sliver__pb2.ReconfigureReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.Reconfigure.FromString,
-                )
+            "/rpcpb.SliverRPC/Reconfigure",
+            request_serializer=sliverpb_dot_sliver__pb2.ReconfigureReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.Reconfigure.FromString,
+        )
         self.Rename = channel.unary_unary(
-                '/rpcpb.SliverRPC/Rename',
-                request_serializer=clientpb_dot_client__pb2.RenameReq.SerializeToString,
-                response_deserializer=commonpb_dot_common__pb2.Empty.FromString,
-                )
+            "/rpcpb.SliverRPC/Rename",
+            request_serializer=clientpb_dot_client__pb2.RenameReq.SerializeToString,
+            response_deserializer=commonpb_dot_common__pb2.Empty.FromString,
+        )
         self.GetSessions = channel.unary_unary(
-                '/rpcpb.SliverRPC/GetSessions',
-                request_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.Sessions.FromString,
-                )
+            "/rpcpb.SliverRPC/GetSessions",
+            request_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.Sessions.FromString,
+        )
         self.GetBeacons = channel.unary_unary(
-                '/rpcpb.SliverRPC/GetBeacons',
-                request_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.Beacons.FromString,
-                )
+            "/rpcpb.SliverRPC/GetBeacons",
+            request_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.Beacons.FromString,
+        )
         self.GetBeacon = channel.unary_unary(
-                '/rpcpb.SliverRPC/GetBeacon',
-                request_serializer=clientpb_dot_client__pb2.Beacon.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.Beacon.FromString,
-                )
+            "/rpcpb.SliverRPC/GetBeacon",
+            request_serializer=clientpb_dot_client__pb2.Beacon.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.Beacon.FromString,
+        )
         self.RmBeacon = channel.unary_unary(
-                '/rpcpb.SliverRPC/RmBeacon',
-                request_serializer=clientpb_dot_client__pb2.Beacon.SerializeToString,
-                response_deserializer=commonpb_dot_common__pb2.Empty.FromString,
-                )
+            "/rpcpb.SliverRPC/RmBeacon",
+            request_serializer=clientpb_dot_client__pb2.Beacon.SerializeToString,
+            response_deserializer=commonpb_dot_common__pb2.Empty.FromString,
+        )
         self.GetBeaconTasks = channel.unary_unary(
-                '/rpcpb.SliverRPC/GetBeaconTasks',
-                request_serializer=clientpb_dot_client__pb2.Beacon.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.BeaconTasks.FromString,
-                )
+            "/rpcpb.SliverRPC/GetBeaconTasks",
+            request_serializer=clientpb_dot_client__pb2.Beacon.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.BeaconTasks.FromString,
+        )
         self.GetBeaconTaskContent = channel.unary_unary(
-                '/rpcpb.SliverRPC/GetBeaconTaskContent',
-                request_serializer=clientpb_dot_client__pb2.BeaconTask.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.BeaconTask.FromString,
-                )
+            "/rpcpb.SliverRPC/GetBeaconTaskContent",
+            request_serializer=clientpb_dot_client__pb2.BeaconTask.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.BeaconTask.FromString,
+        )
         self.CancelBeaconTask = channel.unary_unary(
-                '/rpcpb.SliverRPC/CancelBeaconTask',
-                request_serializer=clientpb_dot_client__pb2.BeaconTask.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.BeaconTask.FromString,
-                )
+            "/rpcpb.SliverRPC/CancelBeaconTask",
+            request_serializer=clientpb_dot_client__pb2.BeaconTask.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.BeaconTask.FromString,
+        )
         self.MonitorStart = channel.unary_unary(
-                '/rpcpb.SliverRPC/MonitorStart',
-                request_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
-                response_deserializer=commonpb_dot_common__pb2.Response.FromString,
-                )
+            "/rpcpb.SliverRPC/MonitorStart",
+            request_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
+            response_deserializer=commonpb_dot_common__pb2.Response.FromString,
+        )
         self.MonitorStop = channel.unary_unary(
-                '/rpcpb.SliverRPC/MonitorStop',
-                request_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
-                response_deserializer=commonpb_dot_common__pb2.Empty.FromString,
-                )
+            "/rpcpb.SliverRPC/MonitorStop",
+            request_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
+            response_deserializer=commonpb_dot_common__pb2.Empty.FromString,
+        )
         self.GetJobs = channel.unary_unary(
-                '/rpcpb.SliverRPC/GetJobs',
-                request_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.Jobs.FromString,
-                )
+            "/rpcpb.SliverRPC/GetJobs",
+            request_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.Jobs.FromString,
+        )
         self.KillJob = channel.unary_unary(
-                '/rpcpb.SliverRPC/KillJob',
-                request_serializer=clientpb_dot_client__pb2.KillJobReq.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.KillJob.FromString,
-                )
+            "/rpcpb.SliverRPC/KillJob",
+            request_serializer=clientpb_dot_client__pb2.KillJobReq.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.KillJob.FromString,
+        )
         self.StartMTLSListener = channel.unary_unary(
-                '/rpcpb.SliverRPC/StartMTLSListener',
-                request_serializer=clientpb_dot_client__pb2.MTLSListenerReq.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.MTLSListener.FromString,
-                )
+            "/rpcpb.SliverRPC/StartMTLSListener",
+            request_serializer=clientpb_dot_client__pb2.MTLSListenerReq.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.MTLSListener.FromString,
+        )
         self.StartWGListener = channel.unary_unary(
-                '/rpcpb.SliverRPC/StartWGListener',
-                request_serializer=clientpb_dot_client__pb2.WGListenerReq.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.WGListener.FromString,
-                )
+            "/rpcpb.SliverRPC/StartWGListener",
+            request_serializer=clientpb_dot_client__pb2.WGListenerReq.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.WGListener.FromString,
+        )
         self.StartDNSListener = channel.unary_unary(
-                '/rpcpb.SliverRPC/StartDNSListener',
-                request_serializer=clientpb_dot_client__pb2.DNSListenerReq.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.DNSListener.FromString,
-                )
+            "/rpcpb.SliverRPC/StartDNSListener",
+            request_serializer=clientpb_dot_client__pb2.DNSListenerReq.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.DNSListener.FromString,
+        )
         self.StartHTTPSListener = channel.unary_unary(
-                '/rpcpb.SliverRPC/StartHTTPSListener',
-                request_serializer=clientpb_dot_client__pb2.HTTPListenerReq.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.HTTPListener.FromString,
-                )
+            "/rpcpb.SliverRPC/StartHTTPSListener",
+            request_serializer=clientpb_dot_client__pb2.HTTPListenerReq.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.HTTPListener.FromString,
+        )
         self.StartHTTPListener = channel.unary_unary(
-                '/rpcpb.SliverRPC/StartHTTPListener',
-                request_serializer=clientpb_dot_client__pb2.HTTPListenerReq.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.HTTPListener.FromString,
-                )
+            "/rpcpb.SliverRPC/StartHTTPListener",
+            request_serializer=clientpb_dot_client__pb2.HTTPListenerReq.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.HTTPListener.FromString,
+        )
         self.StartTCPStagerListener = channel.unary_unary(
-                '/rpcpb.SliverRPC/StartTCPStagerListener',
-                request_serializer=clientpb_dot_client__pb2.StagerListenerReq.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.StagerListener.FromString,
-                )
+            "/rpcpb.SliverRPC/StartTCPStagerListener",
+            request_serializer=clientpb_dot_client__pb2.StagerListenerReq.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.StagerListener.FromString,
+        )
         self.StartHTTPStagerListener = channel.unary_unary(
-                '/rpcpb.SliverRPC/StartHTTPStagerListener',
-                request_serializer=clientpb_dot_client__pb2.StagerListenerReq.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.StagerListener.FromString,
-                )
+            "/rpcpb.SliverRPC/StartHTTPStagerListener",
+            request_serializer=clientpb_dot_client__pb2.StagerListenerReq.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.StagerListener.FromString,
+        )
         self.LootAdd = channel.unary_unary(
-                '/rpcpb.SliverRPC/LootAdd',
-                request_serializer=clientpb_dot_client__pb2.Loot.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.Loot.FromString,
-                )
+            "/rpcpb.SliverRPC/LootAdd",
+            request_serializer=clientpb_dot_client__pb2.Loot.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.Loot.FromString,
+        )
         self.LootRm = channel.unary_unary(
-                '/rpcpb.SliverRPC/LootRm',
-                request_serializer=clientpb_dot_client__pb2.Loot.SerializeToString,
-                response_deserializer=commonpb_dot_common__pb2.Empty.FromString,
-                )
+            "/rpcpb.SliverRPC/LootRm",
+            request_serializer=clientpb_dot_client__pb2.Loot.SerializeToString,
+            response_deserializer=commonpb_dot_common__pb2.Empty.FromString,
+        )
         self.LootUpdate = channel.unary_unary(
-                '/rpcpb.SliverRPC/LootUpdate',
-                request_serializer=clientpb_dot_client__pb2.Loot.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.Loot.FromString,
-                )
+            "/rpcpb.SliverRPC/LootUpdate",
+            request_serializer=clientpb_dot_client__pb2.Loot.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.Loot.FromString,
+        )
         self.LootContent = channel.unary_unary(
-                '/rpcpb.SliverRPC/LootContent',
-                request_serializer=clientpb_dot_client__pb2.Loot.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.Loot.FromString,
-                )
+            "/rpcpb.SliverRPC/LootContent",
+            request_serializer=clientpb_dot_client__pb2.Loot.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.Loot.FromString,
+        )
         self.LootAll = channel.unary_unary(
-                '/rpcpb.SliverRPC/LootAll',
-                request_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.AllLoot.FromString,
-                )
+            "/rpcpb.SliverRPC/LootAll",
+            request_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.AllLoot.FromString,
+        )
         self.LootAllOf = channel.unary_unary(
-                '/rpcpb.SliverRPC/LootAllOf',
-                request_serializer=clientpb_dot_client__pb2.Loot.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.AllLoot.FromString,
-                )
+            "/rpcpb.SliverRPC/LootAllOf",
+            request_serializer=clientpb_dot_client__pb2.Loot.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.AllLoot.FromString,
+        )
         self.Hosts = channel.unary_unary(
-                '/rpcpb.SliverRPC/Hosts',
-                request_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.AllHosts.FromString,
-                )
+            "/rpcpb.SliverRPC/Hosts",
+            request_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.AllHosts.FromString,
+        )
         self.Host = channel.unary_unary(
-                '/rpcpb.SliverRPC/Host',
-                request_serializer=clientpb_dot_client__pb2.Host.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.Host.FromString,
-                )
+            "/rpcpb.SliverRPC/Host",
+            request_serializer=clientpb_dot_client__pb2.Host.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.Host.FromString,
+        )
         self.HostRm = channel.unary_unary(
-                '/rpcpb.SliverRPC/HostRm',
-                request_serializer=clientpb_dot_client__pb2.Host.SerializeToString,
-                response_deserializer=commonpb_dot_common__pb2.Empty.FromString,
-                )
+            "/rpcpb.SliverRPC/HostRm",
+            request_serializer=clientpb_dot_client__pb2.Host.SerializeToString,
+            response_deserializer=commonpb_dot_common__pb2.Empty.FromString,
+        )
         self.HostIOCRm = channel.unary_unary(
-                '/rpcpb.SliverRPC/HostIOCRm',
-                request_serializer=clientpb_dot_client__pb2.IOC.SerializeToString,
-                response_deserializer=commonpb_dot_common__pb2.Empty.FromString,
-                )
+            "/rpcpb.SliverRPC/HostIOCRm",
+            request_serializer=clientpb_dot_client__pb2.IOC.SerializeToString,
+            response_deserializer=commonpb_dot_common__pb2.Empty.FromString,
+        )
         self.Generate = channel.unary_unary(
-                '/rpcpb.SliverRPC/Generate',
-                request_serializer=clientpb_dot_client__pb2.GenerateReq.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.Generate.FromString,
-                )
+            "/rpcpb.SliverRPC/Generate",
+            request_serializer=clientpb_dot_client__pb2.GenerateReq.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.Generate.FromString,
+        )
         self.GenerateExternal = channel.unary_unary(
-                '/rpcpb.SliverRPC/GenerateExternal',
-                request_serializer=clientpb_dot_client__pb2.GenerateReq.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.ExternalImplantConfig.FromString,
-                )
+            "/rpcpb.SliverRPC/GenerateExternal",
+            request_serializer=clientpb_dot_client__pb2.GenerateReq.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.ExternalImplantConfig.FromString,
+        )
         self.GenerateExternalSaveBuild = channel.unary_unary(
-                '/rpcpb.SliverRPC/GenerateExternalSaveBuild',
-                request_serializer=clientpb_dot_client__pb2.ExternalImplantBinary.SerializeToString,
-                response_deserializer=commonpb_dot_common__pb2.Empty.FromString,
-                )
+            "/rpcpb.SliverRPC/GenerateExternalSaveBuild",
+            request_serializer=clientpb_dot_client__pb2.ExternalImplantBinary.SerializeToString,
+            response_deserializer=commonpb_dot_common__pb2.Empty.FromString,
+        )
         self.GenerateExternalGetImplantConfig = channel.unary_unary(
-                '/rpcpb.SliverRPC/GenerateExternalGetImplantConfig',
-                request_serializer=clientpb_dot_client__pb2.ImplantConfig.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.ExternalImplantConfig.FromString,
-                )
+            "/rpcpb.SliverRPC/GenerateExternalGetImplantConfig",
+            request_serializer=clientpb_dot_client__pb2.ImplantConfig.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.ExternalImplantConfig.FromString,
+        )
         self.Regenerate = channel.unary_unary(
-                '/rpcpb.SliverRPC/Regenerate',
-                request_serializer=clientpb_dot_client__pb2.RegenerateReq.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.Generate.FromString,
-                )
+            "/rpcpb.SliverRPC/Regenerate",
+            request_serializer=clientpb_dot_client__pb2.RegenerateReq.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.Generate.FromString,
+        )
         self.ImplantBuilds = channel.unary_unary(
-                '/rpcpb.SliverRPC/ImplantBuilds',
-                request_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.ImplantBuilds.FromString,
-                )
+            "/rpcpb.SliverRPC/ImplantBuilds",
+            request_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.ImplantBuilds.FromString,
+        )
         self.DeleteImplantBuild = channel.unary_unary(
-                '/rpcpb.SliverRPC/DeleteImplantBuild',
-                request_serializer=clientpb_dot_client__pb2.DeleteReq.SerializeToString,
-                response_deserializer=commonpb_dot_common__pb2.Empty.FromString,
-                )
+            "/rpcpb.SliverRPC/DeleteImplantBuild",
+            request_serializer=clientpb_dot_client__pb2.DeleteReq.SerializeToString,
+            response_deserializer=commonpb_dot_common__pb2.Empty.FromString,
+        )
         self.Canaries = channel.unary_unary(
-                '/rpcpb.SliverRPC/Canaries',
-                request_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.Canaries.FromString,
-                )
+            "/rpcpb.SliverRPC/Canaries",
+            request_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.Canaries.FromString,
+        )
         self.GenerateWGClientConfig = channel.unary_unary(
-                '/rpcpb.SliverRPC/GenerateWGClientConfig',
-                request_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.WGClientConfig.FromString,
-                )
+            "/rpcpb.SliverRPC/GenerateWGClientConfig",
+            request_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.WGClientConfig.FromString,
+        )
         self.GenerateUniqueIP = channel.unary_unary(
-                '/rpcpb.SliverRPC/GenerateUniqueIP',
-                request_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.UniqueWGIP.FromString,
-                )
+            "/rpcpb.SliverRPC/GenerateUniqueIP",
+            request_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.UniqueWGIP.FromString,
+        )
         self.ImplantProfiles = channel.unary_unary(
-                '/rpcpb.SliverRPC/ImplantProfiles',
-                request_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.ImplantProfiles.FromString,
-                )
+            "/rpcpb.SliverRPC/ImplantProfiles",
+            request_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.ImplantProfiles.FromString,
+        )
         self.DeleteImplantProfile = channel.unary_unary(
-                '/rpcpb.SliverRPC/DeleteImplantProfile',
-                request_serializer=clientpb_dot_client__pb2.DeleteReq.SerializeToString,
-                response_deserializer=commonpb_dot_common__pb2.Empty.FromString,
-                )
+            "/rpcpb.SliverRPC/DeleteImplantProfile",
+            request_serializer=clientpb_dot_client__pb2.DeleteReq.SerializeToString,
+            response_deserializer=commonpb_dot_common__pb2.Empty.FromString,
+        )
         self.SaveImplantProfile = channel.unary_unary(
-                '/rpcpb.SliverRPC/SaveImplantProfile',
-                request_serializer=clientpb_dot_client__pb2.ImplantProfile.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.ImplantProfile.FromString,
-                )
+            "/rpcpb.SliverRPC/SaveImplantProfile",
+            request_serializer=clientpb_dot_client__pb2.ImplantProfile.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.ImplantProfile.FromString,
+        )
         self.MsfStage = channel.unary_unary(
-                '/rpcpb.SliverRPC/MsfStage',
-                request_serializer=clientpb_dot_client__pb2.MsfStagerReq.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.MsfStager.FromString,
-                )
+            "/rpcpb.SliverRPC/MsfStage",
+            request_serializer=clientpb_dot_client__pb2.MsfStagerReq.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.MsfStager.FromString,
+        )
         self.ShellcodeRDI = channel.unary_unary(
-                '/rpcpb.SliverRPC/ShellcodeRDI',
-                request_serializer=clientpb_dot_client__pb2.ShellcodeRDIReq.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.ShellcodeRDI.FromString,
-                )
+            "/rpcpb.SliverRPC/ShellcodeRDI",
+            request_serializer=clientpb_dot_client__pb2.ShellcodeRDIReq.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.ShellcodeRDI.FromString,
+        )
         self.GetCompiler = channel.unary_unary(
-                '/rpcpb.SliverRPC/GetCompiler',
-                request_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.Compiler.FromString,
-                )
+            "/rpcpb.SliverRPC/GetCompiler",
+            request_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.Compiler.FromString,
+        )
         self.ShellcodeEncoder = channel.unary_unary(
-                '/rpcpb.SliverRPC/ShellcodeEncoder',
-                request_serializer=clientpb_dot_client__pb2.ShellcodeEncodeReq.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.ShellcodeEncode.FromString,
-                )
+            "/rpcpb.SliverRPC/ShellcodeEncoder",
+            request_serializer=clientpb_dot_client__pb2.ShellcodeEncodeReq.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.ShellcodeEncode.FromString,
+        )
         self.ShellcodeEncoderMap = channel.unary_unary(
-                '/rpcpb.SliverRPC/ShellcodeEncoderMap',
-                request_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.ShellcodeEncoderMap.FromString,
-                )
+            "/rpcpb.SliverRPC/ShellcodeEncoderMap",
+            request_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.ShellcodeEncoderMap.FromString,
+        )
         self.Websites = channel.unary_unary(
-                '/rpcpb.SliverRPC/Websites',
-                request_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.Websites.FromString,
-                )
+            "/rpcpb.SliverRPC/Websites",
+            request_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.Websites.FromString,
+        )
         self.Website = channel.unary_unary(
-                '/rpcpb.SliverRPC/Website',
-                request_serializer=clientpb_dot_client__pb2.Website.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.Website.FromString,
-                )
+            "/rpcpb.SliverRPC/Website",
+            request_serializer=clientpb_dot_client__pb2.Website.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.Website.FromString,
+        )
         self.WebsiteRemove = channel.unary_unary(
-                '/rpcpb.SliverRPC/WebsiteRemove',
-                request_serializer=clientpb_dot_client__pb2.Website.SerializeToString,
-                response_deserializer=commonpb_dot_common__pb2.Empty.FromString,
-                )
+            "/rpcpb.SliverRPC/WebsiteRemove",
+            request_serializer=clientpb_dot_client__pb2.Website.SerializeToString,
+            response_deserializer=commonpb_dot_common__pb2.Empty.FromString,
+        )
         self.WebsiteAddContent = channel.unary_unary(
-                '/rpcpb.SliverRPC/WebsiteAddContent',
-                request_serializer=clientpb_dot_client__pb2.WebsiteAddContent.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.Website.FromString,
-                )
+            "/rpcpb.SliverRPC/WebsiteAddContent",
+            request_serializer=clientpb_dot_client__pb2.WebsiteAddContent.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.Website.FromString,
+        )
         self.WebsiteUpdateContent = channel.unary_unary(
-                '/rpcpb.SliverRPC/WebsiteUpdateContent',
-                request_serializer=clientpb_dot_client__pb2.WebsiteAddContent.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.Website.FromString,
-                )
+            "/rpcpb.SliverRPC/WebsiteUpdateContent",
+            request_serializer=clientpb_dot_client__pb2.WebsiteAddContent.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.Website.FromString,
+        )
         self.WebsiteRemoveContent = channel.unary_unary(
-                '/rpcpb.SliverRPC/WebsiteRemoveContent',
-                request_serializer=clientpb_dot_client__pb2.WebsiteRemoveContent.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.Website.FromString,
-                )
+            "/rpcpb.SliverRPC/WebsiteRemoveContent",
+            request_serializer=clientpb_dot_client__pb2.WebsiteRemoveContent.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.Website.FromString,
+        )
         self.Ping = channel.unary_unary(
-                '/rpcpb.SliverRPC/Ping',
-                request_serializer=sliverpb_dot_sliver__pb2.Ping.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.Ping.FromString,
-                )
+            "/rpcpb.SliverRPC/Ping",
+            request_serializer=sliverpb_dot_sliver__pb2.Ping.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.Ping.FromString,
+        )
         self.Ps = channel.unary_unary(
-                '/rpcpb.SliverRPC/Ps',
-                request_serializer=sliverpb_dot_sliver__pb2.PsReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.Ps.FromString,
-                )
+            "/rpcpb.SliverRPC/Ps",
+            request_serializer=sliverpb_dot_sliver__pb2.PsReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.Ps.FromString,
+        )
         self.Terminate = channel.unary_unary(
-                '/rpcpb.SliverRPC/Terminate',
-                request_serializer=sliverpb_dot_sliver__pb2.TerminateReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.Terminate.FromString,
-                )
+            "/rpcpb.SliverRPC/Terminate",
+            request_serializer=sliverpb_dot_sliver__pb2.TerminateReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.Terminate.FromString,
+        )
         self.Ifconfig = channel.unary_unary(
-                '/rpcpb.SliverRPC/Ifconfig',
-                request_serializer=sliverpb_dot_sliver__pb2.IfconfigReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.Ifconfig.FromString,
-                )
+            "/rpcpb.SliverRPC/Ifconfig",
+            request_serializer=sliverpb_dot_sliver__pb2.IfconfigReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.Ifconfig.FromString,
+        )
         self.Netstat = channel.unary_unary(
-                '/rpcpb.SliverRPC/Netstat',
-                request_serializer=sliverpb_dot_sliver__pb2.NetstatReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.Netstat.FromString,
-                )
+            "/rpcpb.SliverRPC/Netstat",
+            request_serializer=sliverpb_dot_sliver__pb2.NetstatReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.Netstat.FromString,
+        )
         self.Ls = channel.unary_unary(
-                '/rpcpb.SliverRPC/Ls',
-                request_serializer=sliverpb_dot_sliver__pb2.LsReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.Ls.FromString,
-                )
+            "/rpcpb.SliverRPC/Ls",
+            request_serializer=sliverpb_dot_sliver__pb2.LsReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.Ls.FromString,
+        )
         self.Cd = channel.unary_unary(
-                '/rpcpb.SliverRPC/Cd',
-                request_serializer=sliverpb_dot_sliver__pb2.CdReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.Pwd.FromString,
-                )
+            "/rpcpb.SliverRPC/Cd",
+            request_serializer=sliverpb_dot_sliver__pb2.CdReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.Pwd.FromString,
+        )
         self.Pwd = channel.unary_unary(
-                '/rpcpb.SliverRPC/Pwd',
-                request_serializer=sliverpb_dot_sliver__pb2.PwdReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.Pwd.FromString,
-                )
+            "/rpcpb.SliverRPC/Pwd",
+            request_serializer=sliverpb_dot_sliver__pb2.PwdReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.Pwd.FromString,
+        )
         self.Mv = channel.unary_unary(
-                '/rpcpb.SliverRPC/Mv',
-                request_serializer=sliverpb_dot_sliver__pb2.MvReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.Mv.FromString,
-                )
+            "/rpcpb.SliverRPC/Mv",
+            request_serializer=sliverpb_dot_sliver__pb2.MvReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.Mv.FromString,
+        )
         self.Rm = channel.unary_unary(
-                '/rpcpb.SliverRPC/Rm',
-                request_serializer=sliverpb_dot_sliver__pb2.RmReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.Rm.FromString,
-                )
+            "/rpcpb.SliverRPC/Rm",
+            request_serializer=sliverpb_dot_sliver__pb2.RmReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.Rm.FromString,
+        )
         self.Mkdir = channel.unary_unary(
-                '/rpcpb.SliverRPC/Mkdir',
-                request_serializer=sliverpb_dot_sliver__pb2.MkdirReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.Mkdir.FromString,
-                )
+            "/rpcpb.SliverRPC/Mkdir",
+            request_serializer=sliverpb_dot_sliver__pb2.MkdirReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.Mkdir.FromString,
+        )
         self.Download = channel.unary_unary(
-                '/rpcpb.SliverRPC/Download',
-                request_serializer=sliverpb_dot_sliver__pb2.DownloadReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.Download.FromString,
-                )
+            "/rpcpb.SliverRPC/Download",
+            request_serializer=sliverpb_dot_sliver__pb2.DownloadReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.Download.FromString,
+        )
         self.Upload = channel.unary_unary(
-                '/rpcpb.SliverRPC/Upload',
-                request_serializer=sliverpb_dot_sliver__pb2.UploadReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.Upload.FromString,
-                )
+            "/rpcpb.SliverRPC/Upload",
+            request_serializer=sliverpb_dot_sliver__pb2.UploadReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.Upload.FromString,
+        )
         self.ProcessDump = channel.unary_unary(
-                '/rpcpb.SliverRPC/ProcessDump',
-                request_serializer=sliverpb_dot_sliver__pb2.ProcessDumpReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.ProcessDump.FromString,
-                )
+            "/rpcpb.SliverRPC/ProcessDump",
+            request_serializer=sliverpb_dot_sliver__pb2.ProcessDumpReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.ProcessDump.FromString,
+        )
         self.RunAs = channel.unary_unary(
-                '/rpcpb.SliverRPC/RunAs',
-                request_serializer=sliverpb_dot_sliver__pb2.RunAsReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.RunAs.FromString,
-                )
+            "/rpcpb.SliverRPC/RunAs",
+            request_serializer=sliverpb_dot_sliver__pb2.RunAsReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.RunAs.FromString,
+        )
         self.Impersonate = channel.unary_unary(
-                '/rpcpb.SliverRPC/Impersonate',
-                request_serializer=sliverpb_dot_sliver__pb2.ImpersonateReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.Impersonate.FromString,
-                )
+            "/rpcpb.SliverRPC/Impersonate",
+            request_serializer=sliverpb_dot_sliver__pb2.ImpersonateReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.Impersonate.FromString,
+        )
         self.RevToSelf = channel.unary_unary(
-                '/rpcpb.SliverRPC/RevToSelf',
-                request_serializer=sliverpb_dot_sliver__pb2.RevToSelfReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.RevToSelf.FromString,
-                )
+            "/rpcpb.SliverRPC/RevToSelf",
+            request_serializer=sliverpb_dot_sliver__pb2.RevToSelfReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.RevToSelf.FromString,
+        )
         self.GetSystem = channel.unary_unary(
-                '/rpcpb.SliverRPC/GetSystem',
-                request_serializer=clientpb_dot_client__pb2.GetSystemReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.GetSystem.FromString,
-                )
+            "/rpcpb.SliverRPC/GetSystem",
+            request_serializer=clientpb_dot_client__pb2.GetSystemReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.GetSystem.FromString,
+        )
         self.Task = channel.unary_unary(
-                '/rpcpb.SliverRPC/Task',
-                request_serializer=sliverpb_dot_sliver__pb2.TaskReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.Task.FromString,
-                )
+            "/rpcpb.SliverRPC/Task",
+            request_serializer=sliverpb_dot_sliver__pb2.TaskReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.Task.FromString,
+        )
         self.Msf = channel.unary_unary(
-                '/rpcpb.SliverRPC/Msf',
-                request_serializer=clientpb_dot_client__pb2.MSFReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.Task.FromString,
-                )
+            "/rpcpb.SliverRPC/Msf",
+            request_serializer=clientpb_dot_client__pb2.MSFReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.Task.FromString,
+        )
         self.MsfRemote = channel.unary_unary(
-                '/rpcpb.SliverRPC/MsfRemote',
-                request_serializer=clientpb_dot_client__pb2.MSFRemoteReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.Task.FromString,
-                )
+            "/rpcpb.SliverRPC/MsfRemote",
+            request_serializer=clientpb_dot_client__pb2.MSFRemoteReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.Task.FromString,
+        )
         self.ExecuteAssembly = channel.unary_unary(
-                '/rpcpb.SliverRPC/ExecuteAssembly',
-                request_serializer=sliverpb_dot_sliver__pb2.ExecuteAssemblyReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.ExecuteAssembly.FromString,
-                )
+            "/rpcpb.SliverRPC/ExecuteAssembly",
+            request_serializer=sliverpb_dot_sliver__pb2.ExecuteAssemblyReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.ExecuteAssembly.FromString,
+        )
         self.Migrate = channel.unary_unary(
-                '/rpcpb.SliverRPC/Migrate',
-                request_serializer=clientpb_dot_client__pb2.MigrateReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.Migrate.FromString,
-                )
+            "/rpcpb.SliverRPC/Migrate",
+            request_serializer=clientpb_dot_client__pb2.MigrateReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.Migrate.FromString,
+        )
         self.Execute = channel.unary_unary(
-                '/rpcpb.SliverRPC/Execute',
-                request_serializer=sliverpb_dot_sliver__pb2.ExecuteReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.Execute.FromString,
-                )
+            "/rpcpb.SliverRPC/Execute",
+            request_serializer=sliverpb_dot_sliver__pb2.ExecuteReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.Execute.FromString,
+        )
         self.ExecuteWindows = channel.unary_unary(
-                '/rpcpb.SliverRPC/ExecuteWindows',
-                request_serializer=sliverpb_dot_sliver__pb2.ExecuteWindowsReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.Execute.FromString,
-                )
+            "/rpcpb.SliverRPC/ExecuteWindows",
+            request_serializer=sliverpb_dot_sliver__pb2.ExecuteWindowsReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.Execute.FromString,
+        )
         self.Sideload = channel.unary_unary(
-                '/rpcpb.SliverRPC/Sideload',
-                request_serializer=sliverpb_dot_sliver__pb2.SideloadReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.Sideload.FromString,
-                )
+            "/rpcpb.SliverRPC/Sideload",
+            request_serializer=sliverpb_dot_sliver__pb2.SideloadReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.Sideload.FromString,
+        )
         self.SpawnDll = channel.unary_unary(
-                '/rpcpb.SliverRPC/SpawnDll',
-                request_serializer=sliverpb_dot_sliver__pb2.InvokeSpawnDllReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.SpawnDll.FromString,
-                )
+            "/rpcpb.SliverRPC/SpawnDll",
+            request_serializer=sliverpb_dot_sliver__pb2.InvokeSpawnDllReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.SpawnDll.FromString,
+        )
         self.Screenshot = channel.unary_unary(
-                '/rpcpb.SliverRPC/Screenshot',
-                request_serializer=sliverpb_dot_sliver__pb2.ScreenshotReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.Screenshot.FromString,
-                )
+            "/rpcpb.SliverRPC/Screenshot",
+            request_serializer=sliverpb_dot_sliver__pb2.ScreenshotReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.Screenshot.FromString,
+        )
         self.CurrentTokenOwner = channel.unary_unary(
-                '/rpcpb.SliverRPC/CurrentTokenOwner',
-                request_serializer=sliverpb_dot_sliver__pb2.CurrentTokenOwnerReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.CurrentTokenOwner.FromString,
-                )
+            "/rpcpb.SliverRPC/CurrentTokenOwner",
+            request_serializer=sliverpb_dot_sliver__pb2.CurrentTokenOwnerReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.CurrentTokenOwner.FromString,
+        )
         self.PivotStartListener = channel.unary_unary(
-                '/rpcpb.SliverRPC/PivotStartListener',
-                request_serializer=sliverpb_dot_sliver__pb2.PivotStartListenerReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.PivotListener.FromString,
-                )
+            "/rpcpb.SliverRPC/PivotStartListener",
+            request_serializer=sliverpb_dot_sliver__pb2.PivotStartListenerReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.PivotListener.FromString,
+        )
         self.PivotStopListener = channel.unary_unary(
-                '/rpcpb.SliverRPC/PivotStopListener',
-                request_serializer=sliverpb_dot_sliver__pb2.PivotStopListenerReq.SerializeToString,
-                response_deserializer=commonpb_dot_common__pb2.Empty.FromString,
-                )
+            "/rpcpb.SliverRPC/PivotStopListener",
+            request_serializer=sliverpb_dot_sliver__pb2.PivotStopListenerReq.SerializeToString,
+            response_deserializer=commonpb_dot_common__pb2.Empty.FromString,
+        )
         self.PivotSessionListeners = channel.unary_unary(
-                '/rpcpb.SliverRPC/PivotSessionListeners',
-                request_serializer=sliverpb_dot_sliver__pb2.PivotListenersReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.PivotListeners.FromString,
-                )
+            "/rpcpb.SliverRPC/PivotSessionListeners",
+            request_serializer=sliverpb_dot_sliver__pb2.PivotListenersReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.PivotListeners.FromString,
+        )
         self.PivotGraph = channel.unary_unary(
-                '/rpcpb.SliverRPC/PivotGraph',
-                request_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.PivotGraph.FromString,
-                )
+            "/rpcpb.SliverRPC/PivotGraph",
+            request_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.PivotGraph.FromString,
+        )
         self.StartService = channel.unary_unary(
-                '/rpcpb.SliverRPC/StartService',
-                request_serializer=sliverpb_dot_sliver__pb2.StartServiceReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.ServiceInfo.FromString,
-                )
+            "/rpcpb.SliverRPC/StartService",
+            request_serializer=sliverpb_dot_sliver__pb2.StartServiceReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.ServiceInfo.FromString,
+        )
         self.StopService = channel.unary_unary(
-                '/rpcpb.SliverRPC/StopService',
-                request_serializer=sliverpb_dot_sliver__pb2.StopServiceReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.ServiceInfo.FromString,
-                )
+            "/rpcpb.SliverRPC/StopService",
+            request_serializer=sliverpb_dot_sliver__pb2.StopServiceReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.ServiceInfo.FromString,
+        )
         self.RemoveService = channel.unary_unary(
-                '/rpcpb.SliverRPC/RemoveService',
-                request_serializer=sliverpb_dot_sliver__pb2.RemoveServiceReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.ServiceInfo.FromString,
-                )
+            "/rpcpb.SliverRPC/RemoveService",
+            request_serializer=sliverpb_dot_sliver__pb2.RemoveServiceReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.ServiceInfo.FromString,
+        )
         self.MakeToken = channel.unary_unary(
-                '/rpcpb.SliverRPC/MakeToken',
-                request_serializer=sliverpb_dot_sliver__pb2.MakeTokenReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.MakeToken.FromString,
-                )
+            "/rpcpb.SliverRPC/MakeToken",
+            request_serializer=sliverpb_dot_sliver__pb2.MakeTokenReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.MakeToken.FromString,
+        )
         self.GetEnv = channel.unary_unary(
-                '/rpcpb.SliverRPC/GetEnv',
-                request_serializer=sliverpb_dot_sliver__pb2.EnvReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.EnvInfo.FromString,
-                )
+            "/rpcpb.SliverRPC/GetEnv",
+            request_serializer=sliverpb_dot_sliver__pb2.EnvReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.EnvInfo.FromString,
+        )
         self.SetEnv = channel.unary_unary(
-                '/rpcpb.SliverRPC/SetEnv',
-                request_serializer=sliverpb_dot_sliver__pb2.SetEnvReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.SetEnv.FromString,
-                )
+            "/rpcpb.SliverRPC/SetEnv",
+            request_serializer=sliverpb_dot_sliver__pb2.SetEnvReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.SetEnv.FromString,
+        )
         self.UnsetEnv = channel.unary_unary(
-                '/rpcpb.SliverRPC/UnsetEnv',
-                request_serializer=sliverpb_dot_sliver__pb2.UnsetEnvReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.UnsetEnv.FromString,
-                )
+            "/rpcpb.SliverRPC/UnsetEnv",
+            request_serializer=sliverpb_dot_sliver__pb2.UnsetEnvReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.UnsetEnv.FromString,
+        )
         self.Backdoor = channel.unary_unary(
-                '/rpcpb.SliverRPC/Backdoor',
-                request_serializer=sliverpb_dot_sliver__pb2.BackdoorReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.Backdoor.FromString,
-                )
+            "/rpcpb.SliverRPC/Backdoor",
+            request_serializer=sliverpb_dot_sliver__pb2.BackdoorReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.Backdoor.FromString,
+        )
         self.RegistryRead = channel.unary_unary(
-                '/rpcpb.SliverRPC/RegistryRead',
-                request_serializer=sliverpb_dot_sliver__pb2.RegistryReadReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.RegistryRead.FromString,
-                )
+            "/rpcpb.SliverRPC/RegistryRead",
+            request_serializer=sliverpb_dot_sliver__pb2.RegistryReadReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.RegistryRead.FromString,
+        )
         self.RegistryWrite = channel.unary_unary(
-                '/rpcpb.SliverRPC/RegistryWrite',
-                request_serializer=sliverpb_dot_sliver__pb2.RegistryWriteReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.RegistryWrite.FromString,
-                )
+            "/rpcpb.SliverRPC/RegistryWrite",
+            request_serializer=sliverpb_dot_sliver__pb2.RegistryWriteReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.RegistryWrite.FromString,
+        )
         self.RegistryCreateKey = channel.unary_unary(
-                '/rpcpb.SliverRPC/RegistryCreateKey',
-                request_serializer=sliverpb_dot_sliver__pb2.RegistryCreateKeyReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.RegistryCreateKey.FromString,
-                )
+            "/rpcpb.SliverRPC/RegistryCreateKey",
+            request_serializer=sliverpb_dot_sliver__pb2.RegistryCreateKeyReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.RegistryCreateKey.FromString,
+        )
         self.RegistryDeleteKey = channel.unary_unary(
-                '/rpcpb.SliverRPC/RegistryDeleteKey',
-                request_serializer=sliverpb_dot_sliver__pb2.RegistryDeleteKeyReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.RegistryDeleteKey.FromString,
-                )
+            "/rpcpb.SliverRPC/RegistryDeleteKey",
+            request_serializer=sliverpb_dot_sliver__pb2.RegistryDeleteKeyReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.RegistryDeleteKey.FromString,
+        )
         self.RegistryListSubKeys = channel.unary_unary(
-                '/rpcpb.SliverRPC/RegistryListSubKeys',
-                request_serializer=sliverpb_dot_sliver__pb2.RegistrySubKeyListReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.RegistrySubKeyList.FromString,
-                )
+            "/rpcpb.SliverRPC/RegistryListSubKeys",
+            request_serializer=sliverpb_dot_sliver__pb2.RegistrySubKeyListReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.RegistrySubKeyList.FromString,
+        )
         self.RegistryListValues = channel.unary_unary(
-                '/rpcpb.SliverRPC/RegistryListValues',
-                request_serializer=sliverpb_dot_sliver__pb2.RegistryListValuesReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.RegistryValuesList.FromString,
-                )
+            "/rpcpb.SliverRPC/RegistryListValues",
+            request_serializer=sliverpb_dot_sliver__pb2.RegistryListValuesReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.RegistryValuesList.FromString,
+        )
         self.RunSSHCommand = channel.unary_unary(
-                '/rpcpb.SliverRPC/RunSSHCommand',
-                request_serializer=sliverpb_dot_sliver__pb2.SSHCommandReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.SSHCommand.FromString,
-                )
+            "/rpcpb.SliverRPC/RunSSHCommand",
+            request_serializer=sliverpb_dot_sliver__pb2.SSHCommandReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.SSHCommand.FromString,
+        )
         self.HijackDLL = channel.unary_unary(
-                '/rpcpb.SliverRPC/HijackDLL',
-                request_serializer=clientpb_dot_client__pb2.DllHijackReq.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.DllHijack.FromString,
-                )
+            "/rpcpb.SliverRPC/HijackDLL",
+            request_serializer=clientpb_dot_client__pb2.DllHijackReq.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.DllHijack.FromString,
+        )
         self.GetPrivs = channel.unary_unary(
-                '/rpcpb.SliverRPC/GetPrivs',
-                request_serializer=sliverpb_dot_sliver__pb2.GetPrivsReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.GetPrivs.FromString,
-                )
+            "/rpcpb.SliverRPC/GetPrivs",
+            request_serializer=sliverpb_dot_sliver__pb2.GetPrivsReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.GetPrivs.FromString,
+        )
         self.StartRportFwdListener = channel.unary_unary(
-                '/rpcpb.SliverRPC/StartRportFwdListener',
-                request_serializer=sliverpb_dot_sliver__pb2.RportFwdStartListenerReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.RportFwdListener.FromString,
-                )
+            "/rpcpb.SliverRPC/StartRportFwdListener",
+            request_serializer=sliverpb_dot_sliver__pb2.RportFwdStartListenerReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.RportFwdListener.FromString,
+        )
         self.GetRportFwdListeners = channel.unary_unary(
-                '/rpcpb.SliverRPC/GetRportFwdListeners',
-                request_serializer=sliverpb_dot_sliver__pb2.RportFwdListenersReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.RportFwdListeners.FromString,
-                )
+            "/rpcpb.SliverRPC/GetRportFwdListeners",
+            request_serializer=sliverpb_dot_sliver__pb2.RportFwdListenersReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.RportFwdListeners.FromString,
+        )
         self.StopRportFwdListener = channel.unary_unary(
-                '/rpcpb.SliverRPC/StopRportFwdListener',
-                request_serializer=sliverpb_dot_sliver__pb2.RportFwdStopListenerReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.RportFwdListener.FromString,
-                )
+            "/rpcpb.SliverRPC/StopRportFwdListener",
+            request_serializer=sliverpb_dot_sliver__pb2.RportFwdStopListenerReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.RportFwdListener.FromString,
+        )
         self.OpenSession = channel.unary_unary(
-                '/rpcpb.SliverRPC/OpenSession',
-                request_serializer=sliverpb_dot_sliver__pb2.OpenSession.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.OpenSession.FromString,
-                )
+            "/rpcpb.SliverRPC/OpenSession",
+            request_serializer=sliverpb_dot_sliver__pb2.OpenSession.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.OpenSession.FromString,
+        )
         self.CloseSession = channel.unary_unary(
-                '/rpcpb.SliverRPC/CloseSession',
-                request_serializer=sliverpb_dot_sliver__pb2.CloseSession.SerializeToString,
-                response_deserializer=commonpb_dot_common__pb2.Empty.FromString,
-                )
+            "/rpcpb.SliverRPC/CloseSession",
+            request_serializer=sliverpb_dot_sliver__pb2.CloseSession.SerializeToString,
+            response_deserializer=commonpb_dot_common__pb2.Empty.FromString,
+        )
         self.RegisterExtension = channel.unary_unary(
-                '/rpcpb.SliverRPC/RegisterExtension',
-                request_serializer=sliverpb_dot_sliver__pb2.RegisterExtensionReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.RegisterExtension.FromString,
-                )
+            "/rpcpb.SliverRPC/RegisterExtension",
+            request_serializer=sliverpb_dot_sliver__pb2.RegisterExtensionReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.RegisterExtension.FromString,
+        )
         self.CallExtension = channel.unary_unary(
-                '/rpcpb.SliverRPC/CallExtension',
-                request_serializer=sliverpb_dot_sliver__pb2.CallExtensionReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.CallExtension.FromString,
-                )
+            "/rpcpb.SliverRPC/CallExtension",
+            request_serializer=sliverpb_dot_sliver__pb2.CallExtensionReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.CallExtension.FromString,
+        )
         self.ListExtensions = channel.unary_unary(
-                '/rpcpb.SliverRPC/ListExtensions',
-                request_serializer=sliverpb_dot_sliver__pb2.ListExtensionsReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.ListExtensions.FromString,
-                )
+            "/rpcpb.SliverRPC/ListExtensions",
+            request_serializer=sliverpb_dot_sliver__pb2.ListExtensionsReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.ListExtensions.FromString,
+        )
         self.WGStartPortForward = channel.unary_unary(
-                '/rpcpb.SliverRPC/WGStartPortForward',
-                request_serializer=sliverpb_dot_sliver__pb2.WGPortForwardStartReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.WGPortForward.FromString,
-                )
+            "/rpcpb.SliverRPC/WGStartPortForward",
+            request_serializer=sliverpb_dot_sliver__pb2.WGPortForwardStartReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.WGPortForward.FromString,
+        )
         self.WGStopPortForward = channel.unary_unary(
-                '/rpcpb.SliverRPC/WGStopPortForward',
-                request_serializer=sliverpb_dot_sliver__pb2.WGPortForwardStopReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.WGPortForward.FromString,
-                )
+            "/rpcpb.SliverRPC/WGStopPortForward",
+            request_serializer=sliverpb_dot_sliver__pb2.WGPortForwardStopReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.WGPortForward.FromString,
+        )
         self.WGStartSocks = channel.unary_unary(
-                '/rpcpb.SliverRPC/WGStartSocks',
-                request_serializer=sliverpb_dot_sliver__pb2.WGSocksStartReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.WGSocks.FromString,
-                )
+            "/rpcpb.SliverRPC/WGStartSocks",
+            request_serializer=sliverpb_dot_sliver__pb2.WGSocksStartReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.WGSocks.FromString,
+        )
         self.WGStopSocks = channel.unary_unary(
-                '/rpcpb.SliverRPC/WGStopSocks',
-                request_serializer=sliverpb_dot_sliver__pb2.WGSocksStopReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.WGSocks.FromString,
-                )
+            "/rpcpb.SliverRPC/WGStopSocks",
+            request_serializer=sliverpb_dot_sliver__pb2.WGSocksStopReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.WGSocks.FromString,
+        )
         self.WGListForwarders = channel.unary_unary(
-                '/rpcpb.SliverRPC/WGListForwarders',
-                request_serializer=sliverpb_dot_sliver__pb2.WGTCPForwardersReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.WGTCPForwarders.FromString,
-                )
+            "/rpcpb.SliverRPC/WGListForwarders",
+            request_serializer=sliverpb_dot_sliver__pb2.WGTCPForwardersReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.WGTCPForwarders.FromString,
+        )
         self.WGListSocksServers = channel.unary_unary(
-                '/rpcpb.SliverRPC/WGListSocksServers',
-                request_serializer=sliverpb_dot_sliver__pb2.WGSocksServersReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.WGSocksServers.FromString,
-                )
+            "/rpcpb.SliverRPC/WGListSocksServers",
+            request_serializer=sliverpb_dot_sliver__pb2.WGSocksServersReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.WGSocksServers.FromString,
+        )
         self.Shell = channel.unary_unary(
-                '/rpcpb.SliverRPC/Shell',
-                request_serializer=sliverpb_dot_sliver__pb2.ShellReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.Shell.FromString,
-                )
+            "/rpcpb.SliverRPC/Shell",
+            request_serializer=sliverpb_dot_sliver__pb2.ShellReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.Shell.FromString,
+        )
         self.Portfwd = channel.unary_unary(
-                '/rpcpb.SliverRPC/Portfwd',
-                request_serializer=sliverpb_dot_sliver__pb2.PortfwdReq.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.Portfwd.FromString,
-                )
+            "/rpcpb.SliverRPC/Portfwd",
+            request_serializer=sliverpb_dot_sliver__pb2.PortfwdReq.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.Portfwd.FromString,
+        )
         self.CreateSocks = channel.unary_unary(
-                '/rpcpb.SliverRPC/CreateSocks',
-                request_serializer=sliverpb_dot_sliver__pb2.Socks.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.Socks.FromString,
-                )
+            "/rpcpb.SliverRPC/CreateSocks",
+            request_serializer=sliverpb_dot_sliver__pb2.Socks.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.Socks.FromString,
+        )
         self.CloseSocks = channel.unary_unary(
-                '/rpcpb.SliverRPC/CloseSocks',
-                request_serializer=sliverpb_dot_sliver__pb2.Socks.SerializeToString,
-                response_deserializer=commonpb_dot_common__pb2.Empty.FromString,
-                )
+            "/rpcpb.SliverRPC/CloseSocks",
+            request_serializer=sliverpb_dot_sliver__pb2.Socks.SerializeToString,
+            response_deserializer=commonpb_dot_common__pb2.Empty.FromString,
+        )
         self.SocksProxy = channel.stream_stream(
-                '/rpcpb.SliverRPC/SocksProxy',
-                request_serializer=sliverpb_dot_sliver__pb2.SocksData.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.SocksData.FromString,
-                )
+            "/rpcpb.SliverRPC/SocksProxy",
+            request_serializer=sliverpb_dot_sliver__pb2.SocksData.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.SocksData.FromString,
+        )
         self.CreateTunnel = channel.unary_unary(
-                '/rpcpb.SliverRPC/CreateTunnel',
-                request_serializer=sliverpb_dot_sliver__pb2.Tunnel.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.Tunnel.FromString,
-                )
+            "/rpcpb.SliverRPC/CreateTunnel",
+            request_serializer=sliverpb_dot_sliver__pb2.Tunnel.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.Tunnel.FromString,
+        )
         self.CloseTunnel = channel.unary_unary(
-                '/rpcpb.SliverRPC/CloseTunnel',
-                request_serializer=sliverpb_dot_sliver__pb2.Tunnel.SerializeToString,
-                response_deserializer=commonpb_dot_common__pb2.Empty.FromString,
-                )
+            "/rpcpb.SliverRPC/CloseTunnel",
+            request_serializer=sliverpb_dot_sliver__pb2.Tunnel.SerializeToString,
+            response_deserializer=commonpb_dot_common__pb2.Empty.FromString,
+        )
         self.TunnelData = channel.stream_stream(
-                '/rpcpb.SliverRPC/TunnelData',
-                request_serializer=sliverpb_dot_sliver__pb2.TunnelData.SerializeToString,
-                response_deserializer=sliverpb_dot_sliver__pb2.TunnelData.FromString,
-                )
+            "/rpcpb.SliverRPC/TunnelData",
+            request_serializer=sliverpb_dot_sliver__pb2.TunnelData.SerializeToString,
+            response_deserializer=sliverpb_dot_sliver__pb2.TunnelData.FromString,
+        )
         self.Events = channel.unary_stream(
-                '/rpcpb.SliverRPC/Events',
-                request_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.Event.FromString,
-                )
+            "/rpcpb.SliverRPC/Events",
+            request_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
+            response_deserializer=clientpb_dot_client__pb2.Event.FromString,
+        )
 
 
 class SliverRPCServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def GetVersion(self, request, context):
-        """*** Version ***
-        """
+        """*** Version ***"""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def GetOperators(self, request, context):
-        """*** Operator Commands *** 
-        """
+        """*** Operator Commands ***"""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def Kill(self, request, context):
-        """*** Generic ***
-        """
+        """*** Generic ***"""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def Reconfigure(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def Rename(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def GetSessions(self, request, context):
-        """*** Sessions ***
-        """
+        """*** Sessions ***"""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def GetBeacons(self, request, context):
-        """*** Beacons ***
-        """
+        """*** Beacons ***"""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def GetBeacon(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def RmBeacon(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def GetBeaconTasks(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def GetBeaconTaskContent(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def CancelBeaconTask(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def MonitorStart(self, request, context):
-        """***Threat monitoring ***
-        """
+        """***Threat monitoring ***"""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def MonitorStop(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def GetJobs(self, request, context):
-        """*** Jobs ***
-        """
+        """*** Jobs ***"""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def KillJob(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def StartMTLSListener(self, request, context):
-        """*** Listeners ***
-        """
+        """*** Listeners ***"""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def StartWGListener(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def StartDNSListener(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def StartHTTPSListener(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def StartHTTPListener(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def StartTCPStagerListener(self, request, context):
-        """*** Stager Listener ***
-        """
+        """*** Stager Listener ***"""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def StartHTTPStagerListener(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def LootAdd(self, request, context):
-        """*** Loot ***
-        """
+        """*** Loot ***"""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def LootRm(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def LootUpdate(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def LootContent(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def LootAll(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def LootAllOf(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def Hosts(self, request, context):
-        """*** Hosts ***
-        """
+        """*** Hosts ***"""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def Host(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def HostRm(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def HostIOCRm(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def Generate(self, request, context):
-        """*** Implants ***
-        """
+        """*** Implants ***"""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def GenerateExternal(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def GenerateExternalSaveBuild(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def GenerateExternalGetImplantConfig(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def Regenerate(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def ImplantBuilds(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def DeleteImplantBuild(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def Canaries(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def GenerateWGClientConfig(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def GenerateUniqueIP(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def ImplantProfiles(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def DeleteImplantProfile(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def SaveImplantProfile(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def MsfStage(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def ShellcodeRDI(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def GetCompiler(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def ShellcodeEncoder(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def ShellcodeEncoderMap(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def Websites(self, request, context):
-        """*** Websites ***
-        """
+        """*** Websites ***"""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def Website(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def WebsiteRemove(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def WebsiteAddContent(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def WebsiteUpdateContent(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def WebsiteRemoveContent(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def Ping(self, request, context):
-        """*** Session Interactions ***
-        """
+        """*** Session Interactions ***"""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def Ps(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def Terminate(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def Ifconfig(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def Netstat(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def Ls(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def Cd(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def Pwd(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def Mv(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def Rm(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def Mkdir(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def Download(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def Upload(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def ProcessDump(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def RunAs(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def Impersonate(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def RevToSelf(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def GetSystem(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def Task(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def Msf(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def MsfRemote(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def ExecuteAssembly(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def Migrate(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def Execute(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def ExecuteWindows(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def Sideload(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def SpawnDll(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def Screenshot(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def CurrentTokenOwner(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def PivotStartListener(self, request, context):
-        """*** Pivots ***
-        """
+        """*** Pivots ***"""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def PivotStopListener(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def PivotSessionListeners(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def PivotGraph(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def StartService(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def StopService(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def RemoveService(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def MakeToken(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def GetEnv(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def SetEnv(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def UnsetEnv(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def Backdoor(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def RegistryRead(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def RegistryWrite(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def RegistryCreateKey(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def RegistryDeleteKey(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def RegistryListSubKeys(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def RegistryListValues(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def RunSSHCommand(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def HijackDLL(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def GetPrivs(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def StartRportFwdListener(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def GetRportFwdListeners(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def StopRportFwdListener(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def OpenSession(self, request, context):
-        """Beacon only commands
-        """
+        """Beacon only commands"""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def CloseSession(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def RegisterExtension(self, request, context):
-        """Extensions
-        """
+        """Extensions"""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def CallExtension(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def ListExtensions(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def WGStartPortForward(self, request, context):
-        """*** Wireguard Specific ***
-        """
+        """*** Wireguard Specific ***"""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def WGStopPortForward(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def WGStartSocks(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def WGStopSocks(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def WGListForwarders(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def WGListSocksServers(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def Shell(self, request, context):
-        """*** Realtime Commands ***
-        """
+        """*** Realtime Commands ***"""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def Portfwd(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def CreateSocks(self, request, context):
-        """*** Socks5 ***
-        """
+        """*** Socks5 ***"""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def CloseSocks(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def SocksProxy(self, request_iterator, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def CreateTunnel(self, request, context):
-        """*** Tunnels ***
-        """
+        """*** Tunnels ***"""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def CloseTunnel(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def TunnelData(self, request_iterator, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def Events(self, request, context):
-        """*** Events ***
-        """
+        """*** Events ***"""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
 
 def add_SliverRPCServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'GetVersion': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetVersion,
-                    request_deserializer=commonpb_dot_common__pb2.Empty.FromString,
-                    response_serializer=clientpb_dot_client__pb2.Version.SerializeToString,
-            ),
-            'GetOperators': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetOperators,
-                    request_deserializer=commonpb_dot_common__pb2.Empty.FromString,
-                    response_serializer=clientpb_dot_client__pb2.Operators.SerializeToString,
-            ),
-            'Kill': grpc.unary_unary_rpc_method_handler(
-                    servicer.Kill,
-                    request_deserializer=sliverpb_dot_sliver__pb2.KillReq.FromString,
-                    response_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
-            ),
-            'Reconfigure': grpc.unary_unary_rpc_method_handler(
-                    servicer.Reconfigure,
-                    request_deserializer=sliverpb_dot_sliver__pb2.ReconfigureReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.Reconfigure.SerializeToString,
-            ),
-            'Rename': grpc.unary_unary_rpc_method_handler(
-                    servicer.Rename,
-                    request_deserializer=clientpb_dot_client__pb2.RenameReq.FromString,
-                    response_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
-            ),
-            'GetSessions': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetSessions,
-                    request_deserializer=commonpb_dot_common__pb2.Empty.FromString,
-                    response_serializer=clientpb_dot_client__pb2.Sessions.SerializeToString,
-            ),
-            'GetBeacons': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetBeacons,
-                    request_deserializer=commonpb_dot_common__pb2.Empty.FromString,
-                    response_serializer=clientpb_dot_client__pb2.Beacons.SerializeToString,
-            ),
-            'GetBeacon': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetBeacon,
-                    request_deserializer=clientpb_dot_client__pb2.Beacon.FromString,
-                    response_serializer=clientpb_dot_client__pb2.Beacon.SerializeToString,
-            ),
-            'RmBeacon': grpc.unary_unary_rpc_method_handler(
-                    servicer.RmBeacon,
-                    request_deserializer=clientpb_dot_client__pb2.Beacon.FromString,
-                    response_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
-            ),
-            'GetBeaconTasks': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetBeaconTasks,
-                    request_deserializer=clientpb_dot_client__pb2.Beacon.FromString,
-                    response_serializer=clientpb_dot_client__pb2.BeaconTasks.SerializeToString,
-            ),
-            'GetBeaconTaskContent': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetBeaconTaskContent,
-                    request_deserializer=clientpb_dot_client__pb2.BeaconTask.FromString,
-                    response_serializer=clientpb_dot_client__pb2.BeaconTask.SerializeToString,
-            ),
-            'CancelBeaconTask': grpc.unary_unary_rpc_method_handler(
-                    servicer.CancelBeaconTask,
-                    request_deserializer=clientpb_dot_client__pb2.BeaconTask.FromString,
-                    response_serializer=clientpb_dot_client__pb2.BeaconTask.SerializeToString,
-            ),
-            'MonitorStart': grpc.unary_unary_rpc_method_handler(
-                    servicer.MonitorStart,
-                    request_deserializer=commonpb_dot_common__pb2.Empty.FromString,
-                    response_serializer=commonpb_dot_common__pb2.Response.SerializeToString,
-            ),
-            'MonitorStop': grpc.unary_unary_rpc_method_handler(
-                    servicer.MonitorStop,
-                    request_deserializer=commonpb_dot_common__pb2.Empty.FromString,
-                    response_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
-            ),
-            'GetJobs': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetJobs,
-                    request_deserializer=commonpb_dot_common__pb2.Empty.FromString,
-                    response_serializer=clientpb_dot_client__pb2.Jobs.SerializeToString,
-            ),
-            'KillJob': grpc.unary_unary_rpc_method_handler(
-                    servicer.KillJob,
-                    request_deserializer=clientpb_dot_client__pb2.KillJobReq.FromString,
-                    response_serializer=clientpb_dot_client__pb2.KillJob.SerializeToString,
-            ),
-            'StartMTLSListener': grpc.unary_unary_rpc_method_handler(
-                    servicer.StartMTLSListener,
-                    request_deserializer=clientpb_dot_client__pb2.MTLSListenerReq.FromString,
-                    response_serializer=clientpb_dot_client__pb2.MTLSListener.SerializeToString,
-            ),
-            'StartWGListener': grpc.unary_unary_rpc_method_handler(
-                    servicer.StartWGListener,
-                    request_deserializer=clientpb_dot_client__pb2.WGListenerReq.FromString,
-                    response_serializer=clientpb_dot_client__pb2.WGListener.SerializeToString,
-            ),
-            'StartDNSListener': grpc.unary_unary_rpc_method_handler(
-                    servicer.StartDNSListener,
-                    request_deserializer=clientpb_dot_client__pb2.DNSListenerReq.FromString,
-                    response_serializer=clientpb_dot_client__pb2.DNSListener.SerializeToString,
-            ),
-            'StartHTTPSListener': grpc.unary_unary_rpc_method_handler(
-                    servicer.StartHTTPSListener,
-                    request_deserializer=clientpb_dot_client__pb2.HTTPListenerReq.FromString,
-                    response_serializer=clientpb_dot_client__pb2.HTTPListener.SerializeToString,
-            ),
-            'StartHTTPListener': grpc.unary_unary_rpc_method_handler(
-                    servicer.StartHTTPListener,
-                    request_deserializer=clientpb_dot_client__pb2.HTTPListenerReq.FromString,
-                    response_serializer=clientpb_dot_client__pb2.HTTPListener.SerializeToString,
-            ),
-            'StartTCPStagerListener': grpc.unary_unary_rpc_method_handler(
-                    servicer.StartTCPStagerListener,
-                    request_deserializer=clientpb_dot_client__pb2.StagerListenerReq.FromString,
-                    response_serializer=clientpb_dot_client__pb2.StagerListener.SerializeToString,
-            ),
-            'StartHTTPStagerListener': grpc.unary_unary_rpc_method_handler(
-                    servicer.StartHTTPStagerListener,
-                    request_deserializer=clientpb_dot_client__pb2.StagerListenerReq.FromString,
-                    response_serializer=clientpb_dot_client__pb2.StagerListener.SerializeToString,
-            ),
-            'LootAdd': grpc.unary_unary_rpc_method_handler(
-                    servicer.LootAdd,
-                    request_deserializer=clientpb_dot_client__pb2.Loot.FromString,
-                    response_serializer=clientpb_dot_client__pb2.Loot.SerializeToString,
-            ),
-            'LootRm': grpc.unary_unary_rpc_method_handler(
-                    servicer.LootRm,
-                    request_deserializer=clientpb_dot_client__pb2.Loot.FromString,
-                    response_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
-            ),
-            'LootUpdate': grpc.unary_unary_rpc_method_handler(
-                    servicer.LootUpdate,
-                    request_deserializer=clientpb_dot_client__pb2.Loot.FromString,
-                    response_serializer=clientpb_dot_client__pb2.Loot.SerializeToString,
-            ),
-            'LootContent': grpc.unary_unary_rpc_method_handler(
-                    servicer.LootContent,
-                    request_deserializer=clientpb_dot_client__pb2.Loot.FromString,
-                    response_serializer=clientpb_dot_client__pb2.Loot.SerializeToString,
-            ),
-            'LootAll': grpc.unary_unary_rpc_method_handler(
-                    servicer.LootAll,
-                    request_deserializer=commonpb_dot_common__pb2.Empty.FromString,
-                    response_serializer=clientpb_dot_client__pb2.AllLoot.SerializeToString,
-            ),
-            'LootAllOf': grpc.unary_unary_rpc_method_handler(
-                    servicer.LootAllOf,
-                    request_deserializer=clientpb_dot_client__pb2.Loot.FromString,
-                    response_serializer=clientpb_dot_client__pb2.AllLoot.SerializeToString,
-            ),
-            'Hosts': grpc.unary_unary_rpc_method_handler(
-                    servicer.Hosts,
-                    request_deserializer=commonpb_dot_common__pb2.Empty.FromString,
-                    response_serializer=clientpb_dot_client__pb2.AllHosts.SerializeToString,
-            ),
-            'Host': grpc.unary_unary_rpc_method_handler(
-                    servicer.Host,
-                    request_deserializer=clientpb_dot_client__pb2.Host.FromString,
-                    response_serializer=clientpb_dot_client__pb2.Host.SerializeToString,
-            ),
-            'HostRm': grpc.unary_unary_rpc_method_handler(
-                    servicer.HostRm,
-                    request_deserializer=clientpb_dot_client__pb2.Host.FromString,
-                    response_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
-            ),
-            'HostIOCRm': grpc.unary_unary_rpc_method_handler(
-                    servicer.HostIOCRm,
-                    request_deserializer=clientpb_dot_client__pb2.IOC.FromString,
-                    response_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
-            ),
-            'Generate': grpc.unary_unary_rpc_method_handler(
-                    servicer.Generate,
-                    request_deserializer=clientpb_dot_client__pb2.GenerateReq.FromString,
-                    response_serializer=clientpb_dot_client__pb2.Generate.SerializeToString,
-            ),
-            'GenerateExternal': grpc.unary_unary_rpc_method_handler(
-                    servicer.GenerateExternal,
-                    request_deserializer=clientpb_dot_client__pb2.GenerateReq.FromString,
-                    response_serializer=clientpb_dot_client__pb2.ExternalImplantConfig.SerializeToString,
-            ),
-            'GenerateExternalSaveBuild': grpc.unary_unary_rpc_method_handler(
-                    servicer.GenerateExternalSaveBuild,
-                    request_deserializer=clientpb_dot_client__pb2.ExternalImplantBinary.FromString,
-                    response_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
-            ),
-            'GenerateExternalGetImplantConfig': grpc.unary_unary_rpc_method_handler(
-                    servicer.GenerateExternalGetImplantConfig,
-                    request_deserializer=clientpb_dot_client__pb2.ImplantConfig.FromString,
-                    response_serializer=clientpb_dot_client__pb2.ExternalImplantConfig.SerializeToString,
-            ),
-            'Regenerate': grpc.unary_unary_rpc_method_handler(
-                    servicer.Regenerate,
-                    request_deserializer=clientpb_dot_client__pb2.RegenerateReq.FromString,
-                    response_serializer=clientpb_dot_client__pb2.Generate.SerializeToString,
-            ),
-            'ImplantBuilds': grpc.unary_unary_rpc_method_handler(
-                    servicer.ImplantBuilds,
-                    request_deserializer=commonpb_dot_common__pb2.Empty.FromString,
-                    response_serializer=clientpb_dot_client__pb2.ImplantBuilds.SerializeToString,
-            ),
-            'DeleteImplantBuild': grpc.unary_unary_rpc_method_handler(
-                    servicer.DeleteImplantBuild,
-                    request_deserializer=clientpb_dot_client__pb2.DeleteReq.FromString,
-                    response_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
-            ),
-            'Canaries': grpc.unary_unary_rpc_method_handler(
-                    servicer.Canaries,
-                    request_deserializer=commonpb_dot_common__pb2.Empty.FromString,
-                    response_serializer=clientpb_dot_client__pb2.Canaries.SerializeToString,
-            ),
-            'GenerateWGClientConfig': grpc.unary_unary_rpc_method_handler(
-                    servicer.GenerateWGClientConfig,
-                    request_deserializer=commonpb_dot_common__pb2.Empty.FromString,
-                    response_serializer=clientpb_dot_client__pb2.WGClientConfig.SerializeToString,
-            ),
-            'GenerateUniqueIP': grpc.unary_unary_rpc_method_handler(
-                    servicer.GenerateUniqueIP,
-                    request_deserializer=commonpb_dot_common__pb2.Empty.FromString,
-                    response_serializer=clientpb_dot_client__pb2.UniqueWGIP.SerializeToString,
-            ),
-            'ImplantProfiles': grpc.unary_unary_rpc_method_handler(
-                    servicer.ImplantProfiles,
-                    request_deserializer=commonpb_dot_common__pb2.Empty.FromString,
-                    response_serializer=clientpb_dot_client__pb2.ImplantProfiles.SerializeToString,
-            ),
-            'DeleteImplantProfile': grpc.unary_unary_rpc_method_handler(
-                    servicer.DeleteImplantProfile,
-                    request_deserializer=clientpb_dot_client__pb2.DeleteReq.FromString,
-                    response_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
-            ),
-            'SaveImplantProfile': grpc.unary_unary_rpc_method_handler(
-                    servicer.SaveImplantProfile,
-                    request_deserializer=clientpb_dot_client__pb2.ImplantProfile.FromString,
-                    response_serializer=clientpb_dot_client__pb2.ImplantProfile.SerializeToString,
-            ),
-            'MsfStage': grpc.unary_unary_rpc_method_handler(
-                    servicer.MsfStage,
-                    request_deserializer=clientpb_dot_client__pb2.MsfStagerReq.FromString,
-                    response_serializer=clientpb_dot_client__pb2.MsfStager.SerializeToString,
-            ),
-            'ShellcodeRDI': grpc.unary_unary_rpc_method_handler(
-                    servicer.ShellcodeRDI,
-                    request_deserializer=clientpb_dot_client__pb2.ShellcodeRDIReq.FromString,
-                    response_serializer=clientpb_dot_client__pb2.ShellcodeRDI.SerializeToString,
-            ),
-            'GetCompiler': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetCompiler,
-                    request_deserializer=commonpb_dot_common__pb2.Empty.FromString,
-                    response_serializer=clientpb_dot_client__pb2.Compiler.SerializeToString,
-            ),
-            'ShellcodeEncoder': grpc.unary_unary_rpc_method_handler(
-                    servicer.ShellcodeEncoder,
-                    request_deserializer=clientpb_dot_client__pb2.ShellcodeEncodeReq.FromString,
-                    response_serializer=clientpb_dot_client__pb2.ShellcodeEncode.SerializeToString,
-            ),
-            'ShellcodeEncoderMap': grpc.unary_unary_rpc_method_handler(
-                    servicer.ShellcodeEncoderMap,
-                    request_deserializer=commonpb_dot_common__pb2.Empty.FromString,
-                    response_serializer=clientpb_dot_client__pb2.ShellcodeEncoderMap.SerializeToString,
-            ),
-            'Websites': grpc.unary_unary_rpc_method_handler(
-                    servicer.Websites,
-                    request_deserializer=commonpb_dot_common__pb2.Empty.FromString,
-                    response_serializer=clientpb_dot_client__pb2.Websites.SerializeToString,
-            ),
-            'Website': grpc.unary_unary_rpc_method_handler(
-                    servicer.Website,
-                    request_deserializer=clientpb_dot_client__pb2.Website.FromString,
-                    response_serializer=clientpb_dot_client__pb2.Website.SerializeToString,
-            ),
-            'WebsiteRemove': grpc.unary_unary_rpc_method_handler(
-                    servicer.WebsiteRemove,
-                    request_deserializer=clientpb_dot_client__pb2.Website.FromString,
-                    response_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
-            ),
-            'WebsiteAddContent': grpc.unary_unary_rpc_method_handler(
-                    servicer.WebsiteAddContent,
-                    request_deserializer=clientpb_dot_client__pb2.WebsiteAddContent.FromString,
-                    response_serializer=clientpb_dot_client__pb2.Website.SerializeToString,
-            ),
-            'WebsiteUpdateContent': grpc.unary_unary_rpc_method_handler(
-                    servicer.WebsiteUpdateContent,
-                    request_deserializer=clientpb_dot_client__pb2.WebsiteAddContent.FromString,
-                    response_serializer=clientpb_dot_client__pb2.Website.SerializeToString,
-            ),
-            'WebsiteRemoveContent': grpc.unary_unary_rpc_method_handler(
-                    servicer.WebsiteRemoveContent,
-                    request_deserializer=clientpb_dot_client__pb2.WebsiteRemoveContent.FromString,
-                    response_serializer=clientpb_dot_client__pb2.Website.SerializeToString,
-            ),
-            'Ping': grpc.unary_unary_rpc_method_handler(
-                    servicer.Ping,
-                    request_deserializer=sliverpb_dot_sliver__pb2.Ping.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.Ping.SerializeToString,
-            ),
-            'Ps': grpc.unary_unary_rpc_method_handler(
-                    servicer.Ps,
-                    request_deserializer=sliverpb_dot_sliver__pb2.PsReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.Ps.SerializeToString,
-            ),
-            'Terminate': grpc.unary_unary_rpc_method_handler(
-                    servicer.Terminate,
-                    request_deserializer=sliverpb_dot_sliver__pb2.TerminateReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.Terminate.SerializeToString,
-            ),
-            'Ifconfig': grpc.unary_unary_rpc_method_handler(
-                    servicer.Ifconfig,
-                    request_deserializer=sliverpb_dot_sliver__pb2.IfconfigReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.Ifconfig.SerializeToString,
-            ),
-            'Netstat': grpc.unary_unary_rpc_method_handler(
-                    servicer.Netstat,
-                    request_deserializer=sliverpb_dot_sliver__pb2.NetstatReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.Netstat.SerializeToString,
-            ),
-            'Ls': grpc.unary_unary_rpc_method_handler(
-                    servicer.Ls,
-                    request_deserializer=sliverpb_dot_sliver__pb2.LsReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.Ls.SerializeToString,
-            ),
-            'Cd': grpc.unary_unary_rpc_method_handler(
-                    servicer.Cd,
-                    request_deserializer=sliverpb_dot_sliver__pb2.CdReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.Pwd.SerializeToString,
-            ),
-            'Pwd': grpc.unary_unary_rpc_method_handler(
-                    servicer.Pwd,
-                    request_deserializer=sliverpb_dot_sliver__pb2.PwdReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.Pwd.SerializeToString,
-            ),
-            'Mv': grpc.unary_unary_rpc_method_handler(
-                    servicer.Mv,
-                    request_deserializer=sliverpb_dot_sliver__pb2.MvReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.Mv.SerializeToString,
-            ),
-            'Rm': grpc.unary_unary_rpc_method_handler(
-                    servicer.Rm,
-                    request_deserializer=sliverpb_dot_sliver__pb2.RmReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.Rm.SerializeToString,
-            ),
-            'Mkdir': grpc.unary_unary_rpc_method_handler(
-                    servicer.Mkdir,
-                    request_deserializer=sliverpb_dot_sliver__pb2.MkdirReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.Mkdir.SerializeToString,
-            ),
-            'Download': grpc.unary_unary_rpc_method_handler(
-                    servicer.Download,
-                    request_deserializer=sliverpb_dot_sliver__pb2.DownloadReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.Download.SerializeToString,
-            ),
-            'Upload': grpc.unary_unary_rpc_method_handler(
-                    servicer.Upload,
-                    request_deserializer=sliverpb_dot_sliver__pb2.UploadReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.Upload.SerializeToString,
-            ),
-            'ProcessDump': grpc.unary_unary_rpc_method_handler(
-                    servicer.ProcessDump,
-                    request_deserializer=sliverpb_dot_sliver__pb2.ProcessDumpReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.ProcessDump.SerializeToString,
-            ),
-            'RunAs': grpc.unary_unary_rpc_method_handler(
-                    servicer.RunAs,
-                    request_deserializer=sliverpb_dot_sliver__pb2.RunAsReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.RunAs.SerializeToString,
-            ),
-            'Impersonate': grpc.unary_unary_rpc_method_handler(
-                    servicer.Impersonate,
-                    request_deserializer=sliverpb_dot_sliver__pb2.ImpersonateReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.Impersonate.SerializeToString,
-            ),
-            'RevToSelf': grpc.unary_unary_rpc_method_handler(
-                    servicer.RevToSelf,
-                    request_deserializer=sliverpb_dot_sliver__pb2.RevToSelfReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.RevToSelf.SerializeToString,
-            ),
-            'GetSystem': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetSystem,
-                    request_deserializer=clientpb_dot_client__pb2.GetSystemReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.GetSystem.SerializeToString,
-            ),
-            'Task': grpc.unary_unary_rpc_method_handler(
-                    servicer.Task,
-                    request_deserializer=sliverpb_dot_sliver__pb2.TaskReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.Task.SerializeToString,
-            ),
-            'Msf': grpc.unary_unary_rpc_method_handler(
-                    servicer.Msf,
-                    request_deserializer=clientpb_dot_client__pb2.MSFReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.Task.SerializeToString,
-            ),
-            'MsfRemote': grpc.unary_unary_rpc_method_handler(
-                    servicer.MsfRemote,
-                    request_deserializer=clientpb_dot_client__pb2.MSFRemoteReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.Task.SerializeToString,
-            ),
-            'ExecuteAssembly': grpc.unary_unary_rpc_method_handler(
-                    servicer.ExecuteAssembly,
-                    request_deserializer=sliverpb_dot_sliver__pb2.ExecuteAssemblyReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.ExecuteAssembly.SerializeToString,
-            ),
-            'Migrate': grpc.unary_unary_rpc_method_handler(
-                    servicer.Migrate,
-                    request_deserializer=clientpb_dot_client__pb2.MigrateReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.Migrate.SerializeToString,
-            ),
-            'Execute': grpc.unary_unary_rpc_method_handler(
-                    servicer.Execute,
-                    request_deserializer=sliverpb_dot_sliver__pb2.ExecuteReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.Execute.SerializeToString,
-            ),
-            'ExecuteWindows': grpc.unary_unary_rpc_method_handler(
-                    servicer.ExecuteWindows,
-                    request_deserializer=sliverpb_dot_sliver__pb2.ExecuteWindowsReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.Execute.SerializeToString,
-            ),
-            'Sideload': grpc.unary_unary_rpc_method_handler(
-                    servicer.Sideload,
-                    request_deserializer=sliverpb_dot_sliver__pb2.SideloadReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.Sideload.SerializeToString,
-            ),
-            'SpawnDll': grpc.unary_unary_rpc_method_handler(
-                    servicer.SpawnDll,
-                    request_deserializer=sliverpb_dot_sliver__pb2.InvokeSpawnDllReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.SpawnDll.SerializeToString,
-            ),
-            'Screenshot': grpc.unary_unary_rpc_method_handler(
-                    servicer.Screenshot,
-                    request_deserializer=sliverpb_dot_sliver__pb2.ScreenshotReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.Screenshot.SerializeToString,
-            ),
-            'CurrentTokenOwner': grpc.unary_unary_rpc_method_handler(
-                    servicer.CurrentTokenOwner,
-                    request_deserializer=sliverpb_dot_sliver__pb2.CurrentTokenOwnerReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.CurrentTokenOwner.SerializeToString,
-            ),
-            'PivotStartListener': grpc.unary_unary_rpc_method_handler(
-                    servicer.PivotStartListener,
-                    request_deserializer=sliverpb_dot_sliver__pb2.PivotStartListenerReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.PivotListener.SerializeToString,
-            ),
-            'PivotStopListener': grpc.unary_unary_rpc_method_handler(
-                    servicer.PivotStopListener,
-                    request_deserializer=sliverpb_dot_sliver__pb2.PivotStopListenerReq.FromString,
-                    response_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
-            ),
-            'PivotSessionListeners': grpc.unary_unary_rpc_method_handler(
-                    servicer.PivotSessionListeners,
-                    request_deserializer=sliverpb_dot_sliver__pb2.PivotListenersReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.PivotListeners.SerializeToString,
-            ),
-            'PivotGraph': grpc.unary_unary_rpc_method_handler(
-                    servicer.PivotGraph,
-                    request_deserializer=commonpb_dot_common__pb2.Empty.FromString,
-                    response_serializer=clientpb_dot_client__pb2.PivotGraph.SerializeToString,
-            ),
-            'StartService': grpc.unary_unary_rpc_method_handler(
-                    servicer.StartService,
-                    request_deserializer=sliverpb_dot_sliver__pb2.StartServiceReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.ServiceInfo.SerializeToString,
-            ),
-            'StopService': grpc.unary_unary_rpc_method_handler(
-                    servicer.StopService,
-                    request_deserializer=sliverpb_dot_sliver__pb2.StopServiceReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.ServiceInfo.SerializeToString,
-            ),
-            'RemoveService': grpc.unary_unary_rpc_method_handler(
-                    servicer.RemoveService,
-                    request_deserializer=sliverpb_dot_sliver__pb2.RemoveServiceReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.ServiceInfo.SerializeToString,
-            ),
-            'MakeToken': grpc.unary_unary_rpc_method_handler(
-                    servicer.MakeToken,
-                    request_deserializer=sliverpb_dot_sliver__pb2.MakeTokenReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.MakeToken.SerializeToString,
-            ),
-            'GetEnv': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetEnv,
-                    request_deserializer=sliverpb_dot_sliver__pb2.EnvReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.EnvInfo.SerializeToString,
-            ),
-            'SetEnv': grpc.unary_unary_rpc_method_handler(
-                    servicer.SetEnv,
-                    request_deserializer=sliverpb_dot_sliver__pb2.SetEnvReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.SetEnv.SerializeToString,
-            ),
-            'UnsetEnv': grpc.unary_unary_rpc_method_handler(
-                    servicer.UnsetEnv,
-                    request_deserializer=sliverpb_dot_sliver__pb2.UnsetEnvReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.UnsetEnv.SerializeToString,
-            ),
-            'Backdoor': grpc.unary_unary_rpc_method_handler(
-                    servicer.Backdoor,
-                    request_deserializer=sliverpb_dot_sliver__pb2.BackdoorReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.Backdoor.SerializeToString,
-            ),
-            'RegistryRead': grpc.unary_unary_rpc_method_handler(
-                    servicer.RegistryRead,
-                    request_deserializer=sliverpb_dot_sliver__pb2.RegistryReadReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.RegistryRead.SerializeToString,
-            ),
-            'RegistryWrite': grpc.unary_unary_rpc_method_handler(
-                    servicer.RegistryWrite,
-                    request_deserializer=sliverpb_dot_sliver__pb2.RegistryWriteReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.RegistryWrite.SerializeToString,
-            ),
-            'RegistryCreateKey': grpc.unary_unary_rpc_method_handler(
-                    servicer.RegistryCreateKey,
-                    request_deserializer=sliverpb_dot_sliver__pb2.RegistryCreateKeyReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.RegistryCreateKey.SerializeToString,
-            ),
-            'RegistryDeleteKey': grpc.unary_unary_rpc_method_handler(
-                    servicer.RegistryDeleteKey,
-                    request_deserializer=sliverpb_dot_sliver__pb2.RegistryDeleteKeyReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.RegistryDeleteKey.SerializeToString,
-            ),
-            'RegistryListSubKeys': grpc.unary_unary_rpc_method_handler(
-                    servicer.RegistryListSubKeys,
-                    request_deserializer=sliverpb_dot_sliver__pb2.RegistrySubKeyListReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.RegistrySubKeyList.SerializeToString,
-            ),
-            'RegistryListValues': grpc.unary_unary_rpc_method_handler(
-                    servicer.RegistryListValues,
-                    request_deserializer=sliverpb_dot_sliver__pb2.RegistryListValuesReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.RegistryValuesList.SerializeToString,
-            ),
-            'RunSSHCommand': grpc.unary_unary_rpc_method_handler(
-                    servicer.RunSSHCommand,
-                    request_deserializer=sliverpb_dot_sliver__pb2.SSHCommandReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.SSHCommand.SerializeToString,
-            ),
-            'HijackDLL': grpc.unary_unary_rpc_method_handler(
-                    servicer.HijackDLL,
-                    request_deserializer=clientpb_dot_client__pb2.DllHijackReq.FromString,
-                    response_serializer=clientpb_dot_client__pb2.DllHijack.SerializeToString,
-            ),
-            'GetPrivs': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetPrivs,
-                    request_deserializer=sliverpb_dot_sliver__pb2.GetPrivsReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.GetPrivs.SerializeToString,
-            ),
-            'StartRportFwdListener': grpc.unary_unary_rpc_method_handler(
-                    servicer.StartRportFwdListener,
-                    request_deserializer=sliverpb_dot_sliver__pb2.RportFwdStartListenerReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.RportFwdListener.SerializeToString,
-            ),
-            'GetRportFwdListeners': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetRportFwdListeners,
-                    request_deserializer=sliverpb_dot_sliver__pb2.RportFwdListenersReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.RportFwdListeners.SerializeToString,
-            ),
-            'StopRportFwdListener': grpc.unary_unary_rpc_method_handler(
-                    servicer.StopRportFwdListener,
-                    request_deserializer=sliverpb_dot_sliver__pb2.RportFwdStopListenerReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.RportFwdListener.SerializeToString,
-            ),
-            'OpenSession': grpc.unary_unary_rpc_method_handler(
-                    servicer.OpenSession,
-                    request_deserializer=sliverpb_dot_sliver__pb2.OpenSession.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.OpenSession.SerializeToString,
-            ),
-            'CloseSession': grpc.unary_unary_rpc_method_handler(
-                    servicer.CloseSession,
-                    request_deserializer=sliverpb_dot_sliver__pb2.CloseSession.FromString,
-                    response_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
-            ),
-            'RegisterExtension': grpc.unary_unary_rpc_method_handler(
-                    servicer.RegisterExtension,
-                    request_deserializer=sliverpb_dot_sliver__pb2.RegisterExtensionReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.RegisterExtension.SerializeToString,
-            ),
-            'CallExtension': grpc.unary_unary_rpc_method_handler(
-                    servicer.CallExtension,
-                    request_deserializer=sliverpb_dot_sliver__pb2.CallExtensionReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.CallExtension.SerializeToString,
-            ),
-            'ListExtensions': grpc.unary_unary_rpc_method_handler(
-                    servicer.ListExtensions,
-                    request_deserializer=sliverpb_dot_sliver__pb2.ListExtensionsReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.ListExtensions.SerializeToString,
-            ),
-            'WGStartPortForward': grpc.unary_unary_rpc_method_handler(
-                    servicer.WGStartPortForward,
-                    request_deserializer=sliverpb_dot_sliver__pb2.WGPortForwardStartReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.WGPortForward.SerializeToString,
-            ),
-            'WGStopPortForward': grpc.unary_unary_rpc_method_handler(
-                    servicer.WGStopPortForward,
-                    request_deserializer=sliverpb_dot_sliver__pb2.WGPortForwardStopReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.WGPortForward.SerializeToString,
-            ),
-            'WGStartSocks': grpc.unary_unary_rpc_method_handler(
-                    servicer.WGStartSocks,
-                    request_deserializer=sliverpb_dot_sliver__pb2.WGSocksStartReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.WGSocks.SerializeToString,
-            ),
-            'WGStopSocks': grpc.unary_unary_rpc_method_handler(
-                    servicer.WGStopSocks,
-                    request_deserializer=sliverpb_dot_sliver__pb2.WGSocksStopReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.WGSocks.SerializeToString,
-            ),
-            'WGListForwarders': grpc.unary_unary_rpc_method_handler(
-                    servicer.WGListForwarders,
-                    request_deserializer=sliverpb_dot_sliver__pb2.WGTCPForwardersReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.WGTCPForwarders.SerializeToString,
-            ),
-            'WGListSocksServers': grpc.unary_unary_rpc_method_handler(
-                    servicer.WGListSocksServers,
-                    request_deserializer=sliverpb_dot_sliver__pb2.WGSocksServersReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.WGSocksServers.SerializeToString,
-            ),
-            'Shell': grpc.unary_unary_rpc_method_handler(
-                    servicer.Shell,
-                    request_deserializer=sliverpb_dot_sliver__pb2.ShellReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.Shell.SerializeToString,
-            ),
-            'Portfwd': grpc.unary_unary_rpc_method_handler(
-                    servicer.Portfwd,
-                    request_deserializer=sliverpb_dot_sliver__pb2.PortfwdReq.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.Portfwd.SerializeToString,
-            ),
-            'CreateSocks': grpc.unary_unary_rpc_method_handler(
-                    servicer.CreateSocks,
-                    request_deserializer=sliverpb_dot_sliver__pb2.Socks.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.Socks.SerializeToString,
-            ),
-            'CloseSocks': grpc.unary_unary_rpc_method_handler(
-                    servicer.CloseSocks,
-                    request_deserializer=sliverpb_dot_sliver__pb2.Socks.FromString,
-                    response_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
-            ),
-            'SocksProxy': grpc.stream_stream_rpc_method_handler(
-                    servicer.SocksProxy,
-                    request_deserializer=sliverpb_dot_sliver__pb2.SocksData.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.SocksData.SerializeToString,
-            ),
-            'CreateTunnel': grpc.unary_unary_rpc_method_handler(
-                    servicer.CreateTunnel,
-                    request_deserializer=sliverpb_dot_sliver__pb2.Tunnel.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.Tunnel.SerializeToString,
-            ),
-            'CloseTunnel': grpc.unary_unary_rpc_method_handler(
-                    servicer.CloseTunnel,
-                    request_deserializer=sliverpb_dot_sliver__pb2.Tunnel.FromString,
-                    response_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
-            ),
-            'TunnelData': grpc.stream_stream_rpc_method_handler(
-                    servicer.TunnelData,
-                    request_deserializer=sliverpb_dot_sliver__pb2.TunnelData.FromString,
-                    response_serializer=sliverpb_dot_sliver__pb2.TunnelData.SerializeToString,
-            ),
-            'Events': grpc.unary_stream_rpc_method_handler(
-                    servicer.Events,
-                    request_deserializer=commonpb_dot_common__pb2.Empty.FromString,
-                    response_serializer=clientpb_dot_client__pb2.Event.SerializeToString,
-            ),
+        "GetVersion": grpc.unary_unary_rpc_method_handler(
+            servicer.GetVersion,
+            request_deserializer=commonpb_dot_common__pb2.Empty.FromString,
+            response_serializer=clientpb_dot_client__pb2.Version.SerializeToString,
+        ),
+        "GetOperators": grpc.unary_unary_rpc_method_handler(
+            servicer.GetOperators,
+            request_deserializer=commonpb_dot_common__pb2.Empty.FromString,
+            response_serializer=clientpb_dot_client__pb2.Operators.SerializeToString,
+        ),
+        "Kill": grpc.unary_unary_rpc_method_handler(
+            servicer.Kill,
+            request_deserializer=sliverpb_dot_sliver__pb2.KillReq.FromString,
+            response_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
+        ),
+        "Reconfigure": grpc.unary_unary_rpc_method_handler(
+            servicer.Reconfigure,
+            request_deserializer=sliverpb_dot_sliver__pb2.ReconfigureReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.Reconfigure.SerializeToString,
+        ),
+        "Rename": grpc.unary_unary_rpc_method_handler(
+            servicer.Rename,
+            request_deserializer=clientpb_dot_client__pb2.RenameReq.FromString,
+            response_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
+        ),
+        "GetSessions": grpc.unary_unary_rpc_method_handler(
+            servicer.GetSessions,
+            request_deserializer=commonpb_dot_common__pb2.Empty.FromString,
+            response_serializer=clientpb_dot_client__pb2.Sessions.SerializeToString,
+        ),
+        "GetBeacons": grpc.unary_unary_rpc_method_handler(
+            servicer.GetBeacons,
+            request_deserializer=commonpb_dot_common__pb2.Empty.FromString,
+            response_serializer=clientpb_dot_client__pb2.Beacons.SerializeToString,
+        ),
+        "GetBeacon": grpc.unary_unary_rpc_method_handler(
+            servicer.GetBeacon,
+            request_deserializer=clientpb_dot_client__pb2.Beacon.FromString,
+            response_serializer=clientpb_dot_client__pb2.Beacon.SerializeToString,
+        ),
+        "RmBeacon": grpc.unary_unary_rpc_method_handler(
+            servicer.RmBeacon,
+            request_deserializer=clientpb_dot_client__pb2.Beacon.FromString,
+            response_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
+        ),
+        "GetBeaconTasks": grpc.unary_unary_rpc_method_handler(
+            servicer.GetBeaconTasks,
+            request_deserializer=clientpb_dot_client__pb2.Beacon.FromString,
+            response_serializer=clientpb_dot_client__pb2.BeaconTasks.SerializeToString,
+        ),
+        "GetBeaconTaskContent": grpc.unary_unary_rpc_method_handler(
+            servicer.GetBeaconTaskContent,
+            request_deserializer=clientpb_dot_client__pb2.BeaconTask.FromString,
+            response_serializer=clientpb_dot_client__pb2.BeaconTask.SerializeToString,
+        ),
+        "CancelBeaconTask": grpc.unary_unary_rpc_method_handler(
+            servicer.CancelBeaconTask,
+            request_deserializer=clientpb_dot_client__pb2.BeaconTask.FromString,
+            response_serializer=clientpb_dot_client__pb2.BeaconTask.SerializeToString,
+        ),
+        "MonitorStart": grpc.unary_unary_rpc_method_handler(
+            servicer.MonitorStart,
+            request_deserializer=commonpb_dot_common__pb2.Empty.FromString,
+            response_serializer=commonpb_dot_common__pb2.Response.SerializeToString,
+        ),
+        "MonitorStop": grpc.unary_unary_rpc_method_handler(
+            servicer.MonitorStop,
+            request_deserializer=commonpb_dot_common__pb2.Empty.FromString,
+            response_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
+        ),
+        "GetJobs": grpc.unary_unary_rpc_method_handler(
+            servicer.GetJobs,
+            request_deserializer=commonpb_dot_common__pb2.Empty.FromString,
+            response_serializer=clientpb_dot_client__pb2.Jobs.SerializeToString,
+        ),
+        "KillJob": grpc.unary_unary_rpc_method_handler(
+            servicer.KillJob,
+            request_deserializer=clientpb_dot_client__pb2.KillJobReq.FromString,
+            response_serializer=clientpb_dot_client__pb2.KillJob.SerializeToString,
+        ),
+        "StartMTLSListener": grpc.unary_unary_rpc_method_handler(
+            servicer.StartMTLSListener,
+            request_deserializer=clientpb_dot_client__pb2.MTLSListenerReq.FromString,
+            response_serializer=clientpb_dot_client__pb2.MTLSListener.SerializeToString,
+        ),
+        "StartWGListener": grpc.unary_unary_rpc_method_handler(
+            servicer.StartWGListener,
+            request_deserializer=clientpb_dot_client__pb2.WGListenerReq.FromString,
+            response_serializer=clientpb_dot_client__pb2.WGListener.SerializeToString,
+        ),
+        "StartDNSListener": grpc.unary_unary_rpc_method_handler(
+            servicer.StartDNSListener,
+            request_deserializer=clientpb_dot_client__pb2.DNSListenerReq.FromString,
+            response_serializer=clientpb_dot_client__pb2.DNSListener.SerializeToString,
+        ),
+        "StartHTTPSListener": grpc.unary_unary_rpc_method_handler(
+            servicer.StartHTTPSListener,
+            request_deserializer=clientpb_dot_client__pb2.HTTPListenerReq.FromString,
+            response_serializer=clientpb_dot_client__pb2.HTTPListener.SerializeToString,
+        ),
+        "StartHTTPListener": grpc.unary_unary_rpc_method_handler(
+            servicer.StartHTTPListener,
+            request_deserializer=clientpb_dot_client__pb2.HTTPListenerReq.FromString,
+            response_serializer=clientpb_dot_client__pb2.HTTPListener.SerializeToString,
+        ),
+        "StartTCPStagerListener": grpc.unary_unary_rpc_method_handler(
+            servicer.StartTCPStagerListener,
+            request_deserializer=clientpb_dot_client__pb2.StagerListenerReq.FromString,
+            response_serializer=clientpb_dot_client__pb2.StagerListener.SerializeToString,
+        ),
+        "StartHTTPStagerListener": grpc.unary_unary_rpc_method_handler(
+            servicer.StartHTTPStagerListener,
+            request_deserializer=clientpb_dot_client__pb2.StagerListenerReq.FromString,
+            response_serializer=clientpb_dot_client__pb2.StagerListener.SerializeToString,
+        ),
+        "LootAdd": grpc.unary_unary_rpc_method_handler(
+            servicer.LootAdd,
+            request_deserializer=clientpb_dot_client__pb2.Loot.FromString,
+            response_serializer=clientpb_dot_client__pb2.Loot.SerializeToString,
+        ),
+        "LootRm": grpc.unary_unary_rpc_method_handler(
+            servicer.LootRm,
+            request_deserializer=clientpb_dot_client__pb2.Loot.FromString,
+            response_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
+        ),
+        "LootUpdate": grpc.unary_unary_rpc_method_handler(
+            servicer.LootUpdate,
+            request_deserializer=clientpb_dot_client__pb2.Loot.FromString,
+            response_serializer=clientpb_dot_client__pb2.Loot.SerializeToString,
+        ),
+        "LootContent": grpc.unary_unary_rpc_method_handler(
+            servicer.LootContent,
+            request_deserializer=clientpb_dot_client__pb2.Loot.FromString,
+            response_serializer=clientpb_dot_client__pb2.Loot.SerializeToString,
+        ),
+        "LootAll": grpc.unary_unary_rpc_method_handler(
+            servicer.LootAll,
+            request_deserializer=commonpb_dot_common__pb2.Empty.FromString,
+            response_serializer=clientpb_dot_client__pb2.AllLoot.SerializeToString,
+        ),
+        "LootAllOf": grpc.unary_unary_rpc_method_handler(
+            servicer.LootAllOf,
+            request_deserializer=clientpb_dot_client__pb2.Loot.FromString,
+            response_serializer=clientpb_dot_client__pb2.AllLoot.SerializeToString,
+        ),
+        "Hosts": grpc.unary_unary_rpc_method_handler(
+            servicer.Hosts,
+            request_deserializer=commonpb_dot_common__pb2.Empty.FromString,
+            response_serializer=clientpb_dot_client__pb2.AllHosts.SerializeToString,
+        ),
+        "Host": grpc.unary_unary_rpc_method_handler(
+            servicer.Host,
+            request_deserializer=clientpb_dot_client__pb2.Host.FromString,
+            response_serializer=clientpb_dot_client__pb2.Host.SerializeToString,
+        ),
+        "HostRm": grpc.unary_unary_rpc_method_handler(
+            servicer.HostRm,
+            request_deserializer=clientpb_dot_client__pb2.Host.FromString,
+            response_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
+        ),
+        "HostIOCRm": grpc.unary_unary_rpc_method_handler(
+            servicer.HostIOCRm,
+            request_deserializer=clientpb_dot_client__pb2.IOC.FromString,
+            response_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
+        ),
+        "Generate": grpc.unary_unary_rpc_method_handler(
+            servicer.Generate,
+            request_deserializer=clientpb_dot_client__pb2.GenerateReq.FromString,
+            response_serializer=clientpb_dot_client__pb2.Generate.SerializeToString,
+        ),
+        "GenerateExternal": grpc.unary_unary_rpc_method_handler(
+            servicer.GenerateExternal,
+            request_deserializer=clientpb_dot_client__pb2.GenerateReq.FromString,
+            response_serializer=clientpb_dot_client__pb2.ExternalImplantConfig.SerializeToString,
+        ),
+        "GenerateExternalSaveBuild": grpc.unary_unary_rpc_method_handler(
+            servicer.GenerateExternalSaveBuild,
+            request_deserializer=clientpb_dot_client__pb2.ExternalImplantBinary.FromString,
+            response_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
+        ),
+        "GenerateExternalGetImplantConfig": grpc.unary_unary_rpc_method_handler(
+            servicer.GenerateExternalGetImplantConfig,
+            request_deserializer=clientpb_dot_client__pb2.ImplantConfig.FromString,
+            response_serializer=clientpb_dot_client__pb2.ExternalImplantConfig.SerializeToString,
+        ),
+        "Regenerate": grpc.unary_unary_rpc_method_handler(
+            servicer.Regenerate,
+            request_deserializer=clientpb_dot_client__pb2.RegenerateReq.FromString,
+            response_serializer=clientpb_dot_client__pb2.Generate.SerializeToString,
+        ),
+        "ImplantBuilds": grpc.unary_unary_rpc_method_handler(
+            servicer.ImplantBuilds,
+            request_deserializer=commonpb_dot_common__pb2.Empty.FromString,
+            response_serializer=clientpb_dot_client__pb2.ImplantBuilds.SerializeToString,
+        ),
+        "DeleteImplantBuild": grpc.unary_unary_rpc_method_handler(
+            servicer.DeleteImplantBuild,
+            request_deserializer=clientpb_dot_client__pb2.DeleteReq.FromString,
+            response_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
+        ),
+        "Canaries": grpc.unary_unary_rpc_method_handler(
+            servicer.Canaries,
+            request_deserializer=commonpb_dot_common__pb2.Empty.FromString,
+            response_serializer=clientpb_dot_client__pb2.Canaries.SerializeToString,
+        ),
+        "GenerateWGClientConfig": grpc.unary_unary_rpc_method_handler(
+            servicer.GenerateWGClientConfig,
+            request_deserializer=commonpb_dot_common__pb2.Empty.FromString,
+            response_serializer=clientpb_dot_client__pb2.WGClientConfig.SerializeToString,
+        ),
+        "GenerateUniqueIP": grpc.unary_unary_rpc_method_handler(
+            servicer.GenerateUniqueIP,
+            request_deserializer=commonpb_dot_common__pb2.Empty.FromString,
+            response_serializer=clientpb_dot_client__pb2.UniqueWGIP.SerializeToString,
+        ),
+        "ImplantProfiles": grpc.unary_unary_rpc_method_handler(
+            servicer.ImplantProfiles,
+            request_deserializer=commonpb_dot_common__pb2.Empty.FromString,
+            response_serializer=clientpb_dot_client__pb2.ImplantProfiles.SerializeToString,
+        ),
+        "DeleteImplantProfile": grpc.unary_unary_rpc_method_handler(
+            servicer.DeleteImplantProfile,
+            request_deserializer=clientpb_dot_client__pb2.DeleteReq.FromString,
+            response_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
+        ),
+        "SaveImplantProfile": grpc.unary_unary_rpc_method_handler(
+            servicer.SaveImplantProfile,
+            request_deserializer=clientpb_dot_client__pb2.ImplantProfile.FromString,
+            response_serializer=clientpb_dot_client__pb2.ImplantProfile.SerializeToString,
+        ),
+        "MsfStage": grpc.unary_unary_rpc_method_handler(
+            servicer.MsfStage,
+            request_deserializer=clientpb_dot_client__pb2.MsfStagerReq.FromString,
+            response_serializer=clientpb_dot_client__pb2.MsfStager.SerializeToString,
+        ),
+        "ShellcodeRDI": grpc.unary_unary_rpc_method_handler(
+            servicer.ShellcodeRDI,
+            request_deserializer=clientpb_dot_client__pb2.ShellcodeRDIReq.FromString,
+            response_serializer=clientpb_dot_client__pb2.ShellcodeRDI.SerializeToString,
+        ),
+        "GetCompiler": grpc.unary_unary_rpc_method_handler(
+            servicer.GetCompiler,
+            request_deserializer=commonpb_dot_common__pb2.Empty.FromString,
+            response_serializer=clientpb_dot_client__pb2.Compiler.SerializeToString,
+        ),
+        "ShellcodeEncoder": grpc.unary_unary_rpc_method_handler(
+            servicer.ShellcodeEncoder,
+            request_deserializer=clientpb_dot_client__pb2.ShellcodeEncodeReq.FromString,
+            response_serializer=clientpb_dot_client__pb2.ShellcodeEncode.SerializeToString,
+        ),
+        "ShellcodeEncoderMap": grpc.unary_unary_rpc_method_handler(
+            servicer.ShellcodeEncoderMap,
+            request_deserializer=commonpb_dot_common__pb2.Empty.FromString,
+            response_serializer=clientpb_dot_client__pb2.ShellcodeEncoderMap.SerializeToString,
+        ),
+        "Websites": grpc.unary_unary_rpc_method_handler(
+            servicer.Websites,
+            request_deserializer=commonpb_dot_common__pb2.Empty.FromString,
+            response_serializer=clientpb_dot_client__pb2.Websites.SerializeToString,
+        ),
+        "Website": grpc.unary_unary_rpc_method_handler(
+            servicer.Website,
+            request_deserializer=clientpb_dot_client__pb2.Website.FromString,
+            response_serializer=clientpb_dot_client__pb2.Website.SerializeToString,
+        ),
+        "WebsiteRemove": grpc.unary_unary_rpc_method_handler(
+            servicer.WebsiteRemove,
+            request_deserializer=clientpb_dot_client__pb2.Website.FromString,
+            response_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
+        ),
+        "WebsiteAddContent": grpc.unary_unary_rpc_method_handler(
+            servicer.WebsiteAddContent,
+            request_deserializer=clientpb_dot_client__pb2.WebsiteAddContent.FromString,
+            response_serializer=clientpb_dot_client__pb2.Website.SerializeToString,
+        ),
+        "WebsiteUpdateContent": grpc.unary_unary_rpc_method_handler(
+            servicer.WebsiteUpdateContent,
+            request_deserializer=clientpb_dot_client__pb2.WebsiteAddContent.FromString,
+            response_serializer=clientpb_dot_client__pb2.Website.SerializeToString,
+        ),
+        "WebsiteRemoveContent": grpc.unary_unary_rpc_method_handler(
+            servicer.WebsiteRemoveContent,
+            request_deserializer=clientpb_dot_client__pb2.WebsiteRemoveContent.FromString,
+            response_serializer=clientpb_dot_client__pb2.Website.SerializeToString,
+        ),
+        "Ping": grpc.unary_unary_rpc_method_handler(
+            servicer.Ping,
+            request_deserializer=sliverpb_dot_sliver__pb2.Ping.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.Ping.SerializeToString,
+        ),
+        "Ps": grpc.unary_unary_rpc_method_handler(
+            servicer.Ps,
+            request_deserializer=sliverpb_dot_sliver__pb2.PsReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.Ps.SerializeToString,
+        ),
+        "Terminate": grpc.unary_unary_rpc_method_handler(
+            servicer.Terminate,
+            request_deserializer=sliverpb_dot_sliver__pb2.TerminateReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.Terminate.SerializeToString,
+        ),
+        "Ifconfig": grpc.unary_unary_rpc_method_handler(
+            servicer.Ifconfig,
+            request_deserializer=sliverpb_dot_sliver__pb2.IfconfigReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.Ifconfig.SerializeToString,
+        ),
+        "Netstat": grpc.unary_unary_rpc_method_handler(
+            servicer.Netstat,
+            request_deserializer=sliverpb_dot_sliver__pb2.NetstatReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.Netstat.SerializeToString,
+        ),
+        "Ls": grpc.unary_unary_rpc_method_handler(
+            servicer.Ls,
+            request_deserializer=sliverpb_dot_sliver__pb2.LsReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.Ls.SerializeToString,
+        ),
+        "Cd": grpc.unary_unary_rpc_method_handler(
+            servicer.Cd,
+            request_deserializer=sliverpb_dot_sliver__pb2.CdReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.Pwd.SerializeToString,
+        ),
+        "Pwd": grpc.unary_unary_rpc_method_handler(
+            servicer.Pwd,
+            request_deserializer=sliverpb_dot_sliver__pb2.PwdReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.Pwd.SerializeToString,
+        ),
+        "Mv": grpc.unary_unary_rpc_method_handler(
+            servicer.Mv,
+            request_deserializer=sliverpb_dot_sliver__pb2.MvReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.Mv.SerializeToString,
+        ),
+        "Rm": grpc.unary_unary_rpc_method_handler(
+            servicer.Rm,
+            request_deserializer=sliverpb_dot_sliver__pb2.RmReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.Rm.SerializeToString,
+        ),
+        "Mkdir": grpc.unary_unary_rpc_method_handler(
+            servicer.Mkdir,
+            request_deserializer=sliverpb_dot_sliver__pb2.MkdirReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.Mkdir.SerializeToString,
+        ),
+        "Download": grpc.unary_unary_rpc_method_handler(
+            servicer.Download,
+            request_deserializer=sliverpb_dot_sliver__pb2.DownloadReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.Download.SerializeToString,
+        ),
+        "Upload": grpc.unary_unary_rpc_method_handler(
+            servicer.Upload,
+            request_deserializer=sliverpb_dot_sliver__pb2.UploadReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.Upload.SerializeToString,
+        ),
+        "ProcessDump": grpc.unary_unary_rpc_method_handler(
+            servicer.ProcessDump,
+            request_deserializer=sliverpb_dot_sliver__pb2.ProcessDumpReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.ProcessDump.SerializeToString,
+        ),
+        "RunAs": grpc.unary_unary_rpc_method_handler(
+            servicer.RunAs,
+            request_deserializer=sliverpb_dot_sliver__pb2.RunAsReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.RunAs.SerializeToString,
+        ),
+        "Impersonate": grpc.unary_unary_rpc_method_handler(
+            servicer.Impersonate,
+            request_deserializer=sliverpb_dot_sliver__pb2.ImpersonateReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.Impersonate.SerializeToString,
+        ),
+        "RevToSelf": grpc.unary_unary_rpc_method_handler(
+            servicer.RevToSelf,
+            request_deserializer=sliverpb_dot_sliver__pb2.RevToSelfReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.RevToSelf.SerializeToString,
+        ),
+        "GetSystem": grpc.unary_unary_rpc_method_handler(
+            servicer.GetSystem,
+            request_deserializer=clientpb_dot_client__pb2.GetSystemReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.GetSystem.SerializeToString,
+        ),
+        "Task": grpc.unary_unary_rpc_method_handler(
+            servicer.Task,
+            request_deserializer=sliverpb_dot_sliver__pb2.TaskReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.Task.SerializeToString,
+        ),
+        "Msf": grpc.unary_unary_rpc_method_handler(
+            servicer.Msf,
+            request_deserializer=clientpb_dot_client__pb2.MSFReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.Task.SerializeToString,
+        ),
+        "MsfRemote": grpc.unary_unary_rpc_method_handler(
+            servicer.MsfRemote,
+            request_deserializer=clientpb_dot_client__pb2.MSFRemoteReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.Task.SerializeToString,
+        ),
+        "ExecuteAssembly": grpc.unary_unary_rpc_method_handler(
+            servicer.ExecuteAssembly,
+            request_deserializer=sliverpb_dot_sliver__pb2.ExecuteAssemblyReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.ExecuteAssembly.SerializeToString,
+        ),
+        "Migrate": grpc.unary_unary_rpc_method_handler(
+            servicer.Migrate,
+            request_deserializer=clientpb_dot_client__pb2.MigrateReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.Migrate.SerializeToString,
+        ),
+        "Execute": grpc.unary_unary_rpc_method_handler(
+            servicer.Execute,
+            request_deserializer=sliverpb_dot_sliver__pb2.ExecuteReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.Execute.SerializeToString,
+        ),
+        "ExecuteWindows": grpc.unary_unary_rpc_method_handler(
+            servicer.ExecuteWindows,
+            request_deserializer=sliverpb_dot_sliver__pb2.ExecuteWindowsReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.Execute.SerializeToString,
+        ),
+        "Sideload": grpc.unary_unary_rpc_method_handler(
+            servicer.Sideload,
+            request_deserializer=sliverpb_dot_sliver__pb2.SideloadReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.Sideload.SerializeToString,
+        ),
+        "SpawnDll": grpc.unary_unary_rpc_method_handler(
+            servicer.SpawnDll,
+            request_deserializer=sliverpb_dot_sliver__pb2.InvokeSpawnDllReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.SpawnDll.SerializeToString,
+        ),
+        "Screenshot": grpc.unary_unary_rpc_method_handler(
+            servicer.Screenshot,
+            request_deserializer=sliverpb_dot_sliver__pb2.ScreenshotReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.Screenshot.SerializeToString,
+        ),
+        "CurrentTokenOwner": grpc.unary_unary_rpc_method_handler(
+            servicer.CurrentTokenOwner,
+            request_deserializer=sliverpb_dot_sliver__pb2.CurrentTokenOwnerReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.CurrentTokenOwner.SerializeToString,
+        ),
+        "PivotStartListener": grpc.unary_unary_rpc_method_handler(
+            servicer.PivotStartListener,
+            request_deserializer=sliverpb_dot_sliver__pb2.PivotStartListenerReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.PivotListener.SerializeToString,
+        ),
+        "PivotStopListener": grpc.unary_unary_rpc_method_handler(
+            servicer.PivotStopListener,
+            request_deserializer=sliverpb_dot_sliver__pb2.PivotStopListenerReq.FromString,
+            response_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
+        ),
+        "PivotSessionListeners": grpc.unary_unary_rpc_method_handler(
+            servicer.PivotSessionListeners,
+            request_deserializer=sliverpb_dot_sliver__pb2.PivotListenersReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.PivotListeners.SerializeToString,
+        ),
+        "PivotGraph": grpc.unary_unary_rpc_method_handler(
+            servicer.PivotGraph,
+            request_deserializer=commonpb_dot_common__pb2.Empty.FromString,
+            response_serializer=clientpb_dot_client__pb2.PivotGraph.SerializeToString,
+        ),
+        "StartService": grpc.unary_unary_rpc_method_handler(
+            servicer.StartService,
+            request_deserializer=sliverpb_dot_sliver__pb2.StartServiceReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.ServiceInfo.SerializeToString,
+        ),
+        "StopService": grpc.unary_unary_rpc_method_handler(
+            servicer.StopService,
+            request_deserializer=sliverpb_dot_sliver__pb2.StopServiceReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.ServiceInfo.SerializeToString,
+        ),
+        "RemoveService": grpc.unary_unary_rpc_method_handler(
+            servicer.RemoveService,
+            request_deserializer=sliverpb_dot_sliver__pb2.RemoveServiceReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.ServiceInfo.SerializeToString,
+        ),
+        "MakeToken": grpc.unary_unary_rpc_method_handler(
+            servicer.MakeToken,
+            request_deserializer=sliverpb_dot_sliver__pb2.MakeTokenReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.MakeToken.SerializeToString,
+        ),
+        "GetEnv": grpc.unary_unary_rpc_method_handler(
+            servicer.GetEnv,
+            request_deserializer=sliverpb_dot_sliver__pb2.EnvReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.EnvInfo.SerializeToString,
+        ),
+        "SetEnv": grpc.unary_unary_rpc_method_handler(
+            servicer.SetEnv,
+            request_deserializer=sliverpb_dot_sliver__pb2.SetEnvReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.SetEnv.SerializeToString,
+        ),
+        "UnsetEnv": grpc.unary_unary_rpc_method_handler(
+            servicer.UnsetEnv,
+            request_deserializer=sliverpb_dot_sliver__pb2.UnsetEnvReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.UnsetEnv.SerializeToString,
+        ),
+        "Backdoor": grpc.unary_unary_rpc_method_handler(
+            servicer.Backdoor,
+            request_deserializer=sliverpb_dot_sliver__pb2.BackdoorReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.Backdoor.SerializeToString,
+        ),
+        "RegistryRead": grpc.unary_unary_rpc_method_handler(
+            servicer.RegistryRead,
+            request_deserializer=sliverpb_dot_sliver__pb2.RegistryReadReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.RegistryRead.SerializeToString,
+        ),
+        "RegistryWrite": grpc.unary_unary_rpc_method_handler(
+            servicer.RegistryWrite,
+            request_deserializer=sliverpb_dot_sliver__pb2.RegistryWriteReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.RegistryWrite.SerializeToString,
+        ),
+        "RegistryCreateKey": grpc.unary_unary_rpc_method_handler(
+            servicer.RegistryCreateKey,
+            request_deserializer=sliverpb_dot_sliver__pb2.RegistryCreateKeyReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.RegistryCreateKey.SerializeToString,
+        ),
+        "RegistryDeleteKey": grpc.unary_unary_rpc_method_handler(
+            servicer.RegistryDeleteKey,
+            request_deserializer=sliverpb_dot_sliver__pb2.RegistryDeleteKeyReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.RegistryDeleteKey.SerializeToString,
+        ),
+        "RegistryListSubKeys": grpc.unary_unary_rpc_method_handler(
+            servicer.RegistryListSubKeys,
+            request_deserializer=sliverpb_dot_sliver__pb2.RegistrySubKeyListReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.RegistrySubKeyList.SerializeToString,
+        ),
+        "RegistryListValues": grpc.unary_unary_rpc_method_handler(
+            servicer.RegistryListValues,
+            request_deserializer=sliverpb_dot_sliver__pb2.RegistryListValuesReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.RegistryValuesList.SerializeToString,
+        ),
+        "RunSSHCommand": grpc.unary_unary_rpc_method_handler(
+            servicer.RunSSHCommand,
+            request_deserializer=sliverpb_dot_sliver__pb2.SSHCommandReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.SSHCommand.SerializeToString,
+        ),
+        "HijackDLL": grpc.unary_unary_rpc_method_handler(
+            servicer.HijackDLL,
+            request_deserializer=clientpb_dot_client__pb2.DllHijackReq.FromString,
+            response_serializer=clientpb_dot_client__pb2.DllHijack.SerializeToString,
+        ),
+        "GetPrivs": grpc.unary_unary_rpc_method_handler(
+            servicer.GetPrivs,
+            request_deserializer=sliverpb_dot_sliver__pb2.GetPrivsReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.GetPrivs.SerializeToString,
+        ),
+        "StartRportFwdListener": grpc.unary_unary_rpc_method_handler(
+            servicer.StartRportFwdListener,
+            request_deserializer=sliverpb_dot_sliver__pb2.RportFwdStartListenerReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.RportFwdListener.SerializeToString,
+        ),
+        "GetRportFwdListeners": grpc.unary_unary_rpc_method_handler(
+            servicer.GetRportFwdListeners,
+            request_deserializer=sliverpb_dot_sliver__pb2.RportFwdListenersReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.RportFwdListeners.SerializeToString,
+        ),
+        "StopRportFwdListener": grpc.unary_unary_rpc_method_handler(
+            servicer.StopRportFwdListener,
+            request_deserializer=sliverpb_dot_sliver__pb2.RportFwdStopListenerReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.RportFwdListener.SerializeToString,
+        ),
+        "OpenSession": grpc.unary_unary_rpc_method_handler(
+            servicer.OpenSession,
+            request_deserializer=sliverpb_dot_sliver__pb2.OpenSession.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.OpenSession.SerializeToString,
+        ),
+        "CloseSession": grpc.unary_unary_rpc_method_handler(
+            servicer.CloseSession,
+            request_deserializer=sliverpb_dot_sliver__pb2.CloseSession.FromString,
+            response_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
+        ),
+        "RegisterExtension": grpc.unary_unary_rpc_method_handler(
+            servicer.RegisterExtension,
+            request_deserializer=sliverpb_dot_sliver__pb2.RegisterExtensionReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.RegisterExtension.SerializeToString,
+        ),
+        "CallExtension": grpc.unary_unary_rpc_method_handler(
+            servicer.CallExtension,
+            request_deserializer=sliverpb_dot_sliver__pb2.CallExtensionReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.CallExtension.SerializeToString,
+        ),
+        "ListExtensions": grpc.unary_unary_rpc_method_handler(
+            servicer.ListExtensions,
+            request_deserializer=sliverpb_dot_sliver__pb2.ListExtensionsReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.ListExtensions.SerializeToString,
+        ),
+        "WGStartPortForward": grpc.unary_unary_rpc_method_handler(
+            servicer.WGStartPortForward,
+            request_deserializer=sliverpb_dot_sliver__pb2.WGPortForwardStartReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.WGPortForward.SerializeToString,
+        ),
+        "WGStopPortForward": grpc.unary_unary_rpc_method_handler(
+            servicer.WGStopPortForward,
+            request_deserializer=sliverpb_dot_sliver__pb2.WGPortForwardStopReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.WGPortForward.SerializeToString,
+        ),
+        "WGStartSocks": grpc.unary_unary_rpc_method_handler(
+            servicer.WGStartSocks,
+            request_deserializer=sliverpb_dot_sliver__pb2.WGSocksStartReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.WGSocks.SerializeToString,
+        ),
+        "WGStopSocks": grpc.unary_unary_rpc_method_handler(
+            servicer.WGStopSocks,
+            request_deserializer=sliverpb_dot_sliver__pb2.WGSocksStopReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.WGSocks.SerializeToString,
+        ),
+        "WGListForwarders": grpc.unary_unary_rpc_method_handler(
+            servicer.WGListForwarders,
+            request_deserializer=sliverpb_dot_sliver__pb2.WGTCPForwardersReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.WGTCPForwarders.SerializeToString,
+        ),
+        "WGListSocksServers": grpc.unary_unary_rpc_method_handler(
+            servicer.WGListSocksServers,
+            request_deserializer=sliverpb_dot_sliver__pb2.WGSocksServersReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.WGSocksServers.SerializeToString,
+        ),
+        "Shell": grpc.unary_unary_rpc_method_handler(
+            servicer.Shell,
+            request_deserializer=sliverpb_dot_sliver__pb2.ShellReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.Shell.SerializeToString,
+        ),
+        "Portfwd": grpc.unary_unary_rpc_method_handler(
+            servicer.Portfwd,
+            request_deserializer=sliverpb_dot_sliver__pb2.PortfwdReq.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.Portfwd.SerializeToString,
+        ),
+        "CreateSocks": grpc.unary_unary_rpc_method_handler(
+            servicer.CreateSocks,
+            request_deserializer=sliverpb_dot_sliver__pb2.Socks.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.Socks.SerializeToString,
+        ),
+        "CloseSocks": grpc.unary_unary_rpc_method_handler(
+            servicer.CloseSocks,
+            request_deserializer=sliverpb_dot_sliver__pb2.Socks.FromString,
+            response_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
+        ),
+        "SocksProxy": grpc.stream_stream_rpc_method_handler(
+            servicer.SocksProxy,
+            request_deserializer=sliverpb_dot_sliver__pb2.SocksData.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.SocksData.SerializeToString,
+        ),
+        "CreateTunnel": grpc.unary_unary_rpc_method_handler(
+            servicer.CreateTunnel,
+            request_deserializer=sliverpb_dot_sliver__pb2.Tunnel.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.Tunnel.SerializeToString,
+        ),
+        "CloseTunnel": grpc.unary_unary_rpc_method_handler(
+            servicer.CloseTunnel,
+            request_deserializer=sliverpb_dot_sliver__pb2.Tunnel.FromString,
+            response_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
+        ),
+        "TunnelData": grpc.stream_stream_rpc_method_handler(
+            servicer.TunnelData,
+            request_deserializer=sliverpb_dot_sliver__pb2.TunnelData.FromString,
+            response_serializer=sliverpb_dot_sliver__pb2.TunnelData.SerializeToString,
+        ),
+        "Events": grpc.unary_stream_rpc_method_handler(
+            servicer.Events,
+            request_deserializer=commonpb_dot_common__pb2.Empty.FromString,
+            response_serializer=clientpb_dot_client__pb2.Event.SerializeToString,
+        ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'rpcpb.SliverRPC', rpc_method_handlers)
+        "rpcpb.SliverRPC", rpc_method_handlers
+    )
     server.add_generic_rpc_handlers((generic_handler,))
 
 
- # This class is part of an EXPERIMENTAL API.
+# This class is part of an EXPERIMENTAL API.
 class SliverRPC(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
-    def GetVersion(request,
+    def GetVersion(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/GetVersion',
+            "/rpcpb.SliverRPC/GetVersion",
             commonpb_dot_common__pb2.Empty.SerializeToString,
             clientpb_dot_client__pb2.Version.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def GetOperators(request,
+    def GetOperators(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/GetOperators',
+            "/rpcpb.SliverRPC/GetOperators",
             commonpb_dot_common__pb2.Empty.SerializeToString,
             clientpb_dot_client__pb2.Operators.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def Kill(request,
+    def Kill(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/Kill',
+            "/rpcpb.SliverRPC/Kill",
             sliverpb_dot_sliver__pb2.KillReq.SerializeToString,
             commonpb_dot_common__pb2.Empty.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def Reconfigure(request,
+    def Reconfigure(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/Reconfigure',
+            "/rpcpb.SliverRPC/Reconfigure",
             sliverpb_dot_sliver__pb2.ReconfigureReq.SerializeToString,
             sliverpb_dot_sliver__pb2.Reconfigure.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def Rename(request,
+    def Rename(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/Rename',
+            "/rpcpb.SliverRPC/Rename",
             clientpb_dot_client__pb2.RenameReq.SerializeToString,
             commonpb_dot_common__pb2.Empty.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def GetSessions(request,
+    def GetSessions(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/GetSessions',
+            "/rpcpb.SliverRPC/GetSessions",
             commonpb_dot_common__pb2.Empty.SerializeToString,
             clientpb_dot_client__pb2.Sessions.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def GetBeacons(request,
+    def GetBeacons(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/GetBeacons',
+            "/rpcpb.SliverRPC/GetBeacons",
             commonpb_dot_common__pb2.Empty.SerializeToString,
             clientpb_dot_client__pb2.Beacons.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def GetBeacon(request,
+    def GetBeacon(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/GetBeacon',
+            "/rpcpb.SliverRPC/GetBeacon",
             clientpb_dot_client__pb2.Beacon.SerializeToString,
             clientpb_dot_client__pb2.Beacon.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def RmBeacon(request,
+    def RmBeacon(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/RmBeacon',
+            "/rpcpb.SliverRPC/RmBeacon",
             clientpb_dot_client__pb2.Beacon.SerializeToString,
             commonpb_dot_common__pb2.Empty.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def GetBeaconTasks(request,
+    def GetBeaconTasks(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/GetBeaconTasks',
+            "/rpcpb.SliverRPC/GetBeaconTasks",
             clientpb_dot_client__pb2.Beacon.SerializeToString,
             clientpb_dot_client__pb2.BeaconTasks.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def GetBeaconTaskContent(request,
+    def GetBeaconTaskContent(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/GetBeaconTaskContent',
+            "/rpcpb.SliverRPC/GetBeaconTaskContent",
             clientpb_dot_client__pb2.BeaconTask.SerializeToString,
             clientpb_dot_client__pb2.BeaconTask.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def CancelBeaconTask(request,
+    def CancelBeaconTask(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/CancelBeaconTask',
+            "/rpcpb.SliverRPC/CancelBeaconTask",
             clientpb_dot_client__pb2.BeaconTask.SerializeToString,
             clientpb_dot_client__pb2.BeaconTask.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def MonitorStart(request,
+    def MonitorStart(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/MonitorStart',
+            "/rpcpb.SliverRPC/MonitorStart",
             commonpb_dot_common__pb2.Empty.SerializeToString,
             commonpb_dot_common__pb2.Response.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def MonitorStop(request,
+    def MonitorStop(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/MonitorStop',
+            "/rpcpb.SliverRPC/MonitorStop",
             commonpb_dot_common__pb2.Empty.SerializeToString,
             commonpb_dot_common__pb2.Empty.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def GetJobs(request,
+    def GetJobs(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/GetJobs',
+            "/rpcpb.SliverRPC/GetJobs",
             commonpb_dot_common__pb2.Empty.SerializeToString,
             clientpb_dot_client__pb2.Jobs.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def KillJob(request,
+    def KillJob(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/KillJob',
+            "/rpcpb.SliverRPC/KillJob",
             clientpb_dot_client__pb2.KillJobReq.SerializeToString,
             clientpb_dot_client__pb2.KillJob.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def StartMTLSListener(request,
+    def StartMTLSListener(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/StartMTLSListener',
+            "/rpcpb.SliverRPC/StartMTLSListener",
             clientpb_dot_client__pb2.MTLSListenerReq.SerializeToString,
             clientpb_dot_client__pb2.MTLSListener.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def StartWGListener(request,
+    def StartWGListener(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/StartWGListener',
+            "/rpcpb.SliverRPC/StartWGListener",
             clientpb_dot_client__pb2.WGListenerReq.SerializeToString,
             clientpb_dot_client__pb2.WGListener.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def StartDNSListener(request,
+    def StartDNSListener(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/StartDNSListener',
+            "/rpcpb.SliverRPC/StartDNSListener",
             clientpb_dot_client__pb2.DNSListenerReq.SerializeToString,
             clientpb_dot_client__pb2.DNSListener.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def StartHTTPSListener(request,
+    def StartHTTPSListener(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/StartHTTPSListener',
+            "/rpcpb.SliverRPC/StartHTTPSListener",
             clientpb_dot_client__pb2.HTTPListenerReq.SerializeToString,
             clientpb_dot_client__pb2.HTTPListener.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def StartHTTPListener(request,
+    def StartHTTPListener(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/StartHTTPListener',
+            "/rpcpb.SliverRPC/StartHTTPListener",
             clientpb_dot_client__pb2.HTTPListenerReq.SerializeToString,
             clientpb_dot_client__pb2.HTTPListener.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def StartTCPStagerListener(request,
+    def StartTCPStagerListener(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/StartTCPStagerListener',
+            "/rpcpb.SliverRPC/StartTCPStagerListener",
             clientpb_dot_client__pb2.StagerListenerReq.SerializeToString,
             clientpb_dot_client__pb2.StagerListener.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def StartHTTPStagerListener(request,
+    def StartHTTPStagerListener(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/StartHTTPStagerListener',
+            "/rpcpb.SliverRPC/StartHTTPStagerListener",
             clientpb_dot_client__pb2.StagerListenerReq.SerializeToString,
             clientpb_dot_client__pb2.StagerListener.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def LootAdd(request,
+    def LootAdd(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/LootAdd',
+            "/rpcpb.SliverRPC/LootAdd",
             clientpb_dot_client__pb2.Loot.SerializeToString,
             clientpb_dot_client__pb2.Loot.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def LootRm(request,
+    def LootRm(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/LootRm',
+            "/rpcpb.SliverRPC/LootRm",
             clientpb_dot_client__pb2.Loot.SerializeToString,
             commonpb_dot_common__pb2.Empty.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def LootUpdate(request,
+    def LootUpdate(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/LootUpdate',
+            "/rpcpb.SliverRPC/LootUpdate",
             clientpb_dot_client__pb2.Loot.SerializeToString,
             clientpb_dot_client__pb2.Loot.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def LootContent(request,
+    def LootContent(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/LootContent',
+            "/rpcpb.SliverRPC/LootContent",
             clientpb_dot_client__pb2.Loot.SerializeToString,
             clientpb_dot_client__pb2.Loot.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def LootAll(request,
+    def LootAll(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/LootAll',
+            "/rpcpb.SliverRPC/LootAll",
             commonpb_dot_common__pb2.Empty.SerializeToString,
             clientpb_dot_client__pb2.AllLoot.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def LootAllOf(request,
+    def LootAllOf(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/LootAllOf',
+            "/rpcpb.SliverRPC/LootAllOf",
             clientpb_dot_client__pb2.Loot.SerializeToString,
             clientpb_dot_client__pb2.AllLoot.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def Hosts(request,
+    def Hosts(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/Hosts',
+            "/rpcpb.SliverRPC/Hosts",
             commonpb_dot_common__pb2.Empty.SerializeToString,
             clientpb_dot_client__pb2.AllHosts.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def Host(request,
+    def Host(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/Host',
+            "/rpcpb.SliverRPC/Host",
             clientpb_dot_client__pb2.Host.SerializeToString,
             clientpb_dot_client__pb2.Host.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def HostRm(request,
+    def HostRm(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/HostRm',
+            "/rpcpb.SliverRPC/HostRm",
             clientpb_dot_client__pb2.Host.SerializeToString,
             commonpb_dot_common__pb2.Empty.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def HostIOCRm(request,
+    def HostIOCRm(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/HostIOCRm',
+            "/rpcpb.SliverRPC/HostIOCRm",
             clientpb_dot_client__pb2.IOC.SerializeToString,
             commonpb_dot_common__pb2.Empty.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def Generate(request,
+    def Generate(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/Generate',
+            "/rpcpb.SliverRPC/Generate",
             clientpb_dot_client__pb2.GenerateReq.SerializeToString,
             clientpb_dot_client__pb2.Generate.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def GenerateExternal(request,
+    def GenerateExternal(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/GenerateExternal',
+            "/rpcpb.SliverRPC/GenerateExternal",
             clientpb_dot_client__pb2.GenerateReq.SerializeToString,
             clientpb_dot_client__pb2.ExternalImplantConfig.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def GenerateExternalSaveBuild(request,
+    def GenerateExternalSaveBuild(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/GenerateExternalSaveBuild',
+            "/rpcpb.SliverRPC/GenerateExternalSaveBuild",
             clientpb_dot_client__pb2.ExternalImplantBinary.SerializeToString,
             commonpb_dot_common__pb2.Empty.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def GenerateExternalGetImplantConfig(request,
+    def GenerateExternalGetImplantConfig(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/GenerateExternalGetImplantConfig',
+            "/rpcpb.SliverRPC/GenerateExternalGetImplantConfig",
             clientpb_dot_client__pb2.ImplantConfig.SerializeToString,
             clientpb_dot_client__pb2.ExternalImplantConfig.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def Regenerate(request,
+    def Regenerate(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/Regenerate',
+            "/rpcpb.SliverRPC/Regenerate",
             clientpb_dot_client__pb2.RegenerateReq.SerializeToString,
             clientpb_dot_client__pb2.Generate.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def ImplantBuilds(request,
+    def ImplantBuilds(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/ImplantBuilds',
+            "/rpcpb.SliverRPC/ImplantBuilds",
             commonpb_dot_common__pb2.Empty.SerializeToString,
             clientpb_dot_client__pb2.ImplantBuilds.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def DeleteImplantBuild(request,
+    def DeleteImplantBuild(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/DeleteImplantBuild',
+            "/rpcpb.SliverRPC/DeleteImplantBuild",
             clientpb_dot_client__pb2.DeleteReq.SerializeToString,
             commonpb_dot_common__pb2.Empty.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def Canaries(request,
+    def Canaries(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/Canaries',
+            "/rpcpb.SliverRPC/Canaries",
             commonpb_dot_common__pb2.Empty.SerializeToString,
             clientpb_dot_client__pb2.Canaries.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def GenerateWGClientConfig(request,
+    def GenerateWGClientConfig(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/GenerateWGClientConfig',
+            "/rpcpb.SliverRPC/GenerateWGClientConfig",
             commonpb_dot_common__pb2.Empty.SerializeToString,
             clientpb_dot_client__pb2.WGClientConfig.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def GenerateUniqueIP(request,
+    def GenerateUniqueIP(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/GenerateUniqueIP',
+            "/rpcpb.SliverRPC/GenerateUniqueIP",
             commonpb_dot_common__pb2.Empty.SerializeToString,
             clientpb_dot_client__pb2.UniqueWGIP.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def ImplantProfiles(request,
+    def ImplantProfiles(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/ImplantProfiles',
+            "/rpcpb.SliverRPC/ImplantProfiles",
             commonpb_dot_common__pb2.Empty.SerializeToString,
             clientpb_dot_client__pb2.ImplantProfiles.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def DeleteImplantProfile(request,
+    def DeleteImplantProfile(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/DeleteImplantProfile',
+            "/rpcpb.SliverRPC/DeleteImplantProfile",
             clientpb_dot_client__pb2.DeleteReq.SerializeToString,
             commonpb_dot_common__pb2.Empty.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def SaveImplantProfile(request,
+    def SaveImplantProfile(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/SaveImplantProfile',
+            "/rpcpb.SliverRPC/SaveImplantProfile",
             clientpb_dot_client__pb2.ImplantProfile.SerializeToString,
             clientpb_dot_client__pb2.ImplantProfile.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def MsfStage(request,
+    def MsfStage(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/MsfStage',
+            "/rpcpb.SliverRPC/MsfStage",
             clientpb_dot_client__pb2.MsfStagerReq.SerializeToString,
             clientpb_dot_client__pb2.MsfStager.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def ShellcodeRDI(request,
+    def ShellcodeRDI(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/ShellcodeRDI',
+            "/rpcpb.SliverRPC/ShellcodeRDI",
             clientpb_dot_client__pb2.ShellcodeRDIReq.SerializeToString,
             clientpb_dot_client__pb2.ShellcodeRDI.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def GetCompiler(request,
+    def GetCompiler(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/GetCompiler',
+            "/rpcpb.SliverRPC/GetCompiler",
             commonpb_dot_common__pb2.Empty.SerializeToString,
             clientpb_dot_client__pb2.Compiler.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def ShellcodeEncoder(request,
+    def ShellcodeEncoder(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/ShellcodeEncoder',
+            "/rpcpb.SliverRPC/ShellcodeEncoder",
             clientpb_dot_client__pb2.ShellcodeEncodeReq.SerializeToString,
             clientpb_dot_client__pb2.ShellcodeEncode.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def ShellcodeEncoderMap(request,
+    def ShellcodeEncoderMap(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/ShellcodeEncoderMap',
+            "/rpcpb.SliverRPC/ShellcodeEncoderMap",
             commonpb_dot_common__pb2.Empty.SerializeToString,
             clientpb_dot_client__pb2.ShellcodeEncoderMap.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def Websites(request,
+    def Websites(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/Websites',
+            "/rpcpb.SliverRPC/Websites",
             commonpb_dot_common__pb2.Empty.SerializeToString,
             clientpb_dot_client__pb2.Websites.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def Website(request,
+    def Website(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/Website',
+            "/rpcpb.SliverRPC/Website",
             clientpb_dot_client__pb2.Website.SerializeToString,
             clientpb_dot_client__pb2.Website.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def WebsiteRemove(request,
+    def WebsiteRemove(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/WebsiteRemove',
+            "/rpcpb.SliverRPC/WebsiteRemove",
             clientpb_dot_client__pb2.Website.SerializeToString,
             commonpb_dot_common__pb2.Empty.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def WebsiteAddContent(request,
+    def WebsiteAddContent(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/WebsiteAddContent',
+            "/rpcpb.SliverRPC/WebsiteAddContent",
             clientpb_dot_client__pb2.WebsiteAddContent.SerializeToString,
             clientpb_dot_client__pb2.Website.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def WebsiteUpdateContent(request,
+    def WebsiteUpdateContent(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/WebsiteUpdateContent',
+            "/rpcpb.SliverRPC/WebsiteUpdateContent",
             clientpb_dot_client__pb2.WebsiteAddContent.SerializeToString,
             clientpb_dot_client__pb2.Website.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def WebsiteRemoveContent(request,
+    def WebsiteRemoveContent(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/WebsiteRemoveContent',
+            "/rpcpb.SliverRPC/WebsiteRemoveContent",
             clientpb_dot_client__pb2.WebsiteRemoveContent.SerializeToString,
             clientpb_dot_client__pb2.Website.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def Ping(request,
+    def Ping(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/Ping',
+            "/rpcpb.SliverRPC/Ping",
             sliverpb_dot_sliver__pb2.Ping.SerializeToString,
             sliverpb_dot_sliver__pb2.Ping.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def Ps(request,
+    def Ps(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/Ps',
+            "/rpcpb.SliverRPC/Ps",
             sliverpb_dot_sliver__pb2.PsReq.SerializeToString,
             sliverpb_dot_sliver__pb2.Ps.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def Terminate(request,
+    def Terminate(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/Terminate',
+            "/rpcpb.SliverRPC/Terminate",
             sliverpb_dot_sliver__pb2.TerminateReq.SerializeToString,
             sliverpb_dot_sliver__pb2.Terminate.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def Ifconfig(request,
+    def Ifconfig(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/Ifconfig',
+            "/rpcpb.SliverRPC/Ifconfig",
             sliverpb_dot_sliver__pb2.IfconfigReq.SerializeToString,
             sliverpb_dot_sliver__pb2.Ifconfig.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def Netstat(request,
+    def Netstat(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/Netstat',
+            "/rpcpb.SliverRPC/Netstat",
             sliverpb_dot_sliver__pb2.NetstatReq.SerializeToString,
             sliverpb_dot_sliver__pb2.Netstat.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def Ls(request,
+    def Ls(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/Ls',
+            "/rpcpb.SliverRPC/Ls",
             sliverpb_dot_sliver__pb2.LsReq.SerializeToString,
             sliverpb_dot_sliver__pb2.Ls.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def Cd(request,
+    def Cd(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/Cd',
+            "/rpcpb.SliverRPC/Cd",
             sliverpb_dot_sliver__pb2.CdReq.SerializeToString,
             sliverpb_dot_sliver__pb2.Pwd.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def Pwd(request,
+    def Pwd(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/Pwd',
+            "/rpcpb.SliverRPC/Pwd",
             sliverpb_dot_sliver__pb2.PwdReq.SerializeToString,
             sliverpb_dot_sliver__pb2.Pwd.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def Mv(request,
+    def Mv(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/Mv',
+            "/rpcpb.SliverRPC/Mv",
             sliverpb_dot_sliver__pb2.MvReq.SerializeToString,
             sliverpb_dot_sliver__pb2.Mv.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def Rm(request,
+    def Rm(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/Rm',
+            "/rpcpb.SliverRPC/Rm",
             sliverpb_dot_sliver__pb2.RmReq.SerializeToString,
             sliverpb_dot_sliver__pb2.Rm.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def Mkdir(request,
+    def Mkdir(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/Mkdir',
+            "/rpcpb.SliverRPC/Mkdir",
             sliverpb_dot_sliver__pb2.MkdirReq.SerializeToString,
             sliverpb_dot_sliver__pb2.Mkdir.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def Download(request,
+    def Download(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/Download',
+            "/rpcpb.SliverRPC/Download",
             sliverpb_dot_sliver__pb2.DownloadReq.SerializeToString,
             sliverpb_dot_sliver__pb2.Download.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def Upload(request,
+    def Upload(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/Upload',
+            "/rpcpb.SliverRPC/Upload",
             sliverpb_dot_sliver__pb2.UploadReq.SerializeToString,
             sliverpb_dot_sliver__pb2.Upload.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def ProcessDump(request,
+    def ProcessDump(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/ProcessDump',
+            "/rpcpb.SliverRPC/ProcessDump",
             sliverpb_dot_sliver__pb2.ProcessDumpReq.SerializeToString,
             sliverpb_dot_sliver__pb2.ProcessDump.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def RunAs(request,
+    def RunAs(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/RunAs',
+            "/rpcpb.SliverRPC/RunAs",
             sliverpb_dot_sliver__pb2.RunAsReq.SerializeToString,
             sliverpb_dot_sliver__pb2.RunAs.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def Impersonate(request,
+    def Impersonate(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/Impersonate',
+            "/rpcpb.SliverRPC/Impersonate",
             sliverpb_dot_sliver__pb2.ImpersonateReq.SerializeToString,
             sliverpb_dot_sliver__pb2.Impersonate.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def RevToSelf(request,
+    def RevToSelf(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/RevToSelf',
+            "/rpcpb.SliverRPC/RevToSelf",
             sliverpb_dot_sliver__pb2.RevToSelfReq.SerializeToString,
             sliverpb_dot_sliver__pb2.RevToSelf.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def GetSystem(request,
+    def GetSystem(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/GetSystem',
+            "/rpcpb.SliverRPC/GetSystem",
             clientpb_dot_client__pb2.GetSystemReq.SerializeToString,
             sliverpb_dot_sliver__pb2.GetSystem.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def Task(request,
+    def Task(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/Task',
+            "/rpcpb.SliverRPC/Task",
             sliverpb_dot_sliver__pb2.TaskReq.SerializeToString,
             sliverpb_dot_sliver__pb2.Task.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def Msf(request,
+    def Msf(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/Msf',
+            "/rpcpb.SliverRPC/Msf",
             clientpb_dot_client__pb2.MSFReq.SerializeToString,
             sliverpb_dot_sliver__pb2.Task.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def MsfRemote(request,
+    def MsfRemote(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/MsfRemote',
+            "/rpcpb.SliverRPC/MsfRemote",
             clientpb_dot_client__pb2.MSFRemoteReq.SerializeToString,
             sliverpb_dot_sliver__pb2.Task.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def ExecuteAssembly(request,
+    def ExecuteAssembly(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/ExecuteAssembly',
+            "/rpcpb.SliverRPC/ExecuteAssembly",
             sliverpb_dot_sliver__pb2.ExecuteAssemblyReq.SerializeToString,
             sliverpb_dot_sliver__pb2.ExecuteAssembly.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def Migrate(request,
+    def Migrate(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/Migrate',
+            "/rpcpb.SliverRPC/Migrate",
             clientpb_dot_client__pb2.MigrateReq.SerializeToString,
             sliverpb_dot_sliver__pb2.Migrate.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def Execute(request,
+    def Execute(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/Execute',
+            "/rpcpb.SliverRPC/Execute",
             sliverpb_dot_sliver__pb2.ExecuteReq.SerializeToString,
             sliverpb_dot_sliver__pb2.Execute.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def ExecuteWindows(request,
+    def ExecuteWindows(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/ExecuteWindows',
+            "/rpcpb.SliverRPC/ExecuteWindows",
             sliverpb_dot_sliver__pb2.ExecuteWindowsReq.SerializeToString,
             sliverpb_dot_sliver__pb2.Execute.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def Sideload(request,
+    def Sideload(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/Sideload',
+            "/rpcpb.SliverRPC/Sideload",
             sliverpb_dot_sliver__pb2.SideloadReq.SerializeToString,
             sliverpb_dot_sliver__pb2.Sideload.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def SpawnDll(request,
+    def SpawnDll(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/SpawnDll',
+            "/rpcpb.SliverRPC/SpawnDll",
             sliverpb_dot_sliver__pb2.InvokeSpawnDllReq.SerializeToString,
             sliverpb_dot_sliver__pb2.SpawnDll.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def Screenshot(request,
+    def Screenshot(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/Screenshot',
+            "/rpcpb.SliverRPC/Screenshot",
             sliverpb_dot_sliver__pb2.ScreenshotReq.SerializeToString,
             sliverpb_dot_sliver__pb2.Screenshot.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def CurrentTokenOwner(request,
+    def CurrentTokenOwner(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/CurrentTokenOwner',
+            "/rpcpb.SliverRPC/CurrentTokenOwner",
             sliverpb_dot_sliver__pb2.CurrentTokenOwnerReq.SerializeToString,
             sliverpb_dot_sliver__pb2.CurrentTokenOwner.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def PivotStartListener(request,
+    def PivotStartListener(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/PivotStartListener',
+            "/rpcpb.SliverRPC/PivotStartListener",
             sliverpb_dot_sliver__pb2.PivotStartListenerReq.SerializeToString,
             sliverpb_dot_sliver__pb2.PivotListener.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def PivotStopListener(request,
+    def PivotStopListener(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/PivotStopListener',
+            "/rpcpb.SliverRPC/PivotStopListener",
             sliverpb_dot_sliver__pb2.PivotStopListenerReq.SerializeToString,
             commonpb_dot_common__pb2.Empty.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def PivotSessionListeners(request,
+    def PivotSessionListeners(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/PivotSessionListeners',
+            "/rpcpb.SliverRPC/PivotSessionListeners",
             sliverpb_dot_sliver__pb2.PivotListenersReq.SerializeToString,
             sliverpb_dot_sliver__pb2.PivotListeners.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def PivotGraph(request,
+    def PivotGraph(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/PivotGraph',
+            "/rpcpb.SliverRPC/PivotGraph",
             commonpb_dot_common__pb2.Empty.SerializeToString,
             clientpb_dot_client__pb2.PivotGraph.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def StartService(request,
+    def StartService(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/StartService',
+            "/rpcpb.SliverRPC/StartService",
             sliverpb_dot_sliver__pb2.StartServiceReq.SerializeToString,
             sliverpb_dot_sliver__pb2.ServiceInfo.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def StopService(request,
+    def StopService(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/StopService',
+            "/rpcpb.SliverRPC/StopService",
             sliverpb_dot_sliver__pb2.StopServiceReq.SerializeToString,
             sliverpb_dot_sliver__pb2.ServiceInfo.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def RemoveService(request,
+    def RemoveService(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/RemoveService',
+            "/rpcpb.SliverRPC/RemoveService",
             sliverpb_dot_sliver__pb2.RemoveServiceReq.SerializeToString,
             sliverpb_dot_sliver__pb2.ServiceInfo.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def MakeToken(request,
+    def MakeToken(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/MakeToken',
+            "/rpcpb.SliverRPC/MakeToken",
             sliverpb_dot_sliver__pb2.MakeTokenReq.SerializeToString,
             sliverpb_dot_sliver__pb2.MakeToken.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def GetEnv(request,
+    def GetEnv(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/GetEnv',
+            "/rpcpb.SliverRPC/GetEnv",
             sliverpb_dot_sliver__pb2.EnvReq.SerializeToString,
             sliverpb_dot_sliver__pb2.EnvInfo.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def SetEnv(request,
+    def SetEnv(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/SetEnv',
+            "/rpcpb.SliverRPC/SetEnv",
             sliverpb_dot_sliver__pb2.SetEnvReq.SerializeToString,
             sliverpb_dot_sliver__pb2.SetEnv.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def UnsetEnv(request,
+    def UnsetEnv(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/UnsetEnv',
+            "/rpcpb.SliverRPC/UnsetEnv",
             sliverpb_dot_sliver__pb2.UnsetEnvReq.SerializeToString,
             sliverpb_dot_sliver__pb2.UnsetEnv.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def Backdoor(request,
+    def Backdoor(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/Backdoor',
+            "/rpcpb.SliverRPC/Backdoor",
             sliverpb_dot_sliver__pb2.BackdoorReq.SerializeToString,
             sliverpb_dot_sliver__pb2.Backdoor.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def RegistryRead(request,
+    def RegistryRead(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/RegistryRead',
+            "/rpcpb.SliverRPC/RegistryRead",
             sliverpb_dot_sliver__pb2.RegistryReadReq.SerializeToString,
             sliverpb_dot_sliver__pb2.RegistryRead.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def RegistryWrite(request,
+    def RegistryWrite(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/RegistryWrite',
+            "/rpcpb.SliverRPC/RegistryWrite",
             sliverpb_dot_sliver__pb2.RegistryWriteReq.SerializeToString,
             sliverpb_dot_sliver__pb2.RegistryWrite.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def RegistryCreateKey(request,
+    def RegistryCreateKey(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/RegistryCreateKey',
+            "/rpcpb.SliverRPC/RegistryCreateKey",
             sliverpb_dot_sliver__pb2.RegistryCreateKeyReq.SerializeToString,
             sliverpb_dot_sliver__pb2.RegistryCreateKey.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def RegistryDeleteKey(request,
+    def RegistryDeleteKey(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/RegistryDeleteKey',
+            "/rpcpb.SliverRPC/RegistryDeleteKey",
             sliverpb_dot_sliver__pb2.RegistryDeleteKeyReq.SerializeToString,
             sliverpb_dot_sliver__pb2.RegistryDeleteKey.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def RegistryListSubKeys(request,
+    def RegistryListSubKeys(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/RegistryListSubKeys',
+            "/rpcpb.SliverRPC/RegistryListSubKeys",
             sliverpb_dot_sliver__pb2.RegistrySubKeyListReq.SerializeToString,
             sliverpb_dot_sliver__pb2.RegistrySubKeyList.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def RegistryListValues(request,
+    def RegistryListValues(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/RegistryListValues',
+            "/rpcpb.SliverRPC/RegistryListValues",
             sliverpb_dot_sliver__pb2.RegistryListValuesReq.SerializeToString,
             sliverpb_dot_sliver__pb2.RegistryValuesList.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def RunSSHCommand(request,
+    def RunSSHCommand(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/RunSSHCommand',
+            "/rpcpb.SliverRPC/RunSSHCommand",
             sliverpb_dot_sliver__pb2.SSHCommandReq.SerializeToString,
             sliverpb_dot_sliver__pb2.SSHCommand.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def HijackDLL(request,
+    def HijackDLL(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/HijackDLL',
+            "/rpcpb.SliverRPC/HijackDLL",
             clientpb_dot_client__pb2.DllHijackReq.SerializeToString,
             clientpb_dot_client__pb2.DllHijack.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def GetPrivs(request,
+    def GetPrivs(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/GetPrivs',
+            "/rpcpb.SliverRPC/GetPrivs",
             sliverpb_dot_sliver__pb2.GetPrivsReq.SerializeToString,
             sliverpb_dot_sliver__pb2.GetPrivs.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def StartRportFwdListener(request,
+    def StartRportFwdListener(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/StartRportFwdListener',
+            "/rpcpb.SliverRPC/StartRportFwdListener",
             sliverpb_dot_sliver__pb2.RportFwdStartListenerReq.SerializeToString,
             sliverpb_dot_sliver__pb2.RportFwdListener.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def GetRportFwdListeners(request,
+    def GetRportFwdListeners(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/GetRportFwdListeners',
+            "/rpcpb.SliverRPC/GetRportFwdListeners",
             sliverpb_dot_sliver__pb2.RportFwdListenersReq.SerializeToString,
             sliverpb_dot_sliver__pb2.RportFwdListeners.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def StopRportFwdListener(request,
+    def StopRportFwdListener(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/StopRportFwdListener',
+            "/rpcpb.SliverRPC/StopRportFwdListener",
             sliverpb_dot_sliver__pb2.RportFwdStopListenerReq.SerializeToString,
             sliverpb_dot_sliver__pb2.RportFwdListener.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def OpenSession(request,
+    def OpenSession(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/OpenSession',
+            "/rpcpb.SliverRPC/OpenSession",
             sliverpb_dot_sliver__pb2.OpenSession.SerializeToString,
             sliverpb_dot_sliver__pb2.OpenSession.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def CloseSession(request,
+    def CloseSession(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/CloseSession',
+            "/rpcpb.SliverRPC/CloseSession",
             sliverpb_dot_sliver__pb2.CloseSession.SerializeToString,
             commonpb_dot_common__pb2.Empty.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def RegisterExtension(request,
+    def RegisterExtension(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/RegisterExtension',
+            "/rpcpb.SliverRPC/RegisterExtension",
             sliverpb_dot_sliver__pb2.RegisterExtensionReq.SerializeToString,
             sliverpb_dot_sliver__pb2.RegisterExtension.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def CallExtension(request,
+    def CallExtension(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/CallExtension',
+            "/rpcpb.SliverRPC/CallExtension",
             sliverpb_dot_sliver__pb2.CallExtensionReq.SerializeToString,
             sliverpb_dot_sliver__pb2.CallExtension.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def ListExtensions(request,
+    def ListExtensions(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/ListExtensions',
+            "/rpcpb.SliverRPC/ListExtensions",
             sliverpb_dot_sliver__pb2.ListExtensionsReq.SerializeToString,
             sliverpb_dot_sliver__pb2.ListExtensions.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def WGStartPortForward(request,
+    def WGStartPortForward(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/WGStartPortForward',
+            "/rpcpb.SliverRPC/WGStartPortForward",
             sliverpb_dot_sliver__pb2.WGPortForwardStartReq.SerializeToString,
             sliverpb_dot_sliver__pb2.WGPortForward.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def WGStopPortForward(request,
+    def WGStopPortForward(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/WGStopPortForward',
+            "/rpcpb.SliverRPC/WGStopPortForward",
             sliverpb_dot_sliver__pb2.WGPortForwardStopReq.SerializeToString,
             sliverpb_dot_sliver__pb2.WGPortForward.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def WGStartSocks(request,
+    def WGStartSocks(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/WGStartSocks',
+            "/rpcpb.SliverRPC/WGStartSocks",
             sliverpb_dot_sliver__pb2.WGSocksStartReq.SerializeToString,
             sliverpb_dot_sliver__pb2.WGSocks.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def WGStopSocks(request,
+    def WGStopSocks(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/WGStopSocks',
+            "/rpcpb.SliverRPC/WGStopSocks",
             sliverpb_dot_sliver__pb2.WGSocksStopReq.SerializeToString,
             sliverpb_dot_sliver__pb2.WGSocks.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def WGListForwarders(request,
+    def WGListForwarders(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/WGListForwarders',
+            "/rpcpb.SliverRPC/WGListForwarders",
             sliverpb_dot_sliver__pb2.WGTCPForwardersReq.SerializeToString,
             sliverpb_dot_sliver__pb2.WGTCPForwarders.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def WGListSocksServers(request,
+    def WGListSocksServers(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/WGListSocksServers',
+            "/rpcpb.SliverRPC/WGListSocksServers",
             sliverpb_dot_sliver__pb2.WGSocksServersReq.SerializeToString,
             sliverpb_dot_sliver__pb2.WGSocksServers.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def Shell(request,
+    def Shell(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/Shell',
+            "/rpcpb.SliverRPC/Shell",
             sliverpb_dot_sliver__pb2.ShellReq.SerializeToString,
             sliverpb_dot_sliver__pb2.Shell.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def Portfwd(request,
+    def Portfwd(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/Portfwd',
+            "/rpcpb.SliverRPC/Portfwd",
             sliverpb_dot_sliver__pb2.PortfwdReq.SerializeToString,
             sliverpb_dot_sliver__pb2.Portfwd.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def CreateSocks(request,
+    def CreateSocks(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/CreateSocks',
+            "/rpcpb.SliverRPC/CreateSocks",
             sliverpb_dot_sliver__pb2.Socks.SerializeToString,
             sliverpb_dot_sliver__pb2.Socks.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def CloseSocks(request,
+    def CloseSocks(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/CloseSocks',
+            "/rpcpb.SliverRPC/CloseSocks",
             sliverpb_dot_sliver__pb2.Socks.SerializeToString,
             commonpb_dot_common__pb2.Empty.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def SocksProxy(request_iterator,
+    def SocksProxy(
+        request_iterator,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.stream_stream(
+            request_iterator,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.stream_stream(request_iterator, target, '/rpcpb.SliverRPC/SocksProxy',
+            "/rpcpb.SliverRPC/SocksProxy",
             sliverpb_dot_sliver__pb2.SocksData.SerializeToString,
             sliverpb_dot_sliver__pb2.SocksData.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def CreateTunnel(request,
+    def CreateTunnel(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/CreateTunnel',
+            "/rpcpb.SliverRPC/CreateTunnel",
             sliverpb_dot_sliver__pb2.Tunnel.SerializeToString,
             sliverpb_dot_sliver__pb2.Tunnel.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def CloseTunnel(request,
+    def CloseTunnel(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/CloseTunnel',
+            "/rpcpb.SliverRPC/CloseTunnel",
             sliverpb_dot_sliver__pb2.Tunnel.SerializeToString,
             commonpb_dot_common__pb2.Empty.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def TunnelData(request_iterator,
+    def TunnelData(
+        request_iterator,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.stream_stream(
+            request_iterator,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.stream_stream(request_iterator, target, '/rpcpb.SliverRPC/TunnelData',
+            "/rpcpb.SliverRPC/TunnelData",
             sliverpb_dot_sliver__pb2.TunnelData.SerializeToString,
             sliverpb_dot_sliver__pb2.TunnelData.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def Events(request,
+    def Events(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_stream(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_stream(request, target, '/rpcpb.SliverRPC/Events',
+            "/rpcpb.SliverRPC/Events",
             commonpb_dot_common__pb2.Empty.SerializeToString,
             clientpb_dot_client__pb2.Event.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )

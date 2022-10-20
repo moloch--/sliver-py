@@ -16,8 +16,8 @@
 
 from typing import List, Literal, Optional
 
-from .protobuf import client_pb2, sliver_pb2
 from ._protocols import InteractiveObject
+from .protobuf import client_pb2, sliver_pb2
 
 
 class BaseInteractiveCommands:
@@ -422,7 +422,6 @@ class BaseInteractiveCommands:
         """
         if not args:
             args = []
-        print(self.beacon_id, exe, args, output)
         execute_req = sliver_pb2.ExecuteReq(Path=exe, Args=args, Output=output)
         return await self._stub.Execute(
             self._request(execute_req), timeout=self.timeout

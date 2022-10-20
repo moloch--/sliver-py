@@ -1358,4 +1358,6 @@ class SliverRPCServicer(metaclass=abc.ABCMeta):
     ) -> collections.abc.Iterator[client_pb2.Event]:
         """*** Events ***"""
 
-def add_SliverRPCServicer_to_server(servicer: SliverRPCServicer, server: grpc.Server) -> None: ...
+def add_SliverRPCServicer_to_server(
+    servicer: SliverRPCServicer, server: grpc.Server
+) -> None: ...

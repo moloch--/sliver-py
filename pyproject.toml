@@ -43,7 +43,6 @@ fmt = [
     "isort src", 
     "black src",
 ]
-genproto = ["./protobuf.sh"]
 
 [tool.hatch.envs.docs]
 template = "dev"

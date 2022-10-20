@@ -51,7 +51,9 @@ class _OutputFormat:
     ValueType = NewType("ValueType", int)
     V: typing_extensions.TypeAlias = ValueType
 
-class _OutputFormatEnumTypeWrapper(_EnumTypeWrapper[_OutputFormat.ValueType], type):  # noqa: F821
+class _OutputFormatEnumTypeWrapper(
+    _EnumTypeWrapper[_OutputFormat.ValueType], type
+):  # noqa: F821
     DESCRIPTOR: EnumDescriptor
     SHARED_LIB: _OutputFormat.ValueType  # 0
     SHELLCODE: _OutputFormat.ValueType  # 1
@@ -71,7 +73,9 @@ class _StageProtocol:
     ValueType = NewType("ValueType", int)
     V: typing_extensions.TypeAlias = ValueType
 
-class _StageProtocolEnumTypeWrapper(_EnumTypeWrapper[_StageProtocol.ValueType], type):  # noqa: F821
+class _StageProtocolEnumTypeWrapper(
+    _EnumTypeWrapper[_StageProtocol.ValueType], type
+):  # noqa: F821
     DESCRIPTOR: EnumDescriptor
     TCP: _StageProtocol.ValueType  # 0
     HTTP: _StageProtocol.ValueType  # 1
@@ -87,7 +91,9 @@ class _LootType:
     ValueType = NewType("ValueType", int)
     V: typing_extensions.TypeAlias = ValueType
 
-class _LootTypeEnumTypeWrapper(_EnumTypeWrapper[_LootType.ValueType], type):  # noqa: F821
+class _LootTypeEnumTypeWrapper(
+    _EnumTypeWrapper[_LootType.ValueType], type
+):  # noqa: F821
     DESCRIPTOR: EnumDescriptor
     LOOT_FILE: _LootType.ValueType  # 0
     LOOT_CREDENTIAL: _LootType.ValueType  # 1
@@ -102,7 +108,9 @@ class _CredentialType:
     ValueType = NewType("ValueType", int)
     V: typing_extensions.TypeAlias = ValueType
 
-class _CredentialTypeEnumTypeWrapper(_EnumTypeWrapper[_CredentialType.ValueType], type):  # noqa: F821
+class _CredentialTypeEnumTypeWrapper(
+    _EnumTypeWrapper[_CredentialType.ValueType], type
+):  # noqa: F821
     DESCRIPTOR: EnumDescriptor
     NO_CREDENTIAL: _CredentialType.ValueType  # 0
     USER_PASSWORD: _CredentialType.ValueType  # 1
@@ -120,7 +128,9 @@ class _FileType:
     ValueType = NewType("ValueType", int)
     V: typing_extensions.TypeAlias = ValueType
 
-class _FileTypeEnumTypeWrapper(_EnumTypeWrapper[_FileType.ValueType], type):  # noqa: F821
+class _FileTypeEnumTypeWrapper(
+    _EnumTypeWrapper[_FileType.ValueType], type
+):  # noqa: F821
     DESCRIPTOR: EnumDescriptor
     NO_FILE: _FileType.ValueType  # 0
     BINARY: _FileType.ValueType  # 1
@@ -136,7 +146,9 @@ class _ShellcodeEncoder:
     ValueType = NewType("ValueType", int)
     V: typing_extensions.TypeAlias = ValueType
 
-class _ShellcodeEncoderEnumTypeWrapper(_EnumTypeWrapper[_ShellcodeEncoder.ValueType], type):  # noqa: F821
+class _ShellcodeEncoderEnumTypeWrapper(
+    _EnumTypeWrapper[_ShellcodeEncoder.ValueType], type
+):  # noqa: F821
     DESCRIPTOR: EnumDescriptor
     SHIKATA_GA_NAI: _ShellcodeEncoder.ValueType  # 0
 
@@ -178,7 +190,27 @@ class Version(Message):
         OS: str = ...,
         Arch: str = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Arch", b"Arch", "Commit", b"Commit", "CompiledAt", b"CompiledAt", "Dirty", b"Dirty", "Major", b"Major", "Minor", b"Minor", "OS", b"OS", "Patch", b"Patch"]) -> None: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "Arch",
+            b"Arch",
+            "Commit",
+            b"Commit",
+            "CompiledAt",
+            b"CompiledAt",
+            "Dirty",
+            b"Dirty",
+            "Major",
+            b"Major",
+            "Minor",
+            b"Minor",
+            "OS",
+            b"OS",
+            "Patch",
+            b"Patch",
+        ],
+    ) -> None: ...
 
 class Session(Message):
     """[ Core ] ----------------------------------------"""
@@ -267,7 +299,61 @@ class Session(Message):
         Locale: str = ...,
         FirstContact: int = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["ActiveC2", b"ActiveC2", "Arch", b"Arch", "Burned", b"Burned", "Evasion", b"Evasion", "Extensions", b"Extensions", "Filename", b"Filename", "FirstContact", b"FirstContact", "GID", b"GID", "Hostname", b"Hostname", "ID", b"ID", "IsDead", b"IsDead", "LastCheckin", b"LastCheckin", "Locale", b"Locale", "Name", b"Name", "OS", b"OS", "PID", b"PID", "PeerID", b"PeerID", "ProxyURL", b"ProxyURL", "ReconnectInterval", b"ReconnectInterval", "RemoteAddress", b"RemoteAddress", "Transport", b"Transport", "UID", b"UID", "UUID", b"UUID", "Username", b"Username", "Version", b"Version"]) -> None: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "ActiveC2",
+            b"ActiveC2",
+            "Arch",
+            b"Arch",
+            "Burned",
+            b"Burned",
+            "Evasion",
+            b"Evasion",
+            "Extensions",
+            b"Extensions",
+            "Filename",
+            b"Filename",
+            "FirstContact",
+            b"FirstContact",
+            "GID",
+            b"GID",
+            "Hostname",
+            b"Hostname",
+            "ID",
+            b"ID",
+            "IsDead",
+            b"IsDead",
+            "LastCheckin",
+            b"LastCheckin",
+            "Locale",
+            b"Locale",
+            "Name",
+            b"Name",
+            "OS",
+            b"OS",
+            "PID",
+            b"PID",
+            "PeerID",
+            b"PeerID",
+            "ProxyURL",
+            b"ProxyURL",
+            "ReconnectInterval",
+            b"ReconnectInterval",
+            "RemoteAddress",
+            b"RemoteAddress",
+            "Transport",
+            b"Transport",
+            "UID",
+            b"UID",
+            "UUID",
+            b"UUID",
+            "Username",
+            b"Username",
+            "Version",
+            b"Version",
+        ],
+    ) -> None: ...
 
 class Beacon(Message):
     DESCRIPTOR: Descriptor
@@ -361,7 +447,67 @@ class Beacon(Message):
         Locale: str = ...,
         FirstContact: int = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["ActiveC2", b"ActiveC2", "Arch", b"Arch", "Burned", b"Burned", "Evasion", b"Evasion", "Filename", b"Filename", "FirstContact", b"FirstContact", "GID", b"GID", "Hostname", b"Hostname", "ID", b"ID", "Interval", b"Interval", "IsDead", b"IsDead", "Jitter", b"Jitter", "LastCheckin", b"LastCheckin", "Locale", b"Locale", "Name", b"Name", "NextCheckin", b"NextCheckin", "OS", b"OS", "PID", b"PID", "ProxyURL", b"ProxyURL", "ReconnectInterval", b"ReconnectInterval", "RemoteAddress", b"RemoteAddress", "TasksCount", b"TasksCount", "TasksCountCompleted", b"TasksCountCompleted", "Transport", b"Transport", "UID", b"UID", "UUID", b"UUID", "Username", b"Username", "Version", b"Version"]) -> None: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "ActiveC2",
+            b"ActiveC2",
+            "Arch",
+            b"Arch",
+            "Burned",
+            b"Burned",
+            "Evasion",
+            b"Evasion",
+            "Filename",
+            b"Filename",
+            "FirstContact",
+            b"FirstContact",
+            "GID",
+            b"GID",
+            "Hostname",
+            b"Hostname",
+            "ID",
+            b"ID",
+            "Interval",
+            b"Interval",
+            "IsDead",
+            b"IsDead",
+            "Jitter",
+            b"Jitter",
+            "LastCheckin",
+            b"LastCheckin",
+            "Locale",
+            b"Locale",
+            "Name",
+            b"Name",
+            "NextCheckin",
+            b"NextCheckin",
+            "OS",
+            b"OS",
+            "PID",
+            b"PID",
+            "ProxyURL",
+            b"ProxyURL",
+            "ReconnectInterval",
+            b"ReconnectInterval",
+            "RemoteAddress",
+            b"RemoteAddress",
+            "TasksCount",
+            b"TasksCount",
+            "TasksCountCompleted",
+            b"TasksCountCompleted",
+            "Transport",
+            b"Transport",
+            "UID",
+            b"UID",
+            "UUID",
+            b"UUID",
+            "Username",
+            b"Username",
+            "Version",
+            b"Version",
+        ],
+    ) -> None: ...
 
 class Beacons(Message):
     DESCRIPTOR: Descriptor
@@ -374,7 +520,9 @@ class Beacons(Message):
         *,
         Beacons: Iterable[Beacon] | None = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Beacons", b"Beacons"]) -> None: ...
+    def ClearField(
+        self, field_name: typing_extensions.Literal["Beacons", b"Beacons"]
+    ) -> None: ...
 
 class BeaconTask(Message):
     DESCRIPTOR: Descriptor
@@ -410,7 +558,29 @@ class BeaconTask(Message):
         Response: bytes = ...,
         Description: str = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["BeaconID", b"BeaconID", "CompletedAt", b"CompletedAt", "CreatedAt", b"CreatedAt", "Description", b"Description", "ID", b"ID", "Request", b"Request", "Response", b"Response", "SentAt", b"SentAt", "State", b"State"]) -> None: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "BeaconID",
+            b"BeaconID",
+            "CompletedAt",
+            b"CompletedAt",
+            "CreatedAt",
+            b"CreatedAt",
+            "Description",
+            b"Description",
+            "ID",
+            b"ID",
+            "Request",
+            b"Request",
+            "Response",
+            b"Response",
+            "SentAt",
+            b"SentAt",
+            "State",
+            b"State",
+        ],
+    ) -> None: ...
 
 class BeaconTasks(Message):
     DESCRIPTOR: Descriptor
@@ -426,7 +596,12 @@ class BeaconTasks(Message):
         BeaconID: str = ...,
         Tasks: Iterable[BeaconTask] | None = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["BeaconID", b"BeaconID", "Tasks", b"Tasks"]) -> None: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "BeaconID", b"BeaconID", "Tasks", b"Tasks"
+        ],
+    ) -> None: ...
 
 class ImplantC2(Message):
     DESCRIPTOR: Descriptor
@@ -445,7 +620,12 @@ class ImplantC2(Message):
         URL: str = ...,
         Options: str = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Options", b"Options", "Priority", b"Priority", "URL", b"URL"]) -> None: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "Options", b"Options", "Priority", b"Priority", "URL", b"URL"
+        ],
+    ) -> None: ...
 
 class ImplantConfig(Message):
     DESCRIPTOR: Descriptor
@@ -577,7 +757,91 @@ class ImplantConfig(Message):
         IsShellcode: bool = ...,
         RunAtLoad: bool = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["BeaconInterval", b"BeaconInterval", "BeaconJitter", b"BeaconJitter", "C2", b"C2", "CanaryDomains", b"CanaryDomains", "ConnectionStrategy", b"ConnectionStrategy", "Debug", b"Debug", "ECCPrivateKey", b"ECCPrivateKey", "ECCPublicKey", b"ECCPublicKey", "ECCPublicKeySignature", b"ECCPublicKeySignature", "Evasion", b"Evasion", "FileName", b"FileName", "Format", b"Format", "GOARCH", b"GOARCH", "GOOS", b"GOOS", "ID", b"ID", "IsBeacon", b"IsBeacon", "IsService", b"IsService", "IsSharedLib", b"IsSharedLib", "IsShellcode", b"IsShellcode", "LimitDatetime", b"LimitDatetime", "LimitDomainJoined", b"LimitDomainJoined", "LimitFileExists", b"LimitFileExists", "LimitHostname", b"LimitHostname", "LimitLocale", b"LimitLocale", "LimitUsername", b"LimitUsername", "MaxConnectionErrors", b"MaxConnectionErrors", "MinisignServerPublicKey", b"MinisignServerPublicKey", "MtlsCACert", b"MtlsCACert", "MtlsCert", b"MtlsCert", "MtlsKey", b"MtlsKey", "Name", b"Name", "ObfuscateSymbols", b"ObfuscateSymbols", "PollTimeout", b"PollTimeout", "ReconnectInterval", b"ReconnectInterval", "RunAtLoad", b"RunAtLoad", "WGImplantPrivKey", b"WGImplantPrivKey", "WGKeyExchangePort", b"WGKeyExchangePort", "WGPeerTunIP", b"WGPeerTunIP", "WGServerPubKey", b"WGServerPubKey", "WGTcpCommsPort", b"WGTcpCommsPort"]) -> None: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "BeaconInterval",
+            b"BeaconInterval",
+            "BeaconJitter",
+            b"BeaconJitter",
+            "C2",
+            b"C2",
+            "CanaryDomains",
+            b"CanaryDomains",
+            "ConnectionStrategy",
+            b"ConnectionStrategy",
+            "Debug",
+            b"Debug",
+            "ECCPrivateKey",
+            b"ECCPrivateKey",
+            "ECCPublicKey",
+            b"ECCPublicKey",
+            "ECCPublicKeySignature",
+            b"ECCPublicKeySignature",
+            "Evasion",
+            b"Evasion",
+            "FileName",
+            b"FileName",
+            "Format",
+            b"Format",
+            "GOARCH",
+            b"GOARCH",
+            "GOOS",
+            b"GOOS",
+            "ID",
+            b"ID",
+            "IsBeacon",
+            b"IsBeacon",
+            "IsService",
+            b"IsService",
+            "IsSharedLib",
+            b"IsSharedLib",
+            "IsShellcode",
+            b"IsShellcode",
+            "LimitDatetime",
+            b"LimitDatetime",
+            "LimitDomainJoined",
+            b"LimitDomainJoined",
+            "LimitFileExists",
+            b"LimitFileExists",
+            "LimitHostname",
+            b"LimitHostname",
+            "LimitLocale",
+            b"LimitLocale",
+            "LimitUsername",
+            b"LimitUsername",
+            "MaxConnectionErrors",
+            b"MaxConnectionErrors",
+            "MinisignServerPublicKey",
+            b"MinisignServerPublicKey",
+            "MtlsCACert",
+            b"MtlsCACert",
+            "MtlsCert",
+            b"MtlsCert",
+            "MtlsKey",
+            b"MtlsKey",
+            "Name",
+            b"Name",
+            "ObfuscateSymbols",
+            b"ObfuscateSymbols",
+            "PollTimeout",
+            b"PollTimeout",
+            "ReconnectInterval",
+            b"ReconnectInterval",
+            "RunAtLoad",
+            b"RunAtLoad",
+            "WGImplantPrivKey",
+            b"WGImplantPrivKey",
+            "WGKeyExchangePort",
+            b"WGKeyExchangePort",
+            "WGPeerTunIP",
+            b"WGPeerTunIP",
+            "WGServerPubKey",
+            b"WGServerPubKey",
+            "WGTcpCommsPort",
+            b"WGTcpCommsPort",
+        ],
+    ) -> None: ...
 
 class ExternalImplantConfig(Message):
     DESCRIPTOR: Descriptor
@@ -596,8 +860,15 @@ class ExternalImplantConfig(Message):
         Config: ImplantConfig | None = ...,
         OTPSecret: str = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal["Config", b"Config"]) -> bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Config", b"Config", "Name", b"Name", "OTPSecret", b"OTPSecret"]) -> None: ...
+    def HasField(
+        self, field_name: typing_extensions.Literal["Config", b"Config"]
+    ) -> bool: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "Config", b"Config", "Name", b"Name", "OTPSecret", b"OTPSecret"
+        ],
+    ) -> None: ...
 
 class ExternalImplantBinary(Message):
     DESCRIPTOR: Descriptor
@@ -616,8 +887,15 @@ class ExternalImplantBinary(Message):
         ImplantConfigID: str = ...,
         File: File | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal["File", b"File"]) -> bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["File", b"File", "ImplantConfigID", b"ImplantConfigID", "Name", b"Name"]) -> None: ...
+    def HasField(
+        self, field_name: typing_extensions.Literal["File", b"File"]
+    ) -> bool: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "File", b"File", "ImplantConfigID", b"ImplantConfigID", "Name", b"Name"
+        ],
+    ) -> None: ...
 
 class ImplantBuilds(Message):
     """Configs of previously built implants"""
@@ -638,8 +916,13 @@ class ImplantBuilds(Message):
             key: str = ...,
             value: ImplantConfig | None = ...,
         ) -> None: ...
-        def HasField(self, field_name: typing_extensions.Literal["value", b"value"]) -> bool: ...
-        def ClearField(self, field_name: typing_extensions.Literal["key", b"key", "value", b"value"]) -> None: ...
+        def HasField(
+            self, field_name: typing_extensions.Literal["value", b"value"]
+        ) -> bool: ...
+        def ClearField(
+            self,
+            field_name: typing_extensions.Literal["key", b"key", "value", b"value"],
+        ) -> None: ...
 
     CONFIGS_FIELD_NUMBER: int
     @property
@@ -649,7 +932,9 @@ class ImplantBuilds(Message):
         *,
         Configs: Mapping[str, ImplantConfig] | None = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Configs", b"Configs"]) -> None: ...
+    def ClearField(
+        self, field_name: typing_extensions.Literal["Configs", b"Configs"]
+    ) -> None: ...
 
 class CompilerTarget(Message):
     DESCRIPTOR: Descriptor
@@ -669,7 +954,12 @@ class CompilerTarget(Message):
         GOARCH: str = ...,
         Format: OutputFormat.ValueType = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Format", b"Format", "GOARCH", b"GOARCH", "GOOS", b"GOOS"]) -> None: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "Format", b"Format", "GOARCH", b"GOARCH", "GOOS", b"GOOS"
+        ],
+    ) -> None: ...
 
 class CrossCompiler(Message):
     DESCRIPTOR: Descriptor
@@ -692,7 +982,19 @@ class CrossCompiler(Message):
         CCPath: str = ...,
         CXXPath: str = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["CCPath", b"CCPath", "CXXPath", b"CXXPath", "TargetGOARCH", b"TargetGOARCH", "TargetGOOS", b"TargetGOOS"]) -> None: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "CCPath",
+            b"CCPath",
+            "CXXPath",
+            b"CXXPath",
+            "TargetGOARCH",
+            b"TargetGOARCH",
+            "TargetGOOS",
+            b"TargetGOOS",
+        ],
+    ) -> None: ...
 
 class Compiler(Message):
     DESCRIPTOR: Descriptor
@@ -721,7 +1023,21 @@ class Compiler(Message):
         CrossCompilers: Iterable[CrossCompiler] | None = ...,
         UnsupportedTargets: Iterable[CompilerTarget] | None = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["CrossCompilers", b"CrossCompilers", "GOARCH", b"GOARCH", "GOOS", b"GOOS", "Targets", b"Targets", "UnsupportedTargets", b"UnsupportedTargets"]) -> None: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "CrossCompilers",
+            b"CrossCompilers",
+            "GOARCH",
+            b"GOARCH",
+            "GOOS",
+            b"GOOS",
+            "Targets",
+            b"Targets",
+            "UnsupportedTargets",
+            b"UnsupportedTargets",
+        ],
+    ) -> None: ...
 
 class DeleteReq(Message):
     DESCRIPTOR: Descriptor
@@ -733,7 +1049,9 @@ class DeleteReq(Message):
         *,
         Name: str = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Name", b"Name"]) -> None: ...
+    def ClearField(
+        self, field_name: typing_extensions.Literal["Name", b"Name"]
+    ) -> None: ...
 
 class DNSCanary(Message):
     """DNSCanary - Single canary and metadata"""
@@ -762,7 +1080,23 @@ class DNSCanary(Message):
         LatestTrigger: str = ...,
         Count: int = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Count", b"Count", "Domain", b"Domain", "FirstTriggered", b"FirstTriggered", "ImplantName", b"ImplantName", "LatestTrigger", b"LatestTrigger", "Triggered", b"Triggered"]) -> None: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "Count",
+            b"Count",
+            "Domain",
+            b"Domain",
+            "FirstTriggered",
+            b"FirstTriggered",
+            "ImplantName",
+            b"ImplantName",
+            "LatestTrigger",
+            b"LatestTrigger",
+            "Triggered",
+            b"Triggered",
+        ],
+    ) -> None: ...
 
 class Canaries(Message):
     DESCRIPTOR: Descriptor
@@ -775,7 +1109,9 @@ class Canaries(Message):
         *,
         Canaries: Iterable[DNSCanary] | None = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Canaries", b"Canaries"]) -> None: ...
+    def ClearField(
+        self, field_name: typing_extensions.Literal["Canaries", b"Canaries"]
+    ) -> None: ...
 
 class UniqueWGIP(Message):
     """UniqueWGIP - Unique wireguard IP"""
@@ -789,7 +1125,9 @@ class UniqueWGIP(Message):
         *,
         IP: str = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["IP", b"IP"]) -> None: ...
+    def ClearField(
+        self, field_name: typing_extensions.Literal["IP", b"IP"]
+    ) -> None: ...
 
 class ImplantProfile(Message):
     DESCRIPTOR: Descriptor
@@ -805,8 +1143,13 @@ class ImplantProfile(Message):
         Name: str = ...,
         Config: ImplantConfig | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal["Config", b"Config"]) -> bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Config", b"Config", "Name", b"Name"]) -> None: ...
+    def HasField(
+        self, field_name: typing_extensions.Literal["Config", b"Config"]
+    ) -> bool: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal["Config", b"Config", "Name", b"Name"],
+    ) -> None: ...
 
 class ImplantProfiles(Message):
     DESCRIPTOR: Descriptor
@@ -819,7 +1162,9 @@ class ImplantProfiles(Message):
         *,
         Profiles: Iterable[ImplantProfile] | None = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Profiles", b"Profiles"]) -> None: ...
+    def ClearField(
+        self, field_name: typing_extensions.Literal["Profiles", b"Profiles"]
+    ) -> None: ...
 
 class RegenerateReq(Message):
     DESCRIPTOR: Descriptor
@@ -831,7 +1176,9 @@ class RegenerateReq(Message):
         *,
         ImplantName: str = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["ImplantName", b"ImplantName"]) -> None: ...
+    def ClearField(
+        self, field_name: typing_extensions.Literal["ImplantName", b"ImplantName"]
+    ) -> None: ...
 
 class Job(Message):
     DESCRIPTOR: Descriptor
@@ -859,7 +1206,23 @@ class Job(Message):
         Port: int = ...,
         Domains: Iterable[str] | None = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Description", b"Description", "Domains", b"Domains", "ID", b"ID", "Name", b"Name", "Port", b"Port", "Protocol", b"Protocol"]) -> None: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "Description",
+            b"Description",
+            "Domains",
+            b"Domains",
+            "ID",
+            b"ID",
+            "Name",
+            b"Name",
+            "Port",
+            b"Port",
+            "Protocol",
+            b"Protocol",
+        ],
+    ) -> None: ...
 
 class Jobs(Message):
     """[ Jobs ]  ----------------------------------------"""
@@ -874,7 +1237,9 @@ class Jobs(Message):
         *,
         Active: Iterable[Job] | None = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Active", b"Active"]) -> None: ...
+    def ClearField(
+        self, field_name: typing_extensions.Literal["Active", b"Active"]
+    ) -> None: ...
 
 class KillJobReq(Message):
     DESCRIPTOR: Descriptor
@@ -886,7 +1251,9 @@ class KillJobReq(Message):
         *,
         ID: int = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["ID", b"ID"]) -> None: ...
+    def ClearField(
+        self, field_name: typing_extensions.Literal["ID", b"ID"]
+    ) -> None: ...
 
 class KillJob(Message):
     DESCRIPTOR: Descriptor
@@ -901,7 +1268,9 @@ class KillJob(Message):
         ID: int = ...,
         Success: bool = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["ID", b"ID", "Success", b"Success"]) -> None: ...
+    def ClearField(
+        self, field_name: typing_extensions.Literal["ID", b"ID", "Success", b"Success"]
+    ) -> None: ...
 
 class MTLSListenerReq(Message):
     """[ Listeners ] ----------------------------------------"""
@@ -921,7 +1290,12 @@ class MTLSListenerReq(Message):
         Port: int = ...,
         Persistent: bool = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Host", b"Host", "Persistent", b"Persistent", "Port", b"Port"]) -> None: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "Host", b"Host", "Persistent", b"Persistent", "Port", b"Port"
+        ],
+    ) -> None: ...
 
 class MTLSListener(Message):
     DESCRIPTOR: Descriptor
@@ -933,7 +1307,9 @@ class MTLSListener(Message):
         *,
         JobID: int = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["JobID", b"JobID"]) -> None: ...
+    def ClearField(
+        self, field_name: typing_extensions.Literal["JobID", b"JobID"]
+    ) -> None: ...
 
 class WGListenerReq(Message):
     DESCRIPTOR: Descriptor
@@ -960,7 +1336,23 @@ class WGListenerReq(Message):
         KeyPort: int = ...,
         Persistent: bool = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Host", b"Host", "KeyPort", b"KeyPort", "NPort", b"NPort", "Persistent", b"Persistent", "Port", b"Port", "TunIP", b"TunIP"]) -> None: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "Host",
+            b"Host",
+            "KeyPort",
+            b"KeyPort",
+            "NPort",
+            b"NPort",
+            "Persistent",
+            b"Persistent",
+            "Port",
+            b"Port",
+            "TunIP",
+            b"TunIP",
+        ],
+    ) -> None: ...
 
 class WGListener(Message):
     DESCRIPTOR: Descriptor
@@ -972,7 +1364,9 @@ class WGListener(Message):
         *,
         JobID: int = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["JobID", b"JobID"]) -> None: ...
+    def ClearField(
+        self, field_name: typing_extensions.Literal["JobID", b"JobID"]
+    ) -> None: ...
 
 class DNSListenerReq(Message):
     DESCRIPTOR: Descriptor
@@ -1000,7 +1394,23 @@ class DNSListenerReq(Message):
         Persistent: bool = ...,
         EnforceOTP: bool = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Canaries", b"Canaries", "Domains", b"Domains", "EnforceOTP", b"EnforceOTP", "Host", b"Host", "Persistent", b"Persistent", "Port", b"Port"]) -> None: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "Canaries",
+            b"Canaries",
+            "Domains",
+            b"Domains",
+            "EnforceOTP",
+            b"EnforceOTP",
+            "Host",
+            b"Host",
+            "Persistent",
+            b"Persistent",
+            "Port",
+            b"Port",
+        ],
+    ) -> None: ...
 
 class DNSListener(Message):
     DESCRIPTOR: Descriptor
@@ -1012,7 +1422,9 @@ class DNSListener(Message):
         *,
         JobID: int = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["JobID", b"JobID"]) -> None: ...
+    def ClearField(
+        self, field_name: typing_extensions.Literal["JobID", b"JobID"]
+    ) -> None: ...
 
 class HTTPListenerReq(Message):
     DESCRIPTOR: Descriptor
@@ -1062,7 +1474,37 @@ class HTTPListenerReq(Message):
         LongPollJitter: int = ...,
         RandomizeJARM: bool = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["ACME", b"ACME", "Cert", b"Cert", "Domain", b"Domain", "EnforceOTP", b"EnforceOTP", "Host", b"Host", "Key", b"Key", "LongPollJitter", b"LongPollJitter", "LongPollTimeout", b"LongPollTimeout", "Persistent", b"Persistent", "Port", b"Port", "RandomizeJARM", b"RandomizeJARM", "Secure", b"Secure", "Website", b"Website"]) -> None: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "ACME",
+            b"ACME",
+            "Cert",
+            b"Cert",
+            "Domain",
+            b"Domain",
+            "EnforceOTP",
+            b"EnforceOTP",
+            "Host",
+            b"Host",
+            "Key",
+            b"Key",
+            "LongPollJitter",
+            b"LongPollJitter",
+            "LongPollTimeout",
+            b"LongPollTimeout",
+            "Persistent",
+            b"Persistent",
+            "Port",
+            b"Port",
+            "RandomizeJARM",
+            b"RandomizeJARM",
+            "Secure",
+            b"Secure",
+            "Website",
+            b"Website",
+        ],
+    ) -> None: ...
 
 class NamedPipesReq(Message):
     """Named Pipes Messages for pivoting"""
@@ -1080,8 +1522,15 @@ class NamedPipesReq(Message):
         PipeName: str = ...,
         Request: Request | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal["Request", b"Request"]) -> bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["PipeName", b"PipeName", "Request", b"Request"]) -> None: ...
+    def HasField(
+        self, field_name: typing_extensions.Literal["Request", b"Request"]
+    ) -> bool: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "PipeName", b"PipeName", "Request", b"Request"
+        ],
+    ) -> None: ...
 
 class NamedPipes(Message):
     DESCRIPTOR: Descriptor
@@ -1100,8 +1549,15 @@ class NamedPipes(Message):
         Err: str = ...,
         Response: Response | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal["Response", b"Response"]) -> bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Err", b"Err", "Response", b"Response", "Success", b"Success"]) -> None: ...
+    def HasField(
+        self, field_name: typing_extensions.Literal["Response", b"Response"]
+    ) -> bool: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "Err", b"Err", "Response", b"Response", "Success", b"Success"
+        ],
+    ) -> None: ...
 
 class TCPPivotReq(Message):
     """TCP Messages for pivoting"""
@@ -1119,8 +1575,15 @@ class TCPPivotReq(Message):
         Address: str = ...,
         Request: Request | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal["Request", b"Request"]) -> bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Address", b"Address", "Request", b"Request"]) -> None: ...
+    def HasField(
+        self, field_name: typing_extensions.Literal["Request", b"Request"]
+    ) -> bool: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "Address", b"Address", "Request", b"Request"
+        ],
+    ) -> None: ...
 
 class TCPPivot(Message):
     DESCRIPTOR: Descriptor
@@ -1139,8 +1602,15 @@ class TCPPivot(Message):
         Err: str = ...,
         Response: Response | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal["Response", b"Response"]) -> bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Err", b"Err", "Response", b"Response", "Success", b"Success"]) -> None: ...
+    def HasField(
+        self, field_name: typing_extensions.Literal["Response", b"Response"]
+    ) -> bool: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "Err", b"Err", "Response", b"Response", "Success", b"Success"
+        ],
+    ) -> None: ...
 
 class HTTPListener(Message):
     DESCRIPTOR: Descriptor
@@ -1152,7 +1622,9 @@ class HTTPListener(Message):
         *,
         JobID: int = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["JobID", b"JobID"]) -> None: ...
+    def ClearField(
+        self, field_name: typing_extensions.Literal["JobID", b"JobID"]
+    ) -> None: ...
 
 class Sessions(Message):
     """[ commands ] ----------------------------------------"""
@@ -1167,7 +1639,9 @@ class Sessions(Message):
         *,
         Sessions: Iterable[Session] | None = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Sessions", b"Sessions"]) -> None: ...
+    def ClearField(
+        self, field_name: typing_extensions.Literal["Sessions", b"Sessions"]
+    ) -> None: ...
 
 class RenameReq(Message):
     DESCRIPTOR: Descriptor
@@ -1185,7 +1659,12 @@ class RenameReq(Message):
         BeaconID: str = ...,
         Name: str = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["BeaconID", b"BeaconID", "Name", b"Name", "SessionID", b"SessionID"]) -> None: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "BeaconID", b"BeaconID", "Name", b"Name", "SessionID", b"SessionID"
+        ],
+    ) -> None: ...
 
 class GenerateReq(Message):
     DESCRIPTOR: Descriptor
@@ -1198,8 +1677,12 @@ class GenerateReq(Message):
         *,
         Config: ImplantConfig | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal["Config", b"Config"]) -> bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Config", b"Config"]) -> None: ...
+    def HasField(
+        self, field_name: typing_extensions.Literal["Config", b"Config"]
+    ) -> bool: ...
+    def ClearField(
+        self, field_name: typing_extensions.Literal["Config", b"Config"]
+    ) -> None: ...
 
 class Generate(Message):
     DESCRIPTOR: Descriptor
@@ -1212,8 +1695,12 @@ class Generate(Message):
         *,
         File: File | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal["File", b"File"]) -> bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["File", b"File"]) -> None: ...
+    def HasField(
+        self, field_name: typing_extensions.Literal["File", b"File"]
+    ) -> bool: ...
+    def ClearField(
+        self, field_name: typing_extensions.Literal["File", b"File"]
+    ) -> None: ...
 
 class MSFReq(Message):
     DESCRIPTOR: Descriptor
@@ -1241,8 +1728,26 @@ class MSFReq(Message):
         Iterations: int = ...,
         Request: Request | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal["Request", b"Request"]) -> bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Encoder", b"Encoder", "Iterations", b"Iterations", "LHost", b"LHost", "LPort", b"LPort", "Payload", b"Payload", "Request", b"Request"]) -> None: ...
+    def HasField(
+        self, field_name: typing_extensions.Literal["Request", b"Request"]
+    ) -> bool: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "Encoder",
+            b"Encoder",
+            "Iterations",
+            b"Iterations",
+            "LHost",
+            b"LHost",
+            "LPort",
+            b"LPort",
+            "Payload",
+            b"Payload",
+            "Request",
+            b"Request",
+        ],
+    ) -> None: ...
 
 class MSFRemoteReq(Message):
     DESCRIPTOR: Descriptor
@@ -1273,8 +1778,28 @@ class MSFRemoteReq(Message):
         PID: int = ...,
         Request: Request | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal["Request", b"Request"]) -> bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Encoder", b"Encoder", "Iterations", b"Iterations", "LHost", b"LHost", "LPort", b"LPort", "PID", b"PID", "Payload", b"Payload", "Request", b"Request"]) -> None: ...
+    def HasField(
+        self, field_name: typing_extensions.Literal["Request", b"Request"]
+    ) -> bool: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "Encoder",
+            b"Encoder",
+            "Iterations",
+            b"Iterations",
+            "LHost",
+            b"LHost",
+            "LPort",
+            b"LPort",
+            "PID",
+            b"PID",
+            "Payload",
+            b"Payload",
+            "Request",
+            b"Request",
+        ],
+    ) -> None: ...
 
 class StagerListenerReq(Message):
     DESCRIPTOR: Descriptor
@@ -1304,7 +1829,25 @@ class StagerListenerReq(Message):
         Key: bytes = ...,
         ACME: bool = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["ACME", b"ACME", "Cert", b"Cert", "Data", b"Data", "Host", b"Host", "Key", b"Key", "Port", b"Port", "Protocol", b"Protocol"]) -> None: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "ACME",
+            b"ACME",
+            "Cert",
+            b"Cert",
+            "Data",
+            b"Data",
+            "Host",
+            b"Host",
+            "Key",
+            b"Key",
+            "Port",
+            b"Port",
+            "Protocol",
+            b"Protocol",
+        ],
+    ) -> None: ...
 
 class StagerListener(Message):
     DESCRIPTOR: Descriptor
@@ -1316,7 +1859,9 @@ class StagerListener(Message):
         *,
         JobID: int = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["JobID", b"JobID"]) -> None: ...
+    def ClearField(
+        self, field_name: typing_extensions.Literal["JobID", b"JobID"]
+    ) -> None: ...
 
 class ShellcodeRDIReq(Message):
     DESCRIPTOR: Descriptor
@@ -1334,7 +1879,12 @@ class ShellcodeRDIReq(Message):
         FunctionName: str = ...,
         Arguments: str = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Arguments", b"Arguments", "Data", b"Data", "FunctionName", b"FunctionName"]) -> None: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "Arguments", b"Arguments", "Data", b"Data", "FunctionName", b"FunctionName"
+        ],
+    ) -> None: ...
 
 class ShellcodeRDI(Message):
     DESCRIPTOR: Descriptor
@@ -1346,7 +1896,9 @@ class ShellcodeRDI(Message):
         *,
         Data: bytes = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Data", b"Data"]) -> None: ...
+    def ClearField(
+        self, field_name: typing_extensions.Literal["Data", b"Data"]
+    ) -> None: ...
 
 class MsfStagerReq(Message):
     DESCRIPTOR: Descriptor
@@ -1378,7 +1930,25 @@ class MsfStagerReq(Message):
         Protocol: StageProtocol.ValueType = ...,
         BadChars: Iterable[str] | None = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Arch", b"Arch", "BadChars", b"BadChars", "Format", b"Format", "Host", b"Host", "OS", b"OS", "Port", b"Port", "Protocol", b"Protocol"]) -> None: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "Arch",
+            b"Arch",
+            "BadChars",
+            b"BadChars",
+            "Format",
+            b"Format",
+            "Host",
+            b"Host",
+            "OS",
+            b"OS",
+            "Port",
+            b"Port",
+            "Protocol",
+            b"Protocol",
+        ],
+    ) -> None: ...
 
 class MsfStager(Message):
     DESCRIPTOR: Descriptor
@@ -1391,12 +1961,16 @@ class MsfStager(Message):
         *,
         File: File | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal["File", b"File"]) -> bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["File", b"File"]) -> None: ...
+    def HasField(
+        self, field_name: typing_extensions.Literal["File", b"File"]
+    ) -> bool: ...
+    def ClearField(
+        self, field_name: typing_extensions.Literal["File", b"File"]
+    ) -> None: ...
 
 class GetSystemReq(Message):
     """GetSystemReq - Client request to the server which is translated into
-                   InvokeSystemReq when sending to the implant.
+    InvokeSystemReq when sending to the implant.
     """
 
     DESCRIPTOR: Descriptor
@@ -1416,12 +1990,27 @@ class GetSystemReq(Message):
         Config: ImplantConfig | None = ...,
         Request: Request | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal["Config", b"Config", "Request", b"Request"]) -> bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Config", b"Config", "HostingProcess", b"HostingProcess", "Request", b"Request"]) -> None: ...
+    def HasField(
+        self,
+        field_name: typing_extensions.Literal[
+            "Config", b"Config", "Request", b"Request"
+        ],
+    ) -> bool: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "Config",
+            b"Config",
+            "HostingProcess",
+            b"HostingProcess",
+            "Request",
+            b"Request",
+        ],
+    ) -> None: ...
 
 class MigrateReq(Message):
     """MigrateReq - Client request to the server which is translated into
-                 InvokeMigrateReq when sending to the implant.
+    InvokeMigrateReq when sending to the implant.
     """
 
     DESCRIPTOR: Descriptor
@@ -1441,8 +2030,18 @@ class MigrateReq(Message):
         Config: ImplantConfig | None = ...,
         Request: Request | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal["Config", b"Config", "Request", b"Request"]) -> bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Config", b"Config", "Pid", b"Pid", "Request", b"Request"]) -> None: ...
+    def HasField(
+        self,
+        field_name: typing_extensions.Literal[
+            "Config", b"Config", "Request", b"Request"
+        ],
+    ) -> bool: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "Config", b"Config", "Pid", b"Pid", "Request", b"Request"
+        ],
+    ) -> None: ...
 
 class CreateTunnelReq(Message):
     """[ Tunnels ] ----------------------------------------"""
@@ -1457,8 +2056,12 @@ class CreateTunnelReq(Message):
         *,
         Request: Request | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal["Request", b"Request"]) -> bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Request", b"Request"]) -> None: ...
+    def HasField(
+        self, field_name: typing_extensions.Literal["Request", b"Request"]
+    ) -> bool: ...
+    def ClearField(
+        self, field_name: typing_extensions.Literal["Request", b"Request"]
+    ) -> None: ...
 
 class CreateTunnel(Message):
     DESCRIPTOR: Descriptor
@@ -1473,7 +2076,12 @@ class CreateTunnel(Message):
         SessionID: int = ...,
         TunnelID: int = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["SessionID", b"SessionID", "TunnelID", b"TunnelID"]) -> None: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "SessionID", b"SessionID", "TunnelID", b"TunnelID"
+        ],
+    ) -> None: ...
 
 class CloseTunnelReq(Message):
     DESCRIPTOR: Descriptor
@@ -1489,8 +2097,15 @@ class CloseTunnelReq(Message):
         TunnelID: int = ...,
         Request: Request | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal["Request", b"Request"]) -> bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Request", b"Request", "TunnelID", b"TunnelID"]) -> None: ...
+    def HasField(
+        self, field_name: typing_extensions.Literal["Request", b"Request"]
+    ) -> bool: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "Request", b"Request", "TunnelID", b"TunnelID"
+        ],
+    ) -> None: ...
 
 class PivotGraphEntry(Message):
     """[ Pivots ] ----------------------------------------"""
@@ -1515,8 +2130,22 @@ class PivotGraphEntry(Message):
         Name: str = ...,
         Children: Iterable[PivotGraphEntry] | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal["Session", b"Session"]) -> bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Children", b"Children", "Name", b"Name", "PeerID", b"PeerID", "Session", b"Session"]) -> None: ...
+    def HasField(
+        self, field_name: typing_extensions.Literal["Session", b"Session"]
+    ) -> bool: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "Children",
+            b"Children",
+            "Name",
+            b"Name",
+            "PeerID",
+            b"PeerID",
+            "Session",
+            b"Session",
+        ],
+    ) -> None: ...
 
 class PivotGraph(Message):
     DESCRIPTOR: Descriptor
@@ -1529,7 +2158,9 @@ class PivotGraph(Message):
         *,
         Children: Iterable[PivotGraphEntry] | None = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Children", b"Children"]) -> None: ...
+    def ClearField(
+        self, field_name: typing_extensions.Literal["Children", b"Children"]
+    ) -> None: ...
 
 class Client(Message):
     """[ Events ] ----------------------------------------"""
@@ -1550,8 +2181,15 @@ class Client(Message):
         Name: str = ...,
         Operator: Operator | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal["Operator", b"Operator"]) -> bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["ID", b"ID", "Name", b"Name", "Operator", b"Operator"]) -> None: ...
+    def HasField(
+        self, field_name: typing_extensions.Literal["Operator", b"Operator"]
+    ) -> bool: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "ID", b"ID", "Name", b"Name", "Operator", b"Operator"
+        ],
+    ) -> None: ...
 
 class Event(Message):
     DESCRIPTOR: Descriptor
@@ -1582,8 +2220,29 @@ class Event(Message):
         Data: bytes = ...,
         Err: str = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal["Client", b"Client", "Job", b"Job", "Session", b"Session"]) -> bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Client", b"Client", "Data", b"Data", "Err", b"Err", "EventType", b"EventType", "Job", b"Job", "Session", b"Session"]) -> None: ...
+    def HasField(
+        self,
+        field_name: typing_extensions.Literal[
+            "Client", b"Client", "Job", b"Job", "Session", b"Session"
+        ],
+    ) -> bool: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "Client",
+            b"Client",
+            "Data",
+            b"Data",
+            "Err",
+            b"Err",
+            "EventType",
+            b"EventType",
+            "Job",
+            b"Job",
+            "Session",
+            b"Session",
+        ],
+    ) -> None: ...
 
 class Operators(Message):
     DESCRIPTOR: Descriptor
@@ -1596,7 +2255,9 @@ class Operators(Message):
         *,
         Operators: Iterable[Operator] | None = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Operators", b"Operators"]) -> None: ...
+    def ClearField(
+        self, field_name: typing_extensions.Literal["Operators", b"Operators"]
+    ) -> None: ...
 
 class Operator(Message):
     DESCRIPTOR: Descriptor
@@ -1611,7 +2272,10 @@ class Operator(Message):
         Online: bool = ...,
         Name: str = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Name", b"Name", "Online", b"Online"]) -> None: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal["Name", b"Name", "Online", b"Online"],
+    ) -> None: ...
 
 class WebContent(Message):
     """[ Websites ] ----------------------------------------"""
@@ -1634,7 +2298,19 @@ class WebContent(Message):
         Size: int = ...,
         Content: bytes = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Content", b"Content", "ContentType", b"ContentType", "Path", b"Path", "Size", b"Size"]) -> None: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "Content",
+            b"Content",
+            "ContentType",
+            b"ContentType",
+            "Path",
+            b"Path",
+            "Size",
+            b"Size",
+        ],
+    ) -> None: ...
 
 class WebsiteAddContent(Message):
     DESCRIPTOR: Descriptor
@@ -1653,8 +2329,13 @@ class WebsiteAddContent(Message):
             key: str = ...,
             value: WebContent | None = ...,
         ) -> None: ...
-        def HasField(self, field_name: typing_extensions.Literal["value", b"value"]) -> bool: ...
-        def ClearField(self, field_name: typing_extensions.Literal["key", b"key", "value", b"value"]) -> None: ...
+        def HasField(
+            self, field_name: typing_extensions.Literal["value", b"value"]
+        ) -> bool: ...
+        def ClearField(
+            self,
+            field_name: typing_extensions.Literal["key", b"key", "value", b"value"],
+        ) -> None: ...
 
     NAME_FIELD_NUMBER: int
     CONTENTS_FIELD_NUMBER: int
@@ -1667,7 +2348,10 @@ class WebsiteAddContent(Message):
         Name: str = ...,
         Contents: Mapping[str, WebContent] | None = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Contents", b"Contents", "Name", b"Name"]) -> None: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal["Contents", b"Contents", "Name", b"Name"],
+    ) -> None: ...
 
 class WebsiteRemoveContent(Message):
     DESCRIPTOR: Descriptor
@@ -1683,7 +2367,9 @@ class WebsiteRemoveContent(Message):
         Name: str = ...,
         Paths: Iterable[str] | None = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Name", b"Name", "Paths", b"Paths"]) -> None: ...
+    def ClearField(
+        self, field_name: typing_extensions.Literal["Name", b"Name", "Paths", b"Paths"]
+    ) -> None: ...
 
 class Website(Message):
     DESCRIPTOR: Descriptor
@@ -1702,8 +2388,13 @@ class Website(Message):
             key: str = ...,
             value: WebContent | None = ...,
         ) -> None: ...
-        def HasField(self, field_name: typing_extensions.Literal["value", b"value"]) -> bool: ...
-        def ClearField(self, field_name: typing_extensions.Literal["key", b"key", "value", b"value"]) -> None: ...
+        def HasField(
+            self, field_name: typing_extensions.Literal["value", b"value"]
+        ) -> bool: ...
+        def ClearField(
+            self,
+            field_name: typing_extensions.Literal["key", b"key", "value", b"value"],
+        ) -> None: ...
 
     NAME_FIELD_NUMBER: int
     CONTENTS_FIELD_NUMBER: int
@@ -1716,7 +2407,10 @@ class Website(Message):
         Name: str = ...,
         Contents: Mapping[str, WebContent] | None = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Contents", b"Contents", "Name", b"Name"]) -> None: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal["Contents", b"Contents", "Name", b"Name"],
+    ) -> None: ...
 
 class Websites(Message):
     DESCRIPTOR: Descriptor
@@ -1729,7 +2423,9 @@ class Websites(Message):
         *,
         Websites: Iterable[Website] | None = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Websites", b"Websites"]) -> None: ...
+    def ClearField(
+        self, field_name: typing_extensions.Literal["Websites", b"Websites"]
+    ) -> None: ...
 
 class WGClientConfig(Message):
     """[ Wireguard ] ----------------------------------------"""
@@ -1752,7 +2448,19 @@ class WGClientConfig(Message):
         ClientPubKey: str = ...,
         ClientIP: str = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["ClientIP", b"ClientIP", "ClientPrivateKey", b"ClientPrivateKey", "ClientPubKey", b"ClientPubKey", "ServerPubKey", b"ServerPubKey"]) -> None: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "ClientIP",
+            b"ClientIP",
+            "ClientPrivateKey",
+            b"ClientPrivateKey",
+            "ClientPubKey",
+            b"ClientPubKey",
+            "ServerPubKey",
+            b"ServerPubKey",
+        ],
+    ) -> None: ...
 
 class Credential(Message):
     DESCRIPTOR: Descriptor
@@ -1772,7 +2480,12 @@ class Credential(Message):
         Password: str = ...,
         APIKey: str = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["APIKey", b"APIKey", "Password", b"Password", "User", b"User"]) -> None: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "APIKey", b"APIKey", "Password", b"Password", "User", b"User"
+        ],
+    ) -> None: ...
 
 class Loot(Message):
     DESCRIPTOR: Descriptor
@@ -1804,8 +2517,31 @@ class Loot(Message):
         FileType: FileType.ValueType = ...,
         File: File | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal["Credential", b"Credential", "File", b"File"]) -> bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Credential", b"Credential", "CredentialType", b"CredentialType", "File", b"File", "FileType", b"FileType", "LootID", b"LootID", "Name", b"Name", "Type", b"Type"]) -> None: ...
+    def HasField(
+        self,
+        field_name: typing_extensions.Literal[
+            "Credential", b"Credential", "File", b"File"
+        ],
+    ) -> bool: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "Credential",
+            b"Credential",
+            "CredentialType",
+            b"CredentialType",
+            "File",
+            b"File",
+            "FileType",
+            b"FileType",
+            "LootID",
+            b"LootID",
+            "Name",
+            b"Name",
+            "Type",
+            b"Type",
+        ],
+    ) -> None: ...
 
 class AllLoot(Message):
     DESCRIPTOR: Descriptor
@@ -1818,7 +2554,9 @@ class AllLoot(Message):
         *,
         Loot: Iterable[Loot] | None = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Loot", b"Loot"]) -> None: ...
+    def ClearField(
+        self, field_name: typing_extensions.Literal["Loot", b"Loot"]
+    ) -> None: ...
 
 class IOC(Message):
     """[ Hosts ] ----------------------------------------"""
@@ -1838,7 +2576,12 @@ class IOC(Message):
         FileHash: str = ...,
         ID: str = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["FileHash", b"FileHash", "ID", b"ID", "Path", b"Path"]) -> None: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "FileHash", b"FileHash", "ID", b"ID", "Path", b"Path"
+        ],
+    ) -> None: ...
 
 class ExtensionData(Message):
     DESCRIPTOR: Descriptor
@@ -1850,7 +2593,9 @@ class ExtensionData(Message):
         *,
         Output: str = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Output", b"Output"]) -> None: ...
+    def ClearField(
+        self, field_name: typing_extensions.Literal["Output", b"Output"]
+    ) -> None: ...
 
 class Host(Message):
     DESCRIPTOR: Descriptor
@@ -1869,8 +2614,13 @@ class Host(Message):
             key: str = ...,
             value: ExtensionData | None = ...,
         ) -> None: ...
-        def HasField(self, field_name: typing_extensions.Literal["value", b"value"]) -> bool: ...
-        def ClearField(self, field_name: typing_extensions.Literal["key", b"key", "value", b"value"]) -> None: ...
+        def HasField(
+            self, field_name: typing_extensions.Literal["value", b"value"]
+        ) -> bool: ...
+        def ClearField(
+            self,
+            field_name: typing_extensions.Literal["key", b"key", "value", b"value"],
+        ) -> None: ...
 
     HOSTNAME_FIELD_NUMBER: int
     HOSTUUID_FIELD_NUMBER: int
@@ -1899,7 +2649,25 @@ class Host(Message):
         Locale: str = ...,
         FirstContact: int = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["ExtensionData", b"ExtensionData", "FirstContact", b"FirstContact", "HostUUID", b"HostUUID", "Hostname", b"Hostname", "IOCs", b"IOCs", "Locale", b"Locale", "OSVersion", b"OSVersion"]) -> None: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "ExtensionData",
+            b"ExtensionData",
+            "FirstContact",
+            b"FirstContact",
+            "HostUUID",
+            b"HostUUID",
+            "Hostname",
+            b"Hostname",
+            "IOCs",
+            b"IOCs",
+            "Locale",
+            b"Locale",
+            "OSVersion",
+            b"OSVersion",
+        ],
+    ) -> None: ...
 
 class AllHosts(Message):
     DESCRIPTOR: Descriptor
@@ -1912,7 +2680,9 @@ class AllHosts(Message):
         *,
         Hosts: Iterable[Host] | None = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Hosts", b"Hosts"]) -> None: ...
+    def ClearField(
+        self, field_name: typing_extensions.Literal["Hosts", b"Hosts"]
+    ) -> None: ...
 
 class DllHijackReq(Message):
     """[ Dll Hijack ] ----------------------------------------"""
@@ -1942,8 +2712,26 @@ class DllHijackReq(Message):
         ProfileName: str = ...,
         Request: Request | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal["Request", b"Request"]) -> bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["ProfileName", b"ProfileName", "ReferenceDLL", b"ReferenceDLL", "ReferenceDLLPath", b"ReferenceDLLPath", "Request", b"Request", "TargetDLL", b"TargetDLL", "TargetLocation", b"TargetLocation"]) -> None: ...
+    def HasField(
+        self, field_name: typing_extensions.Literal["Request", b"Request"]
+    ) -> bool: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "ProfileName",
+            b"ProfileName",
+            "ReferenceDLL",
+            b"ReferenceDLL",
+            "ReferenceDLLPath",
+            b"ReferenceDLLPath",
+            "Request",
+            b"Request",
+            "TargetDLL",
+            b"TargetDLL",
+            "TargetLocation",
+            b"TargetLocation",
+        ],
+    ) -> None: ...
 
 class DllHijack(Message):
     DESCRIPTOR: Descriptor
@@ -1956,8 +2744,12 @@ class DllHijack(Message):
         *,
         Response: Response | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal["Response", b"Response"]) -> bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Response", b"Response"]) -> None: ...
+    def HasField(
+        self, field_name: typing_extensions.Literal["Response", b"Response"]
+    ) -> bool: ...
+    def ClearField(
+        self, field_name: typing_extensions.Literal["Response", b"Response"]
+    ) -> None: ...
 
 class ShellcodeEncodeReq(Message):
     DESCRIPTOR: Descriptor
@@ -1985,8 +2777,26 @@ class ShellcodeEncodeReq(Message):
         Data: bytes = ...,
         Request: Request | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal["Request", b"Request"]) -> bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Architecture", b"Architecture", "BadChars", b"BadChars", "Data", b"Data", "Encoder", b"Encoder", "Iterations", b"Iterations", "Request", b"Request"]) -> None: ...
+    def HasField(
+        self, field_name: typing_extensions.Literal["Request", b"Request"]
+    ) -> bool: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal[
+            "Architecture",
+            b"Architecture",
+            "BadChars",
+            b"BadChars",
+            "Data",
+            b"Data",
+            "Encoder",
+            b"Encoder",
+            "Iterations",
+            b"Iterations",
+            "Request",
+            b"Request",
+        ],
+    ) -> None: ...
 
 class ShellcodeEncode(Message):
     DESCRIPTOR: Descriptor
@@ -2002,8 +2812,13 @@ class ShellcodeEncode(Message):
         Data: bytes = ...,
         Response: Response | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal["Response", b"Response"]) -> bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Data", b"Data", "Response", b"Response"]) -> None: ...
+    def HasField(
+        self, field_name: typing_extensions.Literal["Response", b"Response"]
+    ) -> bool: ...
+    def ClearField(
+        self,
+        field_name: typing_extensions.Literal["Data", b"Data", "Response", b"Response"],
+    ) -> None: ...
 
 class ShellcodeEncoderMap(Message):
     DESCRIPTOR: Descriptor
@@ -2021,7 +2836,10 @@ class ShellcodeEncoderMap(Message):
             key: str = ...,
             value: ShellcodeEncoder.ValueType = ...,
         ) -> None: ...
-        def ClearField(self, field_name: typing_extensions.Literal["key", b"key", "value", b"value"]) -> None: ...
+        def ClearField(
+            self,
+            field_name: typing_extensions.Literal["key", b"key", "value", b"value"],
+        ) -> None: ...
 
     ENCODERS_FIELD_NUMBER: int
     @property
@@ -2031,4 +2849,6 @@ class ShellcodeEncoderMap(Message):
         *,
         Encoders: Mapping[str, ShellcodeEncoder.ValueType] | None = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Encoders", b"Encoders"]) -> None: ...
+    def ClearField(
+        self, field_name: typing_extensions.Literal["Encoders", b"Encoders"]
+    ) -> None: ...

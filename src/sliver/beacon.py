@@ -21,10 +21,10 @@ from typing import Any, Dict, Tuple, Union
 
 import grpc
 
+from ._protocols import PbWithRequestProp
 from .interactive import BaseInteractiveCommands
 from .pb.rpcpb.services_pb2_grpc import SliverRPCStub
 from .protobuf import client_pb2, common_pb2, sliver_pb2
-from ._protocols import PbWithRequestProp
 
 
 class BaseBeacon:

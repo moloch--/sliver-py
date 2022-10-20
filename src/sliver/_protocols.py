@@ -1,4 +1,5 @@
 from typing import Protocol
+
 from .pb.commonpb.common_pb2 import Request
 from .pb.rpcpb.services_pb2_grpc import SliverRPCStub
 

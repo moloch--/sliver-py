@@ -11,4 +11,5 @@ __version__ = "0.0.17"
 
 if os.getenv("HATCH_ENV_ACTIVE"):
     from rich import traceback
+
     traceback.install(show_locals=True)
