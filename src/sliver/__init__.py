@@ -6,7 +6,7 @@ from .config import SliverClientConfig
 from .protobuf import client_pb2, common_pb2, sliver_pb2
 from .session import InteractiveSession
 
-__version__ = "0.0.17"
+__version__ = "0.0.18"
 
 
 if os.getenv("HATCH_ENV_ACTIVE"):
