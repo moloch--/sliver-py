@@ -1,9 +1,9 @@
 import os
-import pkg_resources
 from pathlib import Path
+
+import pkg_resources
 from grpc_tools import protoc
 from rich.console import Console
-
 
 console = Console(log_time=False, log_path=False)
 ROOT_DIR = Path(__file__).parents[1]

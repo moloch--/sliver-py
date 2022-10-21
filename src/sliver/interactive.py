@@ -16,6 +16,8 @@
 
 from typing import List, Literal, Optional
 
+from sliver.pb.commonpb import common_pb2
+
 from ._protocols import InteractiveObject
 from .protobuf import client_pb2, sliver_pb2
 
@@ -155,23 +157,25 @@ class BaseInteractiveCommands:
         return await self._stub.Mkdir(self._request(make), timeout=self.timeout)
 
     async def download(
-        self: InteractiveObject, remote_path: str
+        self: InteractiveObject, remote_path: str, recurse: bool = False
     ) -> sliver_pb2.Download:
-        """Download a file from the remote file system
+        """Download a file or directory from the remote file system
 
         :param remote_path: File to download
         :type remote_path: str
+        :param recurse: Download all files in a directory
+        :type recurse: bool
         :return: Protobuf Download object
         :rtype: sliver_pb2.Download
         """
-        download = sliver_pb2.DownloadReq(Path=remote_path)
+        download = sliver_pb2.DownloadReq(Path=remote_path, Recurse=recurse)
         return await self._stub.Download(self._request(download), timeout=self.timeout)
 
     async def upload(
         self: InteractiveObject,
         remote_path: str,
         data: bytes,
-        encoder: Literal["", "gzip"] = "",
+        is_ioc: bool = False,
     ) -> sliver_pb2.Upload:
         """Write data to specified path on remote file system
 
@@ -179,12 +183,12 @@ class BaseInteractiveCommands:
         :type remote_path: str
         :param data: Data to write
         :type data: bytes
-        :param encoder: Data encoder ('', 'gzip'), defaults to ''
-        :type encoder: str, optional
+        :param is_ioc: Data is an indicator of compromise, defaults to False
+        :type is_ioc: bool, optional
         :return: Protobuf Upload object
         :rtype: sliver_pb2.Upload
         """
-        upload = sliver_pb2.UploadReq(Path=remote_path, Data=data, Encoder=encoder)
+        upload = sliver_pb2.UploadReq(Path=remote_path, Data=data, IsIOC=is_ioc)
         return await self._stub.Upload(self._request(upload), timeout=self.timeout)
 
     async def process_dump(self: InteractiveObject, pid: int) -> sliver_pb2.ProcessDump:
@@ -532,7 +536,7 @@ class BaseInteractiveCommands:
         return await self._stub.GetEnv(self._request(env), timeout=self.timeout)
 
     async def set_env(
-        self: InteractiveObject, name: str, value: str
+        self: InteractiveObject, key: str, value: str
     ) -> sliver_pb2.SetEnv:
         """Set an environment variable
 
@@ -543,10 +547,20 @@ class BaseInteractiveCommands:
         :return: Protobuf SetEnv object
         :rtype: sliver_pb2.SetEnv
         """
-        env = sliver_pb2.SetEnvReq()
-        env.Variable.Key = name
-        env.Variable.Value = value
-        return await self._stub.SetEnv(self._request(env), timeout=self.timeout)
+        env_var = common_pb2.EnvVar(Key=key, Value=value)
+        env_req = sliver_pb2.SetEnvReq(Variable=env_var)
+        return await self._stub.SetEnv(self._request(env_req), timeout=self.timeout)
+
+    async def unset_env(self: InteractiveObject, key: str) -> sliver_pb2.UnsetEnv:
+        """Unset an environment variable
+
+        :param value: Value of the environment variable
+        :type value: str
+        :return: Protobuf SetEnv object
+        :rtype: sliver_pb2.SetEnv
+        """
+        env = sliver_pb2.UnsetEnvReq(Name=key)
+        return await self._stub.UnsetEnv(self._request(env), timeout=self.timeout)
 
     async def registry_read(
         self: InteractiveObject, hive: str, reg_path: str, key: str, hostname: str

@@ -16,7 +16,6 @@
 
 
 import logging
-from telnetlib import SE
 from typing import AsyncGenerator, Dict, Iterable, List, Optional, Union
 
 import grpc
@@ -235,8 +234,8 @@ class SliverClient(BaseClient):
         :type name: str
         :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
-        :return: Updated protobuf session object
-        :rtype: client_pb2.Session
+        :return: None
+        :rtype: None
         """
         rename_req = client_pb2.RenameReq(SessionID=session_id, Name=name)
         await self._stub.Rename(rename_req, timeout=timeout)
@@ -266,8 +265,23 @@ class SliverClient(BaseClient):
         )
         return list(beacons.Beacons)
 
-    async def rm_beacon(self, beacon_id: str, timeout=TIMEOUT) -> None:
-        """Remove a beacon
+    async def rename_beacon(self, beacon_id: str, name: str, timeout=TIMEOUT) -> None:
+        """Rename a beacon
+
+        :param beacon_id: Beacon ID to update
+        :type beacon_id: str
+        :param name: Rename beacon to this value
+        :type name: str
+        :param timeout: gRPC timeout, defaults to 60 seconds
+        :type timeout: int, optional
+        :return: None
+        :rtype: None
+        """
+        rename_req = client_pb2.RenameReq(BeaconID=beacon_id, Name=name)
+        await self._stub.Rename(rename_req, timeout=timeout)
+
+    async def kill_beacon(self, beacon_id: str, timeout=TIMEOUT) -> None:
+        """Kill a beacon
 
         :param beacon_id: Numeric beacon ID to remove
         :type beacon_id: str
@@ -283,7 +297,7 @@ class SliverClient(BaseClient):
         """Get a list of tasks for a beacon
 
         :param beacon_id: Beacon ID to get tasks for
-        :type beacon_id: sts
+        :type beacon_id: str
         :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
         :return: List of protobuf Task objects
@@ -321,6 +335,34 @@ class SliverClient(BaseClient):
             common_pb2.Empty(), timeout=timeout
         )
         return list(jobs.Active)
+
+    async def job_by_id(self, job_id: int, timeout=TIMEOUT) -> Optional[client_pb2.Job]:
+        """Get job by id
+
+        :param job_id: Beacon ID to get tasks for
+        :type job_id: str
+        :param timeout: gRPC timeout, defaults to 60 seconds
+        :type timeout: int, optional
+        :return: List of protobuf Job objects
+        :rtype: List[client_pb2.Job]
+        """
+        for job in await self.jobs(timeout=timeout):
+            if job.ID == job_id:
+                return job
+
+    async def job_by_port(
+        self, job_port: int, timeout=TIMEOUT
+    ) -> Optional[client_pb2.Job]:
+        """Get job by port
+
+        :param timeout: gRPC timeout, defaults to 60 seconds
+        :type timeout: int, optional
+        :return: List of protobuf Job objects
+        :rtype: List[client_pb2.Job]
+        """
+        for job in await self.jobs(timeout=timeout):
+            if job.Port == job_port:
+                return job
 
     async def kill_job(self, job_id: int, timeout=TIMEOUT) -> client_pb2.KillJob:
         """Kill a job
@@ -477,7 +519,7 @@ class SliverClient(BaseClient):
     async def start_https_listener(
         self,
         host: str = "0.0.0.0",
-        port: int = 80,
+        port: int = 443,
         website: str = "",
         domain: str = "",
         cert: bytes = b"",
@@ -627,7 +669,7 @@ class SliverClient(BaseClient):
         )
         return await self._stub.StartHTTPStagerListener(stage_req, timeout=timeout)
 
-    async def generate(
+    async def generate_implant(
         self, config: client_pb2.ImplantConfig, timeout: int = 360
     ) -> client_pb2.Generate:
         """Generate a new implant using a given configuration
@@ -642,7 +684,7 @@ class SliverClient(BaseClient):
         req = client_pb2.GenerateReq(Config=config)
         return await self._stub.Generate(req, timeout=timeout)
 
-    async def regenerate(
+    async def regenerate_implant(
         self, implant_name: str, timeout=TIMEOUT
     ) -> client_pb2.Generate:
         """Regenerate an implant binary given the implants "name"
@@ -708,7 +750,7 @@ class SliverClient(BaseClient):
             common_pb2.Empty(), timeout=timeout
         )
 
-    async def generate_unique_ip(self, timeout=TIMEOUT) -> client_pb2.UniqueWGIP:
+    async def generate_wg_ip(self, timeout=TIMEOUT) -> client_pb2.UniqueWGIP:
         """Generate a unique IP address for use with WireGuard
 
         :param timeout: gRPC timeout, defaults to 60 seconds
@@ -757,7 +799,7 @@ class SliverClient(BaseClient):
         """
         return await self._stub.SaveImplantProfile(profile, timeout=timeout)
 
-    async def msf_stage(
+    async def generate_msf_stager(
         self,
         arch: str,
         format: str,
@@ -801,7 +843,7 @@ class SliverClient(BaseClient):
         return await self._stub.MsfStage(stagerReq, timeout=timeout)
 
     async def shellcode(
-        self, data: bytes, function_name: str, arguments: str, timeout=TIMEOUT
+        self, data: bytes, function_name: str, arguments: str = "", timeout=TIMEOUT
     ) -> client_pb2.ShellcodeRDI:
         """Generate Donut shellcode
 
@@ -855,7 +897,7 @@ class SliverClient(BaseClient):
         :type timeout: int, optional
         """
         website = client_pb2.Website(Name=name)
-        await self._stub.Websites(website, timeout=timeout)
+        await self._stub.WebsiteRemove(website, timeout=timeout)
 
     async def add_website_content(
         self,
@@ -881,12 +923,10 @@ class SliverClient(BaseClient):
         :rtype: client_pb2.Website
         """
         web = client_pb2.WebContent(
-            Path=web_path, ContentType=content_type, Content=content
+            Path=web_path, ContentType=content_type, Content=content, Size=len(content)
         )
-        web.Size = len(content)
 
-        web_add = client_pb2.WebsiteAddContent(Name=name)
-        web_add.Contents[web_path] = web
+        web_add = client_pb2.WebsiteAddContent(Name=name, Contents={web_path: web})
         return await self._stub.WebsiteAddContent(web_add, timeout=timeout)
 
     async def update_website_content(
@@ -913,12 +953,10 @@ class SliverClient(BaseClient):
         :rtype: client_pb2.Website
         """
         web = client_pb2.WebContent(
-            Path=web_path, ContentType=content_type, Content=content
+            Path=web_path, ContentType=content_type, Content=content, Size=len(content)
         )
-        web.Size = len(content)
 
-        web_update = client_pb2.WebsiteAddContent(Name=name)
-        web_update.Contents[web_path] = web
+        web_update = client_pb2.WebsiteAddContent(Name=name, Contents={web_path: web})
         return await self._stub.WebsiteUpdateContent(web_update, timeout=timeout)
 
     async def remove_website_content(

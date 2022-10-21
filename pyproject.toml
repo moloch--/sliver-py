@@ -35,7 +35,8 @@ dependencies = [
 extra-dependencies = [
     "rich~=12.5",
     "black~=22.6", 
-    "isort~=5.10", 
+    "isort~=5.10",
+    "ward~=0.66.1b0" 
 ]
 
 [tool.hatch.envs.dev.scripts]
