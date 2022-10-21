@@ -10,7 +10,7 @@ SliverPy is a Python gRPC client library for [Sliver](https://github.com/BishopF
 
 ### Install
 
-Install the package using pip, for best compatibility use Sliver Server v1.5 or later:
+Install the package using pip, for best compatibility use Sliver Server v1.5.29 or later:
 
 `pip3 install sliver-py`
 
@@ -44,8 +44,7 @@ async def main():
         print('[*] ls: %r' % ls)
 
 if __name__ == '__main__':
-    loop = asyncio.get_event_loop()
-    loop.run_until_complete(main())
+    asyncio.run(main())
 ```
 
 #### Interact with Beacons
@@ -80,8 +79,7 @@ async def main():
         print('[*] ls: %r' % ls)
 
 if __name__ == '__main__':
-    loop = asyncio.get_event_loop()
-    loop.run_until_complete(main())
+    asyncio.run(main())
 ```
 
 ## Development
@@ -104,14 +102,24 @@ Once installed, run `hatch -e dev shell` to enter the development environment. H
 
 - `hatch run dev:fmt`  -- runs `black` and `isort` for formatting
 
-- `hatch run dev:genproto` -- executes `protobuf.sh` to generate new protobuf files based on Sliver submodule
-
 ### Docker/WSL2
 
 A Dockerfile is included if you wish to develop inside a container. This may be preferable for development on any operating system to keep the dev environment isolated. Windows developers may choose to develop inside WSL2.
 
-In either case, `scripts/sliver_install.sh` contains a modified version of the official Sliver installation script that does not create a `systemd` based service, as containers and WSL2 do not support systemd out of the box. After running this script, you may start a local Sliver server in your container or WSL2 instance by running:
+In either case, `scripts/sliver_install.sh` contains a modified version of the official Sliver installation script that does not create a `systemd` based service. After running this script, you may start a local Sliver server in your container or WSL2 instance by running:
 
 `sudo /root/sliver-server daemon &`
 
 Alternatively, you can still choose to set up an external Sliver instance to connect to via Sliver's [multi-player mode](https://github.com/BishopFox/sliver/wiki/Multiplayer-Mode). The `sliver_install` script is purely for local development convenience.
+
+### Updating protobufs
+This should only be necessary when changes are made to Sliver's protobuf. Running `scripts/protobufgen.py` will update `sliver-py` protobuf files. Ensure that the `.pyi` type hints are generated also.
+
+### Running tests
+To run tests, you should have at least one beacon implant and one session implant connected to you Sliver instance. Currently, it is ok to only have them running on a Linux system (implants running on your sliver server works fine). In the future, you may need to have a session implant on the type of operating system the test is for, particularly for Windows.
+
+Tests are implemented using [Ward](https://github.com/darrenburns/ward). The tests have been tagged so you can run all the tests or just the tests you need. Recommendation is to run all tests when making a major change.
+
+- `ward` : All tests
+- `ward --tags client`: Client tests only
+- `ward --tags interactive`: InteractiveObject tests
