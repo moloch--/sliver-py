@@ -14,7 +14,7 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 
-from typing import List, Literal, Optional
+from typing import List, Optional
 
 from sliver.pb.commonpb import common_pb2
 
@@ -33,14 +33,15 @@ class BaseInteractiveCommands:
             self._request(sliver_pb2.Ping()), timeout=self.timeout
         )
 
-    async def ps(self: InteractiveObject) -> sliver_pb2.Ps:
+    async def ps(self: InteractiveObject) -> List[common_pb2.Process]:
         """List the processes of the remote system
 
         :return: Ps protobuf object
         :rtype: sliver_pb2.Ps
         """
         ps = sliver_pb2.PsReq()
-        return await self._stub.Ps(self._request(ps), timeout=self.timeout)
+        processes = await self._stub.Ps(self._request(ps), timeout=self.timeout)
+        return list(processes.Processes)
 
     async def terminate(
         self: InteractiveObject, pid: int, force=False
@@ -395,7 +396,7 @@ class BaseInteractiveCommands:
     ) -> sliver_pb2.Migrate:
         """Migrate implant to another process
 
-        :param pid: Proccess ID to inject implant into
+        :param pid: Process ID to inject implant into
         :type pid: int
         :param config: Implant configuration to inject into the remote process
         :type config: client_pb2.ImplantConfig
