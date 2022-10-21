@@ -37,7 +37,7 @@ class BaseInteractiveCommands:
         """List the processes of the remote system
 
         :return: Ps protobuf object
-        :rtype: sliver_pb2.Ps
+        :rtype: List[common_pb2.Process]
         """
         ps = sliver_pb2.PsReq()
         processes = await self._stub.Ps(self._request(ps), timeout=self.timeout)

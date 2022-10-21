@@ -17,7 +17,7 @@
 import asyncio
 import functools
 import logging
-from typing import Any, Dict, Tuple, Union
+from typing import Any, Dict, List, Tuple
 
 import grpc
 
@@ -213,7 +213,7 @@ class InteractiveBeacon(BaseBeacon, BaseInteractiveCommands):
         return await super().ping(*args, **kwargs)
 
     @beacon_taskresult(sliver_pb2.Ps)
-    async def ps(self, *args, **kwargs) -> sliver_pb2.Ps:
+    async def ps(self, *args, **kwargs) -> List[common_pb2.Process]:
         return await super().ps(*args, **kwargs)
 
     @beacon_taskresult(sliver_pb2.Terminate)
