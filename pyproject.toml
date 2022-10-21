@@ -29,6 +29,7 @@ dependencies = [
     "grpcio~=1.47",
     "grpcio-tools~=1.47",
     "mypy-protobuf~=3.3.0",
+    "typing_extensions~=4.4.0; python_version < '3.8'",
 ]
 
 [tool.hatch.envs.dev]
