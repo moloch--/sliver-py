@@ -11,7 +11,7 @@
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 import os
 import sys
-from subprocess import Popen, PIPE
+from subprocess import PIPE, Popen
 
 DOCS = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.abspath(os.path.join(DOCS, "..", "src")))
@@ -35,6 +35,7 @@ extensions = [
     "sphinx.ext.autosectionlabel",
     "sphinx.ext.intersphinx",
     "sphinx.ext.viewcode",
+    "sphinx_autodoc_typehints",
 ]
 
 autodoc_default_options = {

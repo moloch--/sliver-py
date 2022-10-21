@@ -28,13 +28,18 @@ Homepage = "https://github.com/moloch--/sliver-py"
 dependencies = [
     "grpcio~=1.47",
     "grpcio-tools~=1.47",
+    "mypy-protobuf~=3.3.0",
 ]
 
 [tool.hatch.envs.dev]
 extra-dependencies = [
     "rich~=12.5",
     "black~=22.6", 
-    "isort~=5.10", 
+    "isort~=5.10",
+    "ward~=0.66.1b0",
+    "sphinx~=5.1", 
+    "sphinx-rtd-theme~=1.0.0", 
+    "sphinx-autodoc-typehints~=1.19.4",
 ]
 
 [tool.hatch.envs.dev.scripts]
@@ -42,11 +47,6 @@ fmt = [
     "isort src", 
     "black src",
 ]
-genproto = ["./protobuf.sh"]
-
-[tool.hatch.envs.docs]
-template = "dev"
-extra-dependencies = ["sphinx~=5.1", "sphinx-rtd-theme~=1.0.0"]
 
 [tool.hatch.version]
 path = "src/sliver/__init__.py"

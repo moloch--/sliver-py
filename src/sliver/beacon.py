@@ -17,43 +17,42 @@
 import asyncio
 import functools
 import logging
-from typing import Any, Dict, Tuple, Union
+from typing import Any, Dict, List, Tuple
 
 import grpc
 
+from ._protocols import PbWithRequestProp
 from .interactive import BaseInteractiveCommands
 from .pb.rpcpb.services_pb2_grpc import SliverRPCStub
 from .protobuf import client_pb2, common_pb2, sliver_pb2
 
-TIMEOUT = 60
 
-
-class BaseBeacon(object):
+class BaseBeacon:
     def __init__(
         self,
         beacon: client_pb2.Beacon,
-        channel: grpc.Channel,
-        timeout: int = TIMEOUT,
+        channel: grpc.aio.Channel,
+        timeout: int = 60,
     ):
         """Base class for Beacon classes.
 
         :param beacon: Beacon protobuf object.
         :type beacon: client_pb2.Beacon
         :param channel: A gRPC channel.
-        :type channel: grpc.Channel
+        :type channel: grpc.aio.Channel
         :param timeout: Seconds to wait for timeout, defaults to TIMEOUT
         :type timeout: int, optional
         """
         self._log = logging.getLogger(self.__class__.__name__)
-        self._channel: grpc.Channel = channel
-        self._beacon: client_pb2.Beacon = beacon
+        self._channel = channel
+        self._beacon = beacon
         self._stub = SliverRPCStub(channel)
         self.timeout = timeout
         self.beacon_tasks: Dict[str, Tuple[asyncio.Future, Any]] = {}
         asyncio.get_event_loop().create_task(self.taskresult_events())
 
     @property
-    def beacon_id(self) -> int:
+    def beacon_id(self) -> str:
         """Beacon ID"""
         return self._beacon.ID
 
@@ -63,7 +62,7 @@ class BaseBeacon(object):
         return self._beacon.Name
 
     @property
-    def hostname(self) -> int:
+    def hostname(self) -> str:
         """Beacon hostname"""
         return self._beacon.Hostname
 
@@ -118,7 +117,7 @@ class BaseBeacon(object):
         return self._beacon.Filename
 
     @property
-    def last_checkin(self) -> str:
+    def last_checkin(self) -> int:
         """Last check in time"""
         return self._beacon.LastCheckin
 
@@ -137,7 +136,7 @@ class BaseBeacon(object):
         """Reconnect interval"""
         return self._beacon.ReconnectInterval
 
-    def _request(self, pb):
+    def _request(self, pb: PbWithRequestProp):
         """
         Set request attributes based on current beacon, I'd prefer to return a generic Request
         object, but protobuf for whatever reason doesn't let you assign this type of field directly.
@@ -146,7 +145,7 @@ class BaseBeacon(object):
 
         :param pb: A protobuf request object.
         """
-        pb.Request.SessionID = self._beacon.ID
+        pb.Request.BeaconID = self._beacon.ID
         pb.Request.Timeout = self.timeout - 1
         pb.Request.Async = True
         return pb
@@ -179,7 +178,7 @@ class BaseBeacon(object):
                 self._log.exception(err)
 
 
-def beacon_taskresult(pb_object):
+def beacon_taskresult(pb_object: Any):
     """
     Wraps a class method to return a future that resolves when the
     beacon task result is available.
@@ -214,7 +213,7 @@ class InteractiveBeacon(BaseBeacon, BaseInteractiveCommands):
         return await super().ping(*args, **kwargs)
 
     @beacon_taskresult(sliver_pb2.Ps)
-    async def ps(self, *args, **kwargs) -> sliver_pb2.Ps:
+    async def ps(self, *args, **kwargs) -> List[common_pb2.Process]:
         return await super().ps(*args, **kwargs)
 
     @beacon_taskresult(sliver_pb2.Terminate)
@@ -281,10 +280,6 @@ class InteractiveBeacon(BaseBeacon, BaseInteractiveCommands):
     async def execute_shellcode(self, *args, **kwargs) -> sliver_pb2.Task:
         return await super().execute_shellcode(*args, **kwargs)
 
-    @beacon_taskresult(sliver_pb2.Task)
-    async def task(self, *args, **kwargs) -> sliver_pb2.Task:
-        return await super().task(*args, **kwargs)
-
     @beacon_taskresult(None)
     async def msf(self, *args, **kwargs) -> None:
         return await super().msf(*args, **kwargs)
@@ -304,10 +299,6 @@ class InteractiveBeacon(BaseBeacon, BaseInteractiveCommands):
     @beacon_taskresult(sliver_pb2.Execute)
     async def execute(self, *args, **kwargs) -> sliver_pb2.Execute:
         return await super().execute(*args, **kwargs)
-
-    @beacon_taskresult(sliver_pb2.Execute)
-    async def execute_token(self, *args, **kwargs) -> sliver_pb2.Execute:
-        return await super().execute_token(*args, **kwargs)
 
     @beacon_taskresult(sliver_pb2.Sideload)
     async def sideload(self, *args, **kwargs) -> sliver_pb2.Sideload:

@@ -23,10 +23,8 @@ from .interactive import BaseInteractiveCommands
 from .pb.rpcpb.services_pb2_grpc import SliverRPCStub
 from .protobuf import client_pb2, sliver_pb2
 
-TIMEOUT = 60
 
-
-class BaseSession(object):
+class BaseSession:
     """Base class for Session objects.
 
     :param session: Session protobuf.
@@ -40,8 +38,8 @@ class BaseSession(object):
     def __init__(
         self,
         session: client_pb2.Session,
-        channel: grpc.Channel,
-        timeout: int = TIMEOUT,
+        channel: grpc.aio.Channel,
+        timeout: int = 60,
     ):
         self._channel = channel
         self._session = session
@@ -62,7 +60,7 @@ class BaseSession(object):
         return pb
 
     @property
-    def session_id(self) -> int:
+    def session_id(self) -> str:
         """Session ID"""
         return self._session.ID
 
@@ -72,7 +70,7 @@ class BaseSession(object):
         return self._session.Name
 
     @property
-    def hostname(self) -> int:
+    def hostname(self) -> str:
         """Hostname"""
         return self._session.Hostname
 
@@ -127,7 +125,7 @@ class BaseSession(object):
         return self._session.Filename
 
     @property
-    def last_checkin(self) -> str:
+    def last_checkin(self) -> int:
         """Last check in"""
         return self._session.LastCheckin
 
@@ -167,7 +165,7 @@ class InteractiveSession(BaseSession, BaseInteractiveCommands):
         :return: Protobuf PivotListener list
         :rtype: List[sliver_pb2.PivotListener]
         """
-        pivots = await self._stub.ListPivots(
+        pivots = await self._stub.PivotSessionListeners(
             self._request(sliver_pb2.PivotListenersReq()), timeout=self.timeout
         )
         return list(pivots.Listeners)

@@ -14,32 +14,38 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 
-from typing import List
+from typing import List, Optional
 
+from sliver.pb.commonpb import common_pb2
+
+from ._protocols import InteractiveObject
 from .protobuf import client_pb2, sliver_pb2
 
 
-class BaseInteractiveCommands(object):
-    async def ping(self) -> sliver_pb2.Ping:
+class BaseInteractiveCommands:
+    async def ping(self: InteractiveObject) -> sliver_pb2.Ping:
         """Send a round trip message to the implant (does NOT use ICMP)
 
         :return: Protobuf ping object
         :rtype: sliver_pb2.Ping
         """
-        ping = sliver_pb2.Ping()
-        ping.Request = self._request(ping)
-        return await self._stub.Ping(ping, timeout=self.timeout)
+        return await self._stub.Ping(
+            self._request(sliver_pb2.Ping()), timeout=self.timeout
+        )
 
-    async def ps(self) -> sliver_pb2.Ps:
+    async def ps(self: InteractiveObject) -> List[common_pb2.Process]:
         """List the processes of the remote system
 
         :return: Ps protobuf object
-        :rtype: sliver_pb2.Ps
+        :rtype: List[common_pb2.Process]
         """
         ps = sliver_pb2.PsReq()
-        return await self._stub.Ps(self._request(ps), timeout=self.timeout)
+        processes = await self._stub.Ps(self._request(ps), timeout=self.timeout)
+        return list(processes.Processes)
 
-    async def terminate(self, pid: int, force=False) -> sliver_pb2.Terminate:
+    async def terminate(
+        self: InteractiveObject, pid: int, force=False
+    ) -> sliver_pb2.Terminate:
         """Terminate a remote process
 
         :param pid: The process ID to terminate.
@@ -49,14 +55,12 @@ class BaseInteractiveCommands(object):
         :return: Protobuf terminate object
         :rtype: sliver_pb2.Terminate
         """
-        terminator = sliver_pb2.TerminateReq()
-        terminator.Pid = pid
-        terminator.Force = force
+        terminator = sliver_pb2.TerminateReq(Pid=pid, Force=force)
         return await self._stub.Terminate(
             self._request(terminator), timeout=self.timeout
         )
 
-    async def ifconfig(self) -> sliver_pb2.Ifconfig:
+    async def ifconfig(self: InteractiveObject) -> sliver_pb2.Ifconfig:
         """Get network interface configuration information about the remote system
 
         :return: Protobuf ifconfig object
@@ -67,8 +71,13 @@ class BaseInteractiveCommands(object):
         )
 
     async def netstat(
-        self, tcp: bool, udp: bool, ipv4: bool, ipv6: bool, listening=True
-    ) -> List[sliver_pb2.SockTabEntry]:
+        self: InteractiveObject,
+        tcp: bool,
+        udp: bool,
+        ipv4: bool,
+        ipv6: bool,
+        listening=True,
+    ) -> sliver_pb2.Netstat:
         """Get information about network connections on the remote system.
 
         :param tcp: Get TCP information
@@ -84,16 +93,12 @@ class BaseInteractiveCommands(object):
         :return: Protobuf netstat object
         :rtype: List[sliver_pb2.SockTabEntry]
         """
-        net = sliver_pb2.NetstatReq()
-        net.TCP = tcp
-        net.UDP = udp
-        net.IP4 = ipv4
-        net.IP6 = ipv6
-        net.Listening = listening
-        stat = await self._stub.Netstat(self._request(net), timeout=self.timeout)
-        return list(stat.Entries)
+        net = sliver_pb2.NetstatReq(
+            TCP=tcp, UDP=udp, IP4=ipv4, IP6=ipv6, Listening=listening
+        )
+        return await self._stub.Netstat(self._request(net), timeout=self.timeout)
 
-    async def ls(self, remote_path: str = ".") -> sliver_pb2.Ls:
+    async def ls(self: InteractiveObject, remote_path: str = ".") -> sliver_pb2.Ls:
         """Get a directory listing from the remote system
 
         :param remote_path: Remote path
@@ -101,11 +106,10 @@ class BaseInteractiveCommands(object):
         :return: Protobuf ls object
         :rtype: sliver_pb2.Ls
         """
-        ls = sliver_pb2.LsReq()
-        ls.Path = remote_path
+        ls = sliver_pb2.LsReq(Path=remote_path)
         return await self._stub.Ls(self._request(ls), timeout=self.timeout)
 
-    async def cd(self, remote_path: str) -> sliver_pb2.Pwd:
+    async def cd(self: InteractiveObject, remote_path: str) -> sliver_pb2.Pwd:
         """Change the current working directory of the implant
 
         :param remote_path: Remote path
@@ -113,11 +117,10 @@ class BaseInteractiveCommands(object):
         :return: Protobuf pwd object
         :rtype: sliver_pb2.Pwd
         """
-        cd = sliver_pb2.CdReq()
-        cd.Path = remote_path
+        cd = sliver_pb2.CdReq(Path=remote_path)
         return await self._stub.Cd(self._request(cd), timeout=self.timeout)
 
-    async def pwd(self) -> sliver_pb2.Pwd:
+    async def pwd(self: InteractiveObject) -> sliver_pb2.Pwd:
         """Get the implant's current working directory
 
         :return: Protobuf pwd object
@@ -126,7 +129,9 @@ class BaseInteractiveCommands(object):
         pwd = sliver_pb2.PwdReq()
         return await self._stub.Pwd(self._request(pwd), timeout=self.timeout)
 
-    async def rm(self, remote_path: str, recursive=False, force=False) -> sliver_pb2.Rm:
+    async def rm(
+        self: InteractiveObject, remote_path: str, recursive=False, force=False
+    ) -> sliver_pb2.Rm:
         """Remove a directory or file(s)
 
         :param remote_path: Remote path
@@ -138,13 +143,10 @@ class BaseInteractiveCommands(object):
         :return: Protobuf rm object
         :rtype: sliver_pb2.Rm
         """
-        rm = sliver_pb2.RmReq()
-        rm.Path = remote_path
-        rm.Recursive = recursive
-        rm.Force = force
+        rm = sliver_pb2.RmReq(Path=remote_path, Recursive=recursive, Force=force)
         return await self._stub.Rm(self._request(rm), timeout=self.timeout)
 
-    async def mkdir(self, remote_path: str) -> sliver_pb2.Mkdir:
+    async def mkdir(self: InteractiveObject, remote_path: str) -> sliver_pb2.Mkdir:
         """Make a directory on the remote file system
 
         :param remote_path: Directory to create
@@ -152,24 +154,29 @@ class BaseInteractiveCommands(object):
         :return: Protobuf Mkdir object
         :rtype: sliver_pb2.Mkdir
         """
-        make = sliver_pb2.MkdirReq()
-        make.Path = remote_path
+        make = sliver_pb2.MkdirReq(Path=remote_path)
         return await self._stub.Mkdir(self._request(make), timeout=self.timeout)
 
-    async def download(self, remote_path: str) -> sliver_pb2.Download:
-        """Download a file from the remote file system
+    async def download(
+        self: InteractiveObject, remote_path: str, recurse: bool = False
+    ) -> sliver_pb2.Download:
+        """Download a file or directory from the remote file system
 
         :param remote_path: File to download
         :type remote_path: str
+        :param recurse: Download all files in a directory
+        :type recurse: bool
         :return: Protobuf Download object
         :rtype: sliver_pb2.Download
         """
-        download = sliver_pb2.DownloadReq()
-        download.Path = remote_path
+        download = sliver_pb2.DownloadReq(Path=remote_path, Recurse=recurse)
         return await self._stub.Download(self._request(download), timeout=self.timeout)
 
     async def upload(
-        self, remote_path: str, data: bytes, encoder=""
+        self: InteractiveObject,
+        remote_path: str,
+        data: bytes,
+        is_ioc: bool = False,
     ) -> sliver_pb2.Upload:
         """Write data to specified path on remote file system
 
@@ -177,18 +184,15 @@ class BaseInteractiveCommands(object):
         :type remote_path: str
         :param data: Data to write
         :type data: bytes
-        :param encoder: Data encoder ('', 'gzip'), defaults to ''
-        :type encoder: str, optional
+        :param is_ioc: Data is an indicator of compromise, defaults to False
+        :type is_ioc: bool, optional
         :return: Protobuf Upload object
         :rtype: sliver_pb2.Upload
         """
-        upload = sliver_pb2.UploadReq()
-        upload.Path = remote_path
-        upload.Data = data
-        upload.Encoder = encoder
+        upload = sliver_pb2.UploadReq(Path=remote_path, Data=data, IsIOC=is_ioc)
         return await self._stub.Upload(self._request(upload), timeout=self.timeout)
 
-    async def process_dump(self, pid: int) -> sliver_pb2.ProcessDump:
+    async def process_dump(self: InteractiveObject, pid: int) -> sliver_pb2.ProcessDump:
         """Dump a remote process' memory
 
         :param pid: PID of the process to dump
@@ -196,14 +200,13 @@ class BaseInteractiveCommands(object):
         :return: Protobuf ProcessDump object
         :rtype: sliver_pb2.ProcessDump
         """
-        procdump = sliver_pb2.ProcessDumpReq()
-        procdump.Pid = pid
+        procdump = sliver_pb2.ProcessDumpReq(Pid=pid)
         return await self._stub.ProcessDump(
             self._request(procdump), timeout=self.timeout
         )
 
     async def run_as(
-        self, username: str, process_name: str, args: str
+        self: InteractiveObject, username: str, process_name: str, args: str
     ) -> sliver_pb2.RunAs:
         """Run a command as another user on the remote system
 
@@ -216,13 +219,14 @@ class BaseInteractiveCommands(object):
         :return: Protobuf RunAs object
         :rtype: sliver_pb2.RunAs
         """
-        run_as = sliver_pb2.RunAsReq()
-        run_as.Username = username
-        run_as.ProcessName = process_name
-        run_as.Args.extend(args)
+        run_as = sliver_pb2.RunAsReq(
+            Username=username, ProcessName=process_name, Args=args
+        )
         return await self._stub.RunAs(self._request(run_as), timeout=self.timeout)
 
-    async def impersonate(self, username: str) -> sliver_pb2.Impersonate:
+    async def impersonate(
+        self: InteractiveObject, username: str
+    ) -> sliver_pb2.Impersonate:
         """Impersonate a user using tokens (Windows only)
 
         :param username: User to impersonate
@@ -230,13 +234,12 @@ class BaseInteractiveCommands(object):
         :return: Protobuf Impersonate object
         :rtype: sliver_pb2.Impersonate
         """
-        impersonate = sliver_pb2.ImpersonateReq()
-        impersonate.Username = username
+        impersonate = sliver_pb2.ImpersonateReq(Username=username)
         return await self._stub.Impersonate(
             self._request(impersonate), timeout=self.timeout
         )
 
-    async def revert_to_self(self) -> sliver_pb2.RevToSelf:
+    async def revert_to_self(self: InteractiveObject) -> sliver_pb2.RevToSelf:
         """Revert to self from impersonation context
 
         :return: Protobuf RevToSelf object
@@ -247,7 +250,7 @@ class BaseInteractiveCommands(object):
         )
 
     async def get_system(
-        self, hosting_process: str, config: client_pb2.ImplantConfig
+        self: InteractiveObject, hosting_process: str, config: client_pb2.ImplantConfig
     ) -> sliver_pb2.GetSystem:
         """Attempt to get SYSTEM (Windows only)
 
@@ -258,13 +261,11 @@ class BaseInteractiveCommands(object):
         :return: Protobuf GetSystem object
         :rtype: sliver_pb2.GetSystem
         """
-        system = client_pb2.GetSystemReq()
-        system.HostingProcess = hosting_process
-        system.Config.CopyFrom(config)
+        system = client_pb2.GetSystemReq(HostingProcess=hosting_process, Config=config)
         return await self._stub.GetSystem(self._request(system), timeout=self.timeout)
 
     async def execute_shellcode(
-        self, data: bytes, rwx: bool, pid: int, encoder=""
+        self: InteractiveObject, data: bytes, rwx: bool, pid: int, encoder=""
     ) -> sliver_pb2.Task:
         """Execute shellcode in-memory
 
@@ -279,33 +280,16 @@ class BaseInteractiveCommands(object):
         :return: Protobuf Task object
         :rtype: sliver_pb2.Task
         """
-        return await self.task(data, rwx, pid, encoder)
-
-    async def task(
-        self, data: bytes, rwx: bool, pid: int, encoder=""
-    ) -> sliver_pb2.Task:
-        """Execute shellcode in-memory ("Task" is a synonym for shellcode)
-
-        :param data: Shellcode buffer
-        :type data: bytes
-        :param rwx: Enable/disable RWX pages
-        :type rwx: bool
-        :param pid: Process ID to inject shellcode into
-        :type pid: int
-        :param encoder: Encoder ('', 'gzip'), defaults to ''
-        :type encoder: str, optional
-        :return: Protobuf Task object
-        :rtype: sliver_pb2.Task
-        """
-        task = sliver_pb2.TaskReq()
-        task.Encoder = encoder
-        task.RWXPages = rwx
-        task.Pid = pid
-        task.Data = data
+        task = sliver_pb2.TaskReq(Encoder=encoder, Data=data, RWXPages=rwx, Pid=pid)
         return await self._stub.Task(self._request(task), timeout=self.timeout)
 
     async def msf(
-        self, payload: str, lhost: str, lport: int, encoder: str, iterations: int
+        self: InteractiveObject,
+        payload: str,
+        lhost: str,
+        lport: int,
+        encoder: str,
+        iterations: int,
     ) -> None:
         """Execute Metasploit payload on remote system, the payload will be generated by the server
         based on the parameters to this function. The server must be configured with Metasploit.
@@ -330,7 +314,7 @@ class BaseInteractiveCommands(object):
         return await self._stub.Msf(self._request(msf), timeout=self.timeout)
 
     async def msf_remote(
-        self,
+        self: InteractiveObject,
         payload: str,
         lhost: str,
         lport: int,
@@ -364,7 +348,7 @@ class BaseInteractiveCommands(object):
         return await self._stub.Msf(self._request(msf), timeout=self.timeout)
 
     async def execute_assembly(
-        self,
+        self: InteractiveObject,
         assembly: bytes,
         arguments: str,
         process: str,
@@ -408,11 +392,11 @@ class BaseInteractiveCommands(object):
         )
 
     async def migrate(
-        self, pid: int, config: client_pb2.ImplantConfig
+        self: InteractiveObject, pid: int, config: client_pb2.ImplantConfig
     ) -> sliver_pb2.Migrate:
         """Migrate implant to another process
 
-        :param pid: Proccess ID to inject implant into
+        :param pid: Process ID to inject implant into
         :type pid: int
         :param config: Implant configuration to inject into the remote process
         :type config: client_pb2.ImplantConfig
@@ -425,7 +409,10 @@ class BaseInteractiveCommands(object):
         return await self._stub.Migrate(self._request(migrate), timeout=self.timeout)
 
     async def execute(
-        self, exe: str, args: List[str], output: bool
+        self: InteractiveObject,
+        exe: str,
+        args: Optional[List[str]],
+        output: bool = True,
     ) -> sliver_pb2.Execute:
         """Execute a command/subprocess on the remote system
 
@@ -438,36 +425,15 @@ class BaseInteractiveCommands(object):
         :return: Protobuf Execute object
         :rtype: sliver_pb2.Execute
         """
-        exec = sliver_pb2.ExecuteReq()
-        exec.Path = exe
-        exec.Args.extend(args)
-        exec.Output = output
-        return await self._stub.Execute(self._request(exec), timeout=self.timeout)
-
-    async def execute_token(
-        self, exe: str, args: List[str], output: bool
-    ) -> sliver_pb2.Execute:
-        """Execute a comman/subprocess on the remote system in the context of the current user token
-
-        :param exe: Command/subprocess to execute
-        :type exe: str
-        :param args: Arguments to the command/subprocess
-        :type args: List[str]
-        :param output: Enable capturing command/subprocess stdout
-        :type output: bool
-        :return: Protobuf Execute object
-        :rtype: sliver_pb2.Execute
-        """
-        execToken = sliver_pb2.ExecuteTokenReq()
-        execToken.Path = exe
-        execToken.Args.extend(args)
-        execToken.Output = output
-        return await self._stub.ExecuteToken(
-            self._request(execToken), timeout=self.timeout
+        if not args:
+            args = []
+        execute_req = sliver_pb2.ExecuteReq(Path=exe, Args=args, Output=output)
+        return await self._stub.Execute(
+            self._request(execute_req), timeout=self.timeout
         )
 
     async def sideload(
-        self,
+        self: InteractiveObject,
         data: bytes,
         process_name: str,
         arguments: str,
@@ -489,16 +455,17 @@ class BaseInteractiveCommands(object):
         :return: Protobuf Sideload object
         :rtype: sliver_pb2.Sideload
         """
-        side = sliver_pb2.SideloadReq()
-        side.Data = data
-        side.ProcessName = process_name
-        side.Args = arguments
-        side.EntryPoint = entry_point
-        side.Kill = kill
+        side = sliver_pb2.SideloadReq(
+            Data=data,
+            ProcessName=process_name,
+            Args=arguments,
+            EntryPoint=entry_point,
+            Kill=kill,
+        )
         return await self._stub.Sideload(self._request(side), timeout=self.timeout)
 
     async def spawn_dll(
-        self,
+        self: InteractiveObject,
         data: bytes,
         process_name: str,
         arguments: str,
@@ -520,15 +487,16 @@ class BaseInteractiveCommands(object):
         :return: Protobuf SpawnDll object
         :rtype: sliver_pb2.SpawnDll
         """
-        spawn = sliver_pb2.InvokeSpawnDllReq()
-        spawn.Data = data
-        spawn.ProcessName = process_name
-        spawn.Args = arguments
-        spawn.EntryPoint = entry_point
-        spawn.Kill = kill
+        spawn = sliver_pb2.InvokeSpawnDllReq(
+            Data=data,
+            ProcessName=process_name,
+            Args=arguments,
+            EntryPoint=entry_point,
+            Kill=kill,
+        )
         return await self._stub.SpawnDll(self._request(spawn), timeout=self.timeout)
 
-    async def screenshot(self) -> sliver_pb2.Screenshot:
+    async def screenshot(self: InteractiveObject) -> sliver_pb2.Screenshot:
         """Take a screenshot of the remote system, screenshot data is PNG formatted
 
         :return: Protobuf Screenshot object
@@ -539,7 +507,7 @@ class BaseInteractiveCommands(object):
         )
 
     async def make_token(
-        self, username: str, password: str, domain: str
+        self: InteractiveObject, username: str, password: str, domain: str
     ) -> sliver_pb2.MakeToken:
         """Make a Windows user token from a valid login (Windows only)
 
@@ -552,13 +520,12 @@ class BaseInteractiveCommands(object):
         :return: Protobuf MakeToken object
         :rtype: sliver_pb2.MakeToken
         """
-        make = sliver_pb2.MakeTokenReq()
-        make.Username = username
-        make.Password = password
-        make.Domain = domain
+        make = sliver_pb2.MakeTokenReq(
+            Username=username, Password=password, Domain=domain
+        )
         return await self._stub.MakeToken(self._request(make), timeout=self.timeout)
 
-    async def get_env(self, name: str) -> sliver_pb2.EnvInfo:
+    async def get_env(self: InteractiveObject, name: str) -> sliver_pb2.EnvInfo:
         """Get an environment variable
 
         :param name: Name of the variable
@@ -566,11 +533,12 @@ class BaseInteractiveCommands(object):
         :return: Protobuf EnvInfo object
         :rtype: sliver_pb2.EnvInfo
         """
-        env = sliver_pb2.EnvReq()
-        env.Name = name
+        env = sliver_pb2.EnvReq(Name=name)
         return await self._stub.GetEnv(self._request(env), timeout=self.timeout)
 
-    async def set_env(self, name: str, value: str) -> sliver_pb2.SetEnv:
+    async def set_env(
+        self: InteractiveObject, key: str, value: str
+    ) -> sliver_pb2.SetEnv:
         """Set an environment variable
 
         :param name: Name of the environment variable
@@ -580,13 +548,23 @@ class BaseInteractiveCommands(object):
         :return: Protobuf SetEnv object
         :rtype: sliver_pb2.SetEnv
         """
-        env = sliver_pb2.SetEnvReq()
-        env.EnvVar.Key = name
-        env.EnvVar.Value = value
-        return await self._stub.SetEnv(self._request(env), timeout=self.timeout)
+        env_var = common_pb2.EnvVar(Key=key, Value=value)
+        env_req = sliver_pb2.SetEnvReq(Variable=env_var)
+        return await self._stub.SetEnv(self._request(env_req), timeout=self.timeout)
+
+    async def unset_env(self: InteractiveObject, key: str) -> sliver_pb2.UnsetEnv:
+        """Unset an environment variable
+
+        :param value: Value of the environment variable
+        :type value: str
+        :return: Protobuf SetEnv object
+        :rtype: sliver_pb2.SetEnv
+        """
+        env = sliver_pb2.UnsetEnvReq(Name=key)
+        return await self._stub.UnsetEnv(self._request(env), timeout=self.timeout)
 
     async def registry_read(
-        self, hive: str, reg_path: str, key: str, hostname: str
+        self: InteractiveObject, hive: str, reg_path: str, key: str, hostname: str
     ) -> sliver_pb2.RegistryRead:
         """Read a value from the remote system's registry (Windows only)
 
@@ -609,7 +587,7 @@ class BaseInteractiveCommands(object):
         return await self._stub.RegistryRead(self._request(reg), timeout=self.timeout)
 
     async def registry_write(
-        self,
+        self: InteractiveObject,
         hive: str,
         reg_path: str,
         key: str,
@@ -618,7 +596,7 @@ class BaseInteractiveCommands(object):
         byte_value: bytes,
         dword_value: int,
         qword_value: int,
-        reg_type: sliver_pb2.RegistryType,
+        reg_type: sliver_pb2.RegistryType.ValueType,
     ) -> sliver_pb2.RegistryWrite:
         """Write a value to the remote system's registry (Windows only)
 
@@ -643,7 +621,17 @@ class BaseInteractiveCommands(object):
         :return: Protobuf RegistryWrite object
         :rtype: sliver_pb2.RegistryWrite
         """
-        reg = sliver_pb2.RegistryWriteReq()
+        reg = sliver_pb2.RegistryWriteReq(
+            Hive=hive,
+            Path=reg_path,
+            Key=key,
+            Hostname=hostname,
+            StringValue=string_value,
+            ByteValue=byte_value,
+            DWordValue=dword_value,
+            QWordValue=qword_value,
+            Type=int(reg_type),
+        )
         reg.Hive = hive
         reg.Path = reg_path
         reg.Key = key
@@ -657,7 +645,7 @@ class BaseInteractiveCommands(object):
         return await self._stub.RegistryWrite(self._request(reg), timeout=self.timeout)
 
     async def registry_create_key(
-        self, hive: str, reg_path: str, key: str, hostname: str
+        self: InteractiveObject, hive: str, reg_path: str, key: str, hostname: str
     ) -> sliver_pb2.RegistryCreateKey:
         """Create a registry key on the remote system (Windows only)
 
@@ -672,11 +660,9 @@ class BaseInteractiveCommands(object):
         :return: Protobuf RegistryCreateKey object
         :rtype: sliver_pb2.RegistryCreateKey
         """
-        reg = sliver_pb2.RegistryCreateKeyReq()
-        reg.Hive = hive
-        reg.Path = reg_path
-        reg.Key = key
-        reg.Hostname = hostname
+        reg = sliver_pb2.RegistryCreateKeyReq(
+            Hive=hive, Path=reg_path, Key=key, Hostname=hostname
+        )
         return await self._stub.RegistryCreateKey(
             self._request(reg), timeout=self.timeout
         )

@@ -16,6 +16,7 @@
 from __future__ import annotations
 
 import json
+import os
 from typing import Type, Union
 
 
@@ -85,7 +86,7 @@ class SliverClientConfig(object):
         return cls(**json.loads(data))
 
     @classmethod
-    def parse_config_file(cls, filepath: str) -> SliverClientConfig:
+    def parse_config_file(cls, filepath: os.PathLike[str]) -> SliverClientConfig:
         """Parse a given file path as a Sliver operator configuration file.
 
         :param filepath: File system path to an operator configuration file.
