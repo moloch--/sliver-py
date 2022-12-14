@@ -44,8 +44,8 @@ class BaseClient(object):
 
     def __init__(self, config: SliverClientConfig):
         self.config = config
-        self._channel: grpc.aio.Channel
-        self._stub: SliverRPCStub
+        self._channel: grpc.aio.Channel = None  # type: ignore[assignment]
+        self._stub: SliverRPCStub = None  # type: ignore[assignment]
         self._log = logging.getLogger(self.__class__.__name__)
 
     def is_connected(self) -> bool:
