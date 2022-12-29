@@ -18,19 +18,18 @@ classifiers = [
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
 ]
-dynamic = ["version"]
-
-[project.urls]
-"Bug Tracker" = "https://github.com/moloch--/sliver-py/issues"
-Homepage = "https://github.com/moloch--/sliver-py"
-
-[tool.hatch.envs.default]
 dependencies = [
     "grpcio~=1.47",
     "grpcio-tools~=1.47",
     "mypy-protobuf~=3.3.0",
     "typing_extensions~=4.4.0; python_version < '3.8'",
 ]
+dynamic = ["version"]
+
+[project.urls]
+"Bug Tracker" = "https://github.com/moloch--/sliver-py/issues"
+Homepage = "https://github.com/moloch--/sliver-py"
+
 
 [tool.hatch.envs.dev]
 extra-dependencies = [
