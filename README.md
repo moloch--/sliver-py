@@ -116,10 +116,30 @@ Alternatively, you can still choose to set up an external Sliver instance to con
 This should only be necessary when changes are made to Sliver's protobuf. Running `scripts/protobufgen.py` will update `sliver-py` protobuf files. Ensure that the `.pyi` type hints are generated also.
 
 ### Running tests
-To run tests, you should have at least one beacon implant and one session implant connected to you Sliver instance. Currently, it is ok to only have them running on a Linux system (implants running on your sliver server works fine). In the future, you may need to have a session implant on the type of operating system the test is for, particularly for Windows.
+To run all tests, you should have at least one beacon implant and one session implant connected to you Sliver instance. Currently, it is ok to only have them running on a Linux system (implants running on your sliver server works fine). In the future, you may need to have a session implant on the type of operating system the test is for, particularly for Windows.
 
 Tests are implemented using [Ward](https://github.com/darrenburns/ward). The tests have been tagged so you can run all the tests or just the tests you need. Recommendation is to run all tests when making a major change.
 
+Test parameters you may want to change (e.g. listener ports) are in `fixtures.py`.
+
 - `ward` : All tests
-- `ward --tags client`: Client tests only
-- `ward --tags interactive`: InteractiveObject tests
+- `ward --tags client`: Run all client tests - at least one beacon and one session (alive or dead)
+must be present on the server
+- `ward --tags interactive`: Run interactive operation tests - requires an active session on the server
+
+Subsets of `client` tests:
+
+- `connect`: connect & get server version only
+- `server_info`: connect & get version, operator and jobs info
+- `listeners`: test listeners
+- `implant`: implant-related tests
+- `website`: website-related tests
+- `generate`: both implant & website tests
+- `beacon`: test beacon manipulation - requires at least one beacon on server (alive or dead)
+- `session`: test session manipulation - requires at least one session on server (alive or dead)
+
+Additional interactive operation tags (not included by default because they can crash the implant on some targets, sometimes):
+
+- `screenshot`: take a screenshot on the target system
+- `memdump`: take a memory dump of the target system
+- `interactive_full`: all `interactive` tests plus `screenshot` and `memdump`

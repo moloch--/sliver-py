@@ -1,109 +1,138 @@
-from ward import fixture, test
+from ward import test
 
-from sliver import SliverClient
 from sliver.session import InteractiveSession
 
-from .test_client import sliver_client, sliverpy_random_name
+from .fixtures import TestConstants, session_zero, test_constants
 
 
-@fixture(scope="module")
-async def session_zero(client: SliverClient = sliver_client) -> InteractiveSession:  # type: ignore
-    sessions = await client.sessions()
-    return await client.interact_session(sessions[0].ID)  # type: ignore
-
-
-@test("InteractiveObject can send ping to server", tags=["interactive"])
+@test(
+    "InteractiveObject can send ping to server",
+    tags=["interactive_full", "interactive"],
+)
 async def _(session: InteractiveSession = session_zero):  # type: ignore
     assert await session.ping()
 
 
-@test("InteractiveObject can list processes", tags=["interactive"])
+@test("InteractiveObject can list processes", tags=["interactive_full", "interactive"])
 async def _(session: InteractiveSession = session_zero):  # type: ignore
     assert await session.ps()
 
 
-@test("InteractiveObject can get network interfaces", tags=["interactive"])
+@test(
+    "InteractiveObject can get network interfaces",
+    tags=["interactive_full", "interactive"],
+)
 async def _(session: InteractiveSession = session_zero):  # type: ignore
     assert await session.ifconfig()
 
 
-@test("InteractiveObject can get network connections", tags=["interactive"])
+@test(
+    "InteractiveObject can get network connections",
+    tags=["interactive_full", "interactive"],
+)
 async def _(session: InteractiveSession = session_zero):  # type: ignore
     assert await session.netstat(True, True, True, True, True)
 
 
-@test("InteractiveObject can get working directory", tags=["interactive"])
+@test(
+    "InteractiveObject can get working directory",
+    tags=["interactive_full", "interactive"],
+)
 async def _(session: InteractiveSession = session_zero):  # type: ignore
     assert await session.pwd()
 
 
-@test("InteractiveObject can list directory", tags=["interactive"])
+@test("InteractiveObject can list directory", tags=["interactive_full", "interactive"])
 async def _(session: InteractiveSession = session_zero):  # type: ignore
     assert await session.ls()
 
 
-@test("InteractiveObject can change directory", tags=["interactive"])
-async def _(session: InteractiveSession = session_zero):  # type: ignore
-    assert await session.cd(".")
-
-
-@test("InteractiveObject can make a directory", tags=["interactive"])
+@test(
+    "InteractiveObject can make a directory", tags=["interactive_full", "interactive"]
+)
 async def _(
-    session: InteractiveSession = session_zero, target_dir: str = sliverpy_random_name  # type: ignore
+    session: InteractiveSession = session_zero, test_const: TestConstants = test_constants  # type: ignore
 ):
-    assert await session.mkdir(target_dir)
+    assert await session.mkdir(test_const.mkdir_path)
 
 
-@test("InteractiveObject can upload a file", tags=["interactive"])
+@test(
+    "InteractiveObject can change directory (depends on mkdir succeeding)",
+    tags=["interactive_full", "interactive"],
+)
+async def _(session: InteractiveSession = session_zero, test_const: TestConstants = test_constants):  # type: ignore
+    prev_dir = await session.pwd()
+    assert await session.cd(test_const.mkdir_path)
+    assert await session.cd(prev_dir.Path)
+
+
+@test("InteractiveObject can upload a file", tags=["interactive_full", "interactive"])
+async def _(
+    session: InteractiveSession = session_zero,
+    test_const: TestConstants = test_constants,
+):
+    assert await session.upload(test_const.file_path, test_const.file_data)
+
+
+@test(
+    "InteractiveObject can download files (depends on file upload succeeding)",
+    tags=["interactive_full", "interactive"],
+)
 async def _(
     session: InteractiveSession = session_zero,  # type: ignore
-    target_dir: str = sliverpy_random_name,  # type: ignore
+    test_const: TestConstants = test_constants,  # type: ignore
 ):
-    assert await session.upload(target_dir + "/sliverpy.txt", b"sliverpy")
+    assert await session.download(test_const.file_path, True)
 
 
-@test("InteractiveObject can download files", tags=["interactive"])
+@test(
+    "InteractiveObject can remove a directory (depends on mkdir succeeding)",
+    tags=["interactive_full", "interactive"],
+)
 async def _(
-    session: InteractiveSession = session_zero,  # type: ignore
-    target_dir: str = sliverpy_random_name,  # type: ignore
+    session: InteractiveSession = session_zero, test_const: TestConstants = test_constants  # type: ignore
 ):
-    assert await session.download(target_dir, True)
+    assert await session.rm(test_const.mkdir_path, recursive=True, force=True)
 
 
-@test("InteractiveObject can remove a directory", tags=["interactive"])
+@test(
+    "InteractiveObject can set an environment variable",
+    tags=["interactive_full", "interactive"],
+)
 async def _(
-    session: InteractiveSession = session_zero, path: str = sliverpy_random_name  # type: ignore
+    session: InteractiveSession = session_zero, test_const: TestConstants = test_constants  # type: ignore
 ):
-    assert await session.rm(path, recursive=True, force=True)
+    assert await session.set_env(test_const.env_var, test_const.env_value)
 
 
-@test("InteractiveObject can set an environment variable", tags=["interactive"])
+@test(
+    "InteractiveObject can get an environment variable",
+    tags=["interactive_full", "interactive"],
+)
 async def _(
-    session: InteractiveSession = session_zero, value: str = sliverpy_random_name  # type: ignore
+    session: InteractiveSession = session_zero, test_const: TestConstants = test_constants  # type: ignore
 ):
-    assert await session.set_env("SLIVERPY_TEST", value)
+    assert await session.get_env(test_const.env_var)
 
 
-@test("InteractiveObject can get an environment variable", tags=["interactive"])
+@test(
+    "InteractiveObject can unset an environment variable",
+    tags=["interactive_full", "interactive"],
+)
 async def _(
-    session: InteractiveSession = session_zero, value: str = sliverpy_random_name  # type: ignore
+    session: InteractiveSession = session_zero, test_const: TestConstants = test_constants  # type: ignore
 ):
-    assert await session.get_env(value)
+    assert await session.unset_env(test_const.env_var)
 
 
-@test("InteractiveObject can unset an environment variable", tags=["interactive"])
-async def _(
-    session: InteractiveSession = session_zero, value: str = sliverpy_random_name  # type: ignore
-):
-    assert await session.unset_env(value)
-
-
-@test("InteractiveObject can take a screenshot", tags=["interactive"])
+@test(
+    "InteractiveObject can take a screenshot", tags=["interactive_full", "screenshot"]
+)
 async def _(session: InteractiveSession = session_zero):  # type: ignore
     assert await session.screenshot()
 
 
-@test("InteractiveObject can take a memory dump", tags=["interactive"])
+@test("InteractiveObject can take a memory dump", tags=["interactive_full", "memdump"])
 async def _(session: InteractiveSession = session_zero):  # type: ignore
     procs = await session.ps()
     found_process = False
