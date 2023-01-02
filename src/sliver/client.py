@@ -428,6 +428,10 @@ class SliverClient(BaseClient):
         :return: Protobuf WGListener object
         :rtype: client_pb2.WGListener
         """
+        if tun_ip is None:
+            uniq_ip = await self.generate_wg_ip().IP
+            tun_ip = uniq_ip.IP
+
         wg_req = client_pb2.WGListenerReq(
             TunIP=tun_ip,
             Port=port,
