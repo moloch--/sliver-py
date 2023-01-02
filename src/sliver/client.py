@@ -404,7 +404,8 @@ class SliverClient(BaseClient):
 
     async def start_wg_listener(
         self,
-        tun_ip: str,
+        tun_ip: str = None,
+        host: str = "0.0.0.0",
         port: int = 53,
         n_port: int = 8888,
         key_port: int = 1337,
@@ -430,6 +431,7 @@ class SliverClient(BaseClient):
         """
         wg_req = client_pb2.WGListenerReq(
             TunIP=tun_ip,
+            Host=host,
             Port=port,
             NPort=n_port,
             KeyPort=key_port,
