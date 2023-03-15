@@ -14,6 +14,12 @@ Install the package using pip, for best compatibility use Sliver Server v1.5.29 
 
 `pip3 install sliver-py`
 
+#### Kali Linux / Fix OpenSSL Errors
+
+[Python's TLS implementation](https://docs.python.org/3/library/ssl.html) may exhibit platform specific behavoir, if you encounter OpenSSL connection errors you may need to re-install the gRPC Python library from source. This issue is known to affect recent versions of Kali Linux. To fix the issue use the following command to re-install gRPC from source, note depending on your distribution you may also need to install gcc (i.e. `build-essential`) and the development package for OpenSSL:
+
+`GRPC_PYTHON_BUILD_SYSTEM_OPENSSL=True pip install --no-binary :all: --force-reinstall grpcio`
+
 ## Examples
 
 For more examples and details please read the [project documentation](http://sliverpy.rtfd.io/).
