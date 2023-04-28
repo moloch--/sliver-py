@@ -495,7 +495,70 @@ class BaseInteractiveCommands:
             Kill=kill,
         )
         return await self._stub.SpawnDll(self._request(spawn), timeout=self.timeout)
+    
+    async def list_extensions(
+        self: InteractiveObject,
+    ) -> sliver_pb2.ListExtensions:
+        """List extensions
 
+        :return: Protobuf ListExtensions object
+        :rtype: sliver_pb2.ListExtensions
+        """
+        listex = sliver_pb2.ListExtensionsReq()
+        return await self._stub.ListExtensions(self._request(listex), timeout=self.timeout)
+
+    async def register_extension(
+        self: InteractiveObject,
+        name: str,
+        data: bytes,
+        goos: str,
+        init: str
+    ) -> sliver_pb2.RegisterExtension:
+        """Call an extension
+
+        :param name: Extension name
+        :type name: str
+        :param data: Extension binary data
+        :type data: bytes
+        :param goos: OS
+        :type goos: str
+        :param init: Init entrypoint to run
+        :type init: str        
+        :return: Protobuf RegisterExtension object
+        :rtype: sliver_pb2.RegisterExtension
+        """
+        regext = sliver_pb2.RegisterExtensionReq(
+            Name = name,
+            Data = data,
+            OS = goos,
+            Init = init
+        )
+        return await self._stub.RegisterExtension(self._request(regext), timeout=self.timeout)
+
+    async def call_extension(
+        self: InteractiveObject,
+        name: str,
+        export: str,
+        ext_args: bytes,
+    ) -> sliver_pb2.CallExtension:
+        """Call an extension
+
+        :param name: Extension name
+        :type name: str
+        :param export: Extension entrypoint
+        :type export: str
+        :param ext_args: Extension argument buffer
+        :type ext_args: bytes
+        :return: Protobuf CallExtension object
+        :rtype: sliver_pb2.CallExtension
+        """
+        callex = sliver_pb2.CallExtensionReq(
+            Name = name,
+            Export = export,
+            Args = ext_args
+        )
+        return await self._stub.CallExtension(self._request(callex), timeout=self.timeout)
+    
     async def screenshot(self: InteractiveObject) -> sliver_pb2.Screenshot:
         """Take a screenshot of the remote system, screenshot data is PNG formatted
 
