@@ -1,62 +1,59 @@
 [build-system]
-requires = ["hatchling>=1.8.0"]
+requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
 name = "sliver-py"
+dynamic = ["version"]
 description = "Sliver gRPC client library."
 readme = "README.md"
 license-files = { paths = ["LICENSE"] }
-requires-python = ">=3.7"
+requires-python = ">=3.10"
 authors = [
     { name = "moloch", email = "875022+moloch--@users.noreply.github.com" },
     { name = "daddycocoaman", email = "daddycocoaman@gmail.com"}
 ]
 classifiers = [
-    "Programming Language :: Python :: 3.7",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
 ]
 dependencies = [
-    "grpcio~=1.47",
-    "grpcio-tools~=1.47",
-    "mypy-protobuf~=3.3.0",
-    "typing_extensions~=4.4.0; python_version < '3.8'",
+    "grpcio~=1.56",
+    "grpcio-tools~=1.56",
 ]
-dynamic = ["version"]
 
 [project.urls]
-"Bug Tracker" = "https://github.com/moloch--/sliver-py/issues"
-Homepage = "https://github.com/moloch--/sliver-py"
+Documentation = "https://github.com/moloch--/sliver-py#readme"
+Issues = "https://github.com/moloch--/sliver-py/issues"
+Source = "https://github.com/moloch--/sliver-py"
 
+[tool.hatch.version]
+path = "src/sliver/__init__.py"
 
-[tool.hatch.envs.dev]
-extra-dependencies = [
-    "rich~=12.5",
-    "black~=22.6", 
-    "isort~=5.10",
-    "ward~=0.66.1b0",
+[tool.hatch.envs.default]
+dependencies = [
+    "rich~=13.4",
+    "black~=23.7", 
+    "isort~=5.12",
+    "ward~=0.67.2b0",
     "sphinx~=5.1", 
     "sphinx-rtd-theme~=1.0.0", 
     "sphinx-autodoc-typehints~=1.19.4",
 ]
 
-[tool.hatch.envs.dev.scripts]
+[tool.hatch.envs.default.scripts]
 fmt = [
     "isort src", 
     "black src",
 ]
 
-[tool.hatch.version]
-path = "src/sliver/__init__.py"
-
 [tool.hatch.build]
 packages = ["src/sliver"]
 
 [tool.black]
-include = "^/src"
-extend-exclude = "^/src/silver/pb"
+target-version = ["py310"]
+line-length = 120
+skip-string-normalization = true
 
 [tool.isort]
 profile = "black"

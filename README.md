@@ -14,6 +14,12 @@ Install the package using pip, for best compatibility use Sliver Server v1.5.29 
 
 `pip3 install sliver-py`
 
+#### Kali Linux / Fix OpenSSL Errors
+
+[Python's TLS implementation](https://docs.python.org/3/library/ssl.html) may exhibit platform specific behavoir, if you encounter OpenSSL connection errors you may need to re-install the gRPC Python library from source. This issue is known to affect recent versions of Kali Linux. To fix the issue use the following command to re-install gRPC from source, note depending on your distribution you may also need to install gcc (i.e. `build-essential`) and the development package for OpenSSL:
+
+`GRPC_PYTHON_BUILD_SYSTEM_OPENSSL=True pip install --use-pep517 --force-reinstall grpcio`
+
 ## Examples
 
 For more examples and details please read the [project documentation](http://sliverpy.rtfd.io/).
@@ -32,7 +38,7 @@ DEFAULT_CONFIG = os.path.join(CONFIG_DIR, "default.cfg")
 
 async def main():
     config = SliverClientConfig.parse_config_file(DEFAULT_CONFIG)
-    client = AsyncSliverClient(config)
+    client = SliverClient(config)
     print('[*] Connected to server ...')
     await client.connect()
     sessions = await client.sessions()
@@ -99,20 +105,20 @@ hatch config update
 
 Once installed, run `hatch -e dev shell` to enter the development environment. Hatch allows for scripts to be defined as well. These scripts are executed in the context of the defined environment. The current scripts defined are:
 
+- `hatch run dev:fmt` -- runs `black` and `isort` for formatting
 
-- `hatch run dev:fmt`  -- runs `black` and `isort` for formatting
+### WSL2/Devcontainers
 
-### Docker/WSL2
+A `devcontainer.json` is included if you wish to develop inside a container using VS Code. This may be preferable for development on any operating system to keep the dev environment isolated. Windows developers may choose to develop inside WSL2.
 
-A Dockerfile is included if you wish to develop inside a container. This may be preferable for development on any operating system to keep the dev environment isolated. Windows developers may choose to develop inside WSL2.
-
-In either case, `scripts/sliver_install.sh` contains a modified version of the official Sliver installation script that does not create a `systemd` based service. After running this script, you may start a local Sliver server in your container or WSL2 instance by running:
+In any case, `scripts/sliver_install.sh` contains a modified version of the official Sliver installation script that does not create a `systemd` based service. After running this script, you may start a local Sliver server in your container or WSL2 instance by running:
 
 `sudo /root/sliver-server daemon &`
 
 Alternatively, you can still choose to set up an external Sliver instance to connect to via Sliver's [multi-player mode](https://github.com/BishopFox/sliver/wiki/Multiplayer-Mode). The `sliver_install` script is purely for local development convenience.
 
 ### Updating protobufs
+
 This should only be necessary when changes are made to Sliver's protobuf. Running `scripts/protobufgen.py` will update `sliver-py` protobuf files. Ensure that the `.pyi` type hints are generated also.
 
 ### Running tests
@@ -123,8 +129,7 @@ Tests are implemented using [Ward](https://github.com/darrenburns/ward). The tes
 Test parameters you may want to change (e.g. listener ports) are in `fixtures.py`.
 
 - `ward` : All tests
-- `ward --tags client`: Run all client tests - at least one beacon and one session (alive or dead)
-must be present on the server
+- `ward --tags client`: Run all client tests - at least one beacon and one session (alive or dead) must be present on the server
 - `ward --tags interactive`: Run interactive operation tests - requires an active session on the server
 
 Subsets of `client` tests:
