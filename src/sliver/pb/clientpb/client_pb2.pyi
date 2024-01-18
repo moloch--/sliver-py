@@ -11,6 +11,7 @@ else:
 from builtins import (
     bool,
     bytes,
+    float,
     int,
     str,
     type,
@@ -51,15 +52,13 @@ class _OutputFormat:
     ValueType = NewType("ValueType", int)
     V: typing_extensions.TypeAlias = ValueType
 
-class _OutputFormatEnumTypeWrapper(
-    _EnumTypeWrapper[_OutputFormat.ValueType], type
-):  # noqa: F821
+class _OutputFormatEnumTypeWrapper(_EnumTypeWrapper[_OutputFormat.ValueType], type):
     DESCRIPTOR: EnumDescriptor
     SHARED_LIB: _OutputFormat.ValueType  # 0
     SHELLCODE: _OutputFormat.ValueType  # 1
     EXECUTABLE: _OutputFormat.ValueType  # 2
     SERVICE: _OutputFormat.ValueType  # 3
-    EXTERNAL: _OutputFormat.ValueType  # 4
+    THIRD_PARTY: _OutputFormat.ValueType  # 4
 
 class OutputFormat(_OutputFormat, metaclass=_OutputFormatEnumTypeWrapper): ...
 
@@ -67,15 +66,13 @@ SHARED_LIB: OutputFormat.ValueType  # 0
 SHELLCODE: OutputFormat.ValueType  # 1
 EXECUTABLE: OutputFormat.ValueType  # 2
 SERVICE: OutputFormat.ValueType  # 3
-EXTERNAL: OutputFormat.ValueType  # 4
+THIRD_PARTY: OutputFormat.ValueType  # 4
 
 class _StageProtocol:
     ValueType = NewType("ValueType", int)
     V: typing_extensions.TypeAlias = ValueType
 
-class _StageProtocolEnumTypeWrapper(
-    _EnumTypeWrapper[_StageProtocol.ValueType], type
-):  # noqa: F821
+class _StageProtocolEnumTypeWrapper(_EnumTypeWrapper[_StageProtocol.ValueType], type):
     DESCRIPTOR: EnumDescriptor
     TCP: _StageProtocol.ValueType  # 0
     HTTP: _StageProtocol.ValueType  # 1
@@ -87,56 +84,18 @@ TCP: StageProtocol.ValueType  # 0
 HTTP: StageProtocol.ValueType  # 1
 HTTPS: StageProtocol.ValueType  # 2
 
-class _LootType:
-    ValueType = NewType("ValueType", int)
-    V: typing_extensions.TypeAlias = ValueType
-
-class _LootTypeEnumTypeWrapper(
-    _EnumTypeWrapper[_LootType.ValueType], type
-):  # noqa: F821
-    DESCRIPTOR: EnumDescriptor
-    LOOT_FILE: _LootType.ValueType  # 0
-    LOOT_CREDENTIAL: _LootType.ValueType  # 1
-
-class LootType(_LootType, metaclass=_LootTypeEnumTypeWrapper):
-    """[ Loot ] ----------------------------------------"""
-
-LOOT_FILE: LootType.ValueType  # 0
-LOOT_CREDENTIAL: LootType.ValueType  # 1
-
-class _CredentialType:
-    ValueType = NewType("ValueType", int)
-    V: typing_extensions.TypeAlias = ValueType
-
-class _CredentialTypeEnumTypeWrapper(
-    _EnumTypeWrapper[_CredentialType.ValueType], type
-):  # noqa: F821
-    DESCRIPTOR: EnumDescriptor
-    NO_CREDENTIAL: _CredentialType.ValueType  # 0
-    USER_PASSWORD: _CredentialType.ValueType  # 1
-    API_KEY: _CredentialType.ValueType  # 2
-    FILE: _CredentialType.ValueType  # 3
-
-class CredentialType(_CredentialType, metaclass=_CredentialTypeEnumTypeWrapper): ...
-
-NO_CREDENTIAL: CredentialType.ValueType  # 0
-USER_PASSWORD: CredentialType.ValueType  # 1
-API_KEY: CredentialType.ValueType  # 2
-FILE: CredentialType.ValueType  # 3
-
 class _FileType:
     ValueType = NewType("ValueType", int)
     V: typing_extensions.TypeAlias = ValueType
 
-class _FileTypeEnumTypeWrapper(
-    _EnumTypeWrapper[_FileType.ValueType], type
-):  # noqa: F821
+class _FileTypeEnumTypeWrapper(_EnumTypeWrapper[_FileType.ValueType], type):
     DESCRIPTOR: EnumDescriptor
     NO_FILE: _FileType.ValueType  # 0
     BINARY: _FileType.ValueType  # 1
     TEXT: _FileType.ValueType  # 2
 
-class FileType(_FileType, metaclass=_FileTypeEnumTypeWrapper): ...
+class FileType(_FileType, metaclass=_FileTypeEnumTypeWrapper):
+    """[ Loot ] ----------------------------------------"""
 
 NO_FILE: FileType.ValueType  # 0
 BINARY: FileType.ValueType  # 1
@@ -146,17 +105,700 @@ class _ShellcodeEncoder:
     ValueType = NewType("ValueType", int)
     V: typing_extensions.TypeAlias = ValueType
 
-class _ShellcodeEncoderEnumTypeWrapper(
-    _EnumTypeWrapper[_ShellcodeEncoder.ValueType], type
-):  # noqa: F821
+class _ShellcodeEncoderEnumTypeWrapper(_EnumTypeWrapper[_ShellcodeEncoder.ValueType], type):
     DESCRIPTOR: EnumDescriptor
-    SHIKATA_GA_NAI: _ShellcodeEncoder.ValueType  # 0
+    NONE: _ShellcodeEncoder.ValueType  # 0
+    SHIKATA_GA_NAI: _ShellcodeEncoder.ValueType  # 1
 
 class ShellcodeEncoder(_ShellcodeEncoder, metaclass=_ShellcodeEncoderEnumTypeWrapper):
     """[ Shellcode ] ----------------------------------------"""
 
-SHIKATA_GA_NAI: ShellcodeEncoder.ValueType  # 0
+NONE: ShellcodeEncoder.ValueType  # 0
+SHIKATA_GA_NAI: ShellcodeEncoder.ValueType  # 1
 
+class _HTTPC2SegmentType:
+    ValueType = NewType("ValueType", int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _HTTPC2SegmentTypeEnumTypeWrapper(_EnumTypeWrapper[_HTTPC2SegmentType.ValueType], type):
+    DESCRIPTOR: EnumDescriptor
+    POLL: _HTTPC2SegmentType.ValueType  # 0
+    SESSION: _HTTPC2SegmentType.ValueType  # 1
+    CLOSE: _HTTPC2SegmentType.ValueType  # 2
+
+class HTTPC2SegmentType(_HTTPC2SegmentType, metaclass=_HTTPC2SegmentTypeEnumTypeWrapper): ...
+
+POLL: HTTPC2SegmentType.ValueType  # 0
+SESSION: HTTPC2SegmentType.ValueType  # 1
+CLOSE: HTTPC2SegmentType.ValueType  # 2
+
+class _HashType:
+    ValueType = NewType("ValueType", int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _HashTypeEnumTypeWrapper(_EnumTypeWrapper[_HashType.ValueType], type):
+    DESCRIPTOR: EnumDescriptor
+    MD5: _HashType.ValueType  # 0
+    """MD5 - zero must come first in an enum"""
+    MD4: _HashType.ValueType  # 900
+    """MD4"""
+    SHA1: _HashType.ValueType  # 100
+    """MD5
+    SHA1
+    """
+    SHA2_224: _HashType.ValueType  # 1300
+    """SHA2-224"""
+    SHA2_256: _HashType.ValueType  # 1400
+    """SHA2-256"""
+    SHA2_384: _HashType.ValueType  # 10800
+    """SHA2-384"""
+    SHA2_512: _HashType.ValueType  # 1700
+    """SHA2-512"""
+    SHA3_224: _HashType.ValueType  # 17300
+    """SHA3-224"""
+    SHA3_256: _HashType.ValueType  # 17400
+    """SHA3-256"""
+    SHA3_384: _HashType.ValueType  # 17500
+    """SHA3-384"""
+    SHA3_512: _HashType.ValueType  # 17600
+    """SHA3-512"""
+    RIPEMD_160: _HashType.ValueType  # 6000
+    """RIPEMD-160"""
+    BLAKE2B_256: _HashType.ValueType  # 600
+    """BLAKE2b-512"""
+    GOST_R_32_11_2012_256: _HashType.ValueType  # 11700
+    """GOST R 34.11-2012 (Streebog) 256-bit, big-endian"""
+    GOST_R_32_11_2012_512: _HashType.ValueType  # 11800
+    """GOST R 34.11-2012 (Streebog) 512-bit, big-endian"""
+    GOST_R_34_11_94: _HashType.ValueType  # 6900
+    """GOST R 34.11-94"""
+    GPG: _HashType.ValueType  # 17010
+    """GPG (AES-128/AES-256 (SHA-1($pass)))"""
+    HALF_MD5: _HashType.ValueType  # 5100
+    """Half MD5"""
+    KECCAK_224: _HashType.ValueType  # 17700
+    """Keccak-224"""
+    KECCAK_256: _HashType.ValueType  # 17800
+    """Keccak-256"""
+    KECCAK_384: _HashType.ValueType  # 17900
+    """Keccak-384"""
+    KECCAK_512: _HashType.ValueType  # 18000
+    """Keccak-512"""
+    WHIRLPOOL: _HashType.ValueType  # 6100
+    """Whirlpool"""
+    SIPHASH: _HashType.ValueType  # 10100
+    """SipHash"""
+    MD5_UTF16LE: _HashType.ValueType  # 70
+    """md5(utf16le($pass))"""
+    SHA1_UTF16LE: _HashType.ValueType  # 170
+    """sha1(utf16le($pass))"""
+    SHA256_UTF16LE: _HashType.ValueType  # 1470
+    """sha256(utf16le($pass))"""
+    SHA384_UTF16LE: _HashType.ValueType  # 10870
+    """sha384(utf16le($pass))"""
+    SHA512_UTF16LE: _HashType.ValueType  # 1770
+    """sha512(utf16le($pass))"""
+    BLAKE2B_512_PW_SALT: _HashType.ValueType  # 610
+    """BLAKE2b-512($pass.$salt)"""
+    BLAKE2B_512_SALT_PW: _HashType.ValueType  # 620
+    """BLAKE2b-512($salt.$pass)"""
+    MD5_PW_SALT: _HashType.ValueType  # 10
+    """md5($pass.$salt)"""
+    MD5_SALT_PW: _HashType.ValueType  # 20
+    """md5($salt.$pass)"""
+    MD5_SALT_PW_SALT: _HashType.ValueType  # 3800
+    """md5($salt.$pass.$salt)"""
+    MD5_SALT_MD5_PW: _HashType.ValueType  # 3710
+    """md5($salt.md5($pass))"""
+    CRC32: _HashType.ValueType  # 11500
+    """... TODO fill in the rest ...
+
+    CRC32
+    """
+    CRC32C: _HashType.ValueType  # 27900
+    """CRC32B"""
+    CRC64Jones: _HashType.ValueType  # 28000
+    """CRC64-Jones"""
+    JAVA_OBJECT: _HashType.ValueType  # 18700
+    MURMUR: _HashType.ValueType  # 25700
+    """MurmurHash"""
+    MURMUR3: _HashType.ValueType  # 27800
+    """MurmurHash3"""
+    THREE_DES: _HashType.ValueType  # 14100
+    """3DES (PT = $salt, key = $pass)"""
+    DES: _HashType.ValueType  # 14000
+    """DES (PT = $salt, key = $pass)"""
+    AES_128_ECB: _HashType.ValueType  # 26401
+    """AES-128-ECB NOKDF (PT = $salt, key = $pass)"""
+    AES_192_ECB: _HashType.ValueType  # 26402
+    """ AES-192-ECB NOKDF (PT = $salt, key = $pass)"""
+    AES_256_ECB: _HashType.ValueType  # 26403
+    """AES-256-ECB NOKDF (PT = $salt, key = $pass)"""
+    CHA_CHA_20: _HashType.ValueType  # 15400
+    """ChaCha20"""
+    LINUX_KERNEL_CRYPTO_API_24: _HashType.ValueType  # 14500
+    """Linux Kernel Crypto API (2.4)"""
+    SKIP_32: _HashType.ValueType  # 14900
+    """Skip32 (PT = $salt, key = $pass)"""
+    PBKDF2_HMAC_MD5: _HashType.ValueType  # 11900
+    """PBKDF2-HMAC-MD5"""
+    PBKDF2_HMAC_SHA1: _HashType.ValueType  # 12000
+    """PBKDF2-HMAC-SHA1"""
+    PBKDF2_HMAC_SHA256: _HashType.ValueType  # 10900
+    """PBKDF2-HMAC-SHA256"""
+    PBKDF2_HMAC_SHA512: _HashType.ValueType  # 12100
+    """PBKDF2-HMAC-SHA512"""
+    SCRYPT: _HashType.ValueType  # 8900
+    """scrypt"""
+    PHPASS: _HashType.ValueType  # 400
+    """phpass"""
+    TACACS_PLUS: _HashType.ValueType  # 16100
+    """TACACS+"""
+    SIP_DIGEST: _HashType.ValueType  # 11400
+    """SIP digest authentication (MD5)"""
+    IKE_MD5: _HashType.ValueType  # 5300
+    """IKE-PSK MD5"""
+    IKE_SHA1: _HashType.ValueType  # 5400
+    """IKE-PSK SHA1"""
+    SNMP_V3_HMAC_MD5_96: _HashType.ValueType  # 25100
+    """SNMPv3 HMAC-MD5-96"""
+    SNMP_V3_HMAC_MD5_96__SHA1_96: _HashType.ValueType  # 25000
+    """SNMPv3 HMAC-MD5-96 / HMAC-SHA1-96"""
+    SNMP_V3_HMAC_SHA1_96: _HashType.ValueType  # 25200
+    """SNMPv3 HMAC-SHA1-96"""
+    SNMP_V3_HMAC_SHA224_128: _HashType.ValueType  # 26700
+    """SNMPv3 HMAC-SHA224-128"""
+    SNMP_V3_HMAC_SHA256_192: _HashType.ValueType  # 26800
+    """SNMPv3 HMAC-SHA256-192"""
+    SNMP_V3_HMAC_SHA384_256: _HashType.ValueType  # 26900
+    """SNMPv3 HMAC-SHA384-256"""
+    SNMP_V3_HMAC_SHA512_384: _HashType.ValueType  # 27300
+    """SNMPv3 HMAC-SHA512-384"""
+    WPA_EAPOL_PBKDF2: _HashType.ValueType  # 2500
+    """WPA-EAPOL-PBKDF2"""
+    WPA_EAPOL_PMK: _HashType.ValueType  # 2501
+    """WPA-EAPOL-PMK"""
+    WPA_PBKDF2_PMKID_EAPOL: _HashType.ValueType  # 22000
+    """WPA-PBKDF2-PMKID+EAPOL"""
+    WPA_PMK_PMKID_EAPOL: _HashType.ValueType  # 22001
+    """WPA-PMK-PMKID+EAPOL"""
+    WPA_PMKID_PBKDF2: _HashType.ValueType  # 16800
+    """WPA-PMKID-PBKDF2"""
+    WPA_PMKID_PMK: _HashType.ValueType  # 16801
+    """WPA-PMKID-PMK"""
+    IPMI2_PAKP_HMAC_SHA1: _HashType.ValueType  # 7300
+    """IPMI2 RAKP HMAC-SHA1"""
+    CRAM_MD5: _HashType.ValueType  # 10200
+    """CRAM-MD5"""
+    JWT: _HashType.ValueType  # 16500
+    """JWT (JSON Web Token)"""
+    RADMIN_3: _HashType.ValueType  # 29200
+    """Radmin3"""
+    KERBEROS_17_TGS_REP: _HashType.ValueType  # 19600
+    """Kerberos 5, etype 17, TGS-REP"""
+    KERBEROS_17_PREAUTH: _HashType.ValueType  # 19800
+    """Kerberos 5, etype 17, Pre-Auth"""
+    KERBEROS_17_DB: _HashType.ValueType  # 28800
+    """Kerberos 5, etype 17, DB"""
+    KERBEROS_18_TGS_REP: _HashType.ValueType  # 19700
+    """Kerberos 5, etype 18, TGS-REP"""
+    KERBEROS_18_PREAUTH: _HashType.ValueType  # 19900
+    """Kerberos 5, etype 18, Pre-Auth"""
+    KERBEROS_18_DB: _HashType.ValueType  # 28900
+    """Kerberos 5, etype 18, DB"""
+    KERBEROS_23_SA_REQ_PREAUTH: _HashType.ValueType  # 7500
+    """Kerberos 5, etype 23, AS-REQ Pre-Auth"""
+    KERBEROS_23_TGS_REP: _HashType.ValueType  # 13100
+    """Kerberos 5, etype 23, TGS-REP"""
+    KERBEROS_23_AS_REP: _HashType.ValueType  # 18200
+    """Kerberos 5, etype 23, AS-REP"""
+    NET_NTLM_V1: _HashType.ValueType  # 5500
+    """NetNTLMv1 / NetNTLMv1+ESS"""
+    NET_NTLM_V1_NT: _HashType.ValueType  # 27000
+    """NetNTLMv1 / NetNTLMv1+ESS (NT)"""
+    NET_NTLM_V2: _HashType.ValueType  # 5600
+    """NetNTLMv2"""
+    NET_NTLM_V2_NT: _HashType.ValueType  # 27100
+    """NetNTLMv2 (NT)"""
+    FLASK: _HashType.ValueType  # 29100
+    """Flask Session Cookie ($salt.$salt.$pass)"""
+    ISCSI_CHAP: _HashType.ValueType  # 4800
+    """iSCSI CHAP authentication, MD5(CHAP)"""
+    RACF: _HashType.ValueType  # 8500
+    AIX_SMD5: _HashType.ValueType  # 6300
+    AIX_SSHA1: _HashType.ValueType  # 6700
+    AIX_SSHA256: _HashType.ValueType  # 6400
+    AIX_SSHA512: _HashType.ValueType  # 6500
+    LM: _HashType.ValueType  # 3000
+    """LM"""
+    QNX_MD5: _HashType.ValueType  # 19000
+    """QNX /etc/shadow (MD5)"""
+    QNX_SHA256: _HashType.ValueType  # 19100
+    """QNX /etc/shadow (SHA256)"""
+    QNX_SHA512: _HashType.ValueType  # 19200
+    """QNX /etc/shadow (SHA512)"""
+    DPAPI_V1_CTX_1_AND_2: _HashType.ValueType  # 15300
+    """DPAPI masterkey file v1 (context 1 and 2)"""
+    DPAPI_V1_CTX_3: _HashType.ValueType  # 15310
+    """DPAPI masterkey file v1 (context 3)"""
+    DPAPI_V2_CTX_1_AND_2: _HashType.ValueType  # 15900
+    """DPAPI masterkey file v2 (context 1)"""
+    DPAPI_V2_CTX_3: _HashType.ValueType  # 15910
+    """DPAPI masterkey file v2 (context 3)"""
+    GRUB_2: _HashType.ValueType  # 7200
+    """GRUB 2"""
+    MS_AZURE_SYNC: _HashType.ValueType  # 12800
+    """MS-AzureSync PBKDF2-HMAC-SHA256"""
+    BSDI_CRYPT: _HashType.ValueType  # 12400
+    """BSDi Crypt, Extended DES"""
+    NTLM: _HashType.ValueType  # 1000
+    """NTLM"""
+    RADMIN2: _HashType.ValueType  # 9900
+    """Radmin2"""
+    SAMSUNG_ANDROID: _HashType.ValueType  # 5800
+    """Samsung Android Password/PIN"""
+    WINDOWS_HELLO_PIN: _HashType.ValueType  # 28100
+    """Windows Hello PIN/Password"""
+    WINDOWS_PHONE: _HashType.ValueType  # 13800
+    """Windows Phone 8+ PIN/Password"""
+    CISCO_ASA_MD5: _HashType.ValueType  # 2410
+    """Cisco-ASA MD5"""
+    CISCO_IOS_PBKDF2_SHA256: _HashType.ValueType  # 9200
+    """Cisco-IOS $8$ (PBKDF2-SHA256)"""
+    CISCO_IOS_SCRYPT: _HashType.ValueType  # 9300
+    """Cisco-IOS $9$ (scrypt)"""
+    CISCO_PIX_MD5: _HashType.ValueType  # 2400
+    """Cisco-Pix MD5"""
+    CITRIX_NETSCALER_SHA1: _HashType.ValueType  # 8100
+    """Citrix NetScaler (SHA1)"""
+    CITRIX_NETSCALER_SHA512: _HashType.ValueType  # 22200
+    """Citrix NetScaler (SHA512)"""
+    DCC: _HashType.ValueType  # 1100
+    """Domain Cached Credentials (DCC), MS Cache"""
+    DCC2: _HashType.ValueType  # 2100
+    """Domain Cached Credentials 2 (DCC2), MS Cache 2"""
+    MACOS_10_8: _HashType.ValueType  # 7100
+    """...
+
+    macOS v10.8+ (PBKDF2-SHA512)
+    """
+    INVALID: _HashType.ValueType  # 9999
+    """...
+
+    Invalid hash type
+    """
+    BCRYPT_UNIX: _HashType.ValueType  # 3200
+    """Out of order
+    bcrypt
+    """
+    SHA512_CRYPT_UNIX: _HashType.ValueType  # 1800
+    """sha512crypt $6$, SHA512 (Unix)"""
+
+class HashType(_HashType, metaclass=_HashTypeEnumTypeWrapper): ...
+
+MD5: HashType.ValueType  # 0
+"""MD5 - zero must come first in an enum"""
+MD4: HashType.ValueType  # 900
+"""MD4"""
+SHA1: HashType.ValueType  # 100
+"""MD5
+SHA1
+"""
+SHA2_224: HashType.ValueType  # 1300
+"""SHA2-224"""
+SHA2_256: HashType.ValueType  # 1400
+"""SHA2-256"""
+SHA2_384: HashType.ValueType  # 10800
+"""SHA2-384"""
+SHA2_512: HashType.ValueType  # 1700
+"""SHA2-512"""
+SHA3_224: HashType.ValueType  # 17300
+"""SHA3-224"""
+SHA3_256: HashType.ValueType  # 17400
+"""SHA3-256"""
+SHA3_384: HashType.ValueType  # 17500
+"""SHA3-384"""
+SHA3_512: HashType.ValueType  # 17600
+"""SHA3-512"""
+RIPEMD_160: HashType.ValueType  # 6000
+"""RIPEMD-160"""
+BLAKE2B_256: HashType.ValueType  # 600
+"""BLAKE2b-512"""
+GOST_R_32_11_2012_256: HashType.ValueType  # 11700
+"""GOST R 34.11-2012 (Streebog) 256-bit, big-endian"""
+GOST_R_32_11_2012_512: HashType.ValueType  # 11800
+"""GOST R 34.11-2012 (Streebog) 512-bit, big-endian"""
+GOST_R_34_11_94: HashType.ValueType  # 6900
+"""GOST R 34.11-94"""
+GPG: HashType.ValueType  # 17010
+"""GPG (AES-128/AES-256 (SHA-1($pass)))"""
+HALF_MD5: HashType.ValueType  # 5100
+"""Half MD5"""
+KECCAK_224: HashType.ValueType  # 17700
+"""Keccak-224"""
+KECCAK_256: HashType.ValueType  # 17800
+"""Keccak-256"""
+KECCAK_384: HashType.ValueType  # 17900
+"""Keccak-384"""
+KECCAK_512: HashType.ValueType  # 18000
+"""Keccak-512"""
+WHIRLPOOL: HashType.ValueType  # 6100
+"""Whirlpool"""
+SIPHASH: HashType.ValueType  # 10100
+"""SipHash"""
+MD5_UTF16LE: HashType.ValueType  # 70
+"""md5(utf16le($pass))"""
+SHA1_UTF16LE: HashType.ValueType  # 170
+"""sha1(utf16le($pass))"""
+SHA256_UTF16LE: HashType.ValueType  # 1470
+"""sha256(utf16le($pass))"""
+SHA384_UTF16LE: HashType.ValueType  # 10870
+"""sha384(utf16le($pass))"""
+SHA512_UTF16LE: HashType.ValueType  # 1770
+"""sha512(utf16le($pass))"""
+BLAKE2B_512_PW_SALT: HashType.ValueType  # 610
+"""BLAKE2b-512($pass.$salt)"""
+BLAKE2B_512_SALT_PW: HashType.ValueType  # 620
+"""BLAKE2b-512($salt.$pass)"""
+MD5_PW_SALT: HashType.ValueType  # 10
+"""md5($pass.$salt)"""
+MD5_SALT_PW: HashType.ValueType  # 20
+"""md5($salt.$pass)"""
+MD5_SALT_PW_SALT: HashType.ValueType  # 3800
+"""md5($salt.$pass.$salt)"""
+MD5_SALT_MD5_PW: HashType.ValueType  # 3710
+"""md5($salt.md5($pass))"""
+CRC32: HashType.ValueType  # 11500
+"""... TODO fill in the rest ...
+
+CRC32
+"""
+CRC32C: HashType.ValueType  # 27900
+"""CRC32B"""
+CRC64Jones: HashType.ValueType  # 28000
+"""CRC64-Jones"""
+JAVA_OBJECT: HashType.ValueType  # 18700
+MURMUR: HashType.ValueType  # 25700
+"""MurmurHash"""
+MURMUR3: HashType.ValueType  # 27800
+"""MurmurHash3"""
+THREE_DES: HashType.ValueType  # 14100
+"""3DES (PT = $salt, key = $pass)"""
+DES: HashType.ValueType  # 14000
+"""DES (PT = $salt, key = $pass)"""
+AES_128_ECB: HashType.ValueType  # 26401
+"""AES-128-ECB NOKDF (PT = $salt, key = $pass)"""
+AES_192_ECB: HashType.ValueType  # 26402
+""" AES-192-ECB NOKDF (PT = $salt, key = $pass)"""
+AES_256_ECB: HashType.ValueType  # 26403
+"""AES-256-ECB NOKDF (PT = $salt, key = $pass)"""
+CHA_CHA_20: HashType.ValueType  # 15400
+"""ChaCha20"""
+LINUX_KERNEL_CRYPTO_API_24: HashType.ValueType  # 14500
+"""Linux Kernel Crypto API (2.4)"""
+SKIP_32: HashType.ValueType  # 14900
+"""Skip32 (PT = $salt, key = $pass)"""
+PBKDF2_HMAC_MD5: HashType.ValueType  # 11900
+"""PBKDF2-HMAC-MD5"""
+PBKDF2_HMAC_SHA1: HashType.ValueType  # 12000
+"""PBKDF2-HMAC-SHA1"""
+PBKDF2_HMAC_SHA256: HashType.ValueType  # 10900
+"""PBKDF2-HMAC-SHA256"""
+PBKDF2_HMAC_SHA512: HashType.ValueType  # 12100
+"""PBKDF2-HMAC-SHA512"""
+SCRYPT: HashType.ValueType  # 8900
+"""scrypt"""
+PHPASS: HashType.ValueType  # 400
+"""phpass"""
+TACACS_PLUS: HashType.ValueType  # 16100
+"""TACACS+"""
+SIP_DIGEST: HashType.ValueType  # 11400
+"""SIP digest authentication (MD5)"""
+IKE_MD5: HashType.ValueType  # 5300
+"""IKE-PSK MD5"""
+IKE_SHA1: HashType.ValueType  # 5400
+"""IKE-PSK SHA1"""
+SNMP_V3_HMAC_MD5_96: HashType.ValueType  # 25100
+"""SNMPv3 HMAC-MD5-96"""
+SNMP_V3_HMAC_MD5_96__SHA1_96: HashType.ValueType  # 25000
+"""SNMPv3 HMAC-MD5-96 / HMAC-SHA1-96"""
+SNMP_V3_HMAC_SHA1_96: HashType.ValueType  # 25200
+"""SNMPv3 HMAC-SHA1-96"""
+SNMP_V3_HMAC_SHA224_128: HashType.ValueType  # 26700
+"""SNMPv3 HMAC-SHA224-128"""
+SNMP_V3_HMAC_SHA256_192: HashType.ValueType  # 26800
+"""SNMPv3 HMAC-SHA256-192"""
+SNMP_V3_HMAC_SHA384_256: HashType.ValueType  # 26900
+"""SNMPv3 HMAC-SHA384-256"""
+SNMP_V3_HMAC_SHA512_384: HashType.ValueType  # 27300
+"""SNMPv3 HMAC-SHA512-384"""
+WPA_EAPOL_PBKDF2: HashType.ValueType  # 2500
+"""WPA-EAPOL-PBKDF2"""
+WPA_EAPOL_PMK: HashType.ValueType  # 2501
+"""WPA-EAPOL-PMK"""
+WPA_PBKDF2_PMKID_EAPOL: HashType.ValueType  # 22000
+"""WPA-PBKDF2-PMKID+EAPOL"""
+WPA_PMK_PMKID_EAPOL: HashType.ValueType  # 22001
+"""WPA-PMK-PMKID+EAPOL"""
+WPA_PMKID_PBKDF2: HashType.ValueType  # 16800
+"""WPA-PMKID-PBKDF2"""
+WPA_PMKID_PMK: HashType.ValueType  # 16801
+"""WPA-PMKID-PMK"""
+IPMI2_PAKP_HMAC_SHA1: HashType.ValueType  # 7300
+"""IPMI2 RAKP HMAC-SHA1"""
+CRAM_MD5: HashType.ValueType  # 10200
+"""CRAM-MD5"""
+JWT: HashType.ValueType  # 16500
+"""JWT (JSON Web Token)"""
+RADMIN_3: HashType.ValueType  # 29200
+"""Radmin3"""
+KERBEROS_17_TGS_REP: HashType.ValueType  # 19600
+"""Kerberos 5, etype 17, TGS-REP"""
+KERBEROS_17_PREAUTH: HashType.ValueType  # 19800
+"""Kerberos 5, etype 17, Pre-Auth"""
+KERBEROS_17_DB: HashType.ValueType  # 28800
+"""Kerberos 5, etype 17, DB"""
+KERBEROS_18_TGS_REP: HashType.ValueType  # 19700
+"""Kerberos 5, etype 18, TGS-REP"""
+KERBEROS_18_PREAUTH: HashType.ValueType  # 19900
+"""Kerberos 5, etype 18, Pre-Auth"""
+KERBEROS_18_DB: HashType.ValueType  # 28900
+"""Kerberos 5, etype 18, DB"""
+KERBEROS_23_SA_REQ_PREAUTH: HashType.ValueType  # 7500
+"""Kerberos 5, etype 23, AS-REQ Pre-Auth"""
+KERBEROS_23_TGS_REP: HashType.ValueType  # 13100
+"""Kerberos 5, etype 23, TGS-REP"""
+KERBEROS_23_AS_REP: HashType.ValueType  # 18200
+"""Kerberos 5, etype 23, AS-REP"""
+NET_NTLM_V1: HashType.ValueType  # 5500
+"""NetNTLMv1 / NetNTLMv1+ESS"""
+NET_NTLM_V1_NT: HashType.ValueType  # 27000
+"""NetNTLMv1 / NetNTLMv1+ESS (NT)"""
+NET_NTLM_V2: HashType.ValueType  # 5600
+"""NetNTLMv2"""
+NET_NTLM_V2_NT: HashType.ValueType  # 27100
+"""NetNTLMv2 (NT)"""
+FLASK: HashType.ValueType  # 29100
+"""Flask Session Cookie ($salt.$salt.$pass)"""
+ISCSI_CHAP: HashType.ValueType  # 4800
+"""iSCSI CHAP authentication, MD5(CHAP)"""
+RACF: HashType.ValueType  # 8500
+AIX_SMD5: HashType.ValueType  # 6300
+AIX_SSHA1: HashType.ValueType  # 6700
+AIX_SSHA256: HashType.ValueType  # 6400
+AIX_SSHA512: HashType.ValueType  # 6500
+LM: HashType.ValueType  # 3000
+"""LM"""
+QNX_MD5: HashType.ValueType  # 19000
+"""QNX /etc/shadow (MD5)"""
+QNX_SHA256: HashType.ValueType  # 19100
+"""QNX /etc/shadow (SHA256)"""
+QNX_SHA512: HashType.ValueType  # 19200
+"""QNX /etc/shadow (SHA512)"""
+DPAPI_V1_CTX_1_AND_2: HashType.ValueType  # 15300
+"""DPAPI masterkey file v1 (context 1 and 2)"""
+DPAPI_V1_CTX_3: HashType.ValueType  # 15310
+"""DPAPI masterkey file v1 (context 3)"""
+DPAPI_V2_CTX_1_AND_2: HashType.ValueType  # 15900
+"""DPAPI masterkey file v2 (context 1)"""
+DPAPI_V2_CTX_3: HashType.ValueType  # 15910
+"""DPAPI masterkey file v2 (context 3)"""
+GRUB_2: HashType.ValueType  # 7200
+"""GRUB 2"""
+MS_AZURE_SYNC: HashType.ValueType  # 12800
+"""MS-AzureSync PBKDF2-HMAC-SHA256"""
+BSDI_CRYPT: HashType.ValueType  # 12400
+"""BSDi Crypt, Extended DES"""
+NTLM: HashType.ValueType  # 1000
+"""NTLM"""
+RADMIN2: HashType.ValueType  # 9900
+"""Radmin2"""
+SAMSUNG_ANDROID: HashType.ValueType  # 5800
+"""Samsung Android Password/PIN"""
+WINDOWS_HELLO_PIN: HashType.ValueType  # 28100
+"""Windows Hello PIN/Password"""
+WINDOWS_PHONE: HashType.ValueType  # 13800
+"""Windows Phone 8+ PIN/Password"""
+CISCO_ASA_MD5: HashType.ValueType  # 2410
+"""Cisco-ASA MD5"""
+CISCO_IOS_PBKDF2_SHA256: HashType.ValueType  # 9200
+"""Cisco-IOS $8$ (PBKDF2-SHA256)"""
+CISCO_IOS_SCRYPT: HashType.ValueType  # 9300
+"""Cisco-IOS $9$ (scrypt)"""
+CISCO_PIX_MD5: HashType.ValueType  # 2400
+"""Cisco-Pix MD5"""
+CITRIX_NETSCALER_SHA1: HashType.ValueType  # 8100
+"""Citrix NetScaler (SHA1)"""
+CITRIX_NETSCALER_SHA512: HashType.ValueType  # 22200
+"""Citrix NetScaler (SHA512)"""
+DCC: HashType.ValueType  # 1100
+"""Domain Cached Credentials (DCC), MS Cache"""
+DCC2: HashType.ValueType  # 2100
+"""Domain Cached Credentials 2 (DCC2), MS Cache 2"""
+MACOS_10_8: HashType.ValueType  # 7100
+"""...
+
+macOS v10.8+ (PBKDF2-SHA512)
+"""
+INVALID: HashType.ValueType  # 9999
+"""...
+
+Invalid hash type
+"""
+BCRYPT_UNIX: HashType.ValueType  # 3200
+"""Out of order
+bcrypt
+"""
+SHA512_CRYPT_UNIX: HashType.ValueType  # 1800
+"""sha512crypt $6$, SHA512 (Unix)"""
+
+class _States:
+    ValueType = NewType("ValueType", int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _StatesEnumTypeWrapper(_EnumTypeWrapper[_States.ValueType], type):
+    DESCRIPTOR: EnumDescriptor
+    IDLE: _States.ValueType  # 0
+    CRACKING: _States.ValueType  # 1
+    INITIALIZING: _States.ValueType  # 2
+
+class States(_States, metaclass=_StatesEnumTypeWrapper): ...
+
+IDLE: States.ValueType  # 0
+CRACKING: States.ValueType  # 1
+INITIALIZING: States.ValueType  # 2
+
+class _CrackJobStatus:
+    ValueType = NewType("ValueType", int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _CrackJobStatusEnumTypeWrapper(_EnumTypeWrapper[_CrackJobStatus.ValueType], type):
+    DESCRIPTOR: EnumDescriptor
+    IN_PROGRESS: _CrackJobStatus.ValueType  # 0
+    COMPLETED: _CrackJobStatus.ValueType  # 1
+    FAILED: _CrackJobStatus.ValueType  # 2
+
+class CrackJobStatus(_CrackJobStatus, metaclass=_CrackJobStatusEnumTypeWrapper): ...
+
+IN_PROGRESS: CrackJobStatus.ValueType  # 0
+COMPLETED: CrackJobStatus.ValueType  # 1
+FAILED: CrackJobStatus.ValueType  # 2
+
+class _CrackAttackMode:
+    ValueType = NewType("ValueType", int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _CrackAttackModeEnumTypeWrapper(_EnumTypeWrapper[_CrackAttackMode.ValueType], type):
+    DESCRIPTOR: EnumDescriptor
+    STRAIGHT: _CrackAttackMode.ValueType  # 0
+    COMBINATION: _CrackAttackMode.ValueType  # 1
+    BRUTEFORCE: _CrackAttackMode.ValueType  # 3
+    HYBRID_WORDLIST_MASK: _CrackAttackMode.ValueType  # 6
+    HYBRID_MASK_WORDLIST: _CrackAttackMode.ValueType  # 7
+    ASSOCIATION: _CrackAttackMode.ValueType  # 9
+    NO_ATTACK: _CrackAttackMode.ValueType  # 10
+
+class CrackAttackMode(_CrackAttackMode, metaclass=_CrackAttackModeEnumTypeWrapper): ...
+
+STRAIGHT: CrackAttackMode.ValueType  # 0
+COMBINATION: CrackAttackMode.ValueType  # 1
+BRUTEFORCE: CrackAttackMode.ValueType  # 3
+HYBRID_WORDLIST_MASK: CrackAttackMode.ValueType  # 6
+HYBRID_MASK_WORDLIST: CrackAttackMode.ValueType  # 7
+ASSOCIATION: CrackAttackMode.ValueType  # 9
+NO_ATTACK: CrackAttackMode.ValueType  # 10
+
+class _CrackEncoding:
+    ValueType = NewType("ValueType", int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _CrackEncodingEnumTypeWrapper(_EnumTypeWrapper[_CrackEncoding.ValueType], type):
+    DESCRIPTOR: EnumDescriptor
+    INVALID_ENCODING: _CrackEncoding.ValueType  # 0
+    ISO_8859_15: _CrackEncoding.ValueType  # 1
+    UTF_32LE: _CrackEncoding.ValueType  # 2
+
+class CrackEncoding(_CrackEncoding, metaclass=_CrackEncodingEnumTypeWrapper): ...
+
+INVALID_ENCODING: CrackEncoding.ValueType  # 0
+ISO_8859_15: CrackEncoding.ValueType  # 1
+UTF_32LE: CrackEncoding.ValueType  # 2
+
+class _CrackOutfileFormat:
+    ValueType = NewType("ValueType", int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _CrackOutfileFormatEnumTypeWrapper(_EnumTypeWrapper[_CrackOutfileFormat.ValueType], type):
+    DESCRIPTOR: EnumDescriptor
+    INVALID_FORMAT: _CrackOutfileFormat.ValueType  # 0
+    HASH_SALT: _CrackOutfileFormat.ValueType  # 1
+    """1 | hash[:salt]"""
+    PLAIN: _CrackOutfileFormat.ValueType  # 2
+    """2 | plain"""
+    HEX_PLAIN: _CrackOutfileFormat.ValueType  # 3
+    """3 | hex_plain"""
+    CRACK_POS: _CrackOutfileFormat.ValueType  # 4
+    """4 | crack_pos"""
+    TIMESTAMP_ABSOLUTE: _CrackOutfileFormat.ValueType  # 5
+    """5 | timestamp absolute"""
+    TIMESTAMP_RELATIVE: _CrackOutfileFormat.ValueType  # 6
+    """6 | timestamp relative"""
+
+class CrackOutfileFormat(_CrackOutfileFormat, metaclass=_CrackOutfileFormatEnumTypeWrapper): ...
+
+INVALID_FORMAT: CrackOutfileFormat.ValueType  # 0
+HASH_SALT: CrackOutfileFormat.ValueType  # 1
+"""1 | hash[:salt]"""
+PLAIN: CrackOutfileFormat.ValueType  # 2
+"""2 | plain"""
+HEX_PLAIN: CrackOutfileFormat.ValueType  # 3
+"""3 | hex_plain"""
+CRACK_POS: CrackOutfileFormat.ValueType  # 4
+"""4 | crack_pos"""
+TIMESTAMP_ABSOLUTE: CrackOutfileFormat.ValueType  # 5
+"""5 | timestamp absolute"""
+TIMESTAMP_RELATIVE: CrackOutfileFormat.ValueType  # 6
+"""6 | timestamp relative"""
+
+class _CrackWorkloadProfile:
+    ValueType = NewType("ValueType", int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _CrackWorkloadProfileEnumTypeWrapper(_EnumTypeWrapper[_CrackWorkloadProfile.ValueType], type):
+    DESCRIPTOR: EnumDescriptor
+    INVALID_WORKLOAD_PROFILE: _CrackWorkloadProfile.ValueType  # 0
+    LOW: _CrackWorkloadProfile.ValueType  # 1
+    DEFAULT: _CrackWorkloadProfile.ValueType  # 2
+    HIGH: _CrackWorkloadProfile.ValueType  # 3
+    NIGHTMARE: _CrackWorkloadProfile.ValueType  # 4
+
+class CrackWorkloadProfile(_CrackWorkloadProfile, metaclass=_CrackWorkloadProfileEnumTypeWrapper): ...
+
+INVALID_WORKLOAD_PROFILE: CrackWorkloadProfile.ValueType  # 0
+LOW: CrackWorkloadProfile.ValueType  # 1
+DEFAULT: CrackWorkloadProfile.ValueType  # 2
+HIGH: CrackWorkloadProfile.ValueType  # 3
+NIGHTMARE: CrackWorkloadProfile.ValueType  # 4
+
+class _CrackFileType:
+    ValueType = NewType("ValueType", int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _CrackFileTypeEnumTypeWrapper(_EnumTypeWrapper[_CrackFileType.ValueType], type):
+    DESCRIPTOR: EnumDescriptor
+    INVALID_TYPE: _CrackFileType.ValueType  # 0
+    WORDLIST: _CrackFileType.ValueType  # 1
+    RULES: _CrackFileType.ValueType  # 2
+    MARKOV_HCSTAT2: _CrackFileType.ValueType  # 3
+
+class CrackFileType(_CrackFileType, metaclass=_CrackFileTypeEnumTypeWrapper): ...
+
+INVALID_TYPE: CrackFileType.ValueType  # 0
+WORDLIST: CrackFileType.ValueType  # 1
+RULES: CrackFileType.ValueType  # 2
+MARKOV_HCSTAT2: CrackFileType.ValueType  # 3
+
+@typing_extensions.final
 class Version(Message):
     """[ Version ] ----------------------------------------"""
 
@@ -190,28 +832,27 @@ class Version(Message):
         OS: str = ...,
         Arch: str = ...,
     ) -> None: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal[
-            "Arch",
-            b"Arch",
-            "Commit",
-            b"Commit",
-            "CompiledAt",
-            b"CompiledAt",
-            "Dirty",
-            b"Dirty",
-            "Major",
-            b"Major",
-            "Minor",
-            b"Minor",
-            "OS",
-            b"OS",
-            "Patch",
-            b"Patch",
-        ],
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Arch", b"Arch", "Commit", b"Commit", "CompiledAt", b"CompiledAt", "Dirty", b"Dirty", "Major", b"Major", "Minor", b"Minor", "OS", b"OS", "Patch", b"Patch"]) -> None: ...
 
+@typing_extensions.final
+class ClientLogData(Message):
+    """[ Client Logs ] ----------------------------------------"""
+
+    DESCRIPTOR: Descriptor
+
+    STREAM_FIELD_NUMBER: int
+    DATA_FIELD_NUMBER: int
+    Stream: str
+    Data: bytes
+    def __init__(
+        self,
+        *,
+        Stream: str = ...,
+        Data: bytes = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Data", b"Data", "Stream", b"Stream"]) -> None: ...
+
+@typing_extensions.final
 class Session(Message):
     """[ Core ] ----------------------------------------"""
 
@@ -242,6 +883,7 @@ class Session(Message):
     PEERID_FIELD_NUMBER: int
     LOCALE_FIELD_NUMBER: int
     FIRSTCONTACT_FIELD_NUMBER: int
+    INTEGRITY_FIELD_NUMBER: int
     ID: str
     Name: str
     Hostname: str
@@ -270,6 +912,7 @@ class Session(Message):
     """string ConfigID = 24;"""
     Locale: str
     FirstContact: int
+    Integrity: str
     def __init__(
         self,
         *,
@@ -298,63 +941,11 @@ class Session(Message):
         PeerID: int = ...,
         Locale: str = ...,
         FirstContact: int = ...,
+        Integrity: str = ...,
     ) -> None: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal[
-            "ActiveC2",
-            b"ActiveC2",
-            "Arch",
-            b"Arch",
-            "Burned",
-            b"Burned",
-            "Evasion",
-            b"Evasion",
-            "Extensions",
-            b"Extensions",
-            "Filename",
-            b"Filename",
-            "FirstContact",
-            b"FirstContact",
-            "GID",
-            b"GID",
-            "Hostname",
-            b"Hostname",
-            "ID",
-            b"ID",
-            "IsDead",
-            b"IsDead",
-            "LastCheckin",
-            b"LastCheckin",
-            "Locale",
-            b"Locale",
-            "Name",
-            b"Name",
-            "OS",
-            b"OS",
-            "PID",
-            b"PID",
-            "PeerID",
-            b"PeerID",
-            "ProxyURL",
-            b"ProxyURL",
-            "ReconnectInterval",
-            b"ReconnectInterval",
-            "RemoteAddress",
-            b"RemoteAddress",
-            "Transport",
-            b"Transport",
-            "UID",
-            b"UID",
-            "UUID",
-            b"UUID",
-            "Username",
-            b"Username",
-            "Version",
-            b"Version",
-        ],
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["ActiveC2", b"ActiveC2", "Arch", b"Arch", "Burned", b"Burned", "Evasion", b"Evasion", "Extensions", b"Extensions", "Filename", b"Filename", "FirstContact", b"FirstContact", "GID", b"GID", "Hostname", b"Hostname", "ID", b"ID", "Integrity", b"Integrity", "IsDead", b"IsDead", "LastCheckin", b"LastCheckin", "Locale", b"Locale", "Name", b"Name", "OS", b"OS", "PID", b"PID", "PeerID", b"PeerID", "ProxyURL", b"ProxyURL", "ReconnectInterval", b"ReconnectInterval", "RemoteAddress", b"RemoteAddress", "Transport", b"Transport", "UID", b"UID", "UUID", b"UUID", "Username", b"Username", "Version", b"Version"]) -> None: ...
 
+@typing_extensions.final
 class Beacon(Message):
     DESCRIPTOR: Descriptor
 
@@ -386,6 +977,7 @@ class Beacon(Message):
     TASKSCOUNTCOMPLETED_FIELD_NUMBER: int
     LOCALE_FIELD_NUMBER: int
     FIRSTCONTACT_FIELD_NUMBER: int
+    INTEGRITY_FIELD_NUMBER: int
     ID: str
     Name: str
     Hostname: str
@@ -415,6 +1007,7 @@ class Beacon(Message):
     TasksCountCompleted: int
     Locale: str
     FirstContact: int
+    Integrity: str
     def __init__(
         self,
         *,
@@ -446,69 +1039,11 @@ class Beacon(Message):
         TasksCountCompleted: int = ...,
         Locale: str = ...,
         FirstContact: int = ...,
+        Integrity: str = ...,
     ) -> None: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal[
-            "ActiveC2",
-            b"ActiveC2",
-            "Arch",
-            b"Arch",
-            "Burned",
-            b"Burned",
-            "Evasion",
-            b"Evasion",
-            "Filename",
-            b"Filename",
-            "FirstContact",
-            b"FirstContact",
-            "GID",
-            b"GID",
-            "Hostname",
-            b"Hostname",
-            "ID",
-            b"ID",
-            "Interval",
-            b"Interval",
-            "IsDead",
-            b"IsDead",
-            "Jitter",
-            b"Jitter",
-            "LastCheckin",
-            b"LastCheckin",
-            "Locale",
-            b"Locale",
-            "Name",
-            b"Name",
-            "NextCheckin",
-            b"NextCheckin",
-            "OS",
-            b"OS",
-            "PID",
-            b"PID",
-            "ProxyURL",
-            b"ProxyURL",
-            "ReconnectInterval",
-            b"ReconnectInterval",
-            "RemoteAddress",
-            b"RemoteAddress",
-            "TasksCount",
-            b"TasksCount",
-            "TasksCountCompleted",
-            b"TasksCountCompleted",
-            "Transport",
-            b"Transport",
-            "UID",
-            b"UID",
-            "UUID",
-            b"UUID",
-            "Username",
-            b"Username",
-            "Version",
-            b"Version",
-        ],
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["ActiveC2", b"ActiveC2", "Arch", b"Arch", "Burned", b"Burned", "Evasion", b"Evasion", "Filename", b"Filename", "FirstContact", b"FirstContact", "GID", b"GID", "Hostname", b"Hostname", "ID", b"ID", "Integrity", b"Integrity", "Interval", b"Interval", "IsDead", b"IsDead", "Jitter", b"Jitter", "LastCheckin", b"LastCheckin", "Locale", b"Locale", "Name", b"Name", "NextCheckin", b"NextCheckin", "OS", b"OS", "PID", b"PID", "ProxyURL", b"ProxyURL", "ReconnectInterval", b"ReconnectInterval", "RemoteAddress", b"RemoteAddress", "TasksCount", b"TasksCount", "TasksCountCompleted", b"TasksCountCompleted", "Transport", b"Transport", "UID", b"UID", "UUID", b"UUID", "Username", b"Username", "Version", b"Version"]) -> None: ...
 
+@typing_extensions.final
 class Beacons(Message):
     DESCRIPTOR: Descriptor
 
@@ -520,10 +1055,9 @@ class Beacons(Message):
         *,
         Beacons: Iterable[Beacon] | None = ...,
     ) -> None: ...
-    def ClearField(
-        self, field_name: typing_extensions.Literal["Beacons", b"Beacons"]
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Beacons", b"Beacons"]) -> None: ...
 
+@typing_extensions.final
 class BeaconTask(Message):
     DESCRIPTOR: Descriptor
 
@@ -558,30 +1092,9 @@ class BeaconTask(Message):
         Response: bytes = ...,
         Description: str = ...,
     ) -> None: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal[
-            "BeaconID",
-            b"BeaconID",
-            "CompletedAt",
-            b"CompletedAt",
-            "CreatedAt",
-            b"CreatedAt",
-            "Description",
-            b"Description",
-            "ID",
-            b"ID",
-            "Request",
-            b"Request",
-            "Response",
-            b"Response",
-            "SentAt",
-            b"SentAt",
-            "State",
-            b"State",
-        ],
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["BeaconID", b"BeaconID", "CompletedAt", b"CompletedAt", "CreatedAt", b"CreatedAt", "Description", b"Description", "ID", b"ID", "Request", b"Request", "Response", b"Response", "SentAt", b"SentAt", "State", b"State"]) -> None: ...
 
+@typing_extensions.final
 class BeaconTasks(Message):
     DESCRIPTOR: Descriptor
 
@@ -596,19 +1109,33 @@ class BeaconTasks(Message):
         BeaconID: str = ...,
         Tasks: Iterable[BeaconTask] | None = ...,
     ) -> None: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal[
-            "BeaconID", b"BeaconID", "Tasks", b"Tasks"
-        ],
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["BeaconID", b"BeaconID", "Tasks", b"Tasks"]) -> None: ...
 
+@typing_extensions.final
+class BeaconIntegrity(Message):
+    DESCRIPTOR: Descriptor
+
+    BEACONID_FIELD_NUMBER: int
+    INTEGRITY_FIELD_NUMBER: int
+    BeaconID: str
+    Integrity: str
+    def __init__(
+        self,
+        *,
+        BeaconID: str = ...,
+        Integrity: str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["BeaconID", b"BeaconID", "Integrity", b"Integrity"]) -> None: ...
+
+@typing_extensions.final
 class ImplantC2(Message):
     DESCRIPTOR: Descriptor
 
+    ID_FIELD_NUMBER: int
     PRIORITY_FIELD_NUMBER: int
     URL_FIELD_NUMBER: int
     OPTIONS_FIELD_NUMBER: int
+    ID: str
     Priority: int
     URL: str
     Options: str
@@ -616,39 +1143,36 @@ class ImplantC2(Message):
     def __init__(
         self,
         *,
+        ID: str = ...,
         Priority: int = ...,
         URL: str = ...,
         Options: str = ...,
     ) -> None: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal[
-            "Options", b"Options", "Priority", b"Priority", "URL", b"URL"
-        ],
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["ID", b"ID", "Options", b"Options", "Priority", b"Priority", "URL", b"URL"]) -> None: ...
 
+@typing_extensions.final
 class ImplantConfig(Message):
     DESCRIPTOR: Descriptor
 
     ID_FIELD_NUMBER: int
+    IMPLANTBUILDS_FIELD_NUMBER: int
+    IMPLANTPROFILEID_FIELD_NUMBER: int
     ISBEACON_FIELD_NUMBER: int
     BEACONINTERVAL_FIELD_NUMBER: int
     BEACONJITTER_FIELD_NUMBER: int
     GOOS_FIELD_NUMBER: int
     GOARCH_FIELD_NUMBER: int
-    NAME_FIELD_NUMBER: int
     DEBUG_FIELD_NUMBER: int
     EVASION_FIELD_NUMBER: int
     OBFUSCATESYMBOLS_FIELD_NUMBER: int
-    MTLSCACERT_FIELD_NUMBER: int
-    MTLSCERT_FIELD_NUMBER: int
-    MTLSKEY_FIELD_NUMBER: int
-    ECCPUBLICKEY_FIELD_NUMBER: int
-    ECCPRIVATEKEY_FIELD_NUMBER: int
-    ECCPUBLICKEYSIGNATURE_FIELD_NUMBER: int
-    MINISIGNSERVERPUBLICKEY_FIELD_NUMBER: int
-    WGIMPLANTPRIVKEY_FIELD_NUMBER: int
-    WGSERVERPUBKEY_FIELD_NUMBER: int
+    TEMPLATENAME_FIELD_NUMBER: int
+    SGNENABLED_FIELD_NUMBER: int
+    INCLUDEMTLS_FIELD_NUMBER: int
+    INCLUDEHTTP_FIELD_NUMBER: int
+    INCLUDEWG_FIELD_NUMBER: int
+    INCLUDEDNS_FIELD_NUMBER: int
+    INCLUDENAMEPIPE_FIELD_NUMBER: int
+    INCLUDETCP_FIELD_NUMBER: int
     WGPEERTUNIP_FIELD_NUMBER: int
     WGKEYEXCHANGEPORT_FIELD_NUMBER: int
     WGTCPCOMMSPORT_FIELD_NUMBER: int
@@ -666,29 +1190,35 @@ class ImplantConfig(Message):
     LIMITLOCALE_FIELD_NUMBER: int
     FORMAT_FIELD_NUMBER: int
     ISSHAREDLIB_FIELD_NUMBER: int
-    FILENAME_FIELD_NUMBER: int
     ISSERVICE_FIELD_NUMBER: int
     ISSHELLCODE_FIELD_NUMBER: int
     RUNATLOAD_FIELD_NUMBER: int
+    DEBUGFILE_FIELD_NUMBER: int
+    HTTPC2CONFIGNAME_FIELD_NUMBER: int
+    NETGOENABLED_FIELD_NUMBER: int
+    TRAFFICENCODERSENABLED_FIELD_NUMBER: int
+    TRAFFICENCODERS_FIELD_NUMBER: int
+    ASSETS_FIELD_NUMBER: int
     ID: str
+    @property
+    def ImplantBuilds(self) -> RepeatedCompositeFieldContainer[ImplantBuild]: ...
+    ImplantProfileID: str
     IsBeacon: bool
     BeaconInterval: int
     BeaconJitter: int
     GOOS: str
     GOARCH: str
-    Name: str
     Debug: bool
     Evasion: bool
     ObfuscateSymbols: bool
-    MtlsCACert: str
-    MtlsCert: str
-    MtlsKey: str
-    ECCPublicKey: str
-    ECCPrivateKey: str
-    ECCPublicKeySignature: str
-    MinisignServerPublicKey: str
-    WGImplantPrivKey: str
-    WGServerPubKey: str
+    TemplateName: str
+    SGNEnabled: bool
+    IncludeMTLS: bool
+    IncludeHTTP: bool
+    IncludeWG: bool
+    IncludeDNS: bool
+    IncludeNamePipe: bool
+    IncludeTCP: bool
     WGPeerTunIP: str
     WGKeyExchangePort: int
     WGTcpCommsPort: int
@@ -709,32 +1239,39 @@ class ImplantConfig(Message):
     LimitLocale: str
     Format: OutputFormat.ValueType
     IsSharedLib: bool
-    FileName: str
     IsService: bool
     IsShellcode: bool
     RunAtLoad: bool
+    DebugFile: str
+    HTTPC2ConfigName: str
+    NetGoEnabled: bool
+    TrafficEncodersEnabled: bool
+    @property
+    def TrafficEncoders(self) -> RepeatedScalarFieldContainer[str]: ...
+    @property
+    def Assets(self) -> RepeatedCompositeFieldContainer[File]: ...
     def __init__(
         self,
         *,
         ID: str = ...,
+        ImplantBuilds: Iterable[ImplantBuild] | None = ...,
+        ImplantProfileID: str = ...,
         IsBeacon: bool = ...,
         BeaconInterval: int = ...,
         BeaconJitter: int = ...,
         GOOS: str = ...,
         GOARCH: str = ...,
-        Name: str = ...,
         Debug: bool = ...,
         Evasion: bool = ...,
         ObfuscateSymbols: bool = ...,
-        MtlsCACert: str = ...,
-        MtlsCert: str = ...,
-        MtlsKey: str = ...,
-        ECCPublicKey: str = ...,
-        ECCPrivateKey: str = ...,
-        ECCPublicKeySignature: str = ...,
-        MinisignServerPublicKey: str = ...,
-        WGImplantPrivKey: str = ...,
-        WGServerPubKey: str = ...,
+        TemplateName: str = ...,
+        SGNEnabled: bool = ...,
+        IncludeMTLS: bool = ...,
+        IncludeHTTP: bool = ...,
+        IncludeWG: bool = ...,
+        IncludeDNS: bool = ...,
+        IncludeNamePipe: bool = ...,
+        IncludeTCP: bool = ...,
         WGPeerTunIP: str = ...,
         WGKeyExchangePort: int = ...,
         WGTcpCommsPort: int = ...,
@@ -752,156 +1289,180 @@ class ImplantConfig(Message):
         LimitLocale: str = ...,
         Format: OutputFormat.ValueType = ...,
         IsSharedLib: bool = ...,
-        FileName: str = ...,
         IsService: bool = ...,
         IsShellcode: bool = ...,
         RunAtLoad: bool = ...,
+        DebugFile: str = ...,
+        HTTPC2ConfigName: str = ...,
+        NetGoEnabled: bool = ...,
+        TrafficEncodersEnabled: bool = ...,
+        TrafficEncoders: Iterable[str] | None = ...,
+        Assets: Iterable[File] | None = ...,
     ) -> None: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal[
-            "BeaconInterval",
-            b"BeaconInterval",
-            "BeaconJitter",
-            b"BeaconJitter",
-            "C2",
-            b"C2",
-            "CanaryDomains",
-            b"CanaryDomains",
-            "ConnectionStrategy",
-            b"ConnectionStrategy",
-            "Debug",
-            b"Debug",
-            "ECCPrivateKey",
-            b"ECCPrivateKey",
-            "ECCPublicKey",
-            b"ECCPublicKey",
-            "ECCPublicKeySignature",
-            b"ECCPublicKeySignature",
-            "Evasion",
-            b"Evasion",
-            "FileName",
-            b"FileName",
-            "Format",
-            b"Format",
-            "GOARCH",
-            b"GOARCH",
-            "GOOS",
-            b"GOOS",
-            "ID",
-            b"ID",
-            "IsBeacon",
-            b"IsBeacon",
-            "IsService",
-            b"IsService",
-            "IsSharedLib",
-            b"IsSharedLib",
-            "IsShellcode",
-            b"IsShellcode",
-            "LimitDatetime",
-            b"LimitDatetime",
-            "LimitDomainJoined",
-            b"LimitDomainJoined",
-            "LimitFileExists",
-            b"LimitFileExists",
-            "LimitHostname",
-            b"LimitHostname",
-            "LimitLocale",
-            b"LimitLocale",
-            "LimitUsername",
-            b"LimitUsername",
-            "MaxConnectionErrors",
-            b"MaxConnectionErrors",
-            "MinisignServerPublicKey",
-            b"MinisignServerPublicKey",
-            "MtlsCACert",
-            b"MtlsCACert",
-            "MtlsCert",
-            b"MtlsCert",
-            "MtlsKey",
-            b"MtlsKey",
-            "Name",
-            b"Name",
-            "ObfuscateSymbols",
-            b"ObfuscateSymbols",
-            "PollTimeout",
-            b"PollTimeout",
-            "ReconnectInterval",
-            b"ReconnectInterval",
-            "RunAtLoad",
-            b"RunAtLoad",
-            "WGImplantPrivKey",
-            b"WGImplantPrivKey",
-            "WGKeyExchangePort",
-            b"WGKeyExchangePort",
-            "WGPeerTunIP",
-            b"WGPeerTunIP",
-            "WGServerPubKey",
-            b"WGServerPubKey",
-            "WGTcpCommsPort",
-            b"WGTcpCommsPort",
-        ],
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Assets", b"Assets", "BeaconInterval", b"BeaconInterval", "BeaconJitter", b"BeaconJitter", "C2", b"C2", "CanaryDomains", b"CanaryDomains", "ConnectionStrategy", b"ConnectionStrategy", "Debug", b"Debug", "DebugFile", b"DebugFile", "Evasion", b"Evasion", "Format", b"Format", "GOARCH", b"GOARCH", "GOOS", b"GOOS", "HTTPC2ConfigName", b"HTTPC2ConfigName", "ID", b"ID", "ImplantBuilds", b"ImplantBuilds", "ImplantProfileID", b"ImplantProfileID", "IncludeDNS", b"IncludeDNS", "IncludeHTTP", b"IncludeHTTP", "IncludeMTLS", b"IncludeMTLS", "IncludeNamePipe", b"IncludeNamePipe", "IncludeTCP", b"IncludeTCP", "IncludeWG", b"IncludeWG", "IsBeacon", b"IsBeacon", "IsService", b"IsService", "IsSharedLib", b"IsSharedLib", "IsShellcode", b"IsShellcode", "LimitDatetime", b"LimitDatetime", "LimitDomainJoined", b"LimitDomainJoined", "LimitFileExists", b"LimitFileExists", "LimitHostname", b"LimitHostname", "LimitLocale", b"LimitLocale", "LimitUsername", b"LimitUsername", "MaxConnectionErrors", b"MaxConnectionErrors", "NetGoEnabled", b"NetGoEnabled", "ObfuscateSymbols", b"ObfuscateSymbols", "PollTimeout", b"PollTimeout", "ReconnectInterval", b"ReconnectInterval", "RunAtLoad", b"RunAtLoad", "SGNEnabled", b"SGNEnabled", "TemplateName", b"TemplateName", "TrafficEncoders", b"TrafficEncoders", "TrafficEncodersEnabled", b"TrafficEncodersEnabled", "WGKeyExchangePort", b"WGKeyExchangePort", "WGPeerTunIP", b"WGPeerTunIP", "WGTcpCommsPort", b"WGTcpCommsPort"]) -> None: ...
 
-class ExternalImplantConfig(Message):
+@typing_extensions.final
+class TrafficEncoder(Message):
+    DESCRIPTOR: Descriptor
+
+    ID_FIELD_NUMBER: int
+    WASM_FIELD_NUMBER: int
+    SKIPTESTS_FIELD_NUMBER: int
+    TESTID_FIELD_NUMBER: int
+    ID: int
+    @property
+    def Wasm(self) -> File: ...
+    SkipTests: bool
+    TestID: str
+    def __init__(
+        self,
+        *,
+        ID: int = ...,
+        Wasm: File | None = ...,
+        SkipTests: bool = ...,
+        TestID: str = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["Wasm", b"Wasm"]) -> bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["ID", b"ID", "SkipTests", b"SkipTests", "TestID", b"TestID", "Wasm", b"Wasm"]) -> None: ...
+
+@typing_extensions.final
+class TrafficEncoderMap(Message):
+    DESCRIPTOR: Descriptor
+
+    @typing_extensions.final
+    class EncodersEntry(Message):
+        DESCRIPTOR: Descriptor
+
+        KEY_FIELD_NUMBER: int
+        VALUE_FIELD_NUMBER: int
+        key: str
+        @property
+        def value(self) -> TrafficEncoder: ...
+        def __init__(
+            self,
+            *,
+            key: str = ...,
+            value: TrafficEncoder | None = ...,
+        ) -> None: ...
+        def HasField(self, field_name: typing_extensions.Literal["value", b"value"]) -> bool: ...
+        def ClearField(self, field_name: typing_extensions.Literal["key", b"key", "value", b"value"]) -> None: ...
+
+    ENCODERS_FIELD_NUMBER: int
+    @property
+    def Encoders(self) -> MessageMap[str, TrafficEncoder]:
+        """File Name -> TrafficEncoder"""
+    def __init__(
+        self,
+        *,
+        Encoders: Mapping[str, TrafficEncoder] | None = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Encoders", b"Encoders"]) -> None: ...
+
+@typing_extensions.final
+class TrafficEncoderTest(Message):
     DESCRIPTOR: Descriptor
 
     NAME_FIELD_NUMBER: int
-    CONFIG_FIELD_NUMBER: int
-    OTPSECRET_FIELD_NUMBER: int
+    COMPLETED_FIELD_NUMBER: int
+    SUCCESS_FIELD_NUMBER: int
+    DURATION_FIELD_NUMBER: int
+    ERR_FIELD_NUMBER: int
+    SAMPLE_FIELD_NUMBER: int
     Name: str
-    @property
-    def Config(self) -> ImplantConfig: ...
-    OTPSecret: str
+    Completed: bool
+    Success: bool
+    Duration: int
+    Err: str
+    Sample: bytes
+    """Only used on failed tests"""
     def __init__(
         self,
         *,
         Name: str = ...,
-        Config: ImplantConfig | None = ...,
-        OTPSecret: str = ...,
+        Completed: bool = ...,
+        Success: bool = ...,
+        Duration: int = ...,
+        Err: str = ...,
+        Sample: bytes = ...,
     ) -> None: ...
-    def HasField(
-        self, field_name: typing_extensions.Literal["Config", b"Config"]
-    ) -> bool: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal[
-            "Config", b"Config", "Name", b"Name", "OTPSecret", b"OTPSecret"
-        ],
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Completed", b"Completed", "Duration", b"Duration", "Err", b"Err", "Name", b"Name", "Sample", b"Sample", "Success", b"Success"]) -> None: ...
 
+@typing_extensions.final
+class TrafficEncoderTests(Message):
+    DESCRIPTOR: Descriptor
+
+    ENCODER_FIELD_NUMBER: int
+    TESTS_FIELD_NUMBER: int
+    TOTALDURATION_FIELD_NUMBER: int
+    TOTALTESTS_FIELD_NUMBER: int
+    @property
+    def Encoder(self) -> TrafficEncoder: ...
+    @property
+    def Tests(self) -> RepeatedCompositeFieldContainer[TrafficEncoderTest]: ...
+    TotalDuration: int
+    TotalTests: int
+    def __init__(
+        self,
+        *,
+        Encoder: TrafficEncoder | None = ...,
+        Tests: Iterable[TrafficEncoderTest] | None = ...,
+        TotalDuration: int = ...,
+        TotalTests: int = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["Encoder", b"Encoder"]) -> bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Encoder", b"Encoder", "Tests", b"Tests", "TotalDuration", b"TotalDuration", "TotalTests", b"TotalTests"]) -> None: ...
+
+@typing_extensions.final
+class ExternalImplantConfig(Message):
+    DESCRIPTOR: Descriptor
+
+    CONFIG_FIELD_NUMBER: int
+    BUILD_FIELD_NUMBER: int
+    HTTPC2_FIELD_NUMBER: int
+    @property
+    def Config(self) -> ImplantConfig: ...
+    @property
+    def Build(self) -> ImplantBuild: ...
+    @property
+    def HTTPC2(self) -> HTTPC2Config: ...
+    def __init__(
+        self,
+        *,
+        Config: ImplantConfig | None = ...,
+        Build: ImplantBuild | None = ...,
+        HTTPC2: HTTPC2Config | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["Build", b"Build", "Config", b"Config", "HTTPC2", b"HTTPC2"]) -> bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Build", b"Build", "Config", b"Config", "HTTPC2", b"HTTPC2"]) -> None: ...
+
+@typing_extensions.final
 class ExternalImplantBinary(Message):
     DESCRIPTOR: Descriptor
 
     NAME_FIELD_NUMBER: int
-    IMPLANTCONFIGID_FIELD_NUMBER: int
+    IMPLANTBUILDID_FIELD_NUMBER: int
     FILE_FIELD_NUMBER: int
     Name: str
-    ImplantConfigID: str
+    ImplantBuildID: str
     @property
     def File(self) -> File: ...
     def __init__(
         self,
         *,
         Name: str = ...,
-        ImplantConfigID: str = ...,
+        ImplantBuildID: str = ...,
         File: File | None = ...,
     ) -> None: ...
-    def HasField(
-        self, field_name: typing_extensions.Literal["File", b"File"]
-    ) -> bool: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal[
-            "File", b"File", "ImplantConfigID", b"ImplantConfigID", "Name", b"Name"
-        ],
-    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["File", b"File"]) -> bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["File", b"File", "ImplantBuildID", b"ImplantBuildID", "Name", b"Name"]) -> None: ...
 
+@typing_extensions.final
 class ImplantBuilds(Message):
     """Configs of previously built implants"""
 
     DESCRIPTOR: Descriptor
 
+    @typing_extensions.final
     class ConfigsEntry(Message):
         DESCRIPTOR: Descriptor
 
@@ -916,26 +1477,146 @@ class ImplantBuilds(Message):
             key: str = ...,
             value: ImplantConfig | None = ...,
         ) -> None: ...
-        def HasField(
-            self, field_name: typing_extensions.Literal["value", b"value"]
-        ) -> bool: ...
-        def ClearField(
+        def HasField(self, field_name: typing_extensions.Literal["value", b"value"]) -> bool: ...
+        def ClearField(self, field_name: typing_extensions.Literal["key", b"key", "value", b"value"]) -> None: ...
+
+    @typing_extensions.final
+    class ResourceIDsEntry(Message):
+        DESCRIPTOR: Descriptor
+
+        KEY_FIELD_NUMBER: int
+        VALUE_FIELD_NUMBER: int
+        key: str
+        @property
+        def value(self) -> ResourceID: ...
+        def __init__(
             self,
-            field_name: typing_extensions.Literal["key", b"key", "value", b"value"],
+            *,
+            key: str = ...,
+            value: ResourceID | None = ...,
         ) -> None: ...
+        def HasField(self, field_name: typing_extensions.Literal["value", b"value"]) -> bool: ...
+        def ClearField(self, field_name: typing_extensions.Literal["key", b"key", "value", b"value"]) -> None: ...
+
+    @typing_extensions.final
+    class StagedEntry(Message):
+        DESCRIPTOR: Descriptor
+
+        KEY_FIELD_NUMBER: int
+        VALUE_FIELD_NUMBER: int
+        key: str
+        value: bool
+        def __init__(
+            self,
+            *,
+            key: str = ...,
+            value: bool = ...,
+        ) -> None: ...
+        def ClearField(self, field_name: typing_extensions.Literal["key", b"key", "value", b"value"]) -> None: ...
 
     CONFIGS_FIELD_NUMBER: int
+    RESOURCEIDS_FIELD_NUMBER: int
+    STAGED_FIELD_NUMBER: int
     @property
     def Configs(self) -> MessageMap[str, ImplantConfig]: ...
+    @property
+    def ResourceIDs(self) -> MessageMap[str, ResourceID]: ...
+    @property
+    def staged(self) -> ScalarMap[str, bool]: ...
     def __init__(
         self,
         *,
         Configs: Mapping[str, ImplantConfig] | None = ...,
+        ResourceIDs: Mapping[str, ResourceID] | None = ...,
+        staged: Mapping[str, bool] | None = ...,
     ) -> None: ...
-    def ClearField(
-        self, field_name: typing_extensions.Literal["Configs", b"Configs"]
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Configs", b"Configs", "ResourceIDs", b"ResourceIDs", "staged", b"staged"]) -> None: ...
 
+@typing_extensions.final
+class ImplantStageReq(Message):
+    DESCRIPTOR: Descriptor
+
+    BUILD_FIELD_NUMBER: int
+    @property
+    def Build(self) -> RepeatedScalarFieldContainer[str]: ...
+    def __init__(
+        self,
+        *,
+        Build: Iterable[str] | None = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Build", b"Build"]) -> None: ...
+
+@typing_extensions.final
+class ImplantBuild(Message):
+    DESCRIPTOR: Descriptor
+
+    ID_FIELD_NUMBER: int
+    NAME_FIELD_NUMBER: int
+    MD5_FIELD_NUMBER: int
+    SHA1_FIELD_NUMBER: int
+    SHA256_FIELD_NUMBER: int
+    BURNED_FIELD_NUMBER: int
+    IMPLANTID_FIELD_NUMBER: int
+    IMPLANTCONFIGID_FIELD_NUMBER: int
+    AGESERVERPUBLICKEY_FIELD_NUMBER: int
+    PEERPUBLICKEY_FIELD_NUMBER: int
+    PEERPRIVATEKEY_FIELD_NUMBER: int
+    PEERPUBLICKEYSIGNATURE_FIELD_NUMBER: int
+    MINISIGNSERVERPUBLICKEY_FIELD_NUMBER: int
+    PEERPUBLICKEYDIGEST_FIELD_NUMBER: int
+    WGIMPLANTPRIVKEY_FIELD_NUMBER: int
+    WGSERVERPUBKEY_FIELD_NUMBER: int
+    MTLSCACERT_FIELD_NUMBER: int
+    MTLSCERT_FIELD_NUMBER: int
+    MTLSKEY_FIELD_NUMBER: int
+    STAGE_FIELD_NUMBER: int
+    ID: str
+    Name: str
+    MD5: str
+    SHA1: str
+    SHA256: str
+    Burned: bool
+    ImplantID: int
+    ImplantConfigID: str
+    AgeServerPublicKey: str
+    PeerPublicKey: str
+    PeerPrivateKey: str
+    PeerPublicKeySignature: str
+    MinisignServerPublicKey: str
+    PeerPublicKeyDigest: str
+    WGImplantPrivKey: str
+    WGServerPubKey: str
+    MtlsCACert: str
+    MtlsCert: str
+    MtlsKey: str
+    Stage: bool
+    def __init__(
+        self,
+        *,
+        ID: str = ...,
+        Name: str = ...,
+        MD5: str = ...,
+        SHA1: str = ...,
+        SHA256: str = ...,
+        Burned: bool = ...,
+        ImplantID: int = ...,
+        ImplantConfigID: str = ...,
+        AgeServerPublicKey: str = ...,
+        PeerPublicKey: str = ...,
+        PeerPrivateKey: str = ...,
+        PeerPublicKeySignature: str = ...,
+        MinisignServerPublicKey: str = ...,
+        PeerPublicKeyDigest: str = ...,
+        WGImplantPrivKey: str = ...,
+        WGServerPubKey: str = ...,
+        MtlsCACert: str = ...,
+        MtlsCert: str = ...,
+        MtlsKey: str = ...,
+        Stage: bool = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["AgeServerPublicKey", b"AgeServerPublicKey", "Burned", b"Burned", "ID", b"ID", "ImplantConfigID", b"ImplantConfigID", "ImplantID", b"ImplantID", "MD5", b"MD5", "MinisignServerPublicKey", b"MinisignServerPublicKey", "MtlsCACert", b"MtlsCACert", "MtlsCert", b"MtlsCert", "MtlsKey", b"MtlsKey", "Name", b"Name", "PeerPrivateKey", b"PeerPrivateKey", "PeerPublicKey", b"PeerPublicKey", "PeerPublicKeyDigest", b"PeerPublicKeyDigest", "PeerPublicKeySignature", b"PeerPublicKeySignature", "SHA1", b"SHA1", "SHA256", b"SHA256", "Stage", b"Stage", "WGImplantPrivKey", b"WGImplantPrivKey", "WGServerPubKey", b"WGServerPubKey"]) -> None: ...
+
+@typing_extensions.final
 class CompilerTarget(Message):
     DESCRIPTOR: Descriptor
 
@@ -954,13 +1635,9 @@ class CompilerTarget(Message):
         GOARCH: str = ...,
         Format: OutputFormat.ValueType = ...,
     ) -> None: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal[
-            "Format", b"Format", "GOARCH", b"GOARCH", "GOOS", b"GOOS"
-        ],
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Format", b"Format", "GOARCH", b"GOARCH", "GOOS", b"GOOS"]) -> None: ...
 
+@typing_extensions.final
 class CrossCompiler(Message):
     DESCRIPTOR: Descriptor
 
@@ -982,20 +1659,9 @@ class CrossCompiler(Message):
         CCPath: str = ...,
         CXXPath: str = ...,
     ) -> None: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal[
-            "CCPath",
-            b"CCPath",
-            "CXXPath",
-            b"CXXPath",
-            "TargetGOARCH",
-            b"TargetGOARCH",
-            "TargetGOOS",
-            b"TargetGOOS",
-        ],
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["CCPath", b"CCPath", "CXXPath", b"CXXPath", "TargetGOARCH", b"TargetGOARCH", "TargetGOOS", b"TargetGOOS"]) -> None: ...
 
+@typing_extensions.final
 class Compiler(Message):
     DESCRIPTOR: Descriptor
 
@@ -1023,22 +1689,9 @@ class Compiler(Message):
         CrossCompilers: Iterable[CrossCompiler] | None = ...,
         UnsupportedTargets: Iterable[CompilerTarget] | None = ...,
     ) -> None: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal[
-            "CrossCompilers",
-            b"CrossCompilers",
-            "GOARCH",
-            b"GOARCH",
-            "GOOS",
-            b"GOOS",
-            "Targets",
-            b"Targets",
-            "UnsupportedTargets",
-            b"UnsupportedTargets",
-        ],
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["CrossCompilers", b"CrossCompilers", "GOARCH", b"GOARCH", "GOOS", b"GOOS", "Targets", b"Targets", "UnsupportedTargets", b"UnsupportedTargets"]) -> None: ...
 
+@typing_extensions.final
 class DeleteReq(Message):
     DESCRIPTOR: Descriptor
 
@@ -1049,21 +1702,22 @@ class DeleteReq(Message):
         *,
         Name: str = ...,
     ) -> None: ...
-    def ClearField(
-        self, field_name: typing_extensions.Literal["Name", b"Name"]
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Name", b"Name"]) -> None: ...
 
+@typing_extensions.final
 class DNSCanary(Message):
     """DNSCanary - Single canary and metadata"""
 
     DESCRIPTOR: Descriptor
 
+    ID_FIELD_NUMBER: int
     IMPLANTNAME_FIELD_NUMBER: int
     DOMAIN_FIELD_NUMBER: int
     TRIGGERED_FIELD_NUMBER: int
     FIRSTTRIGGERED_FIELD_NUMBER: int
     LATESTTRIGGER_FIELD_NUMBER: int
     COUNT_FIELD_NUMBER: int
+    ID: str
     ImplantName: str
     Domain: str
     Triggered: bool
@@ -1073,6 +1727,7 @@ class DNSCanary(Message):
     def __init__(
         self,
         *,
+        ID: str = ...,
         ImplantName: str = ...,
         Domain: str = ...,
         Triggered: bool = ...,
@@ -1080,24 +1735,9 @@ class DNSCanary(Message):
         LatestTrigger: str = ...,
         Count: int = ...,
     ) -> None: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal[
-            "Count",
-            b"Count",
-            "Domain",
-            b"Domain",
-            "FirstTriggered",
-            b"FirstTriggered",
-            "ImplantName",
-            b"ImplantName",
-            "LatestTrigger",
-            b"LatestTrigger",
-            "Triggered",
-            b"Triggered",
-        ],
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Count", b"Count", "Domain", b"Domain", "FirstTriggered", b"FirstTriggered", "ID", b"ID", "ImplantName", b"ImplantName", "LatestTrigger", b"LatestTrigger", "Triggered", b"Triggered"]) -> None: ...
 
+@typing_extensions.final
 class Canaries(Message):
     DESCRIPTOR: Descriptor
 
@@ -1109,10 +1749,9 @@ class Canaries(Message):
         *,
         Canaries: Iterable[DNSCanary] | None = ...,
     ) -> None: ...
-    def ClearField(
-        self, field_name: typing_extensions.Literal["Canaries", b"Canaries"]
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Canaries", b"Canaries"]) -> None: ...
 
+@typing_extensions.final
 class UniqueWGIP(Message):
     """UniqueWGIP - Unique wireguard IP"""
 
@@ -1125,32 +1764,30 @@ class UniqueWGIP(Message):
         *,
         IP: str = ...,
     ) -> None: ...
-    def ClearField(
-        self, field_name: typing_extensions.Literal["IP", b"IP"]
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["IP", b"IP"]) -> None: ...
 
+@typing_extensions.final
 class ImplantProfile(Message):
     DESCRIPTOR: Descriptor
 
+    ID_FIELD_NUMBER: int
     NAME_FIELD_NUMBER: int
     CONFIG_FIELD_NUMBER: int
+    ID: str
     Name: str
     @property
     def Config(self) -> ImplantConfig: ...
     def __init__(
         self,
         *,
+        ID: str = ...,
         Name: str = ...,
         Config: ImplantConfig | None = ...,
     ) -> None: ...
-    def HasField(
-        self, field_name: typing_extensions.Literal["Config", b"Config"]
-    ) -> bool: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal["Config", b"Config", "Name", b"Name"],
-    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["Config", b"Config"]) -> bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Config", b"Config", "ID", b"ID", "Name", b"Name"]) -> None: ...
 
+@typing_extensions.final
 class ImplantProfiles(Message):
     DESCRIPTOR: Descriptor
 
@@ -1162,10 +1799,9 @@ class ImplantProfiles(Message):
         *,
         Profiles: Iterable[ImplantProfile] | None = ...,
     ) -> None: ...
-    def ClearField(
-        self, field_name: typing_extensions.Literal["Profiles", b"Profiles"]
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Profiles", b"Profiles"]) -> None: ...
 
+@typing_extensions.final
 class RegenerateReq(Message):
     DESCRIPTOR: Descriptor
 
@@ -1176,10 +1812,9 @@ class RegenerateReq(Message):
         *,
         ImplantName: str = ...,
     ) -> None: ...
-    def ClearField(
-        self, field_name: typing_extensions.Literal["ImplantName", b"ImplantName"]
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["ImplantName", b"ImplantName"]) -> None: ...
 
+@typing_extensions.final
 class Job(Message):
     DESCRIPTOR: Descriptor
 
@@ -1189,6 +1824,7 @@ class Job(Message):
     PROTOCOL_FIELD_NUMBER: int
     PORT_FIELD_NUMBER: int
     DOMAINS_FIELD_NUMBER: int
+    PROFILENAME_FIELD_NUMBER: int
     ID: int
     Name: str
     Description: str
@@ -1196,6 +1832,7 @@ class Job(Message):
     Port: int
     @property
     def Domains(self) -> RepeatedScalarFieldContainer[str]: ...
+    ProfileName: str
     def __init__(
         self,
         *,
@@ -1205,25 +1842,11 @@ class Job(Message):
         Protocol: str = ...,
         Port: int = ...,
         Domains: Iterable[str] | None = ...,
+        ProfileName: str = ...,
     ) -> None: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal[
-            "Description",
-            b"Description",
-            "Domains",
-            b"Domains",
-            "ID",
-            b"ID",
-            "Name",
-            b"Name",
-            "Port",
-            b"Port",
-            "Protocol",
-            b"Protocol",
-        ],
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Description", b"Description", "Domains", b"Domains", "ID", b"ID", "Name", b"Name", "Port", b"Port", "ProfileName", b"ProfileName", "Protocol", b"Protocol"]) -> None: ...
 
+@typing_extensions.final
 class Jobs(Message):
     """[ Jobs ]  ----------------------------------------"""
 
@@ -1237,10 +1860,9 @@ class Jobs(Message):
         *,
         Active: Iterable[Job] | None = ...,
     ) -> None: ...
-    def ClearField(
-        self, field_name: typing_extensions.Literal["Active", b"Active"]
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Active", b"Active"]) -> None: ...
 
+@typing_extensions.final
 class KillJobReq(Message):
     DESCRIPTOR: Descriptor
 
@@ -1251,10 +1873,23 @@ class KillJobReq(Message):
         *,
         ID: int = ...,
     ) -> None: ...
-    def ClearField(
-        self, field_name: typing_extensions.Literal["ID", b"ID"]
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["ID", b"ID"]) -> None: ...
 
+@typing_extensions.final
+class RestartJobReq(Message):
+    DESCRIPTOR: Descriptor
+
+    JOBIDS_FIELD_NUMBER: int
+    @property
+    def JobIDs(self) -> RepeatedScalarFieldContainer[int]: ...
+    def __init__(
+        self,
+        *,
+        JobIDs: Iterable[int] | None = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["JobIDs", b"JobIDs"]) -> None: ...
+
+@typing_extensions.final
 class KillJob(Message):
     DESCRIPTOR: Descriptor
 
@@ -1268,49 +1903,83 @@ class KillJob(Message):
         ID: int = ...,
         Success: bool = ...,
     ) -> None: ...
-    def ClearField(
-        self, field_name: typing_extensions.Literal["ID", b"ID", "Success", b"Success"]
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["ID", b"ID", "Success", b"Success"]) -> None: ...
 
-class MTLSListenerReq(Message):
+@typing_extensions.final
+class ListenerJob(Message):
     """[ Listeners ] ----------------------------------------"""
 
     DESCRIPTOR: Descriptor
 
+    ID_FIELD_NUMBER: int
+    TYPE_FIELD_NUMBER: int
+    JOBID_FIELD_NUMBER: int
+    MTLSCONF_FIELD_NUMBER: int
+    WGCONF_FIELD_NUMBER: int
+    DNSCONF_FIELD_NUMBER: int
+    HTTPCONF_FIELD_NUMBER: int
+    MULTICONF_FIELD_NUMBER: int
+    ID: str
+    Type: str
+    JobID: int
+    @property
+    def MTLSConf(self) -> MTLSListenerReq: ...
+    @property
+    def WGConf(self) -> WGListenerReq: ...
+    @property
+    def DNSConf(self) -> DNSListenerReq: ...
+    @property
+    def HTTPConf(self) -> HTTPListenerReq: ...
+    @property
+    def MultiConf(self) -> MultiplayerListenerReq: ...
+    def __init__(
+        self,
+        *,
+        ID: str = ...,
+        Type: str = ...,
+        JobID: int = ...,
+        MTLSConf: MTLSListenerReq | None = ...,
+        WGConf: WGListenerReq | None = ...,
+        DNSConf: DNSListenerReq | None = ...,
+        HTTPConf: HTTPListenerReq | None = ...,
+        MultiConf: MultiplayerListenerReq | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["DNSConf", b"DNSConf", "HTTPConf", b"HTTPConf", "MTLSConf", b"MTLSConf", "MultiConf", b"MultiConf", "WGConf", b"WGConf"]) -> bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["DNSConf", b"DNSConf", "HTTPConf", b"HTTPConf", "ID", b"ID", "JobID", b"JobID", "MTLSConf", b"MTLSConf", "MultiConf", b"MultiConf", "Type", b"Type", "WGConf", b"WGConf"]) -> None: ...
+
+@typing_extensions.final
+class MultiplayerListenerReq(Message):
+    DESCRIPTOR: Descriptor
+
     HOST_FIELD_NUMBER: int
     PORT_FIELD_NUMBER: int
-    PERSISTENT_FIELD_NUMBER: int
     Host: str
     Port: int
-    Persistent: bool
     def __init__(
         self,
         *,
         Host: str = ...,
         Port: int = ...,
-        Persistent: bool = ...,
     ) -> None: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal[
-            "Host", b"Host", "Persistent", b"Persistent", "Port", b"Port"
-        ],
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Host", b"Host", "Port", b"Port"]) -> None: ...
 
-class MTLSListener(Message):
+@typing_extensions.final
+class MTLSListenerReq(Message):
     DESCRIPTOR: Descriptor
 
-    JOBID_FIELD_NUMBER: int
-    JobID: int
+    HOST_FIELD_NUMBER: int
+    PORT_FIELD_NUMBER: int
+    Host: str
+    Port: int
     def __init__(
         self,
         *,
-        JobID: int = ...,
+        Host: str = ...,
+        Port: int = ...,
     ) -> None: ...
-    def ClearField(
-        self, field_name: typing_extensions.Literal["JobID", b"JobID"]
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Host", b"Host", "Port", b"Port"]) -> None: ...
 
+@typing_extensions.final
 class WGListenerReq(Message):
     DESCRIPTOR: Descriptor
 
@@ -1319,13 +1988,11 @@ class WGListenerReq(Message):
     TUNIP_FIELD_NUMBER: int
     NPORT_FIELD_NUMBER: int
     KEYPORT_FIELD_NUMBER: int
-    PERSISTENT_FIELD_NUMBER: int
     Host: str
     Port: int
     TunIP: str
     NPort: int
     KeyPort: int
-    Persistent: bool
     def __init__(
         self,
         *,
@@ -1334,40 +2001,10 @@ class WGListenerReq(Message):
         TunIP: str = ...,
         NPort: int = ...,
         KeyPort: int = ...,
-        Persistent: bool = ...,
     ) -> None: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal[
-            "Host",
-            b"Host",
-            "KeyPort",
-            b"KeyPort",
-            "NPort",
-            b"NPort",
-            "Persistent",
-            b"Persistent",
-            "Port",
-            b"Port",
-            "TunIP",
-            b"TunIP",
-        ],
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Host", b"Host", "KeyPort", b"KeyPort", "NPort", b"NPort", "Port", b"Port", "TunIP", b"TunIP"]) -> None: ...
 
-class WGListener(Message):
-    DESCRIPTOR: Descriptor
-
-    JOBID_FIELD_NUMBER: int
-    JobID: int
-    def __init__(
-        self,
-        *,
-        JobID: int = ...,
-    ) -> None: ...
-    def ClearField(
-        self, field_name: typing_extensions.Literal["JobID", b"JobID"]
-    ) -> None: ...
-
+@typing_extensions.final
 class DNSListenerReq(Message):
     DESCRIPTOR: Descriptor
 
@@ -1375,14 +2012,12 @@ class DNSListenerReq(Message):
     CANARIES_FIELD_NUMBER: int
     HOST_FIELD_NUMBER: int
     PORT_FIELD_NUMBER: int
-    PERSISTENT_FIELD_NUMBER: int
     ENFORCEOTP_FIELD_NUMBER: int
     @property
     def Domains(self) -> RepeatedScalarFieldContainer[str]: ...
     Canaries: bool
     Host: str
     Port: int
-    Persistent: bool
     EnforceOTP: bool
     def __init__(
         self,
@@ -1391,41 +2026,11 @@ class DNSListenerReq(Message):
         Canaries: bool = ...,
         Host: str = ...,
         Port: int = ...,
-        Persistent: bool = ...,
         EnforceOTP: bool = ...,
     ) -> None: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal[
-            "Canaries",
-            b"Canaries",
-            "Domains",
-            b"Domains",
-            "EnforceOTP",
-            b"EnforceOTP",
-            "Host",
-            b"Host",
-            "Persistent",
-            b"Persistent",
-            "Port",
-            b"Port",
-        ],
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Canaries", b"Canaries", "Domains", b"Domains", "EnforceOTP", b"EnforceOTP", "Host", b"Host", "Port", b"Port"]) -> None: ...
 
-class DNSListener(Message):
-    DESCRIPTOR: Descriptor
-
-    JOBID_FIELD_NUMBER: int
-    JobID: int
-    def __init__(
-        self,
-        *,
-        JobID: int = ...,
-    ) -> None: ...
-    def ClearField(
-        self, field_name: typing_extensions.Literal["JobID", b"JobID"]
-    ) -> None: ...
-
+@typing_extensions.final
 class HTTPListenerReq(Message):
     DESCRIPTOR: Descriptor
 
@@ -1437,7 +2042,6 @@ class HTTPListenerReq(Message):
     CERT_FIELD_NUMBER: int
     KEY_FIELD_NUMBER: int
     ACME_FIELD_NUMBER: int
-    PERSISTENT_FIELD_NUMBER: int
     ENFORCEOTP_FIELD_NUMBER: int
     LONGPOLLTIMEOUT_FIELD_NUMBER: int
     LONGPOLLJITTER_FIELD_NUMBER: int
@@ -1451,7 +2055,6 @@ class HTTPListenerReq(Message):
     Cert: bytes
     Key: bytes
     ACME: bool
-    Persistent: bool
     EnforceOTP: bool
     LongPollTimeout: int
     LongPollJitter: int
@@ -1468,44 +2071,14 @@ class HTTPListenerReq(Message):
         Cert: bytes = ...,
         Key: bytes = ...,
         ACME: bool = ...,
-        Persistent: bool = ...,
         EnforceOTP: bool = ...,
         LongPollTimeout: int = ...,
         LongPollJitter: int = ...,
         RandomizeJARM: bool = ...,
     ) -> None: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal[
-            "ACME",
-            b"ACME",
-            "Cert",
-            b"Cert",
-            "Domain",
-            b"Domain",
-            "EnforceOTP",
-            b"EnforceOTP",
-            "Host",
-            b"Host",
-            "Key",
-            b"Key",
-            "LongPollJitter",
-            b"LongPollJitter",
-            "LongPollTimeout",
-            b"LongPollTimeout",
-            "Persistent",
-            b"Persistent",
-            "Port",
-            b"Port",
-            "RandomizeJARM",
-            b"RandomizeJARM",
-            "Secure",
-            b"Secure",
-            "Website",
-            b"Website",
-        ],
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["ACME", b"ACME", "Cert", b"Cert", "Domain", b"Domain", "EnforceOTP", b"EnforceOTP", "Host", b"Host", "Key", b"Key", "LongPollJitter", b"LongPollJitter", "LongPollTimeout", b"LongPollTimeout", "Port", b"Port", "RandomizeJARM", b"RandomizeJARM", "Secure", b"Secure", "Website", b"Website"]) -> None: ...
 
+@typing_extensions.final
 class NamedPipesReq(Message):
     """Named Pipes Messages for pivoting"""
 
@@ -1522,16 +2095,10 @@ class NamedPipesReq(Message):
         PipeName: str = ...,
         Request: Request | None = ...,
     ) -> None: ...
-    def HasField(
-        self, field_name: typing_extensions.Literal["Request", b"Request"]
-    ) -> bool: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal[
-            "PipeName", b"PipeName", "Request", b"Request"
-        ],
-    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["Request", b"Request"]) -> bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["PipeName", b"PipeName", "Request", b"Request"]) -> None: ...
 
+@typing_extensions.final
 class NamedPipes(Message):
     DESCRIPTOR: Descriptor
 
@@ -1549,16 +2116,10 @@ class NamedPipes(Message):
         Err: str = ...,
         Response: Response | None = ...,
     ) -> None: ...
-    def HasField(
-        self, field_name: typing_extensions.Literal["Response", b"Response"]
-    ) -> bool: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal[
-            "Err", b"Err", "Response", b"Response", "Success", b"Success"
-        ],
-    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["Response", b"Response"]) -> bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Err", b"Err", "Response", b"Response", "Success", b"Success"]) -> None: ...
 
+@typing_extensions.final
 class TCPPivotReq(Message):
     """TCP Messages for pivoting"""
 
@@ -1575,16 +2136,10 @@ class TCPPivotReq(Message):
         Address: str = ...,
         Request: Request | None = ...,
     ) -> None: ...
-    def HasField(
-        self, field_name: typing_extensions.Literal["Request", b"Request"]
-    ) -> bool: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal[
-            "Address", b"Address", "Request", b"Request"
-        ],
-    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["Request", b"Request"]) -> bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Address", b"Address", "Request", b"Request"]) -> None: ...
 
+@typing_extensions.final
 class TCPPivot(Message):
     DESCRIPTOR: Descriptor
 
@@ -1602,30 +2157,10 @@ class TCPPivot(Message):
         Err: str = ...,
         Response: Response | None = ...,
     ) -> None: ...
-    def HasField(
-        self, field_name: typing_extensions.Literal["Response", b"Response"]
-    ) -> bool: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal[
-            "Err", b"Err", "Response", b"Response", "Success", b"Success"
-        ],
-    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["Response", b"Response"]) -> bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Err", b"Err", "Response", b"Response", "Success", b"Success"]) -> None: ...
 
-class HTTPListener(Message):
-    DESCRIPTOR: Descriptor
-
-    JOBID_FIELD_NUMBER: int
-    JobID: int
-    def __init__(
-        self,
-        *,
-        JobID: int = ...,
-    ) -> None: ...
-    def ClearField(
-        self, field_name: typing_extensions.Literal["JobID", b"JobID"]
-    ) -> None: ...
-
+@typing_extensions.final
 class Sessions(Message):
     """[ commands ] ----------------------------------------"""
 
@@ -1639,10 +2174,9 @@ class Sessions(Message):
         *,
         Sessions: Iterable[Session] | None = ...,
     ) -> None: ...
-    def ClearField(
-        self, field_name: typing_extensions.Literal["Sessions", b"Sessions"]
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Sessions", b"Sessions"]) -> None: ...
 
+@typing_extensions.final
 class RenameReq(Message):
     DESCRIPTOR: Descriptor
 
@@ -1659,31 +2193,61 @@ class RenameReq(Message):
         BeaconID: str = ...,
         Name: str = ...,
     ) -> None: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal[
-            "BeaconID", b"BeaconID", "Name", b"Name", "SessionID", b"SessionID"
-        ],
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["BeaconID", b"BeaconID", "Name", b"Name", "SessionID", b"SessionID"]) -> None: ...
 
+@typing_extensions.final
 class GenerateReq(Message):
     DESCRIPTOR: Descriptor
 
     CONFIG_FIELD_NUMBER: int
+    NAME_FIELD_NUMBER: int
     @property
     def Config(self) -> ImplantConfig: ...
+    Name: str
     def __init__(
         self,
         *,
         Config: ImplantConfig | None = ...,
+        Name: str = ...,
     ) -> None: ...
-    def HasField(
-        self, field_name: typing_extensions.Literal["Config", b"Config"]
-    ) -> bool: ...
-    def ClearField(
-        self, field_name: typing_extensions.Literal["Config", b"Config"]
-    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["Config", b"Config"]) -> bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Config", b"Config", "Name", b"Name"]) -> None: ...
 
+@typing_extensions.final
+class GenerateStageReq(Message):
+    DESCRIPTOR: Descriptor
+
+    PROFILE_FIELD_NUMBER: int
+    NAME_FIELD_NUMBER: int
+    AESENCRYPTKEY_FIELD_NUMBER: int
+    AESENCRYPTIV_FIELD_NUMBER: int
+    RC4ENCRYPTKEY_FIELD_NUMBER: int
+    PREPENDSIZE_FIELD_NUMBER: int
+    COMPRESSF_FIELD_NUMBER: int
+    COMPRESS_FIELD_NUMBER: int
+    Profile: str
+    Name: str
+    AESEncryptKey: str
+    AESEncryptIv: str
+    RC4EncryptKey: str
+    PrependSize: bool
+    CompressF: str
+    Compress: str
+    def __init__(
+        self,
+        *,
+        Profile: str = ...,
+        Name: str = ...,
+        AESEncryptKey: str = ...,
+        AESEncryptIv: str = ...,
+        RC4EncryptKey: str = ...,
+        PrependSize: bool = ...,
+        CompressF: str = ...,
+        Compress: str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["AESEncryptIv", b"AESEncryptIv", "AESEncryptKey", b"AESEncryptKey", "Compress", b"Compress", "CompressF", b"CompressF", "Name", b"Name", "PrependSize", b"PrependSize", "Profile", b"Profile", "RC4EncryptKey", b"RC4EncryptKey"]) -> None: ...
+
+@typing_extensions.final
 class Generate(Message):
     DESCRIPTOR: Descriptor
 
@@ -1695,13 +2259,10 @@ class Generate(Message):
         *,
         File: File | None = ...,
     ) -> None: ...
-    def HasField(
-        self, field_name: typing_extensions.Literal["File", b"File"]
-    ) -> bool: ...
-    def ClearField(
-        self, field_name: typing_extensions.Literal["File", b"File"]
-    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["File", b"File"]) -> bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["File", b"File"]) -> None: ...
 
+@typing_extensions.final
 class MSFReq(Message):
     DESCRIPTOR: Descriptor
 
@@ -1728,27 +2289,10 @@ class MSFReq(Message):
         Iterations: int = ...,
         Request: Request | None = ...,
     ) -> None: ...
-    def HasField(
-        self, field_name: typing_extensions.Literal["Request", b"Request"]
-    ) -> bool: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal[
-            "Encoder",
-            b"Encoder",
-            "Iterations",
-            b"Iterations",
-            "LHost",
-            b"LHost",
-            "LPort",
-            b"LPort",
-            "Payload",
-            b"Payload",
-            "Request",
-            b"Request",
-        ],
-    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["Request", b"Request"]) -> bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Encoder", b"Encoder", "Iterations", b"Iterations", "LHost", b"LHost", "LPort", b"LPort", "Payload", b"Payload", "Request", b"Request"]) -> None: ...
 
+@typing_extensions.final
 class MSFRemoteReq(Message):
     DESCRIPTOR: Descriptor
 
@@ -1778,29 +2322,10 @@ class MSFRemoteReq(Message):
         PID: int = ...,
         Request: Request | None = ...,
     ) -> None: ...
-    def HasField(
-        self, field_name: typing_extensions.Literal["Request", b"Request"]
-    ) -> bool: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal[
-            "Encoder",
-            b"Encoder",
-            "Iterations",
-            b"Iterations",
-            "LHost",
-            b"LHost",
-            "LPort",
-            b"LPort",
-            "PID",
-            b"PID",
-            "Payload",
-            b"Payload",
-            "Request",
-            b"Request",
-        ],
-    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["Request", b"Request"]) -> bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Encoder", b"Encoder", "Iterations", b"Iterations", "LHost", b"LHost", "LPort", b"LPort", "PID", b"PID", "Payload", b"Payload", "Request", b"Request"]) -> None: ...
 
+@typing_extensions.final
 class StagerListenerReq(Message):
     DESCRIPTOR: Descriptor
 
@@ -1811,6 +2336,7 @@ class StagerListenerReq(Message):
     CERT_FIELD_NUMBER: int
     KEY_FIELD_NUMBER: int
     ACME_FIELD_NUMBER: int
+    PROFILENAME_FIELD_NUMBER: int
     Protocol: StageProtocol.ValueType
     Host: str
     Port: int
@@ -1818,6 +2344,7 @@ class StagerListenerReq(Message):
     Cert: bytes
     Key: bytes
     ACME: bool
+    ProfileName: str
     def __init__(
         self,
         *,
@@ -1828,27 +2355,11 @@ class StagerListenerReq(Message):
         Cert: bytes = ...,
         Key: bytes = ...,
         ACME: bool = ...,
+        ProfileName: str = ...,
     ) -> None: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal[
-            "ACME",
-            b"ACME",
-            "Cert",
-            b"Cert",
-            "Data",
-            b"Data",
-            "Host",
-            b"Host",
-            "Key",
-            b"Key",
-            "Port",
-            b"Port",
-            "Protocol",
-            b"Protocol",
-        ],
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["ACME", b"ACME", "Cert", b"Cert", "Data", b"Data", "Host", b"Host", "Key", b"Key", "Port", b"Port", "ProfileName", b"ProfileName", "Protocol", b"Protocol"]) -> None: ...
 
+@typing_extensions.final
 class StagerListener(Message):
     DESCRIPTOR: Descriptor
 
@@ -1859,10 +2370,9 @@ class StagerListener(Message):
         *,
         JobID: int = ...,
     ) -> None: ...
-    def ClearField(
-        self, field_name: typing_extensions.Literal["JobID", b"JobID"]
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["JobID", b"JobID"]) -> None: ...
 
+@typing_extensions.final
 class ShellcodeRDIReq(Message):
     DESCRIPTOR: Descriptor
 
@@ -1879,13 +2389,9 @@ class ShellcodeRDIReq(Message):
         FunctionName: str = ...,
         Arguments: str = ...,
     ) -> None: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal[
-            "Arguments", b"Arguments", "Data", b"Data", "FunctionName", b"FunctionName"
-        ],
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Arguments", b"Arguments", "Data", b"Data", "FunctionName", b"FunctionName"]) -> None: ...
 
+@typing_extensions.final
 class ShellcodeRDI(Message):
     DESCRIPTOR: Descriptor
 
@@ -1896,10 +2402,9 @@ class ShellcodeRDI(Message):
         *,
         Data: bytes = ...,
     ) -> None: ...
-    def ClearField(
-        self, field_name: typing_extensions.Literal["Data", b"Data"]
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Data", b"Data"]) -> None: ...
 
+@typing_extensions.final
 class MsfStagerReq(Message):
     DESCRIPTOR: Descriptor
 
@@ -1910,6 +2415,8 @@ class MsfStagerReq(Message):
     OS_FIELD_NUMBER: int
     PROTOCOL_FIELD_NUMBER: int
     BADCHARS_FIELD_NUMBER: int
+    ADVOPTIONS_FIELD_NUMBER: int
+    HTTPC2CONFIGNAME_FIELD_NUMBER: int
     Arch: str
     Format: str
     Port: int
@@ -1919,6 +2426,8 @@ class MsfStagerReq(Message):
     Protocol: StageProtocol.ValueType
     @property
     def BadChars(self) -> RepeatedScalarFieldContainer[str]: ...
+    AdvOptions: str
+    HTTPC2ConfigName: str
     def __init__(
         self,
         *,
@@ -1929,27 +2438,12 @@ class MsfStagerReq(Message):
         OS: str = ...,
         Protocol: StageProtocol.ValueType = ...,
         BadChars: Iterable[str] | None = ...,
+        AdvOptions: str = ...,
+        HTTPC2ConfigName: str = ...,
     ) -> None: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal[
-            "Arch",
-            b"Arch",
-            "BadChars",
-            b"BadChars",
-            "Format",
-            b"Format",
-            "Host",
-            b"Host",
-            "OS",
-            b"OS",
-            "Port",
-            b"Port",
-            "Protocol",
-            b"Protocol",
-        ],
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["AdvOptions", b"AdvOptions", "Arch", b"Arch", "BadChars", b"BadChars", "Format", b"Format", "HTTPC2ConfigName", b"HTTPC2ConfigName", "Host", b"Host", "OS", b"OS", "Port", b"Port", "Protocol", b"Protocol"]) -> None: ...
 
+@typing_extensions.final
 class MsfStager(Message):
     DESCRIPTOR: Descriptor
 
@@ -1961,26 +2455,25 @@ class MsfStager(Message):
         *,
         File: File | None = ...,
     ) -> None: ...
-    def HasField(
-        self, field_name: typing_extensions.Literal["File", b"File"]
-    ) -> bool: ...
-    def ClearField(
-        self, field_name: typing_extensions.Literal["File", b"File"]
-    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["File", b"File"]) -> bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["File", b"File"]) -> None: ...
 
+@typing_extensions.final
 class GetSystemReq(Message):
     """GetSystemReq - Client request to the server which is translated into
-    InvokeSystemReq when sending to the implant.
+                   InvokeSystemReq when sending to the implant.
     """
 
     DESCRIPTOR: Descriptor
 
     HOSTINGPROCESS_FIELD_NUMBER: int
     CONFIG_FIELD_NUMBER: int
+    NAME_FIELD_NUMBER: int
     REQUEST_FIELD_NUMBER: int
     HostingProcess: str
     @property
     def Config(self) -> ImplantConfig: ...
+    Name: str
     @property
     def Request(self) -> Request: ...
     def __init__(
@@ -1988,39 +2481,32 @@ class GetSystemReq(Message):
         *,
         HostingProcess: str = ...,
         Config: ImplantConfig | None = ...,
+        Name: str = ...,
         Request: Request | None = ...,
     ) -> None: ...
-    def HasField(
-        self,
-        field_name: typing_extensions.Literal[
-            "Config", b"Config", "Request", b"Request"
-        ],
-    ) -> bool: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal[
-            "Config",
-            b"Config",
-            "HostingProcess",
-            b"HostingProcess",
-            "Request",
-            b"Request",
-        ],
-    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["Config", b"Config", "Request", b"Request"]) -> bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Config", b"Config", "HostingProcess", b"HostingProcess", "Name", b"Name", "Request", b"Request"]) -> None: ...
 
+@typing_extensions.final
 class MigrateReq(Message):
     """MigrateReq - Client request to the server which is translated into
-    InvokeMigrateReq when sending to the implant.
+                 InvokeMigrateReq when sending to the implant.
     """
 
     DESCRIPTOR: Descriptor
 
     PID_FIELD_NUMBER: int
     CONFIG_FIELD_NUMBER: int
+    ENCODER_FIELD_NUMBER: int
+    NAME_FIELD_NUMBER: int
+    PROCNAME_FIELD_NUMBER: int
     REQUEST_FIELD_NUMBER: int
     Pid: int
     @property
     def Config(self) -> ImplantConfig: ...
+    Encoder: ShellcodeEncoder.ValueType
+    Name: str
+    ProcName: str
     @property
     def Request(self) -> Request: ...
     def __init__(
@@ -2028,21 +2514,15 @@ class MigrateReq(Message):
         *,
         Pid: int = ...,
         Config: ImplantConfig | None = ...,
+        Encoder: ShellcodeEncoder.ValueType = ...,
+        Name: str = ...,
+        ProcName: str = ...,
         Request: Request | None = ...,
     ) -> None: ...
-    def HasField(
-        self,
-        field_name: typing_extensions.Literal[
-            "Config", b"Config", "Request", b"Request"
-        ],
-    ) -> bool: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal[
-            "Config", b"Config", "Pid", b"Pid", "Request", b"Request"
-        ],
-    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["Config", b"Config", "Request", b"Request"]) -> bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Config", b"Config", "Encoder", b"Encoder", "Name", b"Name", "Pid", b"Pid", "ProcName", b"ProcName", "Request", b"Request"]) -> None: ...
 
+@typing_extensions.final
 class CreateTunnelReq(Message):
     """[ Tunnels ] ----------------------------------------"""
 
@@ -2056,13 +2536,10 @@ class CreateTunnelReq(Message):
         *,
         Request: Request | None = ...,
     ) -> None: ...
-    def HasField(
-        self, field_name: typing_extensions.Literal["Request", b"Request"]
-    ) -> bool: ...
-    def ClearField(
-        self, field_name: typing_extensions.Literal["Request", b"Request"]
-    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["Request", b"Request"]) -> bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Request", b"Request"]) -> None: ...
 
+@typing_extensions.final
 class CreateTunnel(Message):
     DESCRIPTOR: Descriptor
 
@@ -2076,13 +2553,9 @@ class CreateTunnel(Message):
         SessionID: int = ...,
         TunnelID: int = ...,
     ) -> None: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal[
-            "SessionID", b"SessionID", "TunnelID", b"TunnelID"
-        ],
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["SessionID", b"SessionID", "TunnelID", b"TunnelID"]) -> None: ...
 
+@typing_extensions.final
 class CloseTunnelReq(Message):
     DESCRIPTOR: Descriptor
 
@@ -2097,16 +2570,10 @@ class CloseTunnelReq(Message):
         TunnelID: int = ...,
         Request: Request | None = ...,
     ) -> None: ...
-    def HasField(
-        self, field_name: typing_extensions.Literal["Request", b"Request"]
-    ) -> bool: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal[
-            "Request", b"Request", "TunnelID", b"TunnelID"
-        ],
-    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["Request", b"Request"]) -> bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Request", b"Request", "TunnelID", b"TunnelID"]) -> None: ...
 
+@typing_extensions.final
 class PivotGraphEntry(Message):
     """[ Pivots ] ----------------------------------------"""
 
@@ -2130,23 +2597,10 @@ class PivotGraphEntry(Message):
         Name: str = ...,
         Children: Iterable[PivotGraphEntry] | None = ...,
     ) -> None: ...
-    def HasField(
-        self, field_name: typing_extensions.Literal["Session", b"Session"]
-    ) -> bool: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal[
-            "Children",
-            b"Children",
-            "Name",
-            b"Name",
-            "PeerID",
-            b"PeerID",
-            "Session",
-            b"Session",
-        ],
-    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["Session", b"Session"]) -> bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Children", b"Children", "Name", b"Name", "PeerID", b"PeerID", "Session", b"Session"]) -> None: ...
 
+@typing_extensions.final
 class PivotGraph(Message):
     DESCRIPTOR: Descriptor
 
@@ -2158,10 +2612,9 @@ class PivotGraph(Message):
         *,
         Children: Iterable[PivotGraphEntry] | None = ...,
     ) -> None: ...
-    def ClearField(
-        self, field_name: typing_extensions.Literal["Children", b"Children"]
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Children", b"Children"]) -> None: ...
 
+@typing_extensions.final
 class Client(Message):
     """[ Events ] ----------------------------------------"""
 
@@ -2181,16 +2634,10 @@ class Client(Message):
         Name: str = ...,
         Operator: Operator | None = ...,
     ) -> None: ...
-    def HasField(
-        self, field_name: typing_extensions.Literal["Operator", b"Operator"]
-    ) -> bool: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal[
-            "ID", b"ID", "Name", b"Name", "Operator", b"Operator"
-        ],
-    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["Operator", b"Operator"]) -> bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["ID", b"ID", "Name", b"Name", "Operator", b"Operator"]) -> None: ...
 
+@typing_extensions.final
 class Event(Message):
     DESCRIPTOR: Descriptor
 
@@ -2220,30 +2667,10 @@ class Event(Message):
         Data: bytes = ...,
         Err: str = ...,
     ) -> None: ...
-    def HasField(
-        self,
-        field_name: typing_extensions.Literal[
-            "Client", b"Client", "Job", b"Job", "Session", b"Session"
-        ],
-    ) -> bool: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal[
-            "Client",
-            b"Client",
-            "Data",
-            b"Data",
-            "Err",
-            b"Err",
-            "EventType",
-            b"EventType",
-            "Job",
-            b"Job",
-            "Session",
-            b"Session",
-        ],
-    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["Client", b"Client", "Job", b"Job", "Session", b"Session"]) -> bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Client", b"Client", "Data", b"Data", "Err", b"Err", "EventType", b"EventType", "Job", b"Job", "Session", b"Session"]) -> None: ...
 
+@typing_extensions.final
 class Operators(Message):
     DESCRIPTOR: Descriptor
 
@@ -2255,10 +2682,9 @@ class Operators(Message):
         *,
         Operators: Iterable[Operator] | None = ...,
     ) -> None: ...
-    def ClearField(
-        self, field_name: typing_extensions.Literal["Operators", b"Operators"]
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Operators", b"Operators"]) -> None: ...
 
+@typing_extensions.final
 class Operator(Message):
     DESCRIPTOR: Descriptor
 
@@ -2272,20 +2698,22 @@ class Operator(Message):
         Online: bool = ...,
         Name: str = ...,
     ) -> None: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal["Name", b"Name", "Online", b"Online"],
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Name", b"Name", "Online", b"Online"]) -> None: ...
 
+@typing_extensions.final
 class WebContent(Message):
     """[ Websites ] ----------------------------------------"""
 
     DESCRIPTOR: Descriptor
 
+    ID_FIELD_NUMBER: int
+    WEBSITEID_FIELD_NUMBER: int
     PATH_FIELD_NUMBER: int
     CONTENTTYPE_FIELD_NUMBER: int
     SIZE_FIELD_NUMBER: int
     CONTENT_FIELD_NUMBER: int
+    ID: str
+    WebsiteID: str
     Path: str
     ContentType: str
     Size: int
@@ -2293,28 +2721,20 @@ class WebContent(Message):
     def __init__(
         self,
         *,
+        ID: str = ...,
+        WebsiteID: str = ...,
         Path: str = ...,
         ContentType: str = ...,
         Size: int = ...,
         Content: bytes = ...,
     ) -> None: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal[
-            "Content",
-            b"Content",
-            "ContentType",
-            b"ContentType",
-            "Path",
-            b"Path",
-            "Size",
-            b"Size",
-        ],
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Content", b"Content", "ContentType", b"ContentType", "ID", b"ID", "Path", b"Path", "Size", b"Size", "WebsiteID", b"WebsiteID"]) -> None: ...
 
+@typing_extensions.final
 class WebsiteAddContent(Message):
     DESCRIPTOR: Descriptor
 
+    @typing_extensions.final
     class ContentsEntry(Message):
         DESCRIPTOR: Descriptor
 
@@ -2329,13 +2749,8 @@ class WebsiteAddContent(Message):
             key: str = ...,
             value: WebContent | None = ...,
         ) -> None: ...
-        def HasField(
-            self, field_name: typing_extensions.Literal["value", b"value"]
-        ) -> bool: ...
-        def ClearField(
-            self,
-            field_name: typing_extensions.Literal["key", b"key", "value", b"value"],
-        ) -> None: ...
+        def HasField(self, field_name: typing_extensions.Literal["value", b"value"]) -> bool: ...
+        def ClearField(self, field_name: typing_extensions.Literal["key", b"key", "value", b"value"]) -> None: ...
 
     NAME_FIELD_NUMBER: int
     CONTENTS_FIELD_NUMBER: int
@@ -2348,11 +2763,9 @@ class WebsiteAddContent(Message):
         Name: str = ...,
         Contents: Mapping[str, WebContent] | None = ...,
     ) -> None: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal["Contents", b"Contents", "Name", b"Name"],
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Contents", b"Contents", "Name", b"Name"]) -> None: ...
 
+@typing_extensions.final
 class WebsiteRemoveContent(Message):
     DESCRIPTOR: Descriptor
 
@@ -2367,13 +2780,13 @@ class WebsiteRemoveContent(Message):
         Name: str = ...,
         Paths: Iterable[str] | None = ...,
     ) -> None: ...
-    def ClearField(
-        self, field_name: typing_extensions.Literal["Name", b"Name", "Paths", b"Paths"]
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Name", b"Name", "Paths", b"Paths"]) -> None: ...
 
+@typing_extensions.final
 class Website(Message):
     DESCRIPTOR: Descriptor
 
+    @typing_extensions.final
     class ContentsEntry(Message):
         DESCRIPTOR: Descriptor
 
@@ -2388,30 +2801,26 @@ class Website(Message):
             key: str = ...,
             value: WebContent | None = ...,
         ) -> None: ...
-        def HasField(
-            self, field_name: typing_extensions.Literal["value", b"value"]
-        ) -> bool: ...
-        def ClearField(
-            self,
-            field_name: typing_extensions.Literal["key", b"key", "value", b"value"],
-        ) -> None: ...
+        def HasField(self, field_name: typing_extensions.Literal["value", b"value"]) -> bool: ...
+        def ClearField(self, field_name: typing_extensions.Literal["key", b"key", "value", b"value"]) -> None: ...
 
+    ID_FIELD_NUMBER: int
     NAME_FIELD_NUMBER: int
     CONTENTS_FIELD_NUMBER: int
+    ID: str
     Name: str
     @property
     def Contents(self) -> MessageMap[str, WebContent]: ...
     def __init__(
         self,
         *,
+        ID: str = ...,
         Name: str = ...,
         Contents: Mapping[str, WebContent] | None = ...,
     ) -> None: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal["Contents", b"Contents", "Name", b"Name"],
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Contents", b"Contents", "ID", b"ID", "Name", b"Name"]) -> None: ...
 
+@typing_extensions.final
 class Websites(Message):
     DESCRIPTOR: Descriptor
 
@@ -2423,10 +2832,9 @@ class Websites(Message):
         *,
         Websites: Iterable[Website] | None = ...,
     ) -> None: ...
-    def ClearField(
-        self, field_name: typing_extensions.Literal["Websites", b"Websites"]
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Websites", b"Websites"]) -> None: ...
 
+@typing_extensions.final
 class WGClientConfig(Message):
     """[ Wireguard ] ----------------------------------------"""
 
@@ -2448,101 +2856,39 @@ class WGClientConfig(Message):
         ClientPubKey: str = ...,
         ClientIP: str = ...,
     ) -> None: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal[
-            "ClientIP",
-            b"ClientIP",
-            "ClientPrivateKey",
-            b"ClientPrivateKey",
-            "ClientPubKey",
-            b"ClientPubKey",
-            "ServerPubKey",
-            b"ServerPubKey",
-        ],
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["ClientIP", b"ClientIP", "ClientPrivateKey", b"ClientPrivateKey", "ClientPubKey", b"ClientPubKey", "ServerPubKey", b"ServerPubKey"]) -> None: ...
 
-class Credential(Message):
-    DESCRIPTOR: Descriptor
-
-    USER_FIELD_NUMBER: int
-    PASSWORD_FIELD_NUMBER: int
-    APIKEY_FIELD_NUMBER: int
-    User: str
-    """USER_PASSWORD"""
-    Password: str
-    APIKey: str
-    """API_KEY"""
-    def __init__(
-        self,
-        *,
-        User: str = ...,
-        Password: str = ...,
-        APIKey: str = ...,
-    ) -> None: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal[
-            "APIKey", b"APIKey", "Password", b"Password", "User", b"User"
-        ],
-    ) -> None: ...
-
+@typing_extensions.final
 class Loot(Message):
     DESCRIPTOR: Descriptor
 
-    TYPE_FIELD_NUMBER: int
-    LOOTID_FIELD_NUMBER: int
+    ID_FIELD_NUMBER: int
     NAME_FIELD_NUMBER: int
-    CREDENTIALTYPE_FIELD_NUMBER: int
-    CREDENTIAL_FIELD_NUMBER: int
     FILETYPE_FIELD_NUMBER: int
+    ORIGINHOSTUUID_FIELD_NUMBER: int
+    SIZE_FIELD_NUMBER: int
     FILE_FIELD_NUMBER: int
-    Type: LootType.ValueType
-    LootID: str
+    ID: str
     Name: str
-    CredentialType: CredentialType.ValueType
-    @property
-    def Credential(self) -> Credential: ...
     FileType: FileType.ValueType
+    OriginHostUUID: str
+    Size: int
     @property
     def File(self) -> File: ...
     def __init__(
         self,
         *,
-        Type: LootType.ValueType = ...,
-        LootID: str = ...,
+        ID: str = ...,
         Name: str = ...,
-        CredentialType: CredentialType.ValueType = ...,
-        Credential: Credential | None = ...,
         FileType: FileType.ValueType = ...,
+        OriginHostUUID: str = ...,
+        Size: int = ...,
         File: File | None = ...,
     ) -> None: ...
-    def HasField(
-        self,
-        field_name: typing_extensions.Literal[
-            "Credential", b"Credential", "File", b"File"
-        ],
-    ) -> bool: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal[
-            "Credential",
-            b"Credential",
-            "CredentialType",
-            b"CredentialType",
-            "File",
-            b"File",
-            "FileType",
-            b"FileType",
-            "LootID",
-            b"LootID",
-            "Name",
-            b"Name",
-            "Type",
-            b"Type",
-        ],
-    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["File", b"File"]) -> bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["File", b"File", "FileType", b"FileType", "ID", b"ID", "Name", b"Name", "OriginHostUUID", b"OriginHostUUID", "Size", b"Size"]) -> None: ...
 
+@typing_extensions.final
 class AllLoot(Message):
     DESCRIPTOR: Descriptor
 
@@ -2554,10 +2900,9 @@ class AllLoot(Message):
         *,
         Loot: Iterable[Loot] | None = ...,
     ) -> None: ...
-    def ClearField(
-        self, field_name: typing_extensions.Literal["Loot", b"Loot"]
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Loot", b"Loot"]) -> None: ...
 
+@typing_extensions.final
 class IOC(Message):
     """[ Hosts ] ----------------------------------------"""
 
@@ -2576,13 +2921,9 @@ class IOC(Message):
         FileHash: str = ...,
         ID: str = ...,
     ) -> None: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal[
-            "FileHash", b"FileHash", "ID", b"ID", "Path", b"Path"
-        ],
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["FileHash", b"FileHash", "ID", b"ID", "Path", b"Path"]) -> None: ...
 
+@typing_extensions.final
 class ExtensionData(Message):
     DESCRIPTOR: Descriptor
 
@@ -2593,13 +2934,13 @@ class ExtensionData(Message):
         *,
         Output: str = ...,
     ) -> None: ...
-    def ClearField(
-        self, field_name: typing_extensions.Literal["Output", b"Output"]
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Output", b"Output"]) -> None: ...
 
+@typing_extensions.final
 class Host(Message):
     DESCRIPTOR: Descriptor
 
+    @typing_extensions.final
     class ExtensionDataEntry(Message):
         DESCRIPTOR: Descriptor
 
@@ -2614,14 +2955,10 @@ class Host(Message):
             key: str = ...,
             value: ExtensionData | None = ...,
         ) -> None: ...
-        def HasField(
-            self, field_name: typing_extensions.Literal["value", b"value"]
-        ) -> bool: ...
-        def ClearField(
-            self,
-            field_name: typing_extensions.Literal["key", b"key", "value", b"value"],
-        ) -> None: ...
+        def HasField(self, field_name: typing_extensions.Literal["value", b"value"]) -> bool: ...
+        def ClearField(self, field_name: typing_extensions.Literal["key", b"key", "value", b"value"]) -> None: ...
 
+    ID_FIELD_NUMBER: int
     HOSTNAME_FIELD_NUMBER: int
     HOSTUUID_FIELD_NUMBER: int
     OSVERSION_FIELD_NUMBER: int
@@ -2629,6 +2966,7 @@ class Host(Message):
     EXTENSIONDATA_FIELD_NUMBER: int
     LOCALE_FIELD_NUMBER: int
     FIRSTCONTACT_FIELD_NUMBER: int
+    ID: str
     Hostname: str
     HostUUID: str
     OSVersion: str
@@ -2641,6 +2979,7 @@ class Host(Message):
     def __init__(
         self,
         *,
+        ID: str = ...,
         Hostname: str = ...,
         HostUUID: str = ...,
         OSVersion: str = ...,
@@ -2649,26 +2988,9 @@ class Host(Message):
         Locale: str = ...,
         FirstContact: int = ...,
     ) -> None: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal[
-            "ExtensionData",
-            b"ExtensionData",
-            "FirstContact",
-            b"FirstContact",
-            "HostUUID",
-            b"HostUUID",
-            "Hostname",
-            b"Hostname",
-            "IOCs",
-            b"IOCs",
-            "Locale",
-            b"Locale",
-            "OSVersion",
-            b"OSVersion",
-        ],
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["ExtensionData", b"ExtensionData", "FirstContact", b"FirstContact", "HostUUID", b"HostUUID", "Hostname", b"Hostname", "ID", b"ID", "IOCs", b"IOCs", "Locale", b"Locale", "OSVersion", b"OSVersion"]) -> None: ...
 
+@typing_extensions.final
 class AllHosts(Message):
     DESCRIPTOR: Descriptor
 
@@ -2680,10 +3002,9 @@ class AllHosts(Message):
         *,
         Hosts: Iterable[Host] | None = ...,
     ) -> None: ...
-    def ClearField(
-        self, field_name: typing_extensions.Literal["Hosts", b"Hosts"]
-    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Hosts", b"Hosts"]) -> None: ...
 
+@typing_extensions.final
 class DllHijackReq(Message):
     """[ Dll Hijack ] ----------------------------------------"""
 
@@ -2694,12 +3015,14 @@ class DllHijackReq(Message):
     REFERENCEDLL_FIELD_NUMBER: int
     TARGETDLL_FIELD_NUMBER: int
     PROFILENAME_FIELD_NUMBER: int
+    NAME_FIELD_NUMBER: int
     REQUEST_FIELD_NUMBER: int
     ReferenceDLLPath: str
     TargetLocation: str
     ReferenceDLL: bytes
     TargetDLL: bytes
     ProfileName: str
+    Name: str
     @property
     def Request(self) -> Request: ...
     def __init__(
@@ -2710,29 +3033,13 @@ class DllHijackReq(Message):
         ReferenceDLL: bytes = ...,
         TargetDLL: bytes = ...,
         ProfileName: str = ...,
+        Name: str = ...,
         Request: Request | None = ...,
     ) -> None: ...
-    def HasField(
-        self, field_name: typing_extensions.Literal["Request", b"Request"]
-    ) -> bool: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal[
-            "ProfileName",
-            b"ProfileName",
-            "ReferenceDLL",
-            b"ReferenceDLL",
-            "ReferenceDLLPath",
-            b"ReferenceDLLPath",
-            "Request",
-            b"Request",
-            "TargetDLL",
-            b"TargetDLL",
-            "TargetLocation",
-            b"TargetLocation",
-        ],
-    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["Request", b"Request"]) -> bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Name", b"Name", "ProfileName", b"ProfileName", "ReferenceDLL", b"ReferenceDLL", "ReferenceDLLPath", b"ReferenceDLLPath", "Request", b"Request", "TargetDLL", b"TargetDLL", "TargetLocation", b"TargetLocation"]) -> None: ...
 
+@typing_extensions.final
 class DllHijack(Message):
     DESCRIPTOR: Descriptor
 
@@ -2744,13 +3051,49 @@ class DllHijack(Message):
         *,
         Response: Response | None = ...,
     ) -> None: ...
-    def HasField(
-        self, field_name: typing_extensions.Literal["Response", b"Response"]
-    ) -> bool: ...
-    def ClearField(
-        self, field_name: typing_extensions.Literal["Response", b"Response"]
-    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["Response", b"Response"]) -> bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Response", b"Response"]) -> None: ...
 
+@typing_extensions.final
+class BackdoorReq(Message):
+    DESCRIPTOR: Descriptor
+
+    FILEPATH_FIELD_NUMBER: int
+    PROFILENAME_FIELD_NUMBER: int
+    NAME_FIELD_NUMBER: int
+    REQUEST_FIELD_NUMBER: int
+    FilePath: str
+    ProfileName: str
+    Name: str
+    @property
+    def Request(self) -> Request: ...
+    def __init__(
+        self,
+        *,
+        FilePath: str = ...,
+        ProfileName: str = ...,
+        Name: str = ...,
+        Request: Request | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["Request", b"Request"]) -> bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["FilePath", b"FilePath", "Name", b"Name", "ProfileName", b"ProfileName", "Request", b"Request"]) -> None: ...
+
+@typing_extensions.final
+class Backdoor(Message):
+    DESCRIPTOR: Descriptor
+
+    RESPONSE_FIELD_NUMBER: int
+    @property
+    def Response(self) -> Response: ...
+    def __init__(
+        self,
+        *,
+        Response: Response | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["Response", b"Response"]) -> bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Response", b"Response"]) -> None: ...
+
+@typing_extensions.final
 class ShellcodeEncodeReq(Message):
     DESCRIPTOR: Descriptor
 
@@ -2777,27 +3120,10 @@ class ShellcodeEncodeReq(Message):
         Data: bytes = ...,
         Request: Request | None = ...,
     ) -> None: ...
-    def HasField(
-        self, field_name: typing_extensions.Literal["Request", b"Request"]
-    ) -> bool: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal[
-            "Architecture",
-            b"Architecture",
-            "BadChars",
-            b"BadChars",
-            "Data",
-            b"Data",
-            "Encoder",
-            b"Encoder",
-            "Iterations",
-            b"Iterations",
-            "Request",
-            b"Request",
-        ],
-    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["Request", b"Request"]) -> bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Architecture", b"Architecture", "BadChars", b"BadChars", "Data", b"Data", "Encoder", b"Encoder", "Iterations", b"Iterations", "Request", b"Request"]) -> None: ...
 
+@typing_extensions.final
 class ShellcodeEncode(Message):
     DESCRIPTOR: Descriptor
 
@@ -2812,17 +3138,14 @@ class ShellcodeEncode(Message):
         Data: bytes = ...,
         Response: Response | None = ...,
     ) -> None: ...
-    def HasField(
-        self, field_name: typing_extensions.Literal["Response", b"Response"]
-    ) -> bool: ...
-    def ClearField(
-        self,
-        field_name: typing_extensions.Literal["Data", b"Data", "Response", b"Response"],
-    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["Response", b"Response"]) -> bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Data", b"Data", "Response", b"Response"]) -> None: ...
 
+@typing_extensions.final
 class ShellcodeEncoderMap(Message):
     DESCRIPTOR: Descriptor
 
+    @typing_extensions.final
     class EncodersEntry(Message):
         DESCRIPTOR: Descriptor
 
@@ -2836,10 +3159,7 @@ class ShellcodeEncoderMap(Message):
             key: str = ...,
             value: ShellcodeEncoder.ValueType = ...,
         ) -> None: ...
-        def ClearField(
-            self,
-            field_name: typing_extensions.Literal["key", b"key", "value", b"value"],
-        ) -> None: ...
+        def ClearField(self, field_name: typing_extensions.Literal["key", b"key", "value", b"value"]) -> None: ...
 
     ENCODERS_FIELD_NUMBER: int
     @property
@@ -2849,6 +3169,1233 @@ class ShellcodeEncoderMap(Message):
         *,
         Encoders: Mapping[str, ShellcodeEncoder.ValueType] | None = ...,
     ) -> None: ...
-    def ClearField(
-        self, field_name: typing_extensions.Literal["Encoders", b"Encoders"]
+    def ClearField(self, field_name: typing_extensions.Literal["Encoders", b"Encoders"]) -> None: ...
+
+@typing_extensions.final
+class ExternalGenerateReq(Message):
+    """[ Builder ] ----------------------------------------"""
+
+    DESCRIPTOR: Descriptor
+
+    CONFIG_FIELD_NUMBER: int
+    BUILDERNAME_FIELD_NUMBER: int
+    NAME_FIELD_NUMBER: int
+    @property
+    def Config(self) -> ImplantConfig: ...
+    BuilderName: str
+    Name: str
+    def __init__(
+        self,
+        *,
+        Config: ImplantConfig | None = ...,
+        BuilderName: str = ...,
+        Name: str = ...,
     ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["Config", b"Config"]) -> bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["BuilderName", b"BuilderName", "Config", b"Config", "Name", b"Name"]) -> None: ...
+
+@typing_extensions.final
+class Builders(Message):
+    DESCRIPTOR: Descriptor
+
+    BUILDERS_FIELD_NUMBER: int
+    @property
+    def Builders(self) -> RepeatedCompositeFieldContainer[Builder]: ...
+    def __init__(
+        self,
+        *,
+        Builders: Iterable[Builder] | None = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Builders", b"Builders"]) -> None: ...
+
+@typing_extensions.final
+class Builder(Message):
+    DESCRIPTOR: Descriptor
+
+    NAME_FIELD_NUMBER: int
+    OPERATORNAME_FIELD_NUMBER: int
+    GOOS_FIELD_NUMBER: int
+    GOARCH_FIELD_NUMBER: int
+    TEMPLATES_FIELD_NUMBER: int
+    TARGETS_FIELD_NUMBER: int
+    CROSSCOMPILERS_FIELD_NUMBER: int
+    Name: str
+    OperatorName: str
+    GOOS: str
+    """The builder's OS"""
+    GOARCH: str
+    """The builder's Arch"""
+    @property
+    def Templates(self) -> RepeatedScalarFieldContainer[str]: ...
+    @property
+    def Targets(self) -> RepeatedCompositeFieldContainer[CompilerTarget]: ...
+    @property
+    def CrossCompilers(self) -> RepeatedCompositeFieldContainer[CrossCompiler]: ...
+    def __init__(
+        self,
+        *,
+        Name: str = ...,
+        OperatorName: str = ...,
+        GOOS: str = ...,
+        GOARCH: str = ...,
+        Templates: Iterable[str] | None = ...,
+        Targets: Iterable[CompilerTarget] | None = ...,
+        CrossCompilers: Iterable[CrossCompiler] | None = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["CrossCompilers", b"CrossCompilers", "GOARCH", b"GOARCH", "GOOS", b"GOOS", "Name", b"Name", "OperatorName", b"OperatorName", "Targets", b"Targets", "Templates", b"Templates"]) -> None: ...
+
+@typing_extensions.final
+class HTTPC2Configs(Message):
+    """[ HTTP C2 ] ----------------------------------------"""
+
+    DESCRIPTOR: Descriptor
+
+    CONFIGS_FIELD_NUMBER: int
+    @property
+    def configs(self) -> RepeatedCompositeFieldContainer[HTTPC2Config]: ...
+    def __init__(
+        self,
+        *,
+        configs: Iterable[HTTPC2Config] | None = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["configs", b"configs"]) -> None: ...
+
+@typing_extensions.final
+class C2ProfileReq(Message):
+    DESCRIPTOR: Descriptor
+
+    NAME_FIELD_NUMBER: int
+    Name: str
+    def __init__(
+        self,
+        *,
+        Name: str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Name", b"Name"]) -> None: ...
+
+@typing_extensions.final
+class HTTPC2ConfigReq(Message):
+    DESCRIPTOR: Descriptor
+
+    OVERWRITE_FIELD_NUMBER: int
+    C2CONFIG_FIELD_NUMBER: int
+    overwrite: bool
+    @property
+    def C2Config(self) -> HTTPC2Config: ...
+    def __init__(
+        self,
+        *,
+        overwrite: bool = ...,
+        C2Config: HTTPC2Config | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["C2Config", b"C2Config"]) -> bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["C2Config", b"C2Config", "overwrite", b"overwrite"]) -> None: ...
+
+@typing_extensions.final
+class HTTPC2Config(Message):
+    DESCRIPTOR: Descriptor
+
+    ID_FIELD_NUMBER: int
+    CREATED_FIELD_NUMBER: int
+    NAME_FIELD_NUMBER: int
+    SERVERCONFIG_FIELD_NUMBER: int
+    IMPLANTCONFIG_FIELD_NUMBER: int
+    ID: str
+    Created: int
+    Name: str
+    @property
+    def ServerConfig(self) -> HTTPC2ServerConfig: ...
+    @property
+    def ImplantConfig(self) -> HTTPC2ImplantConfig: ...
+    def __init__(
+        self,
+        *,
+        ID: str = ...,
+        Created: int = ...,
+        Name: str = ...,
+        ServerConfig: HTTPC2ServerConfig | None = ...,
+        ImplantConfig: HTTPC2ImplantConfig | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["ImplantConfig", b"ImplantConfig", "ServerConfig", b"ServerConfig"]) -> bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Created", b"Created", "ID", b"ID", "ImplantConfig", b"ImplantConfig", "Name", b"Name", "ServerConfig", b"ServerConfig"]) -> None: ...
+
+@typing_extensions.final
+class HTTPC2ServerConfig(Message):
+    DESCRIPTOR: Descriptor
+
+    ID_FIELD_NUMBER: int
+    RANDOMVERSIONHEADERS_FIELD_NUMBER: int
+    HEADERS_FIELD_NUMBER: int
+    COOKIES_FIELD_NUMBER: int
+    ID: str
+    RandomVersionHeaders: bool
+    @property
+    def Headers(self) -> RepeatedCompositeFieldContainer[HTTPC2Header]: ...
+    @property
+    def Cookies(self) -> RepeatedCompositeFieldContainer[HTTPC2Cookie]: ...
+    def __init__(
+        self,
+        *,
+        ID: str = ...,
+        RandomVersionHeaders: bool = ...,
+        Headers: Iterable[HTTPC2Header] | None = ...,
+        Cookies: Iterable[HTTPC2Cookie] | None = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Cookies", b"Cookies", "Headers", b"Headers", "ID", b"ID", "RandomVersionHeaders", b"RandomVersionHeaders"]) -> None: ...
+
+@typing_extensions.final
+class HTTPC2ImplantConfig(Message):
+    DESCRIPTOR: Descriptor
+
+    ID_FIELD_NUMBER: int
+    USERAGENT_FIELD_NUMBER: int
+    CHROMEBASEVERSION_FIELD_NUMBER: int
+    MACOSVERSION_FIELD_NUMBER: int
+    NONCEQUERYARGCHARS_FIELD_NUMBER: int
+    EXTRAURLPARAMETERS_FIELD_NUMBER: int
+    HEADERS_FIELD_NUMBER: int
+    MAXFILES_FIELD_NUMBER: int
+    MINFILES_FIELD_NUMBER: int
+    MAXPATHS_FIELD_NUMBER: int
+    MINPATHS_FIELD_NUMBER: int
+    STAGERFILEEXTENSION_FIELD_NUMBER: int
+    POLLFILEEXTENSION_FIELD_NUMBER: int
+    STARTSESSIONFILEEXTENSION_FIELD_NUMBER: int
+    SESSIONFILEEXTENSION_FIELD_NUMBER: int
+    CLOSEFILEEXTENSION_FIELD_NUMBER: int
+    PATHSEGMENTS_FIELD_NUMBER: int
+    ID: str
+    UserAgent: str
+    ChromeBaseVersion: int
+    MacOSVersion: str
+    NonceQueryArgChars: str
+    @property
+    def ExtraURLParameters(self) -> RepeatedCompositeFieldContainer[HTTPC2URLParameter]: ...
+    @property
+    def Headers(self) -> RepeatedCompositeFieldContainer[HTTPC2Header]: ...
+    MaxFiles: int
+    MinFiles: int
+    MaxPaths: int
+    MinPaths: int
+    StagerFileExtension: str
+    PollFileExtension: str
+    StartSessionFileExtension: str
+    SessionFileExtension: str
+    CloseFileExtension: str
+    @property
+    def PathSegments(self) -> RepeatedCompositeFieldContainer[HTTPC2PathSegment]: ...
+    def __init__(
+        self,
+        *,
+        ID: str = ...,
+        UserAgent: str = ...,
+        ChromeBaseVersion: int = ...,
+        MacOSVersion: str = ...,
+        NonceQueryArgChars: str = ...,
+        ExtraURLParameters: Iterable[HTTPC2URLParameter] | None = ...,
+        Headers: Iterable[HTTPC2Header] | None = ...,
+        MaxFiles: int = ...,
+        MinFiles: int = ...,
+        MaxPaths: int = ...,
+        MinPaths: int = ...,
+        StagerFileExtension: str = ...,
+        PollFileExtension: str = ...,
+        StartSessionFileExtension: str = ...,
+        SessionFileExtension: str = ...,
+        CloseFileExtension: str = ...,
+        PathSegments: Iterable[HTTPC2PathSegment] | None = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["ChromeBaseVersion", b"ChromeBaseVersion", "CloseFileExtension", b"CloseFileExtension", "ExtraURLParameters", b"ExtraURLParameters", "Headers", b"Headers", "ID", b"ID", "MacOSVersion", b"MacOSVersion", "MaxFiles", b"MaxFiles", "MaxPaths", b"MaxPaths", "MinFiles", b"MinFiles", "MinPaths", b"MinPaths", "NonceQueryArgChars", b"NonceQueryArgChars", "PathSegments", b"PathSegments", "PollFileExtension", b"PollFileExtension", "SessionFileExtension", b"SessionFileExtension", "StagerFileExtension", b"StagerFileExtension", "StartSessionFileExtension", b"StartSessionFileExtension", "UserAgent", b"UserAgent"]) -> None: ...
+
+@typing_extensions.final
+class HTTPC2Cookie(Message):
+    DESCRIPTOR: Descriptor
+
+    ID_FIELD_NUMBER: int
+    NAME_FIELD_NUMBER: int
+    ID: str
+    Name: str
+    def __init__(
+        self,
+        *,
+        ID: str = ...,
+        Name: str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["ID", b"ID", "Name", b"Name"]) -> None: ...
+
+@typing_extensions.final
+class HTTPC2Header(Message):
+    DESCRIPTOR: Descriptor
+
+    ID_FIELD_NUMBER: int
+    METHOD_FIELD_NUMBER: int
+    NAME_FIELD_NUMBER: int
+    VALUE_FIELD_NUMBER: int
+    PROBABILITY_FIELD_NUMBER: int
+    ID: str
+    Method: str
+    Name: str
+    Value: str
+    Probability: int
+    def __init__(
+        self,
+        *,
+        ID: str = ...,
+        Method: str = ...,
+        Name: str = ...,
+        Value: str = ...,
+        Probability: int = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["ID", b"ID", "Method", b"Method", "Name", b"Name", "Probability", b"Probability", "Value", b"Value"]) -> None: ...
+
+@typing_extensions.final
+class HTTPC2URLParameter(Message):
+    DESCRIPTOR: Descriptor
+
+    ID_FIELD_NUMBER: int
+    METHOD_FIELD_NUMBER: int
+    NAME_FIELD_NUMBER: int
+    VALUE_FIELD_NUMBER: int
+    PROBABILITY_FIELD_NUMBER: int
+    ID: str
+    Method: str
+    Name: str
+    Value: str
+    Probability: int
+    def __init__(
+        self,
+        *,
+        ID: str = ...,
+        Method: str = ...,
+        Name: str = ...,
+        Value: str = ...,
+        Probability: int = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["ID", b"ID", "Method", b"Method", "Name", b"Name", "Probability", b"Probability", "Value", b"Value"]) -> None: ...
+
+@typing_extensions.final
+class HTTPC2PathSegment(Message):
+    DESCRIPTOR: Descriptor
+
+    ID_FIELD_NUMBER: int
+    ISFILE_FIELD_NUMBER: int
+    SEGMENTTYPE_FIELD_NUMBER: int
+    VALUE_FIELD_NUMBER: int
+    ID: str
+    IsFile: bool
+    SegmentType: HTTPC2SegmentType.ValueType
+    Value: str
+    def __init__(
+        self,
+        *,
+        ID: str = ...,
+        IsFile: bool = ...,
+        SegmentType: HTTPC2SegmentType.ValueType = ...,
+        Value: str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["ID", b"ID", "IsFile", b"IsFile", "SegmentType", b"SegmentType", "Value", b"Value"]) -> None: ...
+
+@typing_extensions.final
+class Credential(Message):
+    """[ Credentials ] ----------------------------------------"""
+
+    DESCRIPTOR: Descriptor
+
+    ID_FIELD_NUMBER: int
+    USERNAME_FIELD_NUMBER: int
+    PLAINTEXT_FIELD_NUMBER: int
+    HASH_FIELD_NUMBER: int
+    HASHTYPE_FIELD_NUMBER: int
+    ISCRACKED_FIELD_NUMBER: int
+    ORIGINHOSTUUID_FIELD_NUMBER: int
+    COLLECTION_FIELD_NUMBER: int
+    ID: str
+    Username: str
+    Plaintext: str
+    Hash: str
+    HashType: HashType.ValueType
+    IsCracked: bool
+    OriginHostUUID: str
+    Collection: str
+    def __init__(
+        self,
+        *,
+        ID: str = ...,
+        Username: str = ...,
+        Plaintext: str = ...,
+        Hash: str = ...,
+        HashType: HashType.ValueType = ...,
+        IsCracked: bool = ...,
+        OriginHostUUID: str = ...,
+        Collection: str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Collection", b"Collection", "Hash", b"Hash", "HashType", b"HashType", "ID", b"ID", "IsCracked", b"IsCracked", "OriginHostUUID", b"OriginHostUUID", "Plaintext", b"Plaintext", "Username", b"Username"]) -> None: ...
+
+@typing_extensions.final
+class Credentials(Message):
+    DESCRIPTOR: Descriptor
+
+    CREDENTIALS_FIELD_NUMBER: int
+    @property
+    def Credentials(self) -> RepeatedCompositeFieldContainer[Credential]: ...
+    def __init__(
+        self,
+        *,
+        Credentials: Iterable[Credential] | None = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Credentials", b"Credentials"]) -> None: ...
+
+@typing_extensions.final
+class Crackstations(Message):
+    """[ Crackstation ] ----------------------------------------"""
+
+    DESCRIPTOR: Descriptor
+
+    CRACKSTATIONS_FIELD_NUMBER: int
+    @property
+    def Crackstations(self) -> RepeatedCompositeFieldContainer[Crackstation]: ...
+    def __init__(
+        self,
+        *,
+        Crackstations: Iterable[Crackstation] | None = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Crackstations", b"Crackstations"]) -> None: ...
+
+@typing_extensions.final
+class CrackstationStatus(Message):
+    DESCRIPTOR: Descriptor
+
+    NAME_FIELD_NUMBER: int
+    HOSTUUID_FIELD_NUMBER: int
+    STATE_FIELD_NUMBER: int
+    CURRENTCRACKJOBID_FIELD_NUMBER: int
+    ISSYNCING_FIELD_NUMBER: int
+    SYNCING_FIELD_NUMBER: int
+    Name: str
+    HostUUID: str
+    State: States.ValueType
+    CurrentCrackJobID: str
+    IsSyncing: bool
+    @property
+    def Syncing(self) -> CrackSyncStatus: ...
+    def __init__(
+        self,
+        *,
+        Name: str = ...,
+        HostUUID: str = ...,
+        State: States.ValueType = ...,
+        CurrentCrackJobID: str = ...,
+        IsSyncing: bool = ...,
+        Syncing: CrackSyncStatus | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["Syncing", b"Syncing"]) -> bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["CurrentCrackJobID", b"CurrentCrackJobID", "HostUUID", b"HostUUID", "IsSyncing", b"IsSyncing", "Name", b"Name", "State", b"State", "Syncing", b"Syncing"]) -> None: ...
+
+@typing_extensions.final
+class CrackSyncStatus(Message):
+    DESCRIPTOR: Descriptor
+
+    @typing_extensions.final
+    class ProgressEntry(Message):
+        DESCRIPTOR: Descriptor
+
+        KEY_FIELD_NUMBER: int
+        VALUE_FIELD_NUMBER: int
+        key: str
+        value: float
+        def __init__(
+            self,
+            *,
+            key: str = ...,
+            value: float = ...,
+        ) -> None: ...
+        def ClearField(self, field_name: typing_extensions.Literal["key", b"key", "value", b"value"]) -> None: ...
+
+    SPEED_FIELD_NUMBER: int
+    PROGRESS_FIELD_NUMBER: int
+    Speed: float
+    @property
+    def Progress(self) -> ScalarMap[str, float]: ...
+    def __init__(
+        self,
+        *,
+        Speed: float = ...,
+        Progress: Mapping[str, float] | None = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Progress", b"Progress", "Speed", b"Speed"]) -> None: ...
+
+@typing_extensions.final
+class CrackBenchmark(Message):
+    DESCRIPTOR: Descriptor
+
+    @typing_extensions.final
+    class BenchmarksEntry(Message):
+        DESCRIPTOR: Descriptor
+
+        KEY_FIELD_NUMBER: int
+        VALUE_FIELD_NUMBER: int
+        key: int
+        value: int
+        def __init__(
+            self,
+            *,
+            key: int = ...,
+            value: int = ...,
+        ) -> None: ...
+        def ClearField(self, field_name: typing_extensions.Literal["key", b"key", "value", b"value"]) -> None: ...
+
+    NAME_FIELD_NUMBER: int
+    HOSTUUID_FIELD_NUMBER: int
+    BENCHMARKS_FIELD_NUMBER: int
+    Name: str
+    HostUUID: str
+    @property
+    def Benchmarks(self) -> ScalarMap[int, int]: ...
+    def __init__(
+        self,
+        *,
+        Name: str = ...,
+        HostUUID: str = ...,
+        Benchmarks: Mapping[int, int] | None = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Benchmarks", b"Benchmarks", "HostUUID", b"HostUUID", "Name", b"Name"]) -> None: ...
+
+@typing_extensions.final
+class CrackTask(Message):
+    DESCRIPTOR: Descriptor
+
+    ID_FIELD_NUMBER: int
+    HOSTUUID_FIELD_NUMBER: int
+    CREATEDAT_FIELD_NUMBER: int
+    STARTEDAT_FIELD_NUMBER: int
+    COMPLETEDAT_FIELD_NUMBER: int
+    ERR_FIELD_NUMBER: int
+    COMMAND_FIELD_NUMBER: int
+    ID: str
+    HostUUID: str
+    """CrackstationID"""
+    CreatedAt: int
+    StartedAt: int
+    CompletedAt: int
+    Err: str
+    @property
+    def Command(self) -> CrackCommand: ...
+    def __init__(
+        self,
+        *,
+        ID: str = ...,
+        HostUUID: str = ...,
+        CreatedAt: int = ...,
+        StartedAt: int = ...,
+        CompletedAt: int = ...,
+        Err: str = ...,
+        Command: CrackCommand | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["Command", b"Command"]) -> bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Command", b"Command", "CompletedAt", b"CompletedAt", "CreatedAt", b"CreatedAt", "Err", b"Err", "HostUUID", b"HostUUID", "ID", b"ID", "StartedAt", b"StartedAt"]) -> None: ...
+
+@typing_extensions.final
+class Crackstation(Message):
+    DESCRIPTOR: Descriptor
+
+    @typing_extensions.final
+    class BenchmarksEntry(Message):
+        DESCRIPTOR: Descriptor
+
+        KEY_FIELD_NUMBER: int
+        VALUE_FIELD_NUMBER: int
+        key: int
+        value: int
+        def __init__(
+            self,
+            *,
+            key: int = ...,
+            value: int = ...,
+        ) -> None: ...
+        def ClearField(self, field_name: typing_extensions.Literal["key", b"key", "value", b"value"]) -> None: ...
+
+    ID_FIELD_NUMBER: int
+    NAME_FIELD_NUMBER: int
+    OPERATORNAME_FIELD_NUMBER: int
+    GOOS_FIELD_NUMBER: int
+    GOARCH_FIELD_NUMBER: int
+    HASHCATVERSION_FIELD_NUMBER: int
+    HOSTUUID_FIELD_NUMBER: int
+    VERSION_FIELD_NUMBER: int
+    BENCHMARKS_FIELD_NUMBER: int
+    CUDA_FIELD_NUMBER: int
+    METAL_FIELD_NUMBER: int
+    OPENCL_FIELD_NUMBER: int
+    ID: str
+    Name: str
+    OperatorName: str
+    GOOS: str
+    """The cracker's OS"""
+    GOARCH: str
+    """The cracker's Arch"""
+    HashcatVersion: str
+    HostUUID: str
+    Version: str
+    @property
+    def Benchmarks(self) -> ScalarMap[int, int]: ...
+    @property
+    def CUDA(self) -> RepeatedCompositeFieldContainer[CUDABackendInfo]: ...
+    @property
+    def Metal(self) -> RepeatedCompositeFieldContainer[MetalBackendInfo]: ...
+    @property
+    def OpenCL(self) -> RepeatedCompositeFieldContainer[OpenCLBackendInfo]: ...
+    def __init__(
+        self,
+        *,
+        ID: str = ...,
+        Name: str = ...,
+        OperatorName: str = ...,
+        GOOS: str = ...,
+        GOARCH: str = ...,
+        HashcatVersion: str = ...,
+        HostUUID: str = ...,
+        Version: str = ...,
+        Benchmarks: Mapping[int, int] | None = ...,
+        CUDA: Iterable[CUDABackendInfo] | None = ...,
+        Metal: Iterable[MetalBackendInfo] | None = ...,
+        OpenCL: Iterable[OpenCLBackendInfo] | None = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Benchmarks", b"Benchmarks", "CUDA", b"CUDA", "GOARCH", b"GOARCH", "GOOS", b"GOOS", "HashcatVersion", b"HashcatVersion", "HostUUID", b"HostUUID", "ID", b"ID", "Metal", b"Metal", "Name", b"Name", "OpenCL", b"OpenCL", "OperatorName", b"OperatorName", "Version", b"Version"]) -> None: ...
+
+@typing_extensions.final
+class CUDABackendInfo(Message):
+    DESCRIPTOR: Descriptor
+
+    TYPE_FIELD_NUMBER: int
+    VENDORID_FIELD_NUMBER: int
+    VENDOR_FIELD_NUMBER: int
+    NAME_FIELD_NUMBER: int
+    VERSION_FIELD_NUMBER: int
+    PROCESSORS_FIELD_NUMBER: int
+    CLOCK_FIELD_NUMBER: int
+    MEMORYTOTAL_FIELD_NUMBER: int
+    MEMORYFREE_FIELD_NUMBER: int
+    CUDAVERSION_FIELD_NUMBER: int
+    Type: str
+    VendorID: int
+    Vendor: str
+    Name: str
+    Version: str
+    Processors: int
+    Clock: int
+    MemoryTotal: str
+    MemoryFree: str
+    CUDAVersion: str
+    def __init__(
+        self,
+        *,
+        Type: str = ...,
+        VendorID: int = ...,
+        Vendor: str = ...,
+        Name: str = ...,
+        Version: str = ...,
+        Processors: int = ...,
+        Clock: int = ...,
+        MemoryTotal: str = ...,
+        MemoryFree: str = ...,
+        CUDAVersion: str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["CUDAVersion", b"CUDAVersion", "Clock", b"Clock", "MemoryFree", b"MemoryFree", "MemoryTotal", b"MemoryTotal", "Name", b"Name", "Processors", b"Processors", "Type", b"Type", "Vendor", b"Vendor", "VendorID", b"VendorID", "Version", b"Version"]) -> None: ...
+
+@typing_extensions.final
+class OpenCLBackendInfo(Message):
+    DESCRIPTOR: Descriptor
+
+    TYPE_FIELD_NUMBER: int
+    VENDORID_FIELD_NUMBER: int
+    VENDOR_FIELD_NUMBER: int
+    NAME_FIELD_NUMBER: int
+    VERSION_FIELD_NUMBER: int
+    PROCESSORS_FIELD_NUMBER: int
+    CLOCK_FIELD_NUMBER: int
+    MEMORYTOTAL_FIELD_NUMBER: int
+    MEMORYFREE_FIELD_NUMBER: int
+    OPENCLVERSION_FIELD_NUMBER: int
+    OPENCLDRIVERVERSION_FIELD_NUMBER: int
+    Type: str
+    VendorID: int
+    Vendor: str
+    Name: str
+    Version: str
+    Processors: int
+    Clock: int
+    MemoryTotal: str
+    MemoryFree: str
+    OpenCLVersion: str
+    OpenCLDriverVersion: str
+    def __init__(
+        self,
+        *,
+        Type: str = ...,
+        VendorID: int = ...,
+        Vendor: str = ...,
+        Name: str = ...,
+        Version: str = ...,
+        Processors: int = ...,
+        Clock: int = ...,
+        MemoryTotal: str = ...,
+        MemoryFree: str = ...,
+        OpenCLVersion: str = ...,
+        OpenCLDriverVersion: str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Clock", b"Clock", "MemoryFree", b"MemoryFree", "MemoryTotal", b"MemoryTotal", "Name", b"Name", "OpenCLDriverVersion", b"OpenCLDriverVersion", "OpenCLVersion", b"OpenCLVersion", "Processors", b"Processors", "Type", b"Type", "Vendor", b"Vendor", "VendorID", b"VendorID", "Version", b"Version"]) -> None: ...
+
+@typing_extensions.final
+class MetalBackendInfo(Message):
+    DESCRIPTOR: Descriptor
+
+    TYPE_FIELD_NUMBER: int
+    VENDORID_FIELD_NUMBER: int
+    VENDOR_FIELD_NUMBER: int
+    NAME_FIELD_NUMBER: int
+    VERSION_FIELD_NUMBER: int
+    PROCESSORS_FIELD_NUMBER: int
+    CLOCK_FIELD_NUMBER: int
+    MEMORYTOTAL_FIELD_NUMBER: int
+    MEMORYFREE_FIELD_NUMBER: int
+    METALVERSION_FIELD_NUMBER: int
+    Type: str
+    VendorID: int
+    Vendor: str
+    Name: str
+    Version: str
+    Processors: int
+    Clock: int
+    MemoryTotal: str
+    MemoryFree: str
+    MetalVersion: str
+    def __init__(
+        self,
+        *,
+        Type: str = ...,
+        VendorID: int = ...,
+        Vendor: str = ...,
+        Name: str = ...,
+        Version: str = ...,
+        Processors: int = ...,
+        Clock: int = ...,
+        MemoryTotal: str = ...,
+        MemoryFree: str = ...,
+        MetalVersion: str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Clock", b"Clock", "MemoryFree", b"MemoryFree", "MemoryTotal", b"MemoryTotal", "MetalVersion", b"MetalVersion", "Name", b"Name", "Processors", b"Processors", "Type", b"Type", "Vendor", b"Vendor", "VendorID", b"VendorID", "Version", b"Version"]) -> None: ...
+
+@typing_extensions.final
+class CrackCommand(Message):
+    DESCRIPTOR: Descriptor
+
+    ATTACKMODE_FIELD_NUMBER: int
+    HASHTYPE_FIELD_NUMBER: int
+    HASHES_FIELD_NUMBER: int
+    QUIET_FIELD_NUMBER: int
+    HEXCHARSET_FIELD_NUMBER: int
+    HEXSALT_FIELD_NUMBER: int
+    HEXWORDLIST_FIELD_NUMBER: int
+    FORCE_FIELD_NUMBER: int
+    DEPRECATEDCHECKDISABLE_FIELD_NUMBER: int
+    STATUS_FIELD_NUMBER: int
+    STATUSJSON_FIELD_NUMBER: int
+    STATUSTIMER_FIELD_NUMBER: int
+    STDINTIMEOUTABORT_FIELD_NUMBER: int
+    MACHINEREADABLE_FIELD_NUMBER: int
+    KEEPGUESSING_FIELD_NUMBER: int
+    SELFTESTDISABLE_FIELD_NUMBER: int
+    LOOPBACK_FIELD_NUMBER: int
+    MARKOVHCSTAT2_FIELD_NUMBER: int
+    MARKOVDISABLE_FIELD_NUMBER: int
+    MARKOVCLASSIC_FIELD_NUMBER: int
+    MARKOVINVERSE_FIELD_NUMBER: int
+    MARKOVTHRESHOLD_FIELD_NUMBER: int
+    RUNTIME_FIELD_NUMBER: int
+    SESSION_FIELD_NUMBER: int
+    RESTORE_FIELD_NUMBER: int
+    RESTOREDISABLE_FIELD_NUMBER: int
+    RESTOREFILE_FIELD_NUMBER: int
+    OUTFILEFORMAT_FIELD_NUMBER: int
+    OUTFILEAUTOHEXDISABLE_FIELD_NUMBER: int
+    OUTFILECHECKTIMER_FIELD_NUMBER: int
+    WORDLISTAUTOHEXDISABLE_FIELD_NUMBER: int
+    SEPARATOR_FIELD_NUMBER: int
+    STDOUT_FIELD_NUMBER: int
+    SHOW_FIELD_NUMBER: int
+    LEFT_FIELD_NUMBER: int
+    USERNAME_FIELD_NUMBER: int
+    REMOVE_FIELD_NUMBER: int
+    REMOVETIMER_FIELD_NUMBER: int
+    POTFILEDISABLE_FIELD_NUMBER: int
+    POTFILE_FIELD_NUMBER: int
+    ENCODINGFROM_FIELD_NUMBER: int
+    ENCODINGTO_FIELD_NUMBER: int
+    DEBUGMODE_FIELD_NUMBER: int
+    LOGFILEDISABLE_FIELD_NUMBER: int
+    HCCAPXMESSAGEPAIR_FIELD_NUMBER: int
+    NONCEERRORCORRECTIONS_FIELD_NUMBER: int
+    KEYBOARDLAYOUTMAPPING_FIELD_NUMBER: int
+    BENCHMARK_FIELD_NUMBER: int
+    BENCHMARKALL_FIELD_NUMBER: int
+    SPEEDONLY_FIELD_NUMBER: int
+    PROGRESSONLY_FIELD_NUMBER: int
+    SEGMENTSIZE_FIELD_NUMBER: int
+    BITMAPMIN_FIELD_NUMBER: int
+    BITMAPMAX_FIELD_NUMBER: int
+    CPUAFFINITY_FIELD_NUMBER: int
+    HOOKTHREADS_FIELD_NUMBER: int
+    HASHINFO_FIELD_NUMBER: int
+    BACKENDIGNORECUDA_FIELD_NUMBER: int
+    BACKENDIGNOREHIP_FIELD_NUMBER: int
+    BACKENDIGNOREMETAL_FIELD_NUMBER: int
+    BACKENDIGNOREOPENCL_FIELD_NUMBER: int
+    BACKENDINFO_FIELD_NUMBER: int
+    BACKENDDEVICES_FIELD_NUMBER: int
+    OPENCLDEVICETYPES_FIELD_NUMBER: int
+    OPTIMIZEDKERNELENABLE_FIELD_NUMBER: int
+    MULTIPLYACCELDISABLED_FIELD_NUMBER: int
+    WORKLOADPROFILE_FIELD_NUMBER: int
+    KERNELACCEL_FIELD_NUMBER: int
+    KERNELLOOPS_FIELD_NUMBER: int
+    KERNELTHREADS_FIELD_NUMBER: int
+    BACKENDVECTORWIDTH_FIELD_NUMBER: int
+    SPINDAMP_FIELD_NUMBER: int
+    HWMONDISABLE_FIELD_NUMBER: int
+    HWMONTEMPABORT_FIELD_NUMBER: int
+    SCRYPTTMTO_FIELD_NUMBER: int
+    SKIP_FIELD_NUMBER: int
+    LIMIT_FIELD_NUMBER: int
+    KEYSPACE_FIELD_NUMBER: int
+    RULESFILE_FIELD_NUMBER: int
+    GENERATERULES_FIELD_NUMBER: int
+    GENERATERULESFUNMIN_FIELD_NUMBER: int
+    GENERATERULESFUNMAX_FIELD_NUMBER: int
+    GENERATERULESFUNCSEL_FIELD_NUMBER: int
+    GENERATERULESSEED_FIELD_NUMBER: int
+    CUSTOMCHARSET1_FIELD_NUMBER: int
+    CUSTOMCHARSET2_FIELD_NUMBER: int
+    CUSTOMCHARSET3_FIELD_NUMBER: int
+    CUSTOMCHARSET4_FIELD_NUMBER: int
+    IDENTIFY_FIELD_NUMBER: int
+    INCREMENT_FIELD_NUMBER: int
+    INCREMENTMIN_FIELD_NUMBER: int
+    INCREMENTMAX_FIELD_NUMBER: int
+    SLOWCANDIDATES_FIELD_NUMBER: int
+    BRAINSERVER_FIELD_NUMBER: int
+    BRAINSERVERTIMER_FIELD_NUMBER: int
+    BRAINCLIENT_FIELD_NUMBER: int
+    BRAINCLIENTFEATURES_FIELD_NUMBER: int
+    BRAINHOST_FIELD_NUMBER: int
+    BRAINPORT_FIELD_NUMBER: int
+    BRAINPASSWORD_FIELD_NUMBER: int
+    BRAINSESSION_FIELD_NUMBER: int
+    BRAINSESSIONWHITELIST_FIELD_NUMBER: int
+    AttackMode: CrackAttackMode.ValueType
+    HashType: HashType.ValueType
+    @property
+    def Hashes(self) -> RepeatedScalarFieldContainer[str]: ...
+    Quiet: bool
+    """--version
+    --help
+    """
+    HexCharset: bool
+    HexSalt: bool
+    HexWordlist: bool
+    Force: bool
+    DeprecatedCheckDisable: bool
+    Status: bool
+    StatusJSON: bool
+    StatusTimer: int
+    StdinTimeoutAbort: int
+    MachineReadable: bool
+    KeepGuessing: bool
+    SelfTestDisable: bool
+    Loopback: bool
+    MarkovHcstat2: bytes
+    """--markov-hcstat2 FILE"""
+    MarkovDisable: bool
+    MarkovClassic: bool
+    MarkovInverse: bool
+    MarkovThreshold: int
+    Runtime: int
+    Session: str
+    """[a-zA-Z0-9_-]"""
+    Restore: bool
+    RestoreDisable: bool
+    RestoreFile: bytes
+    """--restore-file-path FILE"""
+    @property
+    def OutfileFormat(self) -> RepeatedScalarFieldContainer[CrackOutfileFormat.ValueType]:
+        """--outfile FILE (28)"""
+    OutfileAutohexDisable: bool
+    OutfileCheckTimer: int
+    WordlistAutohexDisable: bool
+    Separator: str
+    """single char"""
+    Stdout: bool
+    Show: bool
+    Left: bool
+    Username: bool
+    Remove: bool
+    RemoveTimer: int
+    PotfileDisable: bool
+    Potfile: bytes
+    """--potfile-path FILE"""
+    EncodingFrom: CrackEncoding.ValueType
+    EncodingTo: CrackEncoding.ValueType
+    DebugMode: int
+    LogfileDisable: bool
+    """--debug-file FILE (45)
+    --induction-dir DIR (46)
+    --outfile-check-dir DIR (47)
+    """
+    HccapxMessagePair: int
+    NonceErrorCorrections: int
+    KeyboardLayoutMapping: bytes
+    """--keyboard-layout-mapping FILE"""
+    Benchmark: bool
+    """--truecrypt-keyfiles FILE (52)
+    --veracrypt-keyfiles FILE (53)
+    --veracrypt-pim-start PIM (54)
+    --veracrypt-pim-stop PIM (55)
+    """
+    BenchmarkAll: bool
+    SpeedOnly: bool
+    ProgressOnly: bool
+    SegmentSize: int
+    BitmapMin: int
+    BitmapMax: int
+    @property
+    def CPUAffinity(self) -> RepeatedScalarFieldContainer[int]: ...
+    HookThreads: int
+    HashInfo: bool
+    BackendIgnoreCUDA: bool
+    """--example-hashes (66)"""
+    BackendIgnoreHip: bool
+    BackendIgnoreMetal: bool
+    BackendIgnoreOpenCL: bool
+    BackendInfo: bool
+    @property
+    def BackendDevices(self) -> RepeatedScalarFieldContainer[int]: ...
+    @property
+    def OpenCLDeviceTypes(self) -> RepeatedScalarFieldContainer[int]: ...
+    OptimizedKernelEnable: bool
+    MultiplyAccelDisabled: bool
+    WorkloadProfile: CrackWorkloadProfile.ValueType
+    KernelAccel: int
+    KernelLoops: int
+    KernelThreads: int
+    BackendVectorWidth: int
+    SpinDamp: int
+    HwmonDisable: bool
+    HwmonTempAbort: int
+    ScryptTMTO: int
+    Skip: int
+    Limit: int
+    Keyspace: bool
+    RulesFile: bytes
+    """--rule-left (88)
+    --rule-right (89)
+    --rules-file FILE
+    """
+    GenerateRules: int
+    GenerateRulesFunMin: int
+    GenerateRulesFunMax: int
+    GenerateRulesFuncSel: str
+    GenerateRulesSeed: int
+    CustomCharset1: str
+    CustomCharset2: str
+    CustomCharset3: str
+    CustomCharset4: str
+    Identify: str
+    Increment: bool
+    IncrementMin: int
+    IncrementMax: int
+    SlowCandidates: bool
+    BrainServer: bool
+    BrainServerTimer: int
+    BrainClient: bool
+    BrainClientFeatures: str
+    BrainHost: str
+    BrainPort: int
+    BrainPassword: str
+    BrainSession: str
+    BrainSessionWhitelist: str
+    def __init__(
+        self,
+        *,
+        AttackMode: CrackAttackMode.ValueType = ...,
+        HashType: HashType.ValueType = ...,
+        Hashes: Iterable[str] | None = ...,
+        Quiet: bool = ...,
+        HexCharset: bool = ...,
+        HexSalt: bool = ...,
+        HexWordlist: bool = ...,
+        Force: bool = ...,
+        DeprecatedCheckDisable: bool = ...,
+        Status: bool = ...,
+        StatusJSON: bool = ...,
+        StatusTimer: int = ...,
+        StdinTimeoutAbort: int = ...,
+        MachineReadable: bool = ...,
+        KeepGuessing: bool = ...,
+        SelfTestDisable: bool = ...,
+        Loopback: bool = ...,
+        MarkovHcstat2: bytes = ...,
+        MarkovDisable: bool = ...,
+        MarkovClassic: bool = ...,
+        MarkovInverse: bool = ...,
+        MarkovThreshold: int = ...,
+        Runtime: int = ...,
+        Session: str = ...,
+        Restore: bool = ...,
+        RestoreDisable: bool = ...,
+        RestoreFile: bytes = ...,
+        OutfileFormat: Iterable[CrackOutfileFormat.ValueType] | None = ...,
+        OutfileAutohexDisable: bool = ...,
+        OutfileCheckTimer: int = ...,
+        WordlistAutohexDisable: bool = ...,
+        Separator: str = ...,
+        Stdout: bool = ...,
+        Show: bool = ...,
+        Left: bool = ...,
+        Username: bool = ...,
+        Remove: bool = ...,
+        RemoveTimer: int = ...,
+        PotfileDisable: bool = ...,
+        Potfile: bytes = ...,
+        EncodingFrom: CrackEncoding.ValueType = ...,
+        EncodingTo: CrackEncoding.ValueType = ...,
+        DebugMode: int = ...,
+        LogfileDisable: bool = ...,
+        HccapxMessagePair: int = ...,
+        NonceErrorCorrections: int = ...,
+        KeyboardLayoutMapping: bytes = ...,
+        Benchmark: bool = ...,
+        BenchmarkAll: bool = ...,
+        SpeedOnly: bool = ...,
+        ProgressOnly: bool = ...,
+        SegmentSize: int = ...,
+        BitmapMin: int = ...,
+        BitmapMax: int = ...,
+        CPUAffinity: Iterable[int] | None = ...,
+        HookThreads: int = ...,
+        HashInfo: bool = ...,
+        BackendIgnoreCUDA: bool = ...,
+        BackendIgnoreHip: bool = ...,
+        BackendIgnoreMetal: bool = ...,
+        BackendIgnoreOpenCL: bool = ...,
+        BackendInfo: bool = ...,
+        BackendDevices: Iterable[int] | None = ...,
+        OpenCLDeviceTypes: Iterable[int] | None = ...,
+        OptimizedKernelEnable: bool = ...,
+        MultiplyAccelDisabled: bool = ...,
+        WorkloadProfile: CrackWorkloadProfile.ValueType = ...,
+        KernelAccel: int = ...,
+        KernelLoops: int = ...,
+        KernelThreads: int = ...,
+        BackendVectorWidth: int = ...,
+        SpinDamp: int = ...,
+        HwmonDisable: bool = ...,
+        HwmonTempAbort: int = ...,
+        ScryptTMTO: int = ...,
+        Skip: int = ...,
+        Limit: int = ...,
+        Keyspace: bool = ...,
+        RulesFile: bytes = ...,
+        GenerateRules: int = ...,
+        GenerateRulesFunMin: int = ...,
+        GenerateRulesFunMax: int = ...,
+        GenerateRulesFuncSel: str = ...,
+        GenerateRulesSeed: int = ...,
+        CustomCharset1: str = ...,
+        CustomCharset2: str = ...,
+        CustomCharset3: str = ...,
+        CustomCharset4: str = ...,
+        Identify: str = ...,
+        Increment: bool = ...,
+        IncrementMin: int = ...,
+        IncrementMax: int = ...,
+        SlowCandidates: bool = ...,
+        BrainServer: bool = ...,
+        BrainServerTimer: int = ...,
+        BrainClient: bool = ...,
+        BrainClientFeatures: str = ...,
+        BrainHost: str = ...,
+        BrainPort: int = ...,
+        BrainPassword: str = ...,
+        BrainSession: str = ...,
+        BrainSessionWhitelist: str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["AttackMode", b"AttackMode", "BackendDevices", b"BackendDevices", "BackendIgnoreCUDA", b"BackendIgnoreCUDA", "BackendIgnoreHip", b"BackendIgnoreHip", "BackendIgnoreMetal", b"BackendIgnoreMetal", "BackendIgnoreOpenCL", b"BackendIgnoreOpenCL", "BackendInfo", b"BackendInfo", "BackendVectorWidth", b"BackendVectorWidth", "Benchmark", b"Benchmark", "BenchmarkAll", b"BenchmarkAll", "BitmapMax", b"BitmapMax", "BitmapMin", b"BitmapMin", "BrainClient", b"BrainClient", "BrainClientFeatures", b"BrainClientFeatures", "BrainHost", b"BrainHost", "BrainPassword", b"BrainPassword", "BrainPort", b"BrainPort", "BrainServer", b"BrainServer", "BrainServerTimer", b"BrainServerTimer", "BrainSession", b"BrainSession", "BrainSessionWhitelist", b"BrainSessionWhitelist", "CPUAffinity", b"CPUAffinity", "CustomCharset1", b"CustomCharset1", "CustomCharset2", b"CustomCharset2", "CustomCharset3", b"CustomCharset3", "CustomCharset4", b"CustomCharset4", "DebugMode", b"DebugMode", "DeprecatedCheckDisable", b"DeprecatedCheckDisable", "EncodingFrom", b"EncodingFrom", "EncodingTo", b"EncodingTo", "Force", b"Force", "GenerateRules", b"GenerateRules", "GenerateRulesFunMax", b"GenerateRulesFunMax", "GenerateRulesFunMin", b"GenerateRulesFunMin", "GenerateRulesFuncSel", b"GenerateRulesFuncSel", "GenerateRulesSeed", b"GenerateRulesSeed", "HashInfo", b"HashInfo", "HashType", b"HashType", "Hashes", b"Hashes", "HccapxMessagePair", b"HccapxMessagePair", "HexCharset", b"HexCharset", "HexSalt", b"HexSalt", "HexWordlist", b"HexWordlist", "HookThreads", b"HookThreads", "HwmonDisable", b"HwmonDisable", "HwmonTempAbort", b"HwmonTempAbort", "Identify", b"Identify", "Increment", b"Increment", "IncrementMax", b"IncrementMax", "IncrementMin", b"IncrementMin", "KeepGuessing", b"KeepGuessing", "KernelAccel", b"KernelAccel", "KernelLoops", b"KernelLoops", "KernelThreads", b"KernelThreads", "KeyboardLayoutMapping", b"KeyboardLayoutMapping", "Keyspace", b"Keyspace", "Left", b"Left", "Limit", b"Limit", "LogfileDisable", b"LogfileDisable", "Loopback", b"Loopback", "MachineReadable", b"MachineReadable", "MarkovClassic", b"MarkovClassic", "MarkovDisable", b"MarkovDisable", "MarkovHcstat2", b"MarkovHcstat2", "MarkovInverse", b"MarkovInverse", "MarkovThreshold", b"MarkovThreshold", "MultiplyAccelDisabled", b"MultiplyAccelDisabled", "NonceErrorCorrections", b"NonceErrorCorrections", "OpenCLDeviceTypes", b"OpenCLDeviceTypes", "OptimizedKernelEnable", b"OptimizedKernelEnable", "OutfileAutohexDisable", b"OutfileAutohexDisable", "OutfileCheckTimer", b"OutfileCheckTimer", "OutfileFormat", b"OutfileFormat", "Potfile", b"Potfile", "PotfileDisable", b"PotfileDisable", "ProgressOnly", b"ProgressOnly", "Quiet", b"Quiet", "Remove", b"Remove", "RemoveTimer", b"RemoveTimer", "Restore", b"Restore", "RestoreDisable", b"RestoreDisable", "RestoreFile", b"RestoreFile", "RulesFile", b"RulesFile", "Runtime", b"Runtime", "ScryptTMTO", b"ScryptTMTO", "SegmentSize", b"SegmentSize", "SelfTestDisable", b"SelfTestDisable", "Separator", b"Separator", "Session", b"Session", "Show", b"Show", "Skip", b"Skip", "SlowCandidates", b"SlowCandidates", "SpeedOnly", b"SpeedOnly", "SpinDamp", b"SpinDamp", "Status", b"Status", "StatusJSON", b"StatusJSON", "StatusTimer", b"StatusTimer", "StdinTimeoutAbort", b"StdinTimeoutAbort", "Stdout", b"Stdout", "Username", b"Username", "WordlistAutohexDisable", b"WordlistAutohexDisable", "WorkloadProfile", b"WorkloadProfile"]) -> None: ...
+
+@typing_extensions.final
+class CrackConfig(Message):
+    DESCRIPTOR: Descriptor
+
+    AUTOFIRE_FIELD_NUMBER: int
+    MAXFILESIZE_FIELD_NUMBER: int
+    CHUNKSIZE_FIELD_NUMBER: int
+    MAXDISKUSAGE_FIELD_NUMBER: int
+    AutoFire: bool
+    MaxFileSize: int
+    ChunkSize: int
+    MaxDiskUsage: int
+    def __init__(
+        self,
+        *,
+        AutoFire: bool = ...,
+        MaxFileSize: int = ...,
+        ChunkSize: int = ...,
+        MaxDiskUsage: int = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["AutoFire", b"AutoFire", "ChunkSize", b"ChunkSize", "MaxDiskUsage", b"MaxDiskUsage", "MaxFileSize", b"MaxFileSize"]) -> None: ...
+
+@typing_extensions.final
+class CrackFiles(Message):
+    DESCRIPTOR: Descriptor
+
+    FILES_FIELD_NUMBER: int
+    CURRENTDISKUSAGE_FIELD_NUMBER: int
+    MAXDISKUSAGE_FIELD_NUMBER: int
+    @property
+    def Files(self) -> RepeatedCompositeFieldContainer[CrackFile]: ...
+    CurrentDiskUsage: int
+    MaxDiskUsage: int
+    def __init__(
+        self,
+        *,
+        Files: Iterable[CrackFile] | None = ...,
+        CurrentDiskUsage: int = ...,
+        MaxDiskUsage: int = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["CurrentDiskUsage", b"CurrentDiskUsage", "Files", b"Files", "MaxDiskUsage", b"MaxDiskUsage"]) -> None: ...
+
+@typing_extensions.final
+class CrackFile(Message):
+    DESCRIPTOR: Descriptor
+
+    ID_FIELD_NUMBER: int
+    CREATEDAT_FIELD_NUMBER: int
+    LASTMODIFIED_FIELD_NUMBER: int
+    NAME_FIELD_NUMBER: int
+    UNCOMPRESSEDSIZE_FIELD_NUMBER: int
+    SHA2_256_FIELD_NUMBER: int
+    TYPE_FIELD_NUMBER: int
+    ISCOMPRESSED_FIELD_NUMBER: int
+    MAXFILESIZE_FIELD_NUMBER: int
+    CHUNKSIZE_FIELD_NUMBER: int
+    CHUNKS_FIELD_NUMBER: int
+    ID: str
+    CreatedAt: int
+    LastModified: int
+    Name: str
+    UncompressedSize: int
+    Sha2_256: str
+    Type: CrackFileType.ValueType
+    IsCompressed: bool
+    MaxFileSize: int
+    ChunkSize: int
+    @property
+    def Chunks(self) -> RepeatedCompositeFieldContainer[CrackFileChunk]: ...
+    def __init__(
+        self,
+        *,
+        ID: str = ...,
+        CreatedAt: int = ...,
+        LastModified: int = ...,
+        Name: str = ...,
+        UncompressedSize: int = ...,
+        Sha2_256: str = ...,
+        Type: CrackFileType.ValueType = ...,
+        IsCompressed: bool = ...,
+        MaxFileSize: int = ...,
+        ChunkSize: int = ...,
+        Chunks: Iterable[CrackFileChunk] | None = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["ChunkSize", b"ChunkSize", "Chunks", b"Chunks", "CreatedAt", b"CreatedAt", "ID", b"ID", "IsCompressed", b"IsCompressed", "LastModified", b"LastModified", "MaxFileSize", b"MaxFileSize", "Name", b"Name", "Sha2_256", b"Sha2_256", "Type", b"Type", "UncompressedSize", b"UncompressedSize"]) -> None: ...
+
+@typing_extensions.final
+class CrackFileChunk(Message):
+    DESCRIPTOR: Descriptor
+
+    ID_FIELD_NUMBER: int
+    CRACKFILEID_FIELD_NUMBER: int
+    N_FIELD_NUMBER: int
+    DATA_FIELD_NUMBER: int
+    ID: str
+    CrackFileID: str
+    N: int
+    Data: bytes
+    def __init__(
+        self,
+        *,
+        ID: str = ...,
+        CrackFileID: str = ...,
+        N: int = ...,
+        Data: bytes = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["CrackFileID", b"CrackFileID", "Data", b"Data", "ID", b"ID", "N", b"N"]) -> None: ...
+
+@typing_extensions.final
+class MonitoringProviders(Message):
+    """watchtower"""
+
+    DESCRIPTOR: Descriptor
+
+    PROVIDERS_FIELD_NUMBER: int
+    @property
+    def providers(self) -> RepeatedCompositeFieldContainer[MonitoringProvider]: ...
+    def __init__(
+        self,
+        *,
+        providers: Iterable[MonitoringProvider] | None = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["providers", b"providers"]) -> None: ...
+
+@typing_extensions.final
+class MonitoringProvider(Message):
+    DESCRIPTOR: Descriptor
+
+    ID_FIELD_NUMBER: int
+    TYPE_FIELD_NUMBER: int
+    APIKEY_FIELD_NUMBER: int
+    APIPASSWORD_FIELD_NUMBER: int
+    ID: str
+    Type: str
+    APIKey: str
+    APIPassword: str
+    def __init__(
+        self,
+        *,
+        ID: str = ...,
+        Type: str = ...,
+        APIKey: str = ...,
+        APIPassword: str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["APIKey", b"APIKey", "APIPassword", b"APIPassword", "ID", b"ID", "Type", b"Type"]) -> None: ...
+
+@typing_extensions.final
+class ResourceID(Message):
+    """resource IDs"""
+
+    DESCRIPTOR: Descriptor
+
+    ID_FIELD_NUMBER: int
+    TYPE_FIELD_NUMBER: int
+    NAME_FIELD_NUMBER: int
+    VALUE_FIELD_NUMBER: int
+    ID: str
+    Type: str
+    Name: str
+    Value: int
+    def __init__(
+        self,
+        *,
+        ID: str = ...,
+        Type: str = ...,
+        Name: str = ...,
+        Value: int = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["ID", b"ID", "Name", b"Name", "Type", b"Type", "Value", b"Value"]) -> None: ...
