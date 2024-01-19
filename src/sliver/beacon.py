@@ -337,3 +337,13 @@ class InteractiveBeacon(BaseBeacon, BaseInteractiveCommands):
         self, *args, **kwargs
     ) -> sliver_pb2.RegistryCreateKey:
         return await super().registry_create_key(*args, **kwargs)
+
+    @beacon_taskresult(sliver_pb2.RegistryReadHive)
+    async def registry_read_hive(
+        self, *args, **kwargs
+    ) -> sliver_pb2.RegistryReadHive:
+        return await super().registry_read_hive(*args, **kwargs)
+
+    @beacon_taskresult(sliver_pb2.Grep)
+    async def grep(self, *args, **kwargs) -> sliver_pb2.Grep:
+        return await super().grep(*args, **kwargs)

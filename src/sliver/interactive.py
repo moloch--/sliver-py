@@ -357,6 +357,12 @@ class BaseInteractiveCommands:
         class_name: str,
         method: str,
         app_domain: str,
+        ppid: int,
+        process_args: List[str],
+        in_process: bool,
+        runtime: str,
+        amsi_bypass: bool,
+        etw_bypass: bool,
     ) -> sliver_pb2.ExecuteAssembly:
         """Execute a .NET assembly in-memory on the remote system
 
@@ -376,6 +382,18 @@ class BaseInteractiveCommands:
         :type method: str
         :param app_domain: AppDomain
         :type app_domain: str
+        :param ppid: Parent process ID
+        :type ppid: int
+        :param process_args: Arguments to the host process
+        :type process_args: List[str]
+        :param in_process: Execute assembly in the host process
+        :type in_process: bool
+        :param runtime: .NET runtime version
+        :type runtime: str
+        :param amsi_bypass: Bypass AMSI
+        :type amsi_bypass: bool
+        :param etw_bypass: Bypass ETW
+        :type etw_bypass: bool
         :return: Protobuf ExecuteAssembly object
         :rtype: sliver_pb2.ExecuteAssembly
         """
@@ -387,6 +405,13 @@ class BaseInteractiveCommands:
         asm.Arch = arch
         asm.ClassName = class_name
         asm.AppDomain = app_domain
+        asm.Ppid = ppid
+        asm.ProcessArgs.extend(process_args)
+        asm.InProcess = in_process
+        asm.Runtime = runtime
+        asm.AmsiBypass = amsi_bypass
+        asm.EtwBypass = etw_bypass
+        asm.Method = method
         return await self._stub.ExecuteAssembly(
             self._request(asm), timeout=self.timeout
         )
@@ -439,6 +464,9 @@ class BaseInteractiveCommands:
         arguments: str,
         entry_point: str,
         kill: bool,
+        is_dll: bool,
+        is_unicode: bool,
+        ppid: int,
     ) -> sliver_pb2.Sideload:
         """Sideload a shared library into a remote process using a platform specific in-memory loader (Windows, MacOS, Linux only)
 
@@ -452,6 +480,12 @@ class BaseInteractiveCommands:
         :type entry_point: str
         :param kill: Kill normal execution of the process when side loading the shared library
         :type kill: bool
+        :param is_dll: Is the module a DLL (Windows only)
+        :type is_dll: bool
+        :param is_unicode: The arguments are unicode encoded (Windows only)
+        :type is_unicode: bool
+        :param ppid: Parent process ID
+        :type ppid: int
         :return: Protobuf Sideload object
         :rtype: sliver_pb2.Sideload
         """
@@ -461,6 +495,9 @@ class BaseInteractiveCommands:
             Args=arguments,
             EntryPoint=entry_point,
             Kill=kill,
+            isDLL=is_dll,
+            isUnicode=is_unicode,
+            PPid=ppid,
         )
         return await self._stub.Sideload(self._request(side), timeout=self.timeout)
 
@@ -471,6 +508,7 @@ class BaseInteractiveCommands:
         arguments: str,
         entry_point: str,
         kill: bool,
+        ppid: int,
     ) -> sliver_pb2.SpawnDll:
         """Spawn a DLL on the remote system from memory (Windows only)
 
@@ -484,6 +522,8 @@ class BaseInteractiveCommands:
         :type entry_point: str
         :param kill: Kill normal execution of the remote process when spawing the DLL
         :type kill: bool
+        :param ppid: Parent process ID
+        :type ppid: int
         :return: Protobuf SpawnDll object
         :rtype: sliver_pb2.SpawnDll
         """
@@ -493,6 +533,7 @@ class BaseInteractiveCommands:
             Args=arguments,
             EntryPoint=entry_point,
             Kill=kill,
+            PPid=ppid,
         )
         return await self._stub.SpawnDll(self._request(spawn), timeout=self.timeout)
     
@@ -729,3 +770,41 @@ class BaseInteractiveCommands:
         return await self._stub.RegistryCreateKey(
             self._request(reg), timeout=self.timeout
         )
+
+    async def registry_read_hive(
+        self: InteractiveObject, root_hive: str, requested_hive: str
+    ) -> sliver_pb2.RegistryReadHive:
+        """Read a registry hive from the remote system (Windows only)
+
+        :param hive: Registry hive to read
+        :type hive: str
+        :param hostname: Hostname
+        :type hostname: str
+        :return: Protobuf RegistryReadHive object
+        :rtype: sliver_pb2.RegistryReadHive
+        """
+        reg = sliver_pb2.RegistryReadHiveReq(RootHive=root_hive, RequestedHive=requested_hive)
+        return await self._stub.RegistryReadHive(
+            self._request(reg), timeout=self.timeout
+        )
+    
+    async def grep(
+        self: InteractiveObject, pattern: str, path: str, recursive: bool = False, lines_above: int = 0, lines_below: int = 0
+    ) -> sliver_pb2.Grep:
+        """Search for a pattern in a file
+
+        :param pattern: Pattern to search for
+        :type pattern: str
+        :param path: Path to file to search
+        :type path: str
+        :param recursive: Recursively search subdirectories, defaults to False
+        :type recursive: bool
+        :param lines_above: Number of lines to print above the match, defaults to 0
+        :type lines_above: int
+        :param lines_below: Number of lines to print below the match, defaults to 0
+        :type lines_below: int
+        :return: Protobuf Grep object
+        :rtype: sliver_pb2.Grep
+        """
+        grep = sliver_pb2.GrepReq(Pattern=pattern, Path=path, Recursive=recursive, LinesAbove=lines_above, LinesBelow=lines_below)
+        return await self._stub.Grep(self._request(grep), timeout=self.timeout)
