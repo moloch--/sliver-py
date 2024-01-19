@@ -406,7 +406,7 @@ class BaseInteractiveCommands:
         asm.ClassName = class_name
         asm.AppDomain = app_domain
         asm.Ppid = ppid
-        asm.ProcessArgs.extend(process_args)
+        asm.ProcessArgs.append(process_args)
         asm.InProcess = in_process
         asm.Runtime = runtime
         asm.AmsiBypass = amsi_bypass
@@ -467,6 +467,7 @@ class BaseInteractiveCommands:
         is_dll: bool,
         is_unicode: bool,
         ppid: int,
+        process_args: List[str],
     ) -> sliver_pb2.Sideload:
         """Sideload a shared library into a remote process using a platform specific in-memory loader (Windows, MacOS, Linux only)
 
@@ -486,6 +487,8 @@ class BaseInteractiveCommands:
         :type is_unicode: bool
         :param ppid: Parent process ID
         :type ppid: int
+        :param process_args: Arguments to the host process
+        :type process_args: List[str]
         :return: Protobuf Sideload object
         :rtype: sliver_pb2.Sideload
         """
@@ -498,6 +501,7 @@ class BaseInteractiveCommands:
             isDLL=is_dll,
             isUnicode=is_unicode,
             PPid=ppid,
+            ProcessArgs=process_args,
         )
         return await self._stub.Sideload(self._request(side), timeout=self.timeout)
 
@@ -509,6 +513,7 @@ class BaseInteractiveCommands:
         entry_point: str,
         kill: bool,
         ppid: int,
+        process_args: List[str],
     ) -> sliver_pb2.SpawnDll:
         """Spawn a DLL on the remote system from memory (Windows only)
 
@@ -524,6 +529,8 @@ class BaseInteractiveCommands:
         :type kill: bool
         :param ppid: Parent process ID
         :type ppid: int
+        :param process_args: Arguments to the host process
+        :type process_args: List[str]
         :return: Protobuf SpawnDll object
         :rtype: sliver_pb2.SpawnDll
         """
@@ -534,6 +541,7 @@ class BaseInteractiveCommands:
             EntryPoint=entry_point,
             Kill=kill,
             PPid=ppid,
+            ProcessArgs=process_args,
         )
         return await self._stub.SpawnDll(self._request(spawn), timeout=self.timeout)
     
