@@ -383,7 +383,7 @@ class SliverClient(BaseClient):
         port: int = 8888,
         persistent: bool = False,
         timeout=TIMEOUT,
-    ) -> client_pb2.MTLSListener:
+    ) -> client_pb2.ListenerJob:
         """Start a mutual TLS (mTLS) C2 listener
 
         :param host: Host interface to bind the listener to, an empty string will bind to all interfaces
@@ -394,8 +394,8 @@ class SliverClient(BaseClient):
         :type persistent: bool, optional
         :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
-        :return: Protobuf MTLSListener object
-        :rtype: client_pb2.MTLSListener
+        :return: Protobuf ListenerJob object
+        :rtype: client_pb2.ListenerJob
         """
         mtls_req = client_pb2.MTLSListenerReq(
             Host=host, Port=port, Persistent=persistent
@@ -411,7 +411,7 @@ class SliverClient(BaseClient):
         key_port: int = 1337,
         persistent: bool = False,
         timeout: int = TIMEOUT,
-    ) -> client_pb2.WGListener:
+    ) -> client_pb2.ListenerJob:
         """Start a WireGuard (wg) C2 listener
 
         :param tun_ip: Virtual TUN IP listen address
@@ -428,8 +428,8 @@ class SliverClient(BaseClient):
         :type persistent: bool, optional
         :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
-        :return: Protobuf WGListener object
-        :rtype: client_pb2.WGListener
+        :return: Protobuf ListenerJob object
+        :rtype: client_pb2.ListenerJob
         """
         if tun_ip is None:
             uniq_ip = await self.generate_wg_ip()
@@ -454,7 +454,7 @@ class SliverClient(BaseClient):
         persistent: bool = False,
         enforce_otp=True,
         timeout: int = TIMEOUT,
-    ) -> client_pb2.DNSListener:
+    ) -> client_pb2.ListenerJob:
         """Start a DNS C2 listener
 
         :param domains: C2 domains to listen for
@@ -471,8 +471,8 @@ class SliverClient(BaseClient):
         :type enforce_otp: bool, optional
         :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
-        :return: Protobuf DNSListener object
-        :rtype: client_pb2.DNSListener
+        :return: Protobuf ListenerJob object
+        :rtype: client_pb2.ListenerJob
         """
         # Ensure domains always have a trailing dot
         domains = list(map(lambda d: d + "." if d[-1] != "." else d, domains))
@@ -495,7 +495,7 @@ class SliverClient(BaseClient):
         domain: str = "",
         persistent: bool = False,
         timeout: int = TIMEOUT,
-    ) -> client_pb2.HTTPListener:
+    ) -> client_pb2.ListenerJob:
         """Start an HTTP C2 listener
 
 
@@ -511,8 +511,8 @@ class SliverClient(BaseClient):
         :type persistent: bool, optional
         :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
-        :return: Protobuf HTTPListener object (NOTE: HTTP/HTTPS both return HTTPListener objects)
-        :rtype: client_pb2.HTTPListener
+        :return: Protobuf ListenerJob object 
+        :rtype: client_pb2.ListenerJob
         """
         http_req = client_pb2.HTTPListenerReq(
             Domain=domain,
@@ -539,7 +539,7 @@ class SliverClient(BaseClient):
         long_poll_timeout: int = 1,
         long_poll_jitter: int = 2,
         timeout: int = TIMEOUT,
-    ) -> client_pb2.HTTPListener:
+    ) -> client_pb2.ListenerJob:
         """Start an HTTPS C2 listener
 
         :param domain: Domain name for HTTPS server (one domain per listener)
@@ -568,8 +568,8 @@ class SliverClient(BaseClient):
         :type long_poll_jitter: int, optional
         :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
-        :return: Protobuf HTTPListener object (NOTE: HTTP/HTTPS both return HTTPListener objects)
-        :rtype: client_pb2.HTTPListener
+        :return: Protobuf ListenerJob object
+        :rtype: client_pb2.ListenerJob
         """
         https_req = client_pb2.HTTPListenerReq(
             Domain=domain,
