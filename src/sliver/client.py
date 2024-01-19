@@ -983,3 +983,20 @@ class SliverClient(BaseClient):
         """
         web = client_pb2.WebsiteRemoveContent(Name=name, Paths=paths)
         return await self._stub.WebsiteRemoveContent(web, timeout=timeout)
+
+    async def backdoor(
+        self, remote_path: str, profile_name: str
+    ) -> client_pb2.Backdoor:
+        """Backdoor a remote binary by injecting a Sliver payload into the executable using a code cave
+
+        :param remote_path: Remote path to an executable to backdoor
+        :type remote_path: str
+        :param profile_name: Implant profile name to inject into the binary
+        :type profile_name: str
+        :return: Protobuf Backdoor object
+        :rtype: sliver_pb2.Backdoor
+        """
+        backdoor = client_pb2.BackdoorReq()
+        backdoor.FilePath = remote_path
+        backdoor.ProfileName = profile_name
+        return await self._stub.Backdoor(self._request(backdoor), timeout=self.timeout)
