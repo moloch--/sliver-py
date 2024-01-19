@@ -7,15 +7,30 @@ from ..clientpb import client_pb2
 import collections.abc
 from ..commonpb import common_pb2
 import grpc
+import grpc.aio
 from ..sliverpb import sliver_pb2
+import typing
+
+_T = typing.TypeVar('_T')
+
+class _MaybeAsyncIterator(collections.abc.AsyncIterator[_T], collections.abc.Iterator[_T], metaclass=abc.ABCMeta):
+    ...
+
+class _ServicerContext(grpc.ServicerContext, grpc.aio.ServicerContext):  # type: ignore
+    ...
 
 class SliverRPCStub:
-    def __init__(self, channel: grpc.aio.Channel) -> None: ...
+    def __init__(self, channel: typing.Union[grpc.aio.Channel, grpc.aio.Channel]) -> None: ...
     GetVersion: grpc.UnaryUnaryMultiCallable[
         common_pb2.Empty,
         client_pb2.Version,
     ]
     """*** Version ***"""
+    ClientLog: grpc.StreamUnaryMultiCallable[
+        client_pb2.ClientLogData,
+        common_pb2.Empty,
+    ]
+    """*** Client Logs ***"""
     GetOperators: grpc.UnaryUnaryMultiCallable[
         common_pb2.Empty,
         client_pb2.Operators,
@@ -39,6 +54,48 @@ class SliverRPCStub:
         client_pb2.Sessions,
     ]
     """*** Sessions ***"""
+    MonitorStart: grpc.UnaryUnaryMultiCallable[
+        common_pb2.Empty,
+        common_pb2.Response,
+    ]
+    """***Threat monitoring ***"""
+    MonitorStop: grpc.UnaryUnaryMultiCallable[
+        common_pb2.Empty,
+        common_pb2.Empty,
+    ]
+    MonitorListConfig: grpc.UnaryUnaryMultiCallable[
+        common_pb2.Empty,
+        client_pb2.MonitoringProviders,
+    ]
+    MonitorAddConfig: grpc.UnaryUnaryMultiCallable[
+        client_pb2.MonitoringProvider,
+        common_pb2.Response,
+    ]
+    MonitorDelConfig: grpc.UnaryUnaryMultiCallable[
+        client_pb2.MonitoringProvider,
+        common_pb2.Response,
+    ]
+    StartMTLSListener: grpc.UnaryUnaryMultiCallable[
+        client_pb2.MTLSListenerReq,
+        client_pb2.ListenerJob,
+    ]
+    """*** Listeners ***"""
+    StartWGListener: grpc.UnaryUnaryMultiCallable[
+        client_pb2.WGListenerReq,
+        client_pb2.ListenerJob,
+    ]
+    StartDNSListener: grpc.UnaryUnaryMultiCallable[
+        client_pb2.DNSListenerReq,
+        client_pb2.ListenerJob,
+    ]
+    StartHTTPSListener: grpc.UnaryUnaryMultiCallable[
+        client_pb2.HTTPListenerReq,
+        client_pb2.ListenerJob,
+    ]
+    StartHTTPListener: grpc.UnaryUnaryMultiCallable[
+        client_pb2.HTTPListenerReq,
+        client_pb2.ListenerJob,
+    ]
     GetBeacons: grpc.UnaryUnaryMultiCallable[
         common_pb2.Empty,
         client_pb2.Beacons,
@@ -64,13 +121,8 @@ class SliverRPCStub:
         client_pb2.BeaconTask,
         client_pb2.BeaconTask,
     ]
-    MonitorStart: grpc.UnaryUnaryMultiCallable[
-        common_pb2.Empty,
-        common_pb2.Response,
-    ]
-    """***Threat monitoring ***"""
-    MonitorStop: grpc.UnaryUnaryMultiCallable[
-        common_pb2.Empty,
+    UpdateBeaconIntegrityInformation: grpc.UnaryUnaryMultiCallable[
+        client_pb2.BeaconIntegrity,
         common_pb2.Empty,
     ]
     GetJobs: grpc.UnaryUnaryMultiCallable[
@@ -82,36 +134,15 @@ class SliverRPCStub:
         client_pb2.KillJobReq,
         client_pb2.KillJob,
     ]
-    StartMTLSListener: grpc.UnaryUnaryMultiCallable[
-        client_pb2.MTLSListenerReq,
-        client_pb2.MTLSListener,
-    ]
-    """*** Listeners ***"""
-    StartWGListener: grpc.UnaryUnaryMultiCallable[
-        client_pb2.WGListenerReq,
-        client_pb2.WGListener,
-    ]
-    StartDNSListener: grpc.UnaryUnaryMultiCallable[
-        client_pb2.DNSListenerReq,
-        client_pb2.DNSListener,
-    ]
-    StartHTTPSListener: grpc.UnaryUnaryMultiCallable[
-        client_pb2.HTTPListenerReq,
-        client_pb2.HTTPListener,
-    ]
-    StartHTTPListener: grpc.UnaryUnaryMultiCallable[
-        client_pb2.HTTPListenerReq,
-        client_pb2.HTTPListener,
+    RestartJobs: grpc.UnaryUnaryMultiCallable[
+        client_pb2.RestartJobReq,
+        common_pb2.Empty,
     ]
     StartTCPStagerListener: grpc.UnaryUnaryMultiCallable[
         client_pb2.StagerListenerReq,
         client_pb2.StagerListener,
     ]
     """*** Stager Listener ***"""
-    StartHTTPStagerListener: grpc.UnaryUnaryMultiCallable[
-        client_pb2.StagerListenerReq,
-        client_pb2.StagerListener,
-    ]
     LootAdd: grpc.UnaryUnaryMultiCallable[
         client_pb2.Loot,
         client_pb2.Loot,
@@ -133,9 +164,38 @@ class SliverRPCStub:
         common_pb2.Empty,
         client_pb2.AllLoot,
     ]
-    LootAllOf: grpc.UnaryUnaryMultiCallable[
-        client_pb2.Loot,
-        client_pb2.AllLoot,
+    Creds: grpc.UnaryUnaryMultiCallable[
+        common_pb2.Empty,
+        client_pb2.Credentials,
+    ]
+    """*** Creds ***"""
+    CredsAdd: grpc.UnaryUnaryMultiCallable[
+        client_pb2.Credentials,
+        common_pb2.Empty,
+    ]
+    CredsRm: grpc.UnaryUnaryMultiCallable[
+        client_pb2.Credentials,
+        common_pb2.Empty,
+    ]
+    CredsUpdate: grpc.UnaryUnaryMultiCallable[
+        client_pb2.Credentials,
+        common_pb2.Empty,
+    ]
+    GetCredByID: grpc.UnaryUnaryMultiCallable[
+        client_pb2.Credential,
+        client_pb2.Credential,
+    ]
+    GetCredsByHashType: grpc.UnaryUnaryMultiCallable[
+        client_pb2.Credential,
+        client_pb2.Credentials,
+    ]
+    GetPlaintextCredsByHashType: grpc.UnaryUnaryMultiCallable[
+        client_pb2.Credential,
+        client_pb2.Credentials,
+    ]
+    CredsSniffHashType: grpc.UnaryUnaryMultiCallable[
+        client_pb2.Credential,
+        client_pb2.Credential,
     ]
     Hosts: grpc.UnaryUnaryMultiCallable[
         common_pb2.Empty,
@@ -160,21 +220,105 @@ class SliverRPCStub:
     ]
     """*** Implants ***"""
     GenerateExternal: grpc.UnaryUnaryMultiCallable[
-        client_pb2.GenerateReq,
+        client_pb2.ExternalGenerateReq,
         client_pb2.ExternalImplantConfig,
     ]
     GenerateExternalSaveBuild: grpc.UnaryUnaryMultiCallable[
         client_pb2.ExternalImplantBinary,
         common_pb2.Empty,
     ]
-    GenerateExternalGetImplantConfig: grpc.UnaryUnaryMultiCallable[
-        client_pb2.ImplantConfig,
+    GenerateExternalGetBuildConfig: grpc.UnaryUnaryMultiCallable[
+        client_pb2.ImplantBuild,
         client_pb2.ExternalImplantConfig,
+    ]
+    GenerateStage: grpc.UnaryUnaryMultiCallable[
+        client_pb2.GenerateStageReq,
+        client_pb2.Generate,
+    ]
+    StageImplantBuild: grpc.UnaryUnaryMultiCallable[
+        client_pb2.ImplantStageReq,
+        common_pb2.Empty,
+    ]
+    GetHTTPC2Profiles: grpc.UnaryUnaryMultiCallable[
+        common_pb2.Empty,
+        client_pb2.HTTPC2Configs,
+    ]
+    """*** HTTP C2 Profiles ***"""
+    GetHTTPC2ProfileByName: grpc.UnaryUnaryMultiCallable[
+        client_pb2.C2ProfileReq,
+        client_pb2.HTTPC2Config,
+    ]
+    SaveHTTPC2Profile: grpc.UnaryUnaryMultiCallable[
+        client_pb2.HTTPC2ConfigReq,
+        common_pb2.Empty,
+    ]
+    BuilderRegister: grpc.UnaryStreamMultiCallable[
+        client_pb2.Builder,
+        client_pb2.Event,
+    ]
+    """*** Builders ***"""
+    BuilderTrigger: grpc.UnaryUnaryMultiCallable[
+        client_pb2.Event,
+        common_pb2.Empty,
+    ]
+    Builders: grpc.UnaryUnaryMultiCallable[
+        common_pb2.Empty,
+        client_pb2.Builders,
+    ]
+    CrackstationRegister: grpc.UnaryStreamMultiCallable[
+        client_pb2.Crackstation,
+        client_pb2.Event,
+    ]
+    """*** Crackstation ***"""
+    CrackstationTrigger: grpc.UnaryUnaryMultiCallable[
+        client_pb2.Event,
+        common_pb2.Empty,
+    ]
+    CrackstationBenchmark: grpc.UnaryUnaryMultiCallable[
+        client_pb2.CrackBenchmark,
+        common_pb2.Empty,
+    ]
+    Crackstations: grpc.UnaryUnaryMultiCallable[
+        common_pb2.Empty,
+        client_pb2.Crackstations,
+    ]
+    CrackTaskByID: grpc.UnaryUnaryMultiCallable[
+        client_pb2.CrackTask,
+        client_pb2.CrackTask,
+    ]
+    CrackTaskUpdate: grpc.UnaryUnaryMultiCallable[
+        client_pb2.CrackTask,
+        common_pb2.Empty,
+    ]
+    CrackFilesList: grpc.UnaryUnaryMultiCallable[
+        client_pb2.CrackFile,
+        client_pb2.CrackFiles,
+    ]
+    CrackFileCreate: grpc.UnaryUnaryMultiCallable[
+        client_pb2.CrackFile,
+        client_pb2.CrackFile,
+    ]
+    CrackFileChunkUpload: grpc.UnaryUnaryMultiCallable[
+        client_pb2.CrackFileChunk,
+        common_pb2.Empty,
+    ]
+    CrackFileChunkDownload: grpc.UnaryUnaryMultiCallable[
+        client_pb2.CrackFileChunk,
+        client_pb2.CrackFileChunk,
+    ]
+    CrackFileComplete: grpc.UnaryUnaryMultiCallable[
+        client_pb2.CrackFile,
+        common_pb2.Empty,
+    ]
+    CrackFileDelete: grpc.UnaryUnaryMultiCallable[
+        client_pb2.CrackFile,
+        common_pb2.Empty,
     ]
     Regenerate: grpc.UnaryUnaryMultiCallable[
         client_pb2.RegenerateReq,
         client_pb2.Generate,
     ]
+    """*** Payloads ***"""
     ImplantBuilds: grpc.UnaryUnaryMultiCallable[
         common_pb2.Empty,
         client_pb2.ImplantBuilds,
@@ -226,6 +370,18 @@ class SliverRPCStub:
     ShellcodeEncoderMap: grpc.UnaryUnaryMultiCallable[
         common_pb2.Empty,
         client_pb2.ShellcodeEncoderMap,
+    ]
+    TrafficEncoderMap: grpc.UnaryUnaryMultiCallable[
+        common_pb2.Empty,
+        client_pb2.TrafficEncoderMap,
+    ]
+    TrafficEncoderAdd: grpc.UnaryUnaryMultiCallable[
+        client_pb2.TrafficEncoder,
+        client_pb2.TrafficEncoderTests,
+    ]
+    TrafficEncoderRm: grpc.UnaryUnaryMultiCallable[
+        client_pb2.TrafficEncoder,
+        common_pb2.Empty,
     ]
     Websites: grpc.UnaryUnaryMultiCallable[
         common_pb2.Empty,
@@ -289,6 +445,10 @@ class SliverRPCStub:
         sliver_pb2.MvReq,
         sliver_pb2.Mv,
     ]
+    Cp: grpc.UnaryUnaryMultiCallable[
+        sliver_pb2.CpReq,
+        sliver_pb2.Cp,
+    ]
     Rm: grpc.UnaryUnaryMultiCallable[
         sliver_pb2.RmReq,
         sliver_pb2.Rm,
@@ -304,6 +464,34 @@ class SliverRPCStub:
     Upload: grpc.UnaryUnaryMultiCallable[
         sliver_pb2.UploadReq,
         sliver_pb2.Upload,
+    ]
+    Grep: grpc.UnaryUnaryMultiCallable[
+        sliver_pb2.GrepReq,
+        sliver_pb2.Grep,
+    ]
+    Chmod: grpc.UnaryUnaryMultiCallable[
+        sliver_pb2.ChmodReq,
+        sliver_pb2.Chmod,
+    ]
+    Chown: grpc.UnaryUnaryMultiCallable[
+        sliver_pb2.ChownReq,
+        sliver_pb2.Chown,
+    ]
+    Chtimes: grpc.UnaryUnaryMultiCallable[
+        sliver_pb2.ChtimesReq,
+        sliver_pb2.Chtimes,
+    ]
+    MemfilesList: grpc.UnaryUnaryMultiCallable[
+        sliver_pb2.MemfilesListReq,
+        sliver_pb2.Ls,
+    ]
+    MemfilesAdd: grpc.UnaryUnaryMultiCallable[
+        sliver_pb2.MemfilesAddReq,
+        sliver_pb2.MemfilesAdd,
+    ]
+    MemfilesRm: grpc.UnaryUnaryMultiCallable[
+        sliver_pb2.MemfilesRmReq,
+        sliver_pb2.MemfilesRm,
     ]
     ProcessDump: grpc.UnaryUnaryMultiCallable[
         sliver_pb2.ProcessDumpReq,
@@ -369,6 +557,18 @@ class SliverRPCStub:
         sliver_pb2.CurrentTokenOwnerReq,
         sliver_pb2.CurrentTokenOwner,
     ]
+    Services: grpc.UnaryUnaryMultiCallable[
+        sliver_pb2.ServicesReq,
+        sliver_pb2.Services,
+    ]
+    ServiceDetail: grpc.UnaryUnaryMultiCallable[
+        sliver_pb2.ServiceDetailReq,
+        sliver_pb2.ServiceDetail,
+    ]
+    StartServiceByName: grpc.UnaryUnaryMultiCallable[
+        sliver_pb2.StartServiceByNameReq,
+        sliver_pb2.ServiceInfo,
+    ]
     PivotStartListener: grpc.UnaryUnaryMultiCallable[
         sliver_pb2.PivotStartListenerReq,
         sliver_pb2.PivotListener,
@@ -415,8 +615,8 @@ class SliverRPCStub:
         sliver_pb2.UnsetEnv,
     ]
     Backdoor: grpc.UnaryUnaryMultiCallable[
-        sliver_pb2.BackdoorReq,
-        sliver_pb2.Backdoor,
+        client_pb2.BackdoorReq,
+        client_pb2.Backdoor,
     ]
     RegistryRead: grpc.UnaryUnaryMultiCallable[
         sliver_pb2.RegistryReadReq,
@@ -441,6 +641,10 @@ class SliverRPCStub:
     RegistryListValues: grpc.UnaryUnaryMultiCallable[
         sliver_pb2.RegistryListValuesReq,
         sliver_pb2.RegistryValuesList,
+    ]
+    RegistryReadHive: grpc.UnaryUnaryMultiCallable[
+        sliver_pb2.RegistryReadHiveReq,
+        sliver_pb2.RegistryReadHive,
     ]
     RunSSHCommand: grpc.UnaryUnaryMultiCallable[
         sliver_pb2.SSHCommandReq,
@@ -470,7 +674,7 @@ class SliverRPCStub:
         sliver_pb2.OpenSession,
         sliver_pb2.OpenSession,
     ]
-    """Beacon only commands"""
+    """*** Beacon *** -only commands"""
     CloseSession: grpc.UnaryUnaryMultiCallable[
         sliver_pb2.CloseSession,
         common_pb2.Empty,
@@ -479,7 +683,7 @@ class SliverRPCStub:
         sliver_pb2.RegisterExtensionReq,
         sliver_pb2.RegisterExtension,
     ]
-    """Extensions"""
+    """*** Extensions ***"""
     CallExtension: grpc.UnaryUnaryMultiCallable[
         sliver_pb2.CallExtensionReq,
         sliver_pb2.CallExtension,
@@ -487,6 +691,19 @@ class SliverRPCStub:
     ListExtensions: grpc.UnaryUnaryMultiCallable[
         sliver_pb2.ListExtensionsReq,
         sliver_pb2.ListExtensions,
+    ]
+    RegisterWasmExtension: grpc.UnaryUnaryMultiCallable[
+        sliver_pb2.RegisterWasmExtensionReq,
+        sliver_pb2.RegisterWasmExtension,
+    ]
+    """*** Wasm Extensions ***"""
+    ListWasmExtensions: grpc.UnaryUnaryMultiCallable[
+        sliver_pb2.ListWasmExtensionsReq,
+        sliver_pb2.ListWasmExtensions,
+    ]
+    ExecWasmExtension: grpc.UnaryUnaryMultiCallable[
+        sliver_pb2.ExecWasmExtensionReq,
+        sliver_pb2.ExecWasmExtension,
     ]
     WGStartPortForward: grpc.UnaryUnaryMultiCallable[
         sliver_pb2.WGPortForwardStartReq,
@@ -554,810 +771,1866 @@ class SliverRPCStub:
     ]
     """*** Events ***"""
 
+class SliverRPCAsyncStub:
+    GetVersion: grpc.aio.UnaryUnaryMultiCallable[
+        common_pb2.Empty,
+        client_pb2.Version,
+    ]
+    """*** Version ***"""
+    ClientLog: grpc.aio.StreamUnaryMultiCallable[
+        client_pb2.ClientLogData,
+        common_pb2.Empty,
+    ]
+    """*** Client Logs ***"""
+    GetOperators: grpc.aio.UnaryUnaryMultiCallable[
+        common_pb2.Empty,
+        client_pb2.Operators,
+    ]
+    """*** Operator Commands ***"""
+    Kill: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.KillReq,
+        common_pb2.Empty,
+    ]
+    """*** Generic ***"""
+    Reconfigure: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.ReconfigureReq,
+        sliver_pb2.Reconfigure,
+    ]
+    Rename: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.RenameReq,
+        common_pb2.Empty,
+    ]
+    GetSessions: grpc.aio.UnaryUnaryMultiCallable[
+        common_pb2.Empty,
+        client_pb2.Sessions,
+    ]
+    """*** Sessions ***"""
+    MonitorStart: grpc.aio.UnaryUnaryMultiCallable[
+        common_pb2.Empty,
+        common_pb2.Response,
+    ]
+    """***Threat monitoring ***"""
+    MonitorStop: grpc.aio.UnaryUnaryMultiCallable[
+        common_pb2.Empty,
+        common_pb2.Empty,
+    ]
+    MonitorListConfig: grpc.aio.UnaryUnaryMultiCallable[
+        common_pb2.Empty,
+        client_pb2.MonitoringProviders,
+    ]
+    MonitorAddConfig: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.MonitoringProvider,
+        common_pb2.Response,
+    ]
+    MonitorDelConfig: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.MonitoringProvider,
+        common_pb2.Response,
+    ]
+    StartMTLSListener: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.MTLSListenerReq,
+        client_pb2.ListenerJob,
+    ]
+    """*** Listeners ***"""
+    StartWGListener: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.WGListenerReq,
+        client_pb2.ListenerJob,
+    ]
+    StartDNSListener: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.DNSListenerReq,
+        client_pb2.ListenerJob,
+    ]
+    StartHTTPSListener: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.HTTPListenerReq,
+        client_pb2.ListenerJob,
+    ]
+    StartHTTPListener: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.HTTPListenerReq,
+        client_pb2.ListenerJob,
+    ]
+    GetBeacons: grpc.aio.UnaryUnaryMultiCallable[
+        common_pb2.Empty,
+        client_pb2.Beacons,
+    ]
+    """*** Beacons ***"""
+    GetBeacon: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.Beacon,
+        client_pb2.Beacon,
+    ]
+    RmBeacon: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.Beacon,
+        common_pb2.Empty,
+    ]
+    GetBeaconTasks: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.Beacon,
+        client_pb2.BeaconTasks,
+    ]
+    GetBeaconTaskContent: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.BeaconTask,
+        client_pb2.BeaconTask,
+    ]
+    CancelBeaconTask: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.BeaconTask,
+        client_pb2.BeaconTask,
+    ]
+    UpdateBeaconIntegrityInformation: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.BeaconIntegrity,
+        common_pb2.Empty,
+    ]
+    GetJobs: grpc.aio.UnaryUnaryMultiCallable[
+        common_pb2.Empty,
+        client_pb2.Jobs,
+    ]
+    """*** Jobs ***"""
+    KillJob: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.KillJobReq,
+        client_pb2.KillJob,
+    ]
+    RestartJobs: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.RestartJobReq,
+        common_pb2.Empty,
+    ]
+    StartTCPStagerListener: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.StagerListenerReq,
+        client_pb2.StagerListener,
+    ]
+    """*** Stager Listener ***"""
+    LootAdd: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.Loot,
+        client_pb2.Loot,
+    ]
+    """*** Loot ***"""
+    LootRm: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.Loot,
+        common_pb2.Empty,
+    ]
+    LootUpdate: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.Loot,
+        client_pb2.Loot,
+    ]
+    LootContent: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.Loot,
+        client_pb2.Loot,
+    ]
+    LootAll: grpc.aio.UnaryUnaryMultiCallable[
+        common_pb2.Empty,
+        client_pb2.AllLoot,
+    ]
+    Creds: grpc.aio.UnaryUnaryMultiCallable[
+        common_pb2.Empty,
+        client_pb2.Credentials,
+    ]
+    """*** Creds ***"""
+    CredsAdd: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.Credentials,
+        common_pb2.Empty,
+    ]
+    CredsRm: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.Credentials,
+        common_pb2.Empty,
+    ]
+    CredsUpdate: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.Credentials,
+        common_pb2.Empty,
+    ]
+    GetCredByID: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.Credential,
+        client_pb2.Credential,
+    ]
+    GetCredsByHashType: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.Credential,
+        client_pb2.Credentials,
+    ]
+    GetPlaintextCredsByHashType: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.Credential,
+        client_pb2.Credentials,
+    ]
+    CredsSniffHashType: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.Credential,
+        client_pb2.Credential,
+    ]
+    Hosts: grpc.aio.UnaryUnaryMultiCallable[
+        common_pb2.Empty,
+        client_pb2.AllHosts,
+    ]
+    """*** Hosts ***"""
+    Host: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.Host,
+        client_pb2.Host,
+    ]
+    HostRm: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.Host,
+        common_pb2.Empty,
+    ]
+    HostIOCRm: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.IOC,
+        common_pb2.Empty,
+    ]
+    Generate: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.GenerateReq,
+        client_pb2.Generate,
+    ]
+    """*** Implants ***"""
+    GenerateExternal: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.ExternalGenerateReq,
+        client_pb2.ExternalImplantConfig,
+    ]
+    GenerateExternalSaveBuild: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.ExternalImplantBinary,
+        common_pb2.Empty,
+    ]
+    GenerateExternalGetBuildConfig: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.ImplantBuild,
+        client_pb2.ExternalImplantConfig,
+    ]
+    GenerateStage: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.GenerateStageReq,
+        client_pb2.Generate,
+    ]
+    StageImplantBuild: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.ImplantStageReq,
+        common_pb2.Empty,
+    ]
+    GetHTTPC2Profiles: grpc.aio.UnaryUnaryMultiCallable[
+        common_pb2.Empty,
+        client_pb2.HTTPC2Configs,
+    ]
+    """*** HTTP C2 Profiles ***"""
+    GetHTTPC2ProfileByName: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.C2ProfileReq,
+        client_pb2.HTTPC2Config,
+    ]
+    SaveHTTPC2Profile: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.HTTPC2ConfigReq,
+        common_pb2.Empty,
+    ]
+    BuilderRegister: grpc.aio.UnaryStreamMultiCallable[
+        client_pb2.Builder,
+        client_pb2.Event,
+    ]
+    """*** Builders ***"""
+    BuilderTrigger: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.Event,
+        common_pb2.Empty,
+    ]
+    Builders: grpc.aio.UnaryUnaryMultiCallable[
+        common_pb2.Empty,
+        client_pb2.Builders,
+    ]
+    CrackstationRegister: grpc.aio.UnaryStreamMultiCallable[
+        client_pb2.Crackstation,
+        client_pb2.Event,
+    ]
+    """*** Crackstation ***"""
+    CrackstationTrigger: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.Event,
+        common_pb2.Empty,
+    ]
+    CrackstationBenchmark: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.CrackBenchmark,
+        common_pb2.Empty,
+    ]
+    Crackstations: grpc.aio.UnaryUnaryMultiCallable[
+        common_pb2.Empty,
+        client_pb2.Crackstations,
+    ]
+    CrackTaskByID: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.CrackTask,
+        client_pb2.CrackTask,
+    ]
+    CrackTaskUpdate: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.CrackTask,
+        common_pb2.Empty,
+    ]
+    CrackFilesList: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.CrackFile,
+        client_pb2.CrackFiles,
+    ]
+    CrackFileCreate: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.CrackFile,
+        client_pb2.CrackFile,
+    ]
+    CrackFileChunkUpload: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.CrackFileChunk,
+        common_pb2.Empty,
+    ]
+    CrackFileChunkDownload: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.CrackFileChunk,
+        client_pb2.CrackFileChunk,
+    ]
+    CrackFileComplete: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.CrackFile,
+        common_pb2.Empty,
+    ]
+    CrackFileDelete: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.CrackFile,
+        common_pb2.Empty,
+    ]
+    Regenerate: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.RegenerateReq,
+        client_pb2.Generate,
+    ]
+    """*** Payloads ***"""
+    ImplantBuilds: grpc.aio.UnaryUnaryMultiCallable[
+        common_pb2.Empty,
+        client_pb2.ImplantBuilds,
+    ]
+    DeleteImplantBuild: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.DeleteReq,
+        common_pb2.Empty,
+    ]
+    Canaries: grpc.aio.UnaryUnaryMultiCallable[
+        common_pb2.Empty,
+        client_pb2.Canaries,
+    ]
+    GenerateWGClientConfig: grpc.aio.UnaryUnaryMultiCallable[
+        common_pb2.Empty,
+        client_pb2.WGClientConfig,
+    ]
+    GenerateUniqueIP: grpc.aio.UnaryUnaryMultiCallable[
+        common_pb2.Empty,
+        client_pb2.UniqueWGIP,
+    ]
+    ImplantProfiles: grpc.aio.UnaryUnaryMultiCallable[
+        common_pb2.Empty,
+        client_pb2.ImplantProfiles,
+    ]
+    DeleteImplantProfile: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.DeleteReq,
+        common_pb2.Empty,
+    ]
+    SaveImplantProfile: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.ImplantProfile,
+        client_pb2.ImplantProfile,
+    ]
+    MsfStage: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.MsfStagerReq,
+        client_pb2.MsfStager,
+    ]
+    ShellcodeRDI: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.ShellcodeRDIReq,
+        client_pb2.ShellcodeRDI,
+    ]
+    GetCompiler: grpc.aio.UnaryUnaryMultiCallable[
+        common_pb2.Empty,
+        client_pb2.Compiler,
+    ]
+    ShellcodeEncoder: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.ShellcodeEncodeReq,
+        client_pb2.ShellcodeEncode,
+    ]
+    ShellcodeEncoderMap: grpc.aio.UnaryUnaryMultiCallable[
+        common_pb2.Empty,
+        client_pb2.ShellcodeEncoderMap,
+    ]
+    TrafficEncoderMap: grpc.aio.UnaryUnaryMultiCallable[
+        common_pb2.Empty,
+        client_pb2.TrafficEncoderMap,
+    ]
+    TrafficEncoderAdd: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.TrafficEncoder,
+        client_pb2.TrafficEncoderTests,
+    ]
+    TrafficEncoderRm: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.TrafficEncoder,
+        common_pb2.Empty,
+    ]
+    Websites: grpc.aio.UnaryUnaryMultiCallable[
+        common_pb2.Empty,
+        client_pb2.Websites,
+    ]
+    """*** Websites ***"""
+    Website: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.Website,
+        client_pb2.Website,
+    ]
+    WebsiteRemove: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.Website,
+        common_pb2.Empty,
+    ]
+    WebsiteAddContent: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.WebsiteAddContent,
+        client_pb2.Website,
+    ]
+    WebsiteUpdateContent: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.WebsiteAddContent,
+        client_pb2.Website,
+    ]
+    WebsiteRemoveContent: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.WebsiteRemoveContent,
+        client_pb2.Website,
+    ]
+    Ping: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.Ping,
+        sliver_pb2.Ping,
+    ]
+    """*** Session Interactions ***"""
+    Ps: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.PsReq,
+        sliver_pb2.Ps,
+    ]
+    Terminate: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.TerminateReq,
+        sliver_pb2.Terminate,
+    ]
+    Ifconfig: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.IfconfigReq,
+        sliver_pb2.Ifconfig,
+    ]
+    Netstat: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.NetstatReq,
+        sliver_pb2.Netstat,
+    ]
+    Ls: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.LsReq,
+        sliver_pb2.Ls,
+    ]
+    Cd: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.CdReq,
+        sliver_pb2.Pwd,
+    ]
+    Pwd: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.PwdReq,
+        sliver_pb2.Pwd,
+    ]
+    Mv: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.MvReq,
+        sliver_pb2.Mv,
+    ]
+    Cp: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.CpReq,
+        sliver_pb2.Cp,
+    ]
+    Rm: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.RmReq,
+        sliver_pb2.Rm,
+    ]
+    Mkdir: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.MkdirReq,
+        sliver_pb2.Mkdir,
+    ]
+    Download: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.DownloadReq,
+        sliver_pb2.Download,
+    ]
+    Upload: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.UploadReq,
+        sliver_pb2.Upload,
+    ]
+    Grep: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.GrepReq,
+        sliver_pb2.Grep,
+    ]
+    Chmod: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.ChmodReq,
+        sliver_pb2.Chmod,
+    ]
+    Chown: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.ChownReq,
+        sliver_pb2.Chown,
+    ]
+    Chtimes: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.ChtimesReq,
+        sliver_pb2.Chtimes,
+    ]
+    MemfilesList: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.MemfilesListReq,
+        sliver_pb2.Ls,
+    ]
+    MemfilesAdd: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.MemfilesAddReq,
+        sliver_pb2.MemfilesAdd,
+    ]
+    MemfilesRm: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.MemfilesRmReq,
+        sliver_pb2.MemfilesRm,
+    ]
+    ProcessDump: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.ProcessDumpReq,
+        sliver_pb2.ProcessDump,
+    ]
+    RunAs: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.RunAsReq,
+        sliver_pb2.RunAs,
+    ]
+    Impersonate: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.ImpersonateReq,
+        sliver_pb2.Impersonate,
+    ]
+    RevToSelf: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.RevToSelfReq,
+        sliver_pb2.RevToSelf,
+    ]
+    GetSystem: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.GetSystemReq,
+        sliver_pb2.GetSystem,
+    ]
+    Task: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.TaskReq,
+        sliver_pb2.Task,
+    ]
+    Msf: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.MSFReq,
+        sliver_pb2.Task,
+    ]
+    MsfRemote: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.MSFRemoteReq,
+        sliver_pb2.Task,
+    ]
+    ExecuteAssembly: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.ExecuteAssemblyReq,
+        sliver_pb2.ExecuteAssembly,
+    ]
+    Migrate: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.MigrateReq,
+        sliver_pb2.Migrate,
+    ]
+    Execute: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.ExecuteReq,
+        sliver_pb2.Execute,
+    ]
+    ExecuteWindows: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.ExecuteWindowsReq,
+        sliver_pb2.Execute,
+    ]
+    Sideload: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.SideloadReq,
+        sliver_pb2.Sideload,
+    ]
+    SpawnDll: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.InvokeSpawnDllReq,
+        sliver_pb2.SpawnDll,
+    ]
+    Screenshot: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.ScreenshotReq,
+        sliver_pb2.Screenshot,
+    ]
+    CurrentTokenOwner: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.CurrentTokenOwnerReq,
+        sliver_pb2.CurrentTokenOwner,
+    ]
+    Services: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.ServicesReq,
+        sliver_pb2.Services,
+    ]
+    ServiceDetail: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.ServiceDetailReq,
+        sliver_pb2.ServiceDetail,
+    ]
+    StartServiceByName: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.StartServiceByNameReq,
+        sliver_pb2.ServiceInfo,
+    ]
+    PivotStartListener: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.PivotStartListenerReq,
+        sliver_pb2.PivotListener,
+    ]
+    """*** Pivots ***"""
+    PivotStopListener: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.PivotStopListenerReq,
+        common_pb2.Empty,
+    ]
+    PivotSessionListeners: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.PivotListenersReq,
+        sliver_pb2.PivotListeners,
+    ]
+    PivotGraph: grpc.aio.UnaryUnaryMultiCallable[
+        common_pb2.Empty,
+        client_pb2.PivotGraph,
+    ]
+    StartService: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.StartServiceReq,
+        sliver_pb2.ServiceInfo,
+    ]
+    StopService: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.StopServiceReq,
+        sliver_pb2.ServiceInfo,
+    ]
+    RemoveService: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.RemoveServiceReq,
+        sliver_pb2.ServiceInfo,
+    ]
+    MakeToken: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.MakeTokenReq,
+        sliver_pb2.MakeToken,
+    ]
+    GetEnv: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.EnvReq,
+        sliver_pb2.EnvInfo,
+    ]
+    SetEnv: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.SetEnvReq,
+        sliver_pb2.SetEnv,
+    ]
+    UnsetEnv: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.UnsetEnvReq,
+        sliver_pb2.UnsetEnv,
+    ]
+    Backdoor: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.BackdoorReq,
+        client_pb2.Backdoor,
+    ]
+    RegistryRead: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.RegistryReadReq,
+        sliver_pb2.RegistryRead,
+    ]
+    RegistryWrite: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.RegistryWriteReq,
+        sliver_pb2.RegistryWrite,
+    ]
+    RegistryCreateKey: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.RegistryCreateKeyReq,
+        sliver_pb2.RegistryCreateKey,
+    ]
+    RegistryDeleteKey: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.RegistryDeleteKeyReq,
+        sliver_pb2.RegistryDeleteKey,
+    ]
+    RegistryListSubKeys: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.RegistrySubKeyListReq,
+        sliver_pb2.RegistrySubKeyList,
+    ]
+    RegistryListValues: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.RegistryListValuesReq,
+        sliver_pb2.RegistryValuesList,
+    ]
+    RegistryReadHive: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.RegistryReadHiveReq,
+        sliver_pb2.RegistryReadHive,
+    ]
+    RunSSHCommand: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.SSHCommandReq,
+        sliver_pb2.SSHCommand,
+    ]
+    HijackDLL: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.DllHijackReq,
+        client_pb2.DllHijack,
+    ]
+    GetPrivs: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.GetPrivsReq,
+        sliver_pb2.GetPrivs,
+    ]
+    StartRportFwdListener: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.RportFwdStartListenerReq,
+        sliver_pb2.RportFwdListener,
+    ]
+    GetRportFwdListeners: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.RportFwdListenersReq,
+        sliver_pb2.RportFwdListeners,
+    ]
+    StopRportFwdListener: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.RportFwdStopListenerReq,
+        sliver_pb2.RportFwdListener,
+    ]
+    OpenSession: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.OpenSession,
+        sliver_pb2.OpenSession,
+    ]
+    """*** Beacon *** -only commands"""
+    CloseSession: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.CloseSession,
+        common_pb2.Empty,
+    ]
+    RegisterExtension: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.RegisterExtensionReq,
+        sliver_pb2.RegisterExtension,
+    ]
+    """*** Extensions ***"""
+    CallExtension: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.CallExtensionReq,
+        sliver_pb2.CallExtension,
+    ]
+    ListExtensions: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.ListExtensionsReq,
+        sliver_pb2.ListExtensions,
+    ]
+    RegisterWasmExtension: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.RegisterWasmExtensionReq,
+        sliver_pb2.RegisterWasmExtension,
+    ]
+    """*** Wasm Extensions ***"""
+    ListWasmExtensions: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.ListWasmExtensionsReq,
+        sliver_pb2.ListWasmExtensions,
+    ]
+    ExecWasmExtension: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.ExecWasmExtensionReq,
+        sliver_pb2.ExecWasmExtension,
+    ]
+    WGStartPortForward: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.WGPortForwardStartReq,
+        sliver_pb2.WGPortForward,
+    ]
+    """*** Wireguard Specific ***"""
+    WGStopPortForward: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.WGPortForwardStopReq,
+        sliver_pb2.WGPortForward,
+    ]
+    WGStartSocks: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.WGSocksStartReq,
+        sliver_pb2.WGSocks,
+    ]
+    WGStopSocks: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.WGSocksStopReq,
+        sliver_pb2.WGSocks,
+    ]
+    WGListForwarders: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.WGTCPForwardersReq,
+        sliver_pb2.WGTCPForwarders,
+    ]
+    WGListSocksServers: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.WGSocksServersReq,
+        sliver_pb2.WGSocksServers,
+    ]
+    Shell: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.ShellReq,
+        sliver_pb2.Shell,
+    ]
+    """*** Realtime Commands ***"""
+    Portfwd: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.PortfwdReq,
+        sliver_pb2.Portfwd,
+    ]
+    CreateSocks: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.Socks,
+        sliver_pb2.Socks,
+    ]
+    """*** Socks5 ***"""
+    CloseSocks: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.Socks,
+        common_pb2.Empty,
+    ]
+    SocksProxy: grpc.aio.StreamStreamMultiCallable[
+        sliver_pb2.SocksData,
+        sliver_pb2.SocksData,
+    ]
+    CreateTunnel: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.Tunnel,
+        sliver_pb2.Tunnel,
+    ]
+    """*** Tunnels ***"""
+    CloseTunnel: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.Tunnel,
+        common_pb2.Empty,
+    ]
+    TunnelData: grpc.aio.StreamStreamMultiCallable[
+        sliver_pb2.TunnelData,
+        sliver_pb2.TunnelData,
+    ]
+    Events: grpc.aio.UnaryStreamMultiCallable[
+        common_pb2.Empty,
+        client_pb2.Event,
+    ]
+    """*** Events ***"""
+
 class SliverRPCServicer(metaclass=abc.ABCMeta):
     @abc.abstractmethod
     def GetVersion(
         self,
         request: common_pb2.Empty,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.Version:
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.Version, collections.abc.Awaitable[client_pb2.Version]]:
         """*** Version ***"""
+    @abc.abstractmethod
+    def ClientLog(
+        self,
+        request_iterator: _MaybeAsyncIterator[client_pb2.ClientLogData],
+        context: _ServicerContext,
+    ) -> typing.Union[common_pb2.Empty, collections.abc.Awaitable[common_pb2.Empty]]:
+        """*** Client Logs ***"""
     @abc.abstractmethod
     def GetOperators(
         self,
         request: common_pb2.Empty,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.Operators:
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.Operators, collections.abc.Awaitable[client_pb2.Operators]]:
         """*** Operator Commands ***"""
     @abc.abstractmethod
     def Kill(
         self,
         request: sliver_pb2.KillReq,
-        context: grpc.ServicerContext,
-    ) -> common_pb2.Empty:
+        context: _ServicerContext,
+    ) -> typing.Union[common_pb2.Empty, collections.abc.Awaitable[common_pb2.Empty]]:
         """*** Generic ***"""
     @abc.abstractmethod
     def Reconfigure(
         self,
         request: sliver_pb2.ReconfigureReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.Reconfigure: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.Reconfigure, collections.abc.Awaitable[sliver_pb2.Reconfigure]]: ...
     @abc.abstractmethod
     def Rename(
         self,
         request: client_pb2.RenameReq,
-        context: grpc.ServicerContext,
-    ) -> common_pb2.Empty: ...
+        context: _ServicerContext,
+    ) -> typing.Union[common_pb2.Empty, collections.abc.Awaitable[common_pb2.Empty]]: ...
     @abc.abstractmethod
     def GetSessions(
         self,
         request: common_pb2.Empty,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.Sessions:
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.Sessions, collections.abc.Awaitable[client_pb2.Sessions]]:
         """*** Sessions ***"""
-    @abc.abstractmethod
-    def GetBeacons(
-        self,
-        request: common_pb2.Empty,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.Beacons:
-        """*** Beacons ***"""
-    @abc.abstractmethod
-    def GetBeacon(
-        self,
-        request: client_pb2.Beacon,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.Beacon: ...
-    @abc.abstractmethod
-    def RmBeacon(
-        self,
-        request: client_pb2.Beacon,
-        context: grpc.ServicerContext,
-    ) -> common_pb2.Empty: ...
-    @abc.abstractmethod
-    def GetBeaconTasks(
-        self,
-        request: client_pb2.Beacon,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.BeaconTasks: ...
-    @abc.abstractmethod
-    def GetBeaconTaskContent(
-        self,
-        request: client_pb2.BeaconTask,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.BeaconTask: ...
-    @abc.abstractmethod
-    def CancelBeaconTask(
-        self,
-        request: client_pb2.BeaconTask,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.BeaconTask: ...
     @abc.abstractmethod
     def MonitorStart(
         self,
         request: common_pb2.Empty,
-        context: grpc.ServicerContext,
-    ) -> common_pb2.Response:
+        context: _ServicerContext,
+    ) -> typing.Union[common_pb2.Response, collections.abc.Awaitable[common_pb2.Response]]:
         """***Threat monitoring ***"""
     @abc.abstractmethod
     def MonitorStop(
         self,
         request: common_pb2.Empty,
-        context: grpc.ServicerContext,
-    ) -> common_pb2.Empty: ...
+        context: _ServicerContext,
+    ) -> typing.Union[common_pb2.Empty, collections.abc.Awaitable[common_pb2.Empty]]: ...
     @abc.abstractmethod
-    def GetJobs(
+    def MonitorListConfig(
         self,
         request: common_pb2.Empty,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.Jobs:
-        """*** Jobs ***"""
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.MonitoringProviders, collections.abc.Awaitable[client_pb2.MonitoringProviders]]: ...
     @abc.abstractmethod
-    def KillJob(
+    def MonitorAddConfig(
         self,
-        request: client_pb2.KillJobReq,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.KillJob: ...
+        request: client_pb2.MonitoringProvider,
+        context: _ServicerContext,
+    ) -> typing.Union[common_pb2.Response, collections.abc.Awaitable[common_pb2.Response]]: ...
+    @abc.abstractmethod
+    def MonitorDelConfig(
+        self,
+        request: client_pb2.MonitoringProvider,
+        context: _ServicerContext,
+    ) -> typing.Union[common_pb2.Response, collections.abc.Awaitable[common_pb2.Response]]: ...
     @abc.abstractmethod
     def StartMTLSListener(
         self,
         request: client_pb2.MTLSListenerReq,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.MTLSListener:
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.ListenerJob, collections.abc.Awaitable[client_pb2.ListenerJob]]:
         """*** Listeners ***"""
     @abc.abstractmethod
     def StartWGListener(
         self,
         request: client_pb2.WGListenerReq,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.WGListener: ...
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.ListenerJob, collections.abc.Awaitable[client_pb2.ListenerJob]]: ...
     @abc.abstractmethod
     def StartDNSListener(
         self,
         request: client_pb2.DNSListenerReq,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.DNSListener: ...
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.ListenerJob, collections.abc.Awaitable[client_pb2.ListenerJob]]: ...
     @abc.abstractmethod
     def StartHTTPSListener(
         self,
         request: client_pb2.HTTPListenerReq,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.HTTPListener: ...
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.ListenerJob, collections.abc.Awaitable[client_pb2.ListenerJob]]: ...
     @abc.abstractmethod
     def StartHTTPListener(
         self,
         request: client_pb2.HTTPListenerReq,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.HTTPListener: ...
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.ListenerJob, collections.abc.Awaitable[client_pb2.ListenerJob]]: ...
+    @abc.abstractmethod
+    def GetBeacons(
+        self,
+        request: common_pb2.Empty,
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.Beacons, collections.abc.Awaitable[client_pb2.Beacons]]:
+        """*** Beacons ***"""
+    @abc.abstractmethod
+    def GetBeacon(
+        self,
+        request: client_pb2.Beacon,
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.Beacon, collections.abc.Awaitable[client_pb2.Beacon]]: ...
+    @abc.abstractmethod
+    def RmBeacon(
+        self,
+        request: client_pb2.Beacon,
+        context: _ServicerContext,
+    ) -> typing.Union[common_pb2.Empty, collections.abc.Awaitable[common_pb2.Empty]]: ...
+    @abc.abstractmethod
+    def GetBeaconTasks(
+        self,
+        request: client_pb2.Beacon,
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.BeaconTasks, collections.abc.Awaitable[client_pb2.BeaconTasks]]: ...
+    @abc.abstractmethod
+    def GetBeaconTaskContent(
+        self,
+        request: client_pb2.BeaconTask,
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.BeaconTask, collections.abc.Awaitable[client_pb2.BeaconTask]]: ...
+    @abc.abstractmethod
+    def CancelBeaconTask(
+        self,
+        request: client_pb2.BeaconTask,
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.BeaconTask, collections.abc.Awaitable[client_pb2.BeaconTask]]: ...
+    @abc.abstractmethod
+    def UpdateBeaconIntegrityInformation(
+        self,
+        request: client_pb2.BeaconIntegrity,
+        context: _ServicerContext,
+    ) -> typing.Union[common_pb2.Empty, collections.abc.Awaitable[common_pb2.Empty]]: ...
+    @abc.abstractmethod
+    def GetJobs(
+        self,
+        request: common_pb2.Empty,
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.Jobs, collections.abc.Awaitable[client_pb2.Jobs]]:
+        """*** Jobs ***"""
+    @abc.abstractmethod
+    def KillJob(
+        self,
+        request: client_pb2.KillJobReq,
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.KillJob, collections.abc.Awaitable[client_pb2.KillJob]]: ...
+    @abc.abstractmethod
+    def RestartJobs(
+        self,
+        request: client_pb2.RestartJobReq,
+        context: _ServicerContext,
+    ) -> typing.Union[common_pb2.Empty, collections.abc.Awaitable[common_pb2.Empty]]: ...
     @abc.abstractmethod
     def StartTCPStagerListener(
         self,
         request: client_pb2.StagerListenerReq,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.StagerListener:
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.StagerListener, collections.abc.Awaitable[client_pb2.StagerListener]]:
         """*** Stager Listener ***"""
-    @abc.abstractmethod
-    def StartHTTPStagerListener(
-        self,
-        request: client_pb2.StagerListenerReq,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.StagerListener: ...
     @abc.abstractmethod
     def LootAdd(
         self,
         request: client_pb2.Loot,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.Loot:
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.Loot, collections.abc.Awaitable[client_pb2.Loot]]:
         """*** Loot ***"""
     @abc.abstractmethod
     def LootRm(
         self,
         request: client_pb2.Loot,
-        context: grpc.ServicerContext,
-    ) -> common_pb2.Empty: ...
+        context: _ServicerContext,
+    ) -> typing.Union[common_pb2.Empty, collections.abc.Awaitable[common_pb2.Empty]]: ...
     @abc.abstractmethod
     def LootUpdate(
         self,
         request: client_pb2.Loot,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.Loot: ...
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.Loot, collections.abc.Awaitable[client_pb2.Loot]]: ...
     @abc.abstractmethod
     def LootContent(
         self,
         request: client_pb2.Loot,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.Loot: ...
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.Loot, collections.abc.Awaitable[client_pb2.Loot]]: ...
     @abc.abstractmethod
     def LootAll(
         self,
         request: common_pb2.Empty,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.AllLoot: ...
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.AllLoot, collections.abc.Awaitable[client_pb2.AllLoot]]: ...
     @abc.abstractmethod
-    def LootAllOf(
+    def Creds(
         self,
-        request: client_pb2.Loot,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.AllLoot: ...
+        request: common_pb2.Empty,
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.Credentials, collections.abc.Awaitable[client_pb2.Credentials]]:
+        """*** Creds ***"""
+    @abc.abstractmethod
+    def CredsAdd(
+        self,
+        request: client_pb2.Credentials,
+        context: _ServicerContext,
+    ) -> typing.Union[common_pb2.Empty, collections.abc.Awaitable[common_pb2.Empty]]: ...
+    @abc.abstractmethod
+    def CredsRm(
+        self,
+        request: client_pb2.Credentials,
+        context: _ServicerContext,
+    ) -> typing.Union[common_pb2.Empty, collections.abc.Awaitable[common_pb2.Empty]]: ...
+    @abc.abstractmethod
+    def CredsUpdate(
+        self,
+        request: client_pb2.Credentials,
+        context: _ServicerContext,
+    ) -> typing.Union[common_pb2.Empty, collections.abc.Awaitable[common_pb2.Empty]]: ...
+    @abc.abstractmethod
+    def GetCredByID(
+        self,
+        request: client_pb2.Credential,
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.Credential, collections.abc.Awaitable[client_pb2.Credential]]: ...
+    @abc.abstractmethod
+    def GetCredsByHashType(
+        self,
+        request: client_pb2.Credential,
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.Credentials, collections.abc.Awaitable[client_pb2.Credentials]]: ...
+    @abc.abstractmethod
+    def GetPlaintextCredsByHashType(
+        self,
+        request: client_pb2.Credential,
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.Credentials, collections.abc.Awaitable[client_pb2.Credentials]]: ...
+    @abc.abstractmethod
+    def CredsSniffHashType(
+        self,
+        request: client_pb2.Credential,
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.Credential, collections.abc.Awaitable[client_pb2.Credential]]: ...
     @abc.abstractmethod
     def Hosts(
         self,
         request: common_pb2.Empty,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.AllHosts:
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.AllHosts, collections.abc.Awaitable[client_pb2.AllHosts]]:
         """*** Hosts ***"""
     @abc.abstractmethod
     def Host(
         self,
         request: client_pb2.Host,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.Host: ...
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.Host, collections.abc.Awaitable[client_pb2.Host]]: ...
     @abc.abstractmethod
     def HostRm(
         self,
         request: client_pb2.Host,
-        context: grpc.ServicerContext,
-    ) -> common_pb2.Empty: ...
+        context: _ServicerContext,
+    ) -> typing.Union[common_pb2.Empty, collections.abc.Awaitable[common_pb2.Empty]]: ...
     @abc.abstractmethod
     def HostIOCRm(
         self,
         request: client_pb2.IOC,
-        context: grpc.ServicerContext,
-    ) -> common_pb2.Empty: ...
+        context: _ServicerContext,
+    ) -> typing.Union[common_pb2.Empty, collections.abc.Awaitable[common_pb2.Empty]]: ...
     @abc.abstractmethod
     def Generate(
         self,
         request: client_pb2.GenerateReq,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.Generate:
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.Generate, collections.abc.Awaitable[client_pb2.Generate]]:
         """*** Implants ***"""
     @abc.abstractmethod
     def GenerateExternal(
         self,
-        request: client_pb2.GenerateReq,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.ExternalImplantConfig: ...
+        request: client_pb2.ExternalGenerateReq,
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.ExternalImplantConfig, collections.abc.Awaitable[client_pb2.ExternalImplantConfig]]: ...
     @abc.abstractmethod
     def GenerateExternalSaveBuild(
         self,
         request: client_pb2.ExternalImplantBinary,
-        context: grpc.ServicerContext,
-    ) -> common_pb2.Empty: ...
+        context: _ServicerContext,
+    ) -> typing.Union[common_pb2.Empty, collections.abc.Awaitable[common_pb2.Empty]]: ...
     @abc.abstractmethod
-    def GenerateExternalGetImplantConfig(
+    def GenerateExternalGetBuildConfig(
         self,
-        request: client_pb2.ImplantConfig,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.ExternalImplantConfig: ...
+        request: client_pb2.ImplantBuild,
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.ExternalImplantConfig, collections.abc.Awaitable[client_pb2.ExternalImplantConfig]]: ...
+    @abc.abstractmethod
+    def GenerateStage(
+        self,
+        request: client_pb2.GenerateStageReq,
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.Generate, collections.abc.Awaitable[client_pb2.Generate]]: ...
+    @abc.abstractmethod
+    def StageImplantBuild(
+        self,
+        request: client_pb2.ImplantStageReq,
+        context: _ServicerContext,
+    ) -> typing.Union[common_pb2.Empty, collections.abc.Awaitable[common_pb2.Empty]]: ...
+    @abc.abstractmethod
+    def GetHTTPC2Profiles(
+        self,
+        request: common_pb2.Empty,
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.HTTPC2Configs, collections.abc.Awaitable[client_pb2.HTTPC2Configs]]:
+        """*** HTTP C2 Profiles ***"""
+    @abc.abstractmethod
+    def GetHTTPC2ProfileByName(
+        self,
+        request: client_pb2.C2ProfileReq,
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.HTTPC2Config, collections.abc.Awaitable[client_pb2.HTTPC2Config]]: ...
+    @abc.abstractmethod
+    def SaveHTTPC2Profile(
+        self,
+        request: client_pb2.HTTPC2ConfigReq,
+        context: _ServicerContext,
+    ) -> typing.Union[common_pb2.Empty, collections.abc.Awaitable[common_pb2.Empty]]: ...
+    @abc.abstractmethod
+    def BuilderRegister(
+        self,
+        request: client_pb2.Builder,
+        context: _ServicerContext,
+    ) -> typing.Union[collections.abc.Iterator[client_pb2.Event], collections.abc.AsyncIterator[client_pb2.Event]]:
+        """*** Builders ***"""
+    @abc.abstractmethod
+    def BuilderTrigger(
+        self,
+        request: client_pb2.Event,
+        context: _ServicerContext,
+    ) -> typing.Union[common_pb2.Empty, collections.abc.Awaitable[common_pb2.Empty]]: ...
+    @abc.abstractmethod
+    def Builders(
+        self,
+        request: common_pb2.Empty,
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.Builders, collections.abc.Awaitable[client_pb2.Builders]]: ...
+    @abc.abstractmethod
+    def CrackstationRegister(
+        self,
+        request: client_pb2.Crackstation,
+        context: _ServicerContext,
+    ) -> typing.Union[collections.abc.Iterator[client_pb2.Event], collections.abc.AsyncIterator[client_pb2.Event]]:
+        """*** Crackstation ***"""
+    @abc.abstractmethod
+    def CrackstationTrigger(
+        self,
+        request: client_pb2.Event,
+        context: _ServicerContext,
+    ) -> typing.Union[common_pb2.Empty, collections.abc.Awaitable[common_pb2.Empty]]: ...
+    @abc.abstractmethod
+    def CrackstationBenchmark(
+        self,
+        request: client_pb2.CrackBenchmark,
+        context: _ServicerContext,
+    ) -> typing.Union[common_pb2.Empty, collections.abc.Awaitable[common_pb2.Empty]]: ...
+    @abc.abstractmethod
+    def Crackstations(
+        self,
+        request: common_pb2.Empty,
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.Crackstations, collections.abc.Awaitable[client_pb2.Crackstations]]: ...
+    @abc.abstractmethod
+    def CrackTaskByID(
+        self,
+        request: client_pb2.CrackTask,
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.CrackTask, collections.abc.Awaitable[client_pb2.CrackTask]]: ...
+    @abc.abstractmethod
+    def CrackTaskUpdate(
+        self,
+        request: client_pb2.CrackTask,
+        context: _ServicerContext,
+    ) -> typing.Union[common_pb2.Empty, collections.abc.Awaitable[common_pb2.Empty]]: ...
+    @abc.abstractmethod
+    def CrackFilesList(
+        self,
+        request: client_pb2.CrackFile,
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.CrackFiles, collections.abc.Awaitable[client_pb2.CrackFiles]]: ...
+    @abc.abstractmethod
+    def CrackFileCreate(
+        self,
+        request: client_pb2.CrackFile,
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.CrackFile, collections.abc.Awaitable[client_pb2.CrackFile]]: ...
+    @abc.abstractmethod
+    def CrackFileChunkUpload(
+        self,
+        request: client_pb2.CrackFileChunk,
+        context: _ServicerContext,
+    ) -> typing.Union[common_pb2.Empty, collections.abc.Awaitable[common_pb2.Empty]]: ...
+    @abc.abstractmethod
+    def CrackFileChunkDownload(
+        self,
+        request: client_pb2.CrackFileChunk,
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.CrackFileChunk, collections.abc.Awaitable[client_pb2.CrackFileChunk]]: ...
+    @abc.abstractmethod
+    def CrackFileComplete(
+        self,
+        request: client_pb2.CrackFile,
+        context: _ServicerContext,
+    ) -> typing.Union[common_pb2.Empty, collections.abc.Awaitable[common_pb2.Empty]]: ...
+    @abc.abstractmethod
+    def CrackFileDelete(
+        self,
+        request: client_pb2.CrackFile,
+        context: _ServicerContext,
+    ) -> typing.Union[common_pb2.Empty, collections.abc.Awaitable[common_pb2.Empty]]: ...
     @abc.abstractmethod
     def Regenerate(
         self,
         request: client_pb2.RegenerateReq,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.Generate: ...
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.Generate, collections.abc.Awaitable[client_pb2.Generate]]:
+        """*** Payloads ***"""
     @abc.abstractmethod
     def ImplantBuilds(
         self,
         request: common_pb2.Empty,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.ImplantBuilds: ...
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.ImplantBuilds, collections.abc.Awaitable[client_pb2.ImplantBuilds]]: ...
     @abc.abstractmethod
     def DeleteImplantBuild(
         self,
         request: client_pb2.DeleteReq,
-        context: grpc.ServicerContext,
-    ) -> common_pb2.Empty: ...
+        context: _ServicerContext,
+    ) -> typing.Union[common_pb2.Empty, collections.abc.Awaitable[common_pb2.Empty]]: ...
     @abc.abstractmethod
     def Canaries(
         self,
         request: common_pb2.Empty,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.Canaries: ...
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.Canaries, collections.abc.Awaitable[client_pb2.Canaries]]: ...
     @abc.abstractmethod
     def GenerateWGClientConfig(
         self,
         request: common_pb2.Empty,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.WGClientConfig: ...
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.WGClientConfig, collections.abc.Awaitable[client_pb2.WGClientConfig]]: ...
     @abc.abstractmethod
     def GenerateUniqueIP(
         self,
         request: common_pb2.Empty,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.UniqueWGIP: ...
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.UniqueWGIP, collections.abc.Awaitable[client_pb2.UniqueWGIP]]: ...
     @abc.abstractmethod
     def ImplantProfiles(
         self,
         request: common_pb2.Empty,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.ImplantProfiles: ...
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.ImplantProfiles, collections.abc.Awaitable[client_pb2.ImplantProfiles]]: ...
     @abc.abstractmethod
     def DeleteImplantProfile(
         self,
         request: client_pb2.DeleteReq,
-        context: grpc.ServicerContext,
-    ) -> common_pb2.Empty: ...
+        context: _ServicerContext,
+    ) -> typing.Union[common_pb2.Empty, collections.abc.Awaitable[common_pb2.Empty]]: ...
     @abc.abstractmethod
     def SaveImplantProfile(
         self,
         request: client_pb2.ImplantProfile,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.ImplantProfile: ...
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.ImplantProfile, collections.abc.Awaitable[client_pb2.ImplantProfile]]: ...
     @abc.abstractmethod
     def MsfStage(
         self,
         request: client_pb2.MsfStagerReq,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.MsfStager: ...
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.MsfStager, collections.abc.Awaitable[client_pb2.MsfStager]]: ...
     @abc.abstractmethod
     def ShellcodeRDI(
         self,
         request: client_pb2.ShellcodeRDIReq,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.ShellcodeRDI: ...
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.ShellcodeRDI, collections.abc.Awaitable[client_pb2.ShellcodeRDI]]: ...
     @abc.abstractmethod
     def GetCompiler(
         self,
         request: common_pb2.Empty,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.Compiler: ...
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.Compiler, collections.abc.Awaitable[client_pb2.Compiler]]: ...
     @abc.abstractmethod
     def ShellcodeEncoder(
         self,
         request: client_pb2.ShellcodeEncodeReq,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.ShellcodeEncode: ...
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.ShellcodeEncode, collections.abc.Awaitable[client_pb2.ShellcodeEncode]]: ...
     @abc.abstractmethod
     def ShellcodeEncoderMap(
         self,
         request: common_pb2.Empty,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.ShellcodeEncoderMap: ...
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.ShellcodeEncoderMap, collections.abc.Awaitable[client_pb2.ShellcodeEncoderMap]]: ...
+    @abc.abstractmethod
+    def TrafficEncoderMap(
+        self,
+        request: common_pb2.Empty,
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.TrafficEncoderMap, collections.abc.Awaitable[client_pb2.TrafficEncoderMap]]: ...
+    @abc.abstractmethod
+    def TrafficEncoderAdd(
+        self,
+        request: client_pb2.TrafficEncoder,
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.TrafficEncoderTests, collections.abc.Awaitable[client_pb2.TrafficEncoderTests]]: ...
+    @abc.abstractmethod
+    def TrafficEncoderRm(
+        self,
+        request: client_pb2.TrafficEncoder,
+        context: _ServicerContext,
+    ) -> typing.Union[common_pb2.Empty, collections.abc.Awaitable[common_pb2.Empty]]: ...
     @abc.abstractmethod
     def Websites(
         self,
         request: common_pb2.Empty,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.Websites:
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.Websites, collections.abc.Awaitable[client_pb2.Websites]]:
         """*** Websites ***"""
     @abc.abstractmethod
     def Website(
         self,
         request: client_pb2.Website,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.Website: ...
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.Website, collections.abc.Awaitable[client_pb2.Website]]: ...
     @abc.abstractmethod
     def WebsiteRemove(
         self,
         request: client_pb2.Website,
-        context: grpc.ServicerContext,
-    ) -> common_pb2.Empty: ...
+        context: _ServicerContext,
+    ) -> typing.Union[common_pb2.Empty, collections.abc.Awaitable[common_pb2.Empty]]: ...
     @abc.abstractmethod
     def WebsiteAddContent(
         self,
         request: client_pb2.WebsiteAddContent,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.Website: ...
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.Website, collections.abc.Awaitable[client_pb2.Website]]: ...
     @abc.abstractmethod
     def WebsiteUpdateContent(
         self,
         request: client_pb2.WebsiteAddContent,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.Website: ...
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.Website, collections.abc.Awaitable[client_pb2.Website]]: ...
     @abc.abstractmethod
     def WebsiteRemoveContent(
         self,
         request: client_pb2.WebsiteRemoveContent,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.Website: ...
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.Website, collections.abc.Awaitable[client_pb2.Website]]: ...
     @abc.abstractmethod
     def Ping(
         self,
         request: sliver_pb2.Ping,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.Ping:
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.Ping, collections.abc.Awaitable[sliver_pb2.Ping]]:
         """*** Session Interactions ***"""
     @abc.abstractmethod
     def Ps(
         self,
         request: sliver_pb2.PsReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.Ps: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.Ps, collections.abc.Awaitable[sliver_pb2.Ps]]: ...
     @abc.abstractmethod
     def Terminate(
         self,
         request: sliver_pb2.TerminateReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.Terminate: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.Terminate, collections.abc.Awaitable[sliver_pb2.Terminate]]: ...
     @abc.abstractmethod
     def Ifconfig(
         self,
         request: sliver_pb2.IfconfigReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.Ifconfig: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.Ifconfig, collections.abc.Awaitable[sliver_pb2.Ifconfig]]: ...
     @abc.abstractmethod
     def Netstat(
         self,
         request: sliver_pb2.NetstatReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.Netstat: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.Netstat, collections.abc.Awaitable[sliver_pb2.Netstat]]: ...
     @abc.abstractmethod
     def Ls(
         self,
         request: sliver_pb2.LsReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.Ls: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.Ls, collections.abc.Awaitable[sliver_pb2.Ls]]: ...
     @abc.abstractmethod
     def Cd(
         self,
         request: sliver_pb2.CdReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.Pwd: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.Pwd, collections.abc.Awaitable[sliver_pb2.Pwd]]: ...
     @abc.abstractmethod
     def Pwd(
         self,
         request: sliver_pb2.PwdReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.Pwd: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.Pwd, collections.abc.Awaitable[sliver_pb2.Pwd]]: ...
     @abc.abstractmethod
     def Mv(
         self,
         request: sliver_pb2.MvReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.Mv: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.Mv, collections.abc.Awaitable[sliver_pb2.Mv]]: ...
+    @abc.abstractmethod
+    def Cp(
+        self,
+        request: sliver_pb2.CpReq,
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.Cp, collections.abc.Awaitable[sliver_pb2.Cp]]: ...
     @abc.abstractmethod
     def Rm(
         self,
         request: sliver_pb2.RmReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.Rm: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.Rm, collections.abc.Awaitable[sliver_pb2.Rm]]: ...
     @abc.abstractmethod
     def Mkdir(
         self,
         request: sliver_pb2.MkdirReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.Mkdir: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.Mkdir, collections.abc.Awaitable[sliver_pb2.Mkdir]]: ...
     @abc.abstractmethod
     def Download(
         self,
         request: sliver_pb2.DownloadReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.Download: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.Download, collections.abc.Awaitable[sliver_pb2.Download]]: ...
     @abc.abstractmethod
     def Upload(
         self,
         request: sliver_pb2.UploadReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.Upload: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.Upload, collections.abc.Awaitable[sliver_pb2.Upload]]: ...
+    @abc.abstractmethod
+    def Grep(
+        self,
+        request: sliver_pb2.GrepReq,
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.Grep, collections.abc.Awaitable[sliver_pb2.Grep]]: ...
+    @abc.abstractmethod
+    def Chmod(
+        self,
+        request: sliver_pb2.ChmodReq,
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.Chmod, collections.abc.Awaitable[sliver_pb2.Chmod]]: ...
+    @abc.abstractmethod
+    def Chown(
+        self,
+        request: sliver_pb2.ChownReq,
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.Chown, collections.abc.Awaitable[sliver_pb2.Chown]]: ...
+    @abc.abstractmethod
+    def Chtimes(
+        self,
+        request: sliver_pb2.ChtimesReq,
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.Chtimes, collections.abc.Awaitable[sliver_pb2.Chtimes]]: ...
+    @abc.abstractmethod
+    def MemfilesList(
+        self,
+        request: sliver_pb2.MemfilesListReq,
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.Ls, collections.abc.Awaitable[sliver_pb2.Ls]]: ...
+    @abc.abstractmethod
+    def MemfilesAdd(
+        self,
+        request: sliver_pb2.MemfilesAddReq,
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.MemfilesAdd, collections.abc.Awaitable[sliver_pb2.MemfilesAdd]]: ...
+    @abc.abstractmethod
+    def MemfilesRm(
+        self,
+        request: sliver_pb2.MemfilesRmReq,
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.MemfilesRm, collections.abc.Awaitable[sliver_pb2.MemfilesRm]]: ...
     @abc.abstractmethod
     def ProcessDump(
         self,
         request: sliver_pb2.ProcessDumpReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.ProcessDump: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.ProcessDump, collections.abc.Awaitable[sliver_pb2.ProcessDump]]: ...
     @abc.abstractmethod
     def RunAs(
         self,
         request: sliver_pb2.RunAsReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.RunAs: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.RunAs, collections.abc.Awaitable[sliver_pb2.RunAs]]: ...
     @abc.abstractmethod
     def Impersonate(
         self,
         request: sliver_pb2.ImpersonateReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.Impersonate: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.Impersonate, collections.abc.Awaitable[sliver_pb2.Impersonate]]: ...
     @abc.abstractmethod
     def RevToSelf(
         self,
         request: sliver_pb2.RevToSelfReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.RevToSelf: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.RevToSelf, collections.abc.Awaitable[sliver_pb2.RevToSelf]]: ...
     @abc.abstractmethod
     def GetSystem(
         self,
         request: client_pb2.GetSystemReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.GetSystem: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.GetSystem, collections.abc.Awaitable[sliver_pb2.GetSystem]]: ...
     @abc.abstractmethod
     def Task(
         self,
         request: sliver_pb2.TaskReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.Task: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.Task, collections.abc.Awaitable[sliver_pb2.Task]]: ...
     @abc.abstractmethod
     def Msf(
         self,
         request: client_pb2.MSFReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.Task: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.Task, collections.abc.Awaitable[sliver_pb2.Task]]: ...
     @abc.abstractmethod
     def MsfRemote(
         self,
         request: client_pb2.MSFRemoteReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.Task: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.Task, collections.abc.Awaitable[sliver_pb2.Task]]: ...
     @abc.abstractmethod
     def ExecuteAssembly(
         self,
         request: sliver_pb2.ExecuteAssemblyReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.ExecuteAssembly: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.ExecuteAssembly, collections.abc.Awaitable[sliver_pb2.ExecuteAssembly]]: ...
     @abc.abstractmethod
     def Migrate(
         self,
         request: client_pb2.MigrateReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.Migrate: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.Migrate, collections.abc.Awaitable[sliver_pb2.Migrate]]: ...
     @abc.abstractmethod
     def Execute(
         self,
         request: sliver_pb2.ExecuteReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.Execute: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.Execute, collections.abc.Awaitable[sliver_pb2.Execute]]: ...
     @abc.abstractmethod
     def ExecuteWindows(
         self,
         request: sliver_pb2.ExecuteWindowsReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.Execute: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.Execute, collections.abc.Awaitable[sliver_pb2.Execute]]: ...
     @abc.abstractmethod
     def Sideload(
         self,
         request: sliver_pb2.SideloadReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.Sideload: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.Sideload, collections.abc.Awaitable[sliver_pb2.Sideload]]: ...
     @abc.abstractmethod
     def SpawnDll(
         self,
         request: sliver_pb2.InvokeSpawnDllReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.SpawnDll: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.SpawnDll, collections.abc.Awaitable[sliver_pb2.SpawnDll]]: ...
     @abc.abstractmethod
     def Screenshot(
         self,
         request: sliver_pb2.ScreenshotReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.Screenshot: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.Screenshot, collections.abc.Awaitable[sliver_pb2.Screenshot]]: ...
     @abc.abstractmethod
     def CurrentTokenOwner(
         self,
         request: sliver_pb2.CurrentTokenOwnerReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.CurrentTokenOwner: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.CurrentTokenOwner, collections.abc.Awaitable[sliver_pb2.CurrentTokenOwner]]: ...
+    @abc.abstractmethod
+    def Services(
+        self,
+        request: sliver_pb2.ServicesReq,
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.Services, collections.abc.Awaitable[sliver_pb2.Services]]: ...
+    @abc.abstractmethod
+    def ServiceDetail(
+        self,
+        request: sliver_pb2.ServiceDetailReq,
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.ServiceDetail, collections.abc.Awaitable[sliver_pb2.ServiceDetail]]: ...
+    @abc.abstractmethod
+    def StartServiceByName(
+        self,
+        request: sliver_pb2.StartServiceByNameReq,
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.ServiceInfo, collections.abc.Awaitable[sliver_pb2.ServiceInfo]]: ...
     @abc.abstractmethod
     def PivotStartListener(
         self,
         request: sliver_pb2.PivotStartListenerReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.PivotListener:
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.PivotListener, collections.abc.Awaitable[sliver_pb2.PivotListener]]:
         """*** Pivots ***"""
     @abc.abstractmethod
     def PivotStopListener(
         self,
         request: sliver_pb2.PivotStopListenerReq,
-        context: grpc.ServicerContext,
-    ) -> common_pb2.Empty: ...
+        context: _ServicerContext,
+    ) -> typing.Union[common_pb2.Empty, collections.abc.Awaitable[common_pb2.Empty]]: ...
     @abc.abstractmethod
     def PivotSessionListeners(
         self,
         request: sliver_pb2.PivotListenersReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.PivotListeners: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.PivotListeners, collections.abc.Awaitable[sliver_pb2.PivotListeners]]: ...
     @abc.abstractmethod
     def PivotGraph(
         self,
         request: common_pb2.Empty,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.PivotGraph: ...
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.PivotGraph, collections.abc.Awaitable[client_pb2.PivotGraph]]: ...
     @abc.abstractmethod
     def StartService(
         self,
         request: sliver_pb2.StartServiceReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.ServiceInfo: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.ServiceInfo, collections.abc.Awaitable[sliver_pb2.ServiceInfo]]: ...
     @abc.abstractmethod
     def StopService(
         self,
         request: sliver_pb2.StopServiceReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.ServiceInfo: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.ServiceInfo, collections.abc.Awaitable[sliver_pb2.ServiceInfo]]: ...
     @abc.abstractmethod
     def RemoveService(
         self,
         request: sliver_pb2.RemoveServiceReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.ServiceInfo: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.ServiceInfo, collections.abc.Awaitable[sliver_pb2.ServiceInfo]]: ...
     @abc.abstractmethod
     def MakeToken(
         self,
         request: sliver_pb2.MakeTokenReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.MakeToken: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.MakeToken, collections.abc.Awaitable[sliver_pb2.MakeToken]]: ...
     @abc.abstractmethod
     def GetEnv(
         self,
         request: sliver_pb2.EnvReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.EnvInfo: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.EnvInfo, collections.abc.Awaitable[sliver_pb2.EnvInfo]]: ...
     @abc.abstractmethod
     def SetEnv(
         self,
         request: sliver_pb2.SetEnvReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.SetEnv: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.SetEnv, collections.abc.Awaitable[sliver_pb2.SetEnv]]: ...
     @abc.abstractmethod
     def UnsetEnv(
         self,
         request: sliver_pb2.UnsetEnvReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.UnsetEnv: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.UnsetEnv, collections.abc.Awaitable[sliver_pb2.UnsetEnv]]: ...
     @abc.abstractmethod
     def Backdoor(
         self,
-        request: sliver_pb2.BackdoorReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.Backdoor: ...
+        request: client_pb2.BackdoorReq,
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.Backdoor, collections.abc.Awaitable[client_pb2.Backdoor]]: ...
     @abc.abstractmethod
     def RegistryRead(
         self,
         request: sliver_pb2.RegistryReadReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.RegistryRead: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.RegistryRead, collections.abc.Awaitable[sliver_pb2.RegistryRead]]: ...
     @abc.abstractmethod
     def RegistryWrite(
         self,
         request: sliver_pb2.RegistryWriteReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.RegistryWrite: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.RegistryWrite, collections.abc.Awaitable[sliver_pb2.RegistryWrite]]: ...
     @abc.abstractmethod
     def RegistryCreateKey(
         self,
         request: sliver_pb2.RegistryCreateKeyReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.RegistryCreateKey: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.RegistryCreateKey, collections.abc.Awaitable[sliver_pb2.RegistryCreateKey]]: ...
     @abc.abstractmethod
     def RegistryDeleteKey(
         self,
         request: sliver_pb2.RegistryDeleteKeyReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.RegistryDeleteKey: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.RegistryDeleteKey, collections.abc.Awaitable[sliver_pb2.RegistryDeleteKey]]: ...
     @abc.abstractmethod
     def RegistryListSubKeys(
         self,
         request: sliver_pb2.RegistrySubKeyListReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.RegistrySubKeyList: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.RegistrySubKeyList, collections.abc.Awaitable[sliver_pb2.RegistrySubKeyList]]: ...
     @abc.abstractmethod
     def RegistryListValues(
         self,
         request: sliver_pb2.RegistryListValuesReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.RegistryValuesList: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.RegistryValuesList, collections.abc.Awaitable[sliver_pb2.RegistryValuesList]]: ...
+    @abc.abstractmethod
+    def RegistryReadHive(
+        self,
+        request: sliver_pb2.RegistryReadHiveReq,
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.RegistryReadHive, collections.abc.Awaitable[sliver_pb2.RegistryReadHive]]: ...
     @abc.abstractmethod
     def RunSSHCommand(
         self,
         request: sliver_pb2.SSHCommandReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.SSHCommand: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.SSHCommand, collections.abc.Awaitable[sliver_pb2.SSHCommand]]: ...
     @abc.abstractmethod
     def HijackDLL(
         self,
         request: client_pb2.DllHijackReq,
-        context: grpc.ServicerContext,
-    ) -> client_pb2.DllHijack: ...
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.DllHijack, collections.abc.Awaitable[client_pb2.DllHijack]]: ...
     @abc.abstractmethod
     def GetPrivs(
         self,
         request: sliver_pb2.GetPrivsReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.GetPrivs: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.GetPrivs, collections.abc.Awaitable[sliver_pb2.GetPrivs]]: ...
     @abc.abstractmethod
     def StartRportFwdListener(
         self,
         request: sliver_pb2.RportFwdStartListenerReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.RportFwdListener: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.RportFwdListener, collections.abc.Awaitable[sliver_pb2.RportFwdListener]]: ...
     @abc.abstractmethod
     def GetRportFwdListeners(
         self,
         request: sliver_pb2.RportFwdListenersReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.RportFwdListeners: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.RportFwdListeners, collections.abc.Awaitable[sliver_pb2.RportFwdListeners]]: ...
     @abc.abstractmethod
     def StopRportFwdListener(
         self,
         request: sliver_pb2.RportFwdStopListenerReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.RportFwdListener: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.RportFwdListener, collections.abc.Awaitable[sliver_pb2.RportFwdListener]]: ...
     @abc.abstractmethod
     def OpenSession(
         self,
         request: sliver_pb2.OpenSession,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.OpenSession:
-        """Beacon only commands"""
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.OpenSession, collections.abc.Awaitable[sliver_pb2.OpenSession]]:
+        """*** Beacon *** -only commands"""
     @abc.abstractmethod
     def CloseSession(
         self,
         request: sliver_pb2.CloseSession,
-        context: grpc.ServicerContext,
-    ) -> common_pb2.Empty: ...
+        context: _ServicerContext,
+    ) -> typing.Union[common_pb2.Empty, collections.abc.Awaitable[common_pb2.Empty]]: ...
     @abc.abstractmethod
     def RegisterExtension(
         self,
         request: sliver_pb2.RegisterExtensionReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.RegisterExtension:
-        """Extensions"""
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.RegisterExtension, collections.abc.Awaitable[sliver_pb2.RegisterExtension]]:
+        """*** Extensions ***"""
     @abc.abstractmethod
     def CallExtension(
         self,
         request: sliver_pb2.CallExtensionReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.CallExtension: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.CallExtension, collections.abc.Awaitable[sliver_pb2.CallExtension]]: ...
     @abc.abstractmethod
     def ListExtensions(
         self,
         request: sliver_pb2.ListExtensionsReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.ListExtensions: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.ListExtensions, collections.abc.Awaitable[sliver_pb2.ListExtensions]]: ...
+    @abc.abstractmethod
+    def RegisterWasmExtension(
+        self,
+        request: sliver_pb2.RegisterWasmExtensionReq,
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.RegisterWasmExtension, collections.abc.Awaitable[sliver_pb2.RegisterWasmExtension]]:
+        """*** Wasm Extensions ***"""
+    @abc.abstractmethod
+    def ListWasmExtensions(
+        self,
+        request: sliver_pb2.ListWasmExtensionsReq,
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.ListWasmExtensions, collections.abc.Awaitable[sliver_pb2.ListWasmExtensions]]: ...
+    @abc.abstractmethod
+    def ExecWasmExtension(
+        self,
+        request: sliver_pb2.ExecWasmExtensionReq,
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.ExecWasmExtension, collections.abc.Awaitable[sliver_pb2.ExecWasmExtension]]: ...
     @abc.abstractmethod
     def WGStartPortForward(
         self,
         request: sliver_pb2.WGPortForwardStartReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.WGPortForward:
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.WGPortForward, collections.abc.Awaitable[sliver_pb2.WGPortForward]]:
         """*** Wireguard Specific ***"""
     @abc.abstractmethod
     def WGStopPortForward(
         self,
         request: sliver_pb2.WGPortForwardStopReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.WGPortForward: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.WGPortForward, collections.abc.Awaitable[sliver_pb2.WGPortForward]]: ...
     @abc.abstractmethod
     def WGStartSocks(
         self,
         request: sliver_pb2.WGSocksStartReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.WGSocks: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.WGSocks, collections.abc.Awaitable[sliver_pb2.WGSocks]]: ...
     @abc.abstractmethod
     def WGStopSocks(
         self,
         request: sliver_pb2.WGSocksStopReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.WGSocks: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.WGSocks, collections.abc.Awaitable[sliver_pb2.WGSocks]]: ...
     @abc.abstractmethod
     def WGListForwarders(
         self,
         request: sliver_pb2.WGTCPForwardersReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.WGTCPForwarders: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.WGTCPForwarders, collections.abc.Awaitable[sliver_pb2.WGTCPForwarders]]: ...
     @abc.abstractmethod
     def WGListSocksServers(
         self,
         request: sliver_pb2.WGSocksServersReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.WGSocksServers: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.WGSocksServers, collections.abc.Awaitable[sliver_pb2.WGSocksServers]]: ...
     @abc.abstractmethod
     def Shell(
         self,
         request: sliver_pb2.ShellReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.Shell:
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.Shell, collections.abc.Awaitable[sliver_pb2.Shell]]:
         """*** Realtime Commands ***"""
     @abc.abstractmethod
     def Portfwd(
         self,
         request: sliver_pb2.PortfwdReq,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.Portfwd: ...
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.Portfwd, collections.abc.Awaitable[sliver_pb2.Portfwd]]: ...
     @abc.abstractmethod
     def CreateSocks(
         self,
         request: sliver_pb2.Socks,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.Socks:
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.Socks, collections.abc.Awaitable[sliver_pb2.Socks]]:
         """*** Socks5 ***"""
     @abc.abstractmethod
     def CloseSocks(
         self,
         request: sliver_pb2.Socks,
-        context: grpc.ServicerContext,
-    ) -> common_pb2.Empty: ...
+        context: _ServicerContext,
+    ) -> typing.Union[common_pb2.Empty, collections.abc.Awaitable[common_pb2.Empty]]: ...
     @abc.abstractmethod
     def SocksProxy(
         self,
-        request_iterator: collections.abc.Iterator[sliver_pb2.SocksData],
-        context: grpc.ServicerContext,
-    ) -> collections.abc.Iterator[sliver_pb2.SocksData]: ...
+        request_iterator: _MaybeAsyncIterator[sliver_pb2.SocksData],
+        context: _ServicerContext,
+    ) -> typing.Union[collections.abc.Iterator[sliver_pb2.SocksData], collections.abc.AsyncIterator[sliver_pb2.SocksData]]: ...
     @abc.abstractmethod
     def CreateTunnel(
         self,
         request: sliver_pb2.Tunnel,
-        context: grpc.ServicerContext,
-    ) -> sliver_pb2.Tunnel:
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.Tunnel, collections.abc.Awaitable[sliver_pb2.Tunnel]]:
         """*** Tunnels ***"""
     @abc.abstractmethod
     def CloseTunnel(
         self,
         request: sliver_pb2.Tunnel,
-        context: grpc.ServicerContext,
-    ) -> common_pb2.Empty: ...
+        context: _ServicerContext,
+    ) -> typing.Union[common_pb2.Empty, collections.abc.Awaitable[common_pb2.Empty]]: ...
     @abc.abstractmethod
     def TunnelData(
         self,
-        request_iterator: collections.abc.Iterator[sliver_pb2.TunnelData],
-        context: grpc.ServicerContext,
-    ) -> collections.abc.Iterator[sliver_pb2.TunnelData]: ...
+        request_iterator: _MaybeAsyncIterator[sliver_pb2.TunnelData],
+        context: _ServicerContext,
+    ) -> typing.Union[collections.abc.Iterator[sliver_pb2.TunnelData], collections.abc.AsyncIterator[sliver_pb2.TunnelData]]: ...
     @abc.abstractmethod
     def Events(
         self,
         request: common_pb2.Empty,
-        context: grpc.ServicerContext,
-    ) -> collections.abc.Iterator[client_pb2.Event]:
+        context: _ServicerContext,
+    ) -> typing.Union[collections.abc.Iterator[client_pb2.Event], collections.abc.AsyncIterator[client_pb2.Event]]:
         """*** Events ***"""
 
-def add_SliverRPCServicer_to_server(
-    servicer: SliverRPCServicer, server: grpc.Server
-) -> None: ...
+def add_SliverRPCServicer_to_server(servicer: SliverRPCServicer, server: typing.Union[grpc.Server, grpc.aio.Server]) -> None: ...
