@@ -18,8 +18,8 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
 ]
 dependencies = [
-    "grpcio~=1.60.1",
-    "grpcio-tools~=1.60.1",
+    "grpcio~=1.60.0",
+    "grpcio-tools~=1.60.0",
 ]
 
 [project.urls]
