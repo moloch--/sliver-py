@@ -14,8 +14,7 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 
-import logging
-from typing import List, Union
+from typing import List
 
 import grpc
 
@@ -225,4 +224,3 @@ class InteractiveSession(BaseSession, BaseInteractiveCommands):
         svc.ServiceInfo.ServiceName = name
         svc.ServiceInfo.Hostname = hostname
         return await self._stub.RemoveService(self._request(svc), timeout=self.timeout)
-
