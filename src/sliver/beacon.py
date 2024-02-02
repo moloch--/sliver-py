@@ -17,7 +17,7 @@
 import asyncio
 import functools
 import logging
-from typing import Any, Dict, List, Tuple
+from typing import Any, Dict, Tuple
 
 import grpc
 
@@ -163,9 +163,7 @@ class BaseBeacon:
                 beacon_task.ParseFromString(event.Data)
                 if beacon_task.ID not in self.beacon_tasks:
                     continue
-                task_content = await self._stub.GetBeaconTaskContent(
-                    client_pb2.BeaconTask(ID=beacon_task.ID)
-                )
+                task_content = await self._stub.GetBeaconTaskContent(client_pb2.BeaconTask(ID=beacon_task.ID))
                 task_future, pb_object = self.beacon_tasks[beacon_task.ID]
                 del self.beacon_tasks[beacon_task.ID]
                 if pb_object is not None:
@@ -200,7 +198,6 @@ def beacon_taskresult(pb_object: Any):
 
 
 class InteractiveBeacon(BaseBeacon, BaseInteractiveCommands):
-
     """Wrap all commands that can be executed against a beacon mode implant"""
 
     async def interactive_session(self):
@@ -213,7 +210,7 @@ class InteractiveBeacon(BaseBeacon, BaseInteractiveCommands):
         return await super().ping(*args, **kwargs)
 
     @beacon_taskresult(sliver_pb2.Ps)
-    async def ps(self, *args, **kwargs) -> List[common_pb2.Process]:
+    async def ps(self, *args, **kwargs) -> sliver_pb2.Ps:
         return await super().ps(*args, **kwargs)
 
     @beacon_taskresult(sliver_pb2.Terminate)
@@ -333,15 +330,11 @@ class InteractiveBeacon(BaseBeacon, BaseInteractiveCommands):
         return await super().registry_write(*args, **kwargs)
 
     @beacon_taskresult(sliver_pb2.RegistryCreateKey)
-    async def registry_create_key(
-        self, *args, **kwargs
-    ) -> sliver_pb2.RegistryCreateKey:
+    async def registry_create_key(self, *args, **kwargs) -> sliver_pb2.RegistryCreateKey:
         return await super().registry_create_key(*args, **kwargs)
 
     @beacon_taskresult(sliver_pb2.RegistryReadHive)
-    async def registry_read_hive(
-        self, *args, **kwargs
-    ) -> sliver_pb2.RegistryReadHive:
+    async def registry_read_hive(self, *args, **kwargs) -> sliver_pb2.RegistryReadHive:
         return await super().registry_read_hive(*args, **kwargs)
 
     @beacon_taskresult(sliver_pb2.Grep)
