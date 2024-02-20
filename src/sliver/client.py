@@ -381,7 +381,6 @@ class SliverClient(BaseClient):
         self,
         host: str = "0.0.0.0",
         port: int = 8888,
-        persistent: bool = False,
         timeout=TIMEOUT,
     ) -> client_pb2.ListenerJob:
         """Start a mutual TLS (mTLS) C2 listener
@@ -397,9 +396,7 @@ class SliverClient(BaseClient):
         :return: Protobuf ListenerJob object
         :rtype: client_pb2.ListenerJob
         """
-        mtls_req = client_pb2.MTLSListenerReq(
-            Host=host, Port=port, Persistent=persistent
-        )
+        mtls_req = client_pb2.MTLSListenerReq(Host=host, Port=port)
         return await self._stub.StartMTLSListener(mtls_req, timeout=timeout)
 
     async def start_wg_listener(
@@ -409,7 +406,6 @@ class SliverClient(BaseClient):
         port: int = 53,
         n_port: int = 8888,
         key_port: int = 1337,
-        persistent: bool = False,
         timeout: int = TIMEOUT,
     ) -> client_pb2.ListenerJob:
         """Start a WireGuard (wg) C2 listener
@@ -441,7 +437,6 @@ class SliverClient(BaseClient):
             Port=port,
             NPort=n_port,
             KeyPort=key_port,
-            Persistent=persistent,
         )
         return await self._stub.StartWGListener(wg_req, timeout=timeout)
 
@@ -451,7 +446,6 @@ class SliverClient(BaseClient):
         host: str = "0.0.0.0",
         port: int = 53,
         canaries: bool = True,
-        persistent: bool = False,
         enforce_otp=True,
         timeout: int = TIMEOUT,
     ) -> client_pb2.ListenerJob:
@@ -482,7 +476,6 @@ class SliverClient(BaseClient):
             Canaries=canaries,
             Host=host,
             Port=port,
-            Persistent=persistent,
             EnforceOTP=enforce_otp,
         )
         return await self._stub.StartDNSListener(dns_req, timeout=timeout)
@@ -493,7 +486,6 @@ class SliverClient(BaseClient):
         port: int = 80,
         website: str = "",
         domain: str = "",
-        persistent: bool = False,
         timeout: int = TIMEOUT,
     ) -> client_pb2.ListenerJob:
         """Start an HTTP C2 listener
@@ -520,7 +512,6 @@ class SliverClient(BaseClient):
             Port=port,
             Secure=False,
             Website=website,
-            Persistent=persistent,
         )
         return await self._stub.StartHTTPListener(http_req, timeout=timeout)
 
@@ -533,7 +524,6 @@ class SliverClient(BaseClient):
         cert: bytes = b"",
         key: bytes = b"",
         acme: bool = False,
-        persistent: bool = False,
         enforce_otp: bool = True,
         randomize_jarm: bool = True,
         long_poll_timeout: int = 1,
@@ -580,7 +570,6 @@ class SliverClient(BaseClient):
             Cert=cert,
             Key=key,
             ACME=acme,
-            Persistent=persistent,
             EnforceOTP=enforce_otp,
             LongPollTimeout=long_poll_timeout,
             LongPollJitter=long_poll_jitter,
