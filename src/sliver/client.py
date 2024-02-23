@@ -35,7 +35,6 @@ TIMEOUT = 60
 
 
 class BaseClient(object):
-
     # 2GB triggers an overflow error in the gRPC library so we do 2GB-1
     MAX_MESSAGE_LENGTH = (2 * GB) - 1
 
@@ -503,7 +502,7 @@ class SliverClient(BaseClient):
         :type persistent: bool, optional
         :param timeout: gRPC timeout, defaults to 60 seconds
         :type timeout: int, optional
-        :return: Protobuf ListenerJob object 
+        :return: Protobuf ListenerJob object
         :rtype: client_pb2.ListenerJob
         """
         http_req = client_pb2.HTTPListenerReq(
@@ -989,3 +988,12 @@ class SliverClient(BaseClient):
         backdoor.FilePath = remote_path
         backdoor.ProfileName = profile_name
         return await self._stub.Backdoor(self._request(backdoor), timeout=self.timeout)
+
+    async def builders(self) -> client_pb2.Builders:
+        """Get a list of all available builders
+
+        :return: List of Protobuf Builder objects
+        :rtype: List[client_pb2.Builder]
+        """
+        builders = await self._stub.Builders(common_pb2.Empty())
+        return builders
