@@ -666,7 +666,7 @@ class SliverClient(BaseClient):
         return await self._stub.StartHTTPStagerListener(stage_req, timeout=timeout)
 
     async def generate_implant(
-        self, config: client_pb2.ImplantConfig, timeout: int = 360
+        self, config: client_pb2.ImplantConfig, timeout: int = 360, builder: str = ""
     ) -> client_pb2.Generate:
         """Generate a new implant using a given configuration
 
@@ -674,11 +674,17 @@ class SliverClient(BaseClient):
         :type config: client_pb2.ImplantConfig
         :param timeout: gRPC timeout, defaults to 360
         :type timeout: int, optional
+        :param builder: Name of the builder to use, defaults to ""
+        :type builder: str, optional
         :return: Protobuf Generate object containing the generated implant
         :rtype: client_pb2.Generate
         """
-        req = client_pb2.GenerateReq(Config=config)
-        return await self._stub.Generate(req, timeout=timeout)
+        if builder != "":
+            req = client_pb2.ExternalGenerateReq(Config=config, BuilderName=builder)
+            return await self._stub.GenerateExternal(req, timeout=timeout)
+        else:
+            req = client_pb2.GenerateReq(Config=config)
+            return await self._stub.Generate(req, timeout=timeout)
 
     async def regenerate_implant(
         self, implant_name: str, timeout=TIMEOUT
