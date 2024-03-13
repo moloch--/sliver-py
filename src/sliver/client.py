@@ -88,6 +88,12 @@ class SliverClient(BaseClient):
     session_event_types = ["session-connected", "session-disconnected"]
     job_event_types = ["job-started", "job-stopped"]
     canary_event_types = ["canary"]
+    external_build_event_types = [
+        "external-build",
+        "external-build-failed",
+        "external-build-completed",
+        "external-build-acknowledge",
+    ]
 
     async def connect(self) -> client_pb2.Version:
         """Establish a connection to the Sliver server
