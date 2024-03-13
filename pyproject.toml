@@ -11,16 +11,13 @@ license-files = { paths = ["LICENSE"] }
 requires-python = ">=3.10"
 authors = [
     { name = "moloch", email = "875022+moloch--@users.noreply.github.com" },
-    { name = "daddycocoaman", email = "daddycocoaman@gmail.com"}
+    { name = "daddycocoaman", email = "daddycocoaman@gmail.com" },
 ]
 classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
 ]
-dependencies = [
-    "grpcio>=1.60.0",
-    "grpcio-tools>=1.60.0",
-]
+dependencies = ["grpcio>=1.59.0", "grpcio-tools>=1.59.0"]
 
 [project.urls]
 Documentation = "https://github.com/moloch--/sliver-py#readme"
@@ -33,19 +30,16 @@ path = "src/sliver/__init__.py"
 [tool.hatch.envs.default]
 dependencies = [
     "rich~=13.4",
-    "black~=23.7", 
+    "black~=23.7",
     "isort~=5.12",
     "ward~=0.67.2b0",
-    "sphinx~=5.1", 
-    "sphinx-rtd-theme~=1.0.0", 
+    "sphinx~=5.1",
+    "sphinx-rtd-theme~=1.0.0",
     "sphinx-autodoc-typehints~=1.19.4",
 ]
 
 [tool.hatch.envs.default.scripts]
-fmt = [
-    "isort src", 
-    "black src",
-]
+fmt = ["isort src", "black src"]
 
 [tool.hatch.build]
 packages = ["src/sliver"]
