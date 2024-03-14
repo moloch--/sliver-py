@@ -1072,6 +1072,77 @@ class Grep(Message):
     def ClearField(self, field_name: typing_extensions.Literal["Response", b"Response", "Results", b"Results", "SearchPathAbsolute", b"SearchPathAbsolute"]) -> None: ...
 
 @typing_extensions.final
+class MountReq(Message):
+    DESCRIPTOR: Descriptor
+
+    REQUEST_FIELD_NUMBER: int
+    @property
+    def Request(self) -> Request: ...
+    def __init__(
+        self,
+        *,
+        Request: Request | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["Request", b"Request"]) -> bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Request", b"Request"]) -> None: ...
+
+@typing_extensions.final
+class MountInfo(Message):
+    DESCRIPTOR: Descriptor
+
+    VOLUMENAME_FIELD_NUMBER: int
+    VOLUMETYPE_FIELD_NUMBER: int
+    MOUNTPOINT_FIELD_NUMBER: int
+    LABEL_FIELD_NUMBER: int
+    FILESYSTEM_FIELD_NUMBER: int
+    USEDSPACE_FIELD_NUMBER: int
+    FREESPACE_FIELD_NUMBER: int
+    TOTALSPACE_FIELD_NUMBER: int
+    MOUNTOPTIONS_FIELD_NUMBER: int
+    VolumeName: str
+    VolumeType: str
+    MountPoint: str
+    Label: str
+    FileSystem: str
+    UsedSpace: int
+    FreeSpace: int
+    TotalSpace: int
+    MountOptions: str
+    def __init__(
+        self,
+        *,
+        VolumeName: str = ...,
+        VolumeType: str = ...,
+        MountPoint: str = ...,
+        Label: str = ...,
+        FileSystem: str = ...,
+        UsedSpace: int = ...,
+        FreeSpace: int = ...,
+        TotalSpace: int = ...,
+        MountOptions: str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["FileSystem", b"FileSystem", "FreeSpace", b"FreeSpace", "Label", b"Label", "MountOptions", b"MountOptions", "MountPoint", b"MountPoint", "TotalSpace", b"TotalSpace", "UsedSpace", b"UsedSpace", "VolumeName", b"VolumeName", "VolumeType", b"VolumeType"]) -> None: ...
+
+@typing_extensions.final
+class Mount(Message):
+    DESCRIPTOR: Descriptor
+
+    INFO_FIELD_NUMBER: int
+    RESPONSE_FIELD_NUMBER: int
+    @property
+    def Info(self) -> RepeatedCompositeFieldContainer[MountInfo]: ...
+    @property
+    def Response(self) -> Response: ...
+    def __init__(
+        self,
+        *,
+        Info: Iterable[MountInfo] | None = ...,
+        Response: Response | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["Response", b"Response"]) -> bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Info", b"Info", "Response", b"Response"]) -> None: ...
+
+@typing_extensions.final
 class ProcessDumpReq(Message):
     DESCRIPTOR: Descriptor
 
