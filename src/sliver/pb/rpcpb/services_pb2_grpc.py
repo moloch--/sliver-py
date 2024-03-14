@@ -582,6 +582,11 @@ class SliverRPCStub(object):
                 request_serializer=sliverpb_dot_sliver__pb2.MemfilesRmReq.SerializeToString,
                 response_deserializer=sliverpb_dot_sliver__pb2.MemfilesRm.FromString,
                 )
+        self.Mount = channel.unary_unary(
+                '/rpcpb.SliverRPC/Mount',
+                request_serializer=sliverpb_dot_sliver__pb2.MountReq.SerializeToString,
+                response_deserializer=sliverpb_dot_sliver__pb2.Mount.FromString,
+                )
         self.ProcessDump = channel.unary_unary(
                 '/rpcpb.SliverRPC/ProcessDump',
                 request_serializer=sliverpb_dot_sliver__pb2.ProcessDumpReq.SerializeToString,
@@ -1620,6 +1625,12 @@ class SliverRPCServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def Mount(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def ProcessDump(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -2598,6 +2609,11 @@ def add_SliverRPCServicer_to_server(servicer, server):
                     servicer.MemfilesRm,
                     request_deserializer=sliverpb_dot_sliver__pb2.MemfilesRmReq.FromString,
                     response_serializer=sliverpb_dot_sliver__pb2.MemfilesRm.SerializeToString,
+            ),
+            'Mount': grpc.unary_unary_rpc_method_handler(
+                    servicer.Mount,
+                    request_deserializer=sliverpb_dot_sliver__pb2.MountReq.FromString,
+                    response_serializer=sliverpb_dot_sliver__pb2.Mount.SerializeToString,
             ),
             'ProcessDump': grpc.unary_unary_rpc_method_handler(
                     servicer.ProcessDump,
@@ -4862,6 +4878,23 @@ class SliverRPC(object):
         return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/MemfilesRm',
             sliverpb_dot_sliver__pb2.MemfilesRmReq.SerializeToString,
             sliverpb_dot_sliver__pb2.MemfilesRm.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def Mount(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/Mount',
+            sliverpb_dot_sliver__pb2.MountReq.SerializeToString,
+            sliverpb_dot_sliver__pb2.Mount.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 

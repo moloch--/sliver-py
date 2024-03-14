@@ -493,6 +493,10 @@ class SliverRPCStub:
         sliver_pb2.MemfilesRmReq,
         sliver_pb2.MemfilesRm,
     ]
+    Mount: grpc.UnaryUnaryMultiCallable[
+        sliver_pb2.MountReq,
+        sliver_pb2.Mount,
+    ]
     ProcessDump: grpc.UnaryUnaryMultiCallable[
         sliver_pb2.ProcessDumpReq,
         sliver_pb2.ProcessDump,
@@ -1243,6 +1247,10 @@ class SliverRPCAsyncStub:
     MemfilesRm: grpc.aio.UnaryUnaryMultiCallable[
         sliver_pb2.MemfilesRmReq,
         sliver_pb2.MemfilesRm,
+    ]
+    Mount: grpc.aio.UnaryUnaryMultiCallable[
+        sliver_pb2.MountReq,
+        sliver_pb2.Mount,
     ]
     ProcessDump: grpc.aio.UnaryUnaryMultiCallable[
         sliver_pb2.ProcessDumpReq,
@@ -2221,6 +2229,12 @@ class SliverRPCServicer(metaclass=abc.ABCMeta):
         request: sliver_pb2.MemfilesRmReq,
         context: _ServicerContext,
     ) -> typing.Union[sliver_pb2.MemfilesRm, collections.abc.Awaitable[sliver_pb2.MemfilesRm]]: ...
+    @abc.abstractmethod
+    def Mount(
+        self,
+        request: sliver_pb2.MountReq,
+        context: _ServicerContext,
+    ) -> typing.Union[sliver_pb2.Mount, collections.abc.Awaitable[sliver_pb2.Mount]]: ...
     @abc.abstractmethod
     def ProcessDump(
         self,
