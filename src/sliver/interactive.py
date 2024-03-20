@@ -379,8 +379,8 @@ class BaseInteractiveCommands:
         asm.Arch = arch
         asm.ClassName = class_name
         asm.AppDomain = app_domain
-        asm.Ppid = ppid
-        asm.ProcessArgs.append(process_args)
+        asm.PPid = ppid
+        asm.ProcessArgs.extend(process_args)
         asm.InProcess = in_process
         asm.Runtime = runtime
         asm.AmsiBypass = amsi_bypass
