@@ -302,6 +302,11 @@ class SliverRPCStub(object):
                 request_serializer=commonpb_dot_common__pb2.Empty.SerializeToString,
                 response_deserializer=clientpb_dot_client__pb2.Builders.FromString,
                 )
+        self.GetCertificateInfo = channel.unary_unary(
+                '/rpcpb.SliverRPC/GetCertificateInfo',
+                request_serializer=clientpb_dot_client__pb2.CertificatesReq.SerializeToString,
+                response_deserializer=clientpb_dot_client__pb2.CertificateInfo.FromString,
+                )
         self.CrackstationRegister = channel.unary_stream(
                 '/rpcpb.SliverRPC/CrackstationRegister',
                 request_serializer=clientpb_dot_client__pb2.Crackstation.SerializeToString,
@@ -406,11 +411,6 @@ class SliverRPCStub(object):
                 '/rpcpb.SliverRPC/SaveImplantProfile',
                 request_serializer=clientpb_dot_client__pb2.ImplantProfile.SerializeToString,
                 response_deserializer=clientpb_dot_client__pb2.ImplantProfile.FromString,
-                )
-        self.MsfStage = channel.unary_unary(
-                '/rpcpb.SliverRPC/MsfStage',
-                request_serializer=clientpb_dot_client__pb2.MsfStagerReq.SerializeToString,
-                response_deserializer=clientpb_dot_client__pb2.MsfStager.FromString,
                 )
         self.ShellcodeRDI = channel.unary_unary(
                 '/rpcpb.SliverRPC/ShellcodeRDI',
@@ -1285,6 +1285,13 @@ class SliverRPCServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def GetCertificateInfo(self, request, context):
+        """*** Certificates ***
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def CrackstationRegister(self, request, context):
         """*** Crackstation ***
         """
@@ -1408,12 +1415,6 @@ class SliverRPCServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def SaveImplantProfile(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def MsfStage(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -2330,6 +2331,11 @@ def add_SliverRPCServicer_to_server(servicer, server):
                     request_deserializer=commonpb_dot_common__pb2.Empty.FromString,
                     response_serializer=clientpb_dot_client__pb2.Builders.SerializeToString,
             ),
+            'GetCertificateInfo': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetCertificateInfo,
+                    request_deserializer=clientpb_dot_client__pb2.CertificatesReq.FromString,
+                    response_serializer=clientpb_dot_client__pb2.CertificateInfo.SerializeToString,
+            ),
             'CrackstationRegister': grpc.unary_stream_rpc_method_handler(
                     servicer.CrackstationRegister,
                     request_deserializer=clientpb_dot_client__pb2.Crackstation.FromString,
@@ -2434,11 +2440,6 @@ def add_SliverRPCServicer_to_server(servicer, server):
                     servicer.SaveImplantProfile,
                     request_deserializer=clientpb_dot_client__pb2.ImplantProfile.FromString,
                     response_serializer=clientpb_dot_client__pb2.ImplantProfile.SerializeToString,
-            ),
-            'MsfStage': grpc.unary_unary_rpc_method_handler(
-                    servicer.MsfStage,
-                    request_deserializer=clientpb_dot_client__pb2.MsfStagerReq.FromString,
-                    response_serializer=clientpb_dot_client__pb2.MsfStager.SerializeToString,
             ),
             'ShellcodeRDI': grpc.unary_unary_rpc_method_handler(
                     servicer.ShellcodeRDI,
@@ -3930,6 +3931,23 @@ class SliverRPC(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
+    def GetCertificateInfo(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/GetCertificateInfo',
+            clientpb_dot_client__pb2.CertificatesReq.SerializeToString,
+            clientpb_dot_client__pb2.CertificateInfo.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
     def CrackstationRegister(request,
             target,
             options=(),
@@ -4283,23 +4301,6 @@ class SliverRPC(object):
         return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/SaveImplantProfile',
             clientpb_dot_client__pb2.ImplantProfile.SerializeToString,
             clientpb_dot_client__pb2.ImplantProfile.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def MsfStage(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rpcpb.SliverRPC/MsfStage',
-            clientpb_dot_client__pb2.MsfStagerReq.SerializeToString,
-            clientpb_dot_client__pb2.MsfStager.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 

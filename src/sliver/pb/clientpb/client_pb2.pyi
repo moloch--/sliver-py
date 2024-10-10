@@ -1416,24 +1416,44 @@ class TrafficEncoderTests(Message):
 class ExternalImplantConfig(Message):
     DESCRIPTOR: Descriptor
 
+    @typing_extensions.final
+    class EncodersEntry(Message):
+        DESCRIPTOR: Descriptor
+
+        KEY_FIELD_NUMBER: int
+        VALUE_FIELD_NUMBER: int
+        key: str
+        value: int
+        def __init__(
+            self,
+            *,
+            key: str = ...,
+            value: int = ...,
+        ) -> None: ...
+        def ClearField(self, field_name: typing_extensions.Literal["key", b"key", "value", b"value"]) -> None: ...
+
     CONFIG_FIELD_NUMBER: int
     BUILD_FIELD_NUMBER: int
     HTTPC2_FIELD_NUMBER: int
+    ENCODERS_FIELD_NUMBER: int
     @property
     def Config(self) -> ImplantConfig: ...
     @property
     def Build(self) -> ImplantBuild: ...
     @property
     def HTTPC2(self) -> HTTPC2Config: ...
+    @property
+    def encoders(self) -> ScalarMap[str, int]: ...
     def __init__(
         self,
         *,
         Config: ImplantConfig | None = ...,
         Build: ImplantBuild | None = ...,
         HTTPC2: HTTPC2Config | None = ...,
+        encoders: Mapping[str, int] | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing_extensions.Literal["Build", b"Build", "Config", b"Config", "HTTPC2", b"HTTPC2"]) -> bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Build", b"Build", "Config", b"Config", "HTTPC2", b"HTTPC2"]) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Build", b"Build", "Config", b"Config", "HTTPC2", b"HTTPC2", "encoders", b"encoders"]) -> None: ...
 
 @typing_extensions.final
 class ExternalImplantBinary(Message):
@@ -2415,7 +2435,6 @@ class MsfStagerReq(Message):
     OS_FIELD_NUMBER: int
     PROTOCOL_FIELD_NUMBER: int
     BADCHARS_FIELD_NUMBER: int
-    ADVOPTIONS_FIELD_NUMBER: int
     HTTPC2CONFIGNAME_FIELD_NUMBER: int
     Arch: str
     Format: str
@@ -2426,7 +2445,6 @@ class MsfStagerReq(Message):
     Protocol: StageProtocol.ValueType
     @property
     def BadChars(self) -> RepeatedScalarFieldContainer[str]: ...
-    AdvOptions: str
     HTTPC2ConfigName: str
     def __init__(
         self,
@@ -2438,10 +2456,9 @@ class MsfStagerReq(Message):
         OS: str = ...,
         Protocol: StageProtocol.ValueType = ...,
         BadChars: Iterable[str] | None = ...,
-        AdvOptions: str = ...,
         HTTPC2ConfigName: str = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["AdvOptions", b"AdvOptions", "Arch", b"Arch", "BadChars", b"BadChars", "Format", b"Format", "HTTPC2ConfigName", b"HTTPC2ConfigName", "Host", b"Host", "OS", b"OS", "Port", b"Port", "Protocol", b"Protocol"]) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["Arch", b"Arch", "BadChars", b"BadChars", "Format", b"Format", "HTTPC2ConfigName", b"HTTPC2ConfigName", "Host", b"Host", "OS", b"OS", "Port", b"Port", "Protocol", b"Protocol"]) -> None: ...
 
 @typing_extensions.final
 class MsfStager(Message):
@@ -4399,3 +4416,66 @@ class ResourceID(Message):
         Value: int = ...,
     ) -> None: ...
     def ClearField(self, field_name: typing_extensions.Literal["ID", b"ID", "Name", b"Name", "Type", b"Type", "Value", b"Value"]) -> None: ...
+
+@typing_extensions.final
+class CertificatesReq(Message):
+    """[ Certificates ] ----------------------------------------"""
+
+    DESCRIPTOR: Descriptor
+
+    CATEGORYFILTERS_FIELD_NUMBER: int
+    CN_FIELD_NUMBER: int
+    CategoryFilters: int
+    CN: str
+    def __init__(
+        self,
+        *,
+        CategoryFilters: int = ...,
+        CN: str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["CN", b"CN", "CategoryFilters", b"CategoryFilters"]) -> None: ...
+
+@typing_extensions.final
+class CertificateData(Message):
+    DESCRIPTOR: Descriptor
+
+    CN_FIELD_NUMBER: int
+    CREATIONTIME_FIELD_NUMBER: int
+    VALIDITYSTART_FIELD_NUMBER: int
+    VALIDITYEXPIRY_FIELD_NUMBER: int
+    TYPE_FIELD_NUMBER: int
+    KEYALGORITHM_FIELD_NUMBER: int
+    ID_FIELD_NUMBER: int
+    CN: str
+    CreationTime: str
+    ValidityStart: str
+    ValidityExpiry: str
+    Type: str
+    KeyAlgorithm: str
+    ID: str
+    def __init__(
+        self,
+        *,
+        CN: str = ...,
+        CreationTime: str = ...,
+        ValidityStart: str = ...,
+        ValidityExpiry: str = ...,
+        Type: str = ...,
+        KeyAlgorithm: str = ...,
+        ID: str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["CN", b"CN", "CreationTime", b"CreationTime", "ID", b"ID", "KeyAlgorithm", b"KeyAlgorithm", "Type", b"Type", "ValidityExpiry", b"ValidityExpiry", "ValidityStart", b"ValidityStart"]) -> None: ...
+
+@typing_extensions.final
+class CertificateInfo(Message):
+    DESCRIPTOR: Descriptor
+
+    INFO_FIELD_NUMBER: int
+    @property
+    def info(self) -> RepeatedCompositeFieldContainer[CertificateData]: ...
+    def __init__(
+        self,
+        *,
+        info: Iterable[CertificateData] | None = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["info", b"info"]) -> None: ...
