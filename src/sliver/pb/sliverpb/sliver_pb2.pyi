@@ -1477,7 +1477,8 @@ class ExecuteAssemblyReq(Message):
     ETWBYPASS_FIELD_NUMBER: int
     REQUEST_FIELD_NUMBER: int
     Assembly: bytes
-    Arguments: str
+    @property
+    def Arguments(self) -> RepeatedScalarFieldContainer[str]: ...
     Process: str
     IsDLL: bool
     Arch: str
@@ -1498,7 +1499,7 @@ class ExecuteAssemblyReq(Message):
         self,
         *,
         Assembly: bytes = ...,
-        Arguments: str = ...,
+        Arguments: Iterable[str] | None = ...,
         Process: str = ...,
         IsDLL: bool = ...,
         Arch: str = ...,
@@ -1755,7 +1756,8 @@ class SideloadReq(Message):
     REQUEST_FIELD_NUMBER: int
     Data: bytes
     ProcessName: str
-    Args: str
+    @property
+    def Args(self) -> RepeatedScalarFieldContainer[str]: ...
     EntryPoint: str
     Kill: bool
     isDLL: bool
@@ -1770,7 +1772,7 @@ class SideloadReq(Message):
         *,
         Data: bytes = ...,
         ProcessName: str = ...,
-        Args: str = ...,
+        Args: Iterable[str] | None = ...,
         EntryPoint: str = ...,
         Kill: bool = ...,
         isDLL: bool = ...,
@@ -1814,7 +1816,8 @@ class InvokeSpawnDllReq(Message):
     REQUEST_FIELD_NUMBER: int
     Data: bytes
     ProcessName: str
-    Args: str
+    @property
+    def Args(self) -> RepeatedScalarFieldContainer[str]: ...
     EntryPoint: str
     Kill: bool
     PPid: int
@@ -1827,7 +1830,7 @@ class InvokeSpawnDllReq(Message):
         *,
         Data: bytes = ...,
         ProcessName: str = ...,
-        Args: str = ...,
+        Args: Iterable[str] | None = ...,
         EntryPoint: str = ...,
         Kill: bool = ...,
         PPid: int = ...,
@@ -1852,7 +1855,8 @@ class SpawnDllReq(Message):
     Data: bytes
     ProcessName: str
     Offset: int
-    Args: str
+    @property
+    def Args(self) -> RepeatedScalarFieldContainer[str]: ...
     Kill: bool
     PPid: int
     @property
@@ -1865,7 +1869,7 @@ class SpawnDllReq(Message):
         Data: bytes = ...,
         ProcessName: str = ...,
         Offset: int = ...,
-        Args: str = ...,
+        Args: Iterable[str] | None = ...,
         Kill: bool = ...,
         PPid: int = ...,
         ProcessArgs: Iterable[str] | None = ...,
@@ -2092,51 +2096,6 @@ class UnsetEnv(Message):
     ) -> None: ...
     def HasField(self, field_name: typing_extensions.Literal["Response", b"Response"]) -> bool: ...
     def ClearField(self, field_name: typing_extensions.Literal["Response", b"Response"]) -> None: ...
-
-@typing_extensions.final
-class DNSSessionInit(Message):
-    """DNS Specific messages"""
-
-    DESCRIPTOR: Descriptor
-
-    KEY_FIELD_NUMBER: int
-    Key: bytes
-    def __init__(
-        self,
-        *,
-        Key: bytes = ...,
-    ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["Key", b"Key"]) -> None: ...
-
-@typing_extensions.final
-class DNSPoll(Message):
-    DESCRIPTOR: Descriptor
-
-    BLOCKS_FIELD_NUMBER: int
-    @property
-    def blocks(self) -> RepeatedCompositeFieldContainer[DNSBlockHeader]: ...
-    def __init__(
-        self,
-        *,
-        blocks: Iterable[DNSBlockHeader] | None = ...,
-    ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["blocks", b"blocks"]) -> None: ...
-
-@typing_extensions.final
-class DNSBlockHeader(Message):
-    DESCRIPTOR: Descriptor
-
-    ID_FIELD_NUMBER: int
-    SIZE_FIELD_NUMBER: int
-    ID: str
-    Size: int
-    def __init__(
-        self,
-        *,
-        ID: str = ...,
-        Size: int = ...,
-    ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["ID", b"ID", "Size", b"Size"]) -> None: ...
 
 @typing_extensions.final
 class HTTPSessionInit(Message):

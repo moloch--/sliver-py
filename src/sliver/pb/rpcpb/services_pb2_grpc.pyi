@@ -265,6 +265,11 @@ class SliverRPCStub:
         common_pb2.Empty,
         client_pb2.Builders,
     ]
+    GetCertificateInfo: grpc.UnaryUnaryMultiCallable[
+        client_pb2.CertificatesReq,
+        client_pb2.CertificateInfo,
+    ]
+    """*** Certificates ***"""
     CrackstationRegister: grpc.UnaryStreamMultiCallable[
         client_pb2.Crackstation,
         client_pb2.Event,
@@ -350,10 +355,6 @@ class SliverRPCStub:
     SaveImplantProfile: grpc.UnaryUnaryMultiCallable[
         client_pb2.ImplantProfile,
         client_pb2.ImplantProfile,
-    ]
-    MsfStage: grpc.UnaryUnaryMultiCallable[
-        client_pb2.MsfStagerReq,
-        client_pb2.MsfStager,
     ]
     ShellcodeRDI: grpc.UnaryUnaryMultiCallable[
         client_pb2.ShellcodeRDIReq,
@@ -1020,6 +1021,11 @@ class SliverRPCAsyncStub:
         common_pb2.Empty,
         client_pb2.Builders,
     ]
+    GetCertificateInfo: grpc.aio.UnaryUnaryMultiCallable[
+        client_pb2.CertificatesReq,
+        client_pb2.CertificateInfo,
+    ]
+    """*** Certificates ***"""
     CrackstationRegister: grpc.aio.UnaryStreamMultiCallable[
         client_pb2.Crackstation,
         client_pb2.Event,
@@ -1105,10 +1111,6 @@ class SliverRPCAsyncStub:
     SaveImplantProfile: grpc.aio.UnaryUnaryMultiCallable[
         client_pb2.ImplantProfile,
         client_pb2.ImplantProfile,
-    ]
-    MsfStage: grpc.aio.UnaryUnaryMultiCallable[
-        client_pb2.MsfStagerReq,
-        client_pb2.MsfStager,
     ]
     ShellcodeRDI: grpc.aio.UnaryUnaryMultiCallable[
         client_pb2.ShellcodeRDIReq,
@@ -1890,6 +1892,13 @@ class SliverRPCServicer(metaclass=abc.ABCMeta):
         context: _ServicerContext,
     ) -> typing.Union[client_pb2.Builders, collections.abc.Awaitable[client_pb2.Builders]]: ...
     @abc.abstractmethod
+    def GetCertificateInfo(
+        self,
+        request: client_pb2.CertificatesReq,
+        context: _ServicerContext,
+    ) -> typing.Union[client_pb2.CertificateInfo, collections.abc.Awaitable[client_pb2.CertificateInfo]]:
+        """*** Certificates ***"""
+    @abc.abstractmethod
     def CrackstationRegister(
         self,
         request: client_pb2.Crackstation,
@@ -2017,12 +2026,6 @@ class SliverRPCServicer(metaclass=abc.ABCMeta):
         request: client_pb2.ImplantProfile,
         context: _ServicerContext,
     ) -> typing.Union[client_pb2.ImplantProfile, collections.abc.Awaitable[client_pb2.ImplantProfile]]: ...
-    @abc.abstractmethod
-    def MsfStage(
-        self,
-        request: client_pb2.MsfStagerReq,
-        context: _ServicerContext,
-    ) -> typing.Union[client_pb2.MsfStager, collections.abc.Awaitable[client_pb2.MsfStager]]: ...
     @abc.abstractmethod
     def ShellcodeRDI(
         self,
